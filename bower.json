@@ -1,0 +1,20 @@
+{
+  "name": "BuildingMeanApp",
+  "description": "\"Extrem Tech Training\"",
+  "main": "app.js",
+  "authors": [
+    "[object Object]"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "angular": "~1.4.8",
+    "angular-resource": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "toastr": "~2.1.2",
+    "bootstrap": "~3.3.6"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "BuildingMeanApp",
+  "version": "0.0.0",
+  "description": "BuildingMeanApp",
+  "main": "app.js",
+  "author": {
+    "name": "Ali",
+    "email": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "crypto": "0.0.3",
+    "express": "^4.13.3",
+    "express-logger": "0.0.3",
+    "express-session": "^1.13.0",
+    "jade": "^1.11.0",
+    "mongoose": "^4.3.6",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "stylus": "^0.53.0"
+  },
+  "engines": {
+    "node": "5.3.x",
+    "npm": "3.3.x"
+  },
+  "devDependencies": {
+    "karma": "^0.13.19",
+    "karma-chai-plugins": "^0.6.1",
+    "karma-mocha": "^0.2.1",
+    "mocha": "^2.4.5"
+  }
+}
