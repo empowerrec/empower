@@ -1,5 +1,6 @@
-﻿var mongoose = require('mongoose'),
-    userModel = require('../models/User');
+var mongoose = require('mongoose');
+var userModel = require('../models/User');
+var courseModel = require('../models/Course');
 
 module.exports = function (config) {
     mongoose.connect(config.db);
@@ -8,8 +9,7 @@ module.exports = function (config) {
     db.once('open', function callback() {
         console.log('multivision db opened');
     });
-    
+
     userModel.createDefaultUsers();
-
+    courseModel.createDefaultCourses();
 };
-

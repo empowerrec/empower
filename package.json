@@ -1,32 +1,29 @@
 {
-  "name": "BuildingMeanApp",
-  "version": "0.0.0",
-  "description": "BuildingMeanApp",
-  "main": "app.js",
-  "author": {
-    "name": "Ali",
-    "email": ""
+  "name": "multivision",
+  "version": "1.0.0",
+  "description": "Extreme Tech Traning Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohamed Gamal",
+  "license": "ISC",
+  "engines": {
+    "node": "4.2.x",
+    "npm": "2.14.x"
   },
   "dependencies": {
     "body-parser": "^1.14.2",
-    "crypto": "0.0.3",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.3",
-    "express-logger": "0.0.3",
     "express-session": "^1.13.0",
     "jade": "^1.11.0",
     "mongoose": "^4.3.6",
+    "morgan": "^1.6.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "path": "^0.12.7",
     "stylus": "^0.53.0"
-  },
-  "engines": {
-    "node": "5.3.x",
-    "npm": "3.3.x"
-  },
-  "devDependencies": {
-    "karma": "^0.13.19",
-    "karma-chai-plugins": "^0.6.1",
-    "karma-mocha": "^0.2.1",
-    "mocha": "^2.4.5"
   }
 }

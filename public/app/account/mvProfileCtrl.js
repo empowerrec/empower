@@ -1,22 +1,24 @@
-angular.module('app').controller('mvProfileCtrl', function($scope, mvAuth, mvIdentity, mvNotifier) {
-  $scope.email = mvIdentity.currentUser.username;
-  $scope.fname = mvIdentity.currentUser.firstName;
-  $scope.lname = mvIdentity.currentUser.lastName;
+angular.module('app').controller('mvProfileCtrl', function ($scope, mvIdentity, mvNotifier, mvAuth) {
 
-  $scope.update = function() {
-    var newUserData = {
-      username: $scope.email,
-      firstName: $scope.fname,
-      lastName: $scope.lname
-    }
-    if($scope.password && $scope.password.length > 0) {
-      newUserData.password = $scope.password;
-    }
+    $scope.email = mvIdentity.currentUser.UserName;
+    $scope.firstname = mvIdentity.currentUser.FirstName;
+    $scope.lastname = mvIdentity.currentUser.LastName;
 
-    mvAuth.updateCurrentUser(newUserData).then(function() {
-      mvNotifier.notify('Your user account has been updated');
-    }, function(reason) {
-      mvNotifier.error(reason);
-    })
-  }
-})
+    $scope.update = function () {
+        var newUserData = {
+            UserName: $scope.email,
+            FirstName: $scope.firstname,
+            LastName: $scope.lastname
+        };
+
+        if($scope.password && $scope.password.length > 0 ){
+            newUserData.Password = $scope.password;
+        }
+
+        mvAuth.updateCurrentUser(newUserData).then(function () {
+            mvNotifier.notify('Your user account has been updated!');
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+    }
+});

@@ -1,49 +1,71 @@
-var User = require('mongoose').model('User'),
-    encrypt = require('../utilities/encryption');
+var User = require('mongoose').model('User');
+var encryption = require('../utilities/encryption');
 
-exports.getUsers = function(req, res) {
-    User.find({}).exec(function(err, collection) {
-        res.send(collection);
-    })
+exports.getUsers = function (req, res) {
+    User.find({}).exec(function (err, col) {
+        res.send(col);
+    });
 };
 
-exports.createUser = function(req, res, next) {
+exports.createUser = function (req, res, next) {
     var userData = req.body;
-    userData.username = userData.username.toLowerCase();
-    userData.salt = encrypt.createSalt();
-    userData.hashed_pwd = encrypt.hashPwd(userData.salt, userData.password);
-    User.create(userData, function(err, user) {
-        if(err) {
-            if(err.toString().indexOf('E11000') > -1) {
-                err = new Error('Duplicate Username');
+    userData.UserName = userData.UserName.toLowerCase();
+    userData.Salt = encryption.createSalt();
+    userData.HashedPassword = encryption.hashPassword(userData.Salt, userData.Password);
+    User.create(userData, function (err, user) {
+        if (err) {
+            if (err.toString().indexOf('E11000') > -1) {
+                err = new Error('Duplicate User Name')
             }
             res.status(400);
-            return res.send({reason:err.toString()});
+            return res.send({reason: err.toString()});
         }
-        req.logIn(user, function(err) {
-            if(err) {return next(err);}
+        req.logIn(user, function (err) {
+            if (err) {
+                return next(err);
+            }
             res.send(user);
-        })
-    })
+        });
+    });
 };
 
-exports.updateUser = function(req, res) {
+exports.updateUser = function (req, res, next) {
     var userUpdates = req.body;
-
-    if(req.user._id != userUpdates._id && !req.user.hasRole('admin')) {
+    if (req.user._id != userUpdates._id && !req.user.hsaRole('admin')) {
         res.status(403);
         return res.end();
     }
 
-    req.user.firstName = userUpdates.firstName;
-    req.user.lastName = userUpdates.lastName;
-    req.user.username = userUpdates.username;
-    if(userUpdates.password && userUpdates.password.length > 0) {
-        req.user.salt = encrypt.createSalt();
-        req.user.hashed_pwd = encrypt.hashPwd(req.user.salt, userUpdates.password);
+    req.user.UserName = userUpdates.UserName.toLowerCase();
+    req.user.FirstName = userUpdates.FirstName;
+    req.user.LastName = userUpdates.LastName;
+
+    if (userUpdates.Password && userUpdates.Password.length > 0) {
+        req.user.Salt = encryption.createSalt();
+        req.user.HashedPassword = encryption.hashPassword(req.user.Salt, userUpdates.Password);
     }
-    req.user.save(function(err) {
-        if(err) { res.status(400); return res.send({reason:err.toString()});}
+
+    req.user.save(function (err, user) {
+        if (err) {
+            if (err.toString().indexOf('E11000') > -1) {
+                err = new Error('Duplicate User Name')
+            }
+            res.status(400);
+            return res.send({reason: err.toString()});
+        }
         res.send(req.user);
     });
+
+    /*
+     User.update(req.user, function (err,user) {
+     if (err) {
+     if (err.toString().indexOf('E11000') > -1) {
+     err = new Error('Duplicate User Name')
+     }
+     res.status(400);
+     return res.send({reason: err.toString()});
+     }
+     req.send(req.user);
+     });
+     */
 };

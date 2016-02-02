@@ -1,4 +1,4 @@
-﻿body {
+body {
   padding-top: 61px;
 }
 .navbar-header a.navbar-brand {
@@ -19,6 +19,13 @@ footer p {
   margin-left: 10px;
 }
 .navbar-form button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.top-padding-med {
+  padding-top: 10px;
+}
+.margin-left-med {
   margin-left: 10px;
 }
 .toast-top-right {

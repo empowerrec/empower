@@ -1,36 +1,45 @@
-﻿angular.module('app', ['ngResource', 'ngRoute']);
+angular.module('app', ['ngResource', 'ngRoute']);
 
-angular.module('app').config(function ($routeProvider, $locationProvider) {
-    var routeRoleChecks = {
+angular.module('app').config(function ($routeProvider) {
+    var routRoleChecks = {
         admin: {
-            auth: function(mvAuth) {
+            auth: function (mvAuth) {
                 return mvAuth.authorizeCurrentUserForRoute('admin');
-            },
-            user: {auth: function(mvAuth) {
-                return mvAuth.authorizeAuthenticatedUserForRoute()
-            }}
+            }
+        },
+        user: {
+            auth: function (mvAuth) {
+                return mvAuth.authorizeAuthenticatedUserForRoute();
+            }
         }
     };
 
-    //$locationProvider.html5Mode(true);
     $routeProvider
-    .when('/', { templateUrl: '/app/main/main.html', controller: 'mvMainCtrl' })
-    .when('/admin/users', {
-        templateUrl: '/app/admin/user-list.html',
-        controller: 'mvUserListCtrl', resolve: routeRoleChecks.admin
-    }).when('/signup', {
-        templateUrl: '/app/account/signup.html',
-        controller: 'mvSignupCtrl'
-    }).when('/profile', { templateUrl: 'app/account/profile',
-            controller: 'mvProfileCtrl', resolve: routeRoleChecks.user
-        });
-
+        .when('/', {templateUrl: '/partials/main/main', controller: 'mvMainCtrl'})
+        .when('/admin/users', {
+            templateUrl: '/partials/admin/user-list',
+            controller: 'mvUserListCtrl', resolve: routRoleChecks.admin
+        })
+        .when('/signup', {templateUrl: '/partials/account/signup', controller: 'mvSignupCtrl'})
+        .when('/profile', {
+            templateUrl: '/partials/account/profile',
+            controller: 'mvProfileCtrl', resolve: routRoleChecks.user
+        })
+        .when('/courses', {
+            templateUrl: '/partials/course/course-list',
+            controller: 'mvCourseListCtrl'
+        })
+        .when('/courses/:id', {
+            templateUrl: '/partials/course/course-detail',
+            controller: 'mvCourseDetailCtrl'
+        })
 });
+
 
 angular.module('app').run(function ($rootScope, $location) {
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
         if (rejection === 'not authorized') {
             $location.path('/');
         }
-    })
-})
+    });
+});

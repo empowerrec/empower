@@ -1,20 +1,20 @@
 {
-  "name": "BuildingMeanApp",
-  "description": "\"Extrem Tech Training\"",
-  "main": "app.js",
+  "name": "Multi Vision",
+  "description": "Extreme Tech Traning",
+  "main": "index.js",
   "authors": [
-    "[object Object]"
+    "Mohamed Gamal"
   ],
-  "license": "MIT",
+  "license": "ISC",
   "moduleType": [],
   "homepage": "",
   "private": true,
   "dependencies": {
     "jquery": "~2.2.0",
-    "angular": "~1.4.8",
-    "angular-resource": "~1.4.8",
-    "angular-route": "~1.4.8",
     "toastr": "~2.1.2",
+    "angular": "~1.4.9",
+    "angular-route": "~1.4.9",
+    "angular-resource": "~1.4.9",
     "bootstrap": "~3.3.6"
   }
 }
