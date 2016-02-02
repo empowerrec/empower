@@ -8,8 +8,8 @@ var userSchema = mongoose.Schema({
     Salt: {type: String, required: '{PATH} is required'},
     HashedPassword: {type: String, required: '{PATH} is required'},
     Roles: [String],
-    AuthenticationStrategyId: String,
     AuthenticationStrategyName: String,
+    AuthenticationStrategyId: String,
     AuthenticationStrategyToken: String
 });
 

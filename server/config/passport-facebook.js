@@ -1,6 +1,7 @@
 var passport = require('passport'),
     FacebookStrategy = require('passport-facebook').Strategy,
     User = require('mongoose').model('User');
+var encryption = require('../utilities/encryption');
 
 module.exports = function (config) {
 
@@ -8,15 +9,18 @@ module.exports = function (config) {
             clientID: config.facebookAuthentication.clientID,
             clientSecret: config.facebookAuthentication.clientSecret,
             callbackURL: config.facebookAuthentication.callbackURL,
-            passReqToCallback: true
+            passReqToCallback: true,
+            profileFields: ['id', 'name', 'emails']
         },
+        function (req,token, refreshToken, profile, done) {
 
-        function (req, token, refreshToken, profile, done) {
-            User.findOne({'AuthenticationStrategyId': profile.id}, function (err, user) {
+            User.findOne({
+                'AuthenticationStrategyName': 'facebook'
+                , 'AuthenticationStrategyId': profile.id
+            }, function (err, user) {
                 if (err) {
                     return done(err);
                 }
-
                 if (user) {
                     return done(null, user);
                 } else {
@@ -27,6 +31,13 @@ module.exports = function (config) {
                     newUser.FirstName = profile.name.givenName;
                     newUser.LastName = profile.name.familyName;
                     newUser.UserName = profile.emails[0].value;
+                    var salt, hash;
+                    salt = encryption.createSalt();
+                    hash = encryption.hashPassword(salt, newUser.UserName);
+                    newUser.Salt = salt;
+                    newUser.HashedPassword = hash;
+
+                    console.log(newUser);
 
                     newUser.save(function (err) {
                         if (err) {

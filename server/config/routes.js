@@ -1,6 +1,7 @@
 var authentication = require('./authentication');
 var users = require('../controllers/users');
 var courses = require('../controllers/courses');
+var passport = require('passport');
 
 module.exports = function (app) {
 
@@ -17,6 +18,17 @@ module.exports = function (app) {
         res.end();
     });
 
+    app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
+
+    app.get('/auth/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect: '#/profile',
+            failureRedirect: '#/'
+        }));
+    /*
+     app.get('/auth/facebook', authentication.facebookAuthenticate);
+     app.get('/auth/facebook/callback', authentication.facebookCallBack);
+     */
     app.all('/api/*', function (req, res) {
         res.send(404);
     });

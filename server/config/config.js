@@ -10,7 +10,7 @@ module.exports = {
         facebookAuthentication: {
             'clientID': '588837614619121',
             'clientSecret': '4548cd3dea5d5aa6b7330a351e0d22b6',
-            'callbackURL': 'http://localhost:' + this.port + '/auth/facebook/callback'
+            'callbackURL': 'http://localhost:3030/auth/facebook/callback'
         }
     },
     production: {
@@ -21,7 +21,7 @@ module.exports = {
         facebookAuthentication: {
             'clientID': '588837614619121',
             'clientSecret': '4548cd3dea5d5aa6b7330a351e0d22b6',
-            'callbackURL': 'http://localhost:' + this.port + '/auth/facebook/callback'
+            'callbackURL': 'http://localhost:' + process.env.PORT || 80 + '/auth/facebook/callback'
         }
     }
 };
