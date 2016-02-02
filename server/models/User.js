@@ -2,12 +2,15 @@ var mongoose = require('mongoose');
 var encryption = require('../utilities/encryption');
 
 var userSchema = mongoose.Schema({
-    FirstName: {type:String,required:'{PATH} is required'},
-    LastName: {type:String,required:'{PATH} is required'},
-    UserName: {type:String,required:'{PATH} is required',unique:true},
-    Salt: {type:String,required:'{PATH} is required'},
-    HashedPassword: {type:String,required:'{PATH} is required'},
-    Roles: [String]
+    FirstName: {type: String, required: '{PATH} is required'},
+    LastName: {type: String, required: '{PATH} is required'},
+    UserName: {type: String, required: '{PATH} is required', unique: true}, //This Is Email
+    Salt: {type: String, required: '{PATH} is required'},
+    HashedPassword: {type: String, required: '{PATH} is required'},
+    Roles: [String],
+    AuthenticationStrategyId: String,
+    AuthenticationStrategyName: String,
+    AuthenticationStrategyToken: String
 });
 
 userSchema.methods = {
@@ -36,7 +39,8 @@ function createDefaultUsers() {
                 UserName: 'gamal@yahoo.com',
                 Salt: salt,
                 HashedPassword: hash,
-                Roles: ['admin']
+                Roles: ['admin'],
+                AuthenticationStrategyName: 'local'
             });
 
             salt = encryption.createSalt();
@@ -46,7 +50,8 @@ function createDefaultUsers() {
                 LastName: 'Mohamed',
                 UserName: 'ali@yahoo.com',
                 Salt: salt,
-                HashedPassword: hash
+                HashedPassword: hash,
+                AuthenticationStrategyName: 'local'
             });
         }
     });

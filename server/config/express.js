@@ -21,7 +21,7 @@ module.exports = function (app, config) {
     app.use(session({
         resave: true,
         saveUninitialized: true,
-        secret: '1234'
+        secret: config.sessionSecret
     }));
     app.use(passport.initialize());
     app.use(passport.session());

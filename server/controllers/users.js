@@ -12,6 +12,7 @@ exports.createUser = function (req, res, next) {
     userData.UserName = userData.UserName.toLowerCase();
     userData.Salt = encryption.createSalt();
     userData.HashedPassword = encryption.hashPassword(userData.Salt, userData.Password);
+    userData.AuthenticationStrategyName = 'local';
     User.create(userData, function (err, user) {
         if (err) {
             if (err.toString().indexOf('E11000') > -1) {
@@ -55,17 +56,4 @@ exports.updateUser = function (req, res, next) {
         }
         res.send(req.user);
     });
-
-    /*
-     User.update(req.user, function (err,user) {
-     if (err) {
-     if (err.toString().indexOf('E11000') > -1) {
-     err = new Error('Duplicate User Name')
-     }
-     res.status(400);
-     return res.send({reason: err.toString()});
-     }
-     req.send(req.user);
-     });
-     */
 };
