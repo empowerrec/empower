@@ -17,41 +17,6 @@ exports.authenticate = function (req, res, next) {
         });
     })(req, res, next);
 };
-/*
-exports.facebookAuthenticate = function (req, res, next) {
-    passport.authenticate('facebook', {scope: ['email']}, function (err, user) {
-        if (err) {
-            return next(err);
-        }
-        if (!user) {
-            res.send({success: false})
-        }
-        req.logIn(user, function (err) {
-            if (err) {
-                return next(err);
-            }
-            res.send({success: true, user: user});
-        });
-    })(req, res, next);
-};
-
-exports.facebookCallBack = function (req, res, next) {
-    passport.authenticate('facebook', function (err, user) {
-        if (err) {
-            return next(err);
-        }
-        if (!user) {
-            res.send({success: false})
-        }
-        req.logIn(user, function (err) {
-            if (err) {
-                return next(err);
-            }
-            res.send({success: true, user: user});
-        });
-    })(req, res, next);
-};
-*/
 
 exports.requiresApiLogin = function (req, res, next) {
     if (!req.isAuthenticated()) {
