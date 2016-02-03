@@ -22,6 +22,10 @@ footer p {
   margin-left: 10px;
   margin-right: 10px;
 }
+.navbar-form a {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 .top-padding-med {
   padding-top: 10px;
 }
