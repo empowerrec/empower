@@ -37,8 +37,6 @@ module.exports = function (config) {
                     newUser.Salt = salt;
                     newUser.HashedPassword = hash;
 
-                    console.log(newUser);
-
                     newUser.save(function (err) {
                         if (err) {
                             throw err;

@@ -11,6 +11,11 @@ module.exports = {
             'clientID': '588837614619121',
             'clientSecret': '4548cd3dea5d5aa6b7330a351e0d22b6',
             'callbackURL': 'http://localhost:3030/auth/facebook/callback'
+        },
+        googleAuthentication: {
+            'clientID': '632246168328-uh62qkm2itogthjofivs8pq8kjgca72d.apps.googleusercontent.com',
+            'clientSecret': '3aNpsCkTkmp4lZnlGdTubGA0',
+            'callbackURL': 'http://localhost:3030/auth/google/callback'
         }
     },
     production: {
@@ -21,7 +26,12 @@ module.exports = {
         facebookAuthentication: {
             'clientID': '588837614619121',
             'clientSecret': '4548cd3dea5d5aa6b7330a351e0d22b6',
-            'callbackURL': 'http://localhost:' + process.env.PORT || 80 + '/auth/facebook/callback'
+            'callbackURL': 'http://localhost/auth/facebook/callback'
+        },
+        googleAuthentication: {
+            'clientID': '632246168328-uh62qkm2itogthjofivs8pq8kjgca72d.apps.googleusercontent.com',
+            'clientSecret': '3aNpsCkTkmp4lZnlGdTubGA0',
+            'callbackURL': 'http://localhost/auth/google/callback'
         }
     }
 };

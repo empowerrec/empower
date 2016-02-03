@@ -22,5 +22,6 @@ module.exports = function(config) {
 
     require('./passport-local.js')();
     require('./passport-facebook.js')(config);
+    require('./passport-google.js')(config);
 
 };
