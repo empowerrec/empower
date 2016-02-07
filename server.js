@@ -9,6 +9,7 @@ require('./server/config/express')(app, config);
 require('./server/config/mongoose')(config);
 require('./server/config/passport')(config);
 require('./server/config/routes')(app);
+require('./server/config/demo')(app);
 
 app.listen(config.port);
 console.log('listening on port ' + config.port + '...');
