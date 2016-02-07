@@ -26,7 +26,7 @@ module.exports = {
         facebookAuthentication: {
             'clientID': '588837614619121',
             'clientSecret': '4548cd3dea5d5aa6b7330a351e0d22b6',
-            'callbackURL': 'http://localhost/auth/facebook/callback'
+            'callbackURL': 'https://empowerrec.herokuapp.com/auth/facebook/callback'
         },
         googleAuthentication: {
             'clientID': '632246168328-uh62qkm2itogthjofivs8pq8kjgca72d.apps.googleusercontent.com',
