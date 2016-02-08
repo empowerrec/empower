@@ -31,7 +31,7 @@ module.exports = {
         googleAuthentication: {
             'clientID': '632246168328-uh62qkm2itogthjofivs8pq8kjgca72d.apps.googleusercontent.com',
             'clientSecret': '3aNpsCkTkmp4lZnlGdTubGA0',
-            'callbackURL': 'http://localhost/auth/google/callback'
+            'callbackURL': 'https://empowerrec.herokuapp.com/auth/google/callback'
         }
     }
 };
