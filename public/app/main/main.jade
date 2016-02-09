@@ -1,7 +1,10 @@
 .container
-    .jumbotron
+    .jumbotron.welcome
         h1 Empower
         p Welcome to the Empower!
+    .jumbotron.login
+        div(ng-include="'/partials/account/navbar-login'")
+
 
     .row
         .col-md-6

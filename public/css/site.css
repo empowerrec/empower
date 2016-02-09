@@ -38,3 +38,16 @@ footer p {
 .toast-success {
   background-color: #13987e;
 }
+
+.login{
+    height: 380px;
+    width: 290px;
+    float: left;
+    margin-left: 19px;
+}
+
+.welcome{
+    width: 825px;
+    float: left;
+    height: 381px;
+}
