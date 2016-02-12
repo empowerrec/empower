@@ -2,24 +2,12 @@
     form.navbar-form(ng-hide='identity.isAuthenticated()')
         .form-group
             input.form-control(placeholder='Email',ng-model='username')
-        <br/>
-        <br/>
         .form-group
             input.form-control(type='password',placeholder='Password',ng-model='password')
-        <br/>
-        <br/>
         button.btn.btn-primary(ng-click='signin(username,password)') Sign In
-        <br/>
-        <br/>
         a.btn.btn-primary(href='/auth/facebook') Facebook
-        <br/>
-        <br/>
         a.btn.btn-primary(href='/auth/google') Google
-        <br/>
-        <br/>
-        a.btn.btn-primary(href='#/signup') Sign Up
-        <br/>
-        <br/>
+        //a.btn.btn-primary(href='#/signup') Sign Up
     ul.nav.navbar-nav.navbar-right(ng-show='identity.isAuthenticated()')
         li.dropdown
             a.dropdown-toggle(href='',data-toggle='dropdown')

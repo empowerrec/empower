@@ -1,0 +1,17 @@
+| &nbsp; &nbsp; &nbsp; &nbsp;
+a.facebook_button(href='/auth/facebook') Facebook
+| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+a.google_button(href='/auth/google') Google
+<br/>
+<br/>
+form.form-horizontal(name="frontSignupForm",ng-controller="mvFrontSignupCtrl")
+    .form-group
+        input.form-control(name="email", type="email", placeholder="Email", ng-model="email", required)
+    .form-group
+        input.form-control(name="password", type="password", placeholder="Password", ng-model="password", required)
+    .form-group
+        input.form-control(name="firstname", type="text", placeholder="First Name", ng-model="firstname", required)
+    .form-group
+        input.form-control(name="lastname", type="text", placeholder="Last Name", ng-model="lastname", required)
+    .form-group
+            button.btn.signup_button(ng-click="signup()", ng-disabled="frontSignupForm.$invalid") Sign Up

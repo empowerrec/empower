@@ -3,8 +3,7 @@
         h1 Empower
         p Welcome to the Empower!
     .jumbotron.login
-        div(ng-include="'/partials/account/navbar-login'")
-
+        div(ng-include="'/partials/account/front-signup'",ng-hide='identity.isAuthenticated()')
 
     .row
         .col-md-6

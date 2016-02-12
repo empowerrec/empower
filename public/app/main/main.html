@@ -1,13 +1,1 @@
-<div class="container">
-    <div class="jumbotron"><h1>MultiVision</h1>
-
-        <p>Welcome to the MultiVision! The most complete collection.</p></div>
-    <div class="row">
-        <div class="col-md-6">
-            <div ng-include="'/partials/main/featured-courses'"></div>
-        </div>
-        <div class="col-md-6">
-            <div ng-include="'/partials/main/new-courses'"></div>
-        </div>
-    </div>
-</div>
+<div class="container"><div class="jumbotron welcome"><h1>Empower</h1><p>Welcome to the Empower!</p></div><div class="jumbotron login"><div ng-include="'/partials/account/front-signup'" ng-hide="identity.isAuthenticated()"></div></div><div class="row"><div class="col-md-6"><div ng-include="'/partials/main/featured-courses'"></div></div><div class="col-md-6"><div ng-include="'/partials/main/new-courses'"></div></div></div></div>
