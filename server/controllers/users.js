@@ -6,6 +6,7 @@ exports.getUsers = function (req, res) {
         res.send(col);
     });
 };
+var sendMail = require('../config/mailer');
 
 exports.createUser = function (req, res, next) {
     var userData = req.body;
@@ -19,8 +20,11 @@ exports.createUser = function (req, res, next) {
                 err = new Error('Duplicate User Name')
             }
             res.status(400);
+
             return res.send({reason: err.toString()});
         }
+        console.log('Send Message')
+        sendMail.sendMail("welcome@empower.com",userData.UserName , "Welcome To Empower" , "Welcome To Empower" );
         req.logIn(user, function (err) {
             if (err) {
                 return next(err);
