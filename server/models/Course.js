@@ -75,7 +75,7 @@ function createDefaultCourses() {
                 Tags: ['Misc']
             });
             Course.create({
-                Title: "Writing Code that Doesn't Suck",
+                Title: 'Writing Code that Does not Suck',
                 Featured: true,
                 Published: new Date('10/13/2013'),
                 Tags: ['Coding']

@@ -14,5 +14,5 @@ angular.module('app').controller('mvSignupCtrl', function ($scope, $location, mv
         }, function (reason) {
             mvNotifier.error(reason);
         });
-    }
+    };
 });

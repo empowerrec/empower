@@ -7,7 +7,7 @@ exports.authenticate = function (req, res, next) {
             return next(err);
         }
         if (!user) {
-            res.send({success: false})
+            res.send({success: false});
         }
         req.logIn(user, function (err) {
             if (err) {
@@ -35,5 +35,5 @@ exports.requiresRole = function (role) {
         } else {
             next();
         }
-    }
+    };
 };

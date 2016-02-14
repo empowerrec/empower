@@ -17,8 +17,8 @@ module.exports = function (config) {
             console.log(profile);
 
             User.findOne({
-                'AuthenticationStrategyName': 'google'
-                , 'AuthenticationStrategyId': profile.id
+                'AuthenticationStrategyName': 'google',
+                'AuthenticationStrategyId': profile.id
             }, function (err, user) {
                 if (err) {
                     return done(err);

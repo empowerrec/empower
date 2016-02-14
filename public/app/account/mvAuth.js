@@ -64,5 +64,5 @@ angular.module('app').factory('mvAuth', function ($http, $q, mvIdentity, mvUser)
                 return $q.reject('not authorized');
             }
         }
-    }
+    };
 });

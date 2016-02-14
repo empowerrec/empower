@@ -17,14 +17,14 @@ exports.createUser = function (req, res, next) {
     User.create(userData, function (err, user) {
         if (err) {
             if (err.toString().indexOf('E11000') > -1) {
-                err = new Error('Duplicate User Name')
+                err = new Error('Duplicate User Name');
             }
             res.status(400);
 
             return res.send({reason: err.toString()});
         }
-        console.log('Send Message')
-        sendMail.sendMail("welcome@empower.com",userData.UserName , "Welcome To Empower" , "Welcome To Empower" );
+        console.log('Send Message');
+        sendMail.sendMail('welcome@empower.com',userData.UserName , 'Welcome To Empower' , 'Welcome To Empower' );
         req.logIn(user, function (err) {
             if (err) {
                 return next(err);
@@ -36,7 +36,7 @@ exports.createUser = function (req, res, next) {
 
 exports.updateUser = function (req, res, next) {
     var userUpdates = req.body;
-    if (req.user._id != userUpdates._id && !req.user.hsaRole('admin')) {
+    if (req.user._id !== userUpdates._id && !req.user.hsaRole('admin')) {
         res.status(403);
         return res.end();
     }
@@ -53,7 +53,7 @@ exports.updateUser = function (req, res, next) {
     req.user.save(function (err, user) {
         if (err) {
             if (err.toString().indexOf('E11000') > -1) {
-                err = new Error('Duplicate User Name')
+                err = new Error('Duplicate User Name');
             }
             res.status(400);
             return res.send({reason: err.toString()});

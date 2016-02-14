@@ -7,5 +7,5 @@ angular.module('app').factory('mvCachedCourse', function (mvCourse) {
             }
             return courseList;
         }
-    }
+    };
 });

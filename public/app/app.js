@@ -32,7 +32,7 @@ angular.module('app').config(function ($routeProvider) {
         .when('/courses/:id', {
             templateUrl: '/partials/course/course-detail',
             controller: 'mvCourseDetailCtrl'
-        })
+        });
 });
 
 

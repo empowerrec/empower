@@ -14,5 +14,5 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $locatio
         }, function (reason) {
             mvNotifier.error(reason);
         });
-    }
+    };
 });

@@ -12,11 +12,11 @@ module.exports = function (config) {
             passReqToCallback: true,
             profileFields: ['id', 'name', 'emails']
         },
-        function (req,token, refreshToken, profile, done) {
+        function (req, token, refreshToken, profile, done) {
 
             User.findOne({
-                'AuthenticationStrategyName': 'facebook'
-                , 'AuthenticationStrategyId': profile.id
+                'AuthenticationStrategyName': 'facebook',
+                'AuthenticationStrategyId': profile.id
             }, function (err, user) {
                 if (err) {
                     return done(err);
