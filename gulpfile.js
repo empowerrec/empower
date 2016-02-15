@@ -17,7 +17,6 @@ gulp.task('vet', function () {
             './*.js'
         ])
         .pipe($.print())
-        .pipe($.jscs())
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
         .pipe($.jshint.reporter('fail'));
