@@ -16,7 +16,6 @@ gulp.task('vet', function () {
             //any file in root
             './*.js'
         ])
-        .pipe($.print())
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
         .pipe($.jshint.reporter('fail'));
