@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var roleModel = require('../models/Role');
 var userModel = require('../models/User');
 var courseModel = require('../models/Course');
 
@@ -10,6 +11,7 @@ module.exports = function (config) {
         console.log('multivision db opened');
     });
 
+    roleModel.createDefaultRoles();
     userModel.createDefaultUsers();
     courseModel.createDefaultCourses();
 };
