@@ -51,10 +51,12 @@ function createDefaultUsers() {
   Role.findOne({
     RoleName: 'admin'
   }).exec(function(err, col) {
-    console.log(col);
-    if (col && col.length !== 0) {
+    if (col.length !== 0) {
       var $ref = 'Roles'; //collection name
       var $id = col._id; //row id
+      console.log('h1',$ref);
+      console.log('h1',$id);
+
       User.find({}).exec(function(err, col) {
         if (col.length === 0) {
           var salt, hash;

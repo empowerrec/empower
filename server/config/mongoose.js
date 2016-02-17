@@ -11,7 +11,6 @@ module.exports = function (config) {
         console.log('multivision db opened');
     });
 
-    roleModel.createDefaultRoles();
-    userModel.createDefaultUsers();
+    roleModel.createDefaultRoles(userModel.createDefaultUsers);
     courseModel.createDefaultCourses();
 };

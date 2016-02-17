@@ -14,14 +14,16 @@ var roleSchema = mongoose.Schema({
 
 var Role = mongoose.model('Role', roleSchema);
 
-function createDefaultRoles() {
+function createDefaultRoles(next) {
   Role.find({}).exec(function(err, col) {
-    
     if (col.length === 0) {
       Role.create({
         RoleName: 'admin',
         RoleDescription: 'Admin of all Web Site'
+      },function success(result) {
+        next();
       });
+
     }
   });
 }
