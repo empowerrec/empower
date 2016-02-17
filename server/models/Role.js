@@ -23,7 +23,6 @@ function createDefaultRoles(next) {
       },function success(result) {
         next();
       });
-
     }
   });
 }

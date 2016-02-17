@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var encryption = require('../utilities/encryption');
+var Role = mongoose.model('Role');
 
 var userSchema = mongoose.Schema({
   FirstName: {
@@ -24,8 +25,8 @@ var userSchema = mongoose.Schema({
     required: '{PATH} is required'
   },
   Roles: [{
-    String,
-    Number
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Role'
   }],
   AuthenticationStrategyName: String,
   AuthenticationStrategyId: String,
@@ -37,25 +38,25 @@ userSchema.methods = {
     return encryption.hashPassword(this.Salt, passwordToMatch) === this.HashedPassword;
   },
   hasRole: function(role) {
-    return this.Roles.indexOf(role) > -1;
+    Role.findOne({RoleName: role}).exec(function(err, col) {
+      if(err){
+        return false;
+      } else {
+        return this.Roles.indexOf(col._id) > -1;
+      }
+    });
   }
-
 };
 
 var User = mongoose.model('User', userSchema);
 
 function createDefaultUsers() {
 
-  var Role = mongoose.model('Role');
-
   Role.findOne({
     RoleName: 'admin'
   }).exec(function(err, col) {
     if (col.length !== 0) {
-      var $ref = 'Roles'; //collection name
       var $id = col._id; //row id
-      console.log('h1',$ref);
-      console.log('h1',$id);
 
       User.find({}).exec(function(err, col) {
         if (col.length === 0) {
@@ -69,10 +70,7 @@ function createDefaultUsers() {
             UserName: 'gamal@yahoo.com',
             Salt: salt,
             HashedPassword: hash,
-            Roles: [{
-              "$ref": $ref,
-              "$id": $id
-            }],
+            Roles: [$id],
             AuthenticationStrategyName: 'local'
           });
 

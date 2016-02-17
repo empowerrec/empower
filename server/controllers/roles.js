@@ -14,6 +14,15 @@ exports.getRoleById = function(req, res) {
   });
 };
 
+exports.getRoleByRoleName = function(req, res) {
+  Role.findOne({
+    RoleName: req.params.roleName
+  }).exec(function(err, col) {
+    res.send(col);
+  });
+};
+
+/*
 exports.createRole = function(req, res, next) {
   var roleData = req.body;
   roleData.RoleName = roleData.RoleName.toLowerCase();
@@ -61,3 +70,5 @@ exports.updateRole = function(req, res, next) {
     res.send(req.role);
   });
 };
+
+*/

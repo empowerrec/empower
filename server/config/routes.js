@@ -1,6 +1,7 @@
 var authentication = require('./authentication');
 var users = require('../controllers/users');
 var courses = require('../controllers/courses');
+var roles = require('../controllers/roles');
 var passport = require('passport');
 
 module.exports = function (app) {
@@ -9,8 +10,14 @@ module.exports = function (app) {
     app.post('/api/users', users.createUser);
     app.put('/api/users', users.updateUser);
 
+    app.get('/api/roles', authentication.requiresRole('admin'), roles.getRoles);
+    app.get('/api/roles/:id', authentication.requiresRole('admin'), roles.getRoleById);
+    app.get('/api/roles/:roleName', authentication.requiresRole('admin'), roles.getRoleByRoleName);
+
     app.get('/api/courses', courses.getCourses);
     app.get('/api/courses/:id', courses.getCourseById);
+
+
 
     app.post('/login', authentication.authenticate);
     app.post('/logout', function (req, res) {
