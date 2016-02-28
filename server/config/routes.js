@@ -10,9 +10,9 @@ module.exports = function (app) {
     app.post('/api/users', users.createUser);
     app.put('/api/users', users.updateUser);
 
-    app.get('/api/roles', authentication.requiresRole('admin'), roles.getRoles);
-    app.get('/api/roles/:id', authentication.requiresRole('admin'), roles.getRoleById);
-    app.get('/api/roles/:roleName', authentication.requiresRole('admin'), roles.getRoleByRoleName);
+    app.get('/api/roles', roles.getRoles);
+    app.get('/api/roles/:id', roles.getRoleById);
+    app.get('/api/roles/:roleName', roles.getRoleByRoleName);
 
     app.get('/api/courses', courses.getCourses);
     app.get('/api/courses/:id', courses.getCourseById);
@@ -38,7 +38,7 @@ module.exports = function (app) {
     }));
 
     app.all('/api/*', function (req, res) {
-        res.send(404);
+        res.sendStatus(404);
     });
 
     app.get('/partials/*', function (req, res) {
