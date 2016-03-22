@@ -4,7 +4,7 @@
             input.form-control(placeholder='Email',ng-model='username')
         .form-group
             input.form-control(type='password',placeholder='Password',ng-model='password')
-        button.btn.btn-primary(ng-click='signin(username,password)') Sign In
+        button.btn.btn-primary(ng-click='signin(username,password)') {{"Signin" | translate}}
         a.btn.btn-primary(href='/auth/facebook') Facebook
         a.btn.btn-primary(href='/auth/google') Google
         //a.btn.btn-primary(href='#/signup') Sign Up
@@ -20,3 +20,5 @@
                     a(href='#/profile') Profile
                 li
                     a(href='', ng-click='signout()') Sign Out
+    a.btn.btn-primary(href='', ng-click="changeLanguage('en')") {{"Languages.English" | translate}}
+    a.btn.btn-primary(href='', ng-click="changeLanguage('ar')") {{"Languages.Arabic" | translate}}

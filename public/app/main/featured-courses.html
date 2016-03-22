@@ -1,1 +1,10 @@
-<div class="panel panel-primary"><div class="panel-heading text-center">Featured Jobs</div><div class="panel-body"><div ng-repeat="course in courses | filter:{Featured:true}" class="row"><div class="col-md-12"><a href="#/courses/{{course._id}}">{{course.Title}}</a></div></div></div></div>
+<div class="panel panel-primary">
+    <div class="panel-heading text-center" translate>Featured_Jobs</div>
+    <div class="panel-body">
+        <div ng-repeat="course in courses | filter:{Featured:true}" class="row">
+            <div class="col-md-12"><a href="#/courses/{{course._id}}">
+                {{course.Title}}</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 angular.module('app').controller('mvNavBarLoginCtrl',
-    function ($scope, $http, $location, mvIdentity, mvNotifier, mvAuth) {
+    function ($scope, $http, $location, mvIdentity, mvNotifier, mvAuth,$translate) {
         $scope.identity = mvIdentity;
 
         $scope.signin = function (username, password) {
@@ -19,5 +19,9 @@ angular.module('app').controller('mvNavBarLoginCtrl',
                 mvNotifier.notify('You have successfully signed out');
                 $location.path('/');
             });
+        };
+
+        $scope.changeLanguage = function(lang){
+            $translate.use(lang);
         };
     });

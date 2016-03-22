@@ -7,7 +7,7 @@ angular.module('app').factory('mvAuth', function ($http, $q, mvIdentity, mvUser)
                     if (response.data.success) {
                         var user = new mvUser();
                         angular.extend(user, response.data.user);
-                        mvIdentity.currentUser = user;
+                        mvIdentity.currentUser = response.data.user;
                         dfd.resolve(true);
                     } else {
                         dfd.resolve(false);

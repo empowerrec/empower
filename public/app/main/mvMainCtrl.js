@@ -2,4 +2,5 @@ angular.module('app').controller('mvMainCtrl', function ($scope, mvCourse, mvIde
     $scope.identity = mvIdentity;
     $scope.courses = mvCourse.query();
 
+
 });
