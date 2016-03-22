@@ -1,4 +1,4 @@
-angular.module('app').factory('mvIdentity', function ($window, mvUser,mvRole) {
+angular.module('app').factory('mvIdentity', function ($window, mvUser) {
 
     var currentUser;
     if (!!$window.bootstrappedUserObject) {
@@ -13,16 +13,7 @@ angular.module('app').factory('mvIdentity', function ($window, mvUser,mvRole) {
             return !!this.currentUser;
         },
         isAuthorized: function (role) {
-          mvRole.returnRoleId().then(function (success) {
-            if (success) {
-              return !!this.currentUser && this.currentUser.Roles.indexOf(role._id) > -1;
-            }
-            else {
-              return false;
-            }
-          });
-
+            return !!this.currentUser && this.currentUser.Roles.indexOf(role) > -1;
         }
-
     };
 });

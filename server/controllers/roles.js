@@ -7,9 +7,7 @@ exports.getRoles = function(req, res) {
 };
 
 exports.getRoleById = function(req, res) {
-  Role.findOne({
-    _id: req.params.id
-  }).exec(function(err, col) {
+  Role.findOne({_id: req.params.id}).exec(function(err, col) {
     res.send(col);
   });
 };

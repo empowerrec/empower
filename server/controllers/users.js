@@ -6,6 +6,12 @@ exports.getUsers = function (req, res) {
         res.send(col);
     });
 };
+
+exports.getUserById = function(req, res) {
+    User.findOne({_id: req.params.id}).exec(function(err, col) {
+        res.send(col);
+    });
+};
 var sendMail = require('../config/mailer');
 
 exports.createUser = function (req, res, next) {
