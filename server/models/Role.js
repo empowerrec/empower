@@ -9,7 +9,7 @@ var roleSchema = mongoose.Schema({
   RoleDescription: {
     type: String,
     required: '{PATH} is required'
-  },
+  }
 });
 
 var Role = mongoose.model('Role', roleSchema);
