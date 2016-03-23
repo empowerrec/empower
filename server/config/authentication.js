@@ -32,18 +32,13 @@ exports.requiresApiLogin = function(req, res, next) {
   }
 };
 
-exports.requiresRole = function(role) {
-  return function(req, res, next) {
-    var Role = require('mongoose').model('Role');
-    Role.findOne({
-      RoleName: role
-    }).exec(function(err, col) {
-      if (!req.isAuthenticated() || (col.length !== 0 && req.user.Roles.indexOf(col._id))) {
-        res.status(403);
-        res.end();
-      } else {
-        next();
-      }
-    });
-  };
+exports.requiresRole = function (role) {
+    return function (req, res, next) {
+        if (!req.isAuthenticated() || req.user.UserType.indexOf(role)) {
+            res.status(403);
+            res.end();
+        } else {
+            next();
+        }
+    };
 };

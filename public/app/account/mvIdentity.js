@@ -13,7 +13,7 @@ angular.module('app').factory('mvIdentity', function ($window, mvUser) {
             return !!this.currentUser;
         },
         isAuthorized: function (role) {
-            return !!this.currentUser && this.currentUser.Roles.indexOf(role) > -1;
+            return !!this.currentUser && this.currentUser.UserType.indexOf(role) > -1;
         }
     };
 });

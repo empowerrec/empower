@@ -3,7 +3,7 @@ angular.module('app').factory('mvUser', function ($resource) {
         update: {method: 'PUT', isArray: false}
     });
     UserResource.prototype.isAdmin = function () {
-        return this.Roles && this.Roles.indexOf('admin') > -1;
+        return this.UserType && this.UserType.indexOf('A') > -1;
     };
 
     return UserResource;
