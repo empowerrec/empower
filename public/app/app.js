@@ -39,6 +39,9 @@ angular.module('app').config(function ($routeProvider) {
         .when('/employers/:id', {
             templateUrl: '/partials/employer/employer-detail',
             controller: 'mvEmployerDetailCtrl'
+        }).when('/updateemployer/:id', {
+            templateUrl: '/partials/employer/employer',
+            controller: 'mvEmployerCtrl'
         });
 });
 

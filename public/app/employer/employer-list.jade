@@ -12,6 +12,7 @@
                 th AverageNumberOfJobOpeningsPerMonth
                 th NumberOfEmployees
                 th EmployerType
+                th
         tbody
             tr(ng-repeat="employer in employers | filter:searchText | orderBy:sortOrder")
                 td
@@ -19,3 +20,5 @@
                 td {{ employer.AverageNumberOfJobOpeningsPerMonth}}
                 td {{ employer.NumberOfEmployees}}
                 td {{ employer.EmployerType}}
+                td
+                    a(href="#/updateemployer/{{employer._id}}")  Edit
