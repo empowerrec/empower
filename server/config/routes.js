@@ -1,5 +1,6 @@
 var authentication = require('./authentication');
 var users = require('../controllers/users');
+var employers = require('../controllers/employers');
 var courses = require('../controllers/courses');
 var passport = require('passport');
 
@@ -12,7 +13,10 @@ module.exports = function (app) {
     app.get('/api/courses', courses.getCourses);
     app.get('/api/courses/:id', courses.getCourseById);
 
-
+    app.get('/api/employers', authentication.requiresRole('A'), employers.getEmployers);
+    app.post('/api/employers', employers.createEmployer);
+    app.put('/api/employers', employers.updateEmployer);
+    app.get('/api/employers/:id', employers.getEmployerById);
 
     app.post('/login', authentication.authenticate);
     app.post('/logout', function (req, res) {

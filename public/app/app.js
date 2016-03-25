@@ -32,6 +32,13 @@ angular.module('app').config(function ($routeProvider) {
         .when('/courses/:id', {
             templateUrl: '/partials/course/course-detail',
             controller: 'mvCourseDetailCtrl'
+        }).when('/employers', {
+            templateUrl: '/partials/employer/employer-list',
+            controller: 'mvEmployerListCtrl'
+        })
+        .when('/employers/:id', {
+            templateUrl: '/partials/employer/employer-detail',
+            controller: 'mvEmployerDetailCtrl'
         });
 });
 
