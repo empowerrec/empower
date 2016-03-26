@@ -45,7 +45,27 @@
             "Welcome":"Welcome To Empower !",
             "Signin":"Signin",
             "New_Jobs":"New Jobs",
-            "Jobs_Title" : "Jobs Title"
+            "Jobs_Title" : "Jobs Title" ,
+            "Employer": {
+            "EmployerName": "Employer Name",
+            "EmployerType": "Employer Type",
+            "NumberOfEmployees": "Number Of Employees",
+            "AverageNumberOfJobOpeningsPerMonth":"Average Number Of Job Openings Per Month"
+            },
+            "Buttons": {
+                "Update": "Update",
+                "Save": "Save",
+                "Cancel": "Cancel",
+                "Delete":"Delete"
+            },
+            "Menu": {
+                "Home": "Home",
+                "Jobs": "Jobs",
+                "Employers": "Employers"
+            },
+            "Footer":{
+                "Copy":"&copy; 2016 Empower Corp International Ltd."
+            }
         };
 
         var arabic = {
@@ -76,7 +96,27 @@
             "Welcome":"مرحبا بكم فى Empower",
             "Signin":"تسجيل الدخول",
             "New_Jobs":"الوظائف الجديده",
-            "Jobs_Title" : "عنوان الوظيف"
+            "Jobs_Title" : "عنوان الوظيف",
+            "Employer": {
+                "EmployerName": "اسم الشركة",
+                "EmployerType": "نوع الشركة",
+                "NumberOfEmployees": "عدد الموظفين",
+                "AverageNumberOfJobOpeningsPerMonth":"متوسط عدد الوظائف المفتوحة كل شهر"
+            },
+            "Buttons": {
+                "Update": "تعديل",
+                "Save": "حفظ",
+                "Cancel": "الغاء",
+                "Delete":"حذف"
+            },
+            "Menu": {
+                "Home": "الرئيسية",
+                "Jobs": "الوظائف",
+                "Employers": "الشركات"
+            },
+            "Footer":{
+                "Copy":"&copy; شركة ايم باور 2016"
+            }
         };
 
         var french = {

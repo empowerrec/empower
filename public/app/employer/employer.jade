@@ -4,25 +4,25 @@
         form.form-horizontal(name="employerForm")
             fieldset
                 .form-group
-                    label.col-md-2.control-label(for="employerName") EmployerName
+                    label.col-md-2.control-label(for="employerName") {{"Employer.EmployerName" | translate}}
                     .col-md-10
                         input.form-control(name="employerName", type="employerName", placeholder="Employer Name", ng-model="employer.EmployerName", required)
                 .form-group
-                    label.col-md-2.control-label(for="employerType") Employer Type
+                    label.col-md-2.control-label(for="employerType") {{"Employer.EmployerType" | translate}}
                     .col-md-10
                         input.form-control(name="employerType", type="text", placeholder="Employer Type", ng-model="employer.EmployerType", required)
                 .form-group
-                    label.col-md-2.control-label(for="numberOfEmployees") Number Of Employees
+                    label.col-md-2.control-label(for="numberOfEmployees") {{"Employer.NumberOfEmployees" | translate}}
                     .col-md-10
                         input.form-control(name="numberOfEmployees", type="text", placeholder="Number Of Employees", ng-model="employer.NumberOfEmployees", required)
                 .form-group
-                    label.col-md-2.control-label(for="averageNumberOfJobOpeningsPerMonth") AverageNumberOfJobOpeningsPerMonth
+                    label.col-md-2.control-label(for="averageNumberOfJobOpeningsPerMonth") {{"Employer.AverageNumberOfJobOpeningsPerMonth" | translate}}
                     .col-md-10
                         input.form-control(name="averageNumberOfJobOpeningsPerMonth", type="text", placeholder="Average Number Of Job Openings Per Month", ng-model="employer.AverageNumberOfJobOpeningsPerMonth")
                 .form-group
                     .col-md-10.col-md-offset-2
                         .pull-right
-                            button.btn.btn-primary(ng-click="update()", ng-disabled="employerForm.$invalid") Update
+                            button.btn.btn-primary(ng-click="update()", ng-disabled="employerForm.$invalid") {{"Buttons.Update" | translate}}
                             | &nbsp;
-                            a.btn.btn-default(href="#/") Cancel
+                            a.btn.btn-default(href="#/") {{"Buttons.Cancel" | translate}}
 

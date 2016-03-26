@@ -8,10 +8,10 @@
     table.table.table-hover.table-striped.table-condensed
         thead
             tr
-                th EmployerName
-                th AverageNumberOfJobOpeningsPerMonth
-                th NumberOfEmployees
-                th EmployerType
+                th {{"Employer.EmployerName" | translate}}
+                th {{"Employer.AverageNumberOfJobOpeningsPerMonth" | translate}}
+                th {{"Employer.NumberOfEmployees" | translate}}
+                th {{"Employer.EmployerType" | translate}}
                 th
         tbody
             tr(ng-repeat="employer in employers | filter:searchText | orderBy:sortOrder")
@@ -21,4 +21,4 @@
                 td {{ employer.NumberOfEmployees}}
                 td {{ employer.EmployerType}}
                 td
-                    a(href="#/updateemployer/{{employer._id}}")  Edit
+                    a(href="#/updateemployer/{{employer._id}}")  {{"Buttons.Update" | translate}}
