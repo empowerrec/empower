@@ -17,8 +17,12 @@ angular.module('app').config(function ($routeProvider) {
     $routeProvider
         .when('/', {templateUrl: '/partials/main/main', controller: 'mvMainCtrl'})
         .when('/admin/users', {
-            templateUrl: '/partials/admin/user-list',
+            templateUrl: '/partials/admin/users/user-list',
             controller: 'mvUserListCtrl', resolve: routRoleChecks.admin
+        })
+        .when('/admin/employers', {
+            templateUrl: '/partials/admin/users/employer-list',
+            controller: 'mvEmployerListCtrl', resolve: routRoleChecks.admin
         })
         .when('/signup', {templateUrl: '/partials/account/signup', controller: 'mvSignupCtrl'})
         .when('/profile', {
@@ -32,9 +36,6 @@ angular.module('app').config(function ($routeProvider) {
         .when('/courses/:id', {
             templateUrl: '/partials/course/course-detail',
             controller: 'mvCourseDetailCtrl'
-        }).when('/employers', {
-            templateUrl: '/partials/employer/employer-list',
-            controller: 'mvEmployerListCtrl'
         })
         .when('/employers/:id', {
             templateUrl: '/partials/employer/employer-detail',
