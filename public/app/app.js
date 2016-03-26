@@ -21,7 +21,7 @@ angular.module('app').config(function ($routeProvider) {
             controller: 'mvUserListCtrl', resolve: routRoleChecks.admin
         })
         .when('/admin/employers', {
-            templateUrl: '/partials/admin/users/employer-list',
+            templateUrl: '/partials/admin/employers/employer-list',
             controller: 'mvEmployerListCtrl', resolve: routRoleChecks.admin
         })
         .when('/signup', {templateUrl: '/partials/account/signup', controller: 'mvSignupCtrl'})
@@ -43,6 +43,9 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/updateemployer/:id', {
             templateUrl: '/partials/employer/employer',
             controller: 'mvEmployerCtrl'
+        }).when('/employers', {
+            templateUrl: '/partials/employer/employer-list',
+            controller: 'mvEmployerListCtrl', resolve: routRoleChecks.admin
         });
 });
 

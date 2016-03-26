@@ -61,7 +61,8 @@
             "Menu": {
                 "Home": "Home",
                 "Jobs": "Jobs",
-                "Employers": "Employers"
+                "Employers": "Employers",
+                "Vacancies":"Vacancies"
             },
             "Footer":{
                 "Copy":"&copy; 2016 Empower Corp International Ltd."
@@ -112,7 +113,8 @@
             "Menu": {
                 "Home": "الرئيسية",
                 "Jobs": "الوظائف",
-                "Employers": "الشركات"
+                "Employers": "الشركات",
+                "Vacancies":"فرص العمل"
             },
             "Footer":{
                 "Copy":"&copy; شركة ايم باور 2016"
