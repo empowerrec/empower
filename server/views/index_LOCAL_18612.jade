@@ -1,0 +1,17 @@
+extends ../includes/layout
+
+block main-content
+
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                a.navbar-brand(href='/#/') Empower
+                    h6 Jobs in Egypt
+            div(ng-include="'/partials/main/menu'")
+
+
+
+    section.content
+        div(ng-view)
+
+    div(ng-include="'/partials/main/footer'")

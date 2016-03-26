@@ -5,7 +5,7 @@ angular.module('app').factory('mvCachedEmployer', function (mvCourse) {
             if (!employerList) {
                 employerList = mvEmployer.query();
             }
-            return courseList;
+            return employerList;
         }
     };
 });
