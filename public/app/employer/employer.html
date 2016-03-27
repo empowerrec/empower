@@ -1,1 +1,47 @@
-<div class="container"><div class="well"><h3>{{employer.EmployerName}}</h3><form name="employerForm" class="form-horizontal"><fieldset><div class="form-group"><label for="employerName" class="col-md-2 control-label">{{"Employer.EmployerName" | translate}}</label><div class="col-md-10"><input name="employerName" type="employerName" placeholder="Employer Name" ng-model="employer.EmployerName" required="required" class="form-control"/></div></div><div class="form-group"><label for="employerType" class="col-md-2 control-label">{{"Employer.EmployerType" | translate}}</label><div class="col-md-10"><input name="employerType" type="text" placeholder="Employer Type" ng-model="employer.EmployerType" required="required" class="form-control"/></div></div><div class="form-group"><label for="numberOfEmployees" class="col-md-2 control-label">{{"Employer.NumberOfEmployees" | translate}}</label><div class="col-md-10"><input name="numberOfEmployees" type="text" placeholder="Number Of Employees" ng-model="employer.NumberOfEmployees" required="required" class="form-control"/></div></div><div class="form-group"><label for="averageNumberOfJobOpeningsPerMonth" class="col-md-2 control-label">{{"Employer.AverageNumberOfJobOpeningsPerMonth" | translate}}</label><div class="col-md-10"><input name="averageNumberOfJobOpeningsPerMonth" type="text" placeholder="Average Number Of Job Openings Per Month" ng-model="employer.AverageNumberOfJobOpeningsPerMonth" class="form-control"/></div></div><div class="form-group"><div class="col-md-10 col-md-offset-2"><div class="pull-right"><button ng-click="update()" ng-disabled="employerForm.$invalid" class="btn btn-primary">{{"Buttons.Update" | translate}}</button>&nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a></div></div></div></fieldset></form></div></div>
+<div class="container">
+    <div class="well"><h3>{{employer.EmployerName}}</h3>
+
+        <form name="employerForm" class="form-horizontal">
+            <fieldset>
+                <div class="form-group"><label for="employerName" class="col-md-2 control-label">{{"Employer.EmployerName"
+                    | translate}}</label>
+
+                    <div class="col-md-10"><input name="employerName" type="employerName" placeholder="Employer Name"
+                                                  ng-model="employer.EmployerName" required="required"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="employerType" class="col-md-2 control-label">{{"Employer.EmployerType"
+                    | translate}}</label>
+
+                    <div class="col-md-10"><input name="employerType" type="text" placeholder="Employer Type"
+                                                  ng-model="employer.EmployerType" required="required"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="numberOfEmployees" class="col-md-2 control-label">{{"Employer.NumberOfEmployees"
+                    | translate}}</label>
+
+                    <div class="col-md-10"><input name="numberOfEmployees" type="text" placeholder="Number Of Employees"
+                                                  ng-model="employer.NumberOfEmployees" required="required"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="averageNumberOfJobOpeningsPerMonth" class="col-md-2 control-label">{{"Employer.AverageNumberOfJobOpeningsPerMonth"
+                    | translate}}</label>
+
+                    <div class="col-md-10"><input name="averageNumberOfJobOpeningsPerMonth" type="text"
+                                                  placeholder="Average Number Of Job Openings Per Month"
+                                                  ng-model="employer.AverageNumberOfJobOpeningsPerMonth"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <div class="pull-right">
+                            <button ng-click="update()" ng-disabled="employerForm.$invalid" class="btn btn-primary">
+                                {{"Buttons.Update" | translate}}
+                            </button>
+                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a></div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

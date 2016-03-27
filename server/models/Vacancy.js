@@ -16,6 +16,10 @@ var vacancySchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Address'
     },
+    PreferredEducationLevel: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'EducationLevel'
+    },
     Salary: {type: Number},
     JobDescription: {type: String}
 });

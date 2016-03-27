@@ -30,7 +30,7 @@ angular.module('app').config(function ($routeProvider) {
             controller: 'mvProfileCtrl', resolve: routRoleChecks.user
         })
         .when('/courses', {
-            templateUrl: '/partials/course/course-list',
+            templateUrl: '/partials/course/course-list.html',
             controller: 'mvCourseListCtrl'
         })
         .when('/courses/:id', {
@@ -44,8 +44,8 @@ angular.module('app').config(function ($routeProvider) {
             templateUrl: '/partials/employer/employer',
             controller: 'mvEmployerCtrl'
         }).when('/employers', {
-            templateUrl: '/partials/employer/employer-list',
-            controller: 'mvEmployerListCtrl', resolve: routRoleChecks.admin
+            templateUrl: '/partials/employer/employer-list.html',
+            controller: 'mvEmployerListCtrl'
         });
 });
 

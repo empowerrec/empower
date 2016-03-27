@@ -14,7 +14,7 @@ var jobSeekerSchema = mongoose.Schema({
         ref: 'User'
     },
     Gender: {type: String, enum: genders},
-    BirthDate:{type:Date},
+    BirthDate: {type: Date},
     Address: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Address'
@@ -45,31 +45,43 @@ var jobSeekerSchema = mongoose.Schema({
     GradeOfGraduation: {type: String},
     LanguageSpoken: [{type: String}],
     SalaryPreference: {type: Number},
-    PreferredWork: {type: String, enum: preferredWorks}
+    PreferredWork: {type: String, enum: preferredWorks},
+    PreferredCityOfWork: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'City'
+    },
+    PreferredCountryOfWork: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Country'
+    },
+    Reference1: {type: String},
+    Reference1Contact: {type: String},
+    Reference2: {type: String},
+    Reference2Contact: {type: String}
 });
 
 var JobSeeker = mongoose.model('JobSeeker', jobSeekerSchema);
 
 function createDefaultJobSeekers() {
-    JobSeeker.find({}).exec(function(err, col) {
+    JobSeeker.find({}).exec(function (err, col) {
         if (col.length === 0) {
-    /*
-            JobSeeker.create({
-            EmployerName: 'Ibnsina-pharma',
-            EmployerType: 'D',
-            NumberOfEmployees: 5000,
-            AverageNumberOfJobOpeningsPerMonth:50
-          });
+            /*
+             JobSeeker.create({
+             EmployerName: 'Ibnsina-pharma',
+             EmployerType: 'D',
+             NumberOfEmployees: 5000,
+             AverageNumberOfJobOpeningsPerMonth:50
+             });
 
-          JobSeeker.create({
-                EmployerName: 'Empower',
-                EmployerType: 'S',
-                NumberOfEmployees: 10,
-                AverageNumberOfJobOpeningsPerMonth:1
-          });
-    */
-    }
-  });
+             JobSeeker.create({
+             EmployerName: 'Empower',
+             EmployerType: 'S',
+             NumberOfEmployees: 10,
+             AverageNumberOfJobOpeningsPerMonth:1
+             });
+             */
+        }
+    });
 }
 
 exports.createDefaultJobSeekers = createDefaultJobSeekers;
