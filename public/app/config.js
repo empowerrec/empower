@@ -59,6 +59,7 @@
                 "Delete":"Delete"
             },
             "Menu": {
+                "SubTitle":"Jobs IN Egypt",
                 "Home": "Home",
                 "Jobs": "Jobs",
                 "Employers": "Employers",
@@ -111,6 +112,7 @@
                 "Delete":"حذف"
             },
             "Menu": {
+                "SubTitle":"وظائف فى مصر",
                 "Home": "الرئيسية",
                 "Jobs": "الوظائف",
                 "Employers": "الشركات",

@@ -23,5 +23,8 @@ angular.module('app').controller('mvNavBarLoginCtrl',
 
         $scope.changeLanguage = function(lang){
             $translate.use(lang);
+
+                $('link[href="site.css"]').attr('href','siteRTL.css');
+
         };
     });
