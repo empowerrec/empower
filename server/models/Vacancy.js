@@ -20,7 +20,7 @@ var vacancySchema = mongoose.Schema({
     JobDescription: {type: String}
 });
 
-var Vacancy = mongoose.model('JobSeeker', vacancySchema);
+var Vacancy = mongoose.model('Vacancy', vacancySchema);
 
 function createDefaultVacancies() {
     Vacancy.find({}).exec(function(err, col) {

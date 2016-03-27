@@ -4,7 +4,7 @@ var courseModel = require('../models/Course');
 var employerModel = require('../models/Employer');
 var categoryModel = require('../models/Category');
 var jobSeekerModel = require('../models/JobSeeker');
-//var vacancyModel = require('../models/Vacancy');
+var vacancyModel = require('../models/Vacancy');
 
 module.exports = function (config) {
     mongoose.connect(config.db);
@@ -19,5 +19,5 @@ module.exports = function (config) {
     employerModel.createDefaultEmployers();
     categoryModel.createDefaultCategories();
     jobSeekerModel.createDefaultJobSeekers();
-    //vacancyModel.createDefaultVacancies();
+    vacancyModel.createDefaultVacancies();
 };

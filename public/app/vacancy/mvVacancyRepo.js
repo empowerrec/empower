@@ -15,7 +15,7 @@ angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy) {
         updateCurrentVacancy: function (newVacancyData) {
             var dfd = $q.defer();
             var clone = angular.copy(newVacancyData);
-            angular.extend(clone,newVacancyData);
+            angular.extend(clone, newVacancyData);
             clone.$update().then(function () {
                 dfd.resolve();
             }, function (response) {
