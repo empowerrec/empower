@@ -2,6 +2,7 @@ var authentication = require('./authentication');
 var users = require('../controllers/users');
 var employers = require('../controllers/employers');
 var courses = require('../controllers/courses');
+var vacancies = require('../controllers/vacancies');
 var passport = require('passport');
 
 module.exports = function (app) {
@@ -17,6 +18,11 @@ module.exports = function (app) {
     app.post('/api/employers', employers.createEmployer);
     app.put('/api/employers', employers.updateEmployer);
     app.get('/api/employers/:id', employers.getEmployerById);
+
+    app.get('/api/vacancies', authentication.requiresRole('A'), vacancies.getVacancies);
+    app.post('/api/vacancies', vacancies.createVacancy);
+    app.put('/api/vacancies', vacancies.updateVacancy);
+    app.get('/api/vacancies/:id', vacancies.getVacancyById);
 
     app.post('/login', authentication.authenticate);
     app.post('/logout', function (req, res) {
@@ -47,6 +53,7 @@ module.exports = function (app) {
     app.get('*', function (req, res) {
         res.render('index', {
             bootstrappedUser: req.user
+
         });
     });
 };

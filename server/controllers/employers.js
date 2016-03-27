@@ -15,7 +15,7 @@ exports.getEmployerById = function(req, res) {
 exports.createEmployer = function (req, res, next) {
     var employerData = req.body;
 
-    Employer.create(employerData, function (err, user) {
+    Employer.create(employerData, function (err, employer) {
         if (err) {
             if (err.toString().indexOf('E11000') > -1) {
                 err = new Error('Duplicate Employer');
@@ -24,13 +24,15 @@ exports.createEmployer = function (req, res, next) {
 
             return res.send({reason: err.toString()});
         }
-
+        res.send(employer);
     });
 };
 
 exports.updateEmployer = function (req, res, next) {
 
-    req.employer.save(function (err, user) {
+    var employerData = req.body;
+    var query = { _id: employerData._id };
+    Employer.update(query,employerData, function (err, employer) {
         if (err) {
             if (err.toString().indexOf('E11000') > -1) {
                 err = new Error('Duplicate User Name');
@@ -38,6 +40,6 @@ exports.updateEmployer = function (req, res, next) {
             res.status(400);
             return res.send({reason: err.toString()});
         }
-        res.send(req.user);
+        res.send(employer);
     });
 };

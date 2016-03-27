@@ -16,11 +16,15 @@ var vacancySchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Address'
     },
+    PreferredEducationLevel: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'EducationLevel'
+    },
     Salary: {type: Number},
     JobDescription: {type: String}
 });
 
-var Vacancy = mongoose.model('JobSeeker', vacancySchema);
+var Vacancy = mongoose.model('Vacancy', vacancySchema);
 
 function createDefaultVacancies() {
     Vacancy.find({}).exec(function(err, col) {

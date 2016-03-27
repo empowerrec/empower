@@ -12,8 +12,11 @@ module.exports = function (app, config) {
         return stylus(str).set('filename', path);
     }
 
+    app.engine('html', require('ejs').renderFile);
     app.set('views', config.rootPath + '/server/views');
-    app.set('view engine', 'jade');
+    app.set('view engine', 'html');
+    //app.set('view engine', 'jade');
+
     app.use(logger('dev'));
     app.use(cookieParser());
     app.use(bodyParser.json());

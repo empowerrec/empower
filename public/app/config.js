@@ -15,7 +15,7 @@
 
     configure.$inject = ['$translateProvider'];
     /* @ngInject */
-    function configure( $translateProvider) {
+    function configure($translateProvider) {
 
         var english = {
             "Title": "Internationalization Test",
@@ -41,32 +41,32 @@
             "Admin_Message": "The quick brown fox jumped over the lazy dog",
             "Activation_Dash": "Activated Dashboard View",
             "Activation_Admin": "Activated Admin View",
-            "Featured_Jobs":"Featured Jobs",
-            "Welcome":"Welcome To Empower !",
-            "Signin":"Signin",
-            "New_Jobs":"New Jobs",
-            "Jobs_Title" : "Jobs Title" ,
+            "Featured_Jobs": "Featured Jobs",
+            "Welcome": "Welcome To Empower !",
+            "Signin": "Signin",
+            "New_Jobs": "New Jobs",
+            "Jobs_Title": "Jobs Title",
             "Employer": {
-            "EmployerName": "Employer Name",
-            "EmployerType": "Employer Type",
-            "NumberOfEmployees": "Number Of Employees",
-            "AverageNumberOfJobOpeningsPerMonth":"Average Number Of Job Openings Per Month"
+                "EmployerName": "Employer Name",
+                "EmployerType": "Employer Type",
+                "NumberOfEmployees": "Number Of Employees",
+                "AverageNumberOfJobOpeningsPerMonth": "Average Number Of Job Openings Per Month"
             },
             "Buttons": {
                 "Update": "Update",
                 "Save": "Save",
                 "Cancel": "Cancel",
-                "Delete":"Delete"
+                "Delete": "Delete"
             },
             "Menu": {
                 "SubTitle":"Jobs IN Egypt",
                 "Home": "Home",
                 "Jobs": "Jobs",
                 "Employers": "Employers",
-                "Vacancies":"Vacancies"
+                "Vacancies": "Vacancies"
             },
-            "Footer":{
-                "Copy":"&copy; 2016 Empower Corp International Ltd."
+            "Footer": {
+                "Copy": "&copy; 2016 Empower Corp International Ltd."
             }
         };
 
@@ -94,32 +94,32 @@
             "Admin_Message": "The quick brown fox jumped over the lazy dog",
             "Activation_Dash": "Activated Dashboard View",
             "Activation_Admin": "Activated Admin View",
-            "Featured_Jobs":"الوظائف المفضلة",
-            "Welcome":"مرحبا بكم فى Empower",
-            "Signin":"تسجيل الدخول",
-            "New_Jobs":"الوظائف الجديده",
-            "Jobs_Title" : "عنوان الوظيف",
+            "Featured_Jobs": "الوظائف المفضلة",
+            "Welcome": "مرحبا بكم فى Empower",
+            "Signin": "تسجيل الدخول",
+            "New_Jobs": "الوظائف الجديده",
+            "Jobs_Title": "عنوان الوظيف",
             "Employer": {
                 "EmployerName": "اسم الشركة",
                 "EmployerType": "نوع الشركة",
                 "NumberOfEmployees": "عدد الموظفين",
-                "AverageNumberOfJobOpeningsPerMonth":"متوسط عدد الوظائف المفتوحة كل شهر"
+                "AverageNumberOfJobOpeningsPerMonth": "متوسط عدد الوظائف المفتوحة كل شهر"
             },
             "Buttons": {
                 "Update": "تعديل",
                 "Save": "حفظ",
                 "Cancel": "الغاء",
-                "Delete":"حذف"
+                "Delete": "حذف"
             },
             "Menu": {
                 "SubTitle":"وظائف فى مصر",
                 "Home": "الرئيسية",
                 "Jobs": "الوظائف",
                 "Employers": "الشركات",
-                "Vacancies":"فرص العمل"
+                "Vacancies": "فرص العمل"
             },
-            "Footer":{
-                "Copy":"&copy; شركة ايم باور 2016"
+            "Footer": {
+                "Copy": "&copy; شركة ايم باور 2016"
             }
         };
 
@@ -147,21 +147,21 @@
             "Admin_Message": "The quick brown fox jumped over the lazy dog",
             "Activation_Dash": "Activated Dashboard View",
             "Activation_Admin": "Activated Admin View",
-            "Featured_Jobs":"الوظائف المفضلة",
-            "Welcome":"مرحبا بكم فى Empower",
-            "Signin":"تسجيل الدخول",
-            "New_Jobs":" فرنساوى الوظائف الجديده"
+            "Featured_Jobs": "الوظائف المفضلة",
+            "Welcome": "مرحبا بكم فى Empower",
+            "Signin": "تسجيل الدخول",
+            "New_Jobs": " فرنساوى الوظائف الجديده"
             ,
-            "Jobs_Title" : "Jobs Title"
+            "Jobs_Title": "Jobs Title"
         };
 
-        $translateProvider.translations('en',english);
-        $translateProvider.translations('ar',arabic);
-        $translateProvider.translations('fr',french);
-        $translateProvider.registerAvailableLanguageKeys(['en','ar','fr'],{
-            'en-US':'en',
-            'ar-EG':'ar',
-            'fr-FR':'fr'
+        $translateProvider.translations('en', english);
+        $translateProvider.translations('ar', arabic);
+        $translateProvider.translations('fr', french);
+        $translateProvider.registerAvailableLanguageKeys(['en', 'ar', 'fr'], {
+            'en-US': 'en',
+            'ar-EG': 'ar',
+            'fr-FR': 'fr'
         });
         //$translateProvider.preferredLanguage('ar');
         $translateProvider.determinePreferredLanguage();
