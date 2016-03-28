@@ -3,6 +3,7 @@ var passport = require('passport'),
     User = require('mongoose').model('User');
 var encryption = require('../utilities/encryption');
 
+
 module.exports = function (config) {
 
     passport.use(new FacebookStrategy({

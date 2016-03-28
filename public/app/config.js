@@ -23,7 +23,7 @@
             "Languages": {
                 "English": "English",
                 "French": "French",
-                "Arabic": "Arabic"
+                "Arabic": "عربى"
             },
             "Created_By": "Created by John Papa",
             "First_Name": "First Name",
@@ -74,8 +74,8 @@
             "Title": "أختبار ",
             "Language": "اللغات",
             "Languages": {
-                "English": "انجليزى",
-                "French": "فرنساوى",
+                "English": "English",
+                "French": "French",
                 "Arabic": "عربى"
             },
             "Created_By": "اضيف بواسطة",
@@ -119,7 +119,7 @@
                 "Vacancies": "فرص العمل"
             },
             "Footer": {
-                "Copy": "&copy; شركة ايم باور 2016"
+                "Copy": "&copy;"+" شركة ايم باور 2016"
             }
         };
 
@@ -127,7 +127,7 @@
             "Title": "أختبار ",
             "Language": "اللغات",
             "Languages": {
-                "English": "انجليزى",
+                "English": "English",
                 "French": "Fr",
                 "Arabic": "عربى"
             },

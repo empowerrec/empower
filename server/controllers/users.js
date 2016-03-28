@@ -51,7 +51,9 @@ exports.updateUser = function (req, res, next) {
     req.user.UserName = userUpdates.UserName.toLowerCase();
     req.user.FirstName = userUpdates.FirstName;
     req.user.LastName = userUpdates.LastName;
-
+    var sess = req.session;
+    sess.LastName = userUpdates.LastName;
+    //req.session = userUpdates.LastName;
     if (userUpdates.Password && userUpdates.Password.length > 0) {
         req.user.Salt = encryption.createSalt();
         req.user.HashedPassword = encryption.hashPassword(req.user.Salt, userUpdates.Password);

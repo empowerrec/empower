@@ -1,1 +1,4 @@
-<footer class="container text-center"><p>{{"Footer.Copy" | translate}}</p></footer>
+<footer ng-controller="mvFooterCtrl" class="container text-center"><p>{{"Footer.Copy" | translate}}</p>
+    <a href="" ng-click="changeLanguage('en')" >{{"Languages.English" | translate}}</a>
+    <a href="" ng-click="changeLanguage('ar')" >{{"Languages.Arabic" | translate}}</a>
+</footer>

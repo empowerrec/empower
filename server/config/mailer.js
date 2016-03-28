@@ -6,7 +6,7 @@ exports.sendMail = function sendMail(sender , reciver , messageSubject , message
             ssl:true,
             host: "smtp.gmail.com",              // smtp server hostname
             port: "465",                     // smtp server port
-            domain: "[127.0.0.1]",            // domain used by client to identify itself to server
+            domain: "[https://empowerrec.herokuapp.com]",            // domain used by client to identify itself to server
             to: reciver,
             from: sender,
             subject: messageSubject,
