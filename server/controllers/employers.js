@@ -1,13 +1,14 @@
 var Employer = require('mongoose').model('Employer');
 
 exports.getEmployers = function (req, res) {
-    Employer.find({}).exec(function (err, col) {
+    Employer.find({}).populate('ModifiedBy').exec(function (err, col) {
         res.send(col);
     });
 };
 
 exports.getEmployerById = function(req, res) {
-    Employer.findOne({_id: req.params.id}).exec(function(err, col) {
+    Employer.findOne({_id: req.params.id}).populate('ModifiedBy').exec(function(err, col) {
+        console.log(col);
         res.send(col);
     });
 };
@@ -29,7 +30,7 @@ exports.createEmployer = function (req, res, next) {
 };
 
 exports.updateEmployer = function (req, res, next) {
-
+    console.log(req.params[0]);
     var employerData = req.body;
     var query = { _id: employerData._id };
     Employer.update(query,employerData, function (err, employer) {

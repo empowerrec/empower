@@ -28,8 +28,20 @@ var employerSchema = mongoose.Schema({
     AverageNumberOfJobOpeningsPerMonth: {
         type: Number,
         required: '{PATH} is required'
-    }
-});
+    },
+    ModifiedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+
+    CreatedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+}
+},
+    {
+        timestamps: { createdAt: 'CreatedAt' , updatedAt:"UpdatedAt" }
+    });
 
 /*
 employerSchema.methods = {

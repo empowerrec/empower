@@ -56,7 +56,8 @@
                 "Update": "Update",
                 "Save": "Save",
                 "Cancel": "Cancel",
-                "Delete": "Delete"
+                "Delete": "Delete",
+                "Add":"Add New"
             },
             "Menu": {
                 "SubTitle":"Jobs IN Egypt",
@@ -109,7 +110,8 @@
                 "Update": "تعديل",
                 "Save": "حفظ",
                 "Cancel": "الغاء",
-                "Delete": "حذف"
+                "Delete": "حذف",
+                "Add":"اضافة جديد"
             },
             "Menu": {
                 "SubTitle":"وظائف فى مصر",

@@ -4,6 +4,8 @@ angular.module('app').config(function ($routeProvider) {
     var routRoleChecks = {
         admin: {
             auth: function (mvAuth) {
+                console.log("Check Admin")
+                debugger;
                 return mvAuth.authorizeCurrentUserForRoute('A');
             }
         },
@@ -41,6 +43,9 @@ angular.module('app').config(function ($routeProvider) {
             templateUrl: '/partials/employer/employer-detail',
             controller: 'mvEmployerDetailCtrl'
         }).when('/updateemployer/:id', {
+            templateUrl: '/partials/employer/employer',
+            controller: 'mvEmployerCtrl'
+        }).when('/addemployer', {
             templateUrl: '/partials/employer/employer',
             controller: 'mvEmployerCtrl'
         }).when('/employers', {

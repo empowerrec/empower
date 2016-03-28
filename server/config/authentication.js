@@ -34,6 +34,8 @@ exports.requiresApiLogin = function(req, res, next) {
 
 exports.requiresRole = function (role) {
     return function (req, res, next) {
+        console.log("Check For User")
+        console.log(req.user);
         if (!req.isAuthenticated() || req.user.UserType.indexOf(role)) {
             res.status(403);
             res.end();
