@@ -1,10 +1,24 @@
-angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier, mvEmployerRepo,mvEmployer,$routeParams) {
+angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier, mvEmployerRepo,mvEmployer,$routeParams,$translate) {
     var id = $routeParams.id;
+    $scope.employerNameText = "";
+    $scope.currentLang = $translate.use();
     if(id)
     {
-        $scope.employer = mvEmployer.get({_id:id });
-        $scope.updateMode = true;
-        $scope.addMode = false;
+        $scope.employer = mvEmployer.get({_id:id },(function(){
+        if($scope.employer.EmployerName) {
+            for (var i = 0; i < $scope.employer.EmployerName.length; i++) {
+
+                if ($scope.employer.EmployerName[i].Lang == $scope.currentLang) {
+                    $scope.employerNameText = $scope.employer.EmployerName[i].Text;
+                    $scope.lang = $scope.employer.EmployerName[i].Lang;
+                }
+            }
+        }
+            $scope.updateMode = true;
+            $scope.addMode = false;
+    }));
+
+
     }
 
     else
@@ -12,11 +26,23 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier
         $scope.employer = new mvEmployer();
         $scope.updateMode = false;
         $scope.addMode = true;
+
+
     }
+
+    $scope.getName = function(list){
+        for(var i = 0; i < list.length; i++) {
+
+            if(list[i].Lang == $scope.currentLang) {
+                return list[i].Text;
+            }
+        }
+    };
     $scope.languages = [{value: 'en', text: 'English'},
         {value: 'ar', text: 'عربى'}];
     $scope.lang = $scope.languages[0].value;
-    $scope.employerNameText = "";
+
+
 
     $scope.employerTypes = [{value: 'D', text: 'Direct Employer'},
         {value: 'S', text: 'Staffing Firm'}];
