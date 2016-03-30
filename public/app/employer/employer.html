@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="well"><h3>{{employer.EmployerName}}</h3>
+    <div class="well"><h3>{{employer.EmployerName[0].Text}}</h3>
 
         <form name="employerForm" class="form-horizontal">
             <fieldset>
@@ -47,6 +47,46 @@
                             </button>
                             &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a></div>
                     </div>
+                </div>
+                <div>
+                    <table>
+                    <tr ng-repeat="EmployerName in employer.EmployerName | filter:searchText | orderBy:sortOrder">
+
+                        <td>{{ EmployerName.Lang}}</td>
+                        <td>{{ EmployerName.Text}}</td>
+                        <td>
+                            <button ng-click="deleteEmployerName(EmployerName)">Delete</button>
+                        </td>
+                        <td>
+                            <button ng-click="updateEmployerName(EmployerName)">Update</button>
+                        </td>
+
+                    </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+
+                                <select ng-model="lang" ng-options="item.value as item.text for item in languages"
+                                        class="form-control">
+
+                                </select>
+
+
+                            </td>
+
+                            <td>
+                                <input id="EmployerNameText" type="text"
+                                       placeholder="EmployerName"
+                                       ng-model="employerNameText"
+                                       class="form-control"/>
+                            </td>
+
+                            <td>
+                                <button ng-click="saveEmployerName()">Save</button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </fieldset>
         </form>

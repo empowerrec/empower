@@ -9,10 +9,12 @@ var employerSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Industry'
     },
-  EmployerName: {
-    type: String,
-    required: '{PATH} is required'
-  },
+  EmployerName:
+      [{
+          Lang: String,
+          Text: String
+      }]
+  ,
     Address: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Address'
