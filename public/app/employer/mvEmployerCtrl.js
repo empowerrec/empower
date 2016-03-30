@@ -35,16 +35,23 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier
 
     $scope.saveEmployerName = function () {
         var old = false;
-        for(var i = 0; i < $scope.employer.EmployerName.length; i++) {
-            var obj = $scope.employer.EmployerName[i];
+        if($scope.employer.EmployerName) {
+            for (var i = 0; i < $scope.employer.EmployerName.length; i++) {
+                var obj = $scope.employer.EmployerName[i];
 
-            if($scope.employer.EmployerName[i].Lang == $scope.lang) {
-                $scope.employer.EmployerName[i].Text= $scope.employerNameText;
-                old = true;
+                if ($scope.employer.EmployerName[i].Lang == $scope.lang) {
+                    $scope.employer.EmployerName[i].Text = $scope.employerNameText;
+                    old = true;
+                }
+
             }
-
         }
+
         if(!old) {
+            if(!$scope.employer.EmployerName)
+            {
+                $scope.employer.EmployerName = [];
+            }
             var employerName = {"Lang": $scope.lang, "Text": $scope.employerNameText};
             $scope.employer.EmployerName.push(employerName);
         }
