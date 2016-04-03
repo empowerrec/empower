@@ -4,8 +4,8 @@ exports.sendMail = function sendMail(sender , reciver , messageSubject , message
 {
     email.send({
             ssl:true,
-            host: "mail.empowerrec.com",              // smtp server hostname
-            port: "25",                     // smtp server port
+            host: "e22.ehosts.com",              // smtp server hostname
+            port: "465",                     // smtp server port
             domain: "[https://empowerrec.herokuapp.com]",            // domain used by client to identify itself to server
             to: reciver,
             from: sender,

@@ -30,7 +30,7 @@ exports.createUser = function (req, res, next) {
             return res.send({reason: err.toString()});
         }
         console.log('Send Message');
-        sendMail.sendMail('welcome@empower.com',userData.UserName , 'Welcome To Empower' , 'Welcome To Empower' );
+        sendMail.sendMail('info@empowerrec.com',userData.UserName , 'Welcome To Empower' , 'Welcome To Empower' );
         req.logIn(user, function (err) {
             if (err) {
                 return next(err);
