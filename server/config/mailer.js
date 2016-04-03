@@ -4,16 +4,16 @@ exports.sendMail = function sendMail(sender , reciver , messageSubject , message
 {
     email.send({
             ssl:true,
-            host: "smtp.gmail.com",              // smtp server hostname
-            port: "465",                     // smtp server port
+            host: "mail.empowerrec.com",              // smtp server hostname
+            port: "25",                     // smtp server port
             domain: "[https://empowerrec.herokuapp.com]",            // domain used by client to identify itself to server
             to: reciver,
             from: sender,
             subject: messageSubject,
             body: messageBody,
             authentication: "login",        // auth login is supported; anything else is no auth
-            username: "ali7ussein@gmail.com",       // Base64 encoded username
-            password: "mobman9284"        // Base64 encoded password
+            username: "info@empowerrec.com",       // Base64 encoded username
+            password: "abc@147852"        // Base64 encoded password
         },
         function (err, result) {
             if (err) {
