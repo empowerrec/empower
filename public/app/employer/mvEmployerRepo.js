@@ -4,6 +4,7 @@ angular.module('app').factory('mvEmployerRepo', function ($http, $q, mvEmployer,
         createEmployer: function (newEmployerData) {
 
             var newEmployer = new mvEmployer(newEmployerData);
+            newEmployer.CreatedBy = mvIdentity.currentUser;
             var dfd = $q.defer();
             console.log("Saving Employer");
             newEmployer.$save().then(function () {

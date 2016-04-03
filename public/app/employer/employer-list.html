@@ -22,6 +22,7 @@
             <th>{{"Employer.NumberOfEmployees" | translate}}</th>
             <th>{{"Employer.EmployerType" | translate}}</th>
             <th>Modified By</th>
+            <th>Created By</th>
             <th></th>
         </tr>
         </thead>
@@ -32,6 +33,8 @@
             <td>{{ employer.NumberOfEmployees}}</td>
             <td>{{ employer.EmployerType}}</td>
             <td>{{ employer.ModifiedBy.FirstName}} {{ employer.ModifiedBy.LastName}}</td>
+            <td>{{ employer.CreatedBy.FirstName}} {{ employer.CreatedBy.LastName}}</td>
+
             <td><a href="#/updateemployer/{{employer._id}}"> {{"Buttons.Update" | translate}}</a></td>
         </tr>
         </tbody>

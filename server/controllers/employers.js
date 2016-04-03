@@ -1,7 +1,7 @@
 var Employer = require('mongoose').model('Employer');
 
 exports.getEmployers = function (req, res) {
-    Employer.find({}).populate('ModifiedBy').exec(function (err, col) {
+    Employer.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
         res.send(col);
     });
 };

@@ -30,14 +30,25 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier
 
     }
 
-    $scope.getName = function(list){
+    $scope.getName = function(list , lang){
+        var selectedLang ;
+        if(lang)
+        selectedLang = lang;
+        else
+        selectedLang = $scope.currentLang;
+
+        if(list)
+        {
         for(var i = 0; i < list.length; i++) {
 
-            if(list[i].Lang == $scope.currentLang) {
+            if(list[i].Lang == selectedLang) {
                 return list[i].Text;
             }
         }
+        }
     };
+
+
     $scope.languages = [{value: 'en', text: 'English'},
         {value: 'ar', text: 'عربى'}];
     $scope.lang = $scope.languages[0].value;
@@ -49,7 +60,7 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier
     $scope.employer.EmployerType = $scope.employerTypes[0].value;
 
     $scope.update = function () {
-
+        $scope.loop();
         mvEmployerRepo.updateCurrentEmployer($scope.employer).then(function () {
             mvNotifier.notify('Employer has been updated!');
         }, function (reason) {
@@ -60,6 +71,7 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier
     };
 
     $scope.saveEmployerName = function () {
+
         var old = false;
         if($scope.employer.EmployerName) {
             for (var i = 0; i < $scope.employer.EmployerName.length; i++) {
@@ -113,10 +125,23 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier
     };
 
     $scope.add = function(){
+        $scope.loop();
         mvEmployerRepo.createEmployer($scope.employer).then(function () {
             mvNotifier.notify('New Employer Added!');
         }, function (reason) {
             mvNotifier.error(reason);
+        });
+    };
+
+    $scope.loop = function(){
+
+        var listItems = $("#employerNames li");
+        listItems.each(function(idx, li) {
+            $scope.lang = $(li).attr('id');
+            var input = $(li).find("#EmployerNameText2");
+            $scope.employerNameText = input.val();
+            $scope.saveEmployerName();
+
         });
     };
 });
