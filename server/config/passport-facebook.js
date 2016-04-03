@@ -37,6 +37,7 @@ module.exports = function (config) {
                     hash = encryption.hashPassword(salt, newUser.UserName);
                     newUser.Salt = salt;
                     newUser.HashedPassword = hash;
+                    newUser.UserType = 'J';
 
                     newUser.save(function (err) {
                         if (err) {

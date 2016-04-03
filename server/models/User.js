@@ -27,10 +27,10 @@ var userSchema = mongoose.Schema({
   AuthenticationStrategyName: String,
   AuthenticationStrategyId: String,
   AuthenticationStrategyToken: String,
-  Gender:{type:String}  ,
-  BirthDate:{type:Date}  ,
-  AddressLine1:{type:String}  ,
-  AddressLine2:{type:String} ,
+  Gender:{type:String},
+  BirthDate:{type:Date},
+  AddressLine1:{type:String},
+  AddressLine2:{type:String},
   AddressLine3:{type:String}
 });
 
