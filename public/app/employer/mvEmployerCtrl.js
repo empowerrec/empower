@@ -1,6 +1,7 @@
 angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier, mvEmployerRepo,mvEmployer,$routeParams,$translate) {
     var id = $routeParams.id;
     $scope.employerNameText = "";
+    $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
     if(id)
     {
@@ -26,6 +27,7 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier
         $scope.employer = new mvEmployer();
         $scope.updateMode = false;
         $scope.addMode = true;
+        $scope.addEnabled = true;
 
 
     }
@@ -128,6 +130,7 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier
         $scope.loop();
         mvEmployerRepo.createEmployer($scope.employer).then(function () {
             mvNotifier.notify('New Employer Added!');
+            $scope.addEnabled = false;
         }, function (reason) {
             mvNotifier.error(reason);
         });
