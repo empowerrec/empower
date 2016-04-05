@@ -4,7 +4,7 @@ angular.module('app').config(function ($routeProvider) {
     var routRoleChecks = {
         admin: {
             auth: function (mvAuth) {
-                console.log("Check Admin")
+                console.log("Check Admin");
                 debugger;
                 return mvAuth.authorizeCurrentUserForRoute('A');
             }

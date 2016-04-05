@@ -15,10 +15,11 @@ var employerSchema = mongoose.Schema({
           Text: String
       }]
   ,
-    Address: {
+    Address: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Address'
-    },
+
+    }],
   EmployerType: {
     type: String,
     required: '{PATH} is required'

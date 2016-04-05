@@ -1,4 +1,6 @@
 angular.module('app').controller('mvEmployerListCtrl', function ($scope, mvEmployer,$translate) {
+    console.log(mvEmployer);
+    debugger;
     $scope.employers = mvEmployer.query();
     $scope.currentLang = $translate.use();
     $scope.sortOptions = [{value: 'EmployerName', text: 'Sort by EmployerName'},
