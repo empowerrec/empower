@@ -32,6 +32,10 @@ var employerSchema = mongoose.Schema({
         type: Number,
         required: '{PATH} is required'
     },
+    ContactFirstName :{type:String},
+    ContactLastName :{type:String},
+    ContactTitle :{type:String},
+    ContactMobileNumber :{type:String},
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

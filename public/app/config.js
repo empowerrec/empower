@@ -50,7 +50,11 @@
                 "EmployerName": "Employer Name",
                 "EmployerType": "Employer Type",
                 "NumberOfEmployees": "Number Of Employees",
-                "AverageNumberOfJobOpeningsPerMonth": "Average Number Of Job Openings Per Month"
+                "AverageNumberOfJobOpeningsPerMonth": "Average Number Of Job Openings Per Month",
+                "ContactFirstName":"Contact First Name",
+                "ContactLastName":"Contact Last Name",
+                "ContactTitle":"Contact Title",
+                "ContactMobileNumber":"Contact Mobile Number"
             },
             "Buttons": {
                 "Update": "Update",
@@ -104,7 +108,11 @@
                 "EmployerName": "اسم الشركة",
                 "EmployerType": "نوع الشركة",
                 "NumberOfEmployees": "عدد الموظفين",
-                "AverageNumberOfJobOpeningsPerMonth": "متوسط عدد الوظائف المفتوحة كل شهر"
+                "AverageNumberOfJobOpeningsPerMonth": "متوسط عدد الوظائف المفتوحة كل شهر",
+                "ContactFirstName":"الاسم الأول",
+                "ContactLastName":"الاسم الأخير",
+                "ContactTitle":"الوظيفة",
+                "ContactMobileNumber":"رقم التليفون"
             },
             "Buttons": {
                 "Update": "تعديل",
