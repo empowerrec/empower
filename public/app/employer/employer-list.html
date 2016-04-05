@@ -23,12 +23,14 @@
             <th>{{"Employer.EmployerType" | translate}}</th>
             <th>Modified By</th>
             <th>Created By</th>
-            <th></th>
+            <th></th>,
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="employer in employers | filter:searchText | orderBy:sortOrder">
-            <td><a href="#/employers/{{employer._id}}"> {{getName(employer.EmployerName)}}</a></td>
+            <td><a href="#/employers/{{employer._id}}"> <div ng-repeat="emp in employer.EmployerName | filter:{Lang:currentLang}">
+                {{emp.Text}}
+            </div></a></td>
             <td>{{ employer.AverageNumberOfJobOpeningsPerMonth}}</td>
             <td>{{ employer.NumberOfEmployees}}</td>
             <td>{{ employer.EmployerType}}</td>

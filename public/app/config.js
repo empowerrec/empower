@@ -165,8 +165,9 @@
             'ar-EG': 'ar',
             'fr-FR': 'fr'
         });
-        //$translateProvider.preferredLanguage('ar');
-        $translateProvider.determinePreferredLanguage();
+        $translateProvider.preferredLanguage('ar');
+        //$translateProvider.determinePreferredLanguage();
+
         console.log(navigator.language);
 
 

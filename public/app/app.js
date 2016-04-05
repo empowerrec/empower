@@ -55,7 +55,8 @@ angular.module('app').config(function ($routeProvider) {
 });
 
 
-angular.module('app').run(function ($rootScope, $location) {
+angular.module('app').run(function ($rootScope, $location , $translate) {
+    $rootScope.currentLang = $translate.use();
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
         if (rejection === 'not authorized') {
             $location.path('/');
