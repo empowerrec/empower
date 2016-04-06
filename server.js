@@ -10,9 +10,6 @@ require('./server/config/express')(app, config);
 require('./server/config/mongoose')(config);
 require('./server/config/passport')(config);
 require('./server/config/routes')(app);
-var session = require('express-session');
-app.use(session({secret: 'ssshhhhh'}));
-
 
 app.listen(config.port);
 console.log('listening on port ' + config.port + '...');

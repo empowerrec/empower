@@ -35,5 +35,19 @@ module.exports = function (app, config) {
         }
     ));
     app.use(express.static(config.rootPath + '/public'));
-
+/*
+    app.use(function (req, res, next) {
+        if (req.method == 'POST' && req.url == '/login') {
+            console.log(req.body.rememberme);
+            if (req.body.rememberme) {
+                console.log(req.body.rememberme);
+                req.session.cookie.maxAge = 2592000000;
+                // 30*24*60*60*1000 Rememeber 'me' for 30 days
+            } else {
+                req.session.cookie.expires = false;
+            }
+        }
+        next();
+    });
+*/
 };
