@@ -4,7 +4,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
-    passport = require('passport');
+    passport = require('passport'),
+    mongoStore = require('connect-mongo')(session);
 
 module.exports = function (app, config) {
     function compile(str, path) {
@@ -20,6 +21,9 @@ module.exports = function (app, config) {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(session({
+        store: new mongoStore({
+            url: config.db
+        }),
         //cookie : { maxAge: 7 * 24 * 60 * 60 * 1000}, // 7 days
         resave: true,
         saveUninitialized: true,
