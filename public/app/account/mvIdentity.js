@@ -1,11 +1,18 @@
-angular.module('app').factory('mvIdentity', function ($window, mvUser,$localStorage) {
+angular.module('app').factory('mvIdentity', function ($window, mvUser, $localStorage) {
 
     var currentUser;
-    if (!!$localStorage.currentUser) {
-        currentUser = new mvUser();
-        angular.extend(currentUser, $localStorage.currentUser);
-    }
 
+    $.ajax({
+        url: "api/usersendtoclient",
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+            if (data.hasOwnProperty('usersendtoclient')) {
+                currentUser = new mvUser();
+                angular.extend(currentUser, data.usersendtoclient);
+            }
+        }
+    });
 
     return {
         currentUser: currentUser,
@@ -13,7 +20,6 @@ angular.module('app').factory('mvIdentity', function ($window, mvUser,$localStor
             return !!this.currentUser;
         },
         isAuthorized: function (role) {
-            debugger;
             return !!this.currentUser && this.currentUser.UserType.indexOf(role) > -1;
         }
     };

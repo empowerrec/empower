@@ -42,6 +42,17 @@ module.exports = function (app) {
         failureRedirect: '/#/'
     }));
 
+    app.get('/api/usersendtoclient', function (req, res) {
+        if (req.user === undefined) {
+            // The user is not logged in
+            res.json({});
+        } else {
+            res.json({
+                usersendtoclient: req.user
+            });
+        }
+    });
+
     app.all('/api/*', function (req, res) {
         res.sendStatus(404);
     });
@@ -51,8 +62,7 @@ module.exports = function (app) {
     });
 
     app.get('*', function (req, res) {
-        res.render('index', {
-            bootstrappedUser: req.user
-        });
+        res.render('index');
     });
+
 };
