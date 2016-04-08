@@ -1,4 +1,5 @@
-<div class="container">
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container admin-area">
     <table class="table">
         <tr ng-repeat="user in users">
             <td>{{ user.FirstName + ' ' + user.LastName }}</td>

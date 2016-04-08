@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="vendor/toastr/toastr.min.css"/>
     <link rel="stylesheet" href="css/site.css"/>
+    <link rel="stylesheet" href="css/simple-sidebar.css"/>
 </head>
 <body ng-app="app">
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -12,6 +13,7 @@
         <div ng-include="'/partials/main/menu'"></div>
     </div>
 </div>
+
 <section class="content">
     <div ng-view="ng-view"></div>
 </section>
@@ -31,6 +33,7 @@
 <script type="text/javascript" src="app/app.js"></script>
 <script type="text/javascript" src="app/main/mvMainCtrl.js"></script>
 <script type="text/javascript" src="app/main/mvFooterCtrl.js"></script>
+<script type="text/javascript" src="app/main/mvSidebarCtrl.js"></script>
 <!-- Utilites-->
 <script type="text/javascript" src="app/common/mvNotifier.js"></script>
 <!-- Sign up & Sign on-->
