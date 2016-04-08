@@ -1,8 +1,19 @@
 <div ng-include="'/partials/main/sidebar-menu'"></div>
 <div class="container admin-area">
     <table class="table">
+        <thead>
+        <tr>
+            <th>{{"User.UserName" | translate}}</th>
+            <th>{{"User.FirstName" | translate}}</th>
+            <th>{{"User.LastName" | translate}}</th>
+            <th>{{"User.UserType" | translate}}</th>
+
+        </tr>
+        </thead>
         <tr ng-repeat="user in users">
-            <td>{{ user.FirstName + ' ' + user.LastName }}</td>
+            <td>{{ user.FirstName }}</td>
+            <td>{{ user.FirstName }}</td>
+            <td>{{ user.LastName }}</td>
             <td>{{ user.UserType }}</td>
         </tr>
     </table>

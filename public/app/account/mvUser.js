@@ -6,5 +6,17 @@ angular.module('app').factory('mvUser', function ($resource) {
         return this.UserType && this.UserType.indexOf('A') > -1;
     };
 
+    UserResource.prototype.isJobSeeker = function () {
+        return this.UserType && this.UserType.indexOf('J') > -1;
+    };
+
+    UserResource.prototype.isEmployer = function () {
+        return this.UserType && this.UserType.indexOf('E') > -1;
+    };
+
+    UserResource.prototype.isTrainingCenter = function () {
+        return this.UserType && this.UserType.indexOf('T') > -1;
+    };
+
     return UserResource;
 });

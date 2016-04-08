@@ -56,6 +56,13 @@
                 "ContactTitle":"Contact Title",
                 "ContactMobileNumber":"Contact Mobile Number"
             },
+            "User": {
+                "UserName": "User Name",
+                "FirstName":"First Name",
+                "LastName":"Last Name",
+                "UserType":"User Type"
+
+            },
             "Buttons": {
                 "Update": "Update",
                 "Save": "Save",
@@ -113,6 +120,13 @@
                 "ContactLastName":"الاسم الأخير",
                 "ContactTitle":"الوظيفة",
                 "ContactMobileNumber":"رقم التليفون"
+            },
+            "User": {
+                "UserName": "اسم المستخدم",
+                "FirstName":"الاسم الأول",
+                "LastName":"الاسم الأخير",
+                "UserType":"نوع المستخدم"
+
             },
             "Buttons": {
                 "Update": "تعديل",
