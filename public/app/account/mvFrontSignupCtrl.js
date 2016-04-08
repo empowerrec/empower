@@ -1,27 +1,59 @@
-angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $location, mvUser, mvNotifier, mvAuth) {
+angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $location, mvUser, mvNotifier, mvAuth, mvEmployer, mvEmployerRepo) {
+
+    $scope.usertype = "J";
 
     $scope.signup = function () {
-        var newUserData = {
-            UserName: $scope.email,
-            Password: $scope.password,
-            FirstName: $scope.firstname,
-            LastName: $scope.lastname,
-            UserType: $scope.usertype
-        };
+        if ($scope.frontSignupForm.$valid) {
+            //form is valid
 
-        mvAuth.createUser(newUserData).then(function () {
-            mvNotifier.notify('User account created!');
+            var name = "";
+            if($scope.usertype == 'J'){
+                name = $scope.firstname;
+            }
+            else{
+                name = $scope.employername;
+            }
 
-            //clear form fields
-            $scope.email = '';
-            $scope.password = '';
-            $scope.firstname = '';
-            $scope.lastname = '';
-            $scope.usertype = '';
+            var newUserData = {
+                UserName: $scope.email,
+                Password: $scope.password,
+                FirstName: name ,
+                LastName: $scope.lastname,
+                UserType: $scope.usertype
+            };
 
-            $location.path('/');
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
+            mvAuth.createUser(newUserData)
+                .then(function (user) {
+                    if ($scope.usertype == 'E') {
+                        var newEmployerData = {
+                            //EmployerName: [{'en',$scope.firstname}],
+                            User: user,
+                            CreatedBy: user
+                        };
+                        mvEmployerRepo.createEmployerAfterCreatingUser(newEmployerData);
+                    } else if ($scope.usertype == 'J') {
+
+                    }
+                })
+                .then(function () {
+                    mvNotifier.notify('User account created!');
+                    var type = $scope.usertype;
+
+                    //clear form fields
+                    $scope.email = '';
+                    $scope.password = '';
+                    $scope.firstname = '';
+                    $scope.lastname = '';
+                    $scope.usertype = '';
+
+                    if (type == 'E') {
+                        $location.path('/employers');
+                    } else if (type == 'J') {
+                        $location.path('/jobseekers');
+                    }
+                }, function (reason) {
+                    mvNotifier.error(reason);
+            });
+        }
     };
 });

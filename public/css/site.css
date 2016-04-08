@@ -43,11 +43,15 @@ footer p {
   width: 390px;
   float: left;
   margin-left: 10px;
+  padding-top: 15px;
+  padding-right: 25px !important;
+  padding-left: 25px !important;
 }
 .welcome {
   width: 730px;
   float: left;
   height: 380px;
+  padding-top: 15px;
 }
 .signup_button {
   display: inline-block;
@@ -106,4 +110,7 @@ footer p {
 .admin-area {
   width: 1050px;
   margin-left: 239px;
+}
+input.submitted.ng-invalid {
+  border: 1px solid #f00;
 }

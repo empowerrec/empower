@@ -3,12 +3,10 @@ var encryption = require('../utilities/encryption');
 
 var userSchema = mongoose.Schema({
   FirstName: {
-    type: String,
-    required: '{PATH} is required'
+    type: String
   },
   LastName: {
-    type: String,
-    required: '{PATH} is required'
+    type: String
   },
   UserName: {
     type: String,

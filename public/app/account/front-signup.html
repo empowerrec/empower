@@ -1,10 +1,3 @@
-<div ng-hide="identity.isAuthenticated()">
-    &nbsp; &nbsp;
-    <a href="/auth/facebook" class="facebook_button">Facebook</a>
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <a href="/auth/google" class="google_button">Google</a><br/>
-    <br/>
-</div>
 <form name="frontSignupForm" ng-controller="mvFrontSignupCtrl" ng-hide="identity.isAuthenticated()"
       class="form-horizontal">
     <div class="form-group">
@@ -23,18 +16,29 @@
         <input name="password" type="password" placeholder="Password" ng-model="password"
                required="required" class="form-control"/>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-show="usertype == 'J'" >
         <input name="firstname" type="text" placeholder="First Name" ng-model="firstname"
-               required="required" class="form-control"/>
+               ng-required="usertype == 'J'" class="form-control"/>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-show="usertype == 'J'" >
         <input name="lastname" type="text" placeholder="Last Name" ng-model="lastname"
-               required="required" class="form-control"/>
+               ng-required="usertype == 'J'" class="form-control"/>
+    </div>
+    <div class="form-group" ng-show="usertype == 'E'" >
+        <input name="employername" type="text" placeholder="Employer Name" ng-model="employername"
+               ng-required="usertype == 'E'" class="form-control" />
     </div>
     <div class="form-group">
-        <button ng-click="signup()" ng-disabled="frontSignupForm.$invalid" class="btn signup_button">Sign Up</button>
+        <button ng-click="signup()" class="btn signup_button">Sign Up</button>
+    </div>
+    <div class="form-group" ng-hide="identity.isAuthenticated() || usertype == 'E'">
+        &nbsp;
+        <a href="/auth/facebook" class="facebook_button">Facebook SignUp/Login</a>
+        <a href="/auth/google" class="google_button">Google SignUp/Login</a><br/>
+        <br/>
     </div>
 </form>
+
 <div ng-show="identity.isAuthenticated()">
     Hello , {{ identity.currentUser.FirstName + ' ' + identity.currentUser.LastName }}
 </div>
