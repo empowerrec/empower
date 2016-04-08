@@ -47,8 +47,8 @@
             "New_Jobs": "New Jobs",
             "Jobs_Title": "Jobs Title",
             "Employer": {
-                "EmployerName": "Employer Name",
-                "EmployerType": "Employer Type",
+                "EmployerName": "Name",
+                "EmployerType": "Type",
                 "NumberOfEmployees": "Number Of Employees",
                 "AverageNumberOfJobOpeningsPerMonth": "Average Number Of Job Openings Per Month",
                 "ContactFirstName":"Contact First Name",
