@@ -54,6 +54,7 @@ angular.module('app').config(function ($routeProvider) {
         .when('/employers', {
             templateUrl: '/partials/employer/employer-list.html',
             controller: 'mvEmployerListCtrl'
+<<<<<<< HEAD
         })
         .when('/jobSeekers', {
             templateUrl: '/partials/jobSeeker/jobSeeker-list.html',
@@ -69,6 +70,21 @@ angular.module('app').config(function ($routeProvider) {
             templateUrl: '/partials/jobSeeker/jobSeeker.html',
             controller: 'mvJobSeekerCtrl'
         });
+=======
+        }).when('/vacancies/:id', {
+        templateUrl: '/partials/vacancy/vacancy-detail',
+        controller: 'mvVacancyDetailCtrl'
+        }).when('/updatevacancy/:id', {
+        templateUrl: '/partials/vacancy/vacancy',
+        controller: 'mvVacancyCtrl'
+        }).when('/addvacancy', {
+        templateUrl: '/partials/vacancy/vacancy',
+        controller: 'mvVacancyCtrl'
+        }).when('/vacancies', {
+        templateUrl: '/partials/vacancy/vacancy-list.html',
+        controller: 'mvVacancyListCtrl'
+    });
+>>>>>>> 98b17123a41290f25b5a04891076921c92812f72
 });
 
 
