@@ -6,6 +6,7 @@ var categoryModel = require('../models/Category');
 var jobSeekerModel = require('../models/JobSeeker');
 var vacancyModel = require('../models/Vacancy');
 var educationalLevel = require('../models/EducationalLevel');
+var industryModel = require('../models/Industry');
 
 module.exports = function (config) {
     mongoose.connect(config.db);
@@ -22,4 +23,5 @@ module.exports = function (config) {
     jobSeekerModel.createDefaultJobSeekers();
     vacancyModel.createDefaultVacancies();
     educationalLevel.createDefaultEducationalLevels();
+    industryModel.createDefaultIndustry();
 };

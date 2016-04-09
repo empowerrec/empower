@@ -70,6 +70,9 @@
                 "UserType": "User Type"
 
             },
+            "Industry":{
+                "Description": "Description"
+            },
             "Buttons": {
                 "Update": "Update",
                 "Save": "Save",
@@ -147,6 +150,9 @@
                 "LastName": "الاسم الأخير",
                 "UserType": "نوع المستخدم"
 
+            },
+            "Industry":{
+                "Description": "الوصف"
             },
             "Buttons": {
                 "Update": "تعديل",
