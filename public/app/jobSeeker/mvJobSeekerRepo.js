@@ -1,4 +1,4 @@
-angular.module('app').factory('mvEmployerRepo', function ($http, $q, mvEmployer,mvIdentity) {
+angular.module('app').factory('mvJobSeekerRepo', function ($http, $q, mvEmployer,mvIdentity) {
     return {
 
         createEmployer: function (newEmployerData) {

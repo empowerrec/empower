@@ -1,4 +1,4 @@
-angular.module('app').controller('mvEmployerListCtrl', function ($scope, mvEmployer,$translate, $rootScope) {
+angular.module('app').controller('mvJobSeekerListCtrl', function ($scope, mvEmployer,$translate, $rootScope) {
 
     $scope.employers = mvEmployer.query();
     //$scope.currentLang = $translate.use();
