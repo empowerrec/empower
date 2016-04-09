@@ -51,7 +51,19 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/employers', {
             templateUrl: '/partials/employer/employer-list.html',
             controller: 'mvEmployerListCtrl'
-        });
+        }).when('/vacancies/:id', {
+        templateUrl: '/partials/vacancy/vacancy-detail',
+        controller: 'mvVacancyDetailCtrl'
+        }).when('/updatevacancy/:id', {
+        templateUrl: '/partials/vacancy/vacancy',
+        controller: 'mvVacancyCtrl'
+        }).when('/addvacancy', {
+        templateUrl: '/partials/vacancy/vacancy',
+        controller: 'mvVacancyCtrl'
+        }).when('/vacancies', {
+        templateUrl: '/partials/vacancy/vacancy-list.html',
+        controller: 'mvVacancyListCtrl'
+    });
 });
 
 

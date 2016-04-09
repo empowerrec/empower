@@ -56,6 +56,13 @@
                 "ContactTitle":"Contact Title",
                 "ContactMobileNumber":"Contact Mobile Number"
             },
+            "Vacancy": {
+                "JobTitle": "Job Title",
+                "JobDescrption": "Job Descrption",
+                "AvailableFrom": "Available From",
+                "AvailableTo": "Available To" ,
+                "Salary":"Salary"
+            },
             "User": {
                 "UserName": "User Name",
                 "FirstName":"First Name",
@@ -120,6 +127,13 @@
                 "ContactLastName":"الاسم الأخير",
                 "ContactTitle":"الوظيفة",
                 "ContactMobileNumber":"رقم التليفون"
+            },
+            "Vacancy": {
+                "JobTitle": "عنوان الوظيفة",
+                "JobDescrption": "وصف الوظيفة",
+                "AvailableFrom": "متاحة من",
+                "AvailableTo": "متاحة الى" ,
+                "Salary":"المرتب"
             },
             "User": {
                 "UserName": "اسم المستخدم",

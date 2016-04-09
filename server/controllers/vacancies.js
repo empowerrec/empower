@@ -30,11 +30,13 @@ exports.createVacancy = function (req, res, next) {
 };
 
 exports.updateVacancy = function (req, res, next) {
-
-    req.vacancy.save(function (err, vacancy) {
+    console.log(req.params[0]);
+    var vacancyData = req.body;
+    var query = { _id: vacancyData._id };
+    Vacancy.update(query,vacancyData, function (err, vacancy) {
         if (err) {
             if (err.toString().indexOf('E11000') > -1) {
-                err = new Error('Duplicate Vacancy');
+                err = new Error('Duplicate Vacancy Name');
             }
             res.status(400);
             return res.send({reason: err.toString()});

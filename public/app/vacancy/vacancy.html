@@ -1,0 +1,69 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container admin-area">
+
+    <div class="well">
+        <h3>
+       {{vacancy.JobTitle}}
+        </h3>
+        <form name="employerForm" class="form-horizontal">
+            <fieldset>
+                <div class="form-group"><label for="jobTitle" class="col-md-2 control-label">{{"Vacancy.JobTitle"
+                    | translate}}</label>
+
+                    <div class="col-md-10"><input name="jobTitle" type="text" placeholder="JobTitle"
+                                                  ng-model="vacancy.JobTitle" required="required"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="jobDescription" class="col-md-2 control-label">{{"Vacancy.JobDescrption"
+                    | translate}}</label>
+
+                    <div class="col-md-10"><input name="jobDescription" type="text"
+                                                  placeholder="JobDescription"
+                                                  ng-model="vacancy.JobDescription"
+                                                  class="form-control"/></div>
+                </div>
+
+
+
+                <div class="form-group"><label for="salary" class="col-md-2 control-label">{{"Vacancy.Salary"
+                    | translate}}</label>
+
+                    <div class="col-md-10"><input name="salary" type="text" placeholder="Salary"
+                                                  ng-model="vacancy.Salary" required="required"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="availableFrom" class="col-md-2 control-label">{{"Vacancy.AvailableFrom"
+                    | translate}}</label>
+
+                    <div class="col-md-10"><input name="availableFrom" type="text" placeholder="AvailableFrom"
+                                                  ng-model="vacancy.AvailableFrom" required="required"
+                                                  class="form-control"/></div>
+                </div>
+
+                <div class="form-group"><label for="availableTo" class="col-md-2 control-label">{{"Vacancy.AvailableTo"
+                    | translate}}</label>
+
+                    <div class="col-md-10"><input name="availableTo" type="text" placeholder="AvailableTo"
+                                                  ng-model="vacancy.AvailableTo" required="required"
+                                                  class="form-control"/></div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <div class="pull-right">
+                            <button ng-click="update()" ng-show="updateMode" ng-disabled="employerForm.$invalid" class="btn btn-primary">
+                                {{"Buttons.Update" | translate}}
+                            </button>
+
+                            <button ng-click="add()" ng-show="addMode" ng-disabled="employerForm.$invalid||!addEnabled" class="btn btn-primary">
+                                {{"Buttons.Add" | translate}}
+                            </button>
+                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a></div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -21,7 +21,8 @@ var vacancySchema = mongoose.Schema({
         ref: 'EducationLevel'
     },
     Salary: {type: Number},
-    JobDescription: {type: String}
+    JobDescription: {type: String},
+    JobTitle: {type: String}
 });
 
 var Vacancy = mongoose.model('Vacancy', vacancySchema);
@@ -29,21 +30,28 @@ var Vacancy = mongoose.model('Vacancy', vacancySchema);
 function createDefaultVacancies() {
     Vacancy.find({}).exec(function(err, col) {
         if (col.length === 0) {
-    /*
+
             Vacancy.create({
-            EmployerName: 'Ibnsina-pharma',
-            EmployerType: 'D',
-            NumberOfEmployees: 5000,
-            AverageNumberOfJobOpeningsPerMonth:50
+                Employer : "5700e4ad2b9cc7982e72d1e9",
+                Type: 'Full Time',
+                Salary: 5000,
+                JobDescription:"Ugent Senior .Net Developer Needed",
+                JobTitle:"Senior .net developer" ,
+                PreferredEducationLevel:"5707dd5a59e12bf8047383da",
+                AvailableFrom:"01/05/2016",
+                AvailableTo:"05/05/2016"
             });
 
             Vacancy.create({
-                EmployerName: 'Empower',
-                EmployerType: 'S',
-                NumberOfEmployees: 10,
-                AverageNumberOfJobOpeningsPerMonth:1
-          });
-    */
+                Employer : "5700e4ad2b9cc7982e72d1e9",
+                Type: 'Full Time',
+                Salary: 3000,
+                JobDescription:"Junior  .Net Developer Needed",
+                JobTitle:"Juior .net developer",
+                PreferredEducationLevel:"5707dd5a59e12bf8047383da",
+                AvailableFrom:"01/05/2016",
+                AvailableTo:"15/05/2016"
+            });
     }
   });
 }
