@@ -3,6 +3,7 @@ var users = require('../controllers/users');
 var employers = require('../controllers/employers');
 var courses = require('../controllers/courses');
 var vacancies = require('../controllers/vacancies');
+var jobSeekers = require('../controllers/jobSeekers');
 var passport = require('passport');
 
 module.exports = function (app) {
@@ -18,6 +19,11 @@ module.exports = function (app) {
     app.post('/api/employers', employers.createEmployer);
     app.put('/api/employers', employers.updateEmployer);
     app.get('/api/employers/:id', employers.getEmployerById);
+
+    app.get('/api/jobSeekers', authentication.requiresRole('A'), jobSeekers.getJobSeekers);
+    app.post('/api/jobSeekers', jobSeekers.createJobSeeker);
+    app.put('/api/jobSeekers/:id', jobSeekers.updateJobSeeker);
+    app.get('/api/jobSeekers/:id', jobSeekers.getJobSeekerById);
 
     app.get('/api/vacancies', authentication.requiresRole('A'), vacancies.getVacancies);
     app.post('/api/vacancies', vacancies.createVacancy);

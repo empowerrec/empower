@@ -1,12 +1,12 @@
-angular.module('app').factory('mvIdentity', function ($window, mvUser, $localStorage) {
+angular.module('app').factory('mvIdentity', function ($window, mvUser) {
 
-    var currentUser;
+    var currentUser = null;
 
     $.ajax({
         url: "api/usersendtoclient",
         dataType: 'json',
         async: false,
-        success: function(data) {
+        success: function (data) {
             if (data.hasOwnProperty('usersendtoclient')) {
                 currentUser = new mvUser();
                 angular.extend(currentUser, data.usersendtoclient);

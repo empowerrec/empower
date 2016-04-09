@@ -1,12 +1,23 @@
 var mongoose = require('mongoose');
 
 var courseSchema = mongoose.Schema({
-    Title: {type: String, required: '{PATH} is required', unique: true},
-    Featured: {type: Boolean, required: '{PATH} is required'},
-    Published: {type: Date, required: '{PATH} is required'},
-    Tags: [String]
-});
+        Title: {type: String, required: '{PATH} is required', unique: true},
+        Featured: {type: Boolean, required: '{PATH} is required'},
+        Published: {type: Date, required: '{PATH} is required'},
+        Tags: [String],
+        ModifiedBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
 
+        CreatedBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    },
+    {
+        timestamps: {createdAt: 'CreatedAt', updatedAt: "UpdatedAt"}
+    });
 
 var Course = mongoose.model('Course', courseSchema);
 

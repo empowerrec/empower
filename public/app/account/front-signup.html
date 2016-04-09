@@ -3,33 +3,33 @@
     <div class="form-group">
         &nbsp; &nbsp; &nbsp; &nbsp;
         <input type="radio" name="usertype" ng-model="usertype" value="J"
-               required="required"/> Job Seeker
+               required="required"/> {{'Job Seeker' | translate}}
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         <input type="radio" name="usertype" ng-model="usertype" value="E"
-               required="required"/> Employer
+               required="required"/> {{'Employer.Employer' | translate}}
     </div>
     <div class="form-group">
-        <input name="email" type="email" placeholder="Email" ng-model="email" required="required"
-               class="form-control"/>
+        <input name="email" type="email" placeholder="{{'Email' | translate}}"
+               ng-model="email" required="required" class="form-control"/>
     </div>
     <div class="form-group">
-        <input name="password" type="password" placeholder="Password" ng-model="password"
+        <input name="password" type="password" placeholder="{{'Password' | translate}}" ng-model="password"
                required="required" class="form-control"/>
     </div>
     <div class="form-group" ng-show="usertype == 'J'" >
-        <input name="firstname" type="text" placeholder="First Name" ng-model="firstname"
+        <input name="firstname" type="text" placeholder="{{'First_Name' | translate}}" ng-model="firstname"
                ng-required="usertype == 'J'" class="form-control"/>
     </div>
     <div class="form-group" ng-show="usertype == 'J'" >
-        <input name="lastname" type="text" placeholder="Last Name" ng-model="lastname"
+        <input name="lastname" type="text" placeholder="{{'Last_Name' | translate}}" ng-model="lastname"
                ng-required="usertype == 'J'" class="form-control"/>
     </div>
     <div class="form-group" ng-show="usertype == 'E'" >
-        <input name="employername" type="text" placeholder="Employer Name" ng-model="employername"
+        <input name="employername" type="text" placeholder="{{'Employer.EmployerName' | translate}}" ng-model="employername"
                ng-required="usertype == 'E'" class="form-control" />
     </div>
     <div class="form-group">
-        <button ng-click="signup()" class="btn signup_button">Sign Up</button>
+        <button ng-click="signup()" class="btn signup_button">{{'Sign Up' | translate}}</button>
     </div>
     <div class="form-group" ng-hide="identity.isAuthenticated() || usertype == 'E'">
         &nbsp;

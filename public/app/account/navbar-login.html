@@ -1,14 +1,14 @@
 <div ng-controller="mvNavBarLoginCtrl" class="navbar-right">
     <form ng-hide="identity.isAuthenticated()" class="navbar-form">
         <div class="form-group">
-            <input placeholder="Email" ng-model="username" class="form-control"/>
+            <input placeholder="{{'Email' | translate}}" ng-model="username" class="form-control"/>
         </div>
         <div class="form-group">
-            <input type="password" placeholder="Password" ng-model="password" class="form-control"/>
+            <input type="password" placeholder="{{'Password' | translate}}" ng-model="password" class="form-control"/>
         </div>
         <div class="form-group">
             <input type="checkbox" ng-model="rememberme">
-            <span style="color: white">Remember Me</span>
+            <span style="color: white">{{"Remember Me" | translate}}</span>
         </div>
         <button ng-click="signin(username,password,rememberme)" class="btn btn-primary">{{"Signin" | translate}}</button>
         <!--

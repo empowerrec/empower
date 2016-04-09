@@ -3,7 +3,6 @@
 
     var core = angular.module('app');
 
-
     var config = {
         appErrorPrefix: '[hot-towel Error] ',
         appTitle: 'hot-towel'
@@ -18,7 +17,7 @@
     function configure($translateProvider) {
 
         var english = {
-            "Title": "Internationalization Test",
+            'Title': 'Internationalization Test',
             "Language": "Language",
             "Languages": {
                 "English": "English",
@@ -45,22 +44,23 @@
             "Welcome": "Welcome To Empower !",
             "Signin": "Signin",
             "New_Jobs": "New Jobs",
-            "Jobs_Title": "Jobs Title",
+            'Jobs_Title': "Jobs Title",
             "Employer": {
+                "Employer": "Employer",
                 "EmployerName": "Name",
                 "EmployerType": "Type",
                 "NumberOfEmployees": "Number Of Employees",
                 "AverageNumberOfJobOpeningsPerMonth": "Average Number Of Job Openings Per Month",
-                "ContactFirstName":"Contact First Name",
-                "ContactLastName":"Contact Last Name",
-                "ContactTitle":"Contact Title",
-                "ContactMobileNumber":"Contact Mobile Number"
+                "ContactFirstName": "Contact First Name",
+                "ContactLastName": "Contact Last Name",
+                "ContactTitle": "Contact Title",
+                "ContactMobileNumber": "Contact Mobile Number"
             },
             "User": {
                 "UserName": "User Name",
-                "FirstName":"First Name",
-                "LastName":"Last Name",
-                "UserType":"User Type"
+                "FirstName": "First Name",
+                "LastName": "Last Name",
+                "UserType": "User Type"
 
             },
             "Buttons": {
@@ -68,17 +68,17 @@
                 "Save": "Save",
                 "Cancel": "Cancel",
                 "Delete": "Delete",
-                "Add":"Add New"
+                "Add": "Add New"
             },
             "Menu": {
-                "SubTitle":"Jobs IN Egypt",
+                "SubTitle": "Jobs IN Egypt",
                 "Home": "Home",
                 "Jobs": "Jobs",
                 "Employers": "Employers",
                 "Vacancies": "Vacancies"
             },
             "Footer": {
-                "Copy": "&copy; 2016 Empower Corp International Ltd."
+                "Copy": " \u00A9 2016 Empower Corp International Ltd."
             }
         };
 
@@ -90,6 +90,11 @@
                 "French": "French",
                 "Arabic": "عربى"
             },
+            "Email": "البريد الالكتروني",
+            "Password": "كلمة السر",
+            "Remember Me": "تذكرني",
+            "Sign Up": "فتح حساب",
+            "Job Seeker": "باحث عن وظيفة",
             "Created_By": "اضيف بواسطة",
             "First_Name": "الاسم الاول",
             "Last_Name": "الاسم الثانى",
@@ -112,20 +117,21 @@
             "New_Jobs": "الوظائف الجديده",
             "Jobs_Title": "عنوان الوظيف",
             "Employer": {
+                "Employer": "معلن عن وظيفة",
                 "EmployerName": "اسم الشركة",
                 "EmployerType": "نوع الشركة",
                 "NumberOfEmployees": "عدد الموظفين",
                 "AverageNumberOfJobOpeningsPerMonth": "متوسط عدد الوظائف المفتوحة كل شهر",
-                "ContactFirstName":"الاسم الأول",
-                "ContactLastName":"الاسم الأخير",
-                "ContactTitle":"الوظيفة",
-                "ContactMobileNumber":"رقم التليفون"
+                "ContactFirstName": "الاسم الأول",
+                "ContactLastName": "الاسم الأخير",
+                "ContactTitle": "الوظيفة",
+                "ContactMobileNumber": "رقم التليفون"
             },
             "User": {
                 "UserName": "اسم المستخدم",
-                "FirstName":"الاسم الأول",
-                "LastName":"الاسم الأخير",
-                "UserType":"نوع المستخدم"
+                "FirstName": "الاسم الأول",
+                "LastName": "الاسم الأخير",
+                "UserType": "نوع المستخدم"
 
             },
             "Buttons": {
@@ -133,17 +139,17 @@
                 "Save": "حفظ",
                 "Cancel": "الغاء",
                 "Delete": "حذف",
-                "Add":"اضافة جديد"
+                "Add": "اضافة جديد"
             },
             "Menu": {
-                "SubTitle":"وظائف فى مصر",
+                "SubTitle": "وظائف فى مصر",
                 "Home": "الرئيسية",
                 "Jobs": "الوظائف",
                 "Employers": "الشركات",
                 "Vacancies": "فرص العمل"
             },
             "Footer": {
-                "Copy": "&copy;"+" شركة ايم باور 2016"
+                "Copy": "\u00A9" + " شركة ايم باور 2016"
             }
         };
 
@@ -174,8 +180,7 @@
             "Featured_Jobs": "الوظائف المفضلة",
             "Welcome": "مرحبا بكم فى Empower",
             "Signin": "تسجيل الدخول",
-            "New_Jobs": " فرنساوى الوظائف الجديده"
-            ,
+            "New_Jobs": " فرنساوى الوظائف الجديده",
             "Jobs_Title": "Jobs Title"
         };
 
@@ -191,7 +196,6 @@
         //$translateProvider.determinePreferredLanguage();
 
         console.log(navigator.language);
-
 
     }
 

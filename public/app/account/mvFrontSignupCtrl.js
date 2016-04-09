@@ -1,4 +1,4 @@
-angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $location, mvUser, mvNotifier, mvAuth, mvEmployer, mvEmployerRepo) {
+angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $location, mvUser, mvNotifier, mvAuth, mvIdentity, mvEmployer, mvEmployerRepo) {
 
     $scope.usertype = "J";
 
@@ -23,12 +23,12 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $locatio
             };
 
             mvAuth.createUser(newUserData)
-                .then(function (user) {
+                .then(function () {
                     if ($scope.usertype == 'E') {
                         var newEmployerData = {
                             //EmployerName: [{'en',$scope.firstname}],
-                            User: user,
-                            CreatedBy: user
+                            User: mvIdentity.currentUser,
+                            CreatedBy: mvIdentity.currentUser
                         };
                         mvEmployerRepo.createEmployerAfterCreatingUser(newEmployerData);
                     } else if ($scope.usertype == 'J') {

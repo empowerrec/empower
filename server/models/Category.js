@@ -1,8 +1,19 @@
 var mongoose = require('mongoose');
 
 var categorySchema = mongoose.Schema({
-    CategoryName: {type: String, required: '{PATH} is required', unique: true}
-});
+        CategoryName: {type: String, required: '{PATH} is required', unique: true},
+        ModifiedBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        CreatedBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    },
+    {
+        timestamps: {createdAt: 'CreatedAt', updatedAt: "UpdatedAt"}
+    });
 
 var Category = mongoose.model('Category', categorySchema);
 

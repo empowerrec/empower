@@ -1,0 +1,42 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container top-padding-med admin-area">
+    <div class="pull-left">
+        <a href="#/addJobSeeker" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+    </div>
+    <div class="pull-right">
+        <form class="form-inline">
+            <div class="form-group">
+                <input ng-model="searchText" placeholder="Filter" class="form-control"/>
+            </div>
+            <div class="form-group margin-left-med">
+                <select ng-model="sortOrder"
+                        ng-options="item.value as item.text for item in sortOptions" class="form-control">
+                </select>
+            </div>
+        </form>
+    </div>
+    <table class="table table-hover table-striped table-condensed">
+        <thead>
+        <tr>
+            <th>{{"JobSeeker.Gender" | translate}}</th>
+            <th>Modified By</th>
+            <th>Created By</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="jobSeeker in jobSeekers | filter:searchText | orderBy:sortOrder">
+<!--
+            <td><a href="#/JobSeekers/{{JobSeeker._id}}">
+                <div ng-repeat="emp in employer.EmployerName | filter:{Lang:currentLang}">
+                    {{emp.Text}}
+                </div>
+            </a></td>
+-->
+
+            <td>{{ jobSeeker.Gender }}</td>
+            <td><a href="#/updateJobSeeker/{{jobSeeker._id}}"> {{"Buttons.Update" | translate}}</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
