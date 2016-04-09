@@ -31,42 +31,19 @@ var vacancySchema = mongoose.Schema({
             ref: 'User'
         }
     },
-<<<<<<< HEAD
+
     {
         timestamps: {createdAt: 'CreatedAt', updatedAt: "UpdatedAt"}
     });
 
-=======
-    Category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category'
-    },
-    Type: {type: String, enum: vacancyTypes},
-    AvailableFrom:{type:Date},
-    AvailableTo:{type:Date},
-    WorkPlace: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Address'
-    },
-    PreferredEducationLevel: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'EducationLevel'
-    },
-    Salary: {type: Number},
-    JobDescription: {type: String},
-    JobTitle: {type: String}
-});
->>>>>>> 98b17123a41290f25b5a04891076921c92812f72
+
 
 var Vacancy = mongoose.model('Vacancy', vacancySchema);
 
 function createDefaultVacancies() {
     Vacancy.find({}).exec(function (err, col) {
         if (col.length === 0) {
-<<<<<<< HEAD
-        }
-    });
-=======
+
 
             Vacancy.create({
                 Employer : "5700e4ad2b9cc7982e72d1e9",
@@ -91,7 +68,7 @@ function createDefaultVacancies() {
             });
     }
   });
->>>>>>> 98b17123a41290f25b5a04891076921c92812f72
+
 }
 
 exports.createDefaultVacancies = createDefaultVacancies;
