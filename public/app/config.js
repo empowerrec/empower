@@ -92,7 +92,7 @@
                 "Vacancies": "Vacancies",
                 "ContactUs": "Contact US",
                 "AboutUs": "About US",
-                "MyProfile": "My Profile" ,
+                "MyProfile": "Profile" ,
                 "Users" :"Users",
                 "Industries" : "Industries",
                 "InnerPages" : "Inner Pages" ,
