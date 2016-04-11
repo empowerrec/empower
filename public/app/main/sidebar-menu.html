@@ -1,24 +1,18 @@
-<div id="wrapper" ng-controller="mvSidebarCtrl">
-
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
+    <div id="sidebar-wrapper" ng-controller="mvSidebarCtrl">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
                 <a href="#">
-                    Admin Menu
+                    {{"Menu.UserMenu" | translate}}
                 </a>
             </li>
-            <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/users">Users</a></li>
-            <li ng-show="identity.currentUser.isAdmin()"><a href="#/employers">Employers</a></li>
-            <li ng-show="identity.currentUser.isAdmin()"><a href="#/vacancies">Vacancies</a></li>
-            <li ng-show="identity.currentUser.isAdmin()"><a href="#/jobSeekers">Job Seekers</a></li>
-            <li ng-show="identity.currentUser.isAdmin()"><a href="#/industries">Industries</a></li>
-            <li><a href="#/profile">Profile</a></li>
-            <li><a href="" ng-click="signout()">Sign Out</a></li>
+            <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/users">{{"Menu.Users" | translate}}</a></li>
+            <li ng-show="identity.currentUser.isAdmin()"><a href="#/employers">{{"Menu.Employers" | translate}}</a></li>
+            <li ng-show="identity.currentUser.isAdmin() || identity.currentUser.isEmployer()"><a href="#/vacancies">{{"Menu.Vacancies" | translate}}</a></li>
+            <li ng-show="identity.currentUser.isAdmin()"><a href="#/jobSeekers">{{"Menu.JobSeekers" | translate}}</a></li>
+            <li ng-show="identity.currentUser.isAdmin()"><a href="#/industries">{{"Menu.Industries" | translate}}</a></li>
+            <li ng-show="identity.currentUser.isAdmin()"><a href="#/innerPages">{{"Menu.InnerPages" | translate}}</a></li>
+            <li><a href="#/profile">{{"Menu.MyProfile" | translate}}</a></li>
+            <li><a href="" ng-click="signout()">{{"Menu.Signout" | translate}}</a></li>
         </ul>
     </div>
-    <!-- /#sidebar-wrapper -->
 
-
-
-</div>

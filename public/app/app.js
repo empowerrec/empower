@@ -94,6 +94,18 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/industries', {
         templateUrl: '/partials/industry/industry-list.html',
         controller: 'mvIndustryListCtrl'
+    }).when('/innerPages/:id', {
+        templateUrl: '/partials/innerPage/innerPage-detail',
+        controller: 'mvInnerPageDetailCtrl'
+    }).when('/updateinnerPage/:id', {
+        templateUrl: '/partials/innerPage/innerPage',
+        controller: 'mvInnerPageCtrl'
+    }).when('/addinnerPage', {
+        templateUrl: '/partials/innerPage/innerPage',
+        controller: 'mvInnerPageCtrl'
+    }).when('/innerPages', {
+        templateUrl: '/partials/innerPage/innerPage-list.html',
+        controller: 'mvInnerPageListCtrl'
     });
 
 });

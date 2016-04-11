@@ -1,0 +1,557 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>empower</Name>
+    <RootNamespace>empower</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>1cdabac1-47ed-4b55-93fe-8b123b846daa</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>server.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <NodejsPort>1337</NodejsPort>
+    <StartWebBrowser>true</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="public\app\account\mvAuth.js" />
+    <Compile Include="public\app\account\mvFrontSignupCtrl.js" />
+    <Compile Include="public\app\account\mvIdentity.js" />
+    <Compile Include="public\app\account\mvNavBarLoginCtrl.js" />
+    <Compile Include="public\app\account\mvProfileCtrl.js" />
+    <Compile Include="public\app\account\mvSignupCtrl.js" />
+    <Compile Include="public\app\account\mvUser.js" />
+    <Compile Include="public\app\admin\users\mvUserListCtrl.js" />
+    <Compile Include="public\app\app.js" />
+    <Compile Include="public\app\common\mvNotifier.js" />
+    <Compile Include="public\app\config.js" />
+    <Compile Include="public\app\course\mvCachedCourse.js" />
+    <Compile Include="public\app\course\mvCourse.js" />
+    <Compile Include="public\app\course\mvCourseDetailCtrl.js" />
+    <Compile Include="public\app\course\mvCourseListCtrl.js" />
+    <Compile Include="public\app\employer\mvCachedEmployer.js" />
+    <Compile Include="public\app\employer\mvEmployer.js" />
+    <Compile Include="public\app\employer\mvEmployerCtrl.js" />
+    <Compile Include="public\app\employer\mvEmployerDetailCtrl.js" />
+    <Compile Include="public\app\employer\mvEmployerListCtrl.js" />
+    <Compile Include="public\app\employer\mvEmployerRepo.js" />
+    <Compile Include="public\app\industry\mvCachedIndustry.js" />
+    <Compile Include="public\app\industry\mvIndustry.js" />
+    <Compile Include="public\app\industry\mvIndustryCtrl.js" />
+    <Compile Include="public\app\industry\mvIndustryDetailCtrl.js" />
+    <Compile Include="public\app\industry\mvIndustryListCtrl.js" />
+    <Compile Include="public\app\industry\mvIndustryRepo.js" />
+    <Compile Include="public\app\innerPage\mvCachedInnerPage.js" />
+    <Compile Include="public\app\innerPage\mvInnerPage.js" />
+    <Compile Include="public\app\innerPage\mvInnerPageCtrl.js" />
+    <Compile Include="public\app\innerPage\mvInnerPageDetailCtrl.js" />
+    <Compile Include="public\app\innerPage\mvInnerPageListCtrl.js" />
+    <Compile Include="public\app\innerPage\mvInnerPageRepo.js" />
+    <Compile Include="public\app\jobSeeker\mvCachedJobSeeker.js" />
+    <Compile Include="public\app\jobSeeker\mvJobSeeker.js" />
+    <Compile Include="public\app\jobSeeker\mvJobSeekerCtrl.js" />
+    <Compile Include="public\app\jobSeeker\mvJobSeekerDetailCtrl.js" />
+    <Compile Include="public\app\jobSeeker\mvJobSeekerListCtrl.js" />
+    <Compile Include="public\app\jobSeeker\mvJobSeekerRepo.js" />
+    <Compile Include="public\app\main\mvFooterCtrl.js" />
+    <Compile Include="public\app\main\mvMainCtrl.js" />
+    <Compile Include="public\app\main\mvSidebarCtrl.js" />
+    <Compile Include="public\app\vacancy\mvCachedVacancy.js" />
+    <Compile Include="public\app\vacancy\mvVacancy.js" />
+    <Compile Include="public\app\vacancy\mvVacancyCtrl.js" />
+    <Compile Include="public\app\vacancy\mvVacancyDetailCtrl.js" />
+    <Compile Include="public\app\vacancy\mvVacancyListCtrl.js" />
+    <Compile Include="public\app\vacancy\mvVacancyRepo.js" />
+    <Compile Include="public\vendor\angular-resource\angular-resource.js" />
+    <Compile Include="public\vendor\angular-resource\angular-resource.min.js" />
+    <Compile Include="public\vendor\angular-resource\index.js" />
+    <Compile Include="public\vendor\angular-route\angular-route.js" />
+    <Compile Include="public\vendor\angular-route\angular-route.min.js" />
+    <Compile Include="public\vendor\angular-route\index.js" />
+    <Compile Include="public\vendor\angular-translate\angular-translate.js" />
+    <Compile Include="public\vendor\angular-translate\angular-translate.min.js" />
+    <Compile Include="public\vendor\angular\angular.js" />
+    <Compile Include="public\vendor\angular\angular.min.js" />
+    <Compile Include="public\vendor\angular\index.js" />
+    <Compile Include="public\vendor\bootstrap\dist\js\bootstrap.js" />
+    <Compile Include="public\vendor\bootstrap\dist\js\bootstrap.min.js" />
+    <Compile Include="public\vendor\bootstrap\dist\js\npm.js" />
+    <Compile Include="public\vendor\bootstrap\Gruntfile.js" />
+    <Compile Include="public\vendor\bootstrap\grunt\bs-commonjs-generator.js" />
+    <Compile Include="public\vendor\bootstrap\grunt\bs-glyphicons-data-generator.js" />
+    <Compile Include="public\vendor\bootstrap\grunt\bs-lessdoc-parser.js" />
+    <Compile Include="public\vendor\bootstrap\grunt\bs-raw-files-generator.js" />
+    <Compile Include="public\vendor\bootstrap\js\affix.js" />
+    <Compile Include="public\vendor\bootstrap\js\alert.js" />
+    <Compile Include="public\vendor\bootstrap\js\button.js" />
+    <Compile Include="public\vendor\bootstrap\js\carousel.js" />
+    <Compile Include="public\vendor\bootstrap\js\collapse.js" />
+    <Compile Include="public\vendor\bootstrap\js\dropdown.js" />
+    <Compile Include="public\vendor\bootstrap\js\modal.js" />
+    <Compile Include="public\vendor\bootstrap\js\popover.js" />
+    <Compile Include="public\vendor\bootstrap\js\scrollspy.js" />
+    <Compile Include="public\vendor\bootstrap\js\tab.js" />
+    <Compile Include="public\vendor\bootstrap\js\tooltip.js" />
+    <Compile Include="public\vendor\bootstrap\js\transition.js" />
+    <Compile Include="public\vendor\bootstrap\package.js" />
+    <Compile Include="public\vendor\DefiantJS\defiant.min.js" />
+    <Compile Include="public\vendor\jquery\dist\jquery.js" />
+    <Compile Include="public\vendor\jquery\dist\jquery.min.js" />
+    <Compile Include="public\vendor\jquery\src\ajax.js" />
+    <Compile Include="public\vendor\jquery\src\ajax\jsonp.js" />
+    <Compile Include="public\vendor\jquery\src\ajax\load.js" />
+    <Compile Include="public\vendor\jquery\src\ajax\parseJSON.js" />
+    <Compile Include="public\vendor\jquery\src\ajax\parseXML.js" />
+    <Compile Include="public\vendor\jquery\src\ajax\script.js" />
+    <Compile Include="public\vendor\jquery\src\ajax\var\location.js" />
+    <Compile Include="public\vendor\jquery\src\ajax\var\nonce.js" />
+    <Compile Include="public\vendor\jquery\src\ajax\var\rquery.js" />
+    <Compile Include="public\vendor\jquery\src\ajax\xhr.js" />
+    <Compile Include="public\vendor\jquery\src\attributes.js" />
+    <Compile Include="public\vendor\jquery\src\attributes\attr.js" />
+    <Compile Include="public\vendor\jquery\src\attributes\classes.js" />
+    <Compile Include="public\vendor\jquery\src\attributes\prop.js" />
+    <Compile Include="public\vendor\jquery\src\attributes\support.js" />
+    <Compile Include="public\vendor\jquery\src\attributes\val.js" />
+    <Compile Include="public\vendor\jquery\src\callbacks.js" />
+    <Compile Include="public\vendor\jquery\src\core.js" />
+    <Compile Include="public\vendor\jquery\src\core\access.js" />
+    <Compile Include="public\vendor\jquery\src\core\init.js" />
+    <Compile Include="public\vendor\jquery\src\core\parseHTML.js" />
+    <Compile Include="public\vendor\jquery\src\core\ready.js" />
+    <Compile Include="public\vendor\jquery\src\core\support.js" />
+    <Compile Include="public\vendor\jquery\src\core\var\rsingleTag.js" />
+    <Compile Include="public\vendor\jquery\src\css.js" />
+    <Compile Include="public\vendor\jquery\src\css\addGetHookIf.js" />
+    <Compile Include="public\vendor\jquery\src\css\adjustCSS.js" />
+    <Compile Include="public\vendor\jquery\src\css\curCSS.js" />
+    <Compile Include="public\vendor\jquery\src\css\defaultDisplay.js" />
+    <Compile Include="public\vendor\jquery\src\css\hiddenVisibleSelectors.js" />
+    <Compile Include="public\vendor\jquery\src\css\showHide.js" />
+    <Compile Include="public\vendor\jquery\src\css\support.js" />
+    <Compile Include="public\vendor\jquery\src\css\var\cssExpand.js" />
+    <Compile Include="public\vendor\jquery\src\css\var\getStyles.js" />
+    <Compile Include="public\vendor\jquery\src\css\var\isHidden.js" />
+    <Compile Include="public\vendor\jquery\src\css\var\rmargin.js" />
+    <Compile Include="public\vendor\jquery\src\css\var\rnumnonpx.js" />
+    <Compile Include="public\vendor\jquery\src\css\var\swap.js" />
+    <Compile Include="public\vendor\jquery\src\data.js" />
+    <Compile Include="public\vendor\jquery\src\data\accepts.js" />
+    <Compile Include="public\vendor\jquery\src\data\Data.js" />
+    <Compile Include="public\vendor\jquery\src\data\support.js" />
+    <Compile Include="public\vendor\jquery\src\data\var\acceptData.js" />
+    <Compile Include="public\vendor\jquery\src\data\var\dataPriv.js" />
+    <Compile Include="public\vendor\jquery\src\data\var\dataUser.js" />
+    <Compile Include="public\vendor\jquery\src\deferred.js" />
+    <Compile Include="public\vendor\jquery\src\deprecated.js" />
+    <Compile Include="public\vendor\jquery\src\dimensions.js" />
+    <Compile Include="public\vendor\jquery\src\effects.js" />
+    <Compile Include="public\vendor\jquery\src\effects\animatedSelector.js" />
+    <Compile Include="public\vendor\jquery\src\effects\support.js" />
+    <Compile Include="public\vendor\jquery\src\effects\Tween.js" />
+    <Compile Include="public\vendor\jquery\src\event.js" />
+    <Compile Include="public\vendor\jquery\src\event\ajax.js" />
+    <Compile Include="public\vendor\jquery\src\event\alias.js" />
+    <Compile Include="public\vendor\jquery\src\event\focusin.js" />
+    <Compile Include="public\vendor\jquery\src\event\support.js" />
+    <Compile Include="public\vendor\jquery\src\event\trigger.js" />
+    <Compile Include="public\vendor\jquery\src\exports\amd.js" />
+    <Compile Include="public\vendor\jquery\src\exports\global.js" />
+    <Compile Include="public\vendor\jquery\src\intro.js" />
+    <Compile Include="public\vendor\jquery\src\jquery.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\buildFragment.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\createSafeFragment.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\getAll.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\setGlobalEval.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\support.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\var\nodeNames.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\var\rcheckableType.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\var\rleadingWhitespace.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\var\rscriptType.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\var\rtagName.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\wrapMap.js" />
+    <Compile Include="public\vendor\jquery\src\manipulation\_evalUrl.js" />
+    <Compile Include="public\vendor\jquery\src\offset.js" />
+    <Compile Include="public\vendor\jquery\src\outro.js" />
+    <Compile Include="public\vendor\jquery\src\queue.js" />
+    <Compile Include="public\vendor\jquery\src\queue\delay.js" />
+    <Compile Include="public\vendor\jquery\src\selector-native.js" />
+    <Compile Include="public\vendor\jquery\src\selector-sizzle.js" />
+    <Compile Include="public\vendor\jquery\src\selector.js" />
+    <Compile Include="public\vendor\jquery\src\serialize.js" />
+    <Compile Include="public\vendor\jquery\src\support.js" />
+    <Compile Include="public\vendor\jquery\src\traversing.js" />
+    <Compile Include="public\vendor\jquery\src\traversing\findFilter.js" />
+    <Compile Include="public\vendor\jquery\src\traversing\var\dir.js" />
+    <Compile Include="public\vendor\jquery\src\traversing\var\rneedsContext.js" />
+    <Compile Include="public\vendor\jquery\src\traversing\var\siblings.js" />
+    <Compile Include="public\vendor\jquery\src\var\arr.js" />
+    <Compile Include="public\vendor\jquery\src\var\class2type.js" />
+    <Compile Include="public\vendor\jquery\src\var\concat.js" />
+    <Compile Include="public\vendor\jquery\src\var\deletedIds.js" />
+    <Compile Include="public\vendor\jquery\src\var\document.js" />
+    <Compile Include="public\vendor\jquery\src\var\documentElement.js" />
+    <Compile Include="public\vendor\jquery\src\var\hasOwn.js" />
+    <Compile Include="public\vendor\jquery\src\var\indexOf.js" />
+    <Compile Include="public\vendor\jquery\src\var\pnum.js" />
+    <Compile Include="public\vendor\jquery\src\var\push.js" />
+    <Compile Include="public\vendor\jquery\src\var\rcssNum.js" />
+    <Compile Include="public\vendor\jquery\src\var\rnotwhite.js" />
+    <Compile Include="public\vendor\jquery\src\var\slice.js" />
+    <Compile Include="public\vendor\jquery\src\var\support.js" />
+    <Compile Include="public\vendor\jquery\src\var\toString.js" />
+    <Compile Include="public\vendor\jquery\src\wrap.js" />
+    <Compile Include="public\vendor\ngstorage\ngStorage.js" />
+    <Compile Include="public\vendor\ngstorage\ngStorage.min.js" />
+    <Compile Include="public\vendor\ngstorage\package.js" />
+    <Compile Include="public\vendor\toastr\toastr.js" />
+    <Compile Include="public\vendor\toastr\toastr.min.js" />
+    <Compile Include="server.js" />
+    <Compile Include="server\config\authentication.js" />
+    <Compile Include="server\config\config.js" />
+    <Compile Include="server\config\express.js" />
+    <Compile Include="server\config\mailer.js" />
+    <Compile Include="server\config\mongoose.js" />
+    <Compile Include="server\config\mustache.js" />
+    <Compile Include="server\config\passport-facebook.js" />
+    <Compile Include="server\config\passport-google.js" />
+    <Compile Include="server\config\passport-local.js" />
+    <Compile Include="server\config\passport.js" />
+    <Compile Include="server\config\routes.js" />
+    <Compile Include="server\controllers\categories.js" />
+    <Compile Include="server\controllers\courses.js" />
+    <Compile Include="server\controllers\innerPages.js" />
+    <Compile Include="server\controllers\employers.js" />
+    <Compile Include="server\controllers\Industries.js" />
+    <Compile Include="server\controllers\jobSeekers.js" />
+    <Compile Include="server\controllers\users.js" />
+    <Compile Include="server\controllers\vacancies.js" />
+    <Compile Include="server\models\Category.js" />
+    <Compile Include="server\models\Course.js" />
+    <Compile Include="server\models\EducationalLevel.js" />
+    <Compile Include="server\models\InnerPage.js" />
+    <Compile Include="server\models\Employer.js" />
+    <Compile Include="server\models\Industry.js" />
+    <Compile Include="server\models\JobSeeker.js" />
+    <Compile Include="server\models\User.js" />
+    <Compile Include="server\models\Vacancy.js" />
+    <Compile Include="server\utilities\encryption.js" />
+    <Content Include=".bowerrc" />
+    <Content Include=".gitignore" />
+    <Content Include=".jscsrc" />
+    <Content Include=".jshintrc" />
+    <Content Include="bower.json" />
+    <Content Include="package.json" />
+    <Content Include="public\app\account\front-signup.html" />
+    <Content Include="public\app\account\navbar-login.html" />
+    <Content Include="public\app\account\profile.html" />
+    <Content Include="public\app\account\signup.html" />
+    <Content Include="public\app\admin\users\user-list.html" />
+    <Content Include="public\app\course\course-detail.html" />
+    <Content Include="public\app\course\course-list.html" />
+    <Content Include="public\app\employer\employer-detail.html" />
+    <Content Include="public\app\employer\employer-list.html" />
+    <Content Include="public\app\employer\employer.html" />
+    <Content Include="public\app\industry\industry-detail.html" />
+    <Content Include="public\app\industry\industry-list.html" />
+    <Content Include="public\app\industry\industry.html" />
+    <Content Include="public\app\innerPage\innerPage-detail.html" />
+    <Content Include="public\app\innerPage\innerPage-list.html" />
+    <Content Include="public\app\innerPage\innerPage.html" />
+    <Content Include="public\app\jobSeeker\jobSeeker-detail.html" />
+    <Content Include="public\app\jobSeeker\jobSeeker-list.html" />
+    <Content Include="public\app\jobSeeker\jobSeeker.html" />
+    <Content Include="public\app\main\featured-courses.html" />
+    <Content Include="public\app\main\footer.html" />
+    <Content Include="public\app\main\main.html" />
+    <Content Include="public\app\main\menu.html" />
+    <Content Include="public\app\main\new-courses.html" />
+    <Content Include="public\app\main\new-courses.jade" />
+    <Content Include="public\app\main\sidebar-menu.html" />
+    <Content Include="public\app\vacancy\vacancy-detail.html" />
+    <Content Include="public\app\vacancy\vacancy-list.html" />
+    <Content Include="public\app\vacancy\vacancy.html" />
+    <Content Include="public\css\facebook_small.png" />
+    <Content Include="public\css\google-normal.png" />
+    <Content Include="public\css\simple-sidebar.css" />
+    <Content Include="public\css\site.css" />
+    <Content Include="public\css\site.styl" />
+    <Content Include="public\css\siteRTL.css" />
+    <Content Include="public\favicon.ico" />
+    <Content Include="public\logo.jpg" />
+    <Content Include="public\vendor\angular-resource\.bower.json" />
+    <Content Include="public\vendor\angular-resource\angular-resource.min.js.map" />
+    <Content Include="public\vendor\angular-resource\bower.json" />
+    <Content Include="public\vendor\angular-resource\package.json" />
+    <Content Include="public\vendor\angular-resource\README.md" />
+    <Content Include="public\vendor\angular-route\.bower.json" />
+    <Content Include="public\vendor\angular-route\angular-route.min.js.map" />
+    <Content Include="public\vendor\angular-route\bower.json" />
+    <Content Include="public\vendor\angular-route\package.json" />
+    <Content Include="public\vendor\angular-route\README.md" />
+    <Content Include="public\vendor\angular-translate\.bower.json" />
+    <Content Include="public\vendor\angular-translate\bower.json" />
+    <Content Include="public\vendor\angular-translate\README.md" />
+    <Content Include="public\vendor\angular\.bower.json" />
+    <Content Include="public\vendor\angular\angular-csp.css" />
+    <Content Include="public\vendor\angular\angular.min.js.gzip" />
+    <Content Include="public\vendor\angular\angular.min.js.map" />
+    <Content Include="public\vendor\angular\bower.json" />
+    <Content Include="public\vendor\angular\package.json" />
+    <Content Include="public\vendor\angular\README.md" />
+    <Content Include="public\vendor\bootstrap\.bower.json" />
+    <Content Include="public\vendor\bootstrap\bower.json" />
+    <Content Include="public\vendor\bootstrap\CHANGELOG.md" />
+    <Content Include="public\vendor\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="public\vendor\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="public\vendor\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="public\vendor\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="public\vendor\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="public\vendor\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="public\vendor\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="public\vendor\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="public\vendor\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="public\vendor\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="public\vendor\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="public\vendor\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="public\vendor\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="public\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="public\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="public\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="public\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="public\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="public\vendor\bootstrap\grunt\.jshintrc" />
+    <Content Include="public\vendor\bootstrap\grunt\configBridge.json" />
+    <Content Include="public\vendor\bootstrap\grunt\sauce_browsers.yml" />
+    <Content Include="public\vendor\bootstrap\js\.jscsrc" />
+    <Content Include="public\vendor\bootstrap\js\.jshintrc" />
+    <Content Include="public\vendor\bootstrap\less\.csscomb.json" />
+    <Content Include="public\vendor\bootstrap\less\.csslintrc" />
+    <Content Include="public\vendor\bootstrap\less\alerts.less" />
+    <Content Include="public\vendor\bootstrap\less\badges.less" />
+    <Content Include="public\vendor\bootstrap\less\bootstrap.less" />
+    <Content Include="public\vendor\bootstrap\less\breadcrumbs.less" />
+    <Content Include="public\vendor\bootstrap\less\button-groups.less" />
+    <Content Include="public\vendor\bootstrap\less\buttons.less" />
+    <Content Include="public\vendor\bootstrap\less\carousel.less" />
+    <Content Include="public\vendor\bootstrap\less\close.less" />
+    <Content Include="public\vendor\bootstrap\less\code.less" />
+    <Content Include="public\vendor\bootstrap\less\component-animations.less" />
+    <Content Include="public\vendor\bootstrap\less\dropdowns.less" />
+    <Content Include="public\vendor\bootstrap\less\forms.less" />
+    <Content Include="public\vendor\bootstrap\less\glyphicons.less" />
+    <Content Include="public\vendor\bootstrap\less\grid.less" />
+    <Content Include="public\vendor\bootstrap\less\input-groups.less" />
+    <Content Include="public\vendor\bootstrap\less\jumbotron.less" />
+    <Content Include="public\vendor\bootstrap\less\labels.less" />
+    <Content Include="public\vendor\bootstrap\less\list-group.less" />
+    <Content Include="public\vendor\bootstrap\less\media.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\alerts.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\background-variant.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\border-radius.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\buttons.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\center-block.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\clearfix.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\forms.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\gradients.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\grid-framework.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\grid.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\hide-text.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\image.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\labels.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\list-group.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\nav-divider.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\nav-vertical-align.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\opacity.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\pagination.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\panels.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\progress-bar.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\reset-filter.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\reset-text.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\resize.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\responsive-visibility.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\size.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\tab-focus.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\table-row.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\text-emphasis.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\text-overflow.less" />
+    <Content Include="public\vendor\bootstrap\less\mixins\vendor-prefixes.less" />
+    <Content Include="public\vendor\bootstrap\less\modals.less" />
+    <Content Include="public\vendor\bootstrap\less\navbar.less" />
+    <Content Include="public\vendor\bootstrap\less\navs.less" />
+    <Content Include="public\vendor\bootstrap\less\normalize.less" />
+    <Content Include="public\vendor\bootstrap\less\pager.less" />
+    <Content Include="public\vendor\bootstrap\less\pagination.less" />
+    <Content Include="public\vendor\bootstrap\less\panels.less" />
+    <Content Include="public\vendor\bootstrap\less\popovers.less" />
+    <Content Include="public\vendor\bootstrap\less\print.less" />
+    <Content Include="public\vendor\bootstrap\less\progress-bars.less" />
+    <Content Include="public\vendor\bootstrap\less\responsive-embed.less" />
+    <Content Include="public\vendor\bootstrap\less\responsive-utilities.less" />
+    <Content Include="public\vendor\bootstrap\less\scaffolding.less" />
+    <Content Include="public\vendor\bootstrap\less\tables.less" />
+    <Content Include="public\vendor\bootstrap\less\theme.less" />
+    <Content Include="public\vendor\bootstrap\less\thumbnails.less" />
+    <Content Include="public\vendor\bootstrap\less\tooltip.less" />
+    <Content Include="public\vendor\bootstrap\less\type.less" />
+    <Content Include="public\vendor\bootstrap\less\utilities.less" />
+    <Content Include="public\vendor\bootstrap\less\variables.less" />
+    <Content Include="public\vendor\bootstrap\less\wells.less" />
+    <Content Include="public\vendor\bootstrap\LICENSE" />
+    <Content Include="public\vendor\bootstrap\nuget\bootstrap.less.nuspec" />
+    <Content Include="public\vendor\bootstrap\nuget\bootstrap.nuspec" />
+    <Content Include="public\vendor\bootstrap\nuget\MyGet.ps1" />
+    <Content Include="public\vendor\bootstrap\package.json" />
+    <Content Include="public\vendor\bootstrap\README.md" />
+    <Content Include="public\vendor\jquery\.bower.json" />
+    <Content Include="public\vendor\jquery\AUTHORS.txt" />
+    <Content Include="public\vendor\jquery\bower.json" />
+    <Content Include="public\vendor\jquery\dist\jquery.min.map" />
+    <Content Include="public\vendor\jquery\LICENSE.txt" />
+    <Content Include="public\vendor\jquery\README.md" />
+    <Content Include="public\vendor\jquery\src\.jshintrc" />
+    <Content Include="public\vendor\ngstorage\.bower.json" />
+    <Content Include="public\vendor\ngstorage\.editorconfig" />
+    <Content Include="public\vendor\ngstorage\.gitattributes" />
+    <Content Include="public\vendor\ngstorage\.npmignore" />
+    <Content Include="public\vendor\ngstorage\bower.json" />
+    <Content Include="public\vendor\ngstorage\LICENSE" />
+    <Content Include="public\vendor\ngstorage\README.md" />
+    <Content Include="public\vendor\toastr\.bower.json" />
+    <Content Include="public\vendor\toastr\bower.json" />
+    <Content Include="public\vendor\toastr\README.md" />
+    <Content Include="public\vendor\toastr\toastr.css" />
+    <Content Include="public\vendor\toastr\toastr.js.map" />
+    <Content Include="public\vendor\toastr\toastr.less" />
+    <Content Include="public\vendor\toastr\toastr.min.css" />
+    <Content Include="public\vendor\toastr\toastr.scss" />
+    <Content Include="README.md" />
+    <Content Include="server\views\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="public\" />
+    <Folder Include="public\app\" />
+    <Folder Include="public\app\account\" />
+    <Folder Include="public\app\admin\" />
+    <Folder Include="public\app\admin\users\" />
+    <Folder Include="public\app\common\" />
+    <Folder Include="public\app\course\" />
+    <Folder Include="public\app\employer\" />
+    <Folder Include="public\app\industry\" />
+    <Folder Include="public\app\jobSeeker\" />
+    <Folder Include="public\app\main\" />
+    <Folder Include="public\app\innerPage\" />
+    <Folder Include="public\app\vacancy\" />
+    <Folder Include="public\css\" />
+    <Folder Include="public\i18n\" />
+    <Folder Include="public\vendor\" />
+    <Folder Include="public\vendor\angular-resource\" />
+    <Folder Include="public\vendor\angular-route\" />
+    <Folder Include="public\vendor\angular-translate\" />
+    <Folder Include="public\vendor\angular\" />
+    <Folder Include="public\vendor\bootstrap\" />
+    <Folder Include="public\vendor\bootstrap\dist\" />
+    <Folder Include="public\vendor\bootstrap\dist\css\" />
+    <Folder Include="public\vendor\bootstrap\dist\fonts\" />
+    <Folder Include="public\vendor\bootstrap\dist\js\" />
+    <Folder Include="public\vendor\bootstrap\fonts\" />
+    <Folder Include="public\vendor\bootstrap\grunt\" />
+    <Folder Include="public\vendor\bootstrap\js\" />
+    <Folder Include="public\vendor\bootstrap\less\" />
+    <Folder Include="public\vendor\bootstrap\less\mixins\" />
+    <Folder Include="public\vendor\bootstrap\nuget\" />
+    <Folder Include="public\vendor\DefiantJS\" />
+    <Folder Include="public\vendor\jquery\" />
+    <Folder Include="public\vendor\jquery\dist\" />
+    <Folder Include="public\vendor\jquery\src\" />
+    <Folder Include="public\vendor\jquery\src\ajax\" />
+    <Folder Include="public\vendor\jquery\src\ajax\var\" />
+    <Folder Include="public\vendor\jquery\src\attributes\" />
+    <Folder Include="public\vendor\jquery\src\core\" />
+    <Folder Include="public\vendor\jquery\src\core\var\" />
+    <Folder Include="public\vendor\jquery\src\css\" />
+    <Folder Include="public\vendor\jquery\src\css\var\" />
+    <Folder Include="public\vendor\jquery\src\data\" />
+    <Folder Include="public\vendor\jquery\src\data\var\" />
+    <Folder Include="public\vendor\jquery\src\effects\" />
+    <Folder Include="public\vendor\jquery\src\event\" />
+    <Folder Include="public\vendor\jquery\src\exports\" />
+    <Folder Include="public\vendor\jquery\src\manipulation\" />
+    <Folder Include="public\vendor\jquery\src\manipulation\var\" />
+    <Folder Include="public\vendor\jquery\src\queue\" />
+    <Folder Include="public\vendor\jquery\src\traversing\" />
+    <Folder Include="public\vendor\jquery\src\traversing\var\" />
+    <Folder Include="public\vendor\jquery\src\var\" />
+    <Folder Include="public\vendor\ngstorage\" />
+    <Folder Include="public\vendor\toastr\" />
+    <Folder Include="server\" />
+    <Folder Include="server\config\" />
+    <Folder Include="server\controllers\" />
+    <Folder Include="server\models\" />
+    <Folder Include="server\utilities\" />
+    <Folder Include="server\views\" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

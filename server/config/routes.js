@@ -5,6 +5,7 @@ var courses = require('../controllers/courses');
 var vacancies = require('../controllers/vacancies');
 var jobSeekers = require('../controllers/jobSeekers');
 var industries = require('../controllers/Industries');
+var innerPages = require('../controllers/innerPages');
 var passport = require('passport');
 
 module.exports = function (app) {
@@ -26,7 +27,7 @@ module.exports = function (app) {
     app.put('/api/jobSeekers/:id', jobSeekers.updateJobSeeker);
     app.get('/api/jobSeekers/:id', jobSeekers.getJobSeekerById);
 
-    app.get('/api/vacancies', authentication.requiresRole('A'), vacancies.getVacancies);
+    app.get('/api/vacancies', authentication.requiresRole(['A','E']), vacancies.getVacancies);
     app.post('/api/vacancies', vacancies.createVacancy);
     app.put('/api/vacancies', vacancies.updateVacancy);
     app.get('/api/vacancies/:id', vacancies.getVacancyById);
@@ -35,6 +36,11 @@ module.exports = function (app) {
     app.post('/api/industries', industries.createIndustry);
     app.put('/api/industries', industries.updateIndustry);
     app.get('/api/industries/:id', industries.getIndustryById);
+    
+    app.get('/api/innerPages', authentication.requiresRole('A'), innerPages.getInnerPages);
+    app.post('/api/innerPages', innerPages.createInnerPage);
+    app.put('/api/innerPages', innerPages.updateInnerPage);
+    app.get('/api/innerPages/:id', innerPages.getInnerPageById);
 
     app.post('/login', authentication.authenticate);
     app.post('/logout', function (req, res) {
@@ -54,13 +60,13 @@ module.exports = function (app) {
         failureRedirect: '/#/'
     }));
 
-    app.get('/api/usersendtoclient', function (req, res) {
+    app.get('/api/current_user_send_to_client', function (req, res) {
         if (req.user === undefined) {
             // The user is not logged in
             res.json({});
         } else {
             res.json({
-                usersendtoclient: req.user
+                current_user_send_to_client: req.user
             });
         }
     });

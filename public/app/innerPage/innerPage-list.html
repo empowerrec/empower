@@ -1,0 +1,39 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container top-padding-med admin-area">
+    <div class="pull-left">
+        <a href="#/addinnerPage" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+    </div>
+    <div class="pull-right">
+        <form class="form-inline">
+            <div class="form-group"><input ng-model="searchText" placeholder="Filter" class="form-control"/></div>
+            <div class="form-group margin-left-med">
+                <select ng-model="sortOrder" ng-options="item.value as item.text for item in sortOptions"
+                        class="form-control">
+
+                </select>
+            </div>
+
+        </form>
+    </div>
+    <table class="table table-hover table-striped table-condensed">
+        <thead>
+        <tr>
+            <th>{{"InnerPage.PageTitle" | translate}}</th>
+            <th>{{"InnerPage.PageBody" | translate}}</th>
+
+            <th>Modified By</th>
+            <th>Created By</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="innerPage in innerPages | filter:searchText | orderBy:sortOrder">
+            <td><a href="#/innerPages/{{innerPage._id}}"> <div ng-repeat="pageTitle in innerPage.PageTitle | filter:{Lang:currentLang}"> {{pageTitle.Text}}</div></a></td>
+            <td>{{ innerPage.ModifiedBy.FirstName}} {{ innerPage.ModifiedBy.LastName}}</td>
+            <td>{{ innerPage.CreatedBy.FirstName}} {{ innerPage.CreatedBy.LastName}}</td>
+
+            <td><a href="#/updateinnerPage/{{innerPage._id}}"> {{"Buttons.Update" | translate}}</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

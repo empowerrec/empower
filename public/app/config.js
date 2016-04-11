@@ -72,7 +72,11 @@
             },
             "Industry":{
                 "Description": "Description"
-            },
+        },
+         "InnerPage":{
+                "PageTitle": "Page Title",
+                "PageBody":"Page Body"
+                    },
             "Buttons": {
                 "Update": "Update",
                 "Save": "Save",
@@ -85,7 +89,16 @@
                 "Home": "Home",
                 "Jobs": "Jobs",
                 "Employers": "Employers",
-                "Vacancies": "Vacancies"
+                "Vacancies": "Vacancies",
+                "ContactUs": "Contact US",
+                "AboutUs": "About US",
+                "MyProfile": "My Profile" ,
+                "Users" :"Users",
+                "Industries" : "Industries",
+                "InnerPages" : "Inner Pages" ,
+                "JobSeekers" : "Job Seekers",
+                "Signout" :"Sign Out",
+                "UserMenu": "User Menu"
             },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
@@ -154,6 +167,10 @@
             "Industry":{
                 "Description": "الوصف"
             },
+            "InnerPage": {
+                "PageTitle": "عنوان الصفحة",
+                "PageBody": "تفاصيل الصفحة"
+            },
             "Buttons": {
                 "Update": "تعديل",
                 "Save": "حفظ",
@@ -166,7 +183,16 @@
                 "Home": "الرئيسية",
                 "Jobs": "الوظائف",
                 "Employers": "الشركات",
-                "Vacancies": "فرص العمل"
+                "Vacancies": "فرص العمل",
+                "ContactUs": "اتصل بنا",
+                "AboutUs":"عنا",
+                "MyProfile": "بياناتى" ,
+                "Users" : "المستخدمين" ,
+                "Industries" : "قطاعات العمل",
+                "InnerPages" : "الصفحات الداخلية",
+                "JobSeekers" : "الباحثين عن العمل",
+                "Signout" : "تسجيل الخروج",
+                "UserMenu":"قائمة المستخدم"
             },
             "Footer": {
                 "Copy": "\u00A9" + " شركة ايم باور 2016"

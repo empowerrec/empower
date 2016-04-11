@@ -19,8 +19,9 @@ angular.module('app').factory('mvEmployerRepo', function ($http, $q, mvEmployer,
             var newEmployer = new mvEmployer(newEmployerData);
             var dfd = $q.defer();
             console.log("Saving Employer");
-            newEmployer.$save().then(function () {
+            newEmployer.$save().then(function (employer) {
                 console.log("Employer Saved");
+                mvIdentity.currentEmployer = employer;
                 dfd.resolve();
             }, function (response) {
                 dfd.reject(response.data.reason);
