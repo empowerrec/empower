@@ -75,6 +75,7 @@
     <Compile Include="public\app\jobSeeker\mvJobSeekerRepo.js" />
     <Compile Include="public\app\main\mvFooterCtrl.js" />
     <Compile Include="public\app\main\mvMainCtrl.js" />
+    <Compile Include="public\app\main\mvMainHeadCtrl.js" />
     <Compile Include="public\app\main\mvSidebarCtrl.js" />
     <Compile Include="public\app\vacancy\mvCachedVacancy.js" />
     <Compile Include="public\app\vacancy\mvVacancy.js" />
@@ -323,6 +324,7 @@
     <Content Include="public\vendor\bootstrap\.bower.json" />
     <Content Include="public\vendor\bootstrap\bower.json" />
     <Content Include="public\vendor\bootstrap\CHANGELOG.md" />
+    <Content Include="public\vendor\bootstrap\dist\css\bootstrap-rtl.css" />
     <Content Include="public\vendor\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="public\vendor\bootstrap\dist\css\bootstrap-theme.css.map" />
     <Content Include="public\vendor\bootstrap\dist\css\bootstrap-theme.min.css" />
