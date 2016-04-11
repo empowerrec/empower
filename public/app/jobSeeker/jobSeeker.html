@@ -1,106 +1,38 @@
 <div ng-include="'/partials/main/sidebar-menu'"></div>
 <div class="container admin-area">
     <div class="well">
-        <form name="employerForm" class="form-horizontal">
+        <form name="jobSeekerForm" class="form-horizontal">
             <fieldset>
 
                 <div class="form-group">
-                    <label for="employerType" class="col-md-2 control-label">
-                        {{"Employer.EmployerType"
-                        | translate}}
+                    <label for="gender" class="col-md-2 control-label">
+                        {{"JobSeeker.Gender" | translate}}
                     </label>
                     <div class="col-md-10">
-                        <select ng-model="employer.EmployerType" ng-options="item.value as item.text for item in employerTypes"
+                        <select name="gender" ng-model="jobSeeker.Gender"
+                                ng-options="item.value as item.text for item in genders"
                                 class="form-control"></select>
                     </div>
-
-                </div>
-                <div class="form-group">
-                    <label for="numberOfEmployees" class="col-md-2 control-label">
-                        {{"Employer.NumberOfEmployees"
-                        | translate}}
-                    </label>
-
-                    <div class="col-md-10">
-                        <input name="numberOfEmployees" type="text" placeholder="Number Of Employees"
-                               ng-model="employer.NumberOfEmployees" required="required"
-                               class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="averageNumberOfJobOpeningsPerMonth" class="col-md-2 control-label">
-                        {{"Employer.AverageNumberOfJobOpeningsPerMonth"
-                        | translate}}
-                    </label>
-
-                    <div class="col-md-10">
-                        <input name="averageNumberOfJobOpeningsPerMonth" type="text"
-                               placeholder="Average Number Of Job Openings Per Month"
-                               ng-model="employer.AverageNumberOfJobOpeningsPerMonth"
-                               class="form-control" />
-                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="contactFirstName" class="col-md-2 control-label">
-                        {{"Employer.ContactFirstName"
-                        | translate}}
+                    <label for="birthDate" class="col-md-2 control-label">
+                        {{"JobSeeker.BirthDate" | translate}}
                     </label>
-
                     <div class="col-md-10">
-                        <input name="contactFirstName" type="text" placeholder="Contact First Name"
-                               ng-model="employer.ContactFirstName" required="required"
-                               class="form-control" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="contactLastName" class="col-md-2 control-label">
-                        {{"Employer.ContactLastName"
-                        | translate}}
-                    </label>
-
-                    <div class="col-md-10">
-                        <input name="contactLastName" type="text" placeholder="contact Last Name"
-                               ng-model="employer.ContactLastName" required="required"
-                               class="form-control" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="contactTitle" class="col-md-2 control-label">
-                        {{"Employer.ContactTitle"
-                        | translate}}
-                    </label>
-
-                    <div class="col-md-10">
-                        <input name="contactTitle" type="text" placeholder="Contact Title"
-                               ng-model="employer.ContactTitle" required="required"
-                               class="form-control" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="ContactMobileNumber" class="col-md-2 control-label">
-                        {{"Employer.ContactMobileNumber"
-                        | translate}}
-                    </label>
-
-                    <div class="col-md-10">
-                        <input name="contactMobileNumber" type="text" placeholder="ContactMobileNumber"
-                               ng-model="employer.ContactMobileNumber" required="required"
-                               class="form-control" />
+                        <input name="birthDate" type="date" placeholder="Birth Date"
+                               ng-model="jobSeeker.BirthDate" required="required" class="form-control" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-10 col-md-offset-2">
                         <div class="pull-right">
-                            <button ng-click="update()" ng-show="updateMode" ng-disabled="employerForm.$invalid" class="btn btn-primary">
+                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
                                 {{"Buttons.Update" | translate}}
                             </button>
 
-                            <button ng-click="add()" ng-show="addMode" ng-disabled="employerForm.$invalid||!addEnabled" class="btn btn-primary">
+                            <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
                                 {{"Buttons.Add" | translate}}
                             </button>
                             &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>

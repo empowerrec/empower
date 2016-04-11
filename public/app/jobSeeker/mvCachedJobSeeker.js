@@ -1,4 +1,4 @@
-angular.module('app').factory('mvCachedJobSeeker', function () {
+angular.module('app').factory('mvCachedJobSeeker', function (mvJobSeeker) {
     var jobSeekerList;
     return {
         query: function () {

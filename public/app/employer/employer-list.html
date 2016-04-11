@@ -2,7 +2,7 @@
 <div class="container top-padding-med admin-area">
 
     <div class="pull-left">
-        <a href="#/addemployer" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+        <a href="#/addemployer" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
     </div>
     <div class="pull-right">
         <form class="form-inline">

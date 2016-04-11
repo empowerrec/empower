@@ -1,7 +1,7 @@
 <div ng-include="'/partials/main/sidebar-menu'"></div>
 <div class="container top-padding-med admin-area">
     <div class="pull-left">
-        <a href="#/addinnerPage" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+        <a href="#/addinnerPage" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
     </div>
     <div class="pull-right">
         <form class="form-inline">

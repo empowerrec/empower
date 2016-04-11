@@ -1,7 +1,7 @@
 <div ng-include="'/partials/main/sidebar-menu'"></div>
 <div class="container top-padding-med admin-area">
     <div class="pull-left">
-        <a href="#/addJobSeeker" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+        <a href="#/addJobSeeker" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
     </div>
     <div class="pull-right">
         <form class="form-inline">
@@ -26,13 +26,12 @@
         </thead>
         <tbody>
         <tr ng-repeat="jobSeeker in jobSeekers | filter:searchText | orderBy:sortOrder">
-<!--
+
             <td><a href="#/JobSeekers/{{JobSeeker._id}}">
                 <div ng-repeat="emp in employer.EmployerName | filter:{Lang:currentLang}">
                     {{emp.Text}}
                 </div>
             </a></td>
--->
 
             <td>{{ jobSeeker.Gender }}</td>
             <td><a href="#/updateJobSeeker/{{jobSeeker._id}}"> {{"Buttons.Update" | translate}}</a></td>

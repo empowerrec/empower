@@ -67,7 +67,7 @@
                                 <input id="EmployerNameText2" type="text"
                                        placeholder="{{'Employer.EmployerName' | translate}}"
                                        value="{{getName(employer.EmployerName , lang.value)}}"
-                                       class="form-control" />
+                                       class="form-control"  />
 
                             </li>
                         </ul>
@@ -88,14 +88,14 @@
                 <div class="form-group"><label for="numberOfEmployees" class="col-md-2 control-label">{{"Employer.NumberOfEmployees"
                     | translate}}</label>
 
-                    <div class="col-md-10"><input name="numberOfEmployees" type="text" placeholder="{{'Employer.NumberOfEmployees' | translate}}"
+                    <div class="col-md-10"><input name="numberOfEmployees" type="number" placeholder="{{'Employer.NumberOfEmployees' | translate}}"
        ng-model="employer.NumberOfEmployees" required="required"
        class="form-control" /></div>
                 </div>
                 <div class="form-group"><label for="averageNumberOfJobOpeningsPerMonth" class="col-md-2 control-label">{{"Employer.AverageNumberOfJobOpeningsPerMonth"
                     | translate}}</label>
 
-                    <div class="col-md-10"><input name="averageNumberOfJobOpeningsPerMonth" type="text"
+                    <div class="col-md-10"><input name="averageNumberOfJobOpeningsPerMonth" type="number"
        placeholder="{{'Employer.AverageNumberOfJobOpeningsPerMonth' | translate}}"
        ng-model="employer.AverageNumberOfJobOpeningsPerMonth"
        class="form-control" /></div>
@@ -125,7 +125,7 @@
        class="form-control" /></div>
                 </div>
 
-                <div class="form-group"><label for="ContactMobileNumber" class="col-md-2 control-label">{{"Employer.ContactMobileNumber"
+                <div class="form-group"><label for="ContactMobileNumber" class="col-md-2 control-label" >{{"Employer.ContactMobileNumber"
                     | translate}}</label>
 
                     <div class="col-md-10"><input name="contactMobileNumber" type="text" placeholder="{{'Employer.ContactMobileNumber' | translate}}"

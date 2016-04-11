@@ -1,5 +1,5 @@
-angular.module('app').controller('mvVacancyListCtrl', function ($scope, mvVacancy,$translate, $rootScope) {
-
+angular.module('app').controller('mvVacancyListCtrl', function ($scope, mvVacancy,$translate, mvIdentity) {
+    $scope.currentUser = mvIdentity.currentUser;
     $scope.vacancies = mvVacancy.query();
     //$scope.currentLang = $translate.use();
     $scope.sortOptions = [{value: 'VacancyName', text: 'Sort by VacancyName'},

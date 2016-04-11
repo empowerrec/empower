@@ -1,5 +1,5 @@
-angular.module('app').controller('mvInnerPageListCtrl', function ($scope, mvInnerPage,$translate, $rootScope) {
-
+angular.module('app').controller('mvInnerPageListCtrl', function ($scope, mvInnerPage,$translate, mvIdentity) {
+    $scope.currentUser = mvIdentity.currentUser;
     $scope.innerPages = mvInnerPage.query();
     //$scope.currentLang = $translate.use();
     $scope.sortOptions = [{value: 'PageTitle', text: 'Sort by Page Title'}];
