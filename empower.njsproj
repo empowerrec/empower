@@ -73,6 +73,7 @@
     <Compile Include="public\app\jobSeeker\mvJobSeekerDetailCtrl.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeekerListCtrl.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeekerRepo.js" />
+    <Compile Include="public\app\main\mvLogoCtrl.js" />
     <Compile Include="public\app\main\mvFooterCtrl.js" />
     <Compile Include="public\app\main\mvMainCtrl.js" />
     <Compile Include="public\app\main\mvMainHeadCtrl.js" />
@@ -285,6 +286,7 @@
     <Content Include="public\app\jobSeeker\jobSeeker.html" />
     <Content Include="public\app\main\featured-courses.html" />
     <Content Include="public\app\main\footer.html" />
+    <Content Include="public\app\main\logo.html" />
     <Content Include="public\app\main\main.html" />
     <Content Include="public\app\main\menu.html" />
     <Content Include="public\app\main\new-courses.html" />
