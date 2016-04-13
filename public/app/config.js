@@ -56,12 +56,18 @@
                 "ContactTitle": "Contact Title",
                 "ContactMobileNumber": "Contact Mobile Number"
             },
+            "JobSeeker": {
+                "JobSeeker": "JobSeeker",
+                "Gender": "Gender",
+                "BirthDate": "Birth Date"
+            },
             "Vacancy": {
                 "JobTitle": "Job Title",
                 "JobDescrption": "Job Descrption",
                 "AvailableFrom": "Available From",
                 "AvailableTo": "Available To" ,
-                "Salary":"Salary"
+                "Salary": "Salary",
+                "RequiredExperiance":"Required Experience"
             },
             "User": {
                 "UserName": "User Name",
@@ -117,7 +123,6 @@
             "Password": "كلمة السر",
             "Remember Me": "تذكرني",
             "Sign Up": "فتح حساب",
-            "Job Seeker": "باحث عن وظيفة",
             "Created_By": "اضيف بواسطة",
             "First_Name": "الاسم الاول",
             "Last_Name": "الاسم الثانى",
@@ -149,13 +154,19 @@
                 "ContactLastName": "الاسم الأخير",
                 "ContactTitle": "الوظيفة",
                 "ContactMobileNumber": "رقم التليفون"
+            }, 
+            "JobSeeker": {
+                "JobSeeker": "باحث عن وظيفة",
+                "Gender": "النوع",
+                "BirthDate": "تاريخ الميلاد"
             },
             "Vacancy": {
                 "JobTitle": "عنوان الوظيفة",
                 "JobDescrption": "وصف الوظيفة",
                 "AvailableFrom": "متاحة من",
                 "AvailableTo": "متاحة الى" ,
-                "Salary":"المرتب"
+                "Salary":"المرتب",
+                "RequiredExperiance": "الخبرة المطلوبة"
             },
             "User": {
                 "UserName": "اسم المستخدم",

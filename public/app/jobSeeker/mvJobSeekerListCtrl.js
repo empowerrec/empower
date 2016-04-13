@@ -1,8 +1,9 @@
 angular.module('app').controller('mvJobSeekerListCtrl', function ($scope, mvJobSeeker, mvIdentity) {
     $scope.currentUser = mvIdentity.currentUser;
     $scope.jobSeekers = mvJobSeeker.query();
-    $scope.sortOptions = [{value: 'EmployerName', text: 'Sort by EmployerName'},
-        {value: 'NumberOfEmployees', text: 'Sort by NumberOfEmployees'}];
+    console.log($scope.jobSeekers);
+    $scope.sortOptions = [{value: 'BirthDate', text: 'Sort by Birth Date'},
+        {value: 'Gender', text: 'Sort by Gender'}];
     $scope.sortOrder = $scope.sortOptions[0].value;
 
 });

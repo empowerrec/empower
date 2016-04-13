@@ -34,11 +34,29 @@ exports.requiresApiLogin = function (req, res, next) {
 
 exports.requiresRole = function (role) {
     return function (req, res, next) {
-        if (!req.isAuthenticated() || req.user.UserType.indexOf(role)) {
+        
+        
+        if (!req.isAuthenticated() || checkRole(req,role)) {
             res.status(403);
             res.end();
         } else {
             next();
         }
+    
     };
 };
+
+function checkRole(req,roles) {
+    for (var role in roles) {
+        console.log('Roles' + roles);
+        console.log('Current Role' + role);
+        console.log('UserType' + req.user.UserType);
+        //console.log('UserTypeIndex' + req.user.UserType.indexOf(role));
+        if (req.user.UserType.indexOf(roles[role]) != -1) {
+            return false;
+        }
+
+    }
+
+    return true;
+}

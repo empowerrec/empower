@@ -19,6 +19,7 @@
         <thead>
         <tr>
             <th>{{"JobSeeker.Gender" | translate}}</th>
+            <th>{{"JobSeeker.BirthDate" | translate}}</th>
             <th>Modified By</th>
             <th>Created By</th>
             <th></th>
@@ -26,14 +27,12 @@
         </thead>
         <tbody>
         <tr ng-repeat="jobSeeker in jobSeekers | filter:searchText | orderBy:sortOrder">
-
-            <td><a href="#/JobSeekers/{{JobSeeker._id}}">
-                <div ng-repeat="emp in employer.EmployerName | filter:{Lang:currentLang}">
-                    {{emp.Text}}
-                </div>
-            </a></td>
-
-            <td>{{ jobSeeker.Gender }}</td>
+            <td>
+                <a href="#/jobSeekers/{{jobSeeker._id}}">{{jobSeeker.Gender}}</a>
+            </td>
+            <td>{{ jobSeeker.BirthDate | date}}</td>
+            <td>{{ jobSeeker.ModifiedBy.FirstName}} {{ jobSeeker.ModifiedBy.LastName}}</td>
+            <td>{{ jobSeeker.CreatedBy.FirstName}} {{ jobSeeker.CreatedBy.LastName}}</td>
             <td><a href="#/updateJobSeeker/{{jobSeeker._id}}"> {{"Buttons.Update" | translate}}</a></td>
         </tr>
         </tbody>

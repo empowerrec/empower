@@ -299,7 +299,6 @@
     <Content Include="public\css\google-normal.png" />
     <Content Include="public\css\simple-sidebar.css" />
     <Content Include="public\css\site.css" />
-    <Content Include="public\css\site.styl" />
     <Content Include="public\css\siteRTL.css" />
     <Content Include="public\favicon.ico" />
     <Content Include="public\logo.jpg" />
@@ -469,7 +468,6 @@
     <Folder Include="public\app\innerPage\" />
     <Folder Include="public\app\vacancy\" />
     <Folder Include="public\css\" />
-    <Folder Include="public\i18n\" />
     <Folder Include="public\vendor\" />
     <Folder Include="public\vendor\angular-resource\" />
     <Folder Include="public\vendor\angular-route\" />

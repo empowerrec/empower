@@ -21,7 +21,9 @@ var vacancySchema = mongoose.Schema({
             ref: 'EducationLevel'
         },
         Salary: {type: Number},
-        JobDescription: {type: String},
+    JobDescription: { type: String },
+    RequiredExperience  : { type: Number },
+Position :{type:String}   , 
         ModifiedBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'

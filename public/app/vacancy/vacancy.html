@@ -10,42 +10,59 @@
                 <div class="form-group"><label for="jobTitle" class="col-md-2 control-label">{{"Vacancy.JobTitle"
                     | translate}}</label>
 
-                    <div class="col-md-10"><input name="jobTitle" type="text" placeholder="JobTitle"
-                                                  ng-model="vacancy.JobTitle" required="required"
-                                                  class="form-control"/></div>
+                    <div class="col-md-10"><input name="jobTitle" type="text" placeholder="{{'Vacancy.JobTitle' | translate}}"
+       ng-model="vacancy.JobTitle" required="required"
+       class="form-control" /></div>
                 </div>
                 <div class="form-group"><label for="jobDescription" class="col-md-2 control-label">{{"Vacancy.JobDescrption"
                     | translate}}</label>
 
-                    <div class="col-md-10"><input name="jobDescription" type="text"
-                                                  placeholder="JobDescription"
-                                                  ng-model="vacancy.JobDescription"
-                                                  class="form-control"/></div>
+                    <div class="col-md-10"><textarea name="jobDescription" placeholder="{{'Vacancy.JobDescription' | translate}}"
+          ng-model="vacancy.JobDescription"
+          class="form-control" /></div>
                 </div>
 
+                <div class="form-group">
+                    <label for="requiredExperiance" class="col-md-2 control-label">
+                        {{"Vacancy.RequiredExperiance"| translate}}
+                    </label>
 
+                    <div class="col-md-3">
+                        <input name="requiredExperiance" type="number" placeholder="{{'Vacancy.RequiredExperiance' | translate}}"
+                               ng-model="vacancy.RequiredExperience" required="required"
+                               class="form-control" />
+                    </div>
+                </div>
 
                 <div class="form-group"><label for="salary" class="col-md-2 control-label">{{"Vacancy.Salary"
                     | translate}}</label>
 
-                    <div class="col-md-10"><input name="salary" type="number" placeholder="Salary"
-                                                  ng-model="vacancy.Salary" required="required"
-                                                  class="form-control"/></div>
+                    <div class="col-md-2"><input name="salary" type="number" placeholder="{{'Vacancy.Salary'| translate}}"
+       ng-model="vacancy.Salary" required="required"
+       class="form-control" /></div>
                 </div>
                 <div class="form-group"><label for="availableFrom" class="col-md-2 control-label">{{"Vacancy.AvailableFrom"
-                    | translate}}</label>
+                                            | translate}}</label>
+                    
 
-                    <div class="col-md-10"><input name="availableFrom" type="date" placeholder="AvailableFrom"
-                                                  ng-model="vacancy.AvailableFrom" required="required"
-                                                  class="form-control"/></div>
+                    <div class="col-md-2"><input name="availableFrom" type="date" placeholder="{{'vacancy.AvailableFrom'| translate}}"
+                                                 ng-model="vacancy.AvailableFrom" required="required"
+                                                 class="form-control" /></div>
+                    <label for="availableFrom" class="col-md-2 control-label">
+                        {{vacancy.AvailableFrom | date: 'dd/MM/yyyy'}}
+                    </label>
                 </div>
 
-                <div class="form-group"><label for="availableTo" class="col-md-2 control-label">{{"Vacancy.AvailableTo"
-                    | translate}}</label>
+                <div class="form-group">
+                    <label for="availableTo" class="col-md-2 control-label">{{"Vacancy.AvailableTo"| translate}}</label>
+                   
 
-                    <div class="col-md-10"><input name="availableTo" type="date" placeholder="AvailableTo"
-                                                  ng-model="vacancy.AvailableTo" required="required"
-                                                  class="form-control"/></div>
+                    <div class="col-md-2"><input name="availableTo" type="date" placeholder="{{'Vacancy.AvailableTo'| translate}}"
+                                                 ng-model="vacancy.AvailableTo" required="required"
+                                                 class="form-control" /></div>
+                    <label for="availableTo" class="col-md-2 control-label">
+                        {{vacancy.AvailableTo | date: 'dd/MM/yyyy'}}
+                    </label>
                 </div>
 
 

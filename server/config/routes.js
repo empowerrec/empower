@@ -22,9 +22,9 @@ module.exports = function (app) {
     app.put('/api/employers', employers.updateEmployer);
     app.get('/api/employers/:id', employers.getEmployerById);
 
-    app.get('/api/jobSeekers', authentication.requiresRole('A'), jobSeekers.getJobSeekers);
+    app.get('/api/jobSeekers', jobSeekers.getJobSeekers);
     app.post('/api/jobSeekers', jobSeekers.createJobSeeker);
-    app.put('/api/jobSeekers/:id', jobSeekers.updateJobSeeker);
+    app.put('/api/jobSeekers', jobSeekers.updateJobSeeker);
     app.get('/api/jobSeekers/:id', jobSeekers.getJobSeekerById);
 
     app.get('/api/vacancies', authentication.requiresRole(['A','E']), vacancies.getVacancies);
