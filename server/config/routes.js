@@ -6,6 +6,7 @@ var vacancies = require('../controllers/vacancies');
 var jobSeekers = require('../controllers/jobSeekers');
 var industries = require('../controllers/Industries');
 var innerPages = require('../controllers/innerPages');
+var categories = require('../controllers/categories');
 var passport = require('passport');
 
 module.exports = function (app) {
@@ -22,7 +23,7 @@ module.exports = function (app) {
     app.put('/api/employers', employers.updateEmployer);
     app.get('/api/employers/:id', employers.getEmployerById);
 
-    app.get('/api/jobSeekers', jobSeekers.getJobSeekers);
+    app.get('/api/jobSeekers', authentication.requiresRole('A'), jobSeekers.getJobSeekers);
     app.post('/api/jobSeekers', jobSeekers.createJobSeeker);
     app.put('/api/jobSeekers', jobSeekers.updateJobSeeker);
     app.get('/api/jobSeekers/:id', jobSeekers.getJobSeekerById);
@@ -35,8 +36,13 @@ module.exports = function (app) {
     app.get('/api/industries', authentication.requiresRole('A'), industries.getIndustries);
     app.post('/api/industries', industries.createIndustry);
     app.put('/api/industries', industries.updateIndustry);
-    app.get('/api/industries/:id', industries.getIndustryById);
+    app.get('/api/industries/:id', industries.getIndustryById);    
     
+    app.get('/api/categories', authentication.requiresRole('A'), categories.getCategories);
+    app.post('/api/categories', categories.createCategory);
+    app.put('/api/categories', categories.updateCategory);
+    app.get('/api/categories/:id', categories.getCategoryById);
+
     app.get('/api/innerPages', authentication.requiresRole('A'), innerPages.getInnerPages);
     app.post('/api/innerPages', innerPages.createInnerPage);
     app.put('/api/innerPages', innerPages.updateInnerPage);

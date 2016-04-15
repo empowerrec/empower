@@ -104,6 +104,18 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/innerPages', {
         templateUrl: '/partials/innerPage/innerPage-list.html',
         controller: 'mvInnerPageListCtrl'
+    }).when('/categories/:id', {
+        templateUrl: '/partials/category/category-detail',
+        controller: 'mvCategoryDetailCtrl'
+    }).when('/updateCategory/:id', {
+        templateUrl: '/partials/category/category',
+        controller: 'mvCategoryCtrl'
+    }).when('/addCategory', {
+        templateUrl: '/partials/category/category',
+        controller: 'mvCategoryCtrl'
+    }).when('/categories', {
+        templateUrl: '/partials/category/category-list.html',
+        controller: 'mvCategoryListCtrl'
     });
 
 });

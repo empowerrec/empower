@@ -22,6 +22,7 @@ var vacancySchema = mongoose.Schema({
         },
         Salary: {type: Number},
     JobDescription: { type: String },
+    JobTitle:{type:String},
     RequiredExperience  : { type: Number },
 Position :{type:String}   , 
         ModifiedBy: {

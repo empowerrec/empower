@@ -43,6 +43,12 @@
     <Compile Include="public\app\account\mvUser.js" />
     <Compile Include="public\app\admin\users\mvUserListCtrl.js" />
     <Compile Include="public\app\app.js" />
+    <Compile Include="public\app\category\mvCachedCategory.js" />
+    <Compile Include="public\app\category\mvCategory.js" />
+    <Compile Include="public\app\category\mvCategoryCtrl.js" />
+    <Compile Include="public\app\category\mvCategoryDetailCtrl.js" />
+    <Compile Include="public\app\category\mvCategoryListCtrl.js" />
+    <Compile Include="public\app\category\mvCategoryRepo.js" />
     <Compile Include="public\app\common\mvNotifier.js" />
     <Compile Include="public\app\config.js" />
     <Compile Include="public\app\course\mvCachedCourse.js" />
@@ -270,6 +276,9 @@
     <Content Include="public\app\account\profile.html" />
     <Content Include="public\app\account\signup.html" />
     <Content Include="public\app\admin\users\user-list.html" />
+    <Content Include="public\app\category\category-detail.html" />
+    <Content Include="public\app\category\category-list.html" />
+    <Content Include="public\app\category\category.html" />
     <Content Include="public\app\course\course-detail.html" />
     <Content Include="public\app\course\course-list.html" />
     <Content Include="public\app\employer\employer-detail.html" />
@@ -459,6 +468,7 @@
     <Folder Include="public\app\account\" />
     <Folder Include="public\app\admin\" />
     <Folder Include="public\app\admin\users\" />
+    <Folder Include="public\app\category\" />
     <Folder Include="public\app\common\" />
     <Folder Include="public\app\course\" />
     <Folder Include="public\app\employer\" />

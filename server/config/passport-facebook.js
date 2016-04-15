@@ -14,7 +14,7 @@ module.exports = function (config) {
             profileFields: ['id', 'name', 'emails']
         },
         function (req, token, refreshToken, profile, done) {
-
+            console.log(profile);
             User.findOne({
                 'AuthenticationStrategyName': 'facebook',
                 'AuthenticationStrategyId': profile.id
@@ -22,7 +22,8 @@ module.exports = function (config) {
                 if (err) {
                     return done(err);
                 }
-                if (user) {
+            if (user) {
+                console.log(user);
                     return done(null, user);
                 } else {
                     var newUser = new User();
@@ -40,7 +41,8 @@ module.exports = function (config) {
                     newUser.UserType = 'J';
 
                     newUser.save(function (err) {
-                        if (err) {
+                    if (err) {
+                        console.log(err);
                             throw err;
                         }
                         return done(null, newUser);

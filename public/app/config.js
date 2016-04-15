@@ -1,21 +1,21 @@
 (function () {
     'use strict';
-
+    
     var core = angular.module('app');
-
+    
     var config = {
         appErrorPrefix: '[hot-towel Error] ',
         appTitle: 'hot-towel'
     };
-
+    
     core.value('config', config);
-
+    
     core.config(configure);
-
+    
     configure.$inject = ['$translateProvider'];
     /* @ngInject */
     function configure($translateProvider) {
-
+        
         var english = {
             'Title': 'Internationalization Test',
             "Language": "Language",
@@ -67,22 +67,26 @@
                 "AvailableFrom": "Available From",
                 "AvailableTo": "Available To" ,
                 "Salary": "Salary",
-                "RequiredExperiance":"Required Experience"
+                "RequiredExperiance": "Required Experience"
             },
             "User": {
                 "UserName": "User Name",
                 "FirstName": "First Name",
                 "LastName": "Last Name",
-                "UserType": "User Type"
-
+                "UserType": "User Type",
+                "CreatedBy": "Created By",
+                "ModifiedBy":"Modified By"
             },
-            "Industry":{
+            "Industry": {
                 "Description": "Description"
-        },
-         "InnerPage":{
+            },
+            "Category": {
+                "Description": "Description"
+            },
+            "InnerPage": {
                 "PageTitle": "Page Title",
-                "PageBody":"Page Body"
-                    },
+                "PageBody": "Page Body"
+            },
             "Buttons": {
                 "Update": "Update",
                 "Save": "Save",
@@ -99,18 +103,20 @@
                 "ContactUs": "Contact US",
                 "AboutUs": "About US",
                 "MyProfile": "Profile" ,
-                "Users" :"Users",
+                "Users" : "Users",
                 "Industries" : "Industries",
                 "InnerPages" : "Inner Pages" ,
                 "JobSeekers" : "Job Seekers",
-                "Signout" :"Sign Out",
-                "UserMenu": "User Menu"
+                "Signout" : "Sign Out",
+                "UserMenu": "User Menu",
+                "Categories": "Categories",
+                "CompanyProfile" : "Company Profile"
             },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
             }
         };
-
+        
         var arabic = {
             "Title": "أختبار ",
             "Language": "اللغات",
@@ -165,17 +171,21 @@
                 "JobDescrption": "وصف الوظيفة",
                 "AvailableFrom": "متاحة من",
                 "AvailableTo": "متاحة الى" ,
-                "Salary":"المرتب",
+                "Salary": "المرتب",
                 "RequiredExperiance": "الخبرة المطلوبة"
             },
             "User": {
                 "UserName": "اسم المستخدم",
                 "FirstName": "الاسم الأول",
                 "LastName": "الاسم الأخير",
-                "UserType": "نوع المستخدم"
-
+                "UserType": "نوع المستخدم",                
+                "CreatedBy": "سجل بواسطة",
+                "ModifiedBy": "عدل بواسطة"
             },
-            "Industry":{
+            "Industry": {
+                "Description": "الوصف"
+            },
+            "Category": {
                 "Description": "الوصف"
             },
             "InnerPage": {
@@ -196,20 +206,22 @@
                 "Employers": "الشركات",
                 "Vacancies": "فرص العمل",
                 "ContactUs": "اتصل بنا",
-                "AboutUs":"عنا",
+                "AboutUs": "عنا",
                 "MyProfile": "بياناتى" ,
                 "Users" : "المستخدمين" ,
                 "Industries" : "قطاعات العمل",
                 "InnerPages" : "الصفحات الداخلية",
                 "JobSeekers" : "الباحثين عن العمل",
                 "Signout" : "تسجيل الخروج",
-                "UserMenu":"قائمة المستخدم"
+                "UserMenu": "قائمة المستخدم",
+                "Categories": "التصنيفات",
+                "CompanyProfile" : "بيانات الشركة"
             },
             "Footer": {
                 "Copy": "\u00A9" + " شركة ايم باور 2016"
             }
         };
-
+        
         var french = {
             "Title": "أختبار ",
             "Language": "اللغات",
@@ -240,7 +252,7 @@
             "New_Jobs": " فرنساوى الوظائف الجديده",
             "Jobs_Title": "Jobs Title"
         };
-
+        
         $translateProvider.translations('en', english);
         $translateProvider.translations('ar', arabic);
         $translateProvider.translations('fr', french);
@@ -251,11 +263,11 @@
         });
         $translateProvider.preferredLanguage('ar');
         //$translateProvider.determinePreferredLanguage();
-
+        
         console.log(navigator.language);
 
     }
-
+    
     core.run(function ($rootScope) {
         $rootScope.$on('$translateChangeSuccess', function () {
             console.log('Translation Change Success!');

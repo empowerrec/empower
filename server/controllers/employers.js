@@ -6,11 +6,20 @@ exports.getEmployers = function (req, res) {
     });
 };
 
-exports.getEmployerById = function(req, res) {
-    Employer.findOne({_id: req.params.id}).populate('ModifiedBy').exec(function(err, col) {
-        console.log(col);
-        res.send(col);
-    });
+exports.getEmployerById = function (req, res) {
+    if (req.params.id == 'profile') {
+        console.log(req.user);
+        Employer.findOne({ User: req.user }).populate('ModifiedBy').exec(function (err, col) {
+            console.log(col);
+            res.send(col);
+        });
+    } else {
+        Employer.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
+            console.log(col);
+            res.send(col);
+        }); 
+    }
+    
 };
 
 exports.createEmployer = function (req, res, next) {

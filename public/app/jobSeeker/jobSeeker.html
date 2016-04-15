@@ -5,9 +5,7 @@
             <fieldset>
 
                 <div class="form-group">
-                    <label for="Gender" class="col-md-2 control-label">
-                        {{"JobSeeker.Gender" | translate}}
-                    </label>
+                    <label for="Gender" class="col-md-2 control-label">{{"JobSeeker.Gender" | translate}}</label>
                     <div class="col-md-10">
                         <select name="Gender" ng-model="jobSeeker.Gender"
                                 ng-options="item.value as item.text for item in genders"
@@ -16,14 +14,21 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="BirthDate" class="col-md-2 control-label">
-                        {{"JobSeeker.BirthDate" | translate}}
-                    </label>
+                    <label for="BirthDate" class="col-md-2 control-label">{{"JobSeeker.BirthDate" | translate}}</label>
                     <div class="col-md-10">
                         <input name="BirthDate" type="date" placeholder="Birth Date"
                                ng-model="jobSeeker.BirthDate" required="required" class="form-control" />
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <label for="ResumeLink" class="col-md-2 control-label">{{"JobSeeker.ResumeLink" | translate}}</label>
+                    <div class="col-md-10">
+                        <input name="ResumeLink" type="text" placeholder="{{'JobSeeker.ResumeLink' | translate}}"
+                               ng-model="employer.ResumeLink" class="form-control" />
+                    </div>
+                </div>
+                
 
                 <div class="form-group">
                     <div class="col-md-10 col-md-offset-2">
