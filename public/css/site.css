@@ -113,3 +113,9 @@ footer p {
 input.submitted.ng-invalid {
   border: 1px solid #f00;
 }
+
+@media (min-width: 768px) {
+  .form-horizontal .control-label {
+     text-align: left;
+  }
+}

@@ -8,6 +8,7 @@ var express = require('express'),
     MongoStore = require('connect-mongo')(session);
 
 module.exports = function (app, config) {
+    
     function compile(str, path) {
         return stylus(str).set('filename', path);
     }
@@ -29,14 +30,17 @@ module.exports = function (app, config) {
         saveUninitialized: true,
         secret: config.sessionSecret
     }));
+    
     app.use(passport.initialize());
     app.use(passport.session());
+    
     app.use(stylus.middleware(
         {
             src: config.rootPath + '/public',
             compile: compile
         }
     ));
+    
     app.use(express.static(config.rootPath + '/public'));
 
     app.use(function (req, res, next) {

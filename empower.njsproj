@@ -318,6 +318,7 @@
     <Content Include="public\app\vacancy\vacancy.html" />
     <Content Include="public\css\facebook_small.png" />
     <Content Include="public\css\google-normal.png" />
+    <Content Include="public\css\simple-sidebarRTL.css" />
     <Content Include="public\css\simple-sidebar.css" />
     <Content Include="public\css\site.css" />
     <Content Include="public\css\siteRTL.css" />
