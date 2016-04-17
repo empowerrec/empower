@@ -59,7 +59,24 @@
             "JobSeeker": {
                 "JobSeeker": "JobSeeker",
                 "Gender": "Gender",
-                "BirthDate": "Birth Date"
+                "BirthDate": "Birth Date",
+                "Address": "Address",
+                "ResumeLink": "Resume Link",
+                "ExperienceLevel": "Experience Years",
+                "MostRecentEmployer": "Most Recent Employer",
+                "MostRecentJobTitle": "Most Recent Job Title",
+                "JobCategory": "JobCategory",
+                "PreferredJobCategory": "PreferredJobCategory",
+                "EducationLevel": "Education Level",
+                "SchoolName": "School Name",
+                "GraduationGrade": "GraduationGrade",
+                "LanguageSpoken": "Language Spoken",
+                "SalaryPreference": "Salary Preference",
+                "PreferredWork": "PreferredWork",
+                "Reference1": "Reference1",
+                "Reference1Contact": "Reference1 Contact",
+                "Reference2": "Reference2",
+                "Reference2Contact": "Reference2 Contact"
             },
             "Vacancy": {
                 "JobTitle": "Job Title",
@@ -75,7 +92,7 @@
                 "LastName": "Last Name",
                 "UserType": "User Type",
                 "CreatedBy": "Created By",
-                "ModifiedBy":"Modified By"
+                "ModifiedBy": "Modified By"
             },
             "Industry": {
                 "Description": "Description"
@@ -164,7 +181,24 @@
             "JobSeeker": {
                 "JobSeeker": "باحث عن وظيفة",
                 "Gender": "النوع",
-                "BirthDate": "تاريخ الميلاد"
+                "BirthDate": "تاريخ الميلاد",
+                "Address": "العنوان",
+                "ResumeLink": "السيرة الذاتية",
+                "ExperienceLevel": "سنوات الخبرة",
+                "MostRecentEmployer": "الشركة الحالية",
+                "MostRecentJobTitle": "المسمي الوظيفي الحالي",
+                "JobCategory": "فئة الوظيفة",
+                "PreferredJobCategory": "فئة الوظيفة المفضلة",
+                "EducationLevel": "مستوي التعليم",
+                "SchoolName": "اسم المدرسة او الجامعة",
+                "GraduationGrade": "درجة التخرج",
+                "LanguageSpoken": "اللغات",
+                "SalaryPreference": "المرتب المفضل",
+                "PreferredWork": "نوع العمل",
+                "Reference1": "Reference1",
+                "Reference1Contact": "Reference1 Contact",
+                "Reference2": "Reference2",
+                "Reference2Contact": "Reference2 Contact"
             },
             "Vacancy": {
                 "JobTitle": "عنوان الوظيفة",

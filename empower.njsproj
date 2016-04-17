@@ -49,8 +49,12 @@
     <Compile Include="public\app\category\mvCategoryDetailCtrl.js" />
     <Compile Include="public\app\category\mvCategoryListCtrl.js" />
     <Compile Include="public\app\category\mvCategoryRepo.js" />
+    <Compile Include="public\app\city\mvCachedCity.js" />
+    <Compile Include="public\app\city\mvCity.js" />
     <Compile Include="public\app\common\mvNotifier.js" />
     <Compile Include="public\app\config.js" />
+    <Compile Include="public\app\country\mvCachedCountry.js" />
+    <Compile Include="public\app\country\mvCountry.js" />
     <Compile Include="public\app\course\mvCachedCourse.js" />
     <Compile Include="public\app\course\mvCourse.js" />
     <Compile Include="public\app\course\mvCourseDetailCtrl.js" />
@@ -247,6 +251,9 @@
     <Compile Include="server\config\passport-local.js" />
     <Compile Include="server\config\passport.js" />
     <Compile Include="server\config\routes.js" />
+    <Compile Include="server\controllers\countries.js" />
+    <Compile Include="server\controllers\cities.js" />
+    <Compile Include="server\controllers\languages.js" />
     <Compile Include="server\controllers\categories.js" />
     <Compile Include="server\controllers\courses.js" />
     <Compile Include="server\controllers\innerPages.js" />
@@ -258,12 +265,17 @@
     <Compile Include="server\models\Category.js" />
     <Compile Include="server\models\Course.js" />
     <Compile Include="server\models\EducationalLevel.js" />
+    <Compile Include="server\models\City.js" />
+    <Compile Include="server\models\Country.js" />
+    <Compile Include="server\models\Language.js" />
     <Compile Include="server\models\InnerPage.js" />
     <Compile Include="server\models\Employer.js" />
     <Compile Include="server\models\Industry.js" />
     <Compile Include="server\models\JobSeeker.js" />
     <Compile Include="server\models\User.js" />
     <Compile Include="server\models\Vacancy.js" />
+    <Compile Include="server\routes\jobSeekers.js" />
+    <Compile Include="server\routes\courses.js" />
     <Compile Include="server\utilities\encryption.js" />
     <Content Include=".bowerrc" />
     <Content Include=".gitignore" />
@@ -476,6 +488,8 @@
     <Folder Include="public\app\jobSeeker\" />
     <Folder Include="public\app\main\" />
     <Folder Include="public\app\innerPage\" />
+    <Folder Include="public\app\country\" />
+    <Folder Include="public\app\city\" />
     <Folder Include="public\app\vacancy\" />
     <Folder Include="public\css\" />
     <Folder Include="public\vendor\" />
@@ -522,6 +536,7 @@
     <Folder Include="server\config\" />
     <Folder Include="server\controllers\" />
     <Folder Include="server\models\" />
+    <Folder Include="server\routes\" />
     <Folder Include="server\utilities\" />
     <Folder Include="server\views\" />
   </ItemGroup>

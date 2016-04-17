@@ -4,7 +4,7 @@ exports.getVacancies = function (req, res) {
     if (isAdmin(req)) {
         //console.log('UserDetai44' + req.user.UserType);
         //console.log('mvIdentity.currentUser' +req.body.username);
-        Vacancy.find({}).exec(function (err, col) {
+        Vacancy.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
@@ -13,7 +13,7 @@ exports.getVacancies = function (req, res) {
         //    res.send(col);
         //});
         console.log('req.user' + req.user);
-        Vacancy.find({CreatedBy: req.user}).exec(function (err, col) {
+        Vacancy.find({CreatedBy: req.user}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     }

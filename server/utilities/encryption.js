@@ -8,3 +8,11 @@ exports.hashPassword = function (salt, password) {
     var hmac = crypto.createHmac('sha', salt);
     return hmac.update(password).digest('hex');
 };
+
+exports.searchAtJson = function (obj, searchField , searchVal, returnField) {
+    for (var i = 0; i < obj.length ; i++) {
+        if (obj[i][searchField] == searchVal) {
+            return obj[i][returnField];
+        }
+    }
+};

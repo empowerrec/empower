@@ -5,7 +5,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
     passport = require('passport'),
-    mongoStore = require('connect-mongo')(session);
+    MongoStore = require('connect-mongo')(session);
 
 module.exports = function (app, config) {
     function compile(str, path) {
@@ -15,16 +15,16 @@ module.exports = function (app, config) {
     app.engine('html', require('ejs').renderFile);
     app.set('views', config.rootPath + '/server/views');
     app.set('view engine', 'html');
-
+    
+    //use function used Every time the app receives a request
     app.use(logger('dev'));
     app.use(cookieParser());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(session({
-        store: new mongoStore({
+        store: new MongoStore({
             url: config.db
         }),
-        //cookie : { maxAge: 7 * 24 * 60 * 60 * 1000}, // 7 days
         resave: true,
         saveUninitialized: true,
         secret: config.sessionSecret

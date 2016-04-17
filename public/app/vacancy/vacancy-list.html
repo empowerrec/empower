@@ -36,8 +36,8 @@
             <td>{{ vacancy.Salary}}</td>
             <td>{{ vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</td>
             <td>{{ vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</td>
-            <td>{{ employer.ModifiedBy.FirstName}} {{ employer.ModifiedBy.LastName}}</td>
-            <td>{{ employer.CreatedBy.FirstName}} {{ employer.CreatedBy.LastName}}</td>
+            <td>{{ vacancy.ModifiedBy.FirstName}} {{ vacancy.ModifiedBy.LastName}}</td>
+            <td>{{ vacancy.CreatedBy.FirstName}} {{ vacancy.CreatedBy.LastName}}</td>
 
             <td><a href="#/updatevacancy/{{vacancy._id}}"> {{"Buttons.Update" | translate}}</a></td>
         </tr>

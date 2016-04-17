@@ -8,6 +8,10 @@ var vacancyModel = require('../models/Vacancy');
 var educationalLevelModel = require('../models/EducationalLevel');
 var industryModel = require('../models/Industry');
 var innerPageModel = require('../models/InnerPage');
+var languageModel = require('../models/Language');
+var countryModel = require('../models/Country');
+var cityModel = require('../models/City');
+
 
 module.exports = function (config) {
     mongoose.connect(config.db);
@@ -16,7 +20,7 @@ module.exports = function (config) {
     db.once('open', function callback() {
         console.log('multivision db opened');
     });
-
+    
     userModel.createDefaultUsers();
     courseModel.createDefaultCourses();
     employerModel.createDefaultEmployers();
@@ -26,4 +30,7 @@ module.exports = function (config) {
     educationalLevelModel.createDefaultEducationalLevels();
     industryModel.createDefaultIndustry();
     innerPageModel.createDefaultInnerPages();
+    languageModel.createDefaultLanguages();
+    countryModel.createDefaultCountries(cityModel.createDefaultCities());
+    
 };

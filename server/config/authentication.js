@@ -33,16 +33,13 @@ exports.requiresApiLogin = function (req, res, next) {
 };
 
 exports.requiresRole = function (role) {
-    return function (req, res, next) {
-        
-        
+    return function (req, res, next) {        
         if (!req.isAuthenticated() || checkRole(req,role)) {
             res.status(403);
             res.end();
         } else {
             next();
-        }
-    
+        }    
     };
 };
 

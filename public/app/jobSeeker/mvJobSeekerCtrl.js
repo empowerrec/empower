@@ -6,7 +6,7 @@ angular.module('app').controller('mvJobSeekerCtrl', function ($scope, mvNotifier
         { value: 'Male', text: 'Male' },
         { value: 'Female', text: 'Female' }
     ];
-    
+        
     $scope.addEnabled = false;
     
     if (id) {
