@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngStorage']);
+angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngStorage', 'ui.bootstrap']);
 
 angular.module('app').config(function ($routeProvider) {
     var routRoleChecks = {

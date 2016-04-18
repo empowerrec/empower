@@ -5,8 +5,8 @@ angular.module('app').controller('mvJobSeekerCtrl', function ($scope, mvNotifier
     $scope.genders = [
         { value: 'Male', text: 'Male' },
         { value: 'Female', text: 'Female' }
-    ];
-        
+    ];    
+    
     $scope.addEnabled = false;
     
     if (id) {
@@ -14,21 +14,21 @@ angular.module('app').controller('mvJobSeekerCtrl', function ($scope, mvNotifier
             $scope.updateMode = true;
             $scope.addMode = false;
             
-            $scope.jobSeeker.BirthDate = new Date($scope.jobSeeker.BirthDate);            
+            $scope.jobSeeker.BirthDate = new Date($scope.jobSeeker.BirthDate);
             if (!$scope.jobSeeker.Gender) {
                 $scope.jobSeeker.Gender = $scope.genders[0].value;
             }
         }));
-    } else {        
-        $scope.jobSeeker = new mvJobSeeker();        
+    } else {
+        $scope.jobSeeker = new mvJobSeeker();
         $scope.jobSeeker.Gender = $scope.genders[0].value;
-
+        
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
     }
     
-    $scope.update = function () {        
+    $scope.update = function () {
         if ($scope.jobSeekerForm.$valid) {
             mvJobSeekerRepo.updateCurrentJobSeeker($scope.jobSeeker).then(function () {
                 mvNotifier.notify('JobSeeker has been updated!');

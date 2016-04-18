@@ -94,6 +94,11 @@
     <Compile Include="public\app\vacancy\mvVacancyDetailCtrl.js" />
     <Compile Include="public\app\vacancy\mvVacancyListCtrl.js" />
     <Compile Include="public\app\vacancy\mvVacancyRepo.js" />
+    <Compile Include="public\vendor\angular-bootstrap\index.js" />
+    <Compile Include="public\vendor\angular-bootstrap\ui-bootstrap-tpls.js" />
+    <Compile Include="public\vendor\angular-bootstrap\ui-bootstrap-tpls.min.js" />
+    <Compile Include="public\vendor\angular-bootstrap\ui-bootstrap.js" />
+    <Compile Include="public\vendor\angular-bootstrap\ui-bootstrap.min.js" />
     <Compile Include="public\vendor\angular-resource\angular-resource.js" />
     <Compile Include="public\vendor\angular-resource\angular-resource.min.js" />
     <Compile Include="public\vendor\angular-resource\index.js" />
@@ -324,6 +329,13 @@
     <Content Include="public\css\siteRTL.css" />
     <Content Include="public\favicon.ico" />
     <Content Include="public\logo.jpg" />
+    <Content Include="public\vendor\angular-bootstrap\.bower.json" />
+    <Content Include="public\vendor\angular-bootstrap\.gitignore" />
+    <Content Include="public\vendor\angular-bootstrap\.npmignore" />
+    <Content Include="public\vendor\angular-bootstrap\bower.json" />
+    <Content Include="public\vendor\angular-bootstrap\package.json" />
+    <Content Include="public\vendor\angular-bootstrap\README.md" />
+    <Content Include="public\vendor\angular-bootstrap\ui-bootstrap-csp.css" />
     <Content Include="public\vendor\angular-resource\.bower.json" />
     <Content Include="public\vendor\angular-resource\angular-resource.min.js.map" />
     <Content Include="public\vendor\angular-resource\bower.json" />
@@ -494,6 +506,7 @@
     <Folder Include="public\app\vacancy\" />
     <Folder Include="public\css\" />
     <Folder Include="public\vendor\" />
+    <Folder Include="public\vendor\angular-bootstrap\" />
     <Folder Include="public\vendor\angular-resource\" />
     <Folder Include="public\vendor\angular-route\" />
     <Folder Include="public\vendor\angular-translate\" />

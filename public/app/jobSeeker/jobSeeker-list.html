@@ -17,24 +17,36 @@
     </div>
     <table class="table table-hover table-striped table-condensed">
         <thead>
-        <tr>
-            <th>{{"JobSeeker.Gender" | translate}}</th>
-            <th>{{"JobSeeker.BirthDate" | translate}}</th>
-            <th>{{"User.CreatedBy" | translate}}</th>
-            <th>{{"User.ModifiedBy" | translate}}</th>
-            <th></th>
-        </tr>
+            <tr>
+                <th>{{"JobSeeker.Gender" | translate}}</th>
+                <th>{{"JobSeeker.BirthDate" | translate}}</th>
+                <th>{{"User.CreatedBy" | translate}}</th>
+                <th>{{"User.ModifiedBy" | translate}}</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="jobSeeker in jobSeekers | filter:searchText | orderBy:sortOrder">
-            <td>
-                <a href="#/jobSeekers/{{jobSeeker._id}}">{{jobSeeker.Gender}}</a>
-            </td>
-            <td>{{ jobSeeker.BirthDate | date}}</td>
-            <td>{{ jobSeeker.ModifiedBy.FirstName}} {{ jobSeeker.ModifiedBy.LastName}}</td>
-            <td>{{ jobSeeker.CreatedBy.FirstName}} {{ jobSeeker.CreatedBy.LastName}}</td>
-            <td><a href="#/updateJobSeeker/{{jobSeeker._id}}"> {{"Buttons.Update" | translate}}</a></td>
-        </tr>
+            <tr ng-repeat="jobSeeker in jobSeekers | filter:searchText | orderBy:sortOrder">
+                <td>
+                    <a href="#/jobSeekers/{{jobSeeker._id}}">{{jobSeeker.Gender}}</a>
+                </td>
+                <td>{{ jobSeeker.BirthDate | date}}</td>
+                <td>{{ jobSeeker.ModifiedBy.FirstName}} {{ jobSeeker.ModifiedBy.LastName}}</td>
+                <td>{{ jobSeeker.CreatedBy.FirstName}} {{ jobSeeker.CreatedBy.LastName}}</td>
+                <td><a href="#/updateJobSeeker/{{jobSeeker._id}}"> {{"Buttons.Update" | translate}}</a></td>
+            </tr>
         </tbody>
-    </table>
+    </table>    
+    <uib-pagination total-items="paging.totalItems"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="pageChanged"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    rotate="false"
+                    previous-text="Prev"
+                    next-text="Next"
+                    first-text="First"
+                    last-text="Last">
+    </uib-pagination>
 </div>

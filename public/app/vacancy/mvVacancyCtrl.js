@@ -8,6 +8,8 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope,  mvNotifier,
         $scope.vacancy = mvVacancy.get({_id:id },(function(){
         $scope.updateMode = true;
         $scope.addMode = false;
+        $scope.vacancy.AvailableFrom = new Date($scope.vacancy.AvailableFrom);
+        $scope.vacancy.AvailableTo = new Date($scope.vacancy.AvailableTo);       
     }));
 
 
