@@ -1,54 +1,62 @@
 angular.module('app').factory('mvAuth', function ($http, $q, mvIdentity, mvUser) {
     return {
-        authenticatedUser: function (username, password,rememberme) {
+        authenticatedUser: function (username, password, rememberme) {
             var dfd = $q.defer();
-            $http.post('/login', {username: username, password: password,rememberme:rememberme})
+            $http.post('/login', { username: username, password: password, rememberme: rememberme })
                 .then(function (response) {
-                    if (response.data.success) {
-                        var user = new mvUser();
-                        angular.extend(user, response.data.user);
-                        mvIdentity.currentUser = user;
-                        dfd.resolve(true);
+                if (response.data.success) {
+                    var user = new mvUser();
+                    angular.extend(user, response.data.user);
+                    mvIdentity.currentUser = user;
+                    dfd.resolve(true);
 
-                    } else {
-                        dfd.resolve(false);
-                    }
-                });
+                } else {
+                    dfd.resolve(false);
+                }
+            });
             return dfd.promise;
         },
         createUser: function (newUserData) {
             var newUser = new mvUser(newUserData);
             var dfd = $q.defer();
-
+            
             newUser.$save().then(function () {
                 mvIdentity.currentUser = newUser;
                 dfd.resolve();
             }, function (response) {
                 dfd.reject(response.data.reason);
             });
-
+            
             return dfd.promise;
         },
         updateCurrentUser: function (newUserData) {
             var dfd = $q.defer();
             var clone = angular.copy(mvIdentity.currentUser);
-            angular.extend(clone,newUserData);
+            angular.extend(clone, newUserData);
             clone.$update().then(function () {
                 mvIdentity.currentUser = clone;
                 dfd.resolve();
             }, function (response) {
                 dfd.reject(response.data.reason);
             });
-
+            
             return dfd.promise;
         },
         logoutUser: function () {
             var dfd = $q.defer();
-            $http.post('/logout', {logout: true})
+            $http.post('/logout', { logout: true })
                 .then(function () {
-                    mvIdentity.currentUser = undefined;
-                    dfd.resolve();
-                });
+                mvIdentity.currentUser = undefined;
+                dfd.resolve();
+            });
+            return dfd.promise;
+        }, 
+        resetUserPassword: function (email) {
+            var dfd = $q.defer();
+            $http.post('/forget', { email: email })
+                .then(function () {                
+                dfd.resolve();
+            });
             return dfd.promise;
         },
         authorizeCurrentUserForRoute: function (role) {

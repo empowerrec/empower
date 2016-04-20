@@ -1,122 +1,181 @@
 body {
-  padding-top: 61px;
-}
-.navbar-header a.navbar-brand {
-  margin-top: -15px;
-  margin-bottom: -20px;
-}
-.navbar-header a.navbar-brand h6 {
-  color: #ccc;
-}
-footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-footer p {
-  border-top: 1px solid #d7e0e2;
-}
-.navbar-form .form-group {
-  margin-left: 10px;
-}
-.navbar-form button {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.navbar-form a {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.top-padding-med {
-  padding-top: 10px;
-}
-.margin-left-med {
-  margin-left: 10px;
-}
-.toast-top-right {
-  top: 70px;
-}
-.toast-success {
-  background-color: #13987e;
-}
-.login {
-  height: 380px;
-  width: 390px;
-  float: left;
-  margin-left: 10px;
-  padding-top: 15px;
-  padding-right: 25px !important;
-  padding-left: 25px !important;
-}
-.welcome {
-  width: 730px;
-  float: left;
-  height: 380px;
-  padding-top: 15px;
-}
-.signup_button {
-  display: inline-block;
-  background: #00a000;
-  border-top: 1px solid #29447e;
-  border-right: 1px solid #29447e;
-  border-bottom: 1px solid #1a356e;
-  border-left: none;
-  width: 80px;
-  padding-right: 7px;
-  padding-left: 7px;
-  font-weight: bold;
-  font-size: 12px;
-  color: #fff;
-  text-decoration: none;
-  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
-  line-height: 22px;
-  cursor: pointer;
-}
-.facebook_button {
-  display: inline-block;
-  background: #627aac url("facebook_small.png") left no-repeat;
-  border-top: 1px solid #29447e;
-  border-right: 1px solid #29447e;
-  border-bottom: 1px solid #1a356e;
-  border-left: none;
-  height: 25px;
-  padding-right: 7px;
-  padding-left: 29px;
-  font-weight: bold;
-  font-size: 12px;
-  color: #fff;
-  text-decoration: none;
-  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
-  line-height: 22px;
-  cursor: pointer;
-}
-.google_button {
-  display: inline-block;
-  background: #4285f4 url("google-normal.png") left no-repeat;
-  border-top: 1px solid #29447e;
-  border-right: 1px solid #29447e;
-  border-bottom: 1px solid #1a356e;
-  border-left: none;
-  height: 25px;
-  padding-right: 7px;
-  padding-left: 29px;
-  font-weight: bold;
-  font-size: 12px;
-  color: #fff;
-  text-decoration: none;
-  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
-  line-height: 22px;
-  cursor: pointer;
-}
-.admin-area {
-  width: 1070px;
-}
-input.submitted.ng-invalid {
-  border: 1px solid #f00;
+    padding-top: 61px;
 }
 
+.navbar-header a.navbar-brand {
+    margin-top: -15px;
+    margin-bottom: -20px;
+}
+
+    .navbar-header a.navbar-brand h6 {
+        color: #ccc;
+    }
+
+footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+    footer p {
+        border-top: 1px solid #d7e0e2;
+    }
+
+.navbar-form .form-group {
+    margin-left: 10px;
+}
+
+.navbar-form button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar-form a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.top-padding-med {
+    padding-top: 10px;
+}
+
+.margin-left-med {
+    margin-left: 10px;
+}
+
+.toast-top-right {
+    top: 70px;
+}
+
+.toast-success {
+    background-color: #13987e;
+}
+
+.login {
+    height: 380px;
+    width: 390px;
+    float: left;
+    margin-left: 10px;
+    padding-top: 4px;
+    padding-right: 25px !important;
+    padding-left: 25px !important;
+}
+
+.welcome {
+    width: 730px;
+    float: left;
+    height: 380px;
+    padding-top: 15px;
+}
+
+.signup_button {
+    display: inline-block;
+    background: #00a000;
+    border-top: 1px solid #29447e;
+    border-right: 1px solid #29447e;
+    border-bottom: 1px solid #1a356e;
+    border-left: none;
+    width: 80px;
+    padding-right: 7px;
+    padding-left: 7px;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.facebook_button {
+    display: inline-block;
+    background: #627aac url("facebook_small.png") left no-repeat;
+    border-top: 1px solid #29447e;
+    border-right: 1px solid #29447e;
+    border-bottom: 1px solid #1a356e;
+    border-left: none;
+    height: 25px;
+    padding-right: 7px;
+    padding-left: 29px;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.google_button {
+    display: inline-block;
+    background: #4285f4 url("google-normal.png") left no-repeat;
+    border-top: 1px solid #29447e;
+    border-right: 1px solid #29447e;
+    border-bottom: 1px solid #1a356e;
+    border-left: none;
+    height: 25px;
+    padding-right: 7px;
+    padding-left: 29px;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.admin-area {
+    width: 1070px;
+}
+
+input.submitted.ng-invalid {
+    border: 1px solid #f00;
+}
 
 @media (min-width: 768px) {
-  .form-horizontal .control-label {
-     text-align: right; 
-  }
+    .form-horizontal .control-label {
+        text-align: right;
+    }
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-control-md-first {
+    float: right;
+    display: block;
+    width: 49%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-control-md-second {
+    float: left;
+    display: block;
+    width: 49%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }

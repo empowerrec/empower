@@ -1,0 +1,15 @@
+<div ng-show="!identity.isAuthenticated()">
+    <uib-tabset justified="true">
+        <uib-tab index="0" heading="{{'Signin' | translate}}" active="true">
+            <br/>
+            <div ng-include="'/partials/account/front-login.html'"></div>
+        </uib-tab>
+        <uib-tab index="1" heading="{{'Sign Up' | translate}}" active="false">
+            <br/>
+            <div ng-include="'/partials/account/front-signup.html'"></div>
+        </uib-tab>
+    </uib-tabset>
+</div>
+<div ng-show="identity.isAuthenticated()">
+    Hello , {{ identity.currentUser.FirstName + ' ' + identity.currentUser.LastName }}
+</div>

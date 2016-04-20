@@ -3,6 +3,7 @@ var users = require('../controllers/users');
 var employers = require('../controllers/employers');
 var vacancies = require('../controllers/vacancies');
 var industries = require('../controllers/Industries');
+var jobTypes = require('../controllers/jobTypes');
 var innerPages = require('../controllers/innerPages');
 var categories = require('../controllers/categories');
 var languages = require('../controllers/languages');
@@ -34,6 +35,11 @@ module.exports = function (app) {
     app.put('/api/industries', industries.updateIndustry);
     app.get('/api/industries/:id', industries.getIndustryById);
     
+    app.get('/api/jobTypes', authentication.requiresRole('A'), jobTypes.getJobTypes);
+    app.post('/api/jobTypes', jobTypes.createJobType);
+    app.put('/api/jobTypes', jobTypes.updateJobType);
+    app.get('/api/jobTypes/:id', jobTypes.getJobTypeById);
+    
     app.get('/api/categories', authentication.requiresRole('A'), categories.getCategories);
     app.post('/api/categories', categories.createCategory);
     app.put('/api/categories', categories.updateCategory);
@@ -60,6 +66,7 @@ module.exports = function (app) {
     app.get('/api/innerPages/:id', innerPages.getInnerPageById);
     
     app.post('/login', authentication.authenticate);
+    app.post('/forget', users.sendResetPasswordLink);
     app.post('/logout', function (req, res) {
         req.logout();
         res.end();

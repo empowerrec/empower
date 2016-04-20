@@ -25,6 +25,7 @@
                 "Arabic": "عربى"
             },
             "Created_By": "Created by John Papa",
+            "Forget Password":"Forget Password",
             "First_Name": "First Name",
             "Last_Name": "Last Name",
             "Age": "Age",
@@ -42,7 +43,7 @@
             "Activation_Admin": "Activated Admin View",
             "Featured_Jobs": "Featured Jobs",
             "Welcome": "Welcome To Empower !",
-            "Signin": "Signin",
+            "Signin": "Sign In",
             "New_Jobs": "New Jobs",
             'Jobs_Title': "Jobs Title",
             "Employer": {
@@ -97,6 +98,9 @@
             "Industry": {
                 "Description": "Description"
             },
+            "JobType": {
+                "JobTypeName": "Job Type Name"
+            },
             "Category": {
                 "Description": "Description"
             },
@@ -122,6 +126,7 @@
                 "MyProfile": "Profile" ,
                 "Users" : "Users",
                 "Industries" : "Industries",
+                "JobTypes" : "JobTypes",
                 "InnerPages" : "Inner Pages" ,
                 "JobSeekers" : "Job Seekers",
                 "Signout" : "Sign Out",
@@ -145,6 +150,8 @@
             "Email": "البريد الالكتروني",
             "Password": "كلمة السر",
             "Remember Me": "تذكرني",
+            "Forget Password": "نسيت كلمة السر",
+            "Confirm Password":"تاكيد كلمة السر",
             "Sign Up": "فتح حساب",
             "Created_By": "اضيف بواسطة",
             "First_Name": "الاسم الاول",
@@ -219,6 +226,9 @@
             "Industry": {
                 "Description": "الوصف"
             },
+            "JobType": {
+                "JobTypeName": "نوع الوظيفة"
+            },
             "Category": {
                 "Description": "الوصف"
             },
@@ -244,6 +254,7 @@
                 "MyProfile": "بياناتى" ,
                 "Users" : "المستخدمين" ,
                 "Industries" : "قطاعات العمل",
+                "JobTypes" : "انواع الوظائف",
                 "InnerPages" : "الصفحات الداخلية",
                 "JobSeekers" : "الباحثين عن العمل",
                 "Signout" : "تسجيل الخروج",

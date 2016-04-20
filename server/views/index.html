@@ -4,8 +4,8 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" ng-href="{{getStyleFile()}}" />
     <link rel="stylesheet" href="vendor/toastr/toastr.min.css" />
-    <link rel="stylesheet" href="{{getSiteStyleFile()}}" />
-    <link rel="stylesheet" href="{{getSideBarStyleFile()}}" />
+    <link rel="stylesheet" ng-href="{{getSiteStyleFile()}}" />
+    <link rel="stylesheet" ng-href="{{getSideBarStyleFile()}}" />
 </head>
     <body>
        
@@ -52,7 +52,9 @@
         <script type="text/javascript" src="app/account/mvSignupCtrl.js"></script>
         <script type="text/javascript" src="app/account/mvProfileCtrl.js"></script>
         <script type="text/javascript" src="app/account/mvFrontSignupCtrl.js"></script>
-        
+        <script type="text/javascript" src="app/account/mvForgetPasswordCtrl.js"></script>
+        <script type="text/javascript" src="app/account/mvFrontLoginCtrl.js"></script>
+
         <!-- Course -->
         <script type="text/javascript" src="app/course/mvCourseListCtrl.js"></script>
         <script type="text/javascript" src="app/course/mvCourse.js"></script>
@@ -86,6 +88,14 @@
         <script type="text/javascript" src="app/industry/mvIndustryCtrl.js"></script>
         <script type="text/javascript" src="app/industry/mvIndustryListCtrl.js"></script>
         
+        <!-- JobType -->
+        <script type="text/javascript" src="app/jobType/mvJobType.js"></script>
+        <script type="text/javascript" src="app/jobType/mvCachedJobType.js"></script>  
+        <script type="text/javascript" src="app/jobType/mvJobTypeDetailCtrl.js"></script>      
+        <script type="text/javascript" src="app/jobType/mvJobTypeCtrl.js"></script>       
+        <script type="text/javascript" src="app/jobType/mvJobTypeListCtrl.js"></script>
+        <script type="text/javascript" src="app/jobType/mvJobTypeRepo.js"></script>
+
         <!-- Category -->
         <script type="text/javascript" src="app/category/mvCategory.js"></script>
         <script type="text/javascript" src="app/category/mvCachedCategory.js"></script>

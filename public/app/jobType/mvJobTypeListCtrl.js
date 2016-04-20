@@ -1,8 +1,8 @@
-angular.module('app').controller('mvIndustryListCtrl', function ($scope, mvIndustry,$translate, $rootScope, mvIdentity) {
+angular.module('app').controller('mvJobTypeListCtrl', function ($scope, mvJobType,$translate, $rootScope, mvIdentity) {
     $scope.currentUser = mvIdentity.currentUser;
-    $scope.industries = mvIndustry.query();
+    $scope.jobTypes = mvJobType.query();
     //$scope.currentLang = $translate.use();
-    $scope.sortOptions = [{value: 'Description', text: 'Sort by Description'}];
+    $scope.sortOptions = [{value: 'JobTypeName', text: 'Sort by JobTypeName'}];
 
     $scope.sortOrder = $scope.sortOptions[0].value;
     $scope.getName = function(list){

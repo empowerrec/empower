@@ -7,10 +7,17 @@ var jobSeekerModel = require('../models/JobSeeker');
 var vacancyModel = require('../models/Vacancy');
 var educationalLevelModel = require('../models/EducationalLevel');
 var industryModel = require('../models/Industry');
+var jobTypeModel = require('../models/JobType');
+
 var innerPageModel = require('../models/InnerPage');
 var languageModel = require('../models/Language');
 var countryModel = require('../models/Country');
 var cityModel = require('../models/City');
+var careerLevelModel = require('../models/CareerLevel');
+var curancyModel = require('../models/Curancy');
+var salaryTypeModel = require('../models/SalaryType');
+var jobTypeModel = require('../models/JobType');
+
 
 
 module.exports = function (config) {
@@ -29,8 +36,15 @@ module.exports = function (config) {
     vacancyModel.createDefaultVacancies();
     educationalLevelModel.createDefaultEducationalLevels();
     industryModel.createDefaultIndustry();
+    jobTypeModel.createDefaultJobTypes();
     innerPageModel.createDefaultInnerPages();
     languageModel.createDefaultLanguages();
     countryModel.createDefaultCountries(cityModel.createDefaultCities());
+    careerLevelModel.createDefaultCareerLevels();
+    curancyModel.createDefaultCurancies();
+    salaryTypeModel.createDefaultSalaryTypes();
+    jobTypeModel.createDefaultJobTypes();
+    
+    
     
 };

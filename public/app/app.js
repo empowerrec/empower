@@ -31,6 +31,9 @@ angular.module('app').config(function ($routeProvider) {
         templateUrl: '/partials/account/profile',
         controller: 'mvProfileCtrl', resolve: routRoleChecks.user
     })
+    .when('/forget', {
+        templateUrl: '/partials/account/forget-password',controller: 'mvForgetPasswordCtrl'
+    })
         .when('/courses', {
         templateUrl: '/partials/course/course-list.html',
         controller: 'mvCourseListCtrl'
@@ -92,6 +95,18 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/industries', {
         templateUrl: '/partials/industry/industry-list.html',
         controller: 'mvIndustryListCtrl'
+    }).when('/jobTypes/:id', {
+        templateUrl: '/partials/jobType/jobType-detail',
+        controller: 'mvJobTypeDetailCtrl'
+    }).when('/updatejobType/:id', {
+        templateUrl: '/partials/jobType/jobType',
+        controller: 'mvJobTypeCtrl'
+    }).when('/addjobType', {
+        templateUrl: '/partials/jobType/jobType',
+        controller: 'mvJobTypeCtrl'
+    }).when('/jobTypes', {
+        templateUrl: '/partials/jobType/jobType-list.html',
+        controller: 'mvJobTypeListCtrl'
     }).when('/innerPages/:id', {
         templateUrl: '/partials/innerPage/innerPage-detail',
         controller: 'mvInnerPageDetailCtrl'

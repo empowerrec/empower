@@ -9,22 +9,47 @@ var vacancySchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Category'
         },
-        Type: {type: String, enum: vacancyTypes},
+    Industry: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Industry'
+    },
+        
         AvailableFrom: {type: Date},
         AvailableTo: {type: Date},
-        WorkPlace: {
+        Country: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Address'
-        },
+            ref: 'Country'
+    },
+    City: { type: String },
+    Area: { type: String },
         PreferredEducationLevel: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'EducationLevel'
         },
-        Salary: {type: Number},
+    CareerLevel: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CareerLevel'
+    },
+    SalaryRangeFrom: { type: Number },
+    SalaryRangeTo: { type: Number },
+    SalaryCurancy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Curancy'
+    },
+    SalaryType: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'SalaryType'
+    },
+    JobType: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'JobType'
+    },   
     JobDescription: { type: String },
-    JobTitle:{type:String},
+    JobTitle: { type: String },
+    JobRequirements: { type: String },
     RequiredExperience  : { type: Number },
-Position :{type:String}   , 
+    Position : { type: String }   , 
+        
         ModifiedBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
