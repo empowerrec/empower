@@ -28,8 +28,9 @@
         <tr ng-repeat="industry in industries | filter:searchText | orderBy:sortOrder">
             <td><a href="#/industries/{{industry._id}}"> <div ng-repeat="ind in industry.Description | filter:{Lang:currentLang}"> {{ind.Text}}</div></a></td>
 
-            <td>{{ industry.ModifiedBy.FirstName}} {{ industry.ModifiedBy.LastName}}</td>
+            
             <td>{{ industry.CreatedBy.FirstName}} {{ industry.CreatedBy.LastName}}</td>
+            <td>{{ industry.ModifiedBy.FirstName}} {{ industry.ModifiedBy.LastName}}</td>
 
             <td><a href="#/updateindustry/{{industry._id}}"> {{"Buttons.Update" | translate}}</a></td>
         </tr>

@@ -2,10 +2,10 @@
 <head>
     <title>Empower</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" ng-href="{{getStyleFile()}}" />
+    <link rel="stylesheet" ng-href="{{bootstrapFile}}" />
     <link rel="stylesheet" href="vendor/toastr/toastr.min.css" />
-    <link rel="stylesheet" ng-href="{{getSiteStyleFile()}}" />
-    <link rel="stylesheet" ng-href="{{getSideBarStyleFile()}}" />
+    <link rel="stylesheet" ng-href="{{siteFile}}" />
+    <link rel="stylesheet" ng-href="{{sideBarFile}}" />
 </head>
     <body>
        
@@ -35,11 +35,14 @@
 
         <!-- Main -->
         <script type="text/javascript" src="app/app.js"></script>
+        <script type="text/javascript" src="app/main/mvlookup.js"></script>
+        <script type="text/javascript" src="app/main/mvStyle.js"></script>
         <script type="text/javascript" src="app/main/mvMainCtrl.js"></script>
         <script type="text/javascript" src="app/main/mvMainHeadCtrl.js"></script>
         <script type="text/javascript" src="app/main/mvFooterCtrl.js"></script>
         <script type="text/javascript" src="app/main/mvSidebarCtrl.js"></script>
         <script type="text/javascript" src="app/main/mvLogoCtrl.js"></script>
+       
 
         <!-- Utilites -->
         <script type="text/javascript" src="app/common/mvNotifier.js"></script>

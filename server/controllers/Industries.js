@@ -1,14 +1,24 @@
 var Industry = require('mongoose').model('Industry');
 
 exports.getIndustries = function (req, res) {
-    console.log("ind2");
-    Industry.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-        //console.log(err);
-        console.log("ind2");
-        res.send(col);
-
-    });
+    if (req.query.currentLang) {
+        Industry.find({ 'Description.Lang': { "$eq": req.query.currentLang } }, { 'Description.$': 1 })
+            .populate('ModifiedBy').populate('CreatedBy')
+            .populate('Description', null, { Lang: 'ar' })
+            .exec(function(err, col) {
+                res.send(col);
+            });
+    } else {
+        Industry.find({})
+            .populate('ModifiedBy').populate('CreatedBy')
+            .populate('Description', null, { Lang: 'ar' })
+            .exec(function (err, col) {
+            res.send(col);
+        });
+    }
 };
+
+
 
 exports.getIndustryById = function(req, res) {
     Industry.findOne({_id: req.params.id}).populate('ModifiedBy').exec(function(err, col) {

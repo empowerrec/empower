@@ -1,13 +1,19 @@
 var JobType = require('mongoose').model('JobType');
 
 exports.getJobTypes = function (req, res) {
-    console.log("ind2");
-    JobType.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-        //console.log(err);
-        console.log("ind2");
-        res.send(col);
+    if (req.query.currentLang) {
+        JobType.find({ 'JobTypeName.Lang': { "$eq": req.query.currentLang } }, { 'JobTypeName.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
+            //console.log(err);
+            res.send(col);
 
-    });
+        });
+    } else {
+        JobType.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            //console.log(err);
+            res.send(col);
+
+        });
+    }
 };
 
 exports.getJobTypeById = function(req, res) {

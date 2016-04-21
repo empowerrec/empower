@@ -85,7 +85,9 @@
                 "AvailableFrom": "Available From",
                 "AvailableTo": "Available To" ,
                 "Salary": "Salary",
-                "RequiredExperiance": "Required Experience"
+                "RequiredExperiance": "Required Experience",
+                "JobType" : "Job Type",
+                "Industry":"Industry"
             },
             "User": {
                 "UserName": "User Name",
@@ -213,7 +215,9 @@
                 "AvailableFrom": "متاحة من",
                 "AvailableTo": "متاحة الى" ,
                 "Salary": "المرتب",
-                "RequiredExperiance": "الخبرة المطلوبة"
+                "RequiredExperiance": "الخبرة المطلوبة",
+                "JobType" : "نوع الوظيفة",
+                "Industry": "قطاع العمل"
             },
             "User": {
                 "UserName": "اسم المستخدم",

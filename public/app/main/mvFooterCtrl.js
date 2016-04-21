@@ -1,11 +1,13 @@
-angular.module('app').controller('mvFooterCtrl', function ($scope, mvCourse, mvIdentity,$translate ,  $rootScope) {
+angular.module('app').controller('mvFooterCtrl', function ($scope, mvCourse, mvIdentity,$translate ,  $rootScope , mvLookup, mvStyle) {
         $scope.changeLanguage = function(lang){
         $translate.use(lang);
-            $rootScope.currentLang = lang;
-            console.log($scope.currentLang);
-        $('link[href="site.css"]').attr('href','siteRTL.css');
+        $rootScope.currentLang = lang;
+        mvLookup.getAllLookUps();
+        $rootScope.bootstrapFile = mvStyle.getStyleFile();
+        $rootScope.siteFile = mvStyle.getSiteStyleFile();
+        $rootScope.sideBarFile = mvStyle.getSideBarStyleFile();
 
-    };
+        };
 
 
 });

@@ -1,4 +1,4 @@
-angular.module('app').controller('mvVacancyCtrl', function ($scope,  mvNotifier, mvVacancyRepo,mvVacancy,$routeParams,$translate) {
+angular.module('app').controller('mvVacancyCtrl', function ($scope,  mvNotifier, mvVacancyRepo,mvVacancy,$routeParams,$translate, mvJobType , mvIndustry , $rootScope) {
     var id = $routeParams.id;
 
     $scope.addEnabled = false;
@@ -24,8 +24,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope,  mvNotifier,
 
 
     }
-
-
+   
     $scope.update = function () {
 
         mvVacancyRepo.updateCurrentVacancy($scope.vacancy).then(function () {

@@ -35,9 +35,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="public\app\account\mvAuth.js" />
+    <Compile Include="public\app\account\mvFrontLoginCtrl.js" />
     <Compile Include="public\app\account\mvFrontSignupCtrl.js" />
     <Compile Include="public\app\account\mvIdentity.js" />
     <Compile Include="public\app\account\mvNavBarLoginCtrl.js" />
+    <Compile Include="public\app\account\mvForgetPasswordCtrl.js" />
     <Compile Include="public\app\account\mvProfileCtrl.js" />
     <Compile Include="public\app\account\mvSignupCtrl.js" />
     <Compile Include="public\app\account\mvUser.js" />
@@ -83,6 +85,14 @@
     <Compile Include="public\app\jobSeeker\mvJobSeekerDetailCtrl.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeekerListCtrl.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeekerRepo.js" />
+    <Compile Include="public\app\jobType\mvCachedJobType.js" />
+    <Compile Include="public\app\jobType\mvJobType.js" />
+    <Compile Include="public\app\jobType\mvJobTypeCtrl.js" />
+    <Compile Include="public\app\jobType\mvJobTypeDetailCtrl.js" />
+    <Compile Include="public\app\jobType\mvJobTypeListCtrl.js" />
+    <Compile Include="public\app\jobType\mvJobTypeRepo.js" />
+    <Compile Include="public\app\main\mvStyle.js" />
+    <Compile Include="public\app\main\mvlookup.js" />
     <Compile Include="public\app\main\mvLogoCtrl.js" />
     <Compile Include="public\app\main\mvFooterCtrl.js" />
     <Compile Include="public\app\main\mvMainCtrl.js" />
@@ -258,6 +268,7 @@
     <Compile Include="server\config\routes.js" />
     <Compile Include="server\controllers\countries.js" />
     <Compile Include="server\controllers\cities.js" />
+    <Compile Include="server\controllers\jobTypes.js" />
     <Compile Include="server\controllers\languages.js" />
     <Compile Include="server\controllers\categories.js" />
     <Compile Include="server\controllers\courses.js" />
@@ -269,6 +280,10 @@
     <Compile Include="server\controllers\vacancies.js" />
     <Compile Include="server\models\Category.js" />
     <Compile Include="server\models\Course.js" />
+    <Compile Include="server\models\CareerLevel.js" />
+    <Compile Include="server\models\JobType.js" />
+    <Compile Include="server\models\SalaryType.js" />
+    <Compile Include="server\models\Curancy.js" />
     <Compile Include="server\models\EducationalLevel.js" />
     <Compile Include="server\models\City.js" />
     <Compile Include="server\models\Country.js" />
@@ -288,8 +303,11 @@
     <Content Include=".jshintrc" />
     <Content Include="bower.json" />
     <Content Include="package.json" />
+    <Content Include="public\app\account\front-login.html" />
     <Content Include="public\app\account\front-signup.html" />
+    <Content Include="public\app\account\login-signup.html" />
     <Content Include="public\app\account\navbar-login.html" />
+    <Content Include="public\app\account\forget-password.html" />
     <Content Include="public\app\account\profile.html" />
     <Content Include="public\app\account\signup.html" />
     <Content Include="public\app\admin\users\user-list.html" />
@@ -310,6 +328,9 @@
     <Content Include="public\app\jobSeeker\jobSeeker-detail.html" />
     <Content Include="public\app\jobSeeker\jobSeeker-list.html" />
     <Content Include="public\app\jobSeeker\jobSeeker.html" />
+    <Content Include="public\app\jobType\jobType-detail.html" />
+    <Content Include="public\app\jobType\jobType-list.html" />
+    <Content Include="public\app\jobType\jobType.html" />
     <Content Include="public\app\main\featured-courses.html" />
     <Content Include="public\app\main\footer.html" />
     <Content Include="public\app\main\logo.html" />
@@ -499,6 +520,7 @@
     <Folder Include="public\app\employer\" />
     <Folder Include="public\app\industry\" />
     <Folder Include="public\app\jobSeeker\" />
+    <Folder Include="public\app\jobType\" />
     <Folder Include="public\app\main\" />
     <Folder Include="public\app\innerPage\" />
     <Folder Include="public\app\country\" />

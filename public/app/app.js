@@ -136,8 +136,12 @@ angular.module('app').config(function ($routeProvider) {
 });
 
 
-angular.module('app').run(function ($rootScope, $location , $translate) {
+angular.module('app').run(function ($rootScope, $location , $translate, mvLookup , mvStyle) {
     $rootScope.currentLang = $translate.use();
+    $rootScope.bootstrapFile = mvStyle.getStyleFile();
+    $rootScope.siteFile = mvStyle.getSiteStyleFile();
+    $rootScope.sideBarFile = mvStyle.getSideBarStyleFile();
+    mvLookup.getAllLookUps();
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
         if (rejection === 'not authorized') {
             $location.path('/');
