@@ -22,24 +22,36 @@
           class="form-control" /></div>
                 </div>
 
-                <div class="form-group">
-                    <label for="requiredExperiance" class="col-md-2 control-label">
-                        {{"Vacancy.RequiredExperiance"| translate}}
+              
+
+                <div class="form-group"><label for="salaryRangeFrom" class="col-md-2 control-label">
+                                            {{"Vacancy.SalaryRangeFrom"
+                                            | translate}}
+                                        </label>
+
+                    <div class="col-md-2"><input name="salaryRangeFrom" type="number" placeholder="{{'Vacancy.SalaryRangeFrom'| translate}}"
+                                                 ng-model="vacancy.SalaryRangeFrom" required="required"
+                                                 class="form-control" /></div>
+                
+                    <label for="salaryRangeTo" class="col-md-2 control-label">
+                        {{"Vacancy.SalaryRangeTo"
+                        | translate}}
                     </label>
 
-                    <div class="col-md-3">
-                        <input name="requiredExperiance" type="number" placeholder="{{'Vacancy.RequiredExperiance' | translate}}"
-                               ng-model="vacancy.RequiredExperience" required="required"
+                    <div class="col-md-2">
+                        <input name="salaryRangeTo" type="number" placeholder="{{'Vacancy.SalaryRangeTo'| translate}}"
+                               ng-model="vacancy.SalaryRangeTo" required="required"
                                class="form-control" />
                     </div>
-                </div>
+               
+                    <label for="salaryCurancy" class="col-md-2 control-label">{{"Vacancy.SalaryCurancy"| translate}}</label>
 
-                <div class="form-group"><label for="salary" class="col-md-2 control-label">{{"Vacancy.Salary"
-                    | translate}}</label>
 
-                    <div class="col-md-2"><input name="salary" type="number" placeholder="{{'Vacancy.Salary'| translate}}"
-       ng-model="vacancy.Salary" required="required"
-       class="form-control" /></div>
+                    <div class="col-md-2">
+                        <select ng-model="vacancy.SalaryCurancy" ng-options="curancy._id as curancy.CurancyName[0].Text for curancy in curancies"
+                                class="form-control"></select>
+                    </div>
+
                 </div>
                 <div class="form-group"><label for="availableFrom" class="col-md-2 control-label">{{"Vacancy.AvailableFrom"
                                             | translate}}</label>
@@ -48,21 +60,15 @@
                     <div class="col-md-2"><input name="availableFrom" type="date" placeholder="{{'vacancy.AvailableFrom'| translate}}"
                                                  ng-model="vacancy.AvailableFrom" required="required"
                                                  class="form-control" /></div>
-                    <label for="availableFrom" class="col-md-2 control-label">
-                        {{vacancy.AvailableFrom | date: 'dd/MM/yyyy'}}
-                    </label>
-                </div>
-
-                <div class="form-group">
+                    
+                
                     <label for="availableTo" class="col-md-2 control-label">{{"Vacancy.AvailableTo"| translate}}</label>
                    
 
                     <div class="col-md-2"><input name="availableTo" type="date" placeholder="{{'Vacancy.AvailableTo'| translate}}"
                                                  ng-model="vacancy.AvailableTo" required="required"
                                                  class="form-control" /></div>
-                    <label for="availableTo" class="col-md-2 control-label">
-                        {{vacancy.AvailableTo | date: 'dd/MM/yyyy'}}
-                    </label>
+                    
                 </div>
                 
                 <div class="form-group">
@@ -74,9 +80,7 @@
                                 class="form-control"></select>
                     </div>
                   
-                </div>
-                
-                <div class="form-group">
+              
                     <label for="industry" class="col-md-2 control-label">{{"Vacancy.Industry"| translate}}</label>
 
 
@@ -84,10 +88,39 @@
                         <select ng-model="vacancy.Industry" ng-options="industry._id as industry.Description[0].Text for industry in industries"
                                 class="form-control"></select>
                     </div>
+                    
+                    <label for="requiredExperiance" class="col-md-2 control-label">
+                        {{"Vacancy.RequiredExperiance"| translate}}
+                    </label>
+
+                    <div class="col-md-1">
+                        <input name="requiredExperiance" type="number" placeholder="{{'Vacancy.RequiredExperiance' | translate}}"
+                               ng-model="vacancy.RequiredExperience" required="required"
+                               class="form-control" />
+                    </div>
 
                 </div>
                 
-              
+                <div class="form-group">
+                    <label for="country" class="col-md-2 control-label">{{"Vacancy.Country"| translate}}</label>
+
+
+                    <div class="col-md-2">
+                        <select ng-model="vacancy.Country" ng-options="country._id as country.Name[0].Text for country in countries"
+                                class="form-control"></select>
+                    </div>
+
+               
+                    <label for="city" class="col-md-2 control-label">
+                        {{"Vacancy.City"| translate}}
+                    </label>
+
+                    <div class="col-md-3">
+                        <input name="city" type="text" placeholder="{{'Vacancy.City' | translate}}"
+                               ng-model="vacancy.City" required="required"
+                               class="form-control" />
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <div class="col-md-10 col-md-offset-2">

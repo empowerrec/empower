@@ -4,7 +4,6 @@ var sendMail = require('../config/mailer');
 var async = require('async');
 var crypto = require('crypto');
 
-
 exports.getUsers = function (req, res) {
     User.find({}).exec(function (err, col) {
         res.send(col);
@@ -74,8 +73,9 @@ exports.updateUser = function (req, res, next) {
     });
 };
 
-exports.sendResetPasswordLink = function (req, res, next) {
-    async.waterfall([        
+exports.sendResetPasswordLink = function (req, res) {
+    
+    async.waterfall([
         function (done) {
             crypto.randomBytes(20, function (err, buf) {
                 var token = buf.toString('hex');
@@ -84,33 +84,65 @@ exports.sendResetPasswordLink = function (req, res, next) {
         },
         function (token, done) {
             User.findOne({ UserName: req.body.email }, function (err, user) {
-                if (!user) {
-                    return res.send(400);
+                if (!user) {                    
+                    return res.send(user);                    
                 }
                 
                 user.resetPasswordToken = token;
                 user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
                 
-                user.save(function (err1) {
-                    done(err1, token, user);
+                user.save(function (err) {
+                    done(err, token, user);
                 });
             });
         },
         function (token, user, done) {
-            var text = 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-                'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-                'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-                'If you did not request this, please ignore this email and your password will remain unchanged.\n';
             
-            sendMail.sendMail('info@empowerrec.com', user.UserName , 'Empower Password Reset' , text , function (err) {
-                done(err, 'done');                
-                res.send(user);
+            var email = require('mailer');
+            
+            var text = 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+                        'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                        'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+                        'If you did not request this, please ignore this email and your password will remain unchanged.\n';
+            
+            
+            var mailOption = {
+                ssl: true,
+                host: "e22.ehosts.com",              // smtp server hostname
+                port: "465",                     // smtp server port
+                domain: "[https://empowerrec.herokuapp.com]",            // domain used by client to identify itself to server
+                to: user.UserName,
+                from: 'info@empowerrec.com',
+                subject: 'Empower Password Reset',
+                body: text,
+                authentication: "login",        // auth login is supported; anything else is no auth
+                username: "info@empowerrec.com",       // Base64 encoded username
+                password: "abc@147852"        // Base64 encoded password
+   
+            };
+            
+            email.send(mailOption, function (err) {
+                done(err,user, 'done');
             });
         }
-    ], function (err) {
+    ], function (err,user) {
         if (err) {
             res.status(400);
             return res.send({ reason: err });
+        } else {
+            res.send(user);
         }
     });
+
 };
+
+exports.checkPasswordToken = function(req, res) {
+    User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
+        if (!user) {
+            return res.redirect('/#/forget');
+        }
+        res.render('/#/reset', {
+            user: req.user
+        });
+    });
+}

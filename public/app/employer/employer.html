@@ -78,24 +78,22 @@
                 <div class="form-group">
                     <label for="employerType" class="col-md-2 control-label">{{"Employer.EmployerType"
                     | translate}}</label>
-                    <div class="col-md-10">
+                    <div class="col-md-3">
                     <select ng-model="employer.EmployerType" ng-options="item.value as item.text for item in employerTypes"
                             class="form-control">
                         </select></div>
 
                   
-                </div>
-                <div class="form-group"><label for="numberOfEmployees" class="col-md-2 control-label">{{"Employer.NumberOfEmployees"
+              <label for="numberOfEmployees" class="col-md-2 control-label">{{"Employer.NumberOfEmployees"
                     | translate}}</label>
 
-                    <div class="col-md-10"><input name="numberOfEmployees" type="number" placeholder="{{'Employer.NumberOfEmployees' | translate}}"
+                    <div class="col-md-1"><input name="numberOfEmployees" type="number" placeholder="{{'Employer.NumberOfEmployees' | translate}}"
        ng-model="employer.NumberOfEmployees" required="required"
        class="form-control" /></div>
-                </div>
-                <div class="form-group"><label for="averageNumberOfJobOpeningsPerMonth" class="col-md-2 control-label">{{"Employer.AverageNumberOfJobOpeningsPerMonth"
+               <label for="averageNumberOfJobOpeningsPerMonth" class="col-md-3 control-label">{{"Employer.AverageNumberOfJobOpeningsPerMonth"
                     | translate}}</label>
 
-                    <div class="col-md-10"><input name="averageNumberOfJobOpeningsPerMonth" type="number"
+                    <div class="col-md-1"><input name="averageNumberOfJobOpeningsPerMonth" type="number"
        placeholder="{{'Employer.AverageNumberOfJobOpeningsPerMonth' | translate}}"
        ng-model="employer.AverageNumberOfJobOpeningsPerMonth"
        class="form-control" /></div>
@@ -104,15 +102,13 @@
                 <div class="form-group"><label for="contactFirstName" class="col-md-2 control-label">{{"Employer.ContactFirstName"
                     | translate}}</label>
 
-                    <div class="col-md-10"><input name="contactFirstName" type="text" placeholder="{{'Employer.ContactFirstName' | translate}}"
+                    <div class="col-md-2"><input name="contactFirstName" type="text" placeholder="{{'Employer.ContactFirstName' | translate}}"
        ng-model="employer.ContactFirstName" required="required"
        class="form-control" /></div>
-                </div>
-
-                <div class="form-group"><label for="contactLastName" class="col-md-2 control-label">{{"Employer.ContactLastName"
+                <label for="contactLastName" class="col-md-2 control-label">{{"Employer.ContactLastName"
                     | translate}}</label>
 
-                    <div class="col-md-10"><input name="contactLastName" type="text" placeholder="{{'Employer.ContactLastName' | translate}}"
+                    <div class="col-md-2"><input name="contactLastName" type="text" placeholder="{{'Employer.ContactLastName' | translate}}"
        ng-model="employer.ContactLastName" required="required"
        class="form-control" /></div>
                 </div>
@@ -120,15 +116,13 @@
                 <div class="form-group"><label for="contactTitle" class="col-md-2 control-label">{{"Employer.ContactTitle"
                     | translate}}</label>
 
-                    <div class="col-md-10"><input name="contactTitle" type="text" placeholder="{{'Employer.ContactTitle' | translate}}"
+                    <div class="col-md-4"><input name="contactTitle" type="text" placeholder="{{'Employer.ContactTitle' | translate}}"
        ng-model="employer.ContactTitle" required="required"
        class="form-control" /></div>
-                </div>
-
-                <div class="form-group"><label for="ContactMobileNumber" class="col-md-2 control-label" >{{"Employer.ContactMobileNumber"
+                <label for="ContactMobileNumber" class="col-md-2 control-label" >{{"Employer.ContactMobileNumber"
                     | translate}}</label>
 
-                    <div class="col-md-10"><input name="contactMobileNumber" type="text" placeholder="{{'Employer.ContactMobileNumber' | translate}}"
+                    <div class="col-md-2"><input name="contactMobileNumber" type="text" placeholder="{{'Employer.ContactMobileNumber' | translate}}"
        ng-model="employer.ContactMobileNumber" required="required"
        class="form-control" /></div>
                 </div>

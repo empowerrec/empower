@@ -9,6 +9,8 @@ var categories = require('../controllers/categories');
 var languages = require('../controllers/languages');
 var countries = require('../controllers/countries');
 var cities = require('../controllers/cities');
+var curancies = require('../controllers/curancies');
+
 var passport = require('passport');
 
 module.exports = function (app) {
@@ -55,6 +57,11 @@ module.exports = function (app) {
     app.put('/api/countries', countries.updateCountry);
     app.get('/api/countries/:id', countries.getCountryById);
     
+    app.get('/api/curancies', curancies.getCurancies);
+    app.post('/api/curancies', curancies.createCurancy);
+    app.put('/api/curancies', curancies.updateCurancy);
+    app.get('/api/curancies/:id', curancies.getCurancyById);
+    
     app.get('/api/cities', cities.getCities);
     app.post('/api/cities', cities.createCity);
     app.put('/api/cities', cities.updateCity);
@@ -67,6 +74,7 @@ module.exports = function (app) {
     
     app.post('/login', authentication.authenticate);
     app.post('/forget', users.sendResetPasswordLink);
+    app.get('/reset/:token', users.checkPasswordToken);
     app.post('/logout', function (req, res) {
         req.logout();
         res.end();

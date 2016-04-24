@@ -1,9 +1,21 @@
 var Country = require('mongoose').model('Country');
 
 exports.getCountries = function (req, res) {
-    Country.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-        res.send(col);
-    });
+    if (req.query.currentLang) {
+        Country.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            console.log(req.query.currentLang);
+            res.send(col);
+
+        });
+    } else {
+        Country.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            console.log(req.query.currentLang);
+            res.send(col);
+
+        });
+    }
+    
+
 };
 
 exports.getCountryById = function (req, res) {

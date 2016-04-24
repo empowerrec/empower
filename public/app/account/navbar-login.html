@@ -25,10 +25,10 @@
                 + ' ' + identity.currentUser.LastName }}<b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/users">Users</a></li>
-                <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/employers">Employers</a></li>
-                <li><a href="#/profile">Profile</a></li>
-                <li><a href="" ng-click="signout()">Sign Out</a></li>
+                <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/users">{{"Menu.Users" | translate}}</a></li>
+                <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/employers">{{"Menu.Employers" | translate}}</a></li>
+                <li><a href="#/profile">{{"Menu.CompanyProfile" | translate}}</a></li>
+                <li><a href="" ng-click="signout()">{{"Menu.Signout" | translate}}</a></li>
             </ul>
         </li>
     </ul>

@@ -7,7 +7,8 @@ var countrySchema = mongoose.Schema({
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Language'
             },
-            Text: String
+            Text: String,
+            Lang:String
         }],
     Description: {
         type: String
@@ -32,13 +33,14 @@ function createDefaultCountries() {
         if (col.length === 0) {
             
             Country.create({
-                Name: "Egypt",
-                Description: "Arab Republic of Egypt"
+                Name: [{ "Text": "Egypt" , "Lang": "en" }, { "Text": "„’—" , "Lang": "ar" }]
+
             });
             
+            
             Country.create({
-                Name: "United States",
-                Description: "United States of America"
+                 Name: [{ "Text": "Suadi Arabia" , "Lang": "en" }, { "Text": "«·”⁄ÊœÌ…" , "Lang": "ar" }]
+                 
             });
         }
     });

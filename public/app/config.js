@@ -84,10 +84,14 @@
                 "JobDescrption": "Job Descrption",
                 "AvailableFrom": "Available From",
                 "AvailableTo": "Available To" ,
-                "Salary": "Salary",
+                "SalaryRangeFrom": "Salary Range From",
+                "SalaryRangeTo": "Salary Range To",
+                "SalaryCurancy": "Salary Curancy",
                 "RequiredExperiance": "Required Experience",
                 "JobType" : "Job Type",
-                "Industry":"Industry"
+                "Industry": "Industry",
+                "Country":"Country",
+                "City": "City"
             },
             "User": {
                 "UserName": "User Name",
@@ -115,7 +119,9 @@
                 "Save": "Save",
                 "Cancel": "Cancel",
                 "Delete": "Delete",
-                "Add": "Add New"
+                "Add": "Add New",
+                "Change Password": "Change Password",
+                "Reset Password":"Reset Password"
             },
             "Menu": {
                 "SubTitle": "Jobs IN Egypt",
@@ -214,10 +220,14 @@
                 "JobDescrption": "وصف الوظيفة",
                 "AvailableFrom": "متاحة من",
                 "AvailableTo": "متاحة الى" ,
-                "Salary": "المرتب",
+                "SalaryRangeFrom": "المرتب من ",
+                "SalaryRangeTo": "المرتب الى",
+                "SalaryCurancy": "عملة المرتب",
                 "RequiredExperiance": "الخبرة المطلوبة",
                 "JobType" : "نوع الوظيفة",
-                "Industry": "قطاع العمل"
+                "Industry": "قطاع العمل",
+                "Country": "الدولة",
+                "City": "المدينة"
             },
             "User": {
                 "UserName": "اسم المستخدم",
@@ -245,7 +255,9 @@
                 "Save": "حفظ",
                 "Cancel": "الغاء",
                 "Delete": "حذف",
-                "Add": "اضافة جديد"
+                "Add": "اضافة جديد",
+                "Change Password": "تغيير كلمة السر",
+                "Reset Password":"ارسال ميل"
             },
             "Menu": {
                 "SubTitle": "وظائف فى مصر",

@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="public\app\account\mvAuth.js" />
+    <Compile Include="public\app\account\mvResetPasswordCtrl.js" />
     <Compile Include="public\app\account\mvFrontLoginCtrl.js" />
     <Compile Include="public\app\account\mvFrontSignupCtrl.js" />
     <Compile Include="public\app\account\mvIdentity.js" />
@@ -61,6 +62,8 @@
     <Compile Include="public\app\course\mvCourse.js" />
     <Compile Include="public\app\course\mvCourseDetailCtrl.js" />
     <Compile Include="public\app\course\mvCourseListCtrl.js" />
+    <Compile Include="public\app\curancy\mvCachedCurancy.js" />
+    <Compile Include="public\app\curancy\mvCurancy.js" />
     <Compile Include="public\app\employer\mvCachedEmployer.js" />
     <Compile Include="public\app\employer\mvEmployer.js" />
     <Compile Include="public\app\employer\mvEmployerCtrl.js" />
@@ -266,6 +269,7 @@
     <Compile Include="server\config\passport-local.js" />
     <Compile Include="server\config\passport.js" />
     <Compile Include="server\config\routes.js" />
+    <Compile Include="server\controllers\curancies.js" />
     <Compile Include="server\controllers\countries.js" />
     <Compile Include="server\controllers\cities.js" />
     <Compile Include="server\controllers\jobTypes.js" />
@@ -303,6 +307,7 @@
     <Content Include=".jshintrc" />
     <Content Include="bower.json" />
     <Content Include="package.json" />
+    <Content Include="public\app\account\reset-password.html" />
     <Content Include="public\app\account\front-login.html" />
     <Content Include="public\app\account\front-signup.html" />
     <Content Include="public\app\account\login-signup.html" />
@@ -517,6 +522,7 @@
     <Folder Include="public\app\category\" />
     <Folder Include="public\app\common\" />
     <Folder Include="public\app\course\" />
+    <Folder Include="public\app\curancy\" />
     <Folder Include="public\app\employer\" />
     <Folder Include="public\app\industry\" />
     <Folder Include="public\app\jobSeeker\" />
