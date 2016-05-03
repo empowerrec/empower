@@ -4,10 +4,7 @@ var encryption = require('../utilities/encryption');
 var citySchema = mongoose.Schema({
     
     Name: [{
-            Language: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Language'
-            },
+            Lang: String,
             Text: String
         }],
     Country: {
@@ -28,31 +25,27 @@ var citySchema = mongoose.Schema({
 });
 
 var City = mongoose.model('City', citySchema);
-var Country = mongoose.model('Country');
+
 
 function createDefaultCities() {
-    
-    Country.find({}).exec(function (err, country) {
-        if (country.length !== 0) {
-            
             City.find({}).exec(function (err1, col) {
                 if (col.length === 0) {
                     
                     City.create({
-                        Name: "Cairo",
-                        Country: encryption.searchAtJson(country, "Name", "Egypt", "_id")
+                Name: [{ "Text": "Cairo" , "Lang": "en" }, { "Text": "«·ﬁ«Â—…" , "Lang": "ar" }]
+                        
                     });
                     
                     City.create({
-                        Name: "Washengton DC",
-                        Country: encryption.searchAtJson(country, "Name", "United States", "_id")
+                Name: [{ "Text": "Giza" , "Lang": "en" }, { "Text": "«·ÃÌ“Â" , "Lang": "ar" }]
+                       
                     });
                 }
             });
-
-        }
-    });
+            
+        
+    };
     
-}
+
 
 exports.createDefaultCities = createDefaultCities;

@@ -21,8 +21,8 @@ var userSchema = mongoose.Schema({
         type: String,
         required: '{PATH} is required'
     }, 
-    resetPasswordToken: String,
-    resetPasswordExpires: Date,
+    ResetPasswordToken: String,
+    ResetPasswordExpires: Date,
     UserType: [String],
     AuthenticationStrategyName: String,
     AuthenticationStrategyId: String,

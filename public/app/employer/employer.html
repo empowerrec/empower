@@ -77,26 +77,75 @@
 
                 <div class="form-group">
                     <label for="employerType" class="col-md-2 control-label">{{"Employer.EmployerType"
-                    | translate}}</label>
+                        | translate}}</label>
                     <div class="col-md-3">
-                    <select ng-model="employer.EmployerType" ng-options="item.value as item.text for item in employerTypes"
-                            class="form-control">
+                        <select ng-model="employer.EmployerType" ng-options="item.value as item.text for item in employerTypes"
+                                class="form-control">
                         </select></div>
 
                   
-              <label for="numberOfEmployees" class="col-md-2 control-label">{{"Employer.NumberOfEmployees"
-                    | translate}}</label>
+                    <label for="numberOfEmployees" class="col-md-2 control-label">{{"Employer.NumberOfEmployees"
+                        | translate}}</label>
 
                     <div class="col-md-1"><input name="numberOfEmployees" type="number" placeholder="{{'Employer.NumberOfEmployees' | translate}}"
-       ng-model="employer.NumberOfEmployees" required="required"
-       class="form-control" /></div>
-               <label for="averageNumberOfJobOpeningsPerMonth" class="col-md-3 control-label">{{"Employer.AverageNumberOfJobOpeningsPerMonth"
-                    | translate}}</label>
+                                                 ng-model="employer.NumberOfEmployees" required="required"
+                                                 class="form-control" /></div>
+                    <label for="averageNumberOfJobOpeningsPerMonth" class="col-md-2 control-label">{{"Employer.AverageNumberOfJobOpeningsPerMonth"
+                        | translate}}</label>
 
                     <div class="col-md-1"><input name="averageNumberOfJobOpeningsPerMonth" type="number"
-       placeholder="{{'Employer.AverageNumberOfJobOpeningsPerMonth' | translate}}"
-       ng-model="employer.AverageNumberOfJobOpeningsPerMonth"
-       class="form-control" /></div>
+                                                 placeholder="{{'Employer.AverageNumberOfJobOpeningsPerMonth' | translate}}"
+                                                 ng-model="employer.AverageNumberOfJobOpeningsPerMonth"
+                                                 class="form-control" /></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="companyPhone" class="col-md-2 control-label">
+                        {{"Employer.CompanyPhone"
+                        | translate}}
+                    </label>
+
+                    <div class="col-md-2">
+                        <input name="companyPhone" type="text" placeholder="{{'Employer.CompanyPhone' | translate}}"
+                               ng-model="employer.CompanyPhone" required="required"
+                               class="form-control" />
+                    </div>
+                    <label for="companyWebsite" class="col-md-2 control-label">
+                        {{"Employer.CompanyWebsite"
+                        | translate}}
+                    </label>
+
+                    <div class="col-md-4">
+                        <input name="companyWebsite" type="text" placeholder="{{'Employer.CompanyWebsite' | translate}}"
+                               ng-model="employer.CompanyWebsite" required="required" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="country" class="col-md-2 control-label">{{"Employer.Country"| translate}}</label>
+
+
+                    <div class="col-md-2">
+                        <select ng-model="employer.Country" ng-options="country._id as country.Name[0].Text for country in countries"
+                                class="form-control"></select>
+                    </div>
+
+
+                    <!--<label for="companySize" class="col-md-2 control-label">
+                        {{"Employer.CompanySize"| translate}}
+                    </label>
+
+                    <div class="col-md-3">
+                        <input name="CompanySize" type="text" placeholder="{{'Employer.CompanySize' | translate}}"
+                               ng-model="employer.CompanySize" required="required"
+                               class="form-control" />
+                    </div>-->
+                </div>
+                <div class="form-group">
+                    <label for="contactInformation" class="col-md-3 control-label">
+                        {{"Employer.ContactPersonInformation"
+                        | translate}}
+                    </label>
+                    
                 </div>
 
                 <div class="form-group"><label for="contactFirstName" class="col-md-2 control-label">{{"Employer.ContactFirstName"
@@ -109,8 +158,7 @@
                     | translate}}</label>
 
                     <div class="col-md-2"><input name="contactLastName" type="text" placeholder="{{'Employer.ContactLastName' | translate}}"
-       ng-model="employer.ContactLastName" required="required"
-       class="form-control" /></div>
+       ng-model="employer.ContactLastName" required="required" class="form-control" /></div>
                 </div>
 
                 <div class="form-group"><label for="contactTitle" class="col-md-2 control-label">{{"Employer.ContactTitle"
@@ -119,7 +167,7 @@
                     <div class="col-md-4"><input name="contactTitle" type="text" placeholder="{{'Employer.ContactTitle' | translate}}"
        ng-model="employer.ContactTitle" required="required"
        class="form-control" /></div>
-                <label for="ContactMobileNumber" class="col-md-2 control-label" >{{"Employer.ContactMobileNumber"
+                <label for="ContactMobileNumber" class="col-md-3 control-label" >{{"Employer.ContactMobileNumber"
                     | translate}}</label>
 
                     <div class="col-md-2"><input name="contactMobileNumber" type="text" placeholder="{{'Employer.ContactMobileNumber' | translate}}"

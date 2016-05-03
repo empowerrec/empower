@@ -4,12 +4,23 @@ var employers = require('../controllers/employers');
 var vacancies = require('../controllers/vacancies');
 var industries = require('../controllers/Industries');
 var jobTypes = require('../controllers/jobTypes');
+var jobRoles = require('../controllers/jobRoles');
+
 var innerPages = require('../controllers/innerPages');
 var categories = require('../controllers/categories');
 var languages = require('../controllers/languages');
 var countries = require('../controllers/countries');
 var cities = require('../controllers/cities');
+var areas = require('../controllers/areas');
+
 var curancies = require('../controllers/curancies');
+var experinces = require('../controllers/experiances');
+
+var companyTypes = require('../controllers/companyTypes');
+var companySizes = require('../controllers/companySizes');
+var jobSeekers = require('../controllers/jobSeekers');
+
+var areas = require('../controllers/areas');
 
 var passport = require('passport');
 
@@ -17,7 +28,14 @@ module.exports = function (app) {
     
     app.use('/api/courses', require('../routes/courses'));
     app.use('/api/jobSeekers', require('../routes/jobSeekers'));
-        
+    app.use('/api/addresses', require('../routes/addresses'));
+    app.use('/api/genders', require('../routes/genders'));
+    app.use('/api/maritalStatuses', require('../routes/maritalStatuses'));
+    app.use('/api/militaryStatuses', require('../routes/militaryStatuses'));
+    app.use('/api/carLicenceTypes', require('../routes/carLicenceTypes'));
+
+
+    
     app.get('/api/users', authentication.requiresRole('A'), users.getUsers);
     app.post('/api/users', users.createUser);
     app.put('/api/users', users.updateUser);
@@ -42,6 +60,11 @@ module.exports = function (app) {
     app.put('/api/jobTypes', jobTypes.updateJobType);
     app.get('/api/jobTypes/:id', jobTypes.getJobTypeById);
     
+    app.get('/api/jobRoles', authentication.requiresRole('A'), jobRoles.getJobRoles);
+    app.post('/api/jobRoles', jobRoles.createJobRole);
+    app.put('/api/jobRoles', jobRoles.updateJobRole);
+    app.get('/api/jobRoles/:id', jobRoles.getJobRoleById);
+
     app.get('/api/categories', authentication.requiresRole('A'), categories.getCategories);
     app.post('/api/categories', categories.createCategory);
     app.put('/api/categories', categories.updateCategory);
@@ -67,14 +90,40 @@ module.exports = function (app) {
     app.put('/api/cities', cities.updateCity);
     app.get('/api/cities/:id', cities.getCityById);
     
+    app.get('/api/areas', areas.getAreas);
+    app.post('/api/areas', areas.createArea);
+    app.put('/api/areas', areas.updateArea);
+    app.get('/api/areas/:id', areas.getAreaById);
+
     app.get('/api/innerPages', authentication.requiresRole('A'), innerPages.getInnerPages);
     app.post('/api/innerPages', innerPages.createInnerPage);
     app.put('/api/innerPages', innerPages.updateInnerPage);
     app.get('/api/innerPages/:id', innerPages.getInnerPageById);
     
+    app.get('/api/experiances', experinces.getExperiances);
+    app.post('/api/experiances', experinces.createExperiance);
+    app.put('/api/experiances', experinces.updateExperiance);
+    app.get('/api/experiances/:id', experinces.getExperianceById);
+    
+    
+    app.get('/api/companySizes',  companySizes.getCompanySizes);
+    app.post('/api/companySizes', companySizes.createCompanySize);
+    app.put('/api/companySizes', companySizes.updateCompanySize);
+    app.get('/api/companySizes/:id', companySizes.getCompanySizeById);
+    
+    
+    app.get('/api/companyTypes',  companyTypes.getCompanyTypes);
+    app.post('/api/companyTypes', companyTypes.createCompanyType);
+    app.put('/api/companyTypes', companyTypes.updateCompanyType);
+    app.get('/api/companyTypes/:id', companyTypes.getCompanyTypeById);
+    
+   
+    app.get('/api/getJobSeekerWhereMobileNumberNotNull', jobSeekers.getJobSeekerByMobileNumber);
+
     app.post('/login', authentication.authenticate);
     app.post('/forget', users.sendResetPasswordLink);
     app.get('/reset/:token', users.checkPasswordToken);
+    app.post('/reset', users.updatePassword);
     app.post('/logout', function (req, res) {
         req.logout();
         res.end();
@@ -102,6 +151,16 @@ module.exports = function (app) {
             });
         }
     });
+    
+    
+    app.get('/api/jobSeekerByUser/', jobSeekers.getJobSeekerByUser);
+    
+    app.get('/api/employerByUser/', employers.getEmployerByUser);
+    
+    
+    
+    
+
     
     // this function call if any route starts with /api/ and not handeled this send to client 404
     app.all('/api/*', function (req, res) {

@@ -20,20 +20,23 @@
             <tr>
                 <th>{{"JobSeeker.Gender" | translate}}</th>
                 <th>{{"JobSeeker.BirthDate" | translate}}</th>
-                <th>{{"User.CreatedBy" | translate}}</th>
                 <th>{{"User.ModifiedBy" | translate}}</th>
+                <th>{{"User.CreatedBy" | translate}}</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="jobSeeker in jobSeekers | filter:searchText | orderBy:sortOrder">
                 <td>
-                    <a href="#/jobSeekers/{{jobSeeker._id}}">{{jobSeeker.Gender}}</a>
+                    <a href="#/jobSeekers/{{jobSeeker._id}}">
+                        <span ng-repeat="name in jobSeeker.Gender.Name |filter:currentLang">{{name.Text}}</span>                        
+                    </a>
                 </td>
                 <td>{{ jobSeeker.BirthDate | date}}</td>
                 <td>{{ jobSeeker.ModifiedBy.FirstName}} {{ jobSeeker.ModifiedBy.LastName}}</td>
                 <td>{{ jobSeeker.CreatedBy.FirstName}} {{ jobSeeker.CreatedBy.LastName}}</td>
-                <td><a href="#/updateJobSeeker/{{jobSeeker._id}}"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a href="#/updateJobSeeker/PersonalInformation/{{jobSeeker._id}}"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a href="#/updateJobSeeker/Experiances/{{jobSeeker._id}}"> {{"JobSeeker.Experiances" | translate}}</a></td>
             </tr>
         </tbody>
     </table>    

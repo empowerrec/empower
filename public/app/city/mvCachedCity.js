@@ -1,11 +1,11 @@
-angular.module('app').factory('mvCachedCourse', function (mvCourse) {
-    var courseList;
+angular.module('app').factory('mvCachedCity', function (mvCity) {
+    var cityList;
     return {
         query: function () {
-            if (!courseList) {
-                courseList = mvCourse.query();
+            if (!cityList) {
+                cityList = mvCity.query();
             }
-            return courseList;
+            return cityList;
         }
     };
 });

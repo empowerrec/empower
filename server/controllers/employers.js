@@ -22,6 +22,15 @@ exports.getEmployerById = function (req, res) {
     
 };
 
+exports.getEmployerByUser = function (req, res) {
+    console.log(req.user._id);
+    Employer.findOne({ User: req.user }).populate('ModifiedBy').exec(function(err, col) {
+        console.log(col);
+        res.send(col);
+    });
+
+};
+
 exports.createEmployer = function (req, res, next) {
     var employerData = req.body;
 

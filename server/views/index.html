@@ -4,136 +4,184 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" ng-href="{{bootstrapFile}}" />
     <link rel="stylesheet" href="vendor/toastr/toastr.min.css" />
+    <link rel="stylesheet" href="vendor/toastr/autocomplete.css" />
     <link rel="stylesheet" ng-href="{{siteFile}}" />
     <link rel="stylesheet" ng-href="{{sideBarFile}}" />
 </head>
-    <body>
-       
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div ng-include="'/partials/main/logo'"></div>
-                <div ng-include="'/partials/main/menu'"></div>
-            </div>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div ng-include="'/partials/main/logo'"></div>
+            <div ng-include="'/partials/main/menu'"></div>
         </div>
+    </div>
 
-        <section class="content">
-            <div ng-view="ng-view"></div>
-        </section>
-        <div ng-include="'/partials/main/footer'"></div>
-        
-        <!-- Vendor -->
-        <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="vendor/toastr/toastr.min.js"></script>
-        <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
-        <script type="text/javascript" src="vendor/angular-resource/angular-resource.min.js"></script>
-        <script type="text/javascript" src="vendor/angular-route/angular-route.min.js"></script>
-        <script type="text/javascript" src="vendor/angular-translate/angular-translate.min.js"></script>
-        <script type="text/javascript" src="vendor/ngstorage/ngStorage.min.js"></script>
-        <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap.min.js"></script>
-        <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <section class="content">
+        <div ng-view="ng-view"></div>
+    </section>
+    <div ng-include="'/partials/main/footer'"></div>
 
-        <!-- Main -->
-        <script type="text/javascript" src="app/app.js"></script>
-        <script type="text/javascript" src="app/main/mvlookup.js"></script>
-        <script type="text/javascript" src="app/main/mvStyle.js"></script>
-        <script type="text/javascript" src="app/main/mvMainCtrl.js"></script>
-        <script type="text/javascript" src="app/main/mvMainHeadCtrl.js"></script>
-        <script type="text/javascript" src="app/main/mvFooterCtrl.js"></script>
-        <script type="text/javascript" src="app/main/mvSidebarCtrl.js"></script>
-        <script type="text/javascript" src="app/main/mvLogoCtrl.js"></script>
-        <script type="text/javascript" src="app/country/mvCountry.js"></script>
-        <script type="text/javascript" src="app/curancy/mvCurancy.js"></script>
-       
+    <!-- Vendor -->
+    <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="vendor/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-cookies/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-translate/angular-translate.min.js"></script>
+    <script type="text/javascript" src="vendor/ngstorage/ngStorage.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="vendor/autocomplete.js"></script>
+    <script type="text/javascript" src="vendor/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
 
-        <!-- Utilites -->
-        <script type="text/javascript" src="app/common/mvNotifier.js"></script>
+    <!-- Main -->
+    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/main/mvlookup.js"></script>
+    <script type="text/javascript" src="app/main/mvStyle.js"></script>
+    <script type="text/javascript" src="app/main/mvMainCtrl.js"></script>
+    <script type="text/javascript" src="app/main/mvMainHeadCtrl.js"></script>
+    <script type="text/javascript" src="app/main/mvFooterCtrl.js"></script>
+    <script type="text/javascript" src="app/main/mvSidebarCtrl.js"></script>
+    <script type="text/javascript" src="app/main/mvLogoCtrl.js"></script>
+    <script type="text/javascript" src="app/country/mvCountry.js"></script>
+    <script type="text/javascript" src="app/curancy/mvCurancy.js"></script>
+    <script type="text/javascript" src="app/companySize/mvCompanySize.js"></script>
+    <script type="text/javascript" src="app/companyType/mvCompanyType.js"></script>
+    <script type="text/javascript" src="app/city/mvCachedCity.js"></script>
+    <script type="text/javascript" src="app/city/mvCity.js"></script>
+    <script type="text/javascript" src="app/area/mvArea.js"></script>
+    <script type="text/javascript" src="app/area/mvCachedArea.js"></script>
+    <!-- Utilites -->
+    <script type="text/javascript" src="app/common/mvNotifier.js"></script>
 
-        <!-- Sign up & Sign on -->
-        <script type="text/javascript" src="app/account/mvNavBarLoginCtrl.js"></script>
-        <script type="text/javascript" src="app/account/mvIdentity.js"></script>
-        <script type="text/javascript" src="app/account/mvAuth.js"></script>
-        <script type="text/javascript" src="app/account/mvUser.js"></script>
-        <script type="text/javascript" src="app/account/mvSignupCtrl.js"></script>
-        <script type="text/javascript" src="app/account/mvProfileCtrl.js"></script>
-        <script type="text/javascript" src="app/account/mvFrontSignupCtrl.js"></script>
-        <script type="text/javascript" src="app/account/mvForgetPasswordCtrl.js"></script>
-        <script type="text/javascript" src="app/account/mvFrontLoginCtrl.js"></script>
-        <script type="text/javascript" src="app/account/mvResetPasswordCtrl.js"></script>
+    <!-- Sign up & Sign on -->
+    <script type="text/javascript" src="app/account/mvNavBarLoginCtrl.js"></script>
+    <script type="text/javascript" src="app/account/mvIdentity.js"></script>
+    <script type="text/javascript" src="app/account/mvAuth.js"></script>
+    <script type="text/javascript" src="app/account/mvUser.js"></script>
+    <script type="text/javascript" src="app/account/mvSignupCtrl.js"></script>
+    <script type="text/javascript" src="app/account/mvProfileCtrl.js"></script>
+    <script type="text/javascript" src="app/account/mvFrontSignupCtrl.js"></script>
+    <script type="text/javascript" src="app/account/mvForgetPasswordCtrl.js"></script>
+    <script type="text/javascript" src="app/account/mvFrontLoginCtrl.js"></script>
+    <script type="text/javascript" src="app/account/mvResetPasswordCtrl.js"></script>
 
-        <!-- Course -->
-        <script type="text/javascript" src="app/course/mvCourseListCtrl.js"></script>
-        <script type="text/javascript" src="app/course/mvCourse.js"></script>
-        <script type="text/javascript" src="app/course/mvCachedCourse.js"></script>
-        <script type="text/javascript" src="app/course/mvCourseDetailCtrl.js"></script>
-        
-        <!-- Employer -->
-        <script type="text/javascript" src="app/employer/mvEmployer.js"></script>
-        <script type="text/javascript" src="app/employer/mvCachedEmployer.js"></script>
-        <script type="text/javascript" src="app/employer/mvEmployerDetailCtrl.js"></script>
-        <script type="text/javascript" src="app/employer/mvEmployer.js"></script>
-        <script type="text/javascript" src="app/employer/mvEmployerRepo.js"></script>
-        <script type="text/javascript" src="app/employer/mvEmployerCtrl.js"></script>
-        <script type="text/javascript" src="app/employer/mvEmployerListCtrl.js"></script>
+    <!-- Course -->
+    <script type="text/javascript" src="app/course/mvCourseListCtrl.js"></script>
+    <script type="text/javascript" src="app/course/mvCourse.js"></script>
+    <script type="text/javascript" src="app/course/mvCachedCourse.js"></script>
+    <script type="text/javascript" src="app/course/mvCourseDetailCtrl.js"></script>
 
-        <!-- Vacancy -->
-        <script type="text/javascript" src="app/vacancy/mvVacancy.js"></script>
-        <script type="text/javascript" src="app/vacancy/mvCachedVacancy.js"></script>
-        <script type="text/javascript" src="app/vacancy/mvVacancyDetailCtrl.js"></script>
-        <script type="text/javascript" src="app/vacancy/mvVacancy.js"></script>
-        <script type="text/javascript" src="app/vacancy/mvVacancyRepo.js"></script>
-        <script type="text/javascript" src="app/vacancy/mvVacancyCtrl.js"></script>
-        <script type="text/javascript" src="app/vacancy/mvVacancyListCtrl.js"></script>
+    <!-- Employer -->
+    <script type="text/javascript" src="app/employer/mvEmployer.js"></script>
+    <script type="text/javascript" src="app/employer/mvCachedEmployer.js"></script>
+    <script type="text/javascript" src="app/employer/mvEmployerDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/employer/mvEmployer.js"></script>
+    <script type="text/javascript" src="app/employer/mvEmployerRepo.js"></script>
+    <script type="text/javascript" src="app/employer/mvEmployerCtrl.js"></script>
+    <script type="text/javascript" src="app/employer/mvEmployerListCtrl.js"></script>
 
-        <!-- Industry -->
-        <script type="text/javascript" src="app/industry/mvIndustry.js"></script>
-        <script type="text/javascript" src="app/industry/mvCachedIndustry.js"></script>
-        <script type="text/javascript" src="app/industry/mvIndustryDetailCtrl.js"></script>
-        <script type="text/javascript" src="app/industry/mvIndustry.js"></script>
-        <script type="text/javascript" src="app/industry/mvIndustryRepo.js"></script>
-        <script type="text/javascript" src="app/industry/mvIndustryCtrl.js"></script>
-        <script type="text/javascript" src="app/industry/mvIndustryListCtrl.js"></script>
-        
-        <!-- JobType -->
-        <script type="text/javascript" src="app/jobType/mvJobType.js"></script>
-        <script type="text/javascript" src="app/jobType/mvCachedJobType.js"></script>  
-        <script type="text/javascript" src="app/jobType/mvJobTypeDetailCtrl.js"></script>      
-        <script type="text/javascript" src="app/jobType/mvJobTypeCtrl.js"></script>       
-        <script type="text/javascript" src="app/jobType/mvJobTypeListCtrl.js"></script>
-        <script type="text/javascript" src="app/jobType/mvJobTypeRepo.js"></script>
+    <!-- Vacancy -->
+    <script type="text/javascript" src="app/vacancy/mvVacancy.js"></script>
+    <script type="text/javascript" src="app/vacancy/mvCachedVacancy.js"></script>
+    <script type="text/javascript" src="app/vacancy/mvVacancyDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/vacancy/mvVacancy.js"></script>
+    <script type="text/javascript" src="app/vacancy/mvVacancyRepo.js"></script>
+    <script type="text/javascript" src="app/vacancy/mvVacancyCtrl.js"></script>
+    <script type="text/javascript" src="app/vacancy/mvVacancyListCtrl.js"></script>
 
-        <!-- Category -->
-        <script type="text/javascript" src="app/category/mvCategory.js"></script>
-        <script type="text/javascript" src="app/category/mvCachedCategory.js"></script>
-        <script type="text/javascript" src="app/category/mvCategoryDetailCtrl.js"></script>
-        <script type="text/javascript" src="app/category/mvCategory.js"></script>
-        <script type="text/javascript" src="app/category/mvCategoryRepo.js"></script>
-        <script type="text/javascript" src="app/category/mvCategoryCtrl.js"></script>
-        <script type="text/javascript" src="app/category/mvCategoryListCtrl.js"></script>
+    <!-- Industry -->
+    <script type="text/javascript" src="app/industry/mvIndustry.js"></script>
+    <script type="text/javascript" src="app/industry/mvCachedIndustry.js"></script>
+    <script type="text/javascript" src="app/industry/mvIndustryDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/industry/mvIndustry.js"></script>
+    <script type="text/javascript" src="app/industry/mvIndustryRepo.js"></script>
+    <script type="text/javascript" src="app/industry/mvIndustryCtrl.js"></script>
+    <script type="text/javascript" src="app/industry/mvIndustryListCtrl.js"></script>
 
-        <!-- Job Seeker -->
-        <script type="text/javascript" src="app/jobSeeker/mvJobSeeker.js"></script>
-        <script type="text/javascript" src="app/jobSeeker/mvCachedJobSeeker.js"></script>
-        <script type="text/javascript" src="app/jobSeeker/mvJobSeekerDetailCtrl.js"></script>
-        <script type="text/javascript" src="app/jobSeeker/mvJobSeeker.js"></script>
-        <script type="text/javascript" src="app/jobSeeker/mvJobSeekerRepo.js"></script>
-        <script type="text/javascript" src="app/jobSeeker/mvJobSeekerCtrl.js"></script>
-        <script type="text/javascript" src="app/jobSeeker/mvJobSeekerListCtrl.js"></script>
+    <!-- JobType -->
+    <script type="text/javascript" src="app/jobType/mvJobType.js"></script>
+    <script type="text/javascript" src="app/jobType/mvCachedJobType.js"></script>
+    <script type="text/javascript" src="app/jobType/mvJobTypeDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/jobType/mvJobTypeCtrl.js"></script>
+    <script type="text/javascript" src="app/jobType/mvJobTypeListCtrl.js"></script>
+    <script type="text/javascript" src="app/jobType/mvJobTypeRepo.js"></script>
 
-        <!-- Inner Pages -->
-        <script type="text/javascript" src="app/innerPage/mvInnerPage.js"></script>
-        <script type="text/javascript" src="app/innerPage/mvCachedInnerPage.js"></script>
-        <script type="text/javascript" src="app/innerPage/mvInnerPageDetailCtrl.js"></script>
-        <script type="text/javascript" src="app/innerPage/mvInnerPage.js"></script>
-        <script type="text/javascript" src="app/innerPage/mvInnerPageRepo.js"></script>
-        <script type="text/javascript" src="app/innerPage/mvInnerPageCtrl.js"></script>
-        <script type="text/javascript" src="app/innerPage/mvInnerPageListCtrl.js"></script>
+    <!-- JobRole -->
+    <script type="text/javascript" src="app/jobRole/mvJobRole.js"></script>
+    <script type="text/javascript" src="app/jobRole/mvCachedJobRole.js"></script>
+    <script type="text/javascript" src="app/jobRole/mvJobRoleDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/jobRole/mvJobRoleCtrl.js"></script>
+    <script type="text/javascript" src="app/jobRole/mvJobRoleListCtrl.js"></script>
+    <script type="text/javascript" src="app/jobRole/mvJobRoleRepo.js"></script>
 
-        <!-- Admin-->
-        <script type="text/javascript" src="app/admin/users/mvUserListCtrl.js"></script>
-        
-        <!-- Translation-->
-        <script type="text/javascript" src="app/config.js"></script>
+    <!-- Category -->
+    <script type="text/javascript" src="app/category/mvCategory.js"></script>
+    <script type="text/javascript" src="app/category/mvCachedCategory.js"></script>
+    <script type="text/javascript" src="app/category/mvCategoryDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/category/mvCategory.js"></script>
+    <script type="text/javascript" src="app/category/mvCategoryRepo.js"></script>
+    <script type="text/javascript" src="app/category/mvCategoryCtrl.js"></script>
+    <script type="text/javascript" src="app/category/mvCategoryListCtrl.js"></script>
 
-    </body>
+    <!-- Job Seeker -->
+    <script type="text/javascript" src="app/jobSeeker/mvJobSeeker.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvCachedJobSeeker.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvJobSeekerDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvJobSeeker.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvJobSeekerRepo.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvJobSeekerCtrl.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvJobSeekerListCtrl.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvJobSeekerEducationalInformationCtrl.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvJobSeekerPersonalInformationCtrl.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvJobSeekerContactInformationCtrl.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvAddress.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvAddressCtrl.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvAddressRepo.js"></script>
+    <!-- Inner Pages -->
+    <script type="text/javascript" src="app/innerPage/mvInnerPage.js"></script>
+    <script type="text/javascript" src="app/innerPage/mvCachedInnerPage.js"></script>
+    <script type="text/javascript" src="app/innerPage/mvInnerPageDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/innerPage/mvInnerPage.js"></script>
+    <script type="text/javascript" src="app/innerPage/mvInnerPageRepo.js"></script>
+    <script type="text/javascript" src="app/innerPage/mvInnerPageCtrl.js"></script>
+    <script type="text/javascript" src="app/innerPage/mvInnerPageListCtrl.js"></script>
+
+    <!-- Experiance -->
+    <script type="text/javascript" src="app/experiance/mvExperiance.js"></script>
+    <script type="text/javascript" src="app/experiance/mvCachedExperiance.js"></script>
+    <script type="text/javascript" src="app/experiance/mvExperianceDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/experiance/mvExperiance.js"></script>
+    <script type="text/javascript" src="app/experiance/mvExperianceRepo.js"></script>
+    <script type="text/javascript" src="app/experiance/mvExperianceCtrl.js"></script>
+    <script type="text/javascript" src="app/experiance/mvExperianceListCtrl.js"></script>
+
+    <!-- Gender -->
+    <script type="text/javascript" src="app/gender/mvGender.js"></script>
+    <script type="text/javascript" src="app/gender/mvGenderRepo.js"></script>
+    
+    <!-- MaritalStatus -->
+    <script type="text/javascript" src="app/maritalStatus/mvMaritalStatus.js"></script>
+    <script type="text/javascript" src="app/maritalStatus/mvMaritalStatusRepo.js"></script>
+
+    <!-- MilitaryStatus -->
+    <script type="text/javascript" src="app/militaryStatus/mvMilitaryStatus.js"></script>
+    <script type="text/javascript" src="app/militaryStatus/mvMilitaryStatusRepo.js"></script>
+
+    <!-- CarLicenceType -->
+    <script type="text/javascript" src="app/carLicenceType/mvCarLicenceType.js"></script>
+    <script type="text/javascript" src="app/carLicenceType/mvCarLicenceTypeRepo.js"></script>
+
+
+    <!-- Admin-->
+    <script type="text/javascript" src="app/admin/users/mvUserListCtrl.js"></script>
+
+    <!-- Translation-->
+    <script type="text/javascript" src="app/config.js"></script>
+
+</body>
 </html>

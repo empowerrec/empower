@@ -1,4 +1,4 @@
-angular.module('app').factory('mvIdentity', function ($window, mvUser) {
+angular.module('app').factory('mvIdentity', function ($window, mvUser, mvEmployer, mvJobSeeker) {
 
     var currentUser = null;
     var currentEmployer = null;
@@ -13,6 +13,33 @@ angular.module('app').factory('mvIdentity', function ($window, mvUser) {
                 currentUser = new mvUser();
                 angular.extend(currentUser, data.current_user_send_to_client);
             }
+        }
+    });
+    
+    $.ajax({
+        url: "api/employerByUser",
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            
+            currentEmployer = new mvEmployer();
+            console.log(data);
+                angular.extend(currentEmployer, data);
+            
+        }
+    });
+    
+    
+    $.ajax({
+        url: "api/jobSeekerByUser",
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            
+            currentJobSeeker = new mvJobSeeker();
+            console.log(data);
+                angular.extend(currentJobSeeker, data);
+            
         }
     });
 

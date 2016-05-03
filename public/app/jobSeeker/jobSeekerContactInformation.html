@@ -1,0 +1,158 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container admin-area" ng-controller="mvJobSeekerContactInformationCtrl">
+    <div class="well" ng-hide="addMode && IsMobileInserted" >
+        <form name="jobSeekerForm" class="form-horizontal">
+            <fieldset>
+
+                <div class="form-group">
+                    <label for="MobileNo" class="col-md-2 control-label">{{"JobSeeker.MobileNo"| translate}}</label>
+                    <div class="col-md-10">
+                        <input name="MobileNo" placeholder="{{'JobSeeker.MobileNo' | translate}}"
+                               ng-model="jobSeeker.MobileNo" required="required"
+                               class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Email" class="col-md-2 control-label">{{"JobSeeker.Email" | translate}}</label>
+                    <div class="col-md-10">
+                        <input name="Email" type="text" placeholder="{{'JobSeeker.Email' | translate}}"
+                               ng-model="jobSeeker.Email" class="form-control" />
+                    </div>
+                </div>
+
+
+
+                <!--<div class="form-group">
+                        <label for="Gender" class="col-md-2 control-label">{{"Address.Country" | translate}}</label>
+                        <div class="col-md-10">
+                            <select name="Gender" ng-model="jobSeeker.Gender"
+                                    ng-options="item.value as item.text for item in genders"
+                                    class="form-control"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Gender" class="col-md-2 control-label">{{"Address.City" | translate}}</label>
+                        <div class="col-md-10">
+                            <select name="Gender" ng-model="jobSeeker.Gender"
+                                    ng-options="item.value as item.text for item in genders"
+                                    class="form-control"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Gender" class="col-md-2 control-label">{{"Address.Area" | translate}}</label>
+                        <div class="col-md-10">
+                            <select name="Gender" ng-model="jobSeeker.Gender"
+                                    ng-options="item.value as item.text for item in genders"
+                                    class="form-control"></select>
+                        </div>
+                    </div>-->
+                <!--<div class="form-group">
+                        <label for="SchoolName" class="col-md-2 control-label">{{"JobSeeker.SchoolName" | translate}}</label>
+                        <div class="col-md-10">
+                            <input name="SchoolName" type="text" placeholder="{{'JobSeeker.SchoolName' | translate}}"
+                                   ng-model="jobSeeker.SchoolName" class="form-control" />
+                        </div>
+                    </div>-->
+                <!--<div class="form-group">
+                        <label for="GradeOfGraduation" class="col-md-2 control-label">{{"JobSeeker.GradeOfGraduation" | translate}}</label>
+                        <div class="col-md-10">
+                            <select name="GradeOfGraduation" ng-model="jobSeeker.GradeOfGraduation"
+                                    ng-options="item.value as item.text for item in gradesOfGraduation"
+                                    class="form-control"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="SalaryPreference" class="col-md-2 control-label">{{"JobSeeker.SalaryPreference"| translate}}</label>
+                        <div class="col-md-10">
+                            <input name="SalaryPreference" type="number" placeholder="{{'JobSeeker.SalaryPreference' | translate}}"
+                                   ng-model="jobSeeker.SalaryPreference" required="required"
+                                   class="form-control" />
+                        </div>
+                    </div>-->
+                <!--<div class="form-group">
+                        <label for="PreferredWork" class="col-md-2 control-label">{{"JobSeeker.PreferredWork" | translate}}</label>
+                        <div class="col-md-10">
+                            <select name="PreferredWork" ng-model="jobSeeker.PreferredWork"
+                                    ng-options="item.value as item.text for item in preferredWorks"
+                                    class="form-control"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Reference1" class="col-md-2 control-label">{{"JobSeeker.Reference1" | translate}}</label>
+                        <div class="col-md-10">
+                            <input name="Reference1" type="text" placeholder="{{'JobSeeker.Reference1' | translate}}"
+                                   ng-model="jobSeeker.Reference1" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Reference1Contact" class="col-md-2 control-label">{{"JobSeeker.Reference1Contact" | translate}}</label>
+                        <div class="col-md-10">
+                            <input name="Reference1Contact" type="text" placeholder="{{'JobSeeker.Reference1Contact' | translate}}"
+                                   ng-model="jobSeeker.Reference1Contact" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Reference2" class="col-md-2 control-label">{{"JobSeeker.Reference2" | translate}}</label>
+                        <div class="col-md-10">
+                            <input name="Reference2" type="text" placeholder="{{'JobSeeker.Reference2' | translate}}"
+                                   ng-model="jobSeeker.Reference2" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Reference2Contact" class="col-md-2 control-label">{{"JobSeeker.Reference2Contact" | translate}}</label>
+                        <div class="col-md-10">
+                            <input name="Reference2Contact" type="text" placeholder="{{'JobSeeker.Reference2Contact' | translate}}"
+                                   ng-model="jobSeeker.Reference2Contact" class="form-control" />
+                        </div>
+                    </div>-->
+                <!--<div class="form-group">
+                        <label for="PreferredCountryOfWork" class="col-md-2 control-label">{{"JobSeeker.PreferredCountryOfWork" | translate}}</label>
+                        <div class="col-md-10">
+                            <select name="PreferredCountryOfWork" ng-model="jobSeeker.PreferredCountryOfWork"
+                                    ng-options="item._id as item.Name for item in countries"
+                                    ng-change="GetSelectedCountry()" class="form-control">
+                                <option value='0'>Select</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PreferredCityOfWork" class="col-md-2 control-label">{{"JobSeeker.PreferredCityOfWork" | translate}}</label>
+                        <div class="col-md-10">
+                            <select name="PreferredCityOfWork" ng-model="jobSeeker.PreferredCityOfWork"
+                                    ng-options="item._id as item.Name for item in cities" class="form-control">
+                                <option value='0'>Select</option>
+                            </select>
+                        </div>
+                    </div>-->
+
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <div class="pull-right">
+                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                                {{"Buttons.Update" | translate}}
+                            </button>
+
+                            <button ng-click="add()" ng-show="addMode" class="btn btn-primary" ng-disabled="IsMobileInserted">
+                                {{"Buttons.Add" | translate}}
+                            </button>
+                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+    <div ng-show="IsMobileInserted" data-ng-include="'app/jobSeeker/address.html'"></div>
+</div>
+
+
+<!--<div data-ng-include="'app/jobSeeker/address.html'"></div>-->

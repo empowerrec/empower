@@ -49,7 +49,9 @@
 
                     <div class="col-md-2">
                         <select ng-model="vacancy.SalaryCurancy" ng-options="curancy._id as curancy.CurancyName[0].Text for curancy in curancies"
-                                class="form-control"></select>
+                                class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
                     </div>
 
                 </div>
@@ -77,7 +79,9 @@
 
                     <div class="col-md-2">
                         <select ng-model="vacancy.JobType" ng-options="jobType._id as jobType.JobTypeName[0].Text for jobType in jobTypes"
-                                class="form-control"></select>
+                                class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
                     </div>
                   
               
@@ -86,7 +90,9 @@
 
                     <div class="col-md-2">
                         <select ng-model="vacancy.Industry" ng-options="industry._id as industry.Description[0].Text for industry in industries"
-                                class="form-control"></select>
+                                class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
                     </div>
                     
                     <label for="requiredExperiance" class="col-md-2 control-label">
@@ -107,7 +113,9 @@
 
                     <div class="col-md-2">
                         <select ng-model="vacancy.Country" ng-options="country._id as country.Name[0].Text for country in countries"
-                                class="form-control"></select>
+                                class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
                     </div>
 
                

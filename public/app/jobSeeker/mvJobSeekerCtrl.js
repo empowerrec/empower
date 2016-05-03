@@ -1,52 +1,21 @@
-angular.module('app').controller('mvJobSeekerCtrl', function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, $routeParams) {
+angular.module('app').controller('mvJobSeekerCtrl', function ($scope, $routeParams, mvExperiance, mvIdentity) {
     
-    var id = $routeParams.id;
-    
-    $scope.genders = [
-        { value: 'Male', text: 'Male' },
-        { value: 'Female', text: 'Female' }
-    ];    
-    
-    $scope.addEnabled = false;
-    
-    if (id) {
-        $scope.jobSeeker = mvJobSeeker.get({ _id: id }, (function () {
-            $scope.updateMode = true;
-            $scope.addMode = false;
-            
-            $scope.jobSeeker.BirthDate = new Date($scope.jobSeeker.BirthDate);
-            if (!$scope.jobSeeker.Gender) {
-                $scope.jobSeeker.Gender = $scope.genders[0].value;
-            }
-        }));
-    } else {
-        $scope.jobSeeker = new mvJobSeeker();
-        $scope.jobSeeker.Gender = $scope.genders[0].value;
-        
-        $scope.updateMode = false;
-        $scope.addMode = true;
-        $scope.addEnabled = true;
+    $scope.active = 0;
+    $scope.currentUser = mvIdentity.currentUser;
+    $scope.experiances = mvExperiance.query();
+    console.log($routeParams.tab);
+    switch ($routeParams.tab) {
+        case 'PersonalInformation':
+            $scope.active = 0;
+            break;
+        case 'EducationalInformation':
+            $scope.active = 1;
+            break;
+        case 'ContactInformation':
+            $scope.active = 2;
+            break;
+        case 'Experiances':
+            $scope.active = 3;
+            break;              
     }
-    
-    $scope.update = function () {
-        if ($scope.jobSeekerForm.$valid) {
-            mvJobSeekerRepo.updateCurrentJobSeeker($scope.jobSeeker).then(function () {
-                mvNotifier.notify('JobSeeker has been updated!');
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }
-    };
-    
-    $scope.add = function () {
-        if ($scope.jobSeekeForm.$valid && addEnabled) {
-            mvJobSeekerRepo.createJobSeeker($scope.jobSeeker).then(function () {
-                mvNotifier.notify('New JobSeeker Added!');
-                $scope.addEnabled = false;
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }
-    };
-     
 });

@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngStorage', 'ui.bootstrap']);
+angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngCookies', 'ui.bootstrap', 'autocomplete']);
 
 angular.module('app').config(function ($routeProvider) {
     var routRoleChecks = {
@@ -34,6 +34,9 @@ angular.module('app').config(function ($routeProvider) {
     .when('/forget', {
         templateUrl: '/partials/account/forget-password',controller: 'mvForgetPasswordCtrl'
     })
+        .when('/reset/:token', {
+        templateUrl: '/partials/account/reset-password', controller: 'mvResetPasswordCtrl'
+    })
         .when('/courses', {
         templateUrl: '/partials/course/course-list.html',
         controller: 'mvCourseListCtrl'
@@ -64,12 +67,15 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/jobSeekers/:id', {
         templateUrl: '/partials/jobSeeker/jobSeeker-detail.html',
         controller: 'mvJobSeekerDetailCtrl'
-    }).when('/updateJobSeeker/:id', {
-        templateUrl: '/partials/jobSeeker/jobSeeker.html',
-        controller: 'mvJobSeekerCtrl'
+    }).when('/updateJobSeeker/:tab/:id', {
+        templateUrl: '/partials/jobSeeker/jobSeeker.html'
+        //,controller: 'mvJobSeekerCtrl'
     }).when('/addJobSeeker', {
-        templateUrl: '/partials/jobSeeker/jobSeeker.html',
-        controller: 'mvJobSeekerCtrl'
+        templateUrl: '/partials/jobSeeker/jobSeeker.html'
+        //,controller: 'mvJobSeekerCtrl'
+    }).when('/jobSeekerMain', {
+        templateUrl: '/partials/jobSeeker/jobSeekerMain.html'
+        
     })
         .when('/vacancies/:id', {
         templateUrl: '/partials/vacancy/vacancy-detail',
@@ -106,7 +112,19 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvJobTypeCtrl'
     }).when('/jobTypes', {
         templateUrl: '/partials/jobType/jobType-list.html',
-        controller: 'mvJobTypeListCtrl'
+        controller: 'mvJobTypeListCtrl'    
+    }).when('/jobRoles/:id', {
+        templateUrl: '/partials/jobRole/jobRole-detail',
+        controller: 'mvJobRoleDetailCtrl'
+    }).when('/updatejobRole/:id', {
+        templateUrl: '/partials/jobRole/jobRole',
+        controller: 'mvJobRoleCtrl'
+    }).when('/addjobRole', {
+        templateUrl: '/partials/jobRole/jobRole',
+        controller: 'mvJobRoleCtrl'
+    }).when('/jobRoles', {
+        templateUrl: '/partials/jobRole/jobRole-list.html',
+        controller: 'mvJobRoleListCtrl'
     }).when('/innerPages/:id', {
         templateUrl: '/partials/innerPage/innerPage-detail',
         controller: 'mvInnerPageDetailCtrl'
@@ -131,6 +149,32 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/categories', {
         templateUrl: '/partials/category/category-list.html',
         controller: 'mvCategoryListCtrl'
+        
+    }).when('/addresses/:id', {
+        templateUrl: '/partials/jobSeeker/address-detail',
+        controller: 'mvAddressDetailCtrl'
+    }).when('/updateAddress/:id', {
+        templateUrl: '/partials/jobSeeker/address',
+        controller: 'mvAddressCtrl'
+    }).when('/addAddress', {
+        templateUrl: '/partials/jobSeeker/address',
+        controller: 'mvAddressCtrl'
+    }).when('/addresses', {
+        templateUrl: '/partials/jobSeeker/address-list.html',
+        controller: 'mvAddressListCtrl'
+        
+    }).when('/experiances/:id', {
+        templateUrl: '/partials/experiance/experiance-detail',
+        controller: 'mvExperianceDetailCtrl'
+    }).when('/updateExperiance/:id', {
+        templateUrl: '/partials/experiance/experiance',
+        controller: 'mvExperiancerCtrl'
+    }).when('/addExperiance', {
+        templateUrl: '/partials/experiance/experiance',
+        controller: 'mvExperiancerCtrl'
+    }).when('/experiances', {
+        templateUrl: '/partials/experiance/experiance-list.html',
+        controller: 'mvExperianceListCtrl'
     });
 
 });

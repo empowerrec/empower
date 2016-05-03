@@ -31,7 +31,17 @@ var employerSchema = mongoose.Schema({
         ContactFirstName: {type: String},
         ContactLastName: {type: String},
         ContactTitle: {type: String},
-        ContactMobileNumber: {type: String},
+    ContactMobileNumber: { type: String },
+    CompanyPhone: { type: String },
+    CompanyWebsite: { type: String },
+         CompanySize: {
+type: mongoose.Schema.Types.ObjectId,
+            ref: 'CompanySize'
+    },
+ Country: {
+type: mongoose.Schema.Types.ObjectId,
+            ref: 'Country'
+},
         ModifiedBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'

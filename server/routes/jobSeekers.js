@@ -8,4 +8,6 @@ router.post('/', jobSeekers.createJobSeeker);
 router.put('/', jobSeekers.updateJobSeeker);
 router.get('/:id', jobSeekers.getJobSeekerById);
 
+
+
 module.exports = router;

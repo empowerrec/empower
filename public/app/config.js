@@ -31,7 +31,7 @@
             "Age": "Age",
             "Location": "Location",
             "Messages": "Messages",
-            "People": "People",
+            "People": "People", 
             "Splash_Msg": "Loading . . .",
             "Message_Count": "{messageCount, plural, =0{No Messages} one{1 Message} other{# Messages}}",
             "Conference_Date": "May 18 - 19, 2015",
@@ -50,12 +50,17 @@
                 "Employer": "Employer",
                 "EmployerName": "Name",
                 "EmployerType": "Type",
-                "NumberOfEmployees": "Number Of Employees",
-                "AverageNumberOfJobOpeningsPerMonth": "Average Number Of Job Openings Per Month",
+                "NumberOfEmployees": "Employees",
+                "AverageNumberOfJobOpeningsPerMonth": "Jobs Per Month",
                 "ContactFirstName": "Contact First Name",
                 "ContactLastName": "Contact Last Name",
                 "ContactTitle": "Contact Title",
-                "ContactMobileNumber": "Contact Mobile Number"
+                "ContactMobileNumber": "Contact Mobile Number",
+                "ContactPersonInformation": "Contact Person Information",
+                "CompanyPhone": "CompanyPhone",
+                "CompanyWebsite": "Company Website",
+                "CompanySize": "Company Size",
+                "Country": "Country"
             },
             "JobSeeker": {
                 "JobSeeker": "JobSeeker",
@@ -77,7 +82,20 @@
                 "Reference1": "Reference1",
                 "Reference1Contact": "Reference1 Contact",
                 "Reference2": "Reference2",
-                "Reference2Contact": "Reference2 Contact"
+                "Reference2Contact": "Reference2 Contact",
+                'Personal Information': 'Personal Information',
+                'Educational Information':'Educational Information',
+                'Contact Information': 'Contact Information',
+                "Country": "Country",
+                "MobileNo": "MobileNo",
+                "Email": "Email",
+                "Experiances" : "Experiances",
+                'FirstName': 'First Name',
+                'MiddleName': 'Middle Name',
+                'LastName': 'Last Name',
+                'MaritalStatus': 'Marital Status',
+                'MilitaryStatus': 'Military Status',
+                'CarLicenceType':'Car Licence Type'                
             },
             "Vacancy": {
                 "JobTitle": "Job Title",
@@ -107,6 +125,28 @@
             "JobType": {
                 "JobTypeName": "Job Type Name"
             },
+            "JobRole": {
+                "JobRoleName": "Job Role Name"
+            },
+            "Address": {
+                "Country": "Country",
+                "City": "City",
+                "Area": "Area",
+                "AddressLine1": "Address Line1",
+                "AddressLine2": "Address Line2"
+            },
+            "Experiance": {
+                "Country": "Country",
+                "Company": "Company",
+                "CompanySize": "Company Size",
+                "CompanyType": "Company Type",
+                "Position": "Position",
+                "Salary": "Salary",
+                "PeriodFrom": "Period From",
+                "PeriodTo": "Period To",
+                "Achievements": "Achievements",
+                "FunctionalTasks": "Functional Tasks"
+            },
             "Category": {
                 "Description": "Description"
             },
@@ -120,6 +160,7 @@
                 "Cancel": "Cancel",
                 "Delete": "Delete",
                 "Add": "Add New",
+                "NewAddress": "New Address",
                 "Change Password": "Change Password",
                 "Reset Password":"Reset Password"
             },
@@ -131,16 +172,20 @@
                 "Vacancies": "Vacancies",
                 "ContactUs": "Contact US",
                 "AboutUs": "About US",
-                "MyProfile": "Profile" ,
+                "MyProfile": "User Profile" ,
                 "Users" : "Users",
                 "Industries" : "Industries",
-                "JobTypes" : "JobTypes",
+                "JobTypes" : "Job Types",
+                "JobRoles" : "Job Roles",
                 "InnerPages" : "Inner Pages" ,
                 "JobSeekers" : "Job Seekers",
                 "Signout" : "Sign Out",
                 "UserMenu": "User Menu",
                 "Categories": "Categories",
-                "CompanyProfile" : "Company Profile"
+                "CompanyProfile" : "Company Profile",
+                "Experiances" : "Experiances",
+                'SelectValue': 'Select Value',
+                'JobSeekerProfile':'Job Seeker Profile'
             },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
@@ -187,11 +232,16 @@
                 "EmployerName": "اسم الشركة",
                 "EmployerType": "نوع الشركة",
                 "NumberOfEmployees": "عدد الموظفين",
-                "AverageNumberOfJobOpeningsPerMonth": "متوسط عدد الوظائف المفتوحة كل شهر",
+                "AverageNumberOfJobOpeningsPerMonth": " عدد الوظائف شهريا",
                 "ContactFirstName": "الاسم الأول",
                 "ContactLastName": "الاسم الأخير",
                 "ContactTitle": "الوظيفة",
-                "ContactMobileNumber": "رقم التليفون"
+                "ContactMobileNumber": "رقم التليفون",
+                "ContactPersonInformation": "بيانات المسئول",
+                "CompanyPhone": "تليفون الشركة",
+                "CompanyWebsite": "الموقع الاليكترونى",
+                "CompanySize": "عدد الموظفين",
+                "Country":"الدولة"
             }, 
             "JobSeeker": {
                 "JobSeeker": "باحث عن وظيفة",
@@ -213,7 +263,19 @@
                 "Reference1": "Reference1",
                 "Reference1Contact": "Reference1 Contact",
                 "Reference2": "Reference2",
-                "Reference2Contact": "Reference2 Contact"
+                "Reference2Contact": "Reference2 Contact",
+                'Personal Information': 'المعلومات الشخصية',
+                'Educational Information': 'المعلومات الدراسية',
+                'Contact Information': 'معلومات الاتصال',
+                "MobileNo": "رقم المبيل",
+                "Email": "البريد الألكتروني",
+                "Experiances": "الخبرات",
+                'FirstName': 'الاسم الاول',
+                'MiddleName': 'الاسم الاوسط',
+                'LastName': 'الاسم الاخير',
+                'MaritalStatus': 'الحالة الاجتماعية',
+                'MilitaryStatus': 'موقف من التجنيد',
+                'CarLicenceType': 'نوع رخصة السيارة'                
             },
             "Vacancy": {
                 "JobTitle": "عنوان الوظيفة",
@@ -225,6 +287,7 @@
                 "SalaryCurancy": "عملة المرتب",
                 "RequiredExperiance": "الخبرة المطلوبة",
                 "JobType" : "نوع الوظيفة",
+                "JobRole" : "مجال الوظيفة",
                 "Industry": "قطاع العمل",
                 "Country": "الدولة",
                 "City": "المدينة"
@@ -243,6 +306,28 @@
             "JobType": {
                 "JobTypeName": "نوع الوظيفة"
             },
+            "JobRole": {
+                "JobRoleName": "نوع المجال"
+            },
+            "Address": {
+                "Country": "دولة",
+                "City": "مدينة",
+                "Area": "منطقة",
+                "AddressLine1": "العنوان الأول",
+                "AddressLine2": "العنوان الثاني"
+            },
+            "Experiance": {
+                "Country": "الدولة",
+                "Company": "الشركة",
+                "CompanySize": "حجم الشركة",
+                "CompanyType": "نوع الشركة",
+                "Position": "الوظيفة",
+                "Salary": "المرتب",
+                "PeriodFrom": "الفتره من ",
+                "PeriodTo": "الفتره الى",
+                "Achievements": "الانجازات",
+                "FunctionalTasks": "المهام"
+            },
             "Category": {
                 "Description": "الوصف"
             },
@@ -256,6 +341,7 @@
                 "Cancel": "الغاء",
                 "Delete": "حذف",
                 "Add": "اضافة جديد",
+                "NewAddress":"عنوان جديد",
                 "Change Password": "تغيير كلمة السر",
                 "Reset Password":"ارسال ميل"
             },
@@ -267,16 +353,20 @@
                 "Vacancies": "فرص العمل",
                 "ContactUs": "اتصل بنا",
                 "AboutUs": "عنا",
-                "MyProfile": "بياناتى" ,
+                "MyProfile": "بيانات المستخدم" ,
                 "Users" : "المستخدمين" ,
                 "Industries" : "قطاعات العمل",
                 "JobTypes" : "انواع الوظائف",
+                "JobRoles" : "مجالات الوظائف",
                 "InnerPages" : "الصفحات الداخلية",
                 "JobSeekers" : "الباحثين عن العمل",
                 "Signout" : "تسجيل الخروج",
                 "UserMenu": "قائمة المستخدم",
                 "Categories": "التصنيفات",
-                "CompanyProfile" : "بيانات الشركة"
+                "CompanyProfile" : "بيانات الشركة",
+                "Experiances" : "الخبرات",
+                'SelectValue':'اختار من القائمة',
+                'JobSeekerProfile': 'بيانات طالب العمل'
             },
             "Footer": {
                 "Copy": "\u00A9" + " شركة ايم باور 2016"
@@ -324,6 +414,9 @@
         });
         $translateProvider.preferredLanguage('ar');
         //$translateProvider.determinePreferredLanguage();
+        
+        $translateProvider.useCookieStorage();
+        $translateProvider.useLocalStorage();
         
         console.log(navigator.language);
 

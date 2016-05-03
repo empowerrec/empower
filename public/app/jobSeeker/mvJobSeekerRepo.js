@@ -1,9 +1,13 @@
-angular.module('app').factory('mvJobSeekerRepo', function ($http, $q, mvJobSeeker, mvIdentity) {
+angular.module('app').factory('mvJobSeekerRepo', function ($http, $q, mvJobSeeker, mvIdentity, $rootScope) {
     return {
         
         createJobSeeker: function (newJobSeekerData) {
             var newJobSeeker = new mvJobSeeker(newJobSeekerData);
             newJobSeeker.CreatedBy = mvIdentity.currentUser;
+            //if ($rootScope.AddressId) {
+            //    newJobSeeker.Address = $rootScope.AddressId;
+            //    $rootScope.AddressId = undefined;
+            //}          
             var dfd = $q.defer();
             newJobSeeker.$save().then(function () {
                 dfd.resolve();
@@ -27,6 +31,10 @@ angular.module('app').factory('mvJobSeekerRepo', function ($http, $q, mvJobSeeke
         },
         updateCurrentJobSeeker: function (newJobSeekerData) {
             newJobSeekerData.ModifiedBy = mvIdentity.currentUser;
+            //if ($rootScope.AddressId) {
+            //    newJobSeekerData.Address += $rootScope.AddressId;
+            //    $rootScope.AddressId = undefined;
+            //}       
             var dfd = $q.defer();
             var clone = angular.copy(newJobSeekerData);
             angular.extend(clone, newJobSeekerData);

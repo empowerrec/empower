@@ -21,7 +21,7 @@ exports.sendMail = function sendMail(sender , reciver , messageSubject , message
         else {
             console.log('message sent sussefully');
             console.log(result);
-            return res.send(req.user);
+            //return res.send(req.user);
         }
     });
 }

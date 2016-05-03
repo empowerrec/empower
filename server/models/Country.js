@@ -3,12 +3,8 @@ var mongoose = require('mongoose');
 var countrySchema = mongoose.Schema({
     
     Name: [{
-            Language: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Language'
-            },
             Text: String,
-            Lang:String
+            Lang: String
         }],
     Description: {
         type: String
@@ -39,7 +35,7 @@ function createDefaultCountries() {
             
             
             Country.create({
-                 Name: [{ "Text": "Suadi Arabia" , "Lang": "en" }, { "Text": "«·”⁄ÊœÌ…" , "Lang": "ar" }]
+                Name: [{ "Text": "Suadi Arabia" , "Lang": "en" }, { "Text": "«·”⁄ÊœÌ…" , "Lang": "ar" }]
                  
             });
         }

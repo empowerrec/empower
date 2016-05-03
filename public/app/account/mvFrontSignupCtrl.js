@@ -46,7 +46,9 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootSco
                 } else if ($scope.usertype == 'J') {
                     var newJobSeekerData = {
                         User: mvIdentity.currentUser,
-                        CreatedBy: mvIdentity.currentUser
+                        CreatedBy: mvIdentity.currentUser,
+                        FirstName: name ,
+                        LastName: $scope.lastname
                     };
                     return mvJobSeekerRepo.createJobSeekerAfterCreatingUser(newJobSeekerData);
                 }
@@ -66,7 +68,7 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootSco
                 if (type == 'E') {
                     $location.path('/updateemployer/' + mvIdentity.currentEmployer._id);
                 } else if (type == 'J') {
-                    $location.path('/updateJobSeeker/' + mvIdentity.currentJobSeeker._id);
+                    $location.path('/updateJobSeeker/PersonalInformation/' + mvIdentity.currentJobSeeker._id);
                 }
             }, function (reason) {
                 mvNotifier.error(reason);

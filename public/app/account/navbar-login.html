@@ -27,7 +27,14 @@
             <ul class="dropdown-menu">
                 <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/users">{{"Menu.Users" | translate}}</a></li>
                 <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/employers">{{"Menu.Employers" | translate}}</a></li>
-                <li><a href="#/profile">{{"Menu.CompanyProfile" | translate}}</a></li>
+                <li ng-show="identity.currentUser.isEmployer()">
+                    <a href="#/updateemployer/profile">{{"Menu.CompanyProfile" | translate}}</a>
+                </li>
+
+                <li ng-show="identity.currentUser.isJobSeeker()">
+                    <a href="#/updateJobSeeker/PersonalInformationCtrl/profile">{{"Menu.JobSeekerProfile" | translate}}</a>
+                </li>
+                <li><a href="#/profile">{{"Menu.MyProfile" | translate}}</a></li>
                 <li><a href="" ng-click="signout()">{{"Menu.Signout" | translate}}</a></li>
             </ul>
         </li>

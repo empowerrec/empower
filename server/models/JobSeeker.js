@@ -7,19 +7,63 @@ var educationLevels = 'Illiterate,Student,Technician,' +
     'Medical Doctor,Master of Business (MBA),Master of Fine Arts (MFA),' +
     'PhD,Other'.split(',');
 var preferredWorks = 'Full Time,Part Time,Temporary,Any'.split(',');
-var graduationGrades='Very Goog,Good'.split(',');
+var graduationGrades = 'Very Goog,Good'.split(',');
 
 var jobSeekerSchema = mongoose.Schema({
     User: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    Gender: { type: String, enum: genders },
-    BirthDate: { type: Date },
-    Address: {
+    Gender: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Address'
+        ref: 'Gender'
     },
+    FirstName: { type: String },
+    MiddleName: { type: String },
+    LastName: { type: String },
+    BirthDate: { type: Date },
+    MaritalStatus: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'MaritalStatus'
+    },
+    MilitaryStatus: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'MilitaryStatus'
+    },
+    HasACar: { type: Boolean },
+    CarLicenceType: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CarLicenceType'
+    },
+    Address: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Address'
+        }],
+    FacebookAcount: String ,
+    TwitterAcount: String ,
+    LinkedinAccount: String ,
+    Email : String ,
+    MobileNo : String ,
+    
+    EducationalInformation: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'EducationalInformation'
+        }],
+    Courses: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Course'
+        }], 
+    Experiances: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Experiance'
+        }],
+    Skills: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
+        }],
+    ExpectedSalary: Number,
+    PeriodOfEnrollment : Number,
+    MoreInformation : String,
     ResumeLink: { type: String },
     ExperienceLevel: {
         type: Number
