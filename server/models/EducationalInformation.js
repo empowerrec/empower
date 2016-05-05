@@ -1,11 +1,14 @@
 var mongoose = require('mongoose');
 
 var EducationalInformationSchema = mongoose.Schema({
+    JobSeeker: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'JobSeeker'
+    },
     EducationType: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'EducationType'
-    },
-
+    },    
     Univirsty: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Univirsty'
@@ -42,21 +45,17 @@ var EducationalInformation = mongoose.model('EducationalInformation', Educationa
 function createDefaultEducationalInformations() {
     
     EducationalInformation.find({}).exec(function (err1, col) {
-                if (col.length === 0) {
-                    
-                    EducationalInformation.create({
+        if (col.length === 0) {
+            
+            EducationalInformation.create({
                 GraduationYear : 2006
-                    });
-                    
-                    EducationalInformation.create({
-                GraduationYear : 2007
-                    });
-                }
             });
-
-        
-    
-    
+            
+            EducationalInformation.create({
+                GraduationYear : 2007
+            });
+        }
+    });
 }
 
 exports.createDefaultEducationalInformations = createDefaultEducationalInformations;

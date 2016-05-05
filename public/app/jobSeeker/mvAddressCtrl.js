@@ -33,27 +33,27 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, mvNotifier, 
 
 
     //}
-    //for list ctrl
-    //st
-    $scope.currentUser = mvIdentity.currentUser;
-    $scope.addresses = mvAddress.query();
-    //$scope.currentLang = $translate.use();
-    //$scope.sortOptions = [{ value: 'JobRoleName', text: 'Sort by JobRoleName' }];
+    ////for list ctrl
+    ////st
+    //$scope.currentUser = mvIdentity.currentUser;
+    //$scope.addresses = mvAddress.query();
+    ////$scope.currentLang = $translate.use();
+    ////$scope.sortOptions = [{ value: 'JobRoleName', text: 'Sort by JobRoleName' }];
     
-    //$scope.sortOrder = $scope.sortOptions[0].value;
-    $scope.getName = function (list) {
-        for (var i = 0; i < list.length; i++) {
+    ////$scope.sortOrder = $scope.sortOptions[0].value;
+    //$scope.getName = function (list) {
+    //    for (var i = 0; i < list.length; i++) {
             
-            if (list[i].Lang == $scope.currentLang) {
-                return list[i].Text;
-            }
-        }
-    };
+    //        if (list[i].Lang == $scope.currentLang) {
+    //            return list[i].Text;
+    //        }
+    //    }
+    //};
     
-    $scope.getLang = function () {
-        return $translate.use();
-    };
-    //end
+    //$scope.getLang = function () {
+    //    return $translate.use();
+    //};
+    ////end
     
     $scope.getName = function(list , lang){
         var selectedLang ;

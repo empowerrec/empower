@@ -18,7 +18,8 @@ angular.module('app').controller('mvExperiancerCtrl', function ($scope,  mvNotif
     else
     {
         $scope.experiance = new mvExperiance();
-        console.log(mvIdentity.currentJobSeeker._id);
+        
+        if(mvIdentity.currentJobSeeker)
         $scope.experiance.JobSeeker = mvIdentity.currentJobSeeker;
         $scope.updateMode = false;
         $scope.addMode = true;
@@ -146,4 +147,6 @@ angular.module('app').controller('mvExperiancerCtrl', function ($scope,  mvNotif
 
         });
     };
+    
+   
 });

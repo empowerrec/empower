@@ -1,0 +1,77 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container top-padding-med  admin-area">
+
+    <div class="well">
+
+        <form name="educationalInformationForm" class="form-horizontal">
+            <fieldset>
+
+                <div class="form-group">
+                    <label for="EducationType" class="col-md-2 control-label">{{"EducationalInformation.EducationType"| translate}}</label>
+                    <div class="col-md-2">
+                        <select name="EducationType" ng-model="educationalInformation.EducationType" required="required"
+                                ng-options="educationType._id as educationType.Name[0].Text for educationType in educationTypes" class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Univirsty" class="col-md-2 control-label">{{"EducationalInformation.Univirsty"| translate}}</label>
+                    <div class="col-md-2">
+                        <select name="Univirsty" ng-model="educationalInformation.Univirsty" required="required"
+                                ng-options="univirsty._id as univirsty.Name[0].Text for univirsty in univirsties" class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Faculty" class="col-md-2 control-label">{{"EducationalInformation.Faculty"| translate}}</label>
+                    <div class="col-md-2">
+                        <select name="Faculty" ng-model="educationalInformation.Faculty" required="required"
+                                ng-options="faculty._id as faculty.Name[0].Text for faculty in faculties" class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Specialization" class="col-md-2 control-label">{{"EducationalInformation.Specialization"| translate}}</label>
+                    <div class="col-md-2">
+                        <select name="Specialization" ng-model="educationalInformation.Specialization" required="required"
+                                ng-options="specialization._id as specialization.Name[0].Text for specialization in specializations" class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Grade" class="col-md-2 control-label">{{"EducationalInformation.Grade"| translate}}</label>
+                    <div class="col-md-2">
+                        <select name="Grade" ng-model="educationalInformation.Grade" required="required"
+                                ng-options="grade._id as grade.Name[0].Text for grade in grades" class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <div class="pull-right">
+                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                                {{"Buttons.Save" | translate}}
+                            </button>
+
+                            <button ng-click="add()" ng-show="addMode" ng-disabled="!addEnabled" class="btn btn-primary">
+                                {{"Buttons.Add" | translate}}
+                            </button>
+                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -1,1 +1,22 @@
-<div class="container"><h1>{{course.Title}}</h1><div class="row"><div class="col-md-6"><h3 ng-show="course.Featured">Featured</h3><h3>Published on {{course.Published | date}}</h3></div><div class="col-md-6"><div class="panel panel-primary"><div class="panel-heading">Tags</div><div class="panel-body"><div ng-repeat="tag in course.Tags">{{tag}}</div></div></div></div></div></div>
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container admin-area">
+
+    <div class="row">
+        <div class="col-md-6"><h3>{{"Course.Title" | translate}} : {{course.Title}}</h3>
+
+            <h3>{{"Course.TrainingCenter.Name" | translate}} : {{course.TrainingCenter.Name}}</h3>
+
+            <h3>{{"Course.Specialization.Name" | translate}} :{{course.Specialization.Name}}</h3>
+        
+            <h3>
+                {{"course.Grade.Name" | translate}} :
+                {{course.Grade.Name}}
+            </h3>
+            <h3>
+                {{"Course.CourseYear" | translate}} :{{course.CourseYear}}
+            </h3>
+           
+
+        </div>
+    </div>
+</div>

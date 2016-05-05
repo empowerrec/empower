@@ -25,7 +25,7 @@
                 "Arabic": "عربى"
             },
             "Created_By": "Created by John Papa",
-            "Forget Password":"Forget Password",
+            "Forget Password": "Forget Password",
             "First_Name": "First Name",
             "Last_Name": "Last Name",
             "Age": "Age",
@@ -84,7 +84,7 @@
                 "Reference2": "Reference2",
                 "Reference2Contact": "Reference2 Contact",
                 'Personal Information': 'Personal Information',
-                'Educational Information':'Educational Information',
+                'Educational Information': 'Educational',
                 'Contact Information': 'Contact Information',
                 "Country": "Country",
                 "MobileNo": "MobileNo",
@@ -95,7 +95,11 @@
                 'LastName': 'Last Name',
                 'MaritalStatus': 'Marital Status',
                 'MilitaryStatus': 'Military Status',
-                'CarLicenceType':'Car Licence Type'                
+                'CarLicenceType': 'Car Licence Type',
+                'FacebookAcount': 'FacebookAcount',
+                'TwitterAcount': 'TwitterAcount',
+                'LinkedinAccount': 'LinkedinAccount',
+                'Course': 'Course'
             },
             "Vacancy": {
                 "JobTitle": "Job Title",
@@ -108,7 +112,7 @@
                 "RequiredExperiance": "Required Experience",
                 "JobType" : "Job Type",
                 "Industry": "Industry",
-                "Country":"Country",
+                "Country": "Country",
                 "City": "City"
             },
             "User": {
@@ -153,6 +157,20 @@
             "InnerPage": {
                 "PageTitle": "Page Title",
                 "PageBody": "Page Body"
+            }, 
+            "EducationalInformation": {
+                'EducationType': 'Education Type',
+                'Univirsty': 'Univirsty',
+                'Faculty': 'Faculty',
+                'Specialization': 'Specialization',
+                'Grade': 'Grade'
+            },
+            'Course': {
+                'Title': 'Title',
+                'TrainingCenter': 'Training Center',
+                'Specialization': 'Specialization',               
+                'Grade': 'Grade',
+                'CourseYear': 'CourseYear'
             },
             "Buttons": {
                 "Update": "Update",
@@ -162,7 +180,7 @@
                 "Add": "Add New",
                 "NewAddress": "New Address",
                 "Change Password": "Change Password",
-                "Reset Password":"Reset Password"
+                "Reset Password": "Reset Password"
             },
             "Menu": {
                 "SubTitle": "Jobs IN Egypt",
@@ -185,7 +203,7 @@
                 "CompanyProfile" : "Company Profile",
                 "Experiances" : "Experiances",
                 'SelectValue': 'Select Value',
-                'JobSeekerProfile':'Job Seeker Profile'
+                'JobSeekerProfile': 'Job Seeker Profile'
             },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
@@ -204,7 +222,7 @@
             "Password": "كلمة السر",
             "Remember Me": "تذكرني",
             "Forget Password": "نسيت كلمة السر",
-            "Confirm Password":"تاكيد كلمة السر",
+            "Confirm Password": "تاكيد كلمة السر",
             "Sign Up": "فتح حساب",
             "Created_By": "اضيف بواسطة",
             "First_Name": "الاسم الاول",
@@ -241,7 +259,7 @@
                 "CompanyPhone": "تليفون الشركة",
                 "CompanyWebsite": "الموقع الاليكترونى",
                 "CompanySize": "عدد الموظفين",
-                "Country":"الدولة"
+                "Country": "الدولة"
             }, 
             "JobSeeker": {
                 "JobSeeker": "باحث عن وظيفة",
@@ -275,7 +293,11 @@
                 'LastName': 'الاسم الاخير',
                 'MaritalStatus': 'الحالة الاجتماعية',
                 'MilitaryStatus': 'موقف من التجنيد',
-                'CarLicenceType': 'نوع رخصة السيارة'                
+                'CarLicenceType': 'نوع رخصة السيارة',
+                'FacebookAcount': 'حساب الفيسبوك',
+                'TwitterAcount': 'حساب التويتر',
+                'LinkedinAccount': 'حساب لينكدان',
+                'Course': 'الدورات'
             },
             "Vacancy": {
                 "JobTitle": "عنوان الوظيفة",
@@ -335,15 +357,29 @@
                 "PageTitle": "عنوان الصفحة",
                 "PageBody": "تفاصيل الصفحة"
             },
+            'EducationalInformation': {
+                'EducationType': 'المرحلة التعليمية',
+                'Univirsty': 'الجامعة',
+                'Faculty': 'الكلية',
+                'Specialization': 'التخصص',
+                'Grade': 'التقدير'
+            },
+            'Course': {
+                'Title': 'اسم الدورة',
+                'TrainingCenter': 'مركز التدريب',
+                'Specialization': 'التخصص',               
+                'Grade': 'التقدير',
+                'CourseYear': 'السنة'
+            },
             "Buttons": {
                 "Update": "تعديل",
                 "Save": "حفظ",
                 "Cancel": "الغاء",
                 "Delete": "حذف",
                 "Add": "اضافة جديد",
-                "NewAddress":"عنوان جديد",
+                "NewAddress": "عنوان جديد",
                 "Change Password": "تغيير كلمة السر",
-                "Reset Password":"ارسال ميل"
+                "Reset Password": "ارسال ميل"
             },
             "Menu": {
                 "SubTitle": "وظائف فى مصر",
@@ -365,7 +401,7 @@
                 "Categories": "التصنيفات",
                 "CompanyProfile" : "بيانات الشركة",
                 "Experiances" : "الخبرات",
-                'SelectValue':'اختار من القائمة',
+                'SelectValue': 'اختار من القائمة',
                 'JobSeekerProfile': 'بيانات طالب العمل'
             },
             "Footer": {

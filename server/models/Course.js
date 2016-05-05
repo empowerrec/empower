@@ -2,12 +2,16 @@ var mongoose = require('mongoose');
 
 var courseSchema = mongoose.Schema({
         Title: {type: String, required: '{PATH} is required', unique: true},
-        Featured: {type: Boolean, required: '{PATH} is required'},
-        Published: {type: Date, required: '{PATH} is required'},
-    Tags: [String],
+    //    Featured: {type: Boolean, required: '{PATH} is required'},
+    //    Published: {type: Date, required: '{PATH} is required'},
+    //Tags: [String],
 TrainingCenter: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'TrainingCenter'
+    },
+    JobSeeker: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'JobSeeker'
     },
     Specialization: {
         type: mongoose.Schema.Types.ObjectId,
@@ -17,7 +21,7 @@ TrainingCenter: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Grade'
     },
-    GourseYear: Number,
+    CourseYear: Number,
         ModifiedBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'

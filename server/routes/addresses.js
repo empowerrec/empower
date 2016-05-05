@@ -3,7 +3,7 @@ var router = express.Router();
 var addresses = require('../controllers/addresses');
 var authentication = require('../config/authentication');
 
-router.get('/', authentication.requiresRole('A'), addresses.getAddresses);
+router.get('/', authentication.requiresRole(['A', 'J']), addresses.getAddresses);
 router.post('/', addresses.createAddress);
 router.put('/', addresses.updateAddress);
 router.get('/:id', addresses.getAddressById);

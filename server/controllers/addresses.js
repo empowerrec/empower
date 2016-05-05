@@ -2,10 +2,37 @@ var Address = require('mongoose').model('Address');
 var JobSeeker = require('mongoose').model('JobSeeker');
 
 exports.getAddresses = function (req, res) {
-    Address.find({}).exec(function (err, col) {
-        res.send(col);
-    });
+    //Address.find({}).exec(function (err, col) {
+    //    res.send(col);
+    //});
+    if (isAdmin(req)) {
+        Address.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            res.send(col);
+        });
+    } else if (req.query.jobSeeker) {
+        
+        console.log('req.user' + req.user);
+        Address.find({ JobSeeker: req.query.jobSeeker }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            res.send(col);
+        });
+    } else {
+        
+        console.log('req.user' + req.user);
+        Address.find({ CreatedBy: req.user }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            res.send(col);
+        });
+    }
 };
+function isAdmin(req) {
+    console.log('UserDetai2' + req.user.UserType);
+    
+    for (var role in req.user.UserType) {
+        console.log('UserDetai3' + req.user.UserType[role]);
+        if (req.user.UserType[role] == 'A') {
+            return true;
+        }
+    }
+}
 
 exports.getAddressById = function (req, res) {
     Address.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {

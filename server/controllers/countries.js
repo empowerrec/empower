@@ -18,6 +18,27 @@ exports.getCountries = function (req, res) {
 
 };
 
+
+exports.getCountryByName = function (req, res) {
+    console.log(req.params.search);
+    console.log(req.query.currentLang);
+    if (req.query.currentLang) {
+        Country.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$eq": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            console.log(req.query.currentLang);
+            res.send(col);
+
+        });
+    } else {
+        Country.find({ 'Name.Text' : { "$regex": req.params.search }  }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            console.log(req.query.currentLang);
+            res.send(col);
+
+        });
+    }
+    
+
+};
+
 exports.getCountryById = function (req, res) {
     Country.findOne({_id:req.params.id}).populate('ModifiedBy').exec(function (err, col) {
         res.send(col);

@@ -11,6 +11,7 @@ var categories = require('../controllers/categories');
 var languages = require('../controllers/languages');
 var countries = require('../controllers/countries');
 var cities = require('../controllers/cities');
+var trainingCenters = require('../controllers/trainingCenters');
 var areas = require('../controllers/areas');
 
 var curancies = require('../controllers/curancies');
@@ -33,8 +34,12 @@ module.exports = function (app) {
     app.use('/api/maritalStatuses', require('../routes/maritalStatuses'));
     app.use('/api/militaryStatuses', require('../routes/militaryStatuses'));
     app.use('/api/carLicenceTypes', require('../routes/carLicenceTypes'));
-
-
+    app.use('/api/educationalInformations', require('../routes/educationalInformations'));
+    app.use('/api/educationTypes', require('../routes/educationTypes'));
+    app.use('/api/univirsties', require('../routes/univirsties'));
+    app.use('/api/faculties', require('../routes/faculties'));
+    app.use('/api/specializations', require('../routes/specializations'));
+    app.use('/api/grades', require('../routes/grades'));
     
     app.get('/api/users', authentication.requiresRole('A'), users.getUsers);
     app.post('/api/users', users.createUser);
@@ -80,6 +85,8 @@ module.exports = function (app) {
     app.put('/api/countries', countries.updateCountry);
     app.get('/api/countries/:id', countries.getCountryById);
     
+    app.get('/api/countriesByName/:search', countries.getCountryByName);
+    
     app.get('/api/curancies', curancies.getCurancies);
     app.post('/api/curancies', curancies.createCurancy);
     app.put('/api/curancies', curancies.updateCurancy);
@@ -90,6 +97,12 @@ module.exports = function (app) {
     app.put('/api/cities', cities.updateCity);
     app.get('/api/cities/:id', cities.getCityById);
     
+    
+    app.get('/api/trainingCenters', trainingCenters.getTrainingCenters);
+    app.post('/api/trainingCenters', trainingCenters.createTrainingCenter);
+    app.put('/api/trainingCenters', trainingCenters.updateTrainingCenter);
+    app.get('/api/trainingCenters/:id', trainingCenters.getTrainingCenterById);
+
     app.get('/api/areas', areas.getAreas);
     app.post('/api/areas', areas.createArea);
     app.put('/api/areas', areas.updateArea);
@@ -151,16 +164,10 @@ module.exports = function (app) {
             });
         }
     });
-    
-    
+        
     app.get('/api/jobSeekerByUser/', jobSeekers.getJobSeekerByUser);
     
     app.get('/api/employerByUser/', employers.getEmployerByUser);
-    
-    
-    
-    
-
     
     // this function call if any route starts with /api/ and not handeled this send to client 404
     app.all('/api/*', function (req, res) {

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="vendor/toastr/autocomplete.css" />
     <link rel="stylesheet" ng-href="{{siteFile}}" />
     <link rel="stylesheet" ng-href="{{sideBarFile}}" />
+    <link rel="stylesheet" href="vendor/jquery-ui/themes/smoothness/jquery-ui.css" />
 </head>
 <body>
 
@@ -24,6 +25,7 @@
 
     <!-- Vendor -->
     <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="vendor/toastr/toastr.min.js"></script>
     <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
@@ -55,6 +57,9 @@
     <script type="text/javascript" src="app/city/mvCity.js"></script>
     <script type="text/javascript" src="app/area/mvArea.js"></script>
     <script type="text/javascript" src="app/area/mvCachedArea.js"></script>
+    <script type="text/javascript" src="app/trainingCenter/mvCachedtrainingCenter.js"></script>
+    <script type="text/javascript" src="app/trainingCenter/mvTrainingCenter.js"></script>
+    
     <!-- Utilites -->
     <script type="text/javascript" src="app/common/mvNotifier.js"></script>
 
@@ -72,24 +77,25 @@
 
     <!-- Course -->
     <script type="text/javascript" src="app/course/mvCourseListCtrl.js"></script>
-    <script type="text/javascript" src="app/course/mvCourse.js"></script>
-    <script type="text/javascript" src="app/course/mvCachedCourse.js"></script>
-    <script type="text/javascript" src="app/course/mvCourseDetailCtrl.js"></script>
-
+      
+        <script type="text/javascript" src="app/course/mvCachedCourse.js"></script>
+       <script type="text/javascript" src="app/course/mvCourseDetailCtrl.js"></script>
+        <script type="text/javascript" src="app/course/mvCourseRepo.js"></script>
+        <script type="text/javascript" src="app/course/mvCourseCtrl.js"></script>
+        <script type="text/javascript" src="app/course/mvCourse.js"></script>
     <!-- Employer -->
     <script type="text/javascript" src="app/employer/mvEmployer.js"></script>
     <script type="text/javascript" src="app/employer/mvCachedEmployer.js"></script>
     <script type="text/javascript" src="app/employer/mvEmployerDetailCtrl.js"></script>
-    <script type="text/javascript" src="app/employer/mvEmployer.js"></script>
     <script type="text/javascript" src="app/employer/mvEmployerRepo.js"></script>
     <script type="text/javascript" src="app/employer/mvEmployerCtrl.js"></script>
     <script type="text/javascript" src="app/employer/mvEmployerListCtrl.js"></script>
-
+   
+ 
     <!-- Vacancy -->
     <script type="text/javascript" src="app/vacancy/mvVacancy.js"></script>
     <script type="text/javascript" src="app/vacancy/mvCachedVacancy.js"></script>
     <script type="text/javascript" src="app/vacancy/mvVacancyDetailCtrl.js"></script>
-    <script type="text/javascript" src="app/vacancy/mvVacancy.js"></script>
     <script type="text/javascript" src="app/vacancy/mvVacancyRepo.js"></script>
     <script type="text/javascript" src="app/vacancy/mvVacancyCtrl.js"></script>
     <script type="text/javascript" src="app/vacancy/mvVacancyListCtrl.js"></script>
@@ -98,7 +104,6 @@
     <script type="text/javascript" src="app/industry/mvIndustry.js"></script>
     <script type="text/javascript" src="app/industry/mvCachedIndustry.js"></script>
     <script type="text/javascript" src="app/industry/mvIndustryDetailCtrl.js"></script>
-    <script type="text/javascript" src="app/industry/mvIndustry.js"></script>
     <script type="text/javascript" src="app/industry/mvIndustryRepo.js"></script>
     <script type="text/javascript" src="app/industry/mvIndustryCtrl.js"></script>
     <script type="text/javascript" src="app/industry/mvIndustryListCtrl.js"></script>
@@ -123,7 +128,6 @@
     <script type="text/javascript" src="app/category/mvCategory.js"></script>
     <script type="text/javascript" src="app/category/mvCachedCategory.js"></script>
     <script type="text/javascript" src="app/category/mvCategoryDetailCtrl.js"></script>
-    <script type="text/javascript" src="app/category/mvCategory.js"></script>
     <script type="text/javascript" src="app/category/mvCategoryRepo.js"></script>
     <script type="text/javascript" src="app/category/mvCategoryCtrl.js"></script>
     <script type="text/javascript" src="app/category/mvCategoryListCtrl.js"></script>
@@ -132,21 +136,19 @@
     <script type="text/javascript" src="app/jobSeeker/mvJobSeeker.js"></script>
     <script type="text/javascript" src="app/jobSeeker/mvCachedJobSeeker.js"></script>
     <script type="text/javascript" src="app/jobSeeker/mvJobSeekerDetailCtrl.js"></script>
-    <script type="text/javascript" src="app/jobSeeker/mvJobSeeker.js"></script>
     <script type="text/javascript" src="app/jobSeeker/mvJobSeekerRepo.js"></script>
     <script type="text/javascript" src="app/jobSeeker/mvJobSeekerCtrl.js"></script>
     <script type="text/javascript" src="app/jobSeeker/mvJobSeekerListCtrl.js"></script>
-    <script type="text/javascript" src="app/jobSeeker/mvJobSeekerEducationalInformationCtrl.js"></script>
-    <script type="text/javascript" src="app/jobSeeker/mvJobSeekerPersonalInformationCtrl.js"></script>
+    <script type="text/javascript" src="app/jobSeeker/mvJobSeekerPersonalInformationCtrl.js"></script>  
     <script type="text/javascript" src="app/jobSeeker/mvJobSeekerContactInformationCtrl.js"></script>
     <script type="text/javascript" src="app/jobSeeker/mvAddress.js"></script>
     <script type="text/javascript" src="app/jobSeeker/mvAddressCtrl.js"></script>
     <script type="text/javascript" src="app/jobSeeker/mvAddressRepo.js"></script>
+    
     <!-- Inner Pages -->
     <script type="text/javascript" src="app/innerPage/mvInnerPage.js"></script>
     <script type="text/javascript" src="app/innerPage/mvCachedInnerPage.js"></script>
     <script type="text/javascript" src="app/innerPage/mvInnerPageDetailCtrl.js"></script>
-    <script type="text/javascript" src="app/innerPage/mvInnerPage.js"></script>
     <script type="text/javascript" src="app/innerPage/mvInnerPageRepo.js"></script>
     <script type="text/javascript" src="app/innerPage/mvInnerPageCtrl.js"></script>
     <script type="text/javascript" src="app/innerPage/mvInnerPageListCtrl.js"></script>
@@ -155,11 +157,25 @@
     <script type="text/javascript" src="app/experiance/mvExperiance.js"></script>
     <script type="text/javascript" src="app/experiance/mvCachedExperiance.js"></script>
     <script type="text/javascript" src="app/experiance/mvExperianceDetailCtrl.js"></script>
-    <script type="text/javascript" src="app/experiance/mvExperiance.js"></script>
     <script type="text/javascript" src="app/experiance/mvExperianceRepo.js"></script>
     <script type="text/javascript" src="app/experiance/mvExperianceCtrl.js"></script>
     <script type="text/javascript" src="app/experiance/mvExperianceListCtrl.js"></script>
+    
+    <!-- Educational Information -->
+    <script type="text/javascript" src="app/educationalInformation/mvEducationalInformation.js"></script>
+    <script type="text/javascript" src="app/educationalInformation/mvEducationalInformationCtrl.js"></script>
+    <script type="text/javascript" src="app/educationalInformation/mvEducationalInformationDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/educationalInformation/mvEducationalInformationListCtrl.js"></script>
+    <script type="text/javascript" src="app/educationalInformation/mvEducationalInformationRepo.js"></script>
 
+    <!-- Address -->
+    <script type="text/javascript" src="app/address/mvAddress.js" ></script>
+    <script type="text/javascript" src="app/address/mvAddressCtrl.js"></script>
+    <script type="text/javascript" src="app/address/mvAddressDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/address/mvAddressListCtrl.js"></script>
+    <script type="text/javascript" src="app/address/mvAddressRepo.js"></script>
+    <script type="text/javascript" src="app/address/mvCachedAddress.js"></script>
+   
     <!-- Gender -->
     <script type="text/javascript" src="app/gender/mvGender.js"></script>
     <script type="text/javascript" src="app/gender/mvGenderRepo.js"></script>
@@ -175,7 +191,26 @@
     <!-- CarLicenceType -->
     <script type="text/javascript" src="app/carLicenceType/mvCarLicenceType.js"></script>
     <script type="text/javascript" src="app/carLicenceType/mvCarLicenceTypeRepo.js"></script>
+    
+    <!-- EducationType -->
+    <script type="text/javascript" src="app/educationType/mvEducationType.js"></script>
+    <script type="text/javascript" src="app/educationType/mvEducationTypeRepo.js"></script>
 
+    <!-- Faculty -->
+    <script type="text/javascript" src="app/faculty/mvFaculty.js"></script>
+    <script type="text/javascript" src="app/faculty/mvFacultyRepo.js"></script>   
+
+    <!-- Grade -->
+    <script type="text/javascript" src="app/grade/mvGrade.js"></script>
+    <script type="text/javascript" src="app/grade/mvGradeRepo.js"></script>  
+
+    <!-- Specialization -->
+    <script type="text/javascript" src="app/specialization/mvSpecialization.js"></script>
+    <script type="text/javascript" src="app/specialization/mvSpecializationRepo.js"></script>
+
+    <!-- Univirsty -->
+    <script type="text/javascript" src="app/univirsty/mvUnivirsty.js"></script>
+    <script type="text/javascript" src="app/univirsty/mvUnivirstyRepo.js"></script>
 
     <!-- Admin-->
     <script type="text/javascript" src="app/admin/users/mvUserListCtrl.js"></script>

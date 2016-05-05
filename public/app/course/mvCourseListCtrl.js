@@ -1,7 +1,19 @@
-angular.module('app').controller('mvCourseListCtrl', function ($scope, mvCourse) {
-    $scope.courses = mvCourse.query();
-
-    $scope.sortOptions = [{value: 'Title', text: 'Sort by Title'},
-        {value: 'Published', text: 'Sort by Publish Date'}];
+angular.module('app').controller('mvCourseListCtrl', function ($scope, mvCourse,$translate, mvIdentity) {
+    $scope.currentUser = mvIdentity.currentUser;
+    $scope.courses = mvCourse.query({ jobSeeker: mvIdentity.currentJobSeeker });
+    //$scope.currentLang = $translate.use();
+    $scope.sortOptions = [{value: '_id', text: 'Sort by _id'}];
     $scope.sortOrder = $scope.sortOptions[0].value;
+    $scope.getName = function(list){
+        for(var i = 0; i < list.length; i++) {
+
+            if(list[i].Lang == $scope.currentLang) {
+                return list[i].Text;
+            }
+        }
+    };
+
+    $scope.getLang = function(){
+        return $translate.use();
+    };
 });

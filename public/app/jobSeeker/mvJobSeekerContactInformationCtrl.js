@@ -15,12 +15,12 @@ angular.module('app').controller('mvJobSeekerContactInformationCtrl', function (
             $scope.updateMode = true;
             $scope.addMode = false;
             $scope.IsMobileInserted = true;
-                 $scope.jobSeeker.MobileNo = $scope.jobSeeker.MobileNo;
+            $scope.jobSeeker.MobileNo = $scope.jobSeeker.MobileNo;
             $scope.jobSeeker.Email = $scope.jobSeeker.Email;
            
-                if ($scope.jobSeeker.MobileNo == null || $scope.jobSeeker.MobileNo == "" || $scope.jobSeeker.Email == null || $scope.jobSeeker.Email == "") {
-                    $scope.IsMobileInserted = false;
-                }
+                //if ($scope.jobSeeker.MobileNo == null || $scope.jobSeeker.MobileNo == "" || $scope.jobSeeker.Email == null || $scope.jobSeeker.Email == "") {
+                //    $scope.IsMobileInserted = false;
+                //}
                 
           
             //$scope.jobSeeker.BirthDate = new Date($scope.jobSeeker.BirthDate);
@@ -34,30 +34,34 @@ angular.module('app').controller('mvJobSeekerContactInformationCtrl', function (
                 //mvNotifier.notify('This link is expired please make another link');
         //$location.path('/forget');
         
-        $.ajax({
-            url: "api/getJobSeekerWhereMobileNumberNotNull",
-            dataType: 'json',
-            async: false,
-            success: function (data) {
-                if (data) {
+        $scope.jobSeeker = new mvJobSeeker();
+        $scope.updateMode = false;
+        $scope.addMode = true;
+        $scope.addEnabled = true;
+        //$.ajax({
+        //    url: "api/getJobSeekerWhereMobileNumberNotNull",
+        //    dataType: 'json',
+        //    async: false,
+        //    success: function (data) {
+        //        if (data) {
                
-                    $scope.jobSeeker = new mvJobSeeker();
-                    //$scope.jobSeeker.Gender = $scope.genders[0].value;
-                    $scope.IsMobileInserted = true;
-                    $scope.updateMode = false;
-                    $scope.addMode = true;
-                    $scope.addEnabled = false;
-                } 
-            },
-            error: function (err) {
-                $scope.jobSeeker = new mvJobSeeker();
-                //$scope.jobSeeker.Gender = $scope.genders[0].value;
-                $scope.IsMobileInserted = false;
-                $scope.updateMode = false;
-                $scope.addMode = true;
-                $scope.addEnabled = true;
-          }
-        });
+        //            $scope.jobSeeker = new mvJobSeeker();
+        //            //$scope.jobSeeker.Gender = $scope.genders[0].value;
+        //            $scope.IsMobileInserted = true;
+        //            $scope.updateMode = false;
+        //            $scope.addMode = true;
+        //            $scope.addEnabled = false;
+        //        } 
+        //    },
+        //    error: function (err) {
+        //        $scope.jobSeeker = new mvJobSeeker();
+        //        //$scope.jobSeeker.Gender = $scope.genders[0].value;
+        //        $scope.IsMobileInserted = false;
+        //        $scope.updateMode = false;
+        //        $scope.addMode = true;
+        //        $scope.addEnabled = true;
+        //  }
+        //});
                
             //}
         //});
@@ -72,7 +76,7 @@ angular.module('app').controller('mvJobSeekerContactInformationCtrl', function (
     $scope.update = function () {
         if ($scope.jobSeekerForm.$valid) {
             mvJobSeekerRepo.updateCurrentJobSeeker($scope.jobSeeker).then(function () {
-                $scope.IsMobileInserted = true;
+                //$scope.IsMobileInserted = true;
                 mvNotifier.notify('JobSeeker has been updated!');
             }, function (reason) {
                 mvNotifier.error(reason);
@@ -86,7 +90,7 @@ angular.module('app').controller('mvJobSeekerContactInformationCtrl', function (
             mvJobSeekerRepo.createJobSeeker($scope.jobSeeker).then(function () {
                 
                 mvNotifier.notify('New Contact Added!'); 
-                $scope.IsMobileInserted = true;    
+                //$scope.IsMobileInserted = true;    
                 //var u = $rootScope.AddressId;
                 $scope.addEnabled = false;
             }, function (reason) {

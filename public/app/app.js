@@ -21,46 +21,44 @@ angular.module('app').config(function ($routeProvider) {
         .when('/admin/users', {
         templateUrl: '/partials/admin/users/user-list',
         controller: 'mvUserListCtrl', resolve: routRoleChecks.admin
-    })
-        .when('/admin/employers', {
+    }).when('/admin/employers', {
         templateUrl: '/partials/admin/employers/employer-list',
         controller: 'mvEmployerListCtrl', resolve: routRoleChecks.admin
-    })
-        .when('/signup', { templateUrl: '/partials/account/signup', controller: 'mvSignupCtrl' })
-        .when('/profile', {
+    }).when('/signup', {
+        templateUrl: '/partials/account/signup', controller: 'mvSignupCtrl'
+    }).when('/profile', {
         templateUrl: '/partials/account/profile',
         controller: 'mvProfileCtrl', resolve: routRoleChecks.user
-    })
-    .when('/forget', {
+    }).when('/forget', {
         templateUrl: '/partials/account/forget-password',controller: 'mvForgetPasswordCtrl'
-    })
-        .when('/reset/:token', {
+    }).when('/reset/:token', {
         templateUrl: '/partials/account/reset-password', controller: 'mvResetPasswordCtrl'
-    })
-        .when('/courses', {
+    }).when('/courses/:id', {
+        templateUrl: '/partials/course/course-detail',
+        controller: 'mvCourseDetailCtrl'
+    }).when('/updateCourse/:id', {
+        templateUrl: '/partials/course/course',
+        controller: 'mvCourseCtrl'
+    }).when('/addCourse', {
+        templateUrl: '/partials/course/course',
+        controller: 'mvCourseCtrl'
+    }).when('/courses', {
         templateUrl: '/partials/course/course-list.html',
         controller: 'mvCourseListCtrl'
     })
-        .when('/courses/:id', {
-        templateUrl: '/partials/course/course-detail.html',
-        controller: 'mvCourseDetailCtrl'
-    })
-        .when('/employers/:id', {
+        
+    .when('/employers/:id', {
         templateUrl: '/partials/employer/employer-detail.html',
         controller: 'mvEmployerDetailCtrl'
-    })
-        .when('/updateemployer/:id', {
+    }).when('/updateemployer/:id', {
         templateUrl: '/partials/employer/employer.html',
         controller: 'mvEmployerCtrl'
-    })
-        .when('/addemployer', {
+    }).when('/addemployer', {
         templateUrl: '/partials/employer/employer.html',
         controller: 'mvEmployerCtrl'
-    })
-        .when('/employers', {
+    }).when('/employers', {
         templateUrl: '/partials/employer/employer-list.html',
         controller: 'mvEmployerListCtrl'
-
     }).when('/jobSeekers', {
         templateUrl: '/partials/jobSeeker/jobSeeker-list.html',
         controller: 'mvJobSeekerListCtrl'
@@ -69,15 +67,11 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvJobSeekerDetailCtrl'
     }).when('/updateJobSeeker/:tab/:id', {
         templateUrl: '/partials/jobSeeker/jobSeeker.html'
-        //,controller: 'mvJobSeekerCtrl'
     }).when('/addJobSeeker', {
         templateUrl: '/partials/jobSeeker/jobSeeker.html'
-        //,controller: 'mvJobSeekerCtrl'
     }).when('/jobSeekerMain', {
-        templateUrl: '/partials/jobSeeker/jobSeekerMain.html'
-        
-    })
-        .when('/vacancies/:id', {
+        templateUrl: '/partials/jobSeeker/jobSeekerMain.html'        
+    }).when('/vacancies/:id', {
         templateUrl: '/partials/vacancy/vacancy-detail',
         controller: 'mvVacancyDetailCtrl'
     }).when('/updatevacancy/:id', {
@@ -148,21 +142,19 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvCategoryCtrl'
     }).when('/categories', {
         templateUrl: '/partials/category/category-list.html',
-        controller: 'mvCategoryListCtrl'
-        
+        controller: 'mvCategoryListCtrl'        
     }).when('/addresses/:id', {
-        templateUrl: '/partials/jobSeeker/address-detail',
+        templateUrl: '/partials/address/address-detail',
         controller: 'mvAddressDetailCtrl'
     }).when('/updateAddress/:id', {
-        templateUrl: '/partials/jobSeeker/address',
+        templateUrl: '/partials/address/address',
         controller: 'mvAddressCtrl'
     }).when('/addAddress', {
-        templateUrl: '/partials/jobSeeker/address',
+        templateUrl: '/partials/address/address',
         controller: 'mvAddressCtrl'
     }).when('/addresses', {
-        templateUrl: '/partials/jobSeeker/address-list.html',
-        controller: 'mvAddressListCtrl'
-        
+        templateUrl: '/partials/address/address-list.html',
+        controller: 'mvAddressListCtrl'        
     }).when('/experiances/:id', {
         templateUrl: '/partials/experiance/experiance-detail',
         controller: 'mvExperianceDetailCtrl'
@@ -175,8 +167,19 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/experiances', {
         templateUrl: '/partials/experiance/experiance-list.html',
         controller: 'mvExperianceListCtrl'
+    }).when('/educationalInformations/:id', {
+        templateUrl: '/partials/educationalInformations/educationalInformatio-detail',
+        controller: 'mvEducationalInformationDetailCtrl'
+    }).when('/updateEducationalInformation/:id', {
+        templateUrl: '/partials/educationalInformation/educationalInformation',
+        controller: 'mvEducationalInformationCtrl'
+    }).when('/addEducationalInformation', {
+        templateUrl: '/partials/educationalInformation/educationalInformation',
+        controller: 'mvEducationalInformationCtrl'
+    }).when('/educationalInformations', {
+        templateUrl: '/partials/educationalInformation/educationalInformation-list.html',
+        controller: 'mvEducationalInformationListCtrl'
     });
-
 });
 
 

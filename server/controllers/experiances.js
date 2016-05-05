@@ -32,6 +32,7 @@ function isAdmin(req) {
         }
     }
 }
+
 exports.getExperianceById = function (req, res) {
     if (req.params.id == 'profile') {
         console.log(req.user);

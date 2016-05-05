@@ -17,7 +17,10 @@ City: {
     },
     AddressLine1: String,
     AddressLine2: String,
-
+ JobSeeker: {
+type: mongoose.Schema.Types.ObjectId,
+        ref: 'JobSeeker'
+},
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
