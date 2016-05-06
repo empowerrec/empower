@@ -89,6 +89,7 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, mvNotifier, 
         $scope.loop();
         mvAddressRepo.updateCurrentAddress($scope.address).then(function () {
             mvNotifier.notify('Address has been updated!');
+            $location.path('/updateJobSeeker/Adresses/' + mvIdentity.currentJobSeeker._id);
         }, function (reason) {
             mvNotifier.error(reason);
         });
@@ -101,6 +102,7 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, mvNotifier, 
     
         mvAddressRepo.createAddress($scope.address).then(function () {
             mvNotifier.notify('New Address Added!');
+            $location.path('/updateJobSeeker/Adresses/' + mvIdentity.currentJobSeeker._id);
             console.log("jj");
             //$scope.addEnabled = false;
         }, function (reason) {

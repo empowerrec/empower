@@ -1,6 +1,6 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
+
 <div class="container admin-area" ng-controller="mvJobSeekerCtrl">
-    <uib-tabset justified="true" active="active">
+    <uib-tabset justified="true" active="activeTab">
         <uib-tab index="0" heading="{{'JobSeeker.Personal Information' | translate}}">
             <br />
             <div ng-include="'/partials/jobSeeker/jobSeekerPersonalInformation.html'"></div>
@@ -28,7 +28,7 @@
         </uib-tab>
         <uib-tab index="6" heading="{{'JobSeeker.Skills' | translate}}">
             <br />
-            <div ng-include="'/partials/Skill/skill'"></div>
+            <div ng-include="'/partials/Skills/skill'"></div>
         </uib-tab>
     </uib-tabset>
 </div>
