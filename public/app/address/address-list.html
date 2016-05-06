@@ -29,13 +29,11 @@
         </thead>
         <tbody>
             <tr ng-repeat="address in addresses | filter:searchText | orderBy:sortOrder">
-                <td><a href="#/addresses/{{address._id}}">{{ address.AddressLine1}}</a></td>
-
-                <td> <div ng-repeat="emp in address.Country.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></td>
-                <td>{{ address.City.Name}}</td>
-                <td>{{ address.Area.Name}}</td>
-                <th>{{"address.AddressLine1" | translate}}</th>
-                <th>{{"address.AddressLine2" | translate}}</th>
+                <td><a href="#/addresses/{{address._id}}"> <div ng-repeat="emp in address.Country.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></a></td>
+                <td><div ng-repeat="emp in address.City.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></td>
+                <td><div ng-repeat="emp in address.Area.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></td>
+                <td>{{address.AddressLine1}}</td>
+                <td>{{address.AddressLine2}}</td>
                 <td>{{ address.CreatedBy.FirstName}} {{ address.CreatedBy.LastName}}</td>
                 <td>{{ address.ModifiedBy.FirstName}} {{ address.ModifiedBy.LastName}}</td>
 

@@ -41,11 +41,13 @@ module.exports = function (app) {
     app.use('/api/specializations', require('../routes/specializations'));
     app.use('/api/grades', require('../routes/grades'));
     
-    app.get('/api/users', authentication.requiresRole('A'), users.getUsers);
+    //app.use('/api/languageSkills', require('../routes/languageSkills'));
+
+    app.get('/api/users', authentication.requiresRole(['A', 'J']), users.getUsers);
     app.post('/api/users', users.createUser);
     app.put('/api/users', users.updateUser);
            
-    app.get('/api/employers', authentication.requiresRole('A'), employers.getEmployers);
+    app.get('/api/employers', authentication.requiresRole(['A', 'J']), employers.getEmployers);
     app.post('/api/employers', employers.createEmployer);
     app.put('/api/employers', employers.updateEmployer);
     app.get('/api/employers/:id', employers.getEmployerById);
@@ -55,22 +57,22 @@ module.exports = function (app) {
     app.put('/api/vacancies', vacancies.updateVacancy);
     app.get('/api/vacancies/:id', vacancies.getVacancyById);
     
-    app.get('/api/industries', authentication.requiresRole('A'), industries.getIndustries);
+    app.get('/api/industries', authentication.requiresRole(['A', 'J']), industries.getIndustries);
     app.post('/api/industries', industries.createIndustry);
     app.put('/api/industries', industries.updateIndustry);
     app.get('/api/industries/:id', industries.getIndustryById);
     
-    app.get('/api/jobTypes', authentication.requiresRole('A'), jobTypes.getJobTypes);
+    app.get('/api/jobTypes', authentication.requiresRole(['A', 'J']), jobTypes.getJobTypes);
     app.post('/api/jobTypes', jobTypes.createJobType);
     app.put('/api/jobTypes', jobTypes.updateJobType);
     app.get('/api/jobTypes/:id', jobTypes.getJobTypeById);
     
-    app.get('/api/jobRoles', authentication.requiresRole('A'), jobRoles.getJobRoles);
+    app.get('/api/jobRoles', authentication.requiresRole(['A', 'J']), jobRoles.getJobRoles);
     app.post('/api/jobRoles', jobRoles.createJobRole);
     app.put('/api/jobRoles', jobRoles.updateJobRole);
     app.get('/api/jobRoles/:id', jobRoles.getJobRoleById);
 
-    app.get('/api/categories', authentication.requiresRole('A'), categories.getCategories);
+    app.get('/api/categories', authentication.requiresRole(['A', 'J']), categories.getCategories);
     app.post('/api/categories', categories.createCategory);
     app.put('/api/categories', categories.updateCategory);
     app.get('/api/categories/:id', categories.getCategoryById);
@@ -108,7 +110,7 @@ module.exports = function (app) {
     app.put('/api/areas', areas.updateArea);
     app.get('/api/areas/:id', areas.getAreaById);
 
-    app.get('/api/innerPages', authentication.requiresRole('A'), innerPages.getInnerPages);
+    app.get('/api/innerPages', authentication.requiresRole(['A', 'J']), innerPages.getInnerPages);
     app.post('/api/innerPages', innerPages.createInnerPage);
     app.put('/api/innerPages', innerPages.updateInnerPage);
     app.get('/api/innerPages/:id', innerPages.getInnerPageById);

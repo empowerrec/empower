@@ -30,7 +30,7 @@ angular.module('app').config(function ($routeProvider) {
         templateUrl: '/partials/account/profile',
         controller: 'mvProfileCtrl', resolve: routRoleChecks.user
     }).when('/forget', {
-        templateUrl: '/partials/account/forget-password',controller: 'mvForgetPasswordCtrl'
+        templateUrl: '/partials/account/forget-password', controller: 'mvForgetPasswordCtrl'
     }).when('/reset/:token', {
         templateUrl: '/partials/account/reset-password', controller: 'mvResetPasswordCtrl'
     }).when('/courses/:id', {
@@ -70,7 +70,7 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/addJobSeeker', {
         templateUrl: '/partials/jobSeeker/jobSeeker.html'
     }).when('/jobSeekerMain', {
-        templateUrl: '/partials/jobSeeker/jobSeekerMain.html'        
+        templateUrl: '/partials/jobSeeker/jobSeekerMain.html'
     }).when('/vacancies/:id', {
         templateUrl: '/partials/vacancy/vacancy-detail',
         controller: 'mvVacancyDetailCtrl'
@@ -106,7 +106,7 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvJobTypeCtrl'
     }).when('/jobTypes', {
         templateUrl: '/partials/jobType/jobType-list.html',
-        controller: 'mvJobTypeListCtrl'    
+        controller: 'mvJobTypeListCtrl'
     }).when('/jobRoles/:id', {
         templateUrl: '/partials/jobRole/jobRole-detail',
         controller: 'mvJobRoleDetailCtrl'
@@ -131,6 +131,7 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/innerPages', {
         templateUrl: '/partials/innerPage/innerPage-list.html',
         controller: 'mvInnerPageListCtrl'
+        
     }).when('/categories/:id', {
         templateUrl: '/partials/category/category-detail',
         controller: 'mvCategoryDetailCtrl'
@@ -142,7 +143,8 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvCategoryCtrl'
     }).when('/categories', {
         templateUrl: '/partials/category/category-list.html',
-        controller: 'mvCategoryListCtrl'        
+        controller: 'mvCategoryListCtrl'
+        
     }).when('/addresses/:id', {
         templateUrl: '/partials/address/address-detail',
         controller: 'mvAddressDetailCtrl'
@@ -155,6 +157,20 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/addresses', {
         templateUrl: '/partials/address/address-list.html',
         controller: 'mvAddressListCtrl'        
+
+    }).when('/languageSkills/:id', {
+        templateUrl: '/partials/languageSkill/languageSkill-detail',
+        controller: 'mvLanguageSkillDetailCtrl'
+    }).when('/updateLanguageSkill/:id', {
+        templateUrl: '/partials/languageSkill/languageSkill',
+        controller: 'mvLanguageSkillCtrl'
+    }).when('/addLanguageSkill', {
+        templateUrl: '/partials/languageSkill/languageSkill',
+        controller: 'mvLanguageSkillCtrl'
+    }).when('/languageSkills', {
+        templateUrl: '/partials/languageSkill/languageSkill-list.html',
+        controller: 'mvLanguageSkillListCtrl'  
+
     }).when('/experiances/:id', {
         templateUrl: '/partials/experiance/experiance-detail',
         controller: 'mvExperianceDetailCtrl'
@@ -180,7 +196,7 @@ angular.module('app').config(function ($routeProvider) {
         templateUrl: '/partials/educationalInformation/educationalInformation-list.html',
         controller: 'mvEducationalInformationListCtrl'
     });
-});
+    });
 
 
 angular.module('app').run(function ($rootScope, $location , $translate, mvLookup , mvStyle) {

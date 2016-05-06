@@ -1,11 +1,12 @@
-angular.module('app').controller('mvExperiancerCtrl', function ($scope,  mvNotifier, mvExperianceRepo, mvExperiance,$routeParams,$translate, mvIdentity, $location) {
+angular.module('app').controller('mvExperiancerCtrl', function ($scope, $rootScope,  mvNotifier, mvExperianceRepo, mvExperiance,$routeParams,$translate, mvIdentity, $location , mvCountryRepo , mvCountry) {
     var id = $routeParams.id;
     $scope.experianceNameText = "";
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
+    $("#currentLang").val($rootScope.currentLang);
     if(id)
     {
-        $scope.experiance = mvExperiance.get({_id:id },(function(){
+            $scope.experiance = mvExperiance.get({_id:id },(function(){
             $scope.experiance.PeriodFrom = new Date($scope.experiance.PeriodFrom);
             $scope.experiance.PeriodTo = new Date($scope.experiance.PeriodTo);
             $scope.updateMode = true;
@@ -61,12 +62,40 @@ angular.module('app').controller('mvExperiancerCtrl', function ($scope,  mvNotif
 
     $scope.update = function () {
         $scope.loop();
-        mvExperianceRepo.updateCurrentExperiance($scope.experiance).then(function () {
-            mvNotifier.notify('Experiancer has been updated!');
-            $location.path('/updateJobSeeker/Experiances/'+ mvIdentity.currentJobSeeker._id);
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
+        var countryId = $("#hfValue").val();
+        var countryName = $("#search").val();
+        if (!countryId) {
+            var country = new mvCountry();
+           
+            country.Name = [];
+            
+            var countryNameObj = { "Lang": $rootScope.currentLang, "Text": countryName };
+            country.Name.push(countryNameObj);
+            mvCountryRepo.createCountry(country).then(function (con) {
+                console.log(con);
+                mvNotifier.notify('New Country Added!');
+                $scope.experiance.Country = con;
+                mvExperianceRepo.updateCurrentExperiance($scope.experiance).then(function () {
+                    mvNotifier.notify('Experiancer has been updated!');
+                    $location.path('/updateJobSeeker/Experiances/' + mvIdentity.currentJobSeeker._id);
+                }, function (reason) {
+                    mvNotifier.error(reason);
+                });
+
+            }, function(reason) {
+                mvNotifier.error(reason);
+            });
+        } else {
+            $scope.experiance.Country = $("#hfValue").val();
+            mvExperianceRepo.updateCurrentExperiance($scope.experiance).then(function () {
+                mvNotifier.notify('Experiancer has been updated!');
+                $location.path('/updateJobSeeker/Experiances/' + mvIdentity.currentJobSeeker._id);
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
+        
+        
 
 
     };

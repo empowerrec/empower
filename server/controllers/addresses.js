@@ -5,20 +5,20 @@ exports.getAddresses = function (req, res) {
     //Address.find({}).exec(function (err, col) {
     //    res.send(col);
     //});
-    if (isAdmin(req)) {
-        Address.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
-        });
-    } else if (req.query.jobSeeker) {
+    if (req.query.jobSeeker) {
         
         console.log('req.user' + req.user);
-        Address.find({ JobSeeker: req.query.jobSeeker }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Address.find({ JobSeeker: req.query.jobSeeker }).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            res.send(col);
+        });
+    }else if (isAdmin(req)) {
+        Address.find({}).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
         
         console.log('req.user' + req.user);
-        Address.find({ CreatedBy: req.user }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Address.find({ CreatedBy: req.user }).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     }

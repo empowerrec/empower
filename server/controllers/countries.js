@@ -20,10 +20,10 @@ exports.getCountries = function (req, res) {
 
 
 exports.getCountryByName = function (req, res) {
-    console.log(req.params.search);
+  
     console.log(req.query.currentLang);
     if (req.query.currentLang) {
-        Country.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$eq": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Country.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$regex": req.params.search }}, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             console.log(req.query.currentLang);
             res.send(col);
 

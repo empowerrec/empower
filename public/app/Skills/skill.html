@@ -1,0 +1,15 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container admin-area" ng-controller="mvSkillCtrl">
+    <uib-tabset justified="true" active="active">
+        
+        <uib-tab index="1" heading="{{'Skill.Language' | translate}}">
+            <br />
+            <div ng-include="'/partials/languageSkills/languageSkill-list'"></div>
+        </uib-tab>
+        
+        <uib-tab index="2" heading="{{'Skill.Skills' | translate}}">
+            <br />
+            <div ng-include="'/partials/Course/course-list'"></div>
+        </uib-tab>
+    </uib-tabset>
+</div>

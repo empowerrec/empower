@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var userModel = require('../models/User');
 var courseModel = require('../models/Course');
+var languageSkillModel = require('../models/LanguageSkill');
 var employerModel = require('../models/Employer');
 var categoryModel = require('../models/Category');
 var jobSeekerModel = require('../models/JobSeeker');
@@ -40,6 +41,11 @@ var companyTypeModel = require('../models/CompanyType');
 var companySizeModel = require('../models/CompanySize');
 var positionModel = require('../models/Position');
 
+var skillTypeModel = require('../models/SkillType');
+var skillLevelsModel = require('../models/SkillLevel');
+
+var langaugeLevelsModel = require('../models/LanguageLevel');
+
 module.exports = function (config) {
     mongoose.connect(config.db);
     var db = mongoose.connection;
@@ -50,6 +56,7 @@ module.exports = function (config) {
     
     userModel.createDefaultUsers();
     courseModel.createDefaultCourses();
+    languageSkillModel.createDefaultLanguageSkills();
     employerModel.createDefaultEmployers();
     categoryModel.createDefaultCategories();
     jobSeekerModel.createDefaultJobSeekers();
@@ -87,6 +94,10 @@ module.exports = function (config) {
     positionModel.createDefaultPositions();
 
     experianceModel.createDefaultExperiances();
+    
+    skillTypeModel.createDefaultSkillTypes();
+    skillLevelsModel.createDefaultSkillLevels();
+    langaugeLevelsModel.createDefaultLanguageLevels();
 
 
 };

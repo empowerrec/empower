@@ -2,19 +2,21 @@ var Experiance = require('mongoose').model('Experiance');
 
 exports.getExperiances = function (req, res) {
     
-    if (isAdmin(req)) {
-        Experiance.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+     if (req.query.jobSeeker) {
+        
+        console.log('Job Seeker');
+        console.log(req.query.jobSeeker);
+        Experiance.find({ JobSeeker: req.query.jobSeeker }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
-    } else if (req.query.jobSeeker) {
-        
-        console.log('req.user' + req.user);
-        Experiance.find({ JobSeeker: req.query.jobSeeker }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+    }else if (isAdmin(req)) {
+        console.log('Admin');
+        Experiance.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
         
-        console.log('req.user' + req.user);
+        console.log('Other');
         Experiance.find({ CreatedBy: req.user }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });

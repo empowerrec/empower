@@ -144,7 +144,8 @@
                 <div>
                     <input id="search" />
                     <input type="hidden" id="hfValue"/>
-                    <input id="destination" type="text" />
+                    <input type="hidden" id="currentLang" value="ar" />
+                    <label id="destination"  />
                 </div>
 
             </fieldset>
@@ -161,21 +162,18 @@
                 $.ajax({
                     type: "get",
                     async: false,
-                    url: "/api/countriesByName/" + request.term,    
+                    url: "/api/countriesByName/" + request.term,
+                    data:{ prefix: request.term, currentLang: $("#currentLang").val() },
                     success: function (data) {
                         console.log(data);
                         response($.map(data, function (item) {
                             console.log(item.Name[0].Text);
-                            return { label: item.Name[0].Text, value: item.Name[0].Lang };
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
                         }));
                     },
-                    error: function (data) {
-                        console.log(data.responseText);
-                        var value = $.parseJSON(data.responseText);
-                        response($.map(value, function (item) {
-                            console.log(item.Name[0].Text);
-                            return { label: item.Name[0].Text, value: item.Name[0].Text };
-                        }));
+                    error: function (error) {
+
+                        console.log(error);
                     },
                     failure: function (response) {
                         alert(response.responseText);
@@ -196,22 +194,19 @@
             },
             select: function (e, i) {
                 console.log(i.item);
-                $("#hfValue").val(i.item.label);
-                $("#search").val('');
+                $("#hfValue").val(i.item.id);
                 $('#hfValue').trigger('change');
-                console.log($("#search").val());
+               
             },
             minLength: 2
         });
                
            
     });
-    
-
     $('#hfValue').change(function () {
         var customerID = $(this).val();
         var p = $("#destination");
-        p.val(customerID);
+        p.text(customerID);
 
     });
 </script>

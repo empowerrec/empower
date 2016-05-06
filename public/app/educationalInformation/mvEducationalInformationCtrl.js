@@ -1,5 +1,5 @@
 angular.module('app').controller('mvEducationalInformationCtrl'
-    , function ($scope, mvNotifier, mvEducationalInformationRepo, mvEducationalInformation, mvIdentity, mvGender, $routeParams) {
+    , function ($scope, mvNotifier, mvEducationalInformationRepo, mvEducationalInformation, mvIdentity, mvGender, $routeParams, $location) {
     
     var id = $routeParams.id;
     $scope.addEnabled = false;

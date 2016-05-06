@@ -1,0 +1,95 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container admin-area" ng-controller="mvLanguageSkillCtrl">
+
+    <div class="well">
+
+        <form name="languageSkillForm" class="form-horizontal">
+            <fieldset>
+
+
+                <div class="form-group">
+                    <label for="Title" class="col-md-2 control-label">
+                        {{"LanguageSkill.Title" | translate}}
+                    </label>
+
+                    <div class="col-md-10">
+                        <input name="Title" type="text" placeholder="{{'LanguageSkill.Title' | translate}}"
+                               ng-model="languageSkill.Title" required="required"
+                               class="form-control" />
+                    </div>
+                </div>
+
+
+       
+
+
+                <div class="form-group">
+                    <label for="Language" class="col-md-2 control-label">{{"LanguageSkill.Language"| translate}}</label>
+
+
+                    <div class="col-md-2">
+                        <select ng-model="languageSkill.Language" ng-options="language._id as language.Name[0].Text for language in Languages"
+                                class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
+                    </div>
+
+                    <label for="LanguageSkillLevel" class="col-md-2 control-label">
+                        {{"LanguageSkill.LanguageSkillLevel" | translate}}
+                    </label>
+                    <div class="col-md-2">
+                        <select ng-model="languageSkill.LanguageSkillLevel" ng-options="languageSkillLevel._id as languageSkillLevel.Name[0].Text for languageSkillLevel in languageSkillLevels"
+                                class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
+                    </div>
+   
+
+                    <!--<label for="position" class="col-md-2 control-label">
+                        {{"LanguageSkill.Position"
+                        | translate}}
+                    </label>
+
+                    <div class="col-md-1"><input name="position" type="number" placeholder="{{'LanguageSkill.Position' | translate}}"
+                                                 ng-model="languageSkill.Position" required="required"
+                                                 class="form-control" /></div>-->
+                </div>
+                <!--<div class="form-group">
+                    <label for="languageSkillYear" class="col-md-2 control-label">
+                        {{"LanguageSkill.LanguageSkillYear"
+                        | translate}}
+                    </label>
+
+                    <div class="col-md-2">
+                        <input name="languageSkillYear" type="number"
+                               placeholder="{{'LanguageSkill.LanguageSkillYear' | translate}}"
+                               ng-model="languageSkill.LanguageSkillYear"
+                               class="form-control" />
+                    </div>
+
+
+
+
+                </div>-->
+
+
+
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <div class="pull-right">
+                            <button ng-click="update()" ng-show="updateMode" ng-disabled="languageSkillForm.$invalid" class="btn btn-primary">
+                                {{"Buttons.Save" | translate}}
+                            </button>
+
+                            <button ng-click="add()" ng-show="addMode" ng-disabled="languageSkillForm.$invalid||!addEnabled" class="btn btn-primary">
+                                {{"Buttons.Add" | translate}}
+                            </button>
+                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
