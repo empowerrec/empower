@@ -1,6 +1,6 @@
 ﻿var express = require('express');
 var router = express.Router();
-var languageSkills = require('../controllers/languageSkills');
+var languageSkills = require('../controllers/LanguageSkill');
 var authentication = require('../config/authentication');
 
 router.get('/', authentication.requiresRole(['A', 'J']), languageSkills.getLanguageSkills);

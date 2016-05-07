@@ -1,4 +1,4 @@
-angular.module('app').controller('mvExperianceListCtrl', function ($scope, mvExperiance,$translate, mvIdentity) {
+angular.module('app').controller('mvExperianceListCtrl', function ($scope, mvExperiance,$translate, mvIdentity, mvExperianceRepo, mvNotifier) {
     $scope.currentUser = mvIdentity.currentUser;
     $scope.experiances = mvExperiance.query({ jobSeeker: mvIdentity.currentJobSeeker });
     //$scope.currentLang = $translate.use();
@@ -16,5 +16,17 @@ angular.module('app').controller('mvExperianceListCtrl', function ($scope, mvExp
 
     $scope.getLang = function(){
         return $translate.use();
+    };
+    
+    $scope.delete = function (experiance) {
+        console.log('delete');
+        experiance.Deleted = true;
+        mvExperianceRepo.updateCurrentExperiannce().then(function () {
+            mvNotifier.notify('Experiance has been deleted!');
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+
+
     };
 });

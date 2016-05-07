@@ -7,18 +7,18 @@ exports.getCourses = function (req, res) {
     if (req.query.jobSeeker) {
         
         console.log("Job Seeker");
-        Course.find({ JobSeeker: req.query.jobSeeker }).populate('Specialization').populate('Grade').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Course.find({ JobSeeker: req.query.jobSeeker , Deleted : false }).populate('Specialization').populate('Grade').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     } else if (isAdmin(req)) {
         console.log("Admin");
-        Course.find({}).populate('TrainingCenter').populate('Specialization').populate('Grade').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Course.find({Deleted : false}).populate('TrainingCenter').populate('Specialization').populate('Grade').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
         
         console.log("Other");
-        Course.find({ CreatedBy: req.user }).populate('Specialization').populate('Grade').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Course.find({ CreatedBy: req.user, Deleted : false }).populate('Specialization').populate('Grade').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     }

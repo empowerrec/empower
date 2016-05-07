@@ -5,12 +5,16 @@ var TrainingCenterSchema = mongoose.Schema({
     Name: [{
             Lang: String,
             Text: String
-        }],
+        }], Confirmed : Boolean  ,
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },    
     CreatedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }, Deleted : Boolean  ,   
+    DeletedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }

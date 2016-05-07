@@ -14,6 +14,7 @@ angular.module('app').controller('mvEducationalInformationCtrl'
     } else {
         $scope.educationalInformation = new mvEducationalInformation();
         $scope.educationalInformation.JobSeeker = mvIdentity.currentJobSeeker;
+        $scope.educationalInformation.Deleted = false;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;

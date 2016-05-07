@@ -26,6 +26,7 @@
             <th>{{"User.CreatedBy" | translate}}</th>
             <th>{{"User.ModifiedBy" | translate}}</th>
             <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -39,7 +40,8 @@
             <td>{{ experiance.ModifiedBy.FirstName}} {{ experiance.ModifiedBy.LastName}}</td>
            
 
-            <td><a href="#/updateExperiance/{{experiance._id}}"> {{"Buttons.Update" | translate}}</a></td>
+            <td><a href="#/updateExperiance/{{experiance._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
+            <td><button class="btn btn-danger" ng-click="deleteExperiance(experiance)"> {{"Buttons.Delete" | translate}}</button></td>
         </tr>
         </tbody>
     </table>

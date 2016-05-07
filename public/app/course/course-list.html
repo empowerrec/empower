@@ -42,7 +42,8 @@
                 <td>{{ course.ModifiedBy.FirstName}} {{ course.ModifiedBy.LastName}}</td>-->
 
 
-                <td><a href="#/updateCourse/{{course._id}}"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a href="#/updateCourse/{{course._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
+                <td><button class="btn btn-danger" ng-click="deleteCourse(course)"> {{"Buttons.Delete" | translate}}</button></td>
             </tr>
         </tbody>
     </table>

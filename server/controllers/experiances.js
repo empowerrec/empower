@@ -6,18 +6,18 @@ exports.getExperiances = function (req, res) {
         
         console.log('Job Seeker');
         console.log(req.query.jobSeeker);
-        Experiance.find({ JobSeeker: req.query.jobSeeker }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Experiance.find({ JobSeeker: req.query.jobSeeker , Deleted : false }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     }else if (isAdmin(req)) {
         console.log('Admin');
-        Experiance.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Experiance.find({Deleted : false}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
         
         console.log('Other');
-        Experiance.find({ CreatedBy: req.user }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Experiance.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     }

@@ -4,19 +4,19 @@ exports.getEducationalInformations = function (req, res) {
     
     if (req.query.jobSeeker) {
         console.log("Job Seeker");
-        EducationalInformation.find({ JobSeeker: req.query.jobSeeker }).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
+        EducationalInformation.find({ JobSeeker: req.query.jobSeeker , Deleted:false }).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
             .populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     } else if (isAdmin(req)) {
         console.log("Admin");
-        EducationalInformation.find({}).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
+        EducationalInformation.find({ Deleted:false}).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
             .populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
         console.log("Other");
-        EducationalInformation.find({ CreatedBy: req.user }).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
+        EducationalInformation.find({ CreatedBy: req.user, Deleted: false }).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
             .populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });

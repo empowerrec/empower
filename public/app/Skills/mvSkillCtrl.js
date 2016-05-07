@@ -1,4 +1,4 @@
-angular.module('app').controller('mvJobSeekerCtrl', function ($scope, $routeParams, mvLanguageSkill,mvIdentity) {
+angular.module('app').controller('mvSkillCtrl', function ($scope, $routeParams, mvLanguageSkill,mvIdentity) {
     
     $scope.active = 0;
     $scope.currentUser = mvIdentity.currentUser;

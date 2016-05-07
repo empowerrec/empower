@@ -28,6 +28,10 @@ type: mongoose.Schema.Types.ObjectId,
     CreatedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    }, Deleted : Boolean  ,   
+    DeletedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 },    
 {

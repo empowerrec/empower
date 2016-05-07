@@ -26,7 +26,8 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, mvNotifier, 
     else
     {
     $scope.address = new mvAddress();
-    $scope.address.JobSeeker = mvIdentity.currentJobSeeker;
+        $scope.address.JobSeeker = mvIdentity.currentJobSeeker;
+        $scope.address.Deleted =false;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;

@@ -11,11 +11,17 @@ var citySchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Country'
     },
+Confirmed : Boolean  
+    ,
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },    
     CreatedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }, Deleted : Boolean  ,   
+    DeletedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }

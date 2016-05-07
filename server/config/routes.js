@@ -28,6 +28,7 @@ var passport = require('passport');
 module.exports = function (app) {
     
     app.use('/api/courses', require('../routes/courses'));
+    app.use('/api/languageSkills', require('../routes/languageSkills'));
     app.use('/api/jobSeekers', require('../routes/jobSeekers'));
     app.use('/api/addresses', require('../routes/addresses'));
     app.use('/api/genders', require('../routes/genders'));

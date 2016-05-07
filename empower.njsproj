@@ -156,7 +156,6 @@
     <Compile Include="public\app\militaryStatus\mvMilitaryStatusRepo.js" />
     <Compile Include="public\app\grade\mvGrade.js" />
     <Compile Include="public\app\grade\mvGradeRepo.js" />
-    <Compile Include="public\app\Skills\mvSkill.js" />
     <Compile Include="public\app\Skills\mvSkillCtrl.js" />
     <Compile Include="public\app\specialization\mvSpecialization.js" />
     <Compile Include="public\app\specialization\mvSpecializationRepo.js" />

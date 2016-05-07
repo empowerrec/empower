@@ -21,7 +21,8 @@ angular.module('app').controller('mvExperiancerCtrl', function ($scope, $rootSco
         $scope.experiance = new mvExperiance();
         
         if(mvIdentity.currentJobSeeker)
-        $scope.experiance.JobSeeker = mvIdentity.currentJobSeeker;
+            $scope.experiance.JobSeeker = mvIdentity.currentJobSeeker;
+        $scope.experiance.Deleted = false;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;

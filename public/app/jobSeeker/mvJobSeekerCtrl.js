@@ -1,4 +1,6 @@
-angular.module('app').controller('mvJobSeekerCtrl', function ($scope, $routeParams, mvExperiance, mvCourse, mvIdentity,mvAddress, mvJobSeeker, mvEducationalInformation) {
+angular.module('app').controller('mvJobSeekerCtrl', function ($scope, $routeParams, mvExperiance, mvCourse, mvIdentity,
+    mvAddress, mvJobSeeker, mvEducationalInformation, mvExperianceRepo, mvNotifier,
+    mvEducationalInformationRepo, mvCourseRepo , mvAddressRepo) {
     $scope.activeTab = 1;
     switch ($routeParams.tab) {
         case 'PersonalInformation':
@@ -24,6 +26,62 @@ angular.module('app').controller('mvJobSeekerCtrl', function ($scope, $routePara
             $scope.activeTab = 4;
             break;
     }
+    
+    $scope.deleteExperiance = function (experiance) {
+        console.log('delete');
+        experiance.Deleted = true;
+        experiance.DeletedBy = mvIdentity.currentUser;
+        mvExperianceRepo.updateCurrentExperiance(experiance).then(function () {
+            mvNotifier.notify('Experiance has been deleted!');
+            $scope.experiances = mvExperiance.query({ jobSeeker: mvIdentity.currentJobSeeker._id });
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+
+
+    };
+    
+    $scope.deleteAdress = function (adress) {
+        console.log('delete');
+        adress.Deleted = true;
+        adress.DeletedBy = mvIdentity.currentUser;
+        mvAddressRepo.updateCurrentAddress(adress).then(function () {
+            mvNotifier.notify('Address has been deleted!');
+            $scope.addresses = mvAddress.query({ jobSeeker: mvIdentity.currentJobSeeker._id });
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+
+
+    };
+    
+    $scope.deleteCourse = function (course) {
+        console.log('delete');
+        course.Deleted = true;
+        course.DeletedBy = mvIdentity.currentUser;
+        mvCourseRepo.updateCurrentCourse(course).then(function () {
+            mvNotifier.notify('Course has been deleted!');
+            $scope.courses = mvCourse.query({ jobSeeker: mvIdentity.currentJobSeeker._id });
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+
+
+    };
+    
+    $scope.deleteEducationalInformation = function (educationalInformation) {
+        console.log('delete');
+        educationalInformation.Deleted = true;
+        educationalInformation.DeletedBy =  mvIdentity.currentUser;
+        mvEducationalInformationRepo.updateCurrentEducationalInformation(educationalInformation).then(function () {
+            mvNotifier.notify('Educational Information has been deleted!');
+            $scope.educationalInformations = mvEducationalInformation.query({ jobSeeker: mvIdentity.currentJobSeeker._id });
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+
+
+    };
     $scope.currentUser = mvIdentity.currentUser;
     var id = $routeParams.id;
     if (id) {

@@ -20,6 +20,7 @@ angular.module('app').controller('mvCourseCtrl', function ($scope,  mvNotifier, 
         $scope.course = new mvCourse();
         //console.log(mvIdentity.currentJobSeeker._id);
         $scope.course.JobSeeker = mvIdentity.currentJobSeeker;
+        $scope.course.Deleted = false;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;

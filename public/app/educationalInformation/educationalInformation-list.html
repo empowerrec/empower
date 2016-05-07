@@ -39,7 +39,8 @@
                 <td><span ng-repeat="name in educationalInformation.Grade.Name |filter:currentLang">{{name.Text}}</span></td>
                 <td>{{ educationalInformation.CreatedBy.FirstName}} {{ educationalInformation.CreatedBy.LastName}}</td>
                 <td>{{ educationalInformation.ModifiedBy.FirstName}} {{ educationalInformation.ModifiedBy.LastName}}</td>
-                <td><a href="#/updateEducationalInformation/{{educationalInformation._id}}"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a href="#/updateEducationalInformation/{{educationalInformation._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
+                <td><button class="btn btn-danger" ng-click="deleteEducationalInformation(educationalInformation)"> {{"Buttons.Delete" | translate}}</button></td>
             </tr>
         </tbody>
     </table>

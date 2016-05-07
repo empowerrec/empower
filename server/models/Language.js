@@ -15,6 +15,10 @@ var languageSchema = mongoose.Schema({
     CreatedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    }, Deleted : Boolean  ,   
+    DeletedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 },    
 {

@@ -9,12 +9,17 @@ var areaSchema = mongoose.Schema({
 City: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'City'
-    },
+},
+  Confirmed : Boolean  ,
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },    
     CreatedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }, Deleted : Boolean  ,   
+    DeletedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }

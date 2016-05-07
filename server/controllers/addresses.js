@@ -8,17 +8,17 @@ exports.getAddresses = function (req, res) {
     if (req.query.jobSeeker) {
         
         console.log('req.user' + req.user);
-        Address.find({ JobSeeker: req.query.jobSeeker }).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Address.find({ JobSeeker: req.query.jobSeeker , Deleted:false }).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     }else if (isAdmin(req)) {
-        Address.find({}).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Address.find({Deleted:false }).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
         
         console.log('req.user' + req.user);
-        Address.find({ CreatedBy: req.user }).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Address.find({ CreatedBy: req.user, Deleted: false  }).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     }
