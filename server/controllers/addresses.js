@@ -1,25 +1,42 @@
 var Address = require('mongoose').model('Address');
 var JobSeeker = require('mongoose').model('JobSeeker');
 
-exports.getAddresses = function (req, res) {
-    //Address.find({}).exec(function (err, col) {
-    //    res.send(col);
-    //});
+exports.getAddresses = function (req, res) {    
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
+    
     if (req.query.jobSeeker) {
-        
-        console.log('req.user' + req.user);
-        Address.find({ JobSeeker: req.query.jobSeeker , Deleted:false }).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+        Address.find(JSON.parse(req.query.query)).populate('Country').populate('City').populate('Area')
+            .populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) { 
+            var collection = col;
+            Address.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
     }else if (isAdmin(req)) {
-        Address.find({Deleted:false }).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+        Address.find({ Deleted: false }).populate('Country').populate('City').populate('Area').populate('ModifiedBy')
+            .populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            Address.count({ Deleted: false }).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
     } else {
-        
-        console.log('req.user' + req.user);
-        Address.find({ CreatedBy: req.user, Deleted: false  }).populate('Country').populate('City').populate('Area').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+        Address.find({ CreatedBy: req.user, Deleted: false }).populate('Country').populate('City')
+            .populate('Area').populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            Address.count({ CreatedBy: req.user, Deleted: false }).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
     }
 };
@@ -35,7 +52,7 @@ function isAdmin(req) {
 }
 
 exports.getAddressById = function (req, res) {
-    Address.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
+    Address.findOne({ _id: req.params.id }).populate('City').populate('Area').populate('ModifiedBy').exec(function (err, col) {
         console.log(col);
         res.send(col);
     });

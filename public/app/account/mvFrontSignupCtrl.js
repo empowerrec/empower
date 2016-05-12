@@ -1,15 +1,3 @@
-angular.module('app').directive('matchPasswordValidationError', function () {
-    return {
-        require: 'ngModel',
-        link: function (scope, elm, attrs, ctl) {
-            scope.$watch(attrs['matchPasswordValidationError'], function (errorMsg) {
-                elm[0].setCustomValidity(errorMsg);
-                ctl.$setValidity('matchPasswordValidationError', errorMsg ? false : true);
-            });
-        }
-    };
-});
-
 angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootScope, $location, $q, mvUser, mvJobSeekerRepo, mvNotifier, mvAuth, mvIdentity, mvEmployer, mvEmployerRepo) {
     
     $scope.usertype = "J";

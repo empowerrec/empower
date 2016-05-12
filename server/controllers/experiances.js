@@ -1,24 +1,37 @@
 var Experiance = require('mongoose').model('Experiance');
 
 exports.getExperiances = function (req, res) {
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     
-     if (req.query.jobSeeker) {
-        
-        console.log('Job Seeker');
-        console.log(req.query.jobSeeker);
-        Experiance.find({ JobSeeker: req.query.jobSeeker , Deleted : false }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+    if (req.query.jobSeeker) {
+        Experiance.find(JSON.parse(req.query.query)).populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            Experiance.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
-    }else if (isAdmin(req)) {
-        console.log('Admin');
-        Experiance.find({Deleted : false}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+    } else if (isAdmin(req)) {
+        Experiance.find({ Deleted : false }).populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            Experiance.count({ Deleted : false }).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
     } else {
-        
-        console.log('Other');
-        Experiance.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+        Experiance.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            Experiance.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
     }
     
@@ -46,22 +59,22 @@ exports.getExperianceById = function (req, res) {
         Experiance.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
             console.log(col);
             res.send(col);
-        }); 
+        });
     }
     
 };
 
 exports.createExperiance = function (req, res, next) {
     var experianceData = req.body;
-
+    
     Experiance.create(experianceData, function (err, experiance) {
         if (err) {
             if (err.toString().indexOf('E11000') > -1) {
                 err = new Error('Duplicate Experiance');
             }
             res.status(400);
-
-            return res.send({reason: err.toString()});
+            
+            return res.send({ reason: err.toString() });
         }
         res.send(experiance);
     });
@@ -71,13 +84,13 @@ exports.updateExperiance = function (req, res, next) {
     console.log(req.params[0]);
     var experianceData = req.body;
     var query = { _id: experianceData._id };
-    Experiance.update(query,experianceData, function (err, experiance) {
+    Experiance.update(query, experianceData, function (err, experiance) {
         if (err) {
             if (err.toString().indexOf('E11000') > -1) {
                 err = new Error('Duplicate User Name');
             }
             res.status(400);
-            return res.send({reason: err.toString()});
+            return res.send({ reason: err.toString() });
         }
         res.send(experiance);
     });

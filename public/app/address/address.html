@@ -2,34 +2,14 @@
 <div class="container admin-area" ng-controller="mvAddressCtrl">
 
     <div class="well">
-        <!--<h3>
-        <div ng-repeat="ind in address.addressName | filter:{Lang:currentLang}">{{ind.Text}}</div>
-        </h3>-->
+       
         <form name="addressForm" class="form-horizontal">
             <fieldset>
 
-                <!--<div class="form-group">
-                        <label for="Text" class="col-md-2 control-label">{{"address.addressName"
-                            | translate}}</label>
-                        <div class="col-md-10">
-
-                            <ul ng-repeat="lang in languages" id="addressNames">
-
-                                <li id="{{lang.value}}">
-
-                                    {{ lang.text}}
-                                    <input id="addressNameText2" type="text"
-                                           placeholder="addressName" required="required"
-                                           value="{{getName(address.addressName , lang.value)}}"
-                                           class="form-control" />
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div>-->
+              
                 <div class="form-group">
                     
-                    <label for="country" class="col-md-2 control-label">{{"Address.Country"| translate}}</label>
+                    <label for="country" class="col-md-1 control-label">{{"Address.Country"| translate}}</label>
 
 
                     <div class="col-md-2">
@@ -38,76 +18,60 @@
                     </div>
 
                 
-                    <label for="city" class="col-md-2 control-label">{{"Address.City"| translate}}</label>
+                    <label for="city" class="col-md-1 control-label">{{"Address.City"| translate}}</label>
 
 
-                    <div class="col-md-2">
-                        <select ng-model="address.City" ng-options="city._id as city.Name[0].Text for city in cities"
-                                class="form-control"></select>
+                    <div class="col-md-3">
+                       
+                            <input id="cityName" />
+                            <input type="hidden" id="hfCityId" />
+                            <input type="hidden" id="currentLang" value="ar" />
+                        <label id="selectedCity" />
+                       
+                        <div ng-repeat="emp in address.City.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                        <!--<select ng-model="address.City" ng-options="city._id as city.Name[0].Text for city in cities"
+                                class="form-control"></select>-->
                     </div>
 
                    
-                    <div class="form-group">
-                        <label for="area" class="col-md-2 control-label">{{"Address.Area"| translate}}</label>
+                    
+                        <label for="area" class="col-md-1 control-label">{{"Address.Area"| translate}}</label>
 
 
-                        <div class="col-md-2">
-                            <select ng-model="address.Area" ng-options="area._id as area.Name[0].Text for area in areas"
-                                    class="form-control"></select>
+                        <div class="col-md-3">
+                            <input id="areaName" />
+                            <input type="hidden" id="hfAreaId" />
+                            
+                            <label id="selectedArea" />
+                            <div ng-repeat="emp in address.Area.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                            <!--<select ng-model="address.Area" ng-options="area._id as area.Name[0].Text for area in areas"
+                                        class="form-control"></select>-->
                         </div>
 
                     </div>
-                    <!--Auto Complete true
-                        <div class="form-group">
-                            <label for="country" class="col-md-2 control-label">{{"Address.Country"| translate}}</label>                        
-                            <autocomplete ng-model="address.Country" data="names" on-type="updateMovies"></autocomplete>
-                        </div>-->
-                
+        <div class="form-group">
+            <label for="AddressLine1" class="col-md-2 control-label">
+                {{"Address.AddressLine1"| translate}}
+            </label>
 
-                    <!--<label for="employerType" class="col-md-2 control-label">
-                            {{"Employer.EmployerType"
-                            | translate}}
-                        </label>
-                        <div class="col-md-3">
-                            <select ng-model="employer.EmployerType" ng-options="item.value as item.text for item in employerTypes"
-                                    class="form-control"></select>
-                        </div>-->
-                    <label for="AddressLine1" class="col-md-2 control-label">
-                        {{"Address.AddressLine1"| translate}}
-                    </label>
-
-                    <div class="col-md-3">
-                        <input name="AddressLine1" placeholder="{{'Address.AddressLine1' | translate}}"
-                               ng-model="address.AddressLine1" required="required"
-                               class="form-control" />
-                    </div>
+            <div class="col-md-8">
+                <textarea name="AddressLine1" placeholder="{{'Address.AddressLine1' | translate}}"
+                          ng-model="address.AddressLine1" required="required"
+                          class="form-control" />
+            </div>
+        </div>
+                <div class="form-group">
                     <label for="AddressLine2" class="col-md-2 control-label">
                         {{"Address.AddressLine2"| translate}}
                     </label>
 
-                    <div class="col-md-3">
-                        <input name="AddressLine2" placeholder="{{'Address.AddressLine2' | translate}}"
+                    <div class="col-md-8">
+                        <textarea name="AddressLine2" placeholder="{{'Address.AddressLine2' | translate}}"
                                ng-model="address.AddressLine2" required="required"
                                class="form-control" />
                     </div>
-                    <!--<label for="averageNumberOfJobOpeningsPerMonth" class="col-md-2 control-label">
-                            {{"Employer.AverageNumberOfJobOpeningsPerMonth"
-                            | translate}}
-                        </label>
 
-                        <div class="col-md-1">
-                            <input name="averageNumberOfJobOpeningsPerMonth" type="number"
-                                   placeholder="{{'Employer.AverageNumberOfJobOpeningsPerMonth' | translate}}"
-                                   ng-model="employer.AverageNumberOfJobOpeningsPerMonth"
-                                   class="form-control" />
-                        </div>-->
                 </div>
-
-
-
-
-
-
 
                 <div class="form-group">
                     <div class="col-md-10 col-md-offset-2">
@@ -123,29 +87,126 @@
                         </div>
                     </div>
                 </div>
-
+               
             </fieldset>
         </form>
-        <!--<table class="table table-hover table-striped table-condensed">
-            <thead>
-                <tr>
-                    <th>{{"Address.AddressLine1" | translate}}</th>
-                    <th>{{"User.CreatedBy" | translate}}</th>
-                    <th>{{"User.ModifiedBy" | translate}}</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="address in addresses | filter:searchText | orderBy:sortOrder">
-                    <td><a href="#/jobRoles/{{jobRole._id}}"> <div ng-repeat="ind in jobRole.JobRoleName | filter:{Lang:currentLang}"> {{ind.Text}}</div></a></td>
-
-                    <td>{{ jobRole.ModifiedBy.FirstName}} {{ jobRole.ModifiedBy.LastName}}</td>
-                    <td>{{ jobRole.CreatedBy.FirstName}} {{ jobRole.CreatedBy.LastName}}</td>
-
-                    <td><a href="#/updatejobRole/{{jobRole._id}}"> {{"Buttons.Update" | translate}}</a></td>
-                </tr>
-            </tbody>
-        </table>-->
+      
 
     </div>
 </div>
+
+
+<div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
+    <img src="ajax-loader.gif" alt="" />
+</div>
+<script>
+    $(function () {
+        $("#cityName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/citiesByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedCity");
+                        var offset = p.offset();
+
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfCityId").val(i.item.id);
+                $('#hfCityId').trigger('change');
+                var p = $("#selectedCity");
+                p.text(i.item.label);
+
+            },
+            minLength: 2
+        });
+
+
+    });
+    $('#hfCityId').change(function () {
+        var customerID = $(this).val();
+      
+
+    });
+    
+    $(function () {
+        $("#areaName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/areasByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedArea");
+                        var offset = p.offset();
+
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfAreaId").val(i.item.id);
+                $('#hfAreaId').trigger('change');
+                var p = $("#selectedArea");
+                p.text(i.item.label);
+
+            },
+            minLength: 2
+        });
+
+
+    });
+    $('#hfAreaId').change(function () {
+        var customerID = $(this).val();
+
+
+    });
+</script>

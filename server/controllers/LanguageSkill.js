@@ -1,27 +1,67 @@
 var LanguageSkill = require('mongoose').model('LanguageSkill');
 
-exports.getLanguageSkills = function (req, res) {
-    //LanguageSkill.find({}).exec(function (err, col) {
-    //    res.send(col);
-    //});
-    if (isAdmin(req)) {
-        LanguageSkill.find({}).populate('LanguageLevel').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
-        });
-    } else if (req.query.jobSeeker) {
+//exports.getLanguageSkills = function (req, res) {
+//    //LanguageSkill.find({}).exec(function (err, col) {
+//    //    res.send(col);
+//    //});
+//    if (isAdmin(req)) {
+//        LanguageSkill.find({}).populate('Language').populate('LanguageSkillLevel').populate('ModifiedBy').populate('CreatedBy')
+//            .exec(function (err, col) {
+//            res.send(col);
+//        });
+//    } else if (req.query.jobSeeker) {
         
-        console.log('req.user' + req.user);
-        LanguageSkill.find({ JobSeeker: req.query.jobSeeker }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+//        console.log('req.user' + req.user);
+//        LanguageSkill.find({ JobSeeker: req.query.jobSeeker }).populate('Language').populate('LanguageSkillLevel').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+//            res.send(col);
+//        });
+//    } else {
+        
+//        console.log('req.user' + req.user);
+//        LanguageSkill.find({ CreatedBy: req.user }).populate('Language').populate('LanguageSkillLevel').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+//            res.send(col);
+//        });
+//    }
+//};
+
+exports.getLanguageSkills = function (req, res) {
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
+    
+    if (req.query.jobSeeker) {
+        LanguageSkill.find(JSON.parse(req.query.query)).populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            LanguageSkill.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
+        });
+    } else if (isAdmin(req)) {
+        LanguageSkill.find({ Deleted : false }).populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            LanguageSkill.count({ Deleted : false }).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
     } else {
-        
-        console.log('req.user' + req.user);
-        LanguageSkill.find({ CreatedBy: req.user }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+        LanguageSkill.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            LanguageSkill.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
     }
+    
+    
 };
+
 function isAdmin(req) {
     console.log('UserDetai2' + req.user.UserType);
     

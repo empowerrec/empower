@@ -168,9 +168,22 @@ angular.module('app').config(function ($routeProvider) {
         templateUrl: '/partials/languageSkill/languageSkill',
         controller: 'mvLanguageSkillCtrl'
     }).when('/languageSkills', {
-        templateUrl: '/partials/languageSkill/languageSkill-list.html',
-        controller: 'mvLanguageSkillListCtrl'  
-
+        templateUrl: '/partials/languageSkill/languageSkill-list',
+        controller: 'mvLanguageSkillListCtrl'
+        
+    }).when('/skills/:id', {
+        templateUrl: '/partials/skill/skill-detail',
+        controller: 'mvskilleDetailCtrl'
+    }).when('/updateSkill/:id', {
+        templateUrl: '/partials/skill/skill',
+        controller: 'mvSkillCtrl'
+    }).when('/addSkill', {
+        templateUrl: '/partials/skill/skill',
+        controller: 'mvSkillCtrl'
+    }).when('/skills', {
+        templateUrl: '/partials/skill/skill-list.html',
+        controller: 'mvSkillListCtrl'
+        
     }).when('/experiances/:id', {
         templateUrl: '/partials/experiance/experiance-detail',
         controller: 'mvExperianceDetailCtrl'

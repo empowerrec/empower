@@ -43,6 +43,7 @@ var positionModel = require('../models/Position');
 
 var skillTypeModel = require('../models/SkillType');
 var skillLevelsModel = require('../models/SkillLevel');
+var skillModel = require('../models/Skill');
 
 var langaugeLevelsModel = require('../models/LanguageLevel');
 
@@ -98,6 +99,7 @@ module.exports = function (config) {
     skillTypeModel.createDefaultSkillTypes();
     skillLevelsModel.createDefaultSkillLevels();
     langaugeLevelsModel.createDefaultLanguageLevels();
+    skillModel.createDefaultSkills();
 
 
 };

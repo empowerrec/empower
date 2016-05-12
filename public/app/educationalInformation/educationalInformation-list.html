@@ -1,4 +1,3 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
 <div class="container top-padding-med admin-area">
 
     <div class="pull-left">
@@ -6,13 +5,10 @@
     </div>
     <div class="pull-right">
         <form class="form-inline">
-            <div class="form-group"><input ng-model="searchText" placeholder="Filter" class="form-control" /></div>
-            <div class="form-group margin-left-med">
-                <select ng-model="sortOrder" ng-options="item.value as item.text for item in sortOptions"
-                        class="form-control"></select>
-            </div>
+            <input class="input-sm" ng-model="vm.educationalInformationSearch" ng-keyup="vm.search($event)" placeholder="Search..." />         
         </form>
     </div>
+    <!--<div widget-header title="{{paging.pageCount}}"></div>-->
     <table class="table table-hover table-striped table-condensed">
         <thead>
             <tr>
@@ -44,4 +40,16 @@
             </tr>
         </tbody>
     </table>
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>
 </div>

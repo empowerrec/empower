@@ -181,7 +181,11 @@
                 "Add": "Add New",
                 "NewAddress": "New Address",
                 "Change Password": "Change Password",
-                "Reset Password": "Reset Password"
+                "Reset Password": "Reset Password",
+                'Previous': 'Previous',
+                'Next': 'Next',
+                'First': 'First',
+                'Last': 'Last'
             },
             "Menu": {
                 "SubTitle": "Jobs IN Egypt",
@@ -381,7 +385,11 @@
                 "Add": "اضافة جديد",
                 "NewAddress": "عنوان جديد",
                 "Change Password": "تغيير كلمة السر",
-                "Reset Password": "ارسال ميل"
+                "Reset Password": "ارسال ميل",
+                'Previous': 'السابق',
+                'Next': 'التالي',
+                'First': 'الاول',
+                'Last': 'الاخير'
             },
             "Menu": {
                 "SubTitle": "وظائف فى مصر",

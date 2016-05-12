@@ -11,11 +11,18 @@ var categories = require('../controllers/categories');
 var languages = require('../controllers/languages');
 var countries = require('../controllers/countries');
 var cities = require('../controllers/cities');
+var skillTypes = require('../controllers/skillTypes');
+var skillLevels = require('../controllers/skillLevels');
+
+
 var trainingCenters = require('../controllers/trainingCenters');
+var languageLevels = require('../controllers/languageLevels');
+
 var areas = require('../controllers/areas');
 
 var curancies = require('../controllers/curancies');
 var experinces = require('../controllers/experiances');
+var skills = require('../controllers/skills');
 
 var companyTypes = require('../controllers/companyTypes');
 var companySizes = require('../controllers/companySizes');
@@ -95,12 +102,28 @@ module.exports = function (app) {
     app.put('/api/curancies', curancies.updateCurancy);
     app.get('/api/curancies/:id', curancies.getCurancyById);
     
+    app.get('/api/languageLevels', languageLevels.getLanguageLevels);
+    app.post('/api/languageLevels', languageLevels.createLanguageLevel);
+    app.put('/api/languageLevels', languageLevels.updateLanguageLevel);
+    app.get('/api/languageLevels/:id', languageLevels.getLanguageLevelById);
+    
+    
     app.get('/api/cities', cities.getCities);
     app.post('/api/cities', cities.createCity);
     app.put('/api/cities', cities.updateCity);
     app.get('/api/cities/:id', cities.getCityById);
+    app.get('/api/citiesByName/:search', cities.getCityByName);
     
+    app.get('/api/skillTypes', skillTypes.getSkillTypes);
+    app.post('/api/skillTypes', skillTypes.createSkillType);
+    app.put('/api/skillTypes', skillTypes.updateSkillType);
+    app.get('/api/skillTypes/:id', skillTypes.getSkillTypeById);
     
+    app.get('/api/skillLevels', skillLevels.getSkillLevels);
+    app.post('/api/skillLevels', skillLevels.createSkillLevel);
+    app.put('/api/skillLevels', skillLevels.updateSkillLevel);
+    app.get('/api/skillLevels/:id', skillLevels.getSkillLevelById);
+
     app.get('/api/trainingCenters', trainingCenters.getTrainingCenters);
     app.post('/api/trainingCenters', trainingCenters.createTrainingCenter);
     app.put('/api/trainingCenters', trainingCenters.updateTrainingCenter);
@@ -110,6 +133,7 @@ module.exports = function (app) {
     app.post('/api/areas', areas.createArea);
     app.put('/api/areas', areas.updateArea);
     app.get('/api/areas/:id', areas.getAreaById);
+    app.get('/api/areasByName/:search', areas.getAreaByName);
 
     app.get('/api/innerPages', authentication.requiresRole(['A', 'J']), innerPages.getInnerPages);
     app.post('/api/innerPages', innerPages.createInnerPage);
@@ -121,7 +145,11 @@ module.exports = function (app) {
     app.put('/api/experiances', experinces.updateExperiance);
     app.get('/api/experiances/:id', experinces.getExperianceById);
     
-    
+    app.get('/api/skills', skills.getSkills);
+    app.post('/api/skills', skills.createSkill);
+    app.put('/api/skills', skills.updateSkill);
+    app.get('/api/skills/:id', skills.getSkillById);
+
     app.get('/api/companySizes',  companySizes.getCompanySizes);
     app.post('/api/companySizes', companySizes.createCompanySize);
     app.put('/api/companySizes', companySizes.updateCompanySize);

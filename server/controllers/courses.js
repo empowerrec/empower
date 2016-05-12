@@ -1,25 +1,41 @@
 var Course = require('mongoose').model('Course');
 
 exports.getCourses = function (req, res) {
-    //Course.find({}).exec(function (err, col) {
-    //    res.send(col);
-    //});
-    if (req.query.jobSeeker) {
-        
-        console.log("Job Seeker");
-        Course.find({ JobSeeker: req.query.jobSeeker , Deleted : false }).populate('Specialization').populate('Grade').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
+    
+    if (req.query.jobSeeker) {       
+        Course.find(JSON.parse(req.query.query)).populate('TrainingCenter').populate('Specialization').populate('Grade').populate('ModifiedBy')
+            .populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            Course.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
     } else if (isAdmin(req)) {
-        console.log("Admin");
-        Course.find({Deleted : false}).populate('TrainingCenter').populate('Specialization').populate('Grade').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+        Course.find({ Deleted : false }).populate('TrainingCenter').populate('Specialization').populate('Grade').populate('ModifiedBy')
+            .populate('CreatedBy')
+           .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            Course.count({ Deleted : false }).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
     } else {
-        
-        console.log("Other");
-        Course.find({ CreatedBy: req.user, Deleted : false }).populate('Specialization').populate('Grade').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+        Course.find({ CreatedBy: req.user, Deleted : false }).populate('TrainingCenter').populate('Specialization').populate('Grade')
+            .populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            Course.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
     }
 };

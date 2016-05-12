@@ -1,29 +1,48 @@
 var EducationalInformation = require('mongoose').model('EducationalInformation');
 
 exports.getEducationalInformations = function (req, res) {
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     
     if (req.query.jobSeeker) {
-        console.log("Job Seeker");
-        EducationalInformation.find({ JobSeeker: req.query.jobSeeker , Deleted:false }).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
-            .populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+        EducationalInformation.find(JSON.parse(req.query.query))
+            .populate('EducationType').populate('Univirsty')
+            .populate('Faculty').populate('Specialization').populate('Grade')
+            .populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            EducationalInformation.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });                
         });
     } else if (isAdmin(req)) {
-        console.log("Admin");
-        EducationalInformation.find({ Deleted:false}).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
-            .populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+        EducationalInformation.find({ Deleted: false }).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
+            .populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            EducationalInformation.count({ Deleted: false }).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
     } else {
-        console.log("Other");
         EducationalInformation.find({ CreatedBy: req.user, Deleted: false }).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
-            .populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+            .populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            var collection = col;
+            EducationalInformation.count({ CreatedBy: req.user, Deleted: false }).exec(function (errr, count) {
+                res.send([{ collection: collection, allDataCount: count }]);
+            });
         });
-    }    
+    }
 };
 
-function isAdmin(req) {    
+function isAdmin(req) {
     for (var role in req.user.UserType) {
         if (req.user.UserType[role] == 'A') {
             return true;

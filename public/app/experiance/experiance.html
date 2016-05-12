@@ -141,72 +141,10 @@
                             &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a></div>
                     </div>
                 </div>
-                <div>
-                    <input id="search" />
-                    <input type="hidden" id="hfValue"/>
-                    <input type="hidden" id="currentLang" value="ar" />
-                    <label id="destination"  />
-                </div>
+               
 
             </fieldset>
         </form>
     </div>
 </div>
-<div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
-    <img src="ajax-loader.gif" alt="" />
-</div>
-<script>
-    $(function () {
-        $("#search").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    url: "/api/countriesByName/" + request.term,
-                    data:{ prefix: request.term, currentLang: $("#currentLang").val() },
-                    success: function (data) {
-                        console.log(data);
-                        response($.map(data, function (item) {
-                            console.log(item.Name[0].Text);
-                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
-                        }));
-                    },
-                    error: function (error) {
 
-                        console.log(error);
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    beforeSend: function () {
-                        var p = $("#destination");
-                        var offset = p.offset();
-
-                        //set
-                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
-                        $('#loader').css("visibility", "visible");
-                    },
-                    complete: function () {
-
-                        $('#loader').css("visibility", "hidden");
-                    }
-                });
-            },
-            select: function (e, i) {
-                console.log(i.item);
-                $("#hfValue").val(i.item.id);
-                $('#hfValue').trigger('change');
-               
-            },
-            minLength: 2
-        });
-               
-           
-    });
-    $('#hfValue').change(function () {
-        var customerID = $(this).val();
-        var p = $("#destination");
-        p.text(customerID);
-
-    });
-</script>

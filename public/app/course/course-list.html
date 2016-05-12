@@ -1,4 +1,3 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
 <div class="container top-padding-med admin-area">
 
     <div class="pull-left">
@@ -22,29 +21,31 @@
                 <th>{{"Course.Specialization" | translate}}</th>
                 <th>{{"Course.Grade" | translate}}</th>
                 <th>{{"Course.CourseYear" | translate}}</th>
-                <!--<th>{{"User.CreatedBy" | translate}}</th>
-                <th>{{"User.ModifiedBy" | translate}}</th>-->
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="course in courses | filter:searchText | orderBy:sortOrder">
                 <td><a href="#/courses/{{course._id}}">{{ course.Title}}</a></td>
-
                 <td> <div ng-repeat="tr in course.TrainingCenter.Name | filter:{Lang:currentLang}">{{tr.Text}}</div></td>
-                <!--<td>{{ course.TrainingCenter.Name}}</td>-->
                 <td> <div ng-repeat="emp in course.Specialization.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></td>
-                <!--<td>{{ course.Specialization.Name}}</td>-->
-                <!--<td>{{ course.Grade.Name}}</td>-->
                 <td> <div ng-repeat="grd in course.Grade.Name | filter:{Lang:currentLang}">{{grd.Text}}</div></td>
                 <td>{{ course.CourseYear}}</td>
-                <!--<td>{{ course.CreatedBy.FirstName}} {{ course.CreatedBy.LastName}}</td>
-                <td>{{ course.ModifiedBy.FirstName}} {{ course.ModifiedBy.LastName}}</td>-->
-
-
                 <td><a href="#/updateCourse/{{course._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
                 <td><button class="btn btn-danger" ng-click="deleteCourse(course)"> {{"Buttons.Delete" | translate}}</button></td>
             </tr>
         </tbody>
     </table>
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>
 </div>

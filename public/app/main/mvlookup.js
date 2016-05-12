@@ -1,7 +1,7 @@
 angular.module('app').factory('mvLookup'
     , function (mvIndustry, mvJobType, mvGender, mvMaritalStatus, mvMilitaryStatus, mvCarLicenceType,
-        mvCountry, mvCity, mvArea, mvCurancy, mvCompanyType, mvEducationType, mvUnivirsty, mvFaculty, 
-        mvSpecialization, mvGrade, mvCompanySize,mvTrainingCenter, $rootScope) {
+        mvCountry, mvCity, mvLanguage,  mvArea, mvCurancy, mvCompanyType, mvEducationType, mvUnivirsty, mvFaculty, 
+        mvSpecialization, mvGrade, mvCompanySize,mvTrainingCenter, $rootScope , mvSkillType, mvSkillLevel, mvLanguageLevel) {
     
     return {
         getAllLookUps: function () {
@@ -23,7 +23,10 @@ angular.module('app').factory('mvLookup'
             $rootScope.specializations = mvSpecialization.query({ currentLang: $rootScope.currentLang });
             $rootScope.grades = mvGrade.query({ currentLang: $rootScope.currentLang });            
             $rootScope.trainingCenters = mvTrainingCenter.query({ currentLang: $rootScope.currentLang });
-     
+            $rootScope.languages = mvLanguage.query({});
+            $rootScope.languageLevels = mvLanguageLevel.query({ currentLang: $rootScope.currentLang });
+            $rootScope.skillTypes = mvSkillType.query({ currentLang: $rootScope.currentLang });
+            $rootScope.skillLevels = mvSkillLevel.query({ currentLang: $rootScope.currentLang });
         }
     };
 });

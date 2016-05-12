@@ -28,6 +28,26 @@ exports.createCity = function (req, res, next) {
     });
 };
 
+exports.getCityByName = function (req, res) {
+    
+    console.log(req.query.currentLang);
+    if (req.query.currentLang) {
+        City.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            console.log(req.query.currentLang);
+            res.send(col);
+
+        });
+    } else {
+        City.find({ 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            console.log(req.query.currentLang);
+            res.send(col);
+
+        });
+    }
+    
+
+};
+
 exports.updateCity = function (req, res, next) {
     console.log(req.params[0]);
     var cityData = req.body;
