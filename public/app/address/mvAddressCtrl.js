@@ -75,9 +75,16 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
         if (!cityId) {
             if (cityName != '') {
                 var city = new mvCity();
+                city.Confirmed = false;
                 city.Name = [];
-                var cityNameObj = { "Lang": $rootScope.currentLang, "Text": cityName };
-                city.Name.push(cityNameObj);
+                for (var i = 0; i < $rootScope.languages.length; i++) {
+                    
+                    var cityNameObj = { "Lang": $rootScope.languages[i].Abbreviation, "Text": cityName };
+                    city.Name.push(cityNameObj);
+                }
+                
+
+                
                 return mvCityRepo.createCity(city).then(function(createdCity) {
 
                     mvNotifier.notify('New City Added!');
@@ -103,9 +110,15 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
         if (!areaId) {
             if (areaName != '') {
                 var area = new mvArea();
+                area.Confirmed = false;
                 area.Name = [];
-                var areaNameObj = { "Lang": $rootScope.currentLang, "Text": areaName };
-                area.Name.push(areaNameObj);
+                for (var i = 0; i < $rootScope.languages.length; i++) {
+                    
+                    var areaNameObj = { "Lang": $rootScope.languages[i].Abbreviation, "Text": areaName  };
+                    area.Name.push(areaNameObj);
+                }
+                
+               
 
                 return mvAreaRepo.createArea(area).then(function(createdArea) {
 

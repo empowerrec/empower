@@ -29,6 +29,8 @@ var companySizes = require('../controllers/companySizes');
 var jobSeekers = require('../controllers/jobSeekers');
 
 var areas = require('../controllers/areas');
+var faculties = require('../controllers/faculties');
+var univirsties = require('../controllers/univirsties');
 
 var passport = require('passport');
 
@@ -134,7 +136,9 @@ module.exports = function (app) {
     app.put('/api/areas', areas.updateArea);
     app.get('/api/areas/:id', areas.getAreaById);
     app.get('/api/areasByName/:search', areas.getAreaByName);
-
+    app.get('/api/facultiesByName/:search', faculties.getFacultyByName);
+    app.get('/api/universtiesByName/:search', univirsties.getUnivirstyByName);
+    
     app.get('/api/innerPages', authentication.requiresRole(['A', 'J']), innerPages.getInnerPages);
     app.post('/api/innerPages', innerPages.createInnerPage);
     app.put('/api/innerPages', innerPages.updateInnerPage);

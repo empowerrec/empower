@@ -17,33 +17,52 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="Univirsty" class="col-md-2 control-label">{{"EducationalInformation.Univirsty"| translate}}</label>
-                    <div class="col-md-2">
-                        <select name="Univirsty" ng-model="educationalInformation.Univirsty" required="required"
-                                ng-options="univirsty._id as univirsty.Name[0].Text for univirsty in univirsties" class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
+                    <label for="univirsty" class="col-md-1 control-label">{{"EducationalInformation.Univirsty"| translate}}</label>
+
+
+                    <div class="col-md-4">
+
+                        <input id="univirstyName" />
+                        <input type="hidden" id="hfUnivirstyId" />
+                        <input type="hidden" id="currentLang" value="ar" />
+                        <label id="selectedUnivirsty" />
+
+                        <div ng-repeat="emp in educationalInformation.Univirsty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                        <!--<select ng-model="address.City" ng-options="city._id as city.Name[0].Text for city in cities"
+                class="form-control"></select>-->
                     </div>
+
+
+
+                    <label for="faculty" class="col-md-1 control-label">{{"EducationalInformation.Faculty"| translate}}</label>
+
+
+                    <div class="col-md-4">
+                        <input id="facultyName"   />
+                        <input type="hidden" id="hfFacultyId" />
+
+                        <label id="selectedFaculty" />
+                        <div ng-repeat="emp in educationalInformation.Faculty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                        <!--<select ng-model="address.Area" ng-options="area._id as area.Name[0].Text for area in areas"
+                    class="form-control"></select>-->
+                    </div>
+
                 </div>
 
                 <div class="form-group">
-                    <label for="Faculty" class="col-md-2 control-label">{{"EducationalInformation.Faculty"| translate}}</label>
-                    <div class="col-md-2">
-                        <select name="Faculty" ng-model="educationalInformation.Faculty" required="required"
-                                ng-options="faculty._id as faculty.Name[0].Text for faculty in faculties" class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
-                    </div>
-                </div>
+                    <label for="specialization" class="col-md-1 control-label">{{"EducationalInformation.Specialization"| translate}}</label>
 
-                <div class="form-group">
-                    <label for="Specialization" class="col-md-2 control-label">{{"EducationalInformation.Specialization"| translate}}</label>
-                    <div class="col-md-2">
-                        <select name="Specialization" ng-model="educationalInformation.Specialization" required="required"
-                                ng-options="specialization._id as specialization.Name[0].Text for specialization in specializations" class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
+
+                    <div class="col-md-4">
+                        <input id="specializationName" />
+                        <input type="hidden" id="hfSpecializationId" />
+
+                        <label id="selectedSpecialization" />
+                        <div ng-repeat="emp in educationalInformation.Specialization.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                        <!--<select ng-model="address.Area" ng-options="area._id as area.Name[0].Text for area in areas"
+        class="form-control"></select>-->
                     </div>
+                   
                 </div>
 
                 <div class="form-group">
@@ -75,3 +94,174 @@
         </form>
     </div>
 </div>
+
+
+<div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
+    <img src="ajax-loader.gif" alt="" />
+</div>
+<script>
+    $(function () {
+        $("#univirstyName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/universtiesByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedUnivirsty");
+                        var offset = p.offset();
+
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfUnivirstyId").val(i.item.id);
+                $('#hfUnivirstyId').trigger('change');
+                var p = $("#selectedUnivirsty");
+                p.text(i.item.label);
+
+            },
+            minLength: 2
+        });
+
+
+    });
+    $('#hfUnivirstyId').change(function () {
+        var customerID = $(this).val();
+
+
+    });
+
+    $(function () {
+        $("#facultyName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/facultiesByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedFaculty");
+                        var offset = p.offset();
+
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfFacultyId").val(i.item.id);
+                $('#hfFacultyId').trigger('change');
+                var p = $("#selectedFaculty");
+                p.text(i.item.label);
+
+            },
+            minLength: 2
+        });
+
+
+    });
+    $('#hfFacultyId').change(function () {
+        var customerID = $(this).val();
+
+
+    });
+    
+    $(function () {
+        $("#specializationName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/specializationsByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedFaculty");
+                        var offset = p.offset();
+
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfSpecializationId").val(i.item.id);
+                $('#hfSpecializationId').trigger('change');
+                var p = $("#selectedSpecialization");
+                p.text(i.item.label);
+
+            },
+            minLength: 2
+        });
+
+
+    });
+    $('#hfSpecializationId').change(function () {
+        var customerID = $(this).val();
+
+
+    });
+</script>

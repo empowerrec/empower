@@ -7,7 +7,7 @@ angular.module('app').factory('mvSpecializationRepo', function ($http, $q, mvSpe
             console.log("Saving Specialization");
             newSpecialization.$save().then(function (response) {
                 console.log(response.data);
-                dfd.resolve();
+                dfd.resolve(response);
             }, function (response) {
                 dfd.reject(response.data.reason);
             });

@@ -17,7 +17,25 @@ exports.getFaculties = function (req, res) {
     
 
 };
+exports.getFacultyByName = function (req, res) {
+    
+    console.log(req.query.currentLang);
+    if (req.query.currentLang) {
+        Faculty.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            console.log(req.query.currentLang);
+            res.send(col);
 
+        });
+    } else {
+        Faculty.find({ 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            console.log(req.query.currentLang);
+            res.send(col);
+
+        });
+    }
+    
+
+};
 exports.getFacultyById = function (req, res) {
     Faculty.findOne({_id:req.params.id}).populate('ModifiedBy').exec(function (err, col) {
         res.send(col);

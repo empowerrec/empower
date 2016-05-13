@@ -17,7 +17,25 @@ exports.getUnivirsties = function (req, res) {
     
 
 };
+exports.getUnivirstyByName = function (req, res) {
+    
+    console.log(req.query.currentLang);
+    if (req.query.currentLang) {
+        Univirsty.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            console.log(req.query.currentLang);
+            res.send(col);
 
+        });
+    } else {
+        Univirsty.find({ 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            console.log(req.query.currentLang);
+            res.send(col);
+
+        });
+    }
+    
+
+};
 exports.getUnivirstyById = function (req, res) {
     Univirsty.findOne({_id:req.params.id}).populate('ModifiedBy').exec(function (err, col) {
         res.send(col);

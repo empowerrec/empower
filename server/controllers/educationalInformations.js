@@ -53,11 +53,13 @@ function isAdmin(req) {
 
 exports.getEducationalInformationById = function (req, res) {
     if (req.params.id == 'profile') {
-        EducationalInformation.findOne({ User: req.user }).populate('ModifiedBy').exec(function (err, col) {
+        EducationalInformation.findOne({ User: req.user }).populate('EducationType').populate('Univirsty')
+            .populate('Faculty').populate('Specialization').populate('ModifiedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
-        EducationalInformation.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
+        EducationalInformation.findOne({ _id: req.params.id }).populate('EducationType').populate('Univirsty')
+            .populate('Faculty').populate('Specialization').populate('ModifiedBy').exec(function (err, col) {
             res.send(col);
         });
     }
