@@ -12,16 +12,16 @@
                 <div class="form-group">
                   
 
-                    <label for="language" class="col-md-2 control-label">{{"LanguageSkill.City"| translate}}</label>
+                    <label for="language" class="col-md-2 control-label">{{"LanguageSkill.Language"| translate}}</label>
 
 
                     <div class="col-md-2">
                         <select ng-model="languageSkill.Language" ng-options="language._id as language.Name for language in languages"
-                                class="form-control"></select>
+                                class="form-control"><option selected value="">{{"Menu.SelectValue" | translate}}</option></select>
                     </div>
 
                     <label for="LanguageSkillLevel" class="col-md-2 control-label">
-                        {{"LanguageSkill.LanguageSkillLevel" | translate}}
+                        {{"LanguageSkill.LanguageLevel" | translate}}
                     </label>
                     <div class="col-md-2">
                         <select ng-model="languageSkill.LanguageSkillLevel" ng-options="languageLevel._id as languageLevel.Name[0].Text for languageLevel in languageLevels"

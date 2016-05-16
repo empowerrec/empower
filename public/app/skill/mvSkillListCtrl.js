@@ -1,32 +1,46 @@
-angular.module('app').controller('mvSkillListCtrl', function ($scope, mvSkill,$translate, mvIdentity, mvSkillRepo, mvNotifier) {
+angular.module('app').controller('mvSkillListCtrl', function ($scope, mvSkill,$translate, mvIdentity, mvJobSeeker, queryBulider, mvSkillRepo, mvNotifier, $routeParams) {
     $scope.currentUser = mvIdentity.currentUser;
-    $scope.skills = mvSkill.query({ jobSeeker: mvIdentity.currentJobSeeker });
+    //$scope.skills = mvSkill.query({ jobSeeker: mvIdentity.currentJobSeeker });
     //$scope.currentLang = $translate.use();
     //$scope.sortOptions = [{value: 'SkillName', text: 'Sort by SkillName'},
     //    {value: 'NumberOfEmployees', text: 'Sort by NumberOfEmployees'}];
-    $scope.sortOrder = $scope.sortOptions[0].value;
-    $scope.getName = function(list){
-        for(var i = 0; i < list.length; i++) {
+    var id = $routeParams.id;
 
-            if(list[i].Lang == $scope.currentLang) {
-                return list[i].Text;
-            }
-        }
-    };
-
-    $scope.getLang = function(){
-        return $translate.use();
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 3
     };
     
-    $scope.delete = function (skill) {
-        console.log('delete');
-        skill.Deleted = true;
-        mvSkillRepo.updateCurrentExperiannce().then(function () {
-            mvNotifier.notify('Skill has been deleted!');
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
-
-
+    $scope.getData = function () {
+        if (id) {
+            mvIdentity.currentJobSeeker = mvJobSeeker.get({ _id: id }, (function () {
+                mvSkill.query({
+                    query: queryBulider.qb("JobSeeker=='" + mvIdentity.currentJobSeeker._id + "'&&!Deleted"),
+                    jobSeeker: mvIdentity.currentJobSeeker._id,
+                    currentPage: $scope.paging.currentPage,
+                    pageSize: $scope.paging.pageSize
+                }, (function (res) {
+                    $scope.Skills = res[0].collection;
+                    $scope.allDataCount = res[0].allDataCount;
+                }));
+            }));
+        }
+    };
+    
+    $scope.getData();
+    
+       $scope.deleteSkill = function (skill) {
+        
+        var sk = mvSkill.get({ _id: skill._id }, (function () {
+            sk.Deleted = true;
+            sk.DeletedBy = mvIdentity.currentUser;
+            mvSkillRepo.updateCurrentSkill(sk).then(function () {
+                mvNotifier.notify('Skill has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));        
     };
 });

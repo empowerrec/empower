@@ -19,6 +19,7 @@ angular.module('app').controller('mvLanguageSkillCtrl', function ($scope,  mvNot
     {
         $scope.languageSkill = new mvLanguageSkill();
         //console.log(mvIdentity.currentJobSeeker._id);
+        $scope.languageSkill.Deleted = false;
         $scope.languageSkill.JobSeeker = mvIdentity.currentJobSeeker;
         $scope.updateMode = false;
         $scope.addMode = true;

@@ -1,16 +1,14 @@
-<div class="container top-padding-med admin-area">
+<div class="container top-padding-med admin-area" ng-controller="mvExperianceListCtrl">
 
     <div class="pull-left">
         <a href="#/addExperiance" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
     </div>
     <div class="pull-right">
         <form class="form-inline">
-            <div class="form-group"><input ng-model="searchText" placeholder="Filter" class="form-control"/></div>
+            <div class="form-group"><input ng-model="searchText" placeholder="Filter" class="form-control" /></div>
             <div class="form-group margin-left-med">
                 <select ng-model="sortOrder" ng-options="item.value as item.text for item in sortOptions"
-                        class="form-control">
-
-                </select>
+                        class="form-control"></select>
             </div>
 
         </form>
@@ -31,13 +29,13 @@
         <tbody>
             <tr ng-repeat="experiance in experiances | filter:searchText | orderBy:sortOrder">
                 <td><a href="#/experiances/{{experiance._id}}">{{ experiance.Company}}</a></td>
-           
+
                 <td>{{ experiance.Salary}}</td>
                 <td>{{ experiance.Achievements}}</td>
                 <td>{{ experiance.FunctionalTasks}}</td>
                 <td>{{ experiance.CreatedBy.FirstName}} {{ experiance.CreatedBy.LastName}}</td>
                 <td>{{ experiance.ModifiedBy.FirstName}} {{ experiance.ModifiedBy.LastName}}</td>
-           
+
 
                 <td><a href="#/updateExperiance/{{experiance._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
                 <td><button class="btn btn-danger" ng-click="deleteExperiance(experiance)"> {{"Buttons.Delete" | translate}}</button></td>

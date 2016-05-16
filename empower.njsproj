@@ -86,6 +86,7 @@
     <Compile Include="public\app\educationalInformation\mvEducationalInformationCtrl.js" />
     <Compile Include="public\app\educationalInformation\mvEducationalInformationDetailCtrl.js" />
     <Compile Include="public\app\educationalInformation\mvEducationalInformationRepo.js" />
+    <Compile Include="public\app\educationalInformation\mvEducationalInformationListCtrl.js" />
     <Compile Include="public\app\educationType\mvEducationType.js" />
     <Compile Include="public\app\educationType\mvEducationTypeRepo.js" />
     <Compile Include="public\app\employer\mvCachedEmployer.js" />
@@ -125,6 +126,7 @@
     <Compile Include="public\app\jobSeeker\mvCachedJobSeeker.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeeker.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeekerContactInformationCtrl.js" />
+    <Compile Include="public\app\jobSeeker\mvJobSeekerJobPreferencesCtrl.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeekerPersonalInformationCtrl.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeekerCtrl.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeekerDetailCtrl.js" />
@@ -490,6 +492,7 @@
     <Content Include="public\app\JobRole\jobRole-list.html" />
     <Content Include="public\app\JobRole\jobRole.html" />
     <Content Include="public\app\jobSeeker\jobSeekerContactInformation.html" />
+    <Content Include="public\app\jobSeeker\jobSeekerJobPreferences.html" />
     <Content Include="public\app\jobSeeker\jobSeekerPersonalInformation.html" />
     <Content Include="public\app\jobSeeker\jobSeeker-detail.html" />
     <Content Include="public\app\jobSeeker\jobSeeker-list.html" />

@@ -42,7 +42,7 @@ angular.module('app').controller('mvSkillCtrl', function ($scope, $rootScope, mv
             
             var countryNameObj = { "Lang": $rootScope.currentLang, "Text": countryName };
             country.Name.push(countryNameObj);
-            $q.all([createCountry() , updateSkill()]);
+            $q.all([updateSkill()]);
 
         } else {
             $scope.skill.Country = $("#hfValue").val();
@@ -56,7 +56,7 @@ angular.module('app').controller('mvSkillCtrl', function ($scope, $rootScope, mv
     
     function updateSkill() {
         mvSkillRepo.updateCurrentSkill($scope.skill).then(function () {
-            mvNotifier.notify('Skillr has been updated!');
+            mvNotifier.notify('Skill has been updated!');
             $location.path('/updateJobSeeker/Skills/' + mvIdentity.currentJobSeeker._id);
         }, function (reason) {
             mvNotifier.error(reason);

@@ -11,9 +11,8 @@ exports.getAddresses = function (req, res) {
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) { 
-            var collection = col;
             Address.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     }else if (isAdmin(req)) {
@@ -22,9 +21,8 @@ exports.getAddresses = function (req, res) {
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             Address.count({ Deleted: false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     } else {
@@ -33,9 +31,8 @@ exports.getAddresses = function (req, res) {
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             Address.count({ CreatedBy: req.user, Deleted: false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     }

@@ -10,9 +10,8 @@ exports.getCourses = function (req, res) {
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             Course.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     } else if (isAdmin(req)) {
@@ -21,9 +20,8 @@ exports.getCourses = function (req, res) {
            .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             Course.count({ Deleted : false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     } else {
@@ -32,9 +30,8 @@ exports.getCourses = function (req, res) {
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             Course.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     }

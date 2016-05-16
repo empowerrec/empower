@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var educationalLevelSchema = mongoose.Schema({
 
-  LevelName:
+  Name:
       [{
           Lang: String,
           Text: String

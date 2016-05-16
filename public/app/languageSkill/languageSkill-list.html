@@ -1,4 +1,4 @@
-<div class="container top-padding-med admin-area">
+<div class="container top-padding-med admin-area" ng-controller="mvLanguageSkillListCtrl">
 
     <div class="pull-left">
         <a href="#/addLanguageSkill" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
@@ -16,31 +16,45 @@
     <table class="table table-hover table-striped table-condensed">
         <thead>
             <tr>
-               
-                <th>{{"LanguageSkill.Language.Name" | translate}}</th>
-                <th>{{"LanguageSkill.LanguageLevel.Name" | translate}}</th>                            
-                <!--<th>{{"User.CreatedBy" | translate}}</th>
-                    <th>{{"User.ModifiedBy" | translate}}</th>-->
+
+                <th>{{"LanguageSkill.Language" | translate}}</th>
+                <th>{{"LanguageSkill.LanguageLevel" | translate}}</th>
+                <th>{{"User.CreatedBy" | translate}}</th>
+                    <th>{{"User.ModifiedBy" | translate}}</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="languageSkill in languageSkills | filter:searchText | orderBy:sortOrder">
-       
+            <tr ng-repeat="languageSkill in LanguageSkills | filter:searchText | orderBy:sortOrder">
+
 
                 <td> {{languageSkill.Language.Name}}</td>
-               
-               
+
+
                 <td><div ng-repeat="ermp in languageSkill.LanguageSkillLevel.Name | filter:{Lang:currentLang}">{{ermp.Text}}</div></td>
 
-               
+
                 <td>{{ languageSkill.CreatedBy.FirstName}} {{ languageSkill.CreatedBy.LastName}}</td>
-                 
+                <td>{{ languageSkill.ModifiedBy.FirstName}} {{ languageSkill.ModifiedBy.LastName}}</td>
 
 
-                <td><a href="#/updateLanguageSkill/{{languageSkill._id}}"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a href="#/updateLanguageSkill/{{languageSkill._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
+                <td><button class="btn btn-danger" ng-click="deleteLanguageSkill(languageSkill)"> {{"Buttons.Delete" | translate}}</button></td>
+
             </tr>
         </tbody>
     </table>
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>
 </div>
 

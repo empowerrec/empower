@@ -12,10 +12,9 @@ exports.getEducationalInformations = function (req, res) {
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             EducationalInformation.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
-            });                
+                res.send([{ collection: col, allDataCount: count }]);
+            });
         });
     } else if (isAdmin(req)) {
         EducationalInformation.find({ Deleted: false }).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
@@ -23,9 +22,8 @@ exports.getEducationalInformations = function (req, res) {
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             EducationalInformation.count({ Deleted: false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     } else {
@@ -34,9 +32,8 @@ exports.getEducationalInformations = function (req, res) {
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             EducationalInformation.count({ CreatedBy: req.user, Deleted: false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     }

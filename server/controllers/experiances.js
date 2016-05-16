@@ -5,13 +5,12 @@ exports.getExperiances = function (req, res) {
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     
     if (req.query.jobSeeker) {
-        Experiance.find(JSON.parse(req.query.query)).populate('ModifiedBy').populate('CreatedBy')
+        Experiance.find(JSON.parse(req.query)).populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
-            Experiance.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+            Experiance.count(JSON.parse(req.query)).exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     } else if (isAdmin(req)) {
@@ -19,18 +18,16 @@ exports.getExperiances = function (req, res) {
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             Experiance.count({ Deleted : false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     } else {
         Experiance.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             Experiance.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     }

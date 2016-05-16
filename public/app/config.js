@@ -97,10 +97,17 @@
                 'MaritalStatus': 'Marital Status',
                 'MilitaryStatus': 'Military Status',
                 'CarLicenceType': 'Car Licence Type',
-                'FacebookAcount': 'FacebookAcount',
-                'TwitterAcount': 'TwitterAcount',
-                'LinkedinAccount': 'LinkedinAccount',
-                'Course': 'Course'
+                'FacebookAcount': 'Facebook Acount',
+                'TwitterAcount': 'Twitter Acount',
+                'LinkedinAccount': 'Linkedin Account',
+                'Course': 'Course',
+                'Skills': 'Skills',
+                'LanguageSkills': 'Language Skills',
+                'HasACar':'Has a Car',
+                'ExpectedSalary': 'Expected Salary',
+                'PeriodOfEnrollment': 'Period Of Enrollment',
+                'MoreInformation': 'More Information',
+                'Job Preferences': 'Job Preferences'
             },
             "Vacancy": {
                 "JobTitle": "Job Title",
@@ -151,6 +158,15 @@
                 "PeriodTo": "Period To",
                 "Achievements": "Achievements",
                 "FunctionalTasks": "Functional Tasks"
+            },
+            "LanguageSkill": {
+                "Language": "Language",
+                "LanguageLevel": "LanguageLevel"
+                
+            },
+            "Skill": {
+                "SkillType": "SkillType",
+                "SkillLevel": "SkillLevel"
             },
             "Category": {
                 "Description": "Description"
@@ -214,7 +230,7 @@
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
             }
         };
-        
+
         var arabic = {
             "Title": "أختبار ",
             "Language": "اللغات",
@@ -265,7 +281,7 @@
                 "CompanyWebsite": "الموقع الاليكترونى",
                 "CompanySize": "عدد الموظفين",
                 "Country": "الدولة"
-            }, 
+            },
             "JobSeeker": {
                 "JobSeeker": "باحث عن وظيفة",
                 "Gender": "النوع",
@@ -303,8 +319,15 @@
                 'FacebookAcount': 'حساب الفيسبوك',
                 'TwitterAcount': 'حساب التويتر',
                 'LinkedinAccount': 'حساب لينكدان',
-                'Course': 'الدورات'
-            },
+                'Course': 'الدورات',
+                'Skills': 'المهارات',
+                'LanguageSkills': 'مهارات اللغة',
+                'HasACar': 'لديك سيارة',
+                'ExpectedSalary': 'المرتب المتوقع',
+                'PeriodOfEnrollment': 'مهلة ترك الشركة الحالية',
+                'MoreInformation': 'معلومات اضافية',
+                'Job Preferences':'خيارات الوظيفة'
+    },
             "Vacancy": {
                 "JobTitle": "عنوان الوظيفة",
                 "JobDescrption": "وصف الوظيفة",
@@ -319,6 +342,15 @@
                 "Industry": "قطاع العمل",
                 "Country": "الدولة",
                 "City": "المدينة"
+            },
+            "LanguageSkill": {
+                "Language": "اللغة",
+                "LanguageLevel": "مستوى اللغة"
+                
+            },
+            "Skill": {
+                "SkillType": "نوع المهارة",
+                "SkillLevel": "مستوى المهارة"
             },
             "User": {
                 "UserName": "اسم المستخدم",

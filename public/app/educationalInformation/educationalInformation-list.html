@@ -1,11 +1,11 @@
-<div class="container top-padding-med admin-area">
+<div class="container top-padding-med admin-area" ng-controller="mvEducationalInformationListCtrl">
 
     <div class="pull-left">
         <a href="#/addEducationalInformation" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
     </div>
     <div class="pull-right">
         <form class="form-inline">
-            <input class="input-sm" ng-model="vm.educationalInformationSearch" ng-keyup="vm.search($event)" placeholder="Search..." />         
+            <input class="input-sm" ng-model="vm.educationalInformationSearch" ng-keyup="vm.search($event)" placeholder="Search..." />
         </form>
     </div>
     <!--<div widget-header title="{{paging.pageCount}}"></div>-->

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var JobTypeSchema = mongoose.Schema({
-    JobTypeName:
+    Name:
       [{
           Lang: String,
           Text: String

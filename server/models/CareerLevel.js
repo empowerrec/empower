@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var careerLevelSchema = mongoose.Schema({
 
-  CareerLevelName:
+  Name:
       [{
           Lang: String,
           Text: String

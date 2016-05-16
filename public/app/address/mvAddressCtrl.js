@@ -1,6 +1,6 @@
 
 angular.module('app').controller('mvAddressCtrl', function ($scope, $location, mvNotifier, mvAddressRepo, mvAddress,
-    mvIdentity, $routeParams, $translate , mvCityRepo , $q , mvCity , $rootScope , mvAreaRepo , mvArea) {
+    mvIdentity, $routeParams, $translate , mvCityRepo , $q , mvCity , $rootScope , mvAreaRepo , mvArea , $route) {
     var id = $routeParams.id;
     $("#currentLang").val($rootScope.currentLang);
     $scope.addEnabled = false;
@@ -52,6 +52,7 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
         mvAddressRepo.createAddress($scope.address).then(function () {
             
             mvNotifier.notify('New Address Added!');
+            //$route.reload();
             $location.path('/updateJobSeeker/Adresses/' + mvIdentity.currentJobSeeker._id);
             
         }, function (reason) {
@@ -63,6 +64,7 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
         mvAddressRepo.updateCurrentAddress($scope.address).then(function () {
             console.log(mvIdentity.currentJobSeeker);
             mvNotifier.notify('Address has been updated!');
+            //$route.reload();
             $location.path('/updateJobSeeker/Adresses/' + mvIdentity.currentJobSeeker._id);
         }, function (reason) {
             mvNotifier.error(reason);

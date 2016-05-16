@@ -5,32 +5,29 @@ exports.getSkills = function (req, res) {
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     
     if (req.query.jobSeeker) {
-        Skill.find(JSON.parse(req.query.query)).populate('ModifiedBy').populate('CreatedBy')
+        Skill.find(JSON.parse(req.query.query)).populate('SkillType').populate('SkillLevel').populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             Skill.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     } else if (isAdmin(req)) {
-        Skill.find({ Deleted : false }).populate('ModifiedBy').populate('CreatedBy')
+        Skill.find({ Deleted : false }).populate('SkillType').populate('SkillLevel').populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             Skill.count({ Deleted : false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     } else {
-        Skill.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').limit(pageSize)
+        Skill.find({ CreatedBy: req.user, Deleted : false }).populate('SkillType').populate('SkillLevel').populate('ModifiedBy').populate('CreatedBy').limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             Skill.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     }

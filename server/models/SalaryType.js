@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var SalaryTypeSchema = mongoose.Schema({
 
-    SalaryTypeName:
+    Name:
       [{
           Lang: String,
           Text: String

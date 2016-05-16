@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var categorySchema = mongoose.Schema({
-    Description: [{
+    Name: [{
             Lang: String,
             Text: String
         }],

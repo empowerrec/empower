@@ -12,7 +12,7 @@ var LanguageSkill = require('mongoose').model('LanguageSkill');
 //    } else if (req.query.jobSeeker) {
         
 //        console.log('req.user' + req.user);
-//        LanguageSkill.find({ JobSeeker: req.query.jobSeeker }).populate('Language').populate('LanguageSkillLevel').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+//        LanguageSkill.find({ JobSeeker: req.query.jobSeeker, Deleted : false }).populate('Language').populate('LanguageSkillLevel').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
 //            res.send(col);
 //        });
 //    } else {
@@ -29,32 +29,29 @@ exports.getLanguageSkills = function (req, res) {
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     
     if (req.query.jobSeeker) {
-        LanguageSkill.find(JSON.parse(req.query.query)).populate('ModifiedBy').populate('CreatedBy')
+        LanguageSkill.find(JSON.parse(req.query.query)).populate('Language').populate('LanguageSkillLevel').populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             LanguageSkill.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     } else if (isAdmin(req)) {
-        LanguageSkill.find({ Deleted : false }).populate('ModifiedBy').populate('CreatedBy')
+        LanguageSkill.find({ Deleted : false }).populate('Language').populate('LanguageSkillLevel').populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             LanguageSkill.count({ Deleted : false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     } else {
-        LanguageSkill.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').limit(pageSize)
+        LanguageSkill.find({ CreatedBy: req.user, Deleted : false }).populate('Language').populate('LanguageSkillLevel').populate('ModifiedBy').populate('CreatedBy').limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            var collection = col;
             LanguageSkill.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
-                res.send([{ collection: collection, allDataCount: count }]);
+                res.send([{ collection: col, allDataCount: count }]);
             });
         });
     }

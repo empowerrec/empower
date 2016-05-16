@@ -5,35 +5,38 @@
             <br />
             <div ng-include="'/partials/jobSeeker/jobSeekerPersonalInformation.html'"></div>
         </uib-tab>
-        <uib-tab index="1" heading="{{'JobSeeker.Educational Information' | translate}}" select="init1()">
+        <uib-tab index="1" heading="{{'JobSeeker.Educational Information' | translate}}" >
             <br />
             <div ng-include="'/partials/educationalInformation/educationalInformation-list.html'"></div>
         </uib-tab>
-        <uib-tab index="2" heading="{{'JobSeeker.Contact Information' | translate}}" select="init2()">
+        <uib-tab index="2" heading="{{'JobSeeker.Contact Information' | translate}}" select="init0()">
             <br />
             <div ng-include="'/partials/jobSeeker/jobSeekerContactInformation.html'"></div>
         </uib-tab>
-        <uib-tab index="3" heading="{{'JobSeeker.Experiances' | translate}}" select="init3()">
+        <uib-tab index="3" heading="{{'JobSeeker.Experiances' | translate}}" >
             <br />
             <div ng-include="'/partials/experiance/experiance-list'"></div>
         </uib-tab>
-        <uib-tab index="4" heading="{{'JobSeeker.Address' | translate}}" select="init4()">
+        <uib-tab index="4" heading="{{'JobSeeker.Address' | translate}}" >
             <br />
             <div ng-include="'/partials/address/address-list'"></div>
         </uib-tab>
-        <uib-tab index="5" heading="{{'JobSeeker.Course' | translate}}" select="init5()">
+        <uib-tab index="5" heading="{{'JobSeeker.Course' | translate}}">
             <br />
             <div ng-include="'/partials/course/course-list'"></div>
         </uib-tab>
-        <uib-tab index="6" heading="{{'JobSeeker.LanguageSkills' | translate}}" select="init6()">
+        <uib-tab index="6" heading="{{'JobSeeker.LanguageSkills' | translate}}">
             <br />
-            <div ng-include="'/partials/languageSkill/languageSkill-list'"></div>
+            <div data-ng-include="'/partials/languageSkill/languageSkill-list'"></div>
         </uib-tab>
-        <uib-tab index="7" heading="{{'JobSeeker.Skills' | translate}}" select="init7()">
+        <uib-tab index="7" heading="{{'JobSeeker.Skills' | translate}}" >
             <br />
-            <div ng-include="'/partials/skill/skill-list'"></div>
+            <div data-ng-include="'/partials/skill/skill-list'"></div>
         </uib-tab>
-        
 
+        <uib-tab index="8" heading="{{'JobSeeker.Job Preferences' | translate}}" select="init0()">
+            <br />
+            <div ng-include="'/partials/jobSeeker/jobSeekerJobPreferences.html'"></div>
+        </uib-tab>        
     </uib-tabset>
 </div>

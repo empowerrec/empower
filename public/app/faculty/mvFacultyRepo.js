@@ -7,9 +7,9 @@ angular.module('app').factory('mvFacultyRepo', function ($http, $q, mvFaculty,mv
             newFaculty.CreatedBy = mvIdentity.currentUser;
             var dfd = $q.defer();
             console.log("Saving Faculty");
-            newFaculty.$save().then(function () {
+            newFaculty.$save().then(function (createdFaculty) {
                 console.log("Faculty Saved");
-                dfd.resolve();
+                dfd.resolve(createdFaculty);
             }, function (response) {
                 dfd.reject(response.data.reason);
             });

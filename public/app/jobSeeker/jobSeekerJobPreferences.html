@@ -1,0 +1,48 @@
+<div class="container admin-area" ng-controller="mvJobSeekerJobPreferencesCtrl">
+    <div class="well">
+        <form name="jobSeekerForm" class="form-horizontal">
+            <fieldset>
+
+                <div class="form-group">
+                    <label for="ExpectedSalary" class="col-md-2 control-label">{{"JobSeeker.ExpectedSalary"| translate}}</label>
+                    <div class="col-md-10">
+                        <input name="ExpectedSalary" type="number" placeholder="{{'JobSeeker.ExpectedSalary' | translate}}"
+                               ng-model="jobSeeker.ExpectedSalary" required="required" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="PeriodOfEnrollment" class="col-md-2 control-label">{{"JobSeeker.PeriodOfEnrollment"| translate}}</label>
+                    <div class="col-md-10">
+                        <input name="PeriodOfEnrollment" type="number" placeholder="{{'JobSeeker.PeriodOfEnrollment' | translate}}"
+                               ng-model="jobSeeker.PeriodOfEnrollment" required="required" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="MoreInformation" class="col-md-2 control-label">{{"JobSeeker.MoreInformation" | translate}}</label>
+                    <div class="col-md-10">
+                        <textarea name="MoreInformation" placeholder="{{'JobSeeker.MoreInformation' | translate}}"
+                               ng-model="jobSeeker.MoreInformation" class="form-control" required="required" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <div class="pull-right">
+                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                                {{"Buttons.Update" | translate}}
+                            </button>
+
+                            <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
+                                {{"Buttons.Add" | translate}}
+                            </button>
+                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
