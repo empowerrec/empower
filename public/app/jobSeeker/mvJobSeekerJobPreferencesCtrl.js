@@ -12,6 +12,7 @@ angular.module('app').controller('mvJobSeekerJobPreferencesCtrl'
     } else {
         $scope.jobSeeker = new mvJobSeeker();
         
+        $scope.jobSeeker.Deleted = false;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;

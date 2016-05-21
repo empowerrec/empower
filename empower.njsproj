@@ -54,6 +54,9 @@
     <Compile Include="public\app\app.js" />
     <Compile Include="public\app\area\mvCachedArea.js" />
     <Compile Include="public\app\area\mvArea.js" />
+    <Compile Include="public\app\area\mvAreaCtrl.js" />
+    <Compile Include="public\app\area\mvAreaDetailCtrl.js" />
+    <Compile Include="public\app\area\mvAreaListCtrl.js" />
     <Compile Include="public\app\area\mvAreaRepo.js" />
     <Compile Include="public\app\carLicenceType\mvCarLicenceType.js" />
     <Compile Include="public\app\carLicenceType\mvCarLicenceTypeRepo.js" />
@@ -66,6 +69,9 @@
     <Compile Include="public\app\city\mvCachedCity.js" />
     <Compile Include="public\app\city\mvCity.js" />
     <Compile Include="public\app\city\mvCityRepo.js" />
+    <Compile Include="public\app\city\mvCityCtrl.js" />
+    <Compile Include="public\app\city\mvCityDetailCtrl.js" />
+    <Compile Include="public\app\city\mvCityListCtrl.js" />
     <Compile Include="public\app\common\mvNotifier.js" />
     <Compile Include="public\app\companySize\mvCompanySize.js" />
     <Compile Include="public\app\companyType\mvCompanyType.js" />
@@ -101,6 +107,10 @@
     <Compile Include="public\app\experiance\mvExperianceDetailCtrl.js" />
     <Compile Include="public\app\experiance\mvExperianceListCtrl.js" />
     <Compile Include="public\app\experiance\mvExperianceRepo.js" />
+    <Compile Include="public\app\faculty\mvCachedFaculty.js" />
+    <Compile Include="public\app\faculty\mvFacultyCtrl.js" />
+    <Compile Include="public\app\faculty\mvFacultyDetailCtrl.js" />
+    <Compile Include="public\app\faculty\mvFacultyListCtrl.js" />
     <Compile Include="public\app\faculty\mvFaculty.js" />
     <Compile Include="public\app\faculty\mvFacultyRepo.js" />
     <Compile Include="public\app\gender\mvGender.js" />
@@ -174,6 +184,10 @@
     <Compile Include="public\app\skillType\mvCachedSkillType.js" />
     <Compile Include="public\app\skillType\mvSkillType.js" />
     <Compile Include="public\app\skillType\mvSkillTypeRepo.js" />
+    <Compile Include="public\app\specialization\mvCachedSpecialization.js" />
+    <Compile Include="public\app\specialization\mvSpecializationCtrl.js" />
+    <Compile Include="public\app\specialization\mvSpecializationDetailCtrl.js" />
+    <Compile Include="public\app\specialization\mvSpecializationListCtrl.js" />
     <Compile Include="public\app\specialization\mvSpecialization.js" />
     <Compile Include="public\app\specialization\mvSpecializationRepo.js" />
     <Compile Include="public\app\trainingCenter\mvCachedtrainingCenter.js" />
@@ -467,9 +481,15 @@
     <Content Include="public\app\address\address-detail.html" />
     <Content Include="public\app\address\address-list.html" />
     <Content Include="public\app\admin\users\user-list.html" />
+    <Content Include="public\app\area\area-detail.html" />
+    <Content Include="public\app\area\area-list.html" />
+    <Content Include="public\app\area\area.html" />
     <Content Include="public\app\category\category-detail.html" />
     <Content Include="public\app\category\category-list.html" />
     <Content Include="public\app\category\category.html" />
+    <Content Include="public\app\city\city-detail.html" />
+    <Content Include="public\app\city\city-list.html" />
+    <Content Include="public\app\city\city.html" />
     <Content Include="public\app\course\course.html" />
     <Content Include="public\app\course\course-detail.html" />
     <Content Include="public\app\course\course-list.html" />
@@ -482,6 +502,9 @@
     <Content Include="public\app\experiance\experiance-detail.html" />
     <Content Include="public\app\experiance\experiance-list.html" />
     <Content Include="public\app\experiance\experiance.html" />
+    <Content Include="public\app\faculty\faculty-detail.html" />
+    <Content Include="public\app\faculty\faculty-list.html" />
+    <Content Include="public\app\faculty\faculty.html" />
     <Content Include="public\app\industry\industry-detail.html" />
     <Content Include="public\app\industry\industry-list.html" />
     <Content Include="public\app\industry\industry.html" />
@@ -515,6 +538,9 @@
     <Content Include="public\app\skill\skill-detail.html" />
     <Content Include="public\app\skill\skill-list.html" />
     <Content Include="public\app\skill\skill.html" />
+    <Content Include="public\app\specialization\specialization-detail.html" />
+    <Content Include="public\app\specialization\specialization-list.html" />
+    <Content Include="public\app\specialization\specialization.html" />
     <Content Include="public\app\vacancy\vacancy-detail.html" />
     <Content Include="public\app\vacancy\vacancy-list.html" />
     <Content Include="public\app\vacancy\vacancy.html" />

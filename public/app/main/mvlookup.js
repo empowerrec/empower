@@ -6,7 +6,7 @@ angular.module('app').factory('mvLookup'
     return {
         getAllLookUps: function () {
             $rootScope.jobTypes = mvJobType.query({ currentLang: $rootScope.currentLang });
-            $rootScope.industries = mvIndustry.query({ currentLang: $rootScope.currentLang });
+            //$rootScope.industries = mvIndustry.query({ currentLang: $rootScope.currentLang });
             $rootScope.countries = mvCountry.query({ currentLang: $rootScope.currentLang });
             $rootScope.cities = mvCity.query({ currentLang: $rootScope.currentLang });
             $rootScope.areas = mvArea.query({ currentLang: $rootScope.currentLang });

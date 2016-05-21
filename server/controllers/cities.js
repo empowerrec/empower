@@ -1,9 +1,18 @@
 var City = require('mongoose').model('City');
 
 exports.getCities = function (req, res) {
-    City.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-        res.send(col);
-    });
+    
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
+    
+        City.find(JSON.parse(req.query.query))
+            .populate('Country').populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize).skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            City.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
+            });
+        });
 };
 
 exports.getCityById = function (req, res) {

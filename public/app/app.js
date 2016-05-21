@@ -45,9 +45,7 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/courses', {
         templateUrl: '/partials/course/course-list.html',
         controller: 'mvCourseListCtrl'
-    })
-        
-    .when('/employers/:id', {
+    }).when('/employers/:id', {
         templateUrl: '/partials/employer/employer-detail.html',
         controller: 'mvEmployerDetailCtrl'
     }).when('/updateemployer/:id', {
@@ -65,8 +63,7 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/jobSeekers/:id', {
         templateUrl: '/partials/jobSeeker/jobSeeker-detail.html',
         controller: 'mvJobSeekerDetailCtrl'
-    }).when('/updateJobSeeker/:tab/:id', {
-        templateUrl: '/partials/jobSeeker/jobSeeker.html'
+    }).when('/updateJobSeeker/:tab/:id', {templateUrl: '/partials/jobSeeker/jobSeeker.html'
     }).when('/addJobSeeker', {
         templateUrl: '/partials/jobSeeker/jobSeeker.html'
     }).when('/jobSeekerMain', {
@@ -130,8 +127,7 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvInnerPageCtrl'
     }).when('/innerPages', {
         templateUrl: '/partials/innerPage/innerPage-list.html',
-        controller: 'mvInnerPageListCtrl'
-        
+        controller: 'mvInnerPageListCtrl'        
     }).when('/categories/:id', {
         templateUrl: '/partials/category/category-detail',
         controller: 'mvCategoryDetailCtrl'
@@ -143,8 +139,7 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvCategoryCtrl'
     }).when('/categories', {
         templateUrl: '/partials/category/category-list.html',
-        controller: 'mvCategoryListCtrl'
-        
+        controller: 'mvCategoryListCtrl'        
     }).when('/addresses/:id', {
         templateUrl: '/partials/address/address-detail',
         controller: 'mvAddressDetailCtrl'
@@ -156,8 +151,7 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvAddressCtrl'
     }).when('/addresses', {
         templateUrl: '/partials/address/address-list.html',
-        controller: 'mvAddressListCtrl'        
-
+        controller: 'mvAddressListCtrl'
     }).when('/languageSkills/:id', {
         templateUrl: '/partials/languageSkill/languageSkill-detail',
         controller: 'mvLanguageSkillDetailCtrl'
@@ -169,8 +163,7 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvLanguageSkillCtrl'
     }).when('/languageSkills', {
         templateUrl: '/partials/languageSkill/languageSkill-list',
-        controller: 'mvLanguageSkillListCtrl'
-        
+        controller: 'mvLanguageSkillListCtrl'        
     }).when('/skills/:id', {
         templateUrl: '/partials/skill/skill-detail',
         controller: 'mvskilleDetailCtrl'
@@ -182,17 +175,16 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvSkillCtrl'
     }).when('/skills', {
         templateUrl: '/partials/skill/skill-list.html',
-        controller: 'mvSkillListCtrl'
-        
+        controller: 'mvSkillListCtrl'        
     }).when('/experiances/:id', {
         templateUrl: '/partials/experiance/experiance-detail',
         controller: 'mvExperianceDetailCtrl'
     }).when('/updateExperiance/:id', {
         templateUrl: '/partials/experiance/experiance',
-        controller: 'mvExperiancerCtrl'
+        controller: 'mvExperianceCtrl'
     }).when('/addExperiance', {
         templateUrl: '/partials/experiance/experiance',
-        controller: 'mvExperiancerCtrl'
+        controller: 'mvExperianceCtrl'
     }).when('/experiances', {
         templateUrl: '/partials/experiance/experiance-list.html',
         controller: 'mvExperianceListCtrl'
@@ -208,8 +200,58 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/educationalInformations', {
         templateUrl: '/partials/educationalInformation/educationalInformation-list.html',
         controller: 'mvEducationalInformationListCtrl'
+    }).when('/cities/:id', {
+        templateUrl: '/partials/city/city-detail',
+        controller: 'mvCityDetailCtrl'
+    }).when('/updateCity/:id', {
+        templateUrl: '/partials/city/city',
+        controller: 'mvCityCtrl'
+    }).when('/addCity', {
+        templateUrl: '/partials/city/city',
+        controller: 'mvCityCtrl'
+    }).when('/cities', {
+        templateUrl: '/partials/city/city-list.html',
+        controller: 'mvCityListCtrl'
+        
+    }).when('/faculties/:id', {
+        templateUrl: '/partials/faculty/faculty-detail',
+        controller: 'mvFacultyDetailCtrl'
+    }).when('/updateFaculty/:id', {
+        templateUrl: '/partials/faculty/faculty',
+        controller: 'mvFacultyCtrl'
+    }).when('/addFaculty', {
+        templateUrl: '/partials/faculty/faculty',
+        controller: 'mvFacultyCtrl'
+    }).when('/faculties', {
+        templateUrl: '/partials/faculty/faculty-list.html',
+        controller: 'mvFacultyListCtrl'
+        
+    }).when('/specializations/:id', {
+        templateUrl: '/partials/specialization/specialization-detail',
+        controller: 'mvSpecializationDetailCtrl'
+    }).when('/updateSpecialization/:id', {
+        templateUrl: '/partials/specialization/specialization',
+        controller: 'mvSpecializationCtrl'
+    }).when('/addSpecialization', {
+        templateUrl: '/partials/specialization/specialization',
+        controller: 'mvSpecializationCtrl'
+    }).when('/specializations', {
+        templateUrl: '/partials/specialization/specialization-list.html',
+        controller: 'mvSpecializationListCtrl'        
+    }).when('/areas/:id', {
+        templateUrl: '/partials/area/area-detail',
+        controller: 'mvAreaDetailCtrl'
+    }).when('/updateArea/:id', {
+        templateUrl: '/partials/area/area',
+        controller: 'mvAreaCtrl'
+    }).when('/addArea', {
+        templateUrl: '/partials/area/area',
+        controller: 'mvAreaCtrl'
+    }).when('/areas', {
+        templateUrl: '/partials/area/area-list.html',
+        controller: 'mvAreaListCtrl'
     });
-    });
+});
 
 
 angular.module('app').run(function ($rootScope, $location , $translate, mvLookup , mvStyle) {

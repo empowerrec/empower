@@ -1,24 +1,37 @@
 var Industry = require('mongoose').model('Industry');
 
+//exports.getIndustries = function (req, res) {
+//    if (req.query.currentLang) {
+//        Industry.find({ 'Description.Lang': { "$eq": req.query.currentLang } }, { 'Description.$': 1 })
+//            .populate('ModifiedBy').populate('CreatedBy')
+//            .populate('Description', null, { Lang: 'ar' })
+//            .exec(function(err, col) {
+//                res.send(col);
+//            });
+//    } else {
+//        Industry.find({})
+//            .populate('ModifiedBy').populate('CreatedBy')
+//            .populate('Description', null, { Lang: 'ar' })
+//            .exec(function (err, col) {
+//            res.send(col);
+//        });
+//    }
+//};
+
 exports.getIndustries = function (req, res) {
-    if (req.query.currentLang) {
-        Industry.find({ 'Description.Lang': { "$eq": req.query.currentLang } }, { 'Description.$': 1 })
+    
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
+    
+    Industry.find(JSON.parse(req.query.query))
             .populate('ModifiedBy').populate('CreatedBy')
-            .populate('Description', null, { Lang: 'ar' })
-            .exec(function(err, col) {
-                res.send(col);
-            });
-    } else {
-        Industry.find({})
-            .populate('ModifiedBy').populate('CreatedBy')
-            .populate('Description', null, { Lang: 'ar' })
+            .limit(pageSize).skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            res.send(col);
+        Industry.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+            res.send([{ collection: col, allDataCount: count }]);
         });
-    }
+    });
 };
-
-
 
 exports.getIndustryById = function(req, res) {
     Industry.findOne({_id: req.params.id}).populate('ModifiedBy').exec(function(err, col) {

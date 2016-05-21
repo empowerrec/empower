@@ -78,6 +78,8 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
             if (cityName != '') {
                 var city = new mvCity();
                 city.Confirmed = false;
+                city.Deleted = false;
+                city.Country = $scope.address.Country;
                 city.Name = [];
                 for (var i = 0; i < $rootScope.languages.length; i++) {
                     
@@ -113,6 +115,8 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
             if (areaName != '') {
                 var area = new mvArea();
                 area.Confirmed = false;
+                area.Deleted = false;
+                area.City = $scope.address.City;
                 area.Name = [];
                 for (var i = 0; i < $rootScope.languages.length; i++) {
                     

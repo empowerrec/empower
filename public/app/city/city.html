@@ -1,0 +1,58 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container admin-area">
+
+    <div class="well">
+        <div ng-repeat="emp in city.Name | filter:{Lang:currentLang}"><h3>{{emp.Text}}</h3></div>
+
+        <form name="cityForm" class="form-horizontal">
+            <fieldset>
+                
+                <div class="form-group">
+
+                    <label for="Country" class="col-md-1 control-label">{{"City.Country"| translate}}</label>
+                    <div class="col-md-2">
+                        <select ng-model="city.Country" name="Country" ng-options="country._id as country.Name[0].Text for country in countries"
+                                class="form-control" required>
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
+                    </div>
+                </div>                                
+
+                <div class="form-group">
+                    <label for="Text" class="col-md-2 control-label">{{"City.Name"| translate}}</label>
+                    <div class="col-md-10">
+                        <ul ng-repeat="lang in languages" id="Names">
+                            <li id="{{lang.value}}">{{ lang.text}}
+                                <input id="NameText2" name="Text" type="text" placeholder="{{'City.Name' | translate}}"
+                                       value="{{getName(city.Name , lang.value)}}" class="form-control" required/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>  
+                           
+                <div class="form-group">
+                    <label for="Confirmed" class="col-md-2 control-label">{{"City.Confirmed" | translate}}</label>
+                    <div class="col-sm-1">
+                        <input name="Confirmed" type="checkbox" placeholder="{{'city.Confirmed' | translate}}"
+                               ng-model="city.Confirmed" class="form-control-md-first" />
+                    </div>
+                </div>      
+
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <div class="pull-right">
+                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                                {{"Buttons.Save" | translate}}
+                            </button>
+                            <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
+                                {{"Buttons.Add" | translate}}
+                            </button>
+                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>

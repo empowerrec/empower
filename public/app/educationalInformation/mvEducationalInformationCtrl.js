@@ -60,6 +60,7 @@ angular.module('app').controller('mvEducationalInformationCtrl'
             if (univirstyName != '') {
                 var univirsty = new mvUnivirsty();
                 univirsty.Confirmed = false;
+                univirsty.Deleted = false;
                 univirsty.Name = [];
                 for (var i = 0; i < $rootScope.languages.length; i++) {
                     
@@ -95,6 +96,7 @@ angular.module('app').controller('mvEducationalInformationCtrl'
             if (facultyName != '') {
                 var faculty = new mvFaculty();
                 faculty.Confirmed = false;
+                faculty.Deleted = false;
                 faculty.Name = [];
                 for (var i = 0; i < $rootScope.languages.length; i++) {
                     
@@ -129,6 +131,7 @@ angular.module('app').controller('mvEducationalInformationCtrl'
             if (specializationName != '') {
                 var specialization = new mvSpecialization();
                 specialization.Confirmed = false;
+                specialization.Deleted = false;
                 specialization.Name = [];
                 for (var i = 0; i < $rootScope.languages.length; i++) {
                     

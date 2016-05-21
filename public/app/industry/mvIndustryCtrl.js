@@ -28,6 +28,7 @@ angular.module('app').controller('mvIndustryCtrl', function ($scope,  mvNotifier
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
+        $scope.industry.Deleted = false;
 
 
     }

@@ -1,21 +1,34 @@
 var JobRole = require('mongoose').model('JobRole');
 
+//exports.getJobRoles = function (req, res) {
+//    if (req.query.currentLang) {
+//        JobRole.find({ 'JobRoleName.Lang': { "$eq": req.query.currentLang } }, { 'JobRoleName.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
+//            //console.log(err);
+//            res.send(col);
+
+//        });
+//    } else {
+//        JobRole.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+//            //console.log(err);
+//            res.send(col);
+
+//        });
+//    }
+//};
 exports.getJobRoles = function (req, res) {
-    if (req.query.currentLang) {
-        JobRole.find({ 'JobRoleName.Lang': { "$eq": req.query.currentLang } }, { 'JobRoleName.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
-            //console.log(err);
-            res.send(col);
-
+    
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
+    
+    JobRole.find(JSON.parse(req.query.query))
+            .populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize).skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+        JobRole.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+            res.send([{ collection: col, allDataCount: count }]);
         });
-    } else {
-        JobRole.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            //console.log(err);
-            res.send(col);
-
-        });
-    }
+    });
 };
-
 exports.getJobRoleById = function(req, res) {
     JobRole.findOne({_id: req.params.id}).populate('ModifiedBy').exec(function(err, col) {
 

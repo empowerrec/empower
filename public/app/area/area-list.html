@@ -1,0 +1,56 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container top-padding-med admin-area">
+
+    <div class="pull-left">
+        <a href="#/addArea" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+    </div>
+    <div class="pull-right">
+        <form class="form-inline">
+            <div class="form-group"><input ng-model="searchText" placeholder="Filter" class="form-control" /></div>
+            <div class="form-group margin-left-med">
+                <select ng-model="sortOrder" ng-options="item.value as item.text for item in sortOptions"
+                        class="form-control"></select>
+            </div>
+
+        </form>
+    </div>
+    <table class="table table-hover table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>{{"Area.Name" | translate}}</th>
+                <th>{{"City.Country" | translate}}</th>
+                <th>{{"Area.City" | translate}}</th>
+                <th>{{"Area.Confirmed" | translate}}</th>
+                <th>{{"User.ModifiedBy" | translate}}</th>
+                <th>{{"User.CreatedBy" | translate}}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="area in areas | filter:searchText | orderBy:sortOrder">
+                <td><a href="#/areas/{{area._id}}"> <div ng-repeat="name in area.Name | filter:{Lang:currentLang}">{{name.Text}}</div></a></td>
+                <td><div ng-repeat="country in area.City.Country.Name | filter:{Lang:currentLang}">{{country.Text}}</div></td>
+                <td><div ng-repeat="city in area.City.Name | filter:{Lang:currentLang}">{{city.Text}}</div></td>
+                <td><input type="checkbox" ng-model="area.Confirmed" disabled="disabled"></td>
+                <td>{{ area.ModifiedBy.FirstName}} {{ area.ModifiedBy.LastName}}</td>
+                <td>{{ area.CreatedBy.FirstName}} {{ area.CreatedBy.LastName}}</td>
+
+                <td><a href="#/updateArea/{{area._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a class="btn btn-danger" ng-click="deleteArea(area)"> {{"Buttons.Delete" | translate}}</a></td>
+
+            </tr>
+        </tbody>
+    </table>
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>
+</div>

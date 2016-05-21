@@ -35,6 +35,7 @@ angular.module('app').controller('mvJobSeekerContactInformationCtrl', function (
         //$location.path('/forget');
         
         $scope.jobSeeker = new mvJobSeeker();
+        $scope.jobSeeker.Deleted = false;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;

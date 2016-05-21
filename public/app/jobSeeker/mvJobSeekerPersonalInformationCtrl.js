@@ -14,6 +14,8 @@ angular.module('app').controller('mvJobSeekerPersonalInformationCtrl'
     } else {
         $scope.jobSeeker = new mvJobSeeker();
         
+        $scope.jobSeeker.Confirmed = false;
+        $scope.jobSeeker.Deleted = false;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;

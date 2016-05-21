@@ -20,10 +20,10 @@ angular.module('app').factory('mvAreaRepo', function ($http, $q, mvArea,mvIdenti
             var newArea = new mvArea(newAreaData);
             var dfd = $q.defer();
             console.log("Saving Area");
-            newArea.$save().then(function (area) {
+            newArea.$save().then(function (employer) {
                 console.log("Area Saved");
-                mvIdentity.currentArea = area;
-                dfd.resolve(area);
+                mvIdentity.currentArea = employer;
+                dfd.resolve();
             }, function (response) {
                 dfd.reject(response.data.reason);
             });

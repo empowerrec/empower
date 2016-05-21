@@ -28,6 +28,7 @@ angular.module('app').controller('mvJobRoleCtrl', function ($scope,  mvNotifier,
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
+        $scope.jobRole.Deleted = false;
 
 
     }

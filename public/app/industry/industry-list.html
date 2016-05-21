@@ -17,23 +17,36 @@
     </div>
     <table class="table table-hover table-striped table-condensed">
         <thead>
-        <tr>
-            <th>{{"Industry.Description" | translate}}</th>
-            <th>{{"User.CreatedBy" | translate}}</th>
-            <th>{{"User.ModifiedBy" | translate}}</th>
-            <th></th>
-        </tr>
+            <tr>
+                <th>{{"Industry.Description" | translate}}</th>
+                <th>{{"User.CreatedBy" | translate}}</th>
+                <th>{{"User.ModifiedBy" | translate}}</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="industry in industries | filter:searchText | orderBy:sortOrder">
-            <td><a href="#/industries/{{industry._id}}"> <div ng-repeat="ind in industry.Description | filter:{Lang:currentLang}"> {{ind.Text}}</div></a></td>
+            <tr ng-repeat="industry in industries | filter:searchText | orderBy:sortOrder">
+                <td><a href="#/industries/{{industry._id}}"> <div ng-repeat="ind in industry.Description | filter:{Lang:currentLang}"> {{ind.Text}}</div></a></td>
 
             
-            <td>{{ industry.CreatedBy.FirstName}} {{ industry.CreatedBy.LastName}}</td>
-            <td>{{ industry.ModifiedBy.FirstName}} {{ industry.ModifiedBy.LastName}}</td>
+                <td>{{ industry.CreatedBy.FirstName}} {{ industry.CreatedBy.LastName}}</td>
+                <td>{{ industry.ModifiedBy.FirstName}} {{ industry.ModifiedBy.LastName}}</td>
 
-            <td><a href="#/updateindustry/{{industry._id}}"> {{"Buttons.Update" | translate}}</a></td>
-        </tr>
+                <td><a href="#/updateindustry/{{industry._id}}"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a class="btn btn-danger" ng-click="deleteIndustry(industry)"> {{"Buttons.Delete" | translate}}</a></td>
+            </tr>
         </tbody>
     </table>
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>
 </div>

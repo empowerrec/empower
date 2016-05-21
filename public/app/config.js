@@ -103,7 +103,7 @@
                 'Course': 'Course',
                 'Skills': 'Skills',
                 'LanguageSkills': 'Language Skills',
-                'HasACar':'Has a Car',
+                'HasACar': 'Has a Car',
                 'ExpectedSalary': 'Expected Salary',
                 'PeriodOfEnrollment': 'Period Of Enrollment',
                 'MoreInformation': 'More Information',
@@ -122,6 +122,18 @@
                 "Industry": "Industry",
                 "Country": "Country",
                 "City": "City"
+            }, 
+            'City': {
+                "City": "City",
+                "Name": "Name",
+                "Country": "Country",
+                "Confirmed": "Confirmed"
+            }, 
+            'Area': {
+                "Area": "Area",
+                "City": "City",
+                "Name": "Name",
+                "Confirmed": "Confirmed"
             },
             "User": {
                 "UserName": "User Name",
@@ -224,13 +236,17 @@
                 "CompanyProfile" : "Company Profile",
                 "Experiances" : "Experiances",
                 'SelectValue': 'Select Value',
-                'JobSeekerProfile': 'Job Seeker Profile'
+                'JobSeekerProfile': 'Job Seeker Profile',
+                'Cities': 'Cities',
+                'Areas': 'Areas',
+                'Specializations': 'Specializations',
+                'Faculties':'Faculties'
             },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
             }
         };
-
+        
         var arabic = {
             "Title": "أختبار ",
             "Language": "اللغات",
@@ -326,8 +342,20 @@
                 'ExpectedSalary': 'المرتب المتوقع',
                 'PeriodOfEnrollment': 'مهلة ترك الشركة الحالية',
                 'MoreInformation': 'معلومات اضافية',
-                'Job Preferences':'خيارات الوظيفة'
-    },
+                'Job Preferences': 'خيارات الوظيفة'
+            }, 
+            'City': {
+                "City": "المدينة",
+                "Name": "الاسم",
+                "Country": "البلد",
+                "Confirmed": "تاكيد"
+            }, 
+            'Area': {
+                "Area": "المنطقة",
+                "City": "المدينة",
+                "Name": "الاسم",
+                "Confirmed": "تاكيد"
+            },
             "Vacancy": {
                 "JobTitle": "عنوان الوظيفة",
                 "JobDescrption": "وصف الوظيفة",
@@ -444,7 +472,11 @@
                 "CompanyProfile" : "بيانات الشركة",
                 "Experiances" : "الخبرات",
                 'SelectValue': 'اختار من القائمة',
-                'JobSeekerProfile': 'بيانات طالب العمل'
+                'JobSeekerProfile': 'بيانات طالب العمل',
+                'Cities': 'المدن',
+                'Areas': 'المناطق',
+                'Specializations': 'التخصصات',
+                'Faculties': 'الكليات'
             },
             "Footer": {
                 "Copy": "\u00A9" + " شركة ايم باور 2016"

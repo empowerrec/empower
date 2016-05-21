@@ -5,7 +5,8 @@ var SpecializationSchema = mongoose.Schema({
     Name: [{
             Lang: String,
             Text: String
-        }], Confirmed : Boolean  ,
+        }], 
+    Confirmed : Boolean  ,
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
