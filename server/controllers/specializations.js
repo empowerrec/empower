@@ -1,30 +1,26 @@
 var Specialization = require('mongoose').model('Specialization');
 
-//exports.getSpecializations = function (req, res) {
-//    if (req.query.currentLang) {
-//        Specialization.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-//            res.send(col);
-//        });
-//    } else {
-//        Specialization.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-//            res.send(col);
-//        });
-//    }
-//};
 exports.getSpecializations = function (req, res) {
     
     var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     
-    Specialization.find(JSON.parse(req.query.query))
+    if (req.query.currentLang) {
+        Specialization.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            res.send(col);
+        });
+    } else {
+        Specialization.find(JSON.parse(req.query.query))
             .populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize).skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-        Specialization.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-            res.send([{ collection: col, allDataCount: count }]);
+            Specialization.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
+            });
         });
-    });
+    }
 };
+
 exports.getSpecializationByName = function (req, res) {
     
     console.log(req.query.currentLang);
@@ -45,7 +41,7 @@ exports.getSpecializationByName = function (req, res) {
 
 };
 exports.getSpecializationById = function (req, res) {
-    Specialization.findOne({_id:req.params.id}).populate('ModifiedBy').exec(function (err, col) {
+    Specialization.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
         res.send(col);
     });
 };

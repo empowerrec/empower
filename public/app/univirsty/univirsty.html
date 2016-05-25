@@ -2,20 +2,20 @@
 <div class="container admin-area">
 
     <div class="well">
-        <div ng-repeat="emp in faculty.Name | filter:{Lang:currentLang}"><h3>{{emp.Text}}</h3></div>
+        <div ng-repeat="emp in univirsty.Name | filter:{Lang:currentLang}"><h3>{{emp.Text}}</h3></div>
 
-        <form name="facultyForm" class="form-horizontal">
+        <form name="univirstyForm" class="form-horizontal">
             <fieldset>
                 
-                                       
+                                        
 
                 <div class="form-group">
-                    <label for="Text" class="col-md-2 control-label">{{"Faculty.Name"| translate}}</label>
+                    <label for="Text" class="col-md-2 control-label">{{"Univirsty.Name"| translate}}</label>
                     <div class="col-md-10">
                         <ul ng-repeat="lang in languages" id="Names">
                             <li id="{{lang.value}}">{{ lang.text}}
-                                <input id="NameText2" name="Text" type="text" placeholder="{{'Faculty.Name' | translate}}"
-                                       value="{{getName(faculty.Name , lang.value)}}" class="form-control" required/>
+                                <input id="NameText2" name="Text" type="text" placeholder="{{'Univirsty.Name' | translate}}"
+                                       value="{{getName(univirsty.Name , lang.value)}}" class="form-control" required/>
                             </li>
                         </ul>
                     </div>
@@ -24,8 +24,8 @@
                 <div class="form-group">
                     <label for="Confirmed" class="col-md-2 control-label">{{"Area.Confirmed" | translate}}</label>
                     <div class="col-sm-1">
-                        <input name="Confirmed" type="checkbox" placeholder="{{'faculty.Confirmed' | translate}}"
-                               ng-model="faculty.Confirmed" class="form-control-md-first" />
+                        <input name="Confirmed" type="checkbox" placeholder="{{'univirsty.Confirmed' | translate}}"
+                               ng-model="univirsty.Confirmed" class="form-control-md-first" />
                     </div>
                 </div>      
 

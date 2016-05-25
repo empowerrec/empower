@@ -1,0 +1,12 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container admin-area">
+    <h1>{{"Univirsty.Name" | translate}} :  </h1>
+    <div ng-repeat="emp in univirsty.Name | filter:{Lang:currentLang}"><h1>{{emp.Text}}</h1></div>
+    <h1>{{"Univirsty.Name" | translate}} :  </h1>
+    <div ng-repeat="emp in univirsty.Name | filter:{Lang:currentLang}"><h1>{{emp.Text}}</h1></div>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>{{"Univirsty.Confirmed" | translate}} : {{univirsty.Confirmed}}</h3>        
+        </div>
+    </div>
+</div>

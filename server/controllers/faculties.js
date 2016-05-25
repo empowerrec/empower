@@ -1,37 +1,27 @@
 var Faculty = require('mongoose').model('Faculty');
 
-//exports.getFaculties = function (req, res) {
-//    if (req.query.currentLang) {
-//        Faculty.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-//            console.log(req.query.currentLang);
-//            res.send(col);
-
-//        });
-//    } else {
-//        Faculty.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-//            console.log(req.query.currentLang);
-//            res.send(col);
-
-//        });
-//    }
-    
-
-//};
-
 exports.getFaculties = function (req, res) {
-    
     var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     
-    Faculty.find(JSON.parse(req.query.query))
+    if (req.query.currentLang) {
+        Faculty.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            res.send(col);
+        });
+    } else {
+        Faculty.find(JSON.parse(req.query.query))
             .populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize).skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-        Faculty.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-            res.send([{ collection: col, allDataCount: count }]);
+            Faculty.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
+            });
         });
-    });
+    }
+    
+
 };
+
 exports.getFacultyByName = function (req, res) {
     
     console.log(req.query.currentLang);

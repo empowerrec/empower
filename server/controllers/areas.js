@@ -4,15 +4,22 @@ exports.getAreas = function (req, res) {
     var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     
-    Area.find(JSON.parse(req.query.query))
+    if (req.query.currentLang) {
+        Area.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            res.send(col);
+        });
+    } else {
+        Area.find(JSON.parse(req.query.query))
             .populate({ path: 'City', populate: { path: 'Country', model: 'Country', select : 'Name' } })
             .populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize).skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-        Area.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-            res.send([{ collection: col, allDataCount: count }]);
+            Area.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
+            });
         });
-    });
+    }
+    
 };
 
 exports.getAreaById = function (req, res) {

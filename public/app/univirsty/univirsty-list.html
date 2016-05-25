@@ -2,7 +2,7 @@
 <div class="container top-padding-med admin-area">
 
     <div class="pull-left">
-        <a href="#/addSpecialization" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+        <a href="#/addUnivirsty" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
     </div>
     <div class="pull-right">
         <form class="form-inline">
@@ -17,7 +17,7 @@
     <table class="table table-hover table-striped table-condensed">
         <thead>
             <tr>
-                <th>{{"Specialization.Name" | translate}}</th>
+                <th>{{"Univirsty.Name" | translate}}</th>             
                 <th>{{"Area.Confirmed" | translate}}</th>
                 <th>{{"User.ModifiedBy" | translate}}</th>
                 <th>{{"User.CreatedBy" | translate}}</th>
@@ -25,14 +25,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="specialization in specializations | filter:searchText | orderBy:sortOrder">
-                <td><a href="#/specializations/{{specialization._id}}"> <div ng-repeat="name in specialization.Name | filter:{Lang:currentLang}">{{name.Text}}</div></a></td>
-                <td><input type="checkbox" ng-model="specialization.Confirmed" disabled="disabled"></td>
-                <td>{{ specialization.ModifiedBy.FirstName}} {{ specialization.ModifiedBy.LastName}}</td>
-                <td>{{ specialization.CreatedBy.FirstName}} {{ specialization.CreatedBy.LastName}}</td>
+            <tr ng-repeat="univirsty in univirsties | filter:searchText | orderBy:sortOrder">
+                <td><a href="#/univirsties/{{univirsty._id}}"> <div ng-repeat="name in univirsty.Name | filter:{Lang:currentLang}">{{name.Text}}</div></a></td>
+              
+                <td><input type="checkbox" ng-model="univirsty.Confirmed" disabled="disabled"></td>
+                <td>{{ univirsty.ModifiedBy.FirstName}} {{ univirsty.ModifiedBy.LastName}}</td>
+                <td>{{ univirsty.CreatedBy.FirstName}} {{ univirsty.CreatedBy.LastName}}</td>
 
-                <td><a href="#/updateSpecialization/{{specialization._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
-                <td><a class="btn btn-danger" ng-click="deleteSpecialization(specialization)"> {{"Buttons.Delete" | translate}}</a></td>
+                <td><a href="#/updateUnivirsty/{{univirsty._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a class="btn btn-danger" ng-click="deleteUnivirsty(univirsty)"> {{"Buttons.Delete" | translate}}</a></td>
 
             </tr>
         </tbody>

@@ -37,8 +37,21 @@
                 <td>{{ employer.ModifiedBy.FirstName}} {{ employer.ModifiedBy.LastName}}</td>
                 <td>{{ employer.CreatedBy.FirstName}} {{ employer.CreatedBy.LastName}}</td>
 
-                <td><a href="#/updateemployer/{{employer._id}}"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a href="#/updateemployer/{{employer._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a class="btn btn-danger" ng-click="deleteEmployer(employer)"> {{"Buttons.Delete" | translate}}</a></td>
             </tr>
         </tbody>
     </table>
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>
 </div>

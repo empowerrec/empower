@@ -1,22 +1,26 @@
 var Univirsty = require('mongoose').model('Univirsty');
 
-exports.getUnivirsties = function (req, res) {
+exports.getUnivirsties = function (req, res) {    
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
+    
     if (req.query.currentLang) {
         Univirsty.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
             res.send(col);
-
         });
     } else {
-        Univirsty.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
-            res.send(col);
-
+        Univirsty.find(JSON.parse(req.query.query))
+            .populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize).skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            Univirsty.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
+            });
         });
     }
-    
-
+   
 };
+
 exports.getUnivirstyByName = function (req, res) {
     
     console.log(req.query.currentLang);

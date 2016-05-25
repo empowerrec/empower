@@ -5,6 +5,11 @@ exports.getCities = function (req, res) {
     var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     
+    if (req.query.currentLang) {
+        City.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            res.send(col);
+        });
+    } else {
         City.find(JSON.parse(req.query.query))
             .populate('Country').populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize).skip(pageSize * (currentPage - 1))
@@ -13,10 +18,12 @@ exports.getCities = function (req, res) {
                 res.send([{ collection: col, allDataCount: count }]);
             });
         });
+    }
+    
 };
 
 exports.getCityById = function (req, res) {
-    City.findOne({_id:req.params.id}).populate('ModifiedBy').exec(function (err, col) {
+    City.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
         res.send(col);
     });
 };

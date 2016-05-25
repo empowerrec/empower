@@ -146,6 +146,15 @@
             "Industry": {
                 "Description": "Description"
             },
+            "Specialization": {
+                "Name": "Name"
+            },
+            "Faculty": {
+                "Name": "Name"
+            },
+            "Univirstynivirsty": {
+                "Name": "Name"
+            },
             "JobType": {
                 "JobTypeName": "Job Type Name"
             },
@@ -240,7 +249,8 @@
                 'Cities': 'Cities',
                 'Areas': 'Areas',
                 'Specializations': 'Specializations',
-                'Faculties':'Faculties'
+                'Faculties': 'Faculties',
+                'Univirsties':'Univirsties'
             },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
@@ -391,6 +401,15 @@
             "Industry": {
                 "Description": "الوصف"
             },
+            "Specialization": {
+                "Name": "الأسم"
+            },
+            "Faculty": {
+                "Name": "الأسم"
+            },
+            "Univirstynivirsty": {
+                "Name": "الأسم"
+            },
             "JobType": {
                 "JobTypeName": "نوع الوظيفة"
             },
@@ -476,7 +495,8 @@
                 'Cities': 'المدن',
                 'Areas': 'المناطق',
                 'Specializations': 'التخصصات',
-                'Faculties': 'الكليات'
+                'Faculties': 'الكليات',
+                'Univirsties':'الجامعات'
             },
             "Footer": {
                 "Copy": "\u00A9" + " شركة ايم باور 2016"

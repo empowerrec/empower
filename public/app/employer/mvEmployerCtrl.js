@@ -28,7 +28,7 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope,  mvNotifier
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
-
+        $scope.employer.Deleted = false;
 
     }
 

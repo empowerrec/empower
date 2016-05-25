@@ -192,6 +192,10 @@
     <Compile Include="public\app\specialization\mvSpecializationRepo.js" />
     <Compile Include="public\app\trainingCenter\mvCachedtrainingCenter.js" />
     <Compile Include="public\app\trainingCenter\mvTrainingCenter.js" />
+    <Compile Include="public\app\univirsty\mvCachedUnivirsty.js" />
+    <Compile Include="public\app\univirsty\mvUnivirstyCtrl.js" />
+    <Compile Include="public\app\univirsty\mvUnivirstyDetailCtrl.js" />
+    <Compile Include="public\app\univirsty\mvUnivirstyListCtrl.js" />
     <Compile Include="public\app\univirsty\mvUnivirsty.js" />
     <Compile Include="public\app\univirsty\mvUnivirstyRepo.js" />
     <Compile Include="public\app\vacancy\mvCachedVacancy.js" />
@@ -541,6 +545,9 @@
     <Content Include="public\app\specialization\specialization-detail.html" />
     <Content Include="public\app\specialization\specialization-list.html" />
     <Content Include="public\app\specialization\specialization.html" />
+    <Content Include="public\app\univirsty\univirsty-detail.html" />
+    <Content Include="public\app\univirsty\univirsty-list.html" />
+    <Content Include="public\app\univirsty\univirsty.html" />
     <Content Include="public\app\vacancy\vacancy-detail.html" />
     <Content Include="public\app\vacancy\vacancy-list.html" />
     <Content Include="public\app\vacancy\vacancy.html" />

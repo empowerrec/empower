@@ -213,6 +213,19 @@ angular.module('app').config(function ($routeProvider) {
         templateUrl: '/partials/city/city-list.html',
         controller: 'mvCityListCtrl'
         
+    }).when('/univirsties/:id', {
+        templateUrl: '/partials/univirsty/univirsty-detail',
+        controller: 'mvUnivirstyDetailCtrl'
+    }).when('/updateUnivirsty/:id', {
+        templateUrl: '/partials/univirsty/univirsty',
+        controller: 'mvUnivirstyCtrl'
+    }).when('/addUnivirsty', {
+        templateUrl: '/partials/univirsty/univirsty',
+        controller: 'mvUnivirstyCtrl'
+    }).when('/univirsties', {
+        templateUrl: '/partials/univirsty/univirsty-list.html',
+        controller: 'mvUnivirstyListCtrl'
+        
     }).when('/faculties/:id', {
         templateUrl: '/partials/faculty/faculty-detail',
         controller: 'mvFacultyDetailCtrl'
