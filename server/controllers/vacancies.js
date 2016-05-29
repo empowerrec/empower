@@ -1,29 +1,67 @@
 var Vacancy = require('mongoose').model('Vacancy');
 //var mvIdentity = require('users');
-exports.getVacancies = function (req, res) {
-    if (isAdmin(req)) {
-        //console.log('UserDetai44' + req.user.UserType);
-        //console.log('mvIdentity.currentUser' +req.body.username);
-        Vacancy.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+
+
+exports.getVacancies = function (req, res) {    
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
+    
+    //Vacancy.find(JSON.parse(req.query.query))
+    //       .populate('ModifiedBy').populate('CreatedBy')
+    //        .limit(pageSize).skip(pageSize * (currentPage - 1))
+    //        .exec(function (err, col) {
+    //    Vacancy.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+    //        res.send([{ collection: col, allDataCount: count }]);
+    //    });
+    //});
+    
+     if (req.query.jobSeeker) {
+        Vacancy.find(JSON.parse(req.query)).populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            Vacancy.count(JSON.parse(req.query)).exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
+            });
+        });
+    } else if (isAdmin(req)) {
+        Vacancy.find({ Deleted : false }).populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            Vacancy.count({ Deleted : false }).exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
+            });
         });
     } else {
-        console.log('UserDetai5 8' + req.user.UserType);
-        //Vacancy.find({}).exec(function (err, col) {
-        //    res.send(col);
-        //});
-        console.log('req.user' + req.user);
-        Vacancy.find({CreatedBy: req.user}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+        Vacancy.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            Vacancy.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
+            });
         });
     }
-   
+    
 };
 
 exports.getVacancyById = function (req, res) {
-    Vacancy.findOne({_id:req.params.id}).exec(function (err, col) {
-        res.send(col);
-    });
+    
+    if (req.params.id == 'profile') {
+        console.log(req.user);
+        Vacancy.findOne({ User: req.user }).populate('ModifiedBy').exec(function (err, col) {
+            console.log(col);
+            res.send(col);
+        });
+    } else {
+        Vacancy.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
+            console.log(col);
+            res.send(col);
+        });
+    }
+    //Vacancy.findOne({_id:req.params.id}).exec(function (err, col) {
+    //    res.send(col);
+    //});
 };
 
 function isAdmin(req) {

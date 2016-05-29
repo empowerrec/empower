@@ -1,9 +1,22 @@
 var JobSeeker = require('mongoose').model('JobSeeker');
 
 exports.getJobSeekers = function (req, res) {
-    JobSeeker.find({}).populate('Gender').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-        res.send(col);
+    //JobSeeker.find({}).populate('Gender').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+    //    res.send(col);
+    //});
+    
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
+    
+    JobSeeker.find(JSON.parse(req.query.query))
+            .populate('Gender').populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize).skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+        JobSeeker.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+            res.send([{ collection: col, allDataCount: count }]);
+        });
     });
+   
 };
 
 exports.getJobSeekerById = function (req, res) {

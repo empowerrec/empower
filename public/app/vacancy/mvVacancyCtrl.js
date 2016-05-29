@@ -21,7 +21,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope,  mvNotifier,
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
-
+        $scope.vacancy.Deleted = false;
 
     }
    

@@ -18,29 +18,43 @@
     </div>
     <table class="table table-hover table-striped table-condensed">
         <thead>
-        <tr>
-            <th>{{"Vacancy.JobTitle" | translate}}</th>
-            <th>{{"Vacancy.Salary" | translate}}</th>
-            <th>{{"Vacancy.AvailableFrom" | translate}}</th>
-            <th>{{"Vacancy.AvailableTo" | translate}}</th>
-            <th>{{"User.CreatedBy" | translate}}</th>
-            <th>{{"User.ModifiedBy" | translate}}</th>
-            <th></th>
-        </tr>
+            <tr>
+                <th>{{"Vacancy.JobTitle" | translate}}</th>
+                <th>{{"Vacancy.Salary" | translate}}</th>
+                <th>{{"Vacancy.AvailableFrom" | translate}}</th>
+                <th>{{"Vacancy.AvailableTo" | translate}}</th>
+                <th>{{"User.CreatedBy" | translate}}</th>
+                <th>{{"User.ModifiedBy" | translate}}</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="vacancy in vacancies | filter:searchText | orderBy:sortOrder">
-            <td><a href="#/vacancies/{{vacancy._id}}">
-                {{vacancy.JobTitle}}
-            </a></td>
-            <td>{{ vacancy.Salary}}</td>
-            <td>{{ vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</td>
-            <td>{{ vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</td>
-            <td>{{ vacancy.ModifiedBy.FirstName}} {{ vacancy.ModifiedBy.LastName}}</td>
-            <td>{{ vacancy.CreatedBy.FirstName}} {{ vacancy.CreatedBy.LastName}}</td>
+            <tr ng-repeat="vacancy in vacancies | filter:searchText | orderBy:sortOrder">
+                <td><a href="#/vacancies/{{vacancy._id}}">
+                        {{vacancy.JobTitle}}
+                    </a></td>
+                <td>{{ vacancy.Salary}}</td>
+                <td>{{ vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</td>
+                <td>{{ vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</td>
+                <td>{{ vacancy.ModifiedBy.FirstName}} {{ vacancy.ModifiedBy.LastName}}</td>
+                <td>{{ vacancy.CreatedBy.FirstName}} {{ vacancy.CreatedBy.LastName}}</td>
 
-            <td><a href="#/updatevacancy/{{vacancy._id}}"> {{"Buttons.Update" | translate}}</a></td>
-        </tr>
+                <td><a href="#/updatevacancy/{{vacancy._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a class="btn btn-danger" ng-click="deleteVacancy(vacancy)"> {{"Buttons.Delete" | translate}}</a></td>
+
+            </tr>
         </tbody>
     </table>
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>
 </div>

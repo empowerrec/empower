@@ -32,7 +32,7 @@
                         {{ jobSeeker.FirstName}} {{ jobSeeker.LastName}}                    
                     </a>
                 </td>
-               
+                          
                 <td><a href="#/updateJobSeeker/PersonalInformation/{{jobSeeker._id}}"> {{"JobSeeker.Personal Information" | translate}}</a></td>
                 <td><a href="#/updateJobSeeker/Experiances/{{jobSeeker._id}}"> {{"JobSeeker.Experiances" | translate}}</a></td>
                 <td><a href="#/updateJobSeeker/Courses/{{jobSeeker._id}}"> {{"JobSeeker.Course" | translate}}</a></td>
@@ -42,7 +42,20 @@
                 <td><a href="#/updateJobSeeker/Skills/{{jobSeeker._id}}"> {{'JobSeeker.Skills' | translate}}</a></td>
                 <td><a href="#/updateJobSeeker/LanguageSkills/{{jobSeeker._id}}"> {{'JobSeeker.LanguageSkills' | translate}}</a></td>
                 <td><a href="#/updateJobSeeker/JobPreferences/{{jobSeeker._id}}"> {{'JobSeeker.Job Preferences' | translate}}</a></td>
+                <td><a class="btn btn-danger" ng-click="deleteJobSeeker(jobSeeker)"> {{"Buttons.Delete" | translate}}</a></td>
             </tr>
         </tbody>
-    </table>    
+    </table> 
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>   
 </div>

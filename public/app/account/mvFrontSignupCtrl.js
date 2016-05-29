@@ -36,6 +36,7 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootSco
                         User: mvIdentity.currentUser,
                         CreatedBy: mvIdentity.currentUser,
                         FirstName: name ,
+                        Deleted:false,
                         LastName: $scope.lastname
                     };
                     return mvJobSeekerRepo.createJobSeekerAfterCreatingUser(newJobSeekerData);

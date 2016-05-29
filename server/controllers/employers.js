@@ -19,6 +19,7 @@ exports.getEmployers = function (req, res) {
             res.send([{ collection: col, allDataCount: count }]);
         });
     });
+   
 };
 
 exports.getEmployerById = function (req, res) {
