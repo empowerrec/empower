@@ -66,6 +66,7 @@
     <Compile Include="public\app\category\mvCategoryDetailCtrl.js" />
     <Compile Include="public\app\category\mvCategoryListCtrl.js" />
     <Compile Include="public\app\category\mvCategoryRepo.js" />
+    <Compile Include="public\app\cityNotConfirmed\mvCityNotConfirmedListCtrl.js" />
     <Compile Include="public\app\city\mvCachedCity.js" />
     <Compile Include="public\app\city\mvCity.js" />
     <Compile Include="public\app\city\mvCityRepo.js" />
@@ -204,6 +205,9 @@
     <Compile Include="public\app\vacancy\mvVacancyDetailCtrl.js" />
     <Compile Include="public\app\vacancy\mvVacancyListCtrl.js" />
     <Compile Include="public\app\vacancy\mvVacancyRepo.js" />
+    <Compile Include="public\vendor\angular-animate\angular-animate.js" />
+    <Compile Include="public\vendor\angular-animate\angular-animate.min.js" />
+    <Compile Include="public\vendor\angular-animate\index.js" />
     <Compile Include="public\vendor\angular-bootstrap\index.js" />
     <Compile Include="public\vendor\angular-bootstrap\ui-bootstrap-tpls.js" />
     <Compile Include="public\vendor\angular-bootstrap\ui-bootstrap-tpls.min.js" />
@@ -212,6 +216,9 @@
     <Compile Include="public\vendor\angular-cookies\angular-cookies.js" />
     <Compile Include="public\vendor\angular-cookies\angular-cookies.min.js" />
     <Compile Include="public\vendor\angular-cookies\index.js" />
+    <Compile Include="public\vendor\angular-dragdrop\karma.conf.js" />
+    <Compile Include="public\vendor\angular-dragdrop\src\angular-dragdrop.js" />
+    <Compile Include="public\vendor\angular-dragdrop\src\angular-dragdrop.min.js" />
     <Compile Include="public\vendor\angular-resource\angular-resource.js" />
     <Compile Include="public\vendor\angular-resource\angular-resource.min.js" />
     <Compile Include="public\vendor\angular-resource\index.js" />
@@ -249,6 +256,8 @@
     <Compile Include="public\vendor\bootstrap\js\tooltip.js" />
     <Compile Include="public\vendor\bootstrap\js\transition.js" />
     <Compile Include="public\vendor\bootstrap\package.js" />
+    <Compile Include="public\vendor\build\loading-bar.js" />
+    <Compile Include="public\vendor\build\loading-bar.min.js" />
     <Compile Include="public\vendor\DefiantJS\defiant.min.js" />
     <Compile Include="public\vendor\jquery-ui\jquery-ui.js" />
     <Compile Include="public\vendor\jquery-ui\jquery-ui.min.js" />
@@ -362,6 +371,7 @@
     <Compile Include="public\vendor\ngstorage\ngStorage.js" />
     <Compile Include="public\vendor\ngstorage\ngStorage.min.js" />
     <Compile Include="public\vendor\ngstorage\package.js" />
+    <Compile Include="public\vendor\src\loading-bar.js" />
     <Compile Include="public\vendor\toastr\toastr.js" />
     <Compile Include="public\vendor\toastr\toastr.min.js" />
     <Compile Include="public\vendor\typeahead.bundle.js" />
@@ -491,6 +501,7 @@
     <Content Include="public\app\category\category-detail.html" />
     <Content Include="public\app\category\category-list.html" />
     <Content Include="public\app\category\category.html" />
+    <Content Include="public\app\cityNotConfirmed\city-not-confirmed-list.html" />
     <Content Include="public\app\city\city-detail.html" />
     <Content Include="public\app\city\city-list.html" />
     <Content Include="public\app\city\city.html" />
@@ -559,6 +570,12 @@
     <Content Include="public\css\siteRTL.css" />
     <Content Include="public\favicon.ico" />
     <Content Include="public\logo.jpg" />
+    <Content Include="public\vendor\angular-animate\.bower.json" />
+    <Content Include="public\vendor\angular-animate\angular-animate.min.js.map" />
+    <Content Include="public\vendor\angular-animate\bower.json" />
+    <Content Include="public\vendor\angular-animate\LICENSE.md" />
+    <Content Include="public\vendor\angular-animate\package.json" />
+    <Content Include="public\vendor\angular-animate\README.md" />
     <Content Include="public\vendor\angular-bootstrap\.bower.json" />
     <Content Include="public\vendor\angular-bootstrap\.gitignore" />
     <Content Include="public\vendor\angular-bootstrap\.npmignore" />
@@ -571,6 +588,10 @@
     <Content Include="public\vendor\angular-cookies\bower.json" />
     <Content Include="public\vendor\angular-cookies\package.json" />
     <Content Include="public\vendor\angular-cookies\README.md" />
+    <Content Include="public\vendor\angular-dragdrop\.bower.json" />
+    <Content Include="public\vendor\angular-dragdrop\bower.json" />
+    <Content Include="public\vendor\angular-dragdrop\LICENSE" />
+    <Content Include="public\vendor\angular-dragdrop\README.md" />
     <Content Include="public\vendor\angular-resource\.bower.json" />
     <Content Include="public\vendor\angular-resource\angular-resource.min.js.map" />
     <Content Include="public\vendor\angular-resource\bower.json" />
@@ -705,6 +726,8 @@
     <Content Include="public\vendor\bootstrap\nuget\MyGet.ps1" />
     <Content Include="public\vendor\bootstrap\package.json" />
     <Content Include="public\vendor\bootstrap\README.md" />
+    <Content Include="public\vendor\build\loading-bar.css" />
+    <Content Include="public\vendor\build\loading-bar.min.css" />
     <Content Include="public\vendor\jquery-ui\.bower.json" />
     <Content Include="public\vendor\jquery-ui\.gitignore" />
     <Content Include="public\vendor\jquery-ui\AUTHORS.txt" />
@@ -1206,6 +1229,7 @@
     <Content Include="public\vendor\ngstorage\bower.json" />
     <Content Include="public\vendor\ngstorage\LICENSE" />
     <Content Include="public\vendor\ngstorage\README.md" />
+    <Content Include="public\vendor\src\loading-bar.css" />
     <Content Include="public\vendor\toastr\.bower.json" />
     <Content Include="public\vendor\toastr\bower.json" />
     <Content Include="public\vendor\toastr\README.md" />
@@ -1253,6 +1277,7 @@
     <Folder Include="public\app\languageSkill\" />
     <Folder Include="public\app\language\" />
     <Folder Include="public\app\languageLevel\" />
+    <Folder Include="public\app\cityNotConfirmed\" />
     <Folder Include="public\app\skillLevel\" />
     <Folder Include="public\app\skillType\" />
     <Folder Include="public\app\skill\" />
@@ -1263,8 +1288,11 @@
     <Folder Include="public\app\vacancy\" />
     <Folder Include="public\css\" />
     <Folder Include="public\vendor\" />
+    <Folder Include="public\vendor\angular-animate\" />
     <Folder Include="public\vendor\angular-bootstrap\" />
     <Folder Include="public\vendor\angular-cookies\" />
+    <Folder Include="public\vendor\angular-dragdrop\" />
+    <Folder Include="public\vendor\angular-dragdrop\src\" />
     <Folder Include="public\vendor\angular-resource\" />
     <Folder Include="public\vendor\angular-route\" />
     <Folder Include="public\vendor\angular-translate-storage-cookie\" />
@@ -1282,6 +1310,7 @@
     <Folder Include="public\vendor\bootstrap\less\" />
     <Folder Include="public\vendor\bootstrap\less\mixins\" />
     <Folder Include="public\vendor\bootstrap\nuget\" />
+    <Folder Include="public\vendor\build\" />
     <Folder Include="public\vendor\DefiantJS\" />
     <Folder Include="public\vendor\jquery-ui\" />
     <Folder Include="public\vendor\jquery-ui\themes\" />
@@ -1357,6 +1386,7 @@
     <Folder Include="public\vendor\jquery\src\traversing\var\" />
     <Folder Include="public\vendor\jquery\src\var\" />
     <Folder Include="public\vendor\ngstorage\" />
+    <Folder Include="public\vendor\src\" />
     <Folder Include="public\vendor\toastr\" />
     <Folder Include="server\" />
     <Folder Include="server\config\" />

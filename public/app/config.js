@@ -247,6 +247,7 @@
                 'SelectValue': 'Select Value',
                 'JobSeekerProfile': 'Job Seeker Profile',
                 'Cities': 'Cities',
+                'CitiesNotConfirmed': 'Cities Not Confirmed',
                 'Areas': 'Areas',
                 'Specializations': 'Specializations',
                 'Faculties': 'Faculties',
@@ -496,7 +497,8 @@
                 'Areas': 'المناطق',
                 'Specializations': 'التخصصات',
                 'Faculties': 'الكليات',
-                'Univirsties':'الجامعات'
+                'Univirsties': 'الجامعات',
+                'CitiesNotConfirmed': ' المدن التي لم يتم تاكيدها',                
             },
             "Footer": {
                 "Copy": "\u00A9" + " شركة ايم باور 2016"

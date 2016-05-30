@@ -2,13 +2,13 @@
 <div class="container admin-area">
     <table class="table">
         <thead>
-        <tr>
-            <th>{{"User.UserName" | translate}}</th>
-            <th>{{"User.FirstName" | translate}}</th>
-            <th>{{"User.LastName" | translate}}</th>
-            <th>{{"User.UserType" | translate}}</th>
+            <tr>
+                <th>{{"User.UserName" | translate}}</th>
+                <th>{{"User.FirstName" | translate}}</th>
+                <th>{{"User.LastName" | translate}}</th>
+                <th>{{"User.UserType" | translate}}</th>
 
-        </tr>
+            </tr>
         </thead>
         <tr ng-repeat="user in users">
             <td>{{ user.FirstName }}</td>
@@ -16,5 +16,18 @@
             <td>{{ user.LastName }}</td>
             <td>{{ user.UserType }}</td>
         </tr>
+       
     </table>
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>
 </div>

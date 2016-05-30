@@ -39,6 +39,9 @@
             <li ng-show="identity.currentUser.isAdmin()">
                 <a href="#/cities">{{"Menu.Cities" | translate}}</a>
             </li>
+            <li ng-show="identity.currentUser.isAdmin()">
+                <a href="#/citiesNotConfirmed">{{"Menu.CitiesNotConfirmed" | translate}}</a>
+            </li>
             
             <li ng-show="identity.currentUser.isAdmin()">
                 <a href="#/areas">{{"Menu.Areas" | translate}}</a>

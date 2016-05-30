@@ -4,10 +4,32 @@ var sendMail = require('../config/mailer');
 var async = require('async');
 var crypto = require('crypto');
 
+//exports.getUsers = function (req, res) {
+//    User.find({}).exec(function (err, col) {
+//        res.send(col);
+//    });
+//};
+
 exports.getUsers = function (req, res) {
-    User.find({}).exec(function (err, col) {
-        res.send(col);
-    });
+    
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
+    
+    if (req.query.currentLang) {
+        User.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+            res.send(col);
+        });
+    } else {
+        User.find()
+            .populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize).skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            User.count().exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
+            });
+        });
+    }
+    
 };
 
 exports.getUserById = function (req, res) {

@@ -1,11 +1,11 @@
-angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngCookies', 'ui.bootstrap', 'autocomplete']);
+angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngCookies', 'ui.bootstrap', 'angular-loading-bar','autocomplete', 'ngAnimate']);
 
 angular.module('app').config(function ($routeProvider) {
     var routRoleChecks = {
         admin: {
             auth: function (mvAuth) {
                 console.log("Check Admin");
-                debugger;
+              
                 return mvAuth.authorizeCurrentUserForRoute('A');
             }
         },
@@ -211,8 +211,10 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvCityCtrl'
     }).when('/cities', {
         templateUrl: '/partials/city/city-list.html',
-        controller: 'mvCityListCtrl'
-        
+        controller: 'mvCityListCtrl'        
+    }).when('/citiesNotConfirmed', {
+        templateUrl: '/partials/cityNotConfirmed/city-not-confirmed-list.html',
+        controller: 'mvCityNotConfirmedListCtrl'
     }).when('/univirsties/:id', {
         templateUrl: '/partials/univirsty/univirsty-detail',
         controller: 'mvUnivirstyDetailCtrl'
