@@ -22,9 +22,9 @@ exports.getJobSeekers = function (req, res) {
 exports.getJobSeekerById = function (req, res) {
     
     if (req.params.id == 'profile') {
-        console.log(req.user);
+        
         JobSeeker.findOne({ User: req.user }).populate('ModifiedBy').exec(function (err, col) {
-            console.log(col);
+            
             res.send(col);
         });
     } else {
@@ -38,9 +38,8 @@ exports.getJobSeekerById = function (req, res) {
 
 
 exports.getJobSeekerByUser = function (req, res) {
-    console.log(req.user);
     JobSeeker.findOne({ User: req.user }).populate('ModifiedBy').exec(function (err, col) {
-        console.log(col);
+       
         res.send(col);
     });
 };
@@ -67,7 +66,7 @@ exports.createJobSeeker = function (req, res, next) {
 };
 
 exports.updateJobSeeker = function (req, res, next) {
-    console.log(req.params[0]);
+    
     var jobSeekerData = req.body;
     var query = { _id: jobSeekerData._id };
     JobSeeker.update(query, jobSeekerData, function (err, jobSeeker) {

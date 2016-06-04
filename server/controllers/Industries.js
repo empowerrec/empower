@@ -22,21 +22,27 @@ exports.getIndustries = function (req, res) {
     
     var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
-    
-    Industry.find(JSON.parse(req.query.query))
+    if (req.query.currentLang) {
+
+        Industry.find({ 'Description.Lang': { "$eq": req.query.currentLang } }, { 'Description.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
+            res.send(col);
+        });
+    } else {
+        Industry.find(JSON.parse(req.query.query))
             .populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize).skip(pageSize * (currentPage - 1))
-            .exec(function (err, col) {
-        Industry.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-            res.send([{ collection: col, allDataCount: count }]);
-        });
-    });
+            .exec(function(err, col) {
+                Industry.count(JSON.parse(req.query.query)).exec(function(errr, count) {
+                    res.send([{ collection: col, allDataCount: count }]);
+                });
+            });
+    }
 };
 
 exports.getIndustryById = function(req, res) {
     Industry.findOne({_id: req.params.id}).populate('ModifiedBy').exec(function(err, col) {
 
-        console.log(col);
+        
 
         res.send(col);
     });
@@ -59,7 +65,7 @@ exports.createIndustry = function (req, res, next) {
 };
 
 exports.updateIndustry = function (req, res, next) {
-    console.log(req.params[0]);
+   
     var industryData = req.body;
     var query = { _id: industryData._id };
     Industry.update(query,industryData, function (err, industry) {

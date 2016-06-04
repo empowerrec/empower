@@ -19,7 +19,7 @@ exports.getCompanyTypes = function (req, res) {
 exports.getCompanyTypeById = function(req, res) {
     CompanyType.findOne({_id: req.params.id}).populate('ModifiedBy').exec(function(err, col) {
 
-        console.log(col);
+      
 
         res.send(col);
     });

@@ -8,7 +8,7 @@ exports.getInnerPages = function (req, res) {
 
 exports.getInnerPageById = function(req, res) {
     InnerPage.findOne({_id: req.params.id}).populate('ModifiedBy').exec(function(err, col) {
-        console.log(col);
+       
         res.send(col);
     });
 };
@@ -30,7 +30,7 @@ exports.createInnerPage = function (req, res, next) {
 };
 
 exports.updateInnerPage = function (req, res, next) {
-    console.log(req.params[0]);
+   
     var innerPageData = req.body;
     var query = { _id: innerPageData._id };
     InnerPage.update(query, innerPageData, function (err, innerPageData) {

@@ -45,7 +45,7 @@ module.exports = function (app, config) {
 
     app.use(function (req, res, next) {
         if (req.method == 'POST' && req.url == '/login') {
-            console.log(req.body.rememberme);
+           
             if (req.body.rememberme) {
                 req.session.cookie.maxAge = 604800000; // 7*24*60*60*1000 Rememeber 'me' for 7 days
             } else {

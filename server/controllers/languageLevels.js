@@ -41,7 +41,7 @@ function isAdmin(req) {
     console.log('UserDetai2' + req.user.UserType);
     
     for (var role in req.user.UserType) {
-        console.log('UserDetai3' + req.user.UserType[role]);
+       
         if (req.user.UserType[role] == 'A') {
             return true;
         }
@@ -70,7 +70,7 @@ exports.createLanguageLevel = function (req, res, next) {
 };
 //languageLevels
 exports.updateLanguageLevel = function (req, res, next) {
-    console.log(req.params[0]);
+    
     var languageLevelData = req.body;
     var query = { _id: languageLevelData._id };
     LanguageLevel.update(query, languageLevelData, function (err, languageLevel) {

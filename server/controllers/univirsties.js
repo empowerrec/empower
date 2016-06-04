@@ -23,16 +23,16 @@ exports.getUnivirsties = function (req, res) {
 
 exports.getUnivirstyByName = function (req, res) {
     
-    console.log(req.query.currentLang);
+    
     if (req.query.currentLang) {
         Univirsty.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
+            
             res.send(col);
 
         });
     } else {
         Univirsty.find({ 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
+            
             res.send(col);
 
         });
@@ -63,7 +63,7 @@ exports.createUnivirsty = function (req, res, next) {
 };
 
 exports.updateUnivirsty = function (req, res, next) {
-    console.log(req.params[0]);
+   
     var univirstyData = req.body;
     var query = { _id: univirstyData._id };
     Univirsty.update(query, univirstyData, function (err, univirsty) {

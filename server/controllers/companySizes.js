@@ -19,7 +19,7 @@ exports.getCompanySizes = function (req, res) {
 exports.getCompanySizeById = function(req, res) {
     CompanySize.findOne({_id: req.params.id}).populate('ModifiedBy').exec(function(err, col) {
 
-        console.log(col);
+       
 
         res.send(col);
     });
@@ -42,7 +42,7 @@ exports.createCompanySize = function (req, res, next) {
 };
 
 exports.updateCompanySize = function (req, res, next) {
-    console.log(req.params[0]);
+    
     var companySizeData = req.body;
     var query = { _id: companySizeData._id };
     CompanySize.update(query,companySizeData, function (err, companySize) {

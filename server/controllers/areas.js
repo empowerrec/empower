@@ -29,16 +29,16 @@ exports.getAreaById = function (req, res) {
 };
 exports.getAreaByName = function (req, res) {
     
-    console.log(req.query.currentLang);
+   
     if (req.query.currentLang) {
         Area.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
+            
             res.send(col);
 
         });
     } else {
         Area.find({ 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
+            
             res.send(col);
 
         });
@@ -63,7 +63,7 @@ exports.createArea = function (req, res, next) {
 };
 
 exports.updateArea = function (req, res, next) {
-    console.log(req.params[0]);
+   
     var areaData = req.body;
     var query = { _id: areaData._id };
     Area.update(query, areaData, function (err, area) {

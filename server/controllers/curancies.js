@@ -3,13 +3,13 @@ var Curancy = require('mongoose').model('Curancy');
 exports.getCurancies = function (req, res) {
     if (req.query.currentLang) {
         Curancy.find({ 'CurancyName.Lang': { "$eq": req.query.currentLang } }, { 'CurancyName.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
+            
             res.send(col);
 
         });
     } else {
         Curancy.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
+            
             res.send(col);
 
         });

@@ -29,7 +29,7 @@ exports.createLanguage = function (req, res, next) {
 };
 
 exports.updateLanguage = function (req, res, next) {
-    console.log(req.params[0]);
+    
     var languageData = req.body;
     var query = { _id: languageData._id };
     Language.update(query, languageData, function (err, language) {

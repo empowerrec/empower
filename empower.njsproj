@@ -58,6 +58,8 @@
     <Compile Include="public\app\area\mvAreaDetailCtrl.js" />
     <Compile Include="public\app\area\mvAreaListCtrl.js" />
     <Compile Include="public\app\area\mvAreaRepo.js" />
+    <Compile Include="public\app\careerLevel\mvCareerLevel.js" />
+    <Compile Include="public\app\careerLevel\mvCareerLevelRepo.js" />
     <Compile Include="public\app\carLicenceType\mvCarLicenceType.js" />
     <Compile Include="public\app\carLicenceType\mvCarLicenceTypeRepo.js" />
     <Compile Include="public\app\category\mvCachedCategory.js" />
@@ -94,6 +96,8 @@
     <Compile Include="public\app\educationalInformation\mvEducationalInformationDetailCtrl.js" />
     <Compile Include="public\app\educationalInformation\mvEducationalInformationRepo.js" />
     <Compile Include="public\app\educationalInformation\mvEducationalInformationListCtrl.js" />
+    <Compile Include="public\app\educationalLevel\mvEducationalLevel.js" />
+    <Compile Include="public\app\educationalLevel\mvEducationalLevelRepo.js" />
     <Compile Include="public\app\educationType\mvEducationType.js" />
     <Compile Include="public\app\educationType\mvEducationTypeRepo.js" />
     <Compile Include="public\app\employer\mvCachedEmployer.js" />
@@ -159,6 +163,7 @@
     <Compile Include="public\app\languageSkill\mvLanguageSkillRepo.js" />
     <Compile Include="public\app\language\mvCachedLanguage.js" />
     <Compile Include="public\app\language\mvLanguage.js" />
+    <Compile Include="public\app\main\mvHotVacanciesCtrl.js" />
     <Compile Include="public\app\main\mvStyle.js" />
     <Compile Include="public\app\main\mvlookup.js" />
     <Compile Include="public\app\main\mvLogoCtrl.js" />
@@ -166,6 +171,7 @@
     <Compile Include="public\app\main\mvMainCtrl.js" />
     <Compile Include="public\app\main\mvMainHeadCtrl.js" />
     <Compile Include="public\app\main\mvSidebarCtrl.js" />
+    <Compile Include="public\app\main\mvNewVacanciesCtrl.js" />
     <Compile Include="public\app\maritalStatus\mvMaritalStatus.js" />
     <Compile Include="public\app\maritalStatus\mvMaritalStatusRepo.js" />
     <Compile Include="public\app\militaryStatus\mvMilitaryStatus.js" />
@@ -387,6 +393,8 @@
     <Compile Include="server\config\passport-local.js" />
     <Compile Include="server\config\passport.js" />
     <Compile Include="server\config\routes.js" />
+    <Compile Include="server\controllers\careerLevels.js" />
+    <Compile Include="server\controllers\educationalLevels.js" />
     <Compile Include="server\controllers\skillLevels.js" />
     <Compile Include="server\controllers\skillTypes.js" />
     <Compile Include="server\controllers\skills.js" />
@@ -461,6 +469,8 @@
     <Compile Include="server\models\Industry.js" />
     <Compile Include="server\models\User.js" />
     <Compile Include="server\models\Vacancy.js" />
+    <Compile Include="server\routes\careerLevels.js" />
+    <Compile Include="server\routes\educationalLevels.js" />
     <Compile Include="server\routes\languageSkills.js" />
     <Compile Include="server\routes\carLicenceTypes.js" />
     <Compile Include="server\routes\educationalInformations.js" />
@@ -549,7 +559,9 @@
     <Content Include="public\app\main\menu.html" />
     <Content Include="public\app\main\new-courses.html" />
     <Content Include="public\app\main\new-courses.jade" />
+    <Content Include="public\app\main\hot-vacancies.html" />
     <Content Include="public\app\main\sidebar-menu.html" />
+    <Content Include="public\app\main\new-vacancies.html" />
     <Content Include="public\app\skill\skill-detail.html" />
     <Content Include="public\app\skill\skill-list.html" />
     <Content Include="public\app\skill\skill.html" />
@@ -1278,6 +1290,8 @@
     <Folder Include="public\app\language\" />
     <Folder Include="public\app\languageLevel\" />
     <Folder Include="public\app\cityNotConfirmed\" />
+    <Folder Include="public\app\educationalLevel\" />
+    <Folder Include="public\app\careerLevel\" />
     <Folder Include="public\app\skillLevel\" />
     <Folder Include="public\app\skillType\" />
     <Folder Include="public\app\skill\" />

@@ -35,7 +35,7 @@ exports.createGender = function (req, res) {
 };
 
 exports.updateGender = function (req, res) {
-    console.log(req.params[0]);
+    
     var genderData = req.body;
     var query = { _id: genderData._id };
     Gender.update(query, genderData, function (err, gender) {

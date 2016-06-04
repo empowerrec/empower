@@ -30,16 +30,16 @@ exports.createSkillLevel = function (req, res, next) {
 
 exports.getSkillLevelByName = function (req, res) {
     
-    console.log(req.query.currentLang);
+   
     if (req.query.currentLang) {
         SkillLevel.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
+            
             res.send(col);
 
         });
     } else {
         SkillLevel.find({ 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
+           
             res.send(col);
 
         });
@@ -49,7 +49,7 @@ exports.getSkillLevelByName = function (req, res) {
 };
 
 exports.updateSkillLevel = function (req, res, next) {
-    console.log(req.params[0]);
+   
     var cityData = req.body;
     var query = { _id: cityData._id };
     SkillLevel.update(query, cityData, function (err, city) {

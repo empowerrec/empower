@@ -60,10 +60,9 @@ exports.getLanguageSkills = function (req, res) {
 };
 
 function isAdmin(req) {
-    console.log('UserDetai2' + req.user.UserType);
     
     for (var role in req.user.UserType) {
-        console.log('UserDetai3' + req.user.UserType[role]);
+       
         if (req.user.UserType[role] == 'A') {
             return true;
         }
@@ -92,7 +91,7 @@ exports.createLanguageSkill = function (req, res, next) {
 };
 
 exports.updateLanguageSkill = function (req, res, next) {
-    console.log(req.params[0]);
+   
     var languageSkillData = req.body;
     var query = { _id: languageSkillData._id };
     LanguageSkill.update(query, languageSkillData, function (err, languageSkill) {

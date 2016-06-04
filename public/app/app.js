@@ -1,4 +1,7 @@
-angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngCookies', 'ui.bootstrap', 'angular-loading-bar','autocomplete', 'ngAnimate']);
+angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngCookies', 'ui.bootstrap', 'angular-loading-bar', 'autocomplete', 'ngAnimate'])
+       .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.latencyThreshold = 110;
+    }]);
 
 angular.module('app').config(function ($routeProvider) {
     var routRoleChecks = {

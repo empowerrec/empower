@@ -35,7 +35,7 @@ exports.createGrade = function (req, res) {
 };
 
 exports.updateGrade = function (req, res) {
-    console.log(req.params[0]);
+    
     var gradeData = req.body;
     var query = { _id: gradeData._id };
     Grade.update(query, gradeData, function (err, grade) {

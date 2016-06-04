@@ -28,13 +28,11 @@
         <tbody>
             <tr ng-repeat="city in cities | filter:searchText | orderBy:sortOrder">
                 <td><a href="#/cities/{{city._id}}"> <div ng-repeat="name in city.Name | filter:{Lang:currentLang}">{{name.Text}}</div></a></td>
-                <td><div ng-repeat="country in city.Country.Name | filter:{Lang:currentLang}">{{country.Text}}</div></td>
+                <td><div data-drag="true" jqyoui-draggable ng-repeat="country in city.Country.Name | filter:{Lang:currentLang}">{{country.Text}}</div></td>
                 <td><input type="checkbox" ng-model="city.Confirmed" disabled="disabled"></td>
                 <td>{{ city.ModifiedBy.FirstName}} {{ city.ModifiedBy.LastName}}</td>
                 <td>{{ city.CreatedBy.FirstName}} {{ city.CreatedBy.LastName}}</td>
-
-                <td><a href="#/updateCity/{{city._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
-                <td><a class="btn btn-danger" ng-click="deleteCity(city)"> {{"Buttons.Delete" | translate}}</a></td>
+                <td><a class="btn btn-primary" ng-click="selectCity(city)"> {{"Buttons.Select" | translate}}</a></td>
 
             </tr>
         </tbody>
@@ -57,11 +55,36 @@
     <div class="col-lg-6 text-center">Not Confirmed</div>
     <div class="col-lg-6 text-center">Confirmed</div>
     <div class="col-lg-6">
-        <select ng-model="city.Country" multiple name="Country" ng-options="country._id as country.Name[0].Text for country in countries"
-                class="form-control"></select>
+        
+        <label id="selectedNotConfirmedCities"></label>
+        <input id="selectedNotConfirmedCitiesIds" type="hidden" />
+        <br />
+        <label id="message" class="text-danger"></label>
+        <!--<select ng-model="city.Country" multiple name="NotConfirmedCity" ng-options="city._id as city.Name[0].Text for city in cities"
+                    class="form-control"></select>-->
     </div>
     <div class="col-lg-6">
-        <select ng-model="city.Country" multiple name="Country" ng-options="country._id as country.Name[0].Text for country in countries"
-                class="form-control"></select>
+        <div class="form-group">
+           
+            <div class="col-md-3">
+                <input id="cityName" name="City" />
+                <input type="hidden" id="hfCityId" ng-model="area.City" />
+                <input type="hidden" id="currentLang" value="ar" />
+                <label id="selectedCity" />
+               
+            </div>
+        </div>
     </div>
+    
+    <div class="col-lg-10">
+        <div class="form-group">
+
+            <div class="col-md-3">
+                <input id="btnSave" class="btn btn-primary" type="button" value="Save" ng-click="saveCity(city)" />
+
+            </div>
+            <br />
+        </div>
+    </div>
+   
 </div>

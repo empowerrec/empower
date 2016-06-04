@@ -35,7 +35,7 @@ exports.createMaritalStatus = function (req, res) {
 };
 
 exports.updateMaritalStatus = function (req, res) {
-    console.log(req.params[0]);
+    
     var maritalStatusData = req.body;
     var query = { _id: maritalStatusData._id };
     MaritalStatus.update(query,maritalStatusData, function (err, maritalStatus) {

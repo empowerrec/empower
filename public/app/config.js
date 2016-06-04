@@ -121,7 +121,11 @@
                 "JobType" : "Job Type",
                 "Industry": "Industry",
                 "Country": "Country",
-                "City": "City"
+                "City": "City",
+                'EducationalLevel': 'Educational Level',
+                'CareerLevel': 'Career Level',
+                'HotJobFlag': 'Hot Job Flag'
+
             }, 
             'City': {
                 "City": "City",
@@ -380,7 +384,10 @@
                 "JobRole" : "مجال الوظيفة",
                 "Industry": "قطاع العمل",
                 "Country": "الدولة",
-                "City": "المدينة"
+                "City": "المدينة",
+                'EducationalLevel': 'مستوي التعليم',
+                'CareerLevel': 'مستوي الوظيفة',
+                'HotJobFlag': 'وظيفة مهمة'
             },
             "LanguageSkill": {
                 "Language": "اللغة",

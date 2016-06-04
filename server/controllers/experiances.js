@@ -35,10 +35,10 @@ exports.getExperiances = function (req, res) {
     
 };
 function isAdmin(req) {
-    console.log('UserDetai2' + req.user.UserType);
+   
     
     for (var role in req.user.UserType) {
-        console.log('UserDetai3' + req.user.UserType[role]);
+       
         if (req.user.UserType[role] == 'A') {
             return true;
         }
@@ -47,14 +47,14 @@ function isAdmin(req) {
 
 exports.getExperianceById = function (req, res) {
     if (req.params.id == 'profile') {
-        console.log(req.user);
+        
         Experiance.findOne({ User: req.user }).populate('ModifiedBy').exec(function (err, col) {
-            console.log(col);
+            
             res.send(col);
         });
     } else {
         Experiance.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
-            console.log(col);
+           
             res.send(col);
         });
     }
@@ -78,7 +78,7 @@ exports.createExperiance = function (req, res, next) {
 };
 
 exports.updateExperiance = function (req, res, next) {
-    console.log(req.params[0]);
+    
     var experianceData = req.body;
     var query = { _id: experianceData._id };
     Experiance.update(query, experianceData, function (err, experiance) {

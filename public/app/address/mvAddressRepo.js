@@ -36,6 +36,32 @@ angular.module('app').factory('mvAddressRepo', function ($http, $q, mvAddress, m
             });
             
             return dfd.promise;
+        }, updateAllAddressesCity: function (cityId) {
+            
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "/api/updateAddressCity/" + cityId,
+                data: {  },
+                success: function (data) {
+                    console.log(data);
+                   
+                },
+                error: function (error) {
+                    
+                    console.log(error);
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                beforeSend: function () {
+                    
+                },
+                complete: function () {
+                    
+                  
+                }
+            });
         }
     };
 });

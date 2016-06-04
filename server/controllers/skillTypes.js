@@ -30,16 +30,16 @@ exports.createSkillType = function (req, res, next) {
 
 exports.getSkillTypeByName = function (req, res) {
     
-    console.log(req.query.currentLang);
+    
     if (req.query.currentLang) {
         SkillType.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
+            
             res.send(col);
 
         });
     } else {
         SkillType.find({ 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            console.log(req.query.currentLang);
+            
             res.send(col);
 
         });
@@ -49,7 +49,7 @@ exports.getSkillTypeByName = function (req, res) {
 };
 
 exports.updateSkillType = function (req, res, next) {
-    console.log(req.params[0]);
+    
     var cityData = req.body;
     var query = { _id: cityData._id };
     SkillType.update(query, cityData, function (err, city) {

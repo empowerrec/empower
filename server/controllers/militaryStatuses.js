@@ -35,7 +35,7 @@ exports.createMilitaryStatus = function (req, res) {
 };
 
 exports.updateMilitaryStatus = function (req, res) {
-    console.log(req.params[0]);
+    
     var militaryStatusData = req.body;
     var query = { _id: militaryStatusData._id };
     MilitaryStatus.update(query,militaryStatusData, function (err, militaryStatus) {

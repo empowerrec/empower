@@ -31,9 +31,16 @@ var Industry = mongoose.model('Industry', industrySchema);
 function createDefaultIndustry() {
     Industry.find({}).exec(function (err, col) {
         if (col.length === 0) {
+            
             Industry.create({
-                Description: 'First Industry'
+                Description: [{ "Text": "Information Technology Services" , "Lang": "en" }, { "Text": "Œœ„«   ﬂ‰Ê·ÊÃÌ« «·„⁄·Ê„« " , "Lang": "ar" }]
             });
+            
+            Industry.create({
+                Description: [{ "Text": "Computer Software" , "Lang": "en" }, { "Text": "»—„Ã… «·ﬂÊ„»ÌÊ —" , "Lang": "ar" }]
+
+            });
+          
         }
     });
 }

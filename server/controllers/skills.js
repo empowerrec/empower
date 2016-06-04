@@ -35,10 +35,10 @@ exports.getSkills = function (req, res) {
     
 };
 function isAdmin(req) {
-    console.log('UserDetai2' + req.user.UserType);
+   
     
     for (var role in req.user.UserType) {
-        console.log('UserDetai3' + req.user.UserType[role]);
+        
         if (req.user.UserType[role] == 'A') {
             return true;
         }
@@ -47,14 +47,14 @@ function isAdmin(req) {
 
 exports.getSkillById = function (req, res) {
     if (req.params.id == 'profile') {
-        console.log(req.user);
+       
         Skill.findOne({ User: req.user }).populate('ModifiedBy').exec(function (err, col) {
-            console.log(col);
+           
             res.send(col);
         });
     } else {
         Skill.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
-            console.log(col);
+            
             res.send(col);
         });
     }
@@ -78,7 +78,7 @@ exports.createSkill = function (req, res, next) {
 };
 
 exports.updateSkill = function (req, res, next) {
-    console.log(req.params[0]);
+    
     var skillData = req.body;
     var query = { _id: skillData._id };
     Skill.update(query, skillData, function (err, skill) {

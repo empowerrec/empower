@@ -37,12 +37,12 @@ exports.getCourses = function (req, res) {
     }
 };
 function isAdmin(req) {
-    console.log('UserDetai2' + req.user.UserType);
-    
-    for (var role in req.user.UserType) {
-        console.log('UserDetai3' + req.user.UserType[role]);
-        if (req.user.UserType[role] == 'A') {
-            return true;
+    if (req.user && req.user.UserType) {
+        for (var role in req.user.UserType) {
+           
+            if (req.user.UserType[role] == 'A') {
+                return true;
+            }
         }
     }
 }
@@ -69,7 +69,7 @@ exports.createCourse = function (req, res, next) {
 };
 
 exports.updateCourse = function (req, res, next) {
-    console.log(req.params[0]);
+    
     var courseData = req.body;
     var query = { _id: courseData._id };
     Course.update(query, courseData, function (err, course) {

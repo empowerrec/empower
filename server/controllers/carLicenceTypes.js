@@ -35,7 +35,7 @@ exports.createCarLicenceType = function (req, res) {
 };
 
 exports.updateCarLicenceType = function (req, res) {
-    console.log(req.params[0]);
+    
     var carLicenceTypeData = req.body;
     var query = { _id: carLicenceTypeData._id };
     CarLicenceType.update(query, carLicenceTypeData, function (err, carLicenceType) {

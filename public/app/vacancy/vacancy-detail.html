@@ -1,17 +1,38 @@
 <div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container admin-area"><h1>{{"Vacancy.JobTitle" | translate}} :   {{vacancy.JobTitle}}</h1>
+<div class="container admin-area">
+    <h1>{{"Vacancy.JobTitle" | translate}} :   {{vacancy.JobTitle}}</h1>
 
     <div class="row">
-        <div class="col-md-6"><h3>{{"Vacancy.JobDescrption" | translate}} : {{vacancy.JobDescription}}</h3>
+        <div class="col-md-8">
+            <h3>{{"Vacancy.JobDescrption" | translate}} : {{vacancy.JobDescription}}</h3>
+            <h3>{{"Vacancy.SalaryRangeFrom" | translate}} : {{vacancy.SalaryRangeFrom}}</h3>
+            <h3>{{"Vacancy.SalaryRangeTo" | translate}} : {{vacancy.SalaryRangeTo }}</h3>
+            <h3>{{"Vacancy.SalaryCurancy" | translate}} : <span ng-repeat="name in vacancy.SalaryCurancy.CurancyName |filter:currentLang">{{name.Text}}</span></h3>
+        </div>
+    </div>
 
-            <h3>{{"Vacancy.Salary" | translate}} : {{vacancy.Salary}}</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>{{"Vacancy.AvailableFrom" | translate}} : {{vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</h3>
+            <h3>{{"Vacancy.AvailableTo" | translate}} : {{vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</h3>
+            <h3>{{"Vacancy.EducationalLevel" | translate}} : <span ng-repeat="name in vacancy.EducationalLevel.Name |filter:currentLang">{{name.Text}}</span></h3>
+            <h3>{{"Vacancy.JobType" | translate}} : <span ng-repeat="name in vacancy.JobType.Name |filter:currentLang">{{name.Text}}</span></h3>
+        </div>
+    </div>
 
-            <h3>{{"Vacancy.AvailableFrom" | translate}} :
-                {{vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>{{"Vacancy.Industry" | translate}} : <span ng-repeat="name in vacancy.Industry.Description |filter:currentLang">{{name.Text}}</span></h3>
+            <h3>{{"Vacancy.RequiredExperiance" | translate}} : {{vacancy.RequiredExperience}}</h3>
+            <h3>{{"Vacancy.Country" | translate}} : <span ng-repeat="name in vacancy.Country.Name |filter:currentLang">{{name.Text}}</span></h3>
+            <h3>{{"Vacancy.City" | translate}} : <span ng-repeat="name in vacancy.City.Name |filter:currentLang">{{name.Text}}</span></h3>
+        </div>
+    </div>
 
-            <h3>{{"Vacancy.AvailableTo" | translate}} :
-                {{vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</h3>
-
+    <div class="row">
+        <div class="col-md-8">
+            <h3>{{"Vacancy.CareerLevel" | translate}} : <span ng-repeat="name in vacancy.CareerLevel.Name |filter:currentLang">{{name.Text}}</span></h3>
+            <h3>{{"Vacancy.HotJobFlag" | translate}} : <input type="checkbox" ng-model="vacancy.HotJobFlag" disabled="disabled"></h3>
         </div>
     </div>
 </div>

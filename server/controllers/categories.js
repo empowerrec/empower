@@ -30,7 +30,7 @@ exports.createCategory = function (req, res, next) {
 };
 
 exports.updateCategory = function (req, res, next) {
-    console.log(req.params[0]);
+    
     var categoryData = req.body;
     var query = { _id: categoryData._id };
     Category.update(query, categoryData, function (err, category) {

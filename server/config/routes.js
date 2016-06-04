@@ -5,7 +5,6 @@ var vacancies = require('../controllers/vacancies');
 var industries = require('../controllers/Industries');
 var jobTypes = require('../controllers/jobTypes');
 var jobRoles = require('../controllers/jobRoles');
-
 var innerPages = require('../controllers/innerPages');
 var categories = require('../controllers/categories');
 var languages = require('../controllers/languages');
@@ -13,25 +12,20 @@ var countries = require('../controllers/countries');
 var cities = require('../controllers/cities');
 var skillTypes = require('../controllers/skillTypes');
 var skillLevels = require('../controllers/skillLevels');
-
-
 var trainingCenters = require('../controllers/trainingCenters');
 var languageLevels = require('../controllers/languageLevels');
-
 var areas = require('../controllers/areas');
-
 var curancies = require('../controllers/curancies');
 var experinces = require('../controllers/experiances');
 var skills = require('../controllers/skills');
-
 var companyTypes = require('../controllers/companyTypes');
 var companySizes = require('../controllers/companySizes');
 var jobSeekers = require('../controllers/jobSeekers');
-
 var areas = require('../controllers/areas');
 var faculties = require('../controllers/faculties');
 var univirsties = require('../controllers/univirsties');
 var specializations = require('../controllers/specializations');
+var addresses = require('../controllers/addresses');
 var passport = require('passport');
 
 module.exports = function (app) {
@@ -50,9 +44,9 @@ module.exports = function (app) {
     app.use('/api/faculties', require('../routes/faculties'));
     app.use('/api/specializations', require('../routes/specializations'));
     app.use('/api/grades', require('../routes/grades'));
+    app.use('/api/educationalLevels', require('../routes/educationalLevels'));
+    app.use('/api/careerLevels', require('../routes/careerLevels'));
     
-    //app.use('/api/languageSkills', require('../routes/languageSkills'));
-
     app.get('/api/users', authentication.requiresRole(['A', 'J']), users.getUsers);
     app.post('/api/users', users.createUser);
     app.put('/api/users', users.updateUser);
@@ -62,22 +56,23 @@ module.exports = function (app) {
     app.put('/api/employers', employers.updateEmployer);
     app.get('/api/employers/:id', employers.getEmployerById);
         
-    app.get('/api/vacancies', authentication.requiresRole(['A', 'E']), vacancies.getVacancies);
+    app.get('/api/vacancies', vacancies.getVacancies);
     app.post('/api/vacancies', vacancies.createVacancy);
     app.put('/api/vacancies', vacancies.updateVacancy);
     app.get('/api/vacancies/:id', vacancies.getVacancyById);
+    app.get('/api/vacancies/getForDetail/:id', vacancies.getVacancyByIdForDetail);
     
-    app.get('/api/industries', authentication.requiresRole(['A', 'J']), industries.getIndustries);
+    app.get('/api/industries', industries.getIndustries);
     app.post('/api/industries', industries.createIndustry);
     app.put('/api/industries', industries.updateIndustry);
     app.get('/api/industries/:id', industries.getIndustryById);
     
-    app.get('/api/jobTypes', authentication.requiresRole(['A', 'J']), jobTypes.getJobTypes);
+    app.get('/api/jobTypes', jobTypes.getJobTypes);
     app.post('/api/jobTypes', jobTypes.createJobType);
     app.put('/api/jobTypes', jobTypes.updateJobType);
     app.get('/api/jobTypes/:id', jobTypes.getJobTypeById);
     
-    app.get('/api/jobRoles', authentication.requiresRole(['A', 'J']), jobRoles.getJobRoles);
+    app.get('/api/jobRoles', jobRoles.getJobRoles);
     app.post('/api/jobRoles', jobRoles.createJobRole);
     app.put('/api/jobRoles', jobRoles.updateJobRole);
     app.get('/api/jobRoles/:id', jobRoles.getJobRoleById);
@@ -108,8 +103,7 @@ module.exports = function (app) {
     app.post('/api/languageLevels', languageLevels.createLanguageLevel);
     app.put('/api/languageLevels', languageLevels.updateLanguageLevel);
     app.get('/api/languageLevels/:id', languageLevels.getLanguageLevelById);
-    
-    
+   
     app.get('/api/cities', cities.getCities);
     app.post('/api/cities', cities.createCity);
     app.put('/api/cities', cities.updateCity);
@@ -139,6 +133,9 @@ module.exports = function (app) {
     app.get('/api/facultiesByName/:search', faculties.getFacultyByName);
     app.get('/api/universtiesByName/:search', univirsties.getUnivirstyByName);
     app.get('/api/specializationsByName/:search', specializations.getSpecializationByName);
+    app.get('/api/updateAddressCity/:id', addresses.updateAddressCity);
+    
+    
     
     
     app.get('/api/innerPages', authentication.requiresRole(['A', 'J']), innerPages.getInnerPages);

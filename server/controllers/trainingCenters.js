@@ -35,7 +35,7 @@ exports.createTrainingCenter = function (req, res, next) {
 };
 
 exports.updateTrainingCenter = function (req, res, next) {
-    console.log(req.params[0]);
+   
     var trainingCenterData = req.body;
     var query = { _id: trainingCenterData._id };
     TrainingCenter.update(query, trainingCenterData, function (err, trainingCenter) {

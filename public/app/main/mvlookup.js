@@ -1,12 +1,11 @@
 angular.module('app').factory('mvLookup'
     , function (mvIndustry, mvJobType, mvGender, mvMaritalStatus, mvMilitaryStatus, mvCarLicenceType,
         mvCountry, mvCity, mvLanguage,  mvArea, mvCurancy, mvCompanyType, mvEducationType, mvUnivirsty, mvFaculty, 
-        mvSpecialization, mvGrade, mvCompanySize,mvTrainingCenter, $rootScope , mvSkillType, mvSkillLevel, mvLanguageLevel) {
+        mvSpecialization, mvGrade, mvCompanySize,mvTrainingCenter, mvEducationalLevel, mvCareerLevel, $rootScope , mvSkillType, mvSkillLevel, mvLanguageLevel) {
     
     return {
         getAllLookUps: function () {
             $rootScope.jobTypes = mvJobType.query({ currentLang: $rootScope.currentLang });
-            //$rootScope.industries = mvIndustry.query({ currentLang: $rootScope.currentLang });
             $rootScope.countries = mvCountry.query({ currentLang: $rootScope.currentLang });
             $rootScope.cities = mvCity.query({ currentLang: $rootScope.currentLang });
             $rootScope.areas = mvArea.query({ currentLang: $rootScope.currentLang });
@@ -27,6 +26,9 @@ angular.module('app').factory('mvLookup'
             $rootScope.languageLevels = mvLanguageLevel.query({ currentLang: $rootScope.currentLang });
             $rootScope.skillTypes = mvSkillType.query({ currentLang: $rootScope.currentLang });
             $rootScope.skillLevels = mvSkillLevel.query({ currentLang: $rootScope.currentLang });
+            $rootScope.educationalLevels = mvEducationalLevel.query({ currentLang: $rootScope.currentLang });
+            $rootScope.careerLevels = mvCareerLevel.query({ currentLang: $rootScope.currentLang });
+            $rootScope.industries = mvIndustry.query({ currentLang: $rootScope.currentLang });
         }
     };
 });

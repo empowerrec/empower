@@ -32,8 +32,6 @@ exports.getJobRoles = function (req, res) {
 exports.getJobRoleById = function(req, res) {
     JobRole.findOne({_id: req.params.id}).populate('ModifiedBy').exec(function(err, col) {
 
-        console.log(col);
-
         res.send(col);
     });
 };
@@ -55,7 +53,7 @@ exports.createJobRole = function (req, res, next) {
 };
 
 exports.updateJobRole = function (req, res, next) {
-    console.log(req.params[0]);
+   
     var jobRoleData = req.body;
     var query = { _id: jobRoleData._id };
     JobRole.update(query,jobRoleData, function (err, jobRole) {

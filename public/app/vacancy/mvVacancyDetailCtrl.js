@@ -1,3 +1,3 @@
 angular.module('app').controller('mvVacancyDetailCtrl', function ($scope, mvVacancy, $routeParams) {
-    $scope.vacancy = mvVacancy.get({_id: $routeParams.id});
+    $scope.vacancy = mvVacancy.getForDetail({_id: $routeParams.id});
 });

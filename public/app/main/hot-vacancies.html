@@ -1,7 +1,7 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container top-padding-med admin-area">
+<!--<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container top-padding-med admin-area">-->
 
-    <div class="pull-left">
+    <!--<div class="pull-left">
         <a href="#/addvacancy" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
     </div>
     <div class="pull-right">
@@ -15,13 +15,12 @@
             </div>
 
         </form>
-    </div>
-    <table class="table table-hover table-striped table-condensed">
+    </div>-->
+    <!--<table class="table table-hover table-striped table-condensed">
         <thead>
             <tr>
                 <th>{{"Vacancy.JobTitle" | translate}}</th>
-                <th>{{"Vacancy.SalaryRangeFrom" | translate}}</th>
-                <th>{{"Vacancy.SalaryRangeTo" | translate}}</th>
+                <th>{{"Vacancy.Salary" | translate}}</th>
                 <th>{{"Vacancy.AvailableFrom" | translate}}</th>
                 <th>{{"Vacancy.AvailableTo" | translate}}</th>
                 <th>{{"User.CreatedBy" | translate}}</th>
@@ -34,20 +33,19 @@
                 <td><a href="#/vacancies/{{vacancy._id}}">
                         {{vacancy.JobTitle}}
                     </a></td>
-                <td>{{ vacancy.SalaryRangeFrom}}</td>
-                <td>{{ vacancy.SalaryRangeTo}}</td>
+                <td>{{ vacancy.Salary}}</td>
                 <td>{{ vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</td>
                 <td>{{ vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</td>
-                <td>{{ vacancy.CreatedBy.FirstName}} {{ vacancy.CreatedBy.LastName}}</td>
                 <td>{{ vacancy.ModifiedBy.FirstName}} {{ vacancy.ModifiedBy.LastName}}</td>
+                <td>{{ vacancy.CreatedBy.FirstName}} {{ vacancy.CreatedBy.LastName}}</td>
 
                 <td><a href="#/updatevacancy/{{vacancy._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
                 <td><a class="btn btn-danger" ng-click="deleteVacancy(vacancy)"> {{"Buttons.Delete" | translate}}</a></td>
 
             </tr>
         </tbody>
-    </table>
-    <uib-pagination total-items="allDataCount"
+    </table>-->
+<!--<uib-pagination total-items="allDataCount"
                     items-per-page="paging.pageSize"
                     ng-model="paging.currentPage"
                     max-size="paging.maxPagesToShow"
@@ -58,5 +56,25 @@
                     next-text="{{'Buttons.Next' | translate}}"
                     first-text="{{'Buttons.First' | translate}}"
                     last-text="{{'Buttons.Last' | translate}}">
-    </uib-pagination>
-</div>
+    </uib-pagination>-->
+<!--<div class="panel panel-primary" ng-controller="mvHotVacanciesCtrl">
+    <div class="panel-heading text-center">Hot Vacancies</div>-->
+    <!--Under Construcion....
+     <div ng-repeat="vacancy in vacancies | filter:{HotJobFlag:true} | orderBy:'CreatedAt':true | limitTo:10" class=" row">
+        <div class="col-md-12">
+            <a href="#/vacancies/{{vacancy._id}}">
+                {{vacancy.Title}}
+            </a>
+        </div>
+    </div>
+  </div>  -->
+    
+    <div class="panel panel-primary" ng-controller="mvHotVacanciesCtrl">
+        <div class="panel-heading text-center">Hot Vacancies</div>
+        <div class="panel-body">
+            <div ng-repeat="vacancy in vacanciess | filter:{HotJobFlag:true} | orderBy:'CreatedAt':false | limitTo:10" class=" row">
+                <div class="col-md-3">{{vacancy.CreatedAt | date:'MMM d'}}</div>
+                <div class="col-md-9"><a href="#/vacancies/{{vacancy._id}}">{{vacancy.JobDescription}}</a></div>
+            </div>
+        </div>
+    </div>

@@ -35,7 +35,7 @@ exports.createEducationType = function (req, res) {
 };
 
 exports.updateEducationType = function (req, res) {
-    console.log(req.params[0]);
+    
     var educationTypeData = req.body;
     var query = { _id: educationTypeData._id };
     EducationType.update(query, educationTypeData, function (err, educationType) {

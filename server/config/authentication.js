@@ -45,10 +45,7 @@ exports.requiresRole = function (role) {
 
 function checkRole(req,roles) {
     for (var role in roles) {
-        console.log('Roles' + roles);
-        console.log('Current Role' + role);
-        console.log('UserType' + req.user.UserType);
-        //console.log('UserTypeIndex' + req.user.UserType.indexOf(role));
+       
         if (req.user.UserType.indexOf(roles[role]) != -1) {
             return false;
         }

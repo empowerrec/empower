@@ -1,7 +1,11 @@
 angular.module('app').factory('mvVacancy', function ($resource, mvIdentity) {
-    var VacancyResource = $resource('/api/vacancies/:_id', {_id: '@id'},
-        {update: {method: 'PUT', isArray: false}
+    var vacancyResource = $resource('/api/vacancies/:_id', { _id: '@id' }, {
+        
+        update: { method: 'PUT', isArray: false },
+        getForDetail: {
+            url: 'api/vacancies/getForDetail/:_id', method: 'GET', params: { _id: '@id' }
+        }
+        
     });
-    //console.log('$resourceVac', VacancyResource);
-    return VacancyResource;
+    return vacancyResource;
 });
