@@ -5,7 +5,7 @@ angular.module('app').factory('mvVacancy', function ($resource, mvIdentity) {
         getForDetail: {
             url: 'api/vacancies/getForDetail/:_id', method: 'GET', params: { _id: '@id' }
         }
-        
+  
     });
     return vacancyResource;
 });

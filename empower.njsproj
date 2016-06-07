@@ -164,6 +164,7 @@
     <Compile Include="public\app\language\mvCachedLanguage.js" />
     <Compile Include="public\app\language\mvLanguage.js" />
     <Compile Include="public\app\main\mvHotVacanciesCtrl.js" />
+    <Compile Include="public\app\main\mvJobsByIndustriesCtrl.js" />
     <Compile Include="public\app\main\mvStyle.js" />
     <Compile Include="public\app\main\mvlookup.js" />
     <Compile Include="public\app\main\mvLogoCtrl.js" />
@@ -237,6 +238,7 @@
     <Compile Include="public\vendor\angular-translate-storage-local\angular-translate-storage-local.min.js" />
     <Compile Include="public\vendor\angular-translate\angular-translate.js" />
     <Compile Include="public\vendor\angular-translate\angular-translate.min.js" />
+    <Compile Include="public\vendor\angular\angular-ui.min.js" />
     <Compile Include="public\vendor\angular\angular.js" />
     <Compile Include="public\vendor\angular\angular.min.js" />
     <Compile Include="public\vendor\angular\index.js" />
@@ -560,6 +562,7 @@
     <Content Include="public\app\main\new-courses.html" />
     <Content Include="public\app\main\new-courses.jade" />
     <Content Include="public\app\main\hot-vacancies.html" />
+    <Content Include="public\app\main\jobs-by-industries.html" />
     <Content Include="public\app\main\sidebar-menu.html" />
     <Content Include="public\app\main\new-vacancies.html" />
     <Content Include="public\app\skill\skill-detail.html" />

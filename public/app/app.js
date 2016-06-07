@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngCookies', 'ui.bootstrap', 'angular-loading-bar', 'autocomplete', 'ngAnimate'])
+angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngCookies', 'ui.bootstrap', 'angular-loading-bar', 'autocomplete', 'ngAnimate', 'angular.filter'])
        .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.latencyThreshold = 110;
     }]);
@@ -83,6 +83,11 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/vacancies', {
         templateUrl: '/partials/vacancy/vacancy-list.html',
         controller: 'mvVacancyListCtrl'
+        
+    }).when('/vacanciesByIndustries/:industryId', {
+        templateUrl: '/partials/main/jobs-by-industries.html',
+        controller: 'mvJobsByIndustriesCtrl'
+        
     }).when('/industries/:id', {
         templateUrl: '/partials/industry/industry-detail',
         controller: 'mvIndustryDetailCtrl'

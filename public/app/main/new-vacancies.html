@@ -60,7 +60,7 @@
 <div class="panel panel-primary" ng-controller="mvNewVacanciesCtrl">
     <div class="panel-heading text-center">New Vacancies</div>
     <div class="panel-body">
-        <div ng-repeat="vacancy in vacancies | orderBy:'CreatedAt':true | limitTo:10" class="row">
+        <div ng-repeat="vacancy in vacancies | orderBy:'CreatedAt':false | limitTo:10" class="row">
             <div class="col-md-3">{{vacancy.CreatedAt | date:'MMM d'}}</div>
             <div class="col-md-9"><a href="#/vacancies/{{vacancy._id}}">{{vacancy.JobDescription}}</a></div>
         </div>

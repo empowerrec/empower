@@ -61,6 +61,7 @@ module.exports = function (app) {
     app.put('/api/vacancies', vacancies.updateVacancy);
     app.get('/api/vacancies/:id', vacancies.getVacancyById);
     app.get('/api/vacancies/getForDetail/:id', vacancies.getVacancyByIdForDetail);
+    //app.get('/api/vacancies/getByIndustry/:id', vacancies.getVacanciesByIndustry);
     
     app.get('/api/industries', industries.getIndustries);
     app.post('/api/industries', industries.createIndustry);

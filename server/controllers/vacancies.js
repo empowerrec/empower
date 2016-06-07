@@ -15,7 +15,7 @@ exports.getVacancies = function (req, res) {
     //});
     
     if (req.query.jobSeeker) {
-        Vacancy.find(JSON.parse(req.query)).populate('ModifiedBy').populate('CreatedBy')
+        Vacancy.find(JSON.parse(req.query)).populate('ModifiedBy').populate('CreatedBy').populate('Industry')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
@@ -24,7 +24,7 @@ exports.getVacancies = function (req, res) {
             });
         });
     } else if (isAdmin(req)) {
-        Vacancy.find({ Deleted : false }).populate('ModifiedBy').populate('CreatedBy')
+        Vacancy.find({ Deleted : false }).populate('Industry').populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
@@ -32,8 +32,15 @@ exports.getVacancies = function (req, res) {
                 res.send([{ collection: col, allDataCount: count }]);
             });
         });
+        
+        //Vacancy.distinct("Industry", { Deleted : false }).populate('ModifiedBy').populate('CreatedBy').populate('Industry')
+        //    .exec(function (err, col) {
+        //    Vacancy.count("Industry", { Deleted : false }).exec(function (errr, count) {
+        //        res.send([{ collection: col, allDataCount: count }]);
+        //    });
+        //});
     } else {
-        Vacancy.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').limit(pageSize)
+        Vacancy.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').populate('Industry').limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
             Vacancy.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
@@ -72,6 +79,53 @@ exports.getVacancyByIdForDetail = function (req, res) {
         });
     }
 };
+
+//exports.getVacanciesByIndustry = function (req, res) {    
+//    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+//        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
+    
+//    //Vacancy.find(JSON.parse(req.query.query))
+//    //       .populate('ModifiedBy').populate('CreatedBy')
+//    //        .limit(pageSize).skip(pageSize * (currentPage - 1))
+//    //        .exec(function (err, col) {
+//    //    Vacancy.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+//    //        res.send([{ collection: col, allDataCount: count }]);
+//    //    });
+//    //});
+    
+//    if (req.query.jobSeeker) {
+//        Vacancy.find(JSON.parse(req.query)).populate('ModifiedBy').populate('CreatedBy')
+//            .limit(pageSize)
+//            .skip(pageSize * (currentPage - 1))
+//            .exec(function (err, col) {
+//            Vacancy.count(JSON.parse(req.query)).exec(function (errr, count) {
+//                res.send([{ collection: col, allDataCount: count }]);
+//            });
+//        });
+//    } else if (isAdmin(req)) {
+//        //Vacancy.find({ Deleted : false }).populate('ModifiedBy').populate('CreatedBy')
+//        //    .limit(pageSize)
+//        //    .skip(pageSize * (currentPage - 1))
+//        //    .exec(function (err, col) {
+//        //    Vacancy.count({ Deleted : false }).exec(function (errr, count) {
+//        //        res.send([{ collection: col, allDataCount: count }]);
+//        //    });
+//        //});
+//        Vacancy.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+//            //console.log(err);
+//            res.send(col);
+//        });
+//    } else {
+//        Vacancy.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').limit(pageSize)
+//            .skip(pageSize * (currentPage - 1))
+//            .exec(function (err, col) {
+//            Vacancy.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
+//                res.send([{ collection: col, allDataCount: count }]);
+//            });
+//        });
+//    }
+    
+//};
 
 function isAdmin(req) {
     
