@@ -5,6 +5,7 @@ angular.module('app').factory('mvApplicantRepo', function ($http, $q, mvApplican
 
             var newApplicant = new mvApplicant(newApplicantData);
             newApplicant.CreatedBy = mvIdentity.currentUser;
+            newApplicant.Deleted = false;
             newApplicant.JobSeeker = mvIdentity.currentJobSeeker._id;
             var dfd = $q.defer();
             console.log("Saving Applicant");
