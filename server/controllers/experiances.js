@@ -5,11 +5,11 @@ exports.getExperiances = function (req, res) {
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     
     if (req.query.jobSeeker) {
-        Experiance.find(JSON.parse(req.query)).populate('ModifiedBy').populate('CreatedBy')
+        Experiance.find(JSON.parse(req.query.query)).populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            Experiance.count(JSON.parse(req.query)).exec(function (errr, count) {
+            Experiance.count(JSON.parse(req.query.query)).exec(function (errr, count) {
                 res.send([{ collection: col, allDataCount: count }]);
             });
         });

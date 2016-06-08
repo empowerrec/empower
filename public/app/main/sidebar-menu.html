@@ -59,7 +59,12 @@
             <li ng-show="identity.currentUser.isAdmin()">
                 <a href="#/experiances">{{"Menu.Experiances" | translate}}</a>
             </li>
-
+            
+            <li ng-show="identity.currentUser.isAdmin()">
+                <a href="#/applicants">{{"Menu.Applicants" | translate}}</a>
+            </li>
+            
+           
             <li ng-show="identity.currentUser.isEmployer()">
                 <a href="#/updateemployer/profile">{{"Menu.CompanyProfile" | translate}}</a>
             </li>

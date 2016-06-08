@@ -4,6 +4,7 @@ angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy,mv
         createVacancy: function (newVacancyData) {
             var newVacancy = new mvVacancy(newVacancyData);
             newVacancy.CreatedBy = mvIdentity.currentUser;
+            newVacancy.Employer = mvIdentity.currentEmployer;
             var dfd = $q.defer();
             console.log("Saving Vacancy");
             newVacancy.$save().then(function () {

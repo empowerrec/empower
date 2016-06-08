@@ -115,9 +115,13 @@ exports.updateAddress = function (req, res) {
 
 exports.updateAddressCity = function (req, res) {
     console.log("Update City");
-    Address.find({ City: req.params.id }).exec(function(err, col) {
+    var ids = req.params.id.split("_");
+    var newCityId = ids[0];
+    var oldCityId = ids[1];
+    Address.find({ City: oldCityId }).exec(function(err, col) {
         col.forEach(function (entry) {
-            entry.City = req.params.id;
+            var query = { _id: entry._id };
+            entry.City = newCityId;
             Address.update(query, entry, function(err, address) {
                 if (err) {
                     if (err.toString().indexOf('E11000') > -1) {
@@ -126,7 +130,7 @@ exports.updateAddressCity = function (req, res) {
                     res.status(400);
                     return res.send({ reason: err.toString() });
                 }
-                res.send(address);
+                
             });
 
         });

@@ -52,6 +52,12 @@
     <Compile Include="public\app\address\mvAddressListCtrl.js" />
     <Compile Include="public\app\admin\users\mvUserListCtrl.js" />
     <Compile Include="public\app\app.js" />
+    <Compile Include="public\app\applicant\mvCachedApplicant.js" />
+    <Compile Include="public\app\applicant\mvApplicant.js" />
+    <Compile Include="public\app\applicant\mvApplicantCtrl.js" />
+    <Compile Include="public\app\applicant\mvApplicantDetailCtrl.js" />
+    <Compile Include="public\app\applicant\mvApplicantListCtrl.js" />
+    <Compile Include="public\app\applicant\mvApplicantRepo.js" />
     <Compile Include="public\app\area\mvCachedArea.js" />
     <Compile Include="public\app\area\mvArea.js" />
     <Compile Include="public\app\area\mvAreaCtrl.js" />
@@ -210,6 +216,7 @@
     <Compile Include="public\app\vacancy\mvVacancy.js" />
     <Compile Include="public\app\vacancy\mvVacancyCtrl.js" />
     <Compile Include="public\app\vacancy\mvVacancyDetailCtrl.js" />
+    <Compile Include="public\app\vacancy\mvVacancyByIndustryListCtrl.js" />
     <Compile Include="public\app\vacancy\mvVacancyListCtrl.js" />
     <Compile Include="public\app\vacancy\mvVacancyRepo.js" />
     <Compile Include="public\vendor\angular-animate\angular-animate.js" />
@@ -395,6 +402,7 @@
     <Compile Include="server\config\passport-local.js" />
     <Compile Include="server\config\passport.js" />
     <Compile Include="server\config\routes.js" />
+    <Compile Include="server\controllers\applicants.js" />
     <Compile Include="server\controllers\careerLevels.js" />
     <Compile Include="server\controllers\educationalLevels.js" />
     <Compile Include="server\controllers\skillLevels.js" />
@@ -432,6 +440,7 @@
     <Compile Include="server\controllers\jobSeekers.js" />
     <Compile Include="server\controllers\users.js" />
     <Compile Include="server\controllers\vacancies.js" />
+    <Compile Include="server\models\Applicant.js" />
     <Compile Include="server\models\LanguageSkill.js" />
     <Compile Include="server\models\LanguageLevel.js" />
     <Compile Include="server\models\SkillType.js" />
@@ -507,6 +516,9 @@
     <Content Include="public\app\address\address-detail.html" />
     <Content Include="public\app\address\address-list.html" />
     <Content Include="public\app\admin\users\user-list.html" />
+    <Content Include="public\app\applicant\applicant-detail.html" />
+    <Content Include="public\app\applicant\applicant-list.html" />
+    <Content Include="public\app\applicant\applicant.html" />
     <Content Include="public\app\area\area-detail.html" />
     <Content Include="public\app\area\area-list.html" />
     <Content Include="public\app\area\area.html" />
@@ -575,6 +587,7 @@
     <Content Include="public\app\univirsty\univirsty-list.html" />
     <Content Include="public\app\univirsty\univirsty.html" />
     <Content Include="public\app\vacancy\vacancy-detail.html" />
+    <Content Include="public\app\vacancy\vacancyByIndustryList.html" />
     <Content Include="public\app\vacancy\vacancy-list.html" />
     <Content Include="public\app\vacancy\vacancy.html" />
     <Content Include="public\css\facebook_small.png" />
@@ -1263,6 +1276,7 @@
     <Folder Include="public\app\account\" />
     <Folder Include="public\app\admin\" />
     <Folder Include="public\app\admin\users\" />
+    <Folder Include="public\app\applicant\" />
     <Folder Include="public\app\category\" />
     <Folder Include="public\app\common\" />
     <Folder Include="public\app\companySize\" />

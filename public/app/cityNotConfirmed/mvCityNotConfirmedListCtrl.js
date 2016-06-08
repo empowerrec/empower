@@ -75,8 +75,10 @@ angular.module('app').controller('mvCityNotConfirmedListCtrl', function ($scope,
                             ed.DeletedBy = mvIdentity.currentUser;
                             mvCityRepo.updateCurrentCity(ed).then(function () {
                                 mvNotifier.notify('City has been deleted!');
+                                mvAddressRepo.updateAllAddressesCity(id + "_" + entry);
                                
                             }, function (reason) {
+                                
                                 mvNotifier.error(reason);
                             });
                         }));
@@ -84,7 +86,11 @@ angular.module('app').controller('mvCityNotConfirmedListCtrl', function ($scope,
 
                     });
 
-                    mvAddressRepo.updateAllAddressesCity(id);
+                    $("#selectedNotConfirmedCitiesIds").val("");
+                    $("#selectedNotConfirmedCities").text("");
+                    
+                    $("#message").text("Cities Updated Succeffuly!");
+                    $scope.getData();
                 }
             } else {
                 $("#message").text("No Citities Selected !");

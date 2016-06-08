@@ -1,4 +1,4 @@
-angular.module('app').controller('mvExperiancerCtrl', function ($scope, $rootScope, mvNotifier, mvExperianceRepo, mvExperiance, $routeParams
+angular.module('app').controller('mvExperianceCtrl', function ($scope, $rootScope, mvNotifier, mvExperianceRepo, mvExperiance, $routeParams
         , $translate, mvIdentity, $location ) {
     var id = $routeParams.id;
     $scope.addEnabled = false;

@@ -26,6 +26,7 @@ var faculties = require('../controllers/faculties');
 var univirsties = require('../controllers/univirsties');
 var specializations = require('../controllers/specializations');
 var addresses = require('../controllers/addresses');
+var applicants = require('../controllers/applicants');
 var passport = require('passport');
 
 module.exports = function (app) {
@@ -55,13 +56,12 @@ module.exports = function (app) {
     app.post('/api/employers', employers.createEmployer);
     app.put('/api/employers', employers.updateEmployer);
     app.get('/api/employers/:id', employers.getEmployerById);
-        
+         
     app.get('/api/vacancies', vacancies.getVacancies);
     app.post('/api/vacancies', vacancies.createVacancy);
     app.put('/api/vacancies', vacancies.updateVacancy);
     app.get('/api/vacancies/:id', vacancies.getVacancyById);
     app.get('/api/vacancies/getForDetail/:id', vacancies.getVacancyByIdForDetail);
-    //app.get('/api/vacancies/getByIndustry/:id', vacancies.getVacanciesByIndustry);
     
     app.get('/api/industries', industries.getIndustries);
     app.post('/api/industries', industries.createIndustry);
@@ -165,6 +165,11 @@ module.exports = function (app) {
     app.put('/api/companyTypes', companyTypes.updateCompanyType);
     app.get('/api/companyTypes/:id', companyTypes.getCompanyTypeById);
     
+    
+    app.get('/api/applicants', authentication.requiresRole(['A', 'E']), applicants.getApplicants);
+    app.post('/api/applicants', applicants.createApplicant);
+    app.put('/api/applicants', applicants.updateApplicant);
+    app.get('/api/applicants/:id', applicants.getApplicantById);
    
     app.get('/api/getJobSeekerWhereMobileNumberNotNull', jobSeekers.getJobSeekerByMobileNumber);
 

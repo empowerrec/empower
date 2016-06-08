@@ -38,7 +38,8 @@ exports.getJobSeekerById = function (req, res) {
 
 
 exports.getJobSeekerByUser = function (req, res) {
-    JobSeeker.findOne({ User: req.user }).populate('ModifiedBy').exec(function (err, col) {
+    console.log(req.user._id);
+    JobSeeker.findOne({ User: req.user._id }).populate('ModifiedBy').exec(function (err, col) {
        
         res.send(col);
     });

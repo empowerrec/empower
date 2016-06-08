@@ -85,8 +85,8 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvVacancyListCtrl'
         
     }).when('/vacanciesByIndustries/:industryId', {
-        templateUrl: '/partials/main/jobs-by-industries.html',
-        controller: 'mvJobsByIndustriesCtrl'
+        templateUrl: '/partials/vacancy/vacancyByIndustryList.html',
+        controller: 'mvVacancyByIndustryListCtrl'
         
     }).when('/industries/:id', {
         templateUrl: '/partials/industry/industry-detail',
@@ -273,6 +273,18 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/areas', {
         templateUrl: '/partials/area/area-list.html',
         controller: 'mvAreaListCtrl'
+    }).when('/applicants/:id', {
+        templateUrl: '/partials/applicant/applicant-detail',
+        controller: 'mvApplicantDetailCtrl'
+    }).when('/updateApplicant/:id', {
+        templateUrl: '/partials/applicant/applicant',
+        controller: 'mvApplicantCtrl'
+    }).when('/addApplicant', {
+        templateUrl: '/partials/applicant/applicant',
+        controller: 'mvApplicantCtrl'
+    }).when('/applicants', {
+        templateUrl: '/partials/applicant/applicant-list.html',
+        controller: 'mvApplicantListCtrl'
     });
 });
 

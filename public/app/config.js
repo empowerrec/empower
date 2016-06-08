@@ -110,6 +110,7 @@
                 'Job Preferences': 'Job Preferences'
             },
             "Vacancy": {
+                "Vacancy":"Vacancy",
                 "JobTitle": "Job Title",
                 "JobDescrption": "Job Descrption",
                 "AvailableFrom": "Available From",
@@ -220,6 +221,8 @@
                 "Cancel": "Cancel",
                 "Delete": "Delete",
                 "Add": "Add New",
+                "Select": "Select",
+                "Apply": "Apply",
                 "NewAddress": "New Address",
                 "Change Password": "Change Password",
                 "Reset Password": "Reset Password",
@@ -255,7 +258,8 @@
                 'Areas': 'Areas',
                 'Specializations': 'Specializations',
                 'Faculties': 'Faculties',
-                'Univirsties':'Univirsties'
+                'Univirsties': 'Univirsties',
+                'Applicants': 'Applicants',
             },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
@@ -372,6 +376,7 @@
                 "Confirmed": "تاكيد"
             },
             "Vacancy": {
+                "Vacancy": "فرصة عمل",
                 "JobTitle": "عنوان الوظيفة",
                 "JobDescrption": "وصف الوظيفة",
                 "AvailableFrom": "متاحة من",
@@ -470,6 +475,8 @@
                 "Cancel": "الغاء",
                 "Delete": "حذف",
                 "Add": "اضافة جديد",
+                "Select": "اختر",
+                "Apply": "التقدم للوظيفة",
                 "NewAddress": "عنوان جديد",
                 "Change Password": "تغيير كلمة السر",
                 "Reset Password": "ارسال ميل",
@@ -505,7 +512,8 @@
                 'Specializations': 'التخصصات',
                 'Faculties': 'الكليات',
                 'Univirsties': 'الجامعات',
-                'CitiesNotConfirmed': ' المدن التي لم يتم تاكيدها',                
+                'CitiesNotConfirmed': ' المدن التي لم يتم تاكيدها', 
+                'Applicants': 'متقدم لوظيفه', 
             },
             "Footer": {
                 "Copy": "\u00A9" + " شركة ايم باور 2016"

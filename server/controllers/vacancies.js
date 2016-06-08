@@ -4,7 +4,7 @@ var Vacancy = require('mongoose').model('Vacancy');
 exports.getVacancies = function (req, res) {
     var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
-    
+    console.log(req.query.jobSeeker);
     //Vacancy.find(JSON.parse(req.query.query))
     //       .populate('ModifiedBy').populate('CreatedBy')
     //        .limit(pageSize).skip(pageSize * (currentPage - 1))
@@ -13,13 +13,23 @@ exports.getVacancies = function (req, res) {
     //        res.send([{ collection: col, allDataCount: count }]);
     //    });
     //});
-    
-    if (req.query.jobSeeker) {
-        Vacancy.find(JSON.parse(req.query)).populate('ModifiedBy').populate('CreatedBy').populate('Industry')
+    if (req.query.Industry) {
+        //JSON.parse(req.query) not work
+        
+        Vacancy.find({ $and: [{ Industry: req.query.Industry }, { Deleted: false }] }).populate('ModifiedBy').populate('CreatedBy').populate('Industry')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            Vacancy.count(JSON.parse(req.query)).exec(function (errr, count) {
+            Vacancy.count({ $and: [{ Industry: req.query.Industry }, { Deleted: false }] }).exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
+            });
+        });
+    } else if (req.query.jobSeeker) {
+        Vacancy.find(JSON.parse(req.query.query)).populate('ModifiedBy').populate('CreatedBy').populate('Industry')
+            .limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            Vacancy.count(JSON.parse(req.query.query)).exec(function (errr, count) {
                 res.send([{ collection: col, allDataCount: count }]);
             });
         });
@@ -65,14 +75,14 @@ exports.getVacancyById = function (req, res) {
 
 exports.getVacancyByIdForDetail = function (req, res) {    
     if (req.params.id == 'profile') {
-        Vacancy.findOne({ User: req.user }).populate('EducationalLevel').populate('JobType').populate('Industry')
+        Vacancy.findOne({ User: req.user }).populate('EducationalLevel').populate('JobType')
             .populate('Industry').populate('Country').populate('City').populate('CareerLevel').populate('SalaryCurancy')
             .populate('ModifiedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
         Vacancy.findOne({ _id: req.params.id })
-            .populate('EducationalLevel').populate('JobType').populate('Industry')
+            .populate('EducationalLevel').populate('JobType')
             .populate('Industry').populate('Country').populate('City').populate('CareerLevel').populate('SalaryCurancy')
             .populate('ModifiedBy').exec(function (err, col) {
             res.send(col);

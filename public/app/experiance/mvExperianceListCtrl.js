@@ -15,10 +15,10 @@ angular.module('app').controller('mvExperianceListCtrl', function ($scope, mvExp
     
     $scope.getData = function () {
         if (id) {
-            mvIdentity.currentJobSeeker = mvJobSeeker.get({ _id: id }, (function () {
+            mvIdentity.currentJobSeeker = mvJobSeeker.get({ _id: id }, (function (js) {
                 mvExperiance.query({
-                    query: queryBulider.qb("JobSeeker=='" + mvIdentity.currentJobSeeker._id + "'&&!Deleted"),
-                    jobSeeker: mvIdentity.currentJobSeeker._id,
+                    query: queryBulider.qb("JobSeeker=='" + js._id + "'&&!Deleted"),
+                    jobSeeker: js._id,
                     currentPage: $scope.paging.currentPage,
                     pageSize: $scope.paging.pageSize
                 }, (function (res) {

@@ -41,6 +41,8 @@ var skillModel = require('../models/Skill');
 var langaugeLevelsModel = require('../models/LanguageLevel');
 var educationalLevelModel = require('../models/EducationalLevel');
 
+var applicant = require('../models/Applicant');
+
 module.exports = function (config) {
     mongoose.connect(config.db);
     var db = mongoose.connection;

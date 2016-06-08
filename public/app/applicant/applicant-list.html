@@ -1,0 +1,55 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container top-padding-med admin-area">
+    <div class="pull-left">
+        <a href="#/addapplicant" ng-show="{{currentUser}}"  class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+    </div>
+    <div class="pull-right">
+        <form class="form-inline">
+            <div class="form-group"><input ng-model="searchText" placeholder="Filter" class="form-control"/></div>
+            <div class="form-group margin-left-med">
+                <select ng-model="sortOrder" ng-options="item.value as item.text for item in sortOptions"
+                        class="form-control">
+
+                </select>
+            </div>
+
+        </form>
+    </div>
+    <table class="table table-hover table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>{{"JobSeeker.JobSeeker" | translate}}</th>
+                <th>{{"Vacancy.Vacancy" | translate}}</th>
+                <th>{{"Employer.Employer" | translate}}</th>
+                <th>{{"User.CreatedBy" | translate}}</th>
+                <th>{{"User.ModifiedBy" | translate}}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="applicant in applicants | filter:searchText | orderBy:sortOrder">
+                <td><a href="#/applicants/{{applicant._id}}"> {{applicant.JobSeeker.FirstName}} {{applicant.JobSeeker.LastName}}</a></td>
+
+                <td>{{ applicant.Vacancy.JobTitle}}</td>
+                <td>{{ applicant.Vacancy.Employer.EmployerName}}</td>
+                <td>{{ applicant.CreatedBy.FirstName}} {{ applicant.CreatedBy.LastName}}</td>
+                <td>{{ applicant.ModifiedBy.FirstName}} {{ applicant.ModifiedBy.LastName}}</td>
+
+                <td><a href="#/updateapplicant/{{applicant._id}}"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a class="btn btn-danger" ng-click="deleteApplicant(applicant)"> {{"Buttons.Delete" | translate}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>
+</div>

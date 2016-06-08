@@ -1,7 +1,7 @@
 angular.module('app').controller('mvCourseListCtrl', function ($scope, mvCourse,$translate, mvIdentity , queryBulider , mvJobSeeker , $routeParams , mvCourseRepo , mvNotifier) {
     $scope.currentUser = mvIdentity.currentUser;
-    $scope.courses = mvCourse.query({ jobSeeker: mvIdentity.currentJobSeeker });
-    //$scope.currentLang = $translate.use();
+    //$scope.courses = mvCourse.query({ jobSeeker: mvIdentity.currentJobSeeker });
+    $scope.currentLang = $translate.use();
     $scope.sortOptions = [{value: '_id', text: 'Sort by _id'}];
     $scope.sortOrder = $scope.sortOptions[0].value;
     $scope.getName = function(list){
@@ -22,10 +22,10 @@ angular.module('app').controller('mvCourseListCtrl', function ($scope, mvCourse,
     
     $scope.getData = function () {
         if (id) {
-            mvIdentity.currentJobSeeker = mvJobSeeker.get({ _id: id }, (function () {
+            mvIdentity.currentJobSeeker = mvJobSeeker.get({ _id: id }, (function (js) {
                 mvCourse.query({
-                    query: queryBulider.qb("JobSeeker=='" + mvIdentity.currentJobSeeker._id + "'&&!Deleted"),
-                    jobSeeker: mvIdentity.currentJobSeeker._id,
+                    query: queryBulider.qb("JobSeeker=='" + js._id + "'&&!Deleted"),
+                    jobSeeker: js._id,
                     currentPage: $scope.paging.currentPage,
                     pageSize: $scope.paging.pageSize
                 }, (function (res) {

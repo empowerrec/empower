@@ -10,6 +10,7 @@ angular.module('app').controller('mvJobsByIndustriesCtrl', function ($scope, mvV
     $scope.getData = function () {
         mvVacancy.query({
             query: queryBulider.qb("!Deleted"),
+            jobSeeker : mvIdentity.currentJobSeeker._id,
             currentPage: $scope.paging.currentPage,
             pageSize: $scope.paging.pageSize
         }, (function (res) {
