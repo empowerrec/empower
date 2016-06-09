@@ -23,6 +23,15 @@ exports.getApplicants = function (req, res) {
     
 };
 
+exports.getVacancyForApplicant = function (req, res) {
+    console.log("JobSeeker : " + req.params.jobSeeker);
+    console.log("vacancy : " + req.params.vacancy);
+    Applicant.findOne({ JobSeeker: req.params.jobSeeker , Vacancy : req.params.vacancy }).exec(function (err, col) {
+        console.log(col);
+        res.send(col);
+    });
+    
+};
 exports.getApplicantById = function (req, res) {
     Applicant.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
         res.send(col);

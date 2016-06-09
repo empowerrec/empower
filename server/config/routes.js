@@ -63,6 +63,7 @@ module.exports = function (app) {
     app.get('/api/vacancies/:id', vacancies.getVacancyById);
     app.get('/api/vacancies/getForDetail/:id', vacancies.getVacancyByIdForDetail);
     
+    
     app.get('/api/industries', industries.getIndustries);
     app.post('/api/industries', industries.createIndustry);
     app.put('/api/industries', industries.updateIndustry);
@@ -170,6 +171,8 @@ module.exports = function (app) {
     app.post('/api/applicants', applicants.createApplicant);
     app.put('/api/applicants', applicants.updateApplicant);
     app.get('/api/applicants/:id', applicants.getApplicantById);
+    app.get('/api/applicants/getVacancyForApplicant/:jobSeeker/:vacancy', applicants.getVacancyForApplicant);
+    
    
     app.get('/api/getJobSeekerWhereMobileNumberNotNull', jobSeekers.getJobSeekerByMobileNumber);
 

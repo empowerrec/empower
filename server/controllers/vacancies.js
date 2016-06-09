@@ -90,6 +90,9 @@ exports.getVacancyByIdForDetail = function (req, res) {
     }
 };
 
+
+
+
 //exports.getVacanciesByIndustry = function (req, res) {    
 //    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
 //        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
