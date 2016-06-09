@@ -22,6 +22,7 @@ angular.module('app').controller('mvVacancyDetailCtrl', function ($scope, mvVaca
         $scope.applicant.Vacancy = $scope.vacancy._id;
         mvApplicantRepo.createApplicant($scope.applicant).then(function () {
             $scope.isApplied = true;
+            $scope.appliedMessage = "You Already Applied For this Job";
             mvNotifier.notify('You Applied For This Job Sucssefully!');
             $scope.addEnabled = false;
         }, function (reason) {

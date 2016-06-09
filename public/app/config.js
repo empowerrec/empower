@@ -215,6 +215,13 @@
                 'Grade': 'Grade',
                 'CourseYear': 'CourseYear'
             },
+            'Main': {
+                'Empower': 'Empower',
+                'Welcome': 'Welcome to the Empower!',
+                'Search1': 'FIND THE BEST',               
+                'Search2': 'JOBS IN EGYPT',
+                'Search3':'Search Jobs (e.g. Sales in Cairo)'
+            },
             "Buttons": {
                 "Update": "Update",
                 "Save": "Save",
@@ -223,6 +230,7 @@
                 "Add": "Add New",
                 "Select": "Select",
                 "Apply": "Apply",
+                "Search": "Search",
                 "NewAddress": "New Address",
                 "Change Password": "Change Password",
                 "Reset Password": "Reset Password",
@@ -469,6 +477,13 @@
                 'Grade': 'التقدير',
                 'CourseYear': 'السنة'
             },
+            'Main': {
+                'Empower': 'ايم باور',
+                'Welcome': 'مرحبا بكم فى الموقع',
+                'Search1': 'ابحث عن أفضل',               
+                'Search2': 'الوظائف فى مصر',
+                'Search3': 'بحث عن وظائف مثلا مبيعات القاهرة'
+            },
             "Buttons": {
                 "Update": "تعديل",
                 "Save": "حفظ",
@@ -477,6 +492,7 @@
                 "Add": "اضافة جديد",
                 "Select": "اختر",
                 "Apply": "التقدم للوظيفة",
+                "Search": "بحث",
                 "NewAddress": "عنوان جديد",
                 "Change Password": "تغيير كلمة السر",
                 "Reset Password": "ارسال ميل",

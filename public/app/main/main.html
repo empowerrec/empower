@@ -1,7 +1,29 @@
 <div class="container">
     <div class="jumbotron welcome">
-        <h1>Empower</h1>
-        <p>Welcome to the Empower!</p>
+        <h1>{{"Main.Empower" | translate}}</h1>
+        <p>{{"Main.Welcome" | translate}}</p>
+        <p>{{"Main.Search1" | translate}}</p>
+        <p>{{"Main.Search2" | translate}}</p>
+        
+        <div class="col-md-10">
+            <input name="jobTitle" type="text" placeholder='{{"Main.Search3" | translate}}'
+                   required="required"
+                   class="form-control" />
+           
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            <div class="col-md-10 col-md-offset-2">
+                <div class="pull-right">
+
+                    <button ng-click="search()" title="Search Jobs" class="btn btn-primary">
+                        {{"Buttons.Search" | translate}}
+                    </button>
+
+                </div>
+            </div>
+        </div>
     </div>
     <div class="jumbotron login">
         <div ng-include="'/partials/account/login-signup'"></div>
