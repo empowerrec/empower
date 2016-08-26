@@ -10,6 +10,7 @@ exports.getCities = function (req, res) {
             res.send(col);
         });
     } else {
+        console.log(req.query.query);
         City.find(JSON.parse(req.query.query))
             .populate('Country').populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize).skip(pageSize * (currentPage - 1))

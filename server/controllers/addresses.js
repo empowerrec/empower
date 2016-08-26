@@ -118,10 +118,37 @@ exports.updateAddressCity = function (req, res) {
     var ids = req.params.id.split("_");
     var newCityId = ids[0];
     var oldCityId = ids[1];
-    Address.find({ City: oldCityId }).exec(function(err, col) {
+    Address.find({ City: oldCityId }).exec(function (err, col) {
         col.forEach(function (entry) {
             var query = { _id: entry._id };
             entry.City = newCityId;
+            Address.update(query, entry, function (err, address) {
+                if (err) {
+                    if (err.toString().indexOf('E11000') > -1) {
+                        err = new Error('Duplicate Address');
+                    }
+                    res.status(400);
+                    return res.send({ reason: err.toString() });
+                }
+                
+            });
+
+        });
+        res.send(col);
+    });
+
+
+};
+
+exports.updateAddressArea = function (req, res) {
+    console.log("Update Area");
+    var ids = req.params.id.split("_");
+    var newAreaId = ids[0];
+    var oldAreaId = ids[1];
+    Address.find({ Area: oldAreaId }).exec(function(err, col) {
+        col.forEach(function (entry) {
+            var query = { _id: entry._id };
+            entry.Area = newAreaId;
             Address.update(query, entry, function(err, address) {
                 if (err) {
                     if (err.toString().indexOf('E11000') > -1) {

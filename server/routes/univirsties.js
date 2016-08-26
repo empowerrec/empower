@@ -8,5 +8,4 @@ router.post('/', univirsties.createUnivirsty);
 router.put('/', univirsties.updateUnivirsty);
 router.get('/:id', univirsties.getUnivirstyById);
 
-
 module.exports = router;

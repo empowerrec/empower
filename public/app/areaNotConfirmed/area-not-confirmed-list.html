@@ -1,0 +1,90 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container top-padding-med admin-area">
+
+    <div class="pull-left">
+        <a href="#/addArea" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+    </div>
+    <div class="pull-right">
+        <form class="form-inline">
+            <div class="form-group"><input ng-model="searchText" placeholder="Filter" class="form-control" /></div>
+            <div class="form-group margin-left-med">
+                <select ng-model="sortOrder" ng-options="item.value as item.text for item in sortOptions"
+                        class="form-control"></select>
+            </div>
+
+        </form>
+    </div>
+    <table class="table table-hover table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>{{"Area.Name" | translate}}</th>
+                <th>{{"Area.Country" | translate}}</th>
+                <th>{{"Area.Confirmed" | translate}}</th>
+                <th>{{"User.ModifiedBy" | translate}}</th>
+                <th>{{"User.CreatedBy" | translate}}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="area in areas | filter:searchText | orderBy:sortOrder">
+                <td><a href="#/areas/{{area._id}}"> <div ng-repeat="name in area.Name | filter:{Lang:currentLang}">{{name.Text}}</div></a></td>
+                <td><div data-drag="true" jqyoui-draggable ng-repeat="country in area.Country.Name | filter:{Lang:currentLang}">{{country.Text}}</div></td>
+                <td><input type="checkbox" ng-model="area.Confirmed" disabled="disabled"></td>
+                <td>{{ area.ModifiedBy.FirstName}} {{ area.ModifiedBy.LastName}}</td>
+                <td>{{ area.CreatedBy.FirstName}} {{ area.CreatedBy.LastName}}</td>
+                <td><a class="btn btn-primary" ng-click="selectArea(area)"> {{"Buttons.Select" | translate}}</a></td>
+
+            </tr>
+        </tbody>
+    </table>
+    
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg" 
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>
+
+    <div class="row"></div>
+    <div class="col-lg-6 text-center">Not Confirmed</div>
+    <div class="col-lg-6 text-center">Confirmed</div>
+    <div class="col-lg-6">
+        
+        <label id="selectedNotConfirmedAreas"></label>
+        <input id="selectedNotConfirmedAreasIds" type="hidden" />
+        <br />
+        <label id="message" class="text-danger"></label>
+        <!--<select ng-model="area.Country" multiple name="NotConfirmedArea" ng-options="area._id as area.Name[0].Text for area in areas"
+                    class="form-control"></select>-->
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+           
+            <div class="col-md-3">
+                <input id="areaName" name="Area" />
+                <input type="hidden" id="hfAreaId" ng-model="area.Area" />
+                <input type="hidden" id="currentLang" value="ar" />
+                <label id="selectedArea" />
+               
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-10">
+        <div class="form-group">
+
+            <div class="col-md-3">
+                <input id="btnSave" class="btn btn-primary" type="button" value="Save" ng-click="saveArea(area)" />
+
+            </div>
+            <br />
+        </div>
+    </div>
+   
+</div>

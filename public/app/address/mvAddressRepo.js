@@ -7,11 +7,11 @@ angular.module('app').factory('mvAddressRepo', function ($http, $q, mvAddress, m
             var dfd = $q.defer();
             console.log("Saving Address");
             newAddress.$save().then(function (response) {
-                console.log(response.data);             
+                console.log(response.data);
                 //$rootScope.AddressId = [100, 200, 300];
                 //if (!$rootScope.AddressId) {
                 //    $rootScope.AddressId = [];
-                    
+                
                 //}                                                                      
                 //$rootScope.AddressId[$rootScope.AddressId.length] = response._id;                       
                 dfd.resolve();
@@ -42,7 +42,33 @@ angular.module('app').factory('mvAddressRepo', function ($http, $q, mvAddress, m
                 type: "get",
                 async: false,
                 url: "/api/updateAddressCity/" + cityId,
-                data: {  },
+                data: {},
+                success: function (data) {
+                    console.log(data);
+                   
+                },
+                error: function (error) {
+                    
+                    console.log(error);
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                beforeSend: function () {
+                    
+                },
+                complete: function () {
+                    
+                  
+                }
+            });
+        }, updateAllAddressesArea: function (areaId) {
+            
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "/api/updateAddressArea/" + areaId,
+                data: {},
                 success: function (data) {
                     console.log(data);
                    

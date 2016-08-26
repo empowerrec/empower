@@ -58,6 +58,7 @@
     <Compile Include="public\app\applicant\mvApplicantDetailCtrl.js" />
     <Compile Include="public\app\applicant\mvApplicantListCtrl.js" />
     <Compile Include="public\app\applicant\mvApplicantRepo.js" />
+    <Compile Include="public\app\areaNotConfirmed\mvAreaNotConfirmedListCtrl.js" />
     <Compile Include="public\app\area\mvCachedArea.js" />
     <Compile Include="public\app\area\mvArea.js" />
     <Compile Include="public\app\area\mvAreaCtrl.js" />
@@ -144,6 +145,7 @@
     <Compile Include="public\app\JobRole\mvJobRoleDetailCtrl.js" />
     <Compile Include="public\app\JobRole\mvJobRoleListCtrl.js" />
     <Compile Include="public\app\JobRole\mvJobRoleRepo.js" />
+    <Compile Include="public\app\jobSeekersSearchResult\mvJobSeekersSearchResultCtrl.js" />
     <Compile Include="public\app\jobSeeker\mvCachedJobSeeker.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeeker.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeekerContactInformationCtrl.js" />
@@ -206,6 +208,7 @@
     <Compile Include="public\app\specialization\mvSpecializationRepo.js" />
     <Compile Include="public\app\trainingCenter\mvCachedtrainingCenter.js" />
     <Compile Include="public\app\trainingCenter\mvTrainingCenter.js" />
+    <Compile Include="public\app\univirstyNotConfirmed\mvUnivirstyNotConfirmedListCtrl.js" />
     <Compile Include="public\app\univirsty\mvCachedUnivirsty.js" />
     <Compile Include="public\app\univirsty\mvUnivirstyCtrl.js" />
     <Compile Include="public\app\univirsty\mvUnivirstyDetailCtrl.js" />
@@ -519,6 +522,7 @@
     <Content Include="public\app\applicant\applicant-detail.html" />
     <Content Include="public\app\applicant\applicant-list.html" />
     <Content Include="public\app\applicant\applicant.html" />
+    <Content Include="public\app\areaNotConfirmed\area-not-confirmed-list.html" />
     <Content Include="public\app\area\area-detail.html" />
     <Content Include="public\app\area\area-list.html" />
     <Content Include="public\app\area\area.html" />
@@ -553,6 +557,7 @@
     <Content Include="public\app\JobRole\jobType-detail.html" />
     <Content Include="public\app\JobRole\jobRole-list.html" />
     <Content Include="public\app\JobRole\jobRole.html" />
+    <Content Include="public\app\jobSeekersSearchResult\jobSeekersSearchResult.html" />
     <Content Include="public\app\jobSeeker\jobSeekerContactInformation.html" />
     <Content Include="public\app\jobSeeker\jobSeekerJobPreferences.html" />
     <Content Include="public\app\jobSeeker\jobSeekerPersonalInformation.html" />
@@ -583,6 +588,7 @@
     <Content Include="public\app\specialization\specialization-detail.html" />
     <Content Include="public\app\specialization\specialization-list.html" />
     <Content Include="public\app\specialization\specialization.html" />
+    <Content Include="public\app\univirstyNotConfirmed\univirsty-not-confirmed-list.html" />
     <Content Include="public\app\univirsty\univirsty-detail.html" />
     <Content Include="public\app\univirsty\univirsty-list.html" />
     <Content Include="public\app\univirsty\univirsty.html" />
@@ -1309,6 +1315,9 @@
     <Folder Include="public\app\cityNotConfirmed\" />
     <Folder Include="public\app\educationalLevel\" />
     <Folder Include="public\app\careerLevel\" />
+    <Folder Include="public\app\areaNotConfirmed\" />
+    <Folder Include="public\app\jobSeekersSearchResult\" />
+    <Folder Include="public\app\univirstyNotConfirmed\" />
     <Folder Include="public\app\skillLevel\" />
     <Folder Include="public\app\skillType\" />
     <Folder Include="public\app\skill\" />

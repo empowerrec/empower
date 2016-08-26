@@ -82,12 +82,10 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvVacancyCtrl'
     }).when('/vacancies', {
         templateUrl: '/partials/vacancy/vacancy-list.html',
-        controller: 'mvVacancyListCtrl'
-        
+        controller: 'mvVacancyListCtrl'        
     }).when('/vacanciesByIndustries/:industryId', {
         templateUrl: '/partials/vacancy/vacancyByIndustryList.html',
-        controller: 'mvVacancyByIndustryListCtrl'
-        
+        controller: 'mvVacancyByIndustryListCtrl'        
     }).when('/industries/:id', {
         templateUrl: '/partials/industry/industry-detail',
         controller: 'mvIndustryDetailCtrl'
@@ -220,6 +218,12 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/cities', {
         templateUrl: '/partials/city/city-list.html',
         controller: 'mvCityListCtrl'        
+    }).when('/areasNotConfirmed', {
+        templateUrl: '/partials/areaNotConfirmed/area-not-confirmed-list.html',
+        controller: 'mvAreaNotConfirmedListCtrl'
+    }).when('/univirstiesNotConfirmed', {
+        templateUrl: '/partials/univirstyNotConfirmed/univirsty-not-confirmed-list.html',
+        controller: 'mvUnivirstyNotConfirmedListCtrl'
     }).when('/citiesNotConfirmed', {
         templateUrl: '/partials/cityNotConfirmed/city-not-confirmed-list.html',
         controller: 'mvCityNotConfirmedListCtrl'
@@ -234,8 +238,7 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvUnivirstyCtrl'
     }).when('/univirsties', {
         templateUrl: '/partials/univirsty/univirsty-list.html',
-        controller: 'mvUnivirstyListCtrl'
-        
+        controller: 'mvUnivirstyListCtrl'        
     }).when('/faculties/:id', {
         templateUrl: '/partials/faculty/faculty-detail',
         controller: 'mvFacultyDetailCtrl'
@@ -247,8 +250,7 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvFacultyCtrl'
     }).when('/faculties', {
         templateUrl: '/partials/faculty/faculty-list.html',
-        controller: 'mvFacultyListCtrl'
-        
+        controller: 'mvFacultyListCtrl'        
     }).when('/specializations/:id', {
         templateUrl: '/partials/specialization/specialization-detail',
         controller: 'mvSpecializationDetailCtrl'
@@ -285,6 +287,9 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/applicants', {
         templateUrl: '/partials/applicant/applicant-list.html',
         controller: 'mvApplicantListCtrl'
+    }).when('/jobSeekersSearchResult', {
+        templateUrl: '/partials/jobSeekersSearchResult/jobSeekersSearchResult.html',
+        controller: 'mvJobSeekersSearchResultCtrl'
     });
 });
 

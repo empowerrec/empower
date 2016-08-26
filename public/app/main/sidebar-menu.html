@@ -46,6 +46,9 @@
             <li ng-show="identity.currentUser.isAdmin()">
                 <a href="#/areas">{{"Menu.Areas" | translate}}</a>
             </li>
+            <li ng-show="identity.currentUser.isAdmin()">
+                <a href="#/areasNotConfirmed">{{"Menu.AreasNotConfirmed" | translate}}</a>
+            </li>
 
             <li ng-show="identity.currentUser.isAdmin()">
                 <a href="#/specializations">{{"Menu.Specializations" | translate}}</a>
@@ -56,6 +59,10 @@
             <li ng-show="identity.currentUser.isAdmin()">
                 <a href="#/univirsties">{{"Menu.Univirsties" | translate}}</a>
             </li>
+            <li ng-show="identity.currentUser.isAdmin()">
+                <a href="#/univirstiesNotConfirmed">{{"Menu.UnivirstiesNotConfirmed" | translate}}</a>
+            </li>
+
             <li ng-show="identity.currentUser.isAdmin()">
                 <a href="#/experiances">{{"Menu.Experiances" | translate}}</a>
             </li>

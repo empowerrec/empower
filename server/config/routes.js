@@ -136,7 +136,9 @@ module.exports = function (app) {
     app.get('/api/universtiesByName/:search', univirsties.getUnivirstyByName);
     app.get('/api/specializationsByName/:search', specializations.getSpecializationByName);
     app.get('/api/updateAddressCity/:id', addresses.updateAddressCity);
-    
+    app.get('/api/univirstiesByName/:search', univirsties.getUnivirstyByName);
+    app.get('/api/updateAddressArea/:id', addresses.updateAddressArea);
+
     
     
     
