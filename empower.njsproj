@@ -145,7 +145,7 @@
     <Compile Include="public\app\JobRole\mvJobRoleDetailCtrl.js" />
     <Compile Include="public\app\JobRole\mvJobRoleListCtrl.js" />
     <Compile Include="public\app\JobRole\mvJobRoleRepo.js" />
-    <Compile Include="public\app\jobSeekersSearchResult\mvJobSeekersSearchResultCtrl.js" />
+    <Compile Include="public\app\vacanciesSearchResult\mvVacanciesSearchResultCtrl.js" />
     <Compile Include="public\app\jobSeeker\mvCachedJobSeeker.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeeker.js" />
     <Compile Include="public\app\jobSeeker\mvJobSeekerContactInformationCtrl.js" />
@@ -557,7 +557,7 @@
     <Content Include="public\app\JobRole\jobType-detail.html" />
     <Content Include="public\app\JobRole\jobRole-list.html" />
     <Content Include="public\app\JobRole\jobRole.html" />
-    <Content Include="public\app\jobSeekersSearchResult\jobSeekersSearchResult.html" />
+    <Content Include="public\app\vacanciesSearchResult\vacanciesSearchResult.html" />
     <Content Include="public\app\jobSeeker\jobSeekerContactInformation.html" />
     <Content Include="public\app\jobSeeker\jobSeekerJobPreferences.html" />
     <Content Include="public\app\jobSeeker\jobSeekerPersonalInformation.html" />
@@ -1316,7 +1316,7 @@
     <Folder Include="public\app\educationalLevel\" />
     <Folder Include="public\app\careerLevel\" />
     <Folder Include="public\app\areaNotConfirmed\" />
-    <Folder Include="public\app\jobSeekersSearchResult\" />
+    <Folder Include="public\app\vacanciesSearchResult\" />
     <Folder Include="public\app\univirstyNotConfirmed\" />
     <Folder Include="public\app\skillLevel\" />
     <Folder Include="public\app\skillType\" />

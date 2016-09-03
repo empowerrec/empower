@@ -287,9 +287,9 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/applicants', {
         templateUrl: '/partials/applicant/applicant-list.html',
         controller: 'mvApplicantListCtrl'
-    }).when('/jobSeekersSearchResult', {
-        templateUrl: '/partials/jobSeekersSearchResult/jobSeekersSearchResult.html',
-        controller: 'mvJobSeekersSearchResultCtrl'
+    }).when('/vacanciesSearchResult', {
+        templateUrl: '/partials/vacanciesSearchResult/vacanciesSearchResult.html',
+        controller: 'mvVacanciesSearchResultCtrl'
     });
 });
 

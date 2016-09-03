@@ -1,0 +1,172 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container top-padding-med admin-area">
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div id="accordion1" class="ui-accordion ui-widget ui-helper-reset">
+                <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                    Location
+                </h3>
+                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                    <div id="accordion11" class="ui-accordion ui-widget ui-helper-reset">
+                        <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                            <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                            Country
+                        </h3>
+                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                            <div>
+                                <input type="text" id="cityName" />
+                                <div id="SelectedCities" ng-repeat="item in SelectedCities"> {{item}} </div>
+                            </div>
+                        </div>
+                        <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                            <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                            City
+                        </h3>
+                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                            <p>
+                                Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+                                ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+                                amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+                                odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+                            </p>
+                        </div>
+                        <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                            <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                            Area
+                        </h3>
+                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                            <p>
+                                Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+                                ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+                                amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+                                odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                    Job Classification
+                </h3>
+                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                    <div id="accordion12" class="ui-accordion ui-widget ui-helper-reset">
+                        <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                            <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                            Industry
+                        </h3>
+                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                            <div>
+                                <input type="text" id="industryName" />
+                                <div id="SelectedIndustries" ng-repeat="item in SelectedIndustries"> 
+                                    <span ng-repeat="name in item.Description |filter:currentLang">{{name.Text}}</span> {{item}} 
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                            <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                            Job Role
+                        </h3>
+                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                            <p>
+                                Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+                                ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+                                amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+                                odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+                            </p>
+                        </div>
+                        <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                            <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                            Job Type
+                        </h3>
+                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                            <p>
+                                Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+                                ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+                                amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+                                odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                    Job Details
+                </h3>
+                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                    <div id="accordion13" class="ui-accordion ui-widget ui-helper-reset">
+                        <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                            <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                            Education Level
+                        </h3>
+                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                            <p>
+                                Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+                                ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+                                amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+                                odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+                            </p>
+                        </div>
+                        <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                            <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                            Career Level
+                        </h3>
+                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                            <p>
+                                Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+                                ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+                                amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+                                odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <input ng-model="searchText" placeholder="Search by Job Title, Location (like IT , Cairo)" class="form-control" />
+            <table class="table table-hover table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>{{"Vacancy.JobTitle" | translate}}</th>
+                        <th>{{"Vacancy.SalaryRangeFrom" | translate}}</th>
+                        <th>{{"Vacancy.SalaryRangeTo" | translate}}</th>
+                        <th>{{"Vacancy.AvailableFrom" | translate}}</th>
+                        <th>{{"Vacancy.AvailableTo" | translate}}</th>
+                        <th>{{"User.CreatedBy" | translate}}</th>
+                        <th>{{"User.ModifiedBy" | translate}}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="vacancy in vacancies | filter:searchText | orderBy:sortOrder">
+                        <td><a href="#/vacancies/{{vacancy._id}}">{{vacancy.JobTitle}}</a></td>
+                        <td>{{ vacancy.SalaryRangeFrom}}</td>
+                        <td>{{ vacancy.SalaryRangeTo}}</td>
+                        <td>{{ vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</td>
+                        <td>{{ vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</td>
+                        <td>{{ vacancy.CreatedBy.FirstName}} {{ vacancy.CreatedBy.LastName}}</td>
+                        <td>{{ vacancy.ModifiedBy.FirstName}} {{ vacancy.ModifiedBy.LastName}}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+            <uib-pagination total-items="allDataCount"
+                            items-per-page="paging.pageSize"
+                            ng-model="paging.currentPage"
+                            max-size="paging.maxPagesToShow"
+                            ng-change="getData()"
+                            class="pagination-lg"
+                            boundary-links="true"
+                            previous-text="{{'Buttons.Previous' | translate}}"
+                            next-text="{{'Buttons.Next' | translate}}"
+                            first-text="{{'Buttons.First' | translate}}"
+                            last-text="{{'Buttons.Last' | translate}}">
+            </uib-pagination>
+        </div>
+    </div>
+    <div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
+        <img src="ajax-loader.gif" alt="" />
+    </div>
+</div>

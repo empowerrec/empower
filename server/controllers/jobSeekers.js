@@ -1,10 +1,6 @@
 var JobSeeker = require('mongoose').model('JobSeeker');
 
 exports.getJobSeekers = function (req, res) {
-    //JobSeeker.find({}).populate('Gender').populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-    //    res.send(col);
-    //});
-    
     var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     
@@ -16,7 +12,6 @@ exports.getJobSeekers = function (req, res) {
             res.send([{ collection: col, allDataCount: count }]);
         });
     });
-   
 };
 
 exports.getJobSeekerById = function (req, res) {
@@ -40,7 +35,7 @@ exports.getJobSeekerById = function (req, res) {
 exports.getJobSeekerByUser = function (req, res) {
     console.log(req.user._id);
     JobSeeker.findOne({ User: req.user._id }).populate('ModifiedBy').exec(function (err, col) {
-       
+        
         res.send(col);
     });
 };
@@ -52,15 +47,15 @@ exports.getJobSeekerByMobileNumber = function (req, res) {
 };
 exports.createJobSeeker = function (req, res, next) {
     var jobSeekerData = req.body;
-
+    
     JobSeeker.create(jobSeekerData, function (err, jobSeeker) {
         if (err) {
             if (err.toString().indexOf('E11000') > -1) {
                 err = new Error('Duplicate JobSeeker');
             }
             res.status(400);
-
-            return res.send({reason: err.toString()});
+            
+            return res.send({ reason: err.toString() });
         }
         res.send(jobSeeker);
     });

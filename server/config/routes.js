@@ -62,8 +62,8 @@ module.exports = function (app) {
     app.put('/api/vacancies', vacancies.updateVacancy);
     app.get('/api/vacancies/:id', vacancies.getVacancyById);
     app.get('/api/vacancies/getForDetail/:id', vacancies.getVacancyByIdForDetail);
-    
-    
+    app.get('/api/vacanciesSearchResult', vacancies.getVacanciesSearchResult);
+
     app.get('/api/industries', industries.getIndustries);
     app.post('/api/industries', industries.createIndustry);
     app.put('/api/industries', industries.updateIndustry);
@@ -138,9 +138,6 @@ module.exports = function (app) {
     app.get('/api/updateAddressCity/:id', addresses.updateAddressCity);
     app.get('/api/univirstiesByName/:search', univirsties.getUnivirstyByName);
     app.get('/api/updateAddressArea/:id', addresses.updateAddressArea);
-
-    
-    
     
     app.get('/api/innerPages', authentication.requiresRole(['A', 'J']), innerPages.getInnerPages);
     app.post('/api/innerPages', innerPages.createInnerPage);
@@ -161,21 +158,18 @@ module.exports = function (app) {
     app.post('/api/companySizes', companySizes.createCompanySize);
     app.put('/api/companySizes', companySizes.updateCompanySize);
     app.get('/api/companySizes/:id', companySizes.getCompanySizeById);
-    
-    
+        
     app.get('/api/companyTypes',  companyTypes.getCompanyTypes);
     app.post('/api/companyTypes', companyTypes.createCompanyType);
     app.put('/api/companyTypes', companyTypes.updateCompanyType);
     app.get('/api/companyTypes/:id', companyTypes.getCompanyTypeById);
-    
-    
+        
     app.get('/api/applicants', authentication.requiresRole(['A', 'E']), applicants.getApplicants);
     app.post('/api/applicants', applicants.createApplicant);
     app.put('/api/applicants', applicants.updateApplicant);
     app.get('/api/applicants/:id', applicants.getApplicantById);
     app.get('/api/applicants/getVacancyForApplicant/:jobSeeker/:vacancy', applicants.getVacancyForApplicant);
-    
-   
+
     app.get('/api/getJobSeekerWhereMobileNumberNotNull', jobSeekers.getJobSeekerByMobileNumber);
 
     app.post('/login', authentication.authenticate);

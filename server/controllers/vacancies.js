@@ -1,21 +1,12 @@
 var Vacancy = require('mongoose').model('Vacancy');
+var Industry = require('mongoose').model('Industry');
 //var mvIdentity = require('users');
 
 exports.getVacancies = function (req, res) {
     var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     console.log(req.query.jobSeeker);
-    //Vacancy.find(JSON.parse(req.query.query))
-    //       .populate('ModifiedBy').populate('CreatedBy')
-    //        .limit(pageSize).skip(pageSize * (currentPage - 1))
-    //        .exec(function (err, col) {
-    //    Vacancy.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-    //        res.send([{ collection: col, allDataCount: count }]);
-    //    });
-    //});
     if (req.query.Industry) {
-        //JSON.parse(req.query) not work
-        
         Vacancy.find({ $and: [{ Industry: req.query.Industry }, { Deleted: false }] }).populate('ModifiedBy').populate('CreatedBy').populate('Industry')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
@@ -42,13 +33,6 @@ exports.getVacancies = function (req, res) {
                 res.send([{ collection: col, allDataCount: count }]);
             });
         });
-        
-        //Vacancy.distinct("Industry", { Deleted : false }).populate('ModifiedBy').populate('CreatedBy').populate('Industry')
-        //    .exec(function (err, col) {
-        //    Vacancy.count("Industry", { Deleted : false }).exec(function (errr, count) {
-        //        res.send([{ collection: col, allDataCount: count }]);
-        //    });
-        //});
     } else {
         Vacancy.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').populate('Industry').limit(pageSize)
             .skip(pageSize * (currentPage - 1))
@@ -58,10 +42,26 @@ exports.getVacancies = function (req, res) {
             });
         });
     }
-    
 };
 
-exports.getVacancyById = function (req, res) {    
+exports.getVacanciesSearchResult = function (req, res) {
+    Vacancy.aggregate([
+        {
+            $group : {
+                _id : '$' + req.query.groupBy,
+                ind: { $first: '$' + req.query.groupBy },
+                count: { $sum: 1 }
+            }
+        }
+    ]).exec(function (err, col) {
+        Industry.populate(col, { path: 'ind' }, function (err, populatedCol) {
+            var x = JSON.parse(JSON.stringify(populatedCol));
+            res.send(x);
+        });
+    });
+};
+
+exports.getVacancyById = function (req, res) {
     if (req.params.id == 'profile') {
         Vacancy.findOne({ User: req.user }).populate('City').populate('ModifiedBy').exec(function (err, col) {
             res.send(col);
@@ -73,7 +73,7 @@ exports.getVacancyById = function (req, res) {
     }
 };
 
-exports.getVacancyByIdForDetail = function (req, res) {    
+exports.getVacancyByIdForDetail = function (req, res) {
     if (req.params.id == 'profile') {
         Vacancy.findOne({ User: req.user }).populate('EducationalLevel').populate('JobType')
             .populate('Industry').populate('Country').populate('City').populate('CareerLevel').populate('SalaryCurancy')
@@ -89,56 +89,6 @@ exports.getVacancyByIdForDetail = function (req, res) {
         });
     }
 };
-
-
-
-
-//exports.getVacanciesByIndustry = function (req, res) {    
-//    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
-//        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
-    
-//    //Vacancy.find(JSON.parse(req.query.query))
-//    //       .populate('ModifiedBy').populate('CreatedBy')
-//    //        .limit(pageSize).skip(pageSize * (currentPage - 1))
-//    //        .exec(function (err, col) {
-//    //    Vacancy.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-//    //        res.send([{ collection: col, allDataCount: count }]);
-//    //    });
-//    //});
-    
-//    if (req.query.jobSeeker) {
-//        Vacancy.find(JSON.parse(req.query)).populate('ModifiedBy').populate('CreatedBy')
-//            .limit(pageSize)
-//            .skip(pageSize * (currentPage - 1))
-//            .exec(function (err, col) {
-//            Vacancy.count(JSON.parse(req.query)).exec(function (errr, count) {
-//                res.send([{ collection: col, allDataCount: count }]);
-//            });
-//        });
-//    } else if (isAdmin(req)) {
-//        //Vacancy.find({ Deleted : false }).populate('ModifiedBy').populate('CreatedBy')
-//        //    .limit(pageSize)
-//        //    .skip(pageSize * (currentPage - 1))
-//        //    .exec(function (err, col) {
-//        //    Vacancy.count({ Deleted : false }).exec(function (errr, count) {
-//        //        res.send([{ collection: col, allDataCount: count }]);
-//        //    });
-//        //});
-//        Vacancy.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-//            //console.log(err);
-//            res.send(col);
-//        });
-//    } else {
-//        Vacancy.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').limit(pageSize)
-//            .skip(pageSize * (currentPage - 1))
-//            .exec(function (err, col) {
-//            Vacancy.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
-//                res.send([{ collection: col, allDataCount: count }]);
-//            });
-//        });
-//    }
-    
-//};
 
 function isAdmin(req) {
     
