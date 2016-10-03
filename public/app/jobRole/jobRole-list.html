@@ -1,0 +1,53 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container top-padding-med admin-area">
+    
+    <div class="pull-left">
+        <a href="#/addjobRole" ng-show="{{currentUser}}"  class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+    </div>
+    <div class="pull-right">
+        <form class="form-inline">
+            <div class="form-group"><input ng-model="searchText" placeholder="Filter" class="form-control"/></div>
+            <div class="form-group margin-left-med">
+                <select ng-model="sortOrder" ng-options="item.value as item.text for item in sortOptions"
+                        class="form-control">
+
+                </select>
+            </div>
+
+        </form>
+    </div>
+    <table class="table table-hover table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>{{"JobRole.Name" | translate}}</th>
+                <th>{{"User.CreatedBy" | translate}}</th>
+                <th>{{"User.ModifiedBy" | translate}}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="jobRole in jobRoles | filter:searchText | orderBy:sortOrder">
+                <td><a href="#/jobRoles/{{jobRole._id}}"> <div ng-repeat="ind in jobRole.Name | filter:{Lang:currentLang}"> {{ind.Text}}</div></a></td>
+                <td>{{ jobRole.CreatedBy.FirstName}} {{ jobRole.CreatedBy.LastName}}</td>
+                <td>{{ jobRole.ModifiedBy.FirstName}} {{ jobRole.ModifiedBy.LastName}}</td>
+               
+
+                <td><a href="#/updatejobRole/{{jobRole._id}}"> {{"Buttons.Update" | translate}}</a></td>
+                <td><a class="btn btn-danger" ng-click="deleteJobRole(jobRole)"> {{"Buttons.Delete" | translate}}</a></td>
+
+            </tr>
+        </tbody>
+    </table>
+    <uib-pagination total-items="allDataCount"
+                    items-per-page="paging.pageSize"
+                    ng-model="paging.currentPage"
+                    max-size="paging.maxPagesToShow"
+                    ng-change="getData()"
+                    class="pagination-lg"
+                    boundary-links="true"
+                    previous-text="{{'Buttons.Previous' | translate}}"
+                    next-text="{{'Buttons.Next' | translate}}"
+                    first-text="{{'Buttons.First' | translate}}"
+                    last-text="{{'Buttons.Last' | translate}}">
+    </uib-pagination>
+</div>
