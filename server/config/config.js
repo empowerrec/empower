@@ -20,7 +20,7 @@ module.exports = {
     },
     production: {
         rootPath: rootPath,
-        db: 'mongodb://admin:admin@ds029615.mongolab.com:29615/empower',
+        db: 'mongodb://admin:admin@ds041486.mlab.com:41486/empower',
         port: process.env.PORT || 80,
         sessionSecret: 'productionSessionSecret',
         facebookAuthentication: {
