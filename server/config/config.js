@@ -3,7 +3,7 @@ var rootPath = path.normalize(__dirname + '/../../');
 
 module.exports = {
     development: {
-        db: 'mongodb://ali:123@ds041486.mlab.com:41486/empower',
+        db: 'mongodb://localhost/empower',
         rootPath: rootPath,
         port: process.env.PORT || 3030,
         sessionSecret: 'developmentSessionSecret',
@@ -20,7 +20,7 @@ module.exports = {
     },
     production: {
         rootPath: rootPath,
-        db: 'mongodb://admin:admin@ds041486.mlab.com:41486/empower',
+        db: 'mongodb://ali:123@ds041486.mlab.com:41486/empower',
         port: process.env.PORT || 80,
         sessionSecret: 'productionSessionSecret',
         facebookAuthentication: {
