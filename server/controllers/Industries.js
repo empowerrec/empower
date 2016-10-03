@@ -1,5 +1,5 @@
 var Industry = require('mongoose').model('Industry');
-//Get All Industries
+//Get All industries
 exports.getIndustries = function (req, res) {
     
     var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
