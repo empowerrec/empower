@@ -28,7 +28,8 @@ function createDefaultCategories() {
     Category.find({}).exec(function (err, col) {
         if (col.length === 0) {
             Category.create({
-                Description: 'First Category'
+                Deleted : false, 
+                Name: 'First Category'
             });
         }
     });

@@ -32,6 +32,7 @@ function createDefaultMilitaryStatuss() {
         if (col.length === 0) {
             
             MilitaryStatus.create({
+                Deleted : false,
                 Name: [
                     { "Text": "Performed" , "Lang": "en" }
                     , { "Text": "أدى الخدمة" , "Lang": "ar" }
@@ -39,6 +40,7 @@ function createDefaultMilitaryStatuss() {
             });
             
             MilitaryStatus.create({
+                Deleted : false,
                 Name: [
                     { "Text": "Postponded" , "Lang": "en" }
                     , { "Text": "تأجيل" , "Lang": "ar" }

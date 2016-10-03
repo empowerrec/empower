@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
-var vacancyTypes = 'Full Time,Part Time,Temporary,Any'.split(',');
-var vacancySchema = mongoose.Schema({
+var VacancySchema = mongoose.Schema({
     Employer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Employer'
@@ -24,7 +23,11 @@ var vacancySchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'City'
     },
-    Area: { type: String },
+    
+    Area: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Area'
+    },
     EducationalLevel: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'EducationalLevel'
@@ -46,6 +49,10 @@ var vacancySchema = mongoose.Schema({
     JobType: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'JobType'
+    }, 
+    JobRole: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'JobRole'
     },   
     JobDescription: { type: String },
     JobTitle: { type: String },
@@ -73,13 +80,11 @@ var vacancySchema = mongoose.Schema({
 
 
 
-var Vacancy = mongoose.model('Vacancy', vacancySchema);
+var Vacancy = mongoose.model('Vacancy', VacancySchema);
 
-function createDefaultVacancies() {
+function createDefaultVacancies() {    
     Vacancy.find({}).exec(function (err, col) {
         if (col.length === 0) {
-            
-            
             Vacancy.create({
                 Employer : "5700e4ad2b9cc7982e72d1e9",
                 Type: 'Full Time',
@@ -88,22 +93,15 @@ function createDefaultVacancies() {
                 JobTitle: "Senior .net developer" ,
                 EducationalLevel: "5707dd5a59e12bf8047383da",
                 AvailableFrom: "01/05/2016",
-                AvailableTo: "05/05/2016"
-            });
-            
-            Vacancy.create({
-                Employer : "5700e4ad2b9cc7982e72d1e9",
-                Type: 'Full Time',
-                Salary: 3000,
-                JobDescription: "Junior  .Net Developer Needed",
-                JobTitle: "Juior .net developer",
-                EducationalLevel: "5707dd5a59e12bf8047383da",
-                AvailableFrom: "01/05/2016",
-                AvailableTo: "15/05/2016"
+                AvailableTo: "05/05/2016",
+                Deleted: false
+            }, function (errr) {
+                if (!errr) {
+                    Vacancy.remove({}).exec();
+                }                
             });
         }
     });
-
 }
 
 exports.createDefaultVacancies = createDefaultVacancies;

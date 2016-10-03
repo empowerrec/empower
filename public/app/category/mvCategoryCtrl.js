@@ -1,16 +1,16 @@
 angular.module('app').controller('mvCategoryCtrl', function ($scope, mvNotifier, mvCategoryRepo, mvCategory, $routeParams, $translate) {
     var id = $routeParams.id;
-    $scope.descriptionText = "";
+    $scope.nameText = "";
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
     
     if (id) {
         $scope.category = mvCategory.get({ _id: id }, (function () {
-            if ($scope.category.Description) {
-                for (var i = 0; i < $scope.category.Description.length; i++) {                    
-                    if ($scope.category.Description[i].Lang == $scope.currentLang) {
-                        $scope.descriptionText = $scope.category.Description[i].Text;
-                        $scope.lang = $scope.category.Description[i].Lang;
+            if ($scope.category.Name) {
+                for (var i = 0; i < $scope.category.Name.length; i++) {                    
+                    if ($scope.category.Name[i].Lang == $scope.currentLang) {
+                        $scope.nameText = $scope.category.Name[i].Text;
+                        $scope.lang = $scope.category.Name[i].Lang;
                     }
                 }
             }
@@ -67,34 +67,34 @@ angular.module('app').controller('mvCategoryCtrl', function ($scope, mvNotifier,
     };
     
     $scope.loop = function () {        
-        var listItems = $("#descriptions li");
+        var listItems = $("#names li");
         listItems.each(function (idx, li) {
             $scope.lang = $(li).attr('id');
-            var input = $(li).find("#DescriptionText");
-            $scope.descriptionText = input.val();
-            $scope.saveDescription();
+            var input = $(li).find("#NameText");
+            $scope.nameText = input.val();
+            $scope.saveName();
         });
     };
     
-    $scope.saveDescription = function () {        
+    $scope.saveName = function () {        
         var old = false;
-        if ($scope.category.Description) {
-            for (var i = 0; i < $scope.category.Description.length; i++) {                
-                if ($scope.category.Description[i].Lang == $scope.lang) {
-                    $scope.category.Description[i].Text = $scope.descriptionText;
+        if ($scope.category.Name) {
+            for (var i = 0; i < $scope.category.Name.length; i++) {                
+                if ($scope.category.Name[i].Lang == $scope.lang) {
+                    $scope.category.Name[i].Text = $scope.nameText;
                     old = true;
                 }
             }
         }
         
         if (!old) {
-            if (!$scope.category.Description) {
-                $scope.category.Description = [];
+            if (!$scope.category.Name) {
+                $scope.category.Name = [];
             }
-            var description = { "Lang": $scope.lang, "Text": $scope.descriptionText };
-            $scope.category.Description.push(description);
+            var name = { "Lang": $scope.lang, "Text": $scope.nameText };
+            $scope.category.Name.push(name);
         }
-        $scope.descriptionText = "";
+        $scope.nameText = "";
         $scope.lang = "";
 
     };

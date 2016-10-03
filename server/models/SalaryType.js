@@ -26,16 +26,6 @@ var SalaryTypeSchema = mongoose.Schema({
         timestamps: { createdAt: 'CreatedAt' , updatedAt:"UpdatedAt" }
     });
 
-/*
-employerSchema.methods = {
-  authenticate: function(passwordToMatch) {
-    return encryption.hashPassword(this.Salt, passwordToMatch) === this.HashedPassword;
-  },
-  hasRole: function(role) {
-      return this.UserType.indexOf(role) > -1;
-  }
-};
-*/
 var SalaryType = mongoose.model('SalaryType', SalaryTypeSchema);
 
 function createDefaultSalaryTypes() {
@@ -43,13 +33,14 @@ function createDefaultSalaryTypes() {
         if (col.length === 0) {
 
             SalaryType.create({
-                SalaryTypeName: [{"Text":"Per Month" , "Lang":"en"},{"Text":"شهرى" , "Lang":"ar"}]
-
+                Deleted : false,
+                Name: [{"Text":"Per Month" , "Lang":"en"},{"Text":"شهرى" , "Lang":"ar"}]
           });
 
 
             SalaryType.create({
-                SalaryTypeName: [{"Text":"Per Year" , "Lang":"en"},{"Text":"سنوى" , "Lang":"ar"}]
+                Deleted : false,
+                Name: [{"Text":"Per Year" , "Lang":"en"},{"Text":"سنوى" , "Lang":"ar"}]
 
             });
     }

@@ -33,12 +33,14 @@ function createDefaultCountries() {
         if (col.length === 0) {
             
             Country.create({
+                Deleted : false, 
                 Name: [{ "Text": "Egypt" , "Lang": "en" }, { "Text": "„’—" , "Lang": "ar" }]
 
             });
             
             
             Country.create({
+                Deleted : false, 
                 Name: [{ "Text": "Suadi Arabia" , "Lang": "en" }, { "Text": "«·”⁄ÊœÌ…" , "Lang": "ar" }]
                  
             });

@@ -19,7 +19,7 @@
     <table class="table table-hover table-striped table-condensed">
         <thead>
             <tr>
-                <th>{{"JobType.JobTypeName" | translate}}</th>
+                <th>{{"JobType.Name" | translate}}</th>
                 <th>{{"User.CreatedBy" | translate}}</th>
                 <th>{{"User.ModifiedBy" | translate}}</th>
                 <th></th>
@@ -27,7 +27,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="jobType in jobTypes | filter:searchText | orderBy:sortOrder">
-                <td><a href="#/jobTypes/{{jobType._id}}"> <div ng-repeat="ind in jobType.JobTypeName | filter:{Lang:currentLang}"> {{ind.Text}}</div></a></td>
+                <td><a href="#/jobTypes/{{jobType._id}}"> <div ng-repeat="ind in jobType.Name | filter:{Lang:currentLang}"> {{ind.Text}}</div></a></td>
 
                 <td>{{ jobType.ModifiedBy.FirstName}} {{ jobType.ModifiedBy.LastName}}</td>
                 <td>{{ jobType.CreatedBy.FirstName}} {{ jobType.CreatedBy.LastName}}</td>

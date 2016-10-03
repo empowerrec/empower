@@ -125,8 +125,9 @@
                 "City": "City",
                 'EducationalLevel': 'Educational Level',
                 'CareerLevel': 'Career Level',
-                'HotJobFlag': 'Hot Job Flag'
-
+                'HotJobFlag': 'Hot Job Flag',
+                'Area':'Area',
+                'JobRole':'Job Role'
             }, 
             'City': {
                 "City": "City",
@@ -149,7 +150,7 @@
                 "ModifiedBy": "Modified By"
             },
             "Industry": {
-                "Description": "Description"
+                "Name": "Name"
             },
             "Specialization": {
                 "Name": "Name"
@@ -161,10 +162,10 @@
                 "Name": "Name"
             },
             "JobType": {
-                "JobTypeName": "Job Type Name"
+                "Name": "Name"
             },
             "JobRole": {
-                "JobRoleName": "Job Role Name"
+                "Name": "Name"
             },
             "Address": {
                 "Country": "Country",
@@ -207,6 +208,8 @@
                 'Faculty': 'Faculty',
                 'Specialization': 'Specialization',
                 'Grade': 'Grade'
+            }, "EducationalLevel": {
+                "Name": "Name"
             },
             'Course': {
                 'Title': 'Title',
@@ -257,6 +260,7 @@
                 "JobSeekers" : "Job Seekers",
                 "Signout" : "Sign Out",
                 "UserMenu": "User Menu",
+                "EducationalLevels":"Educational Levels",
                 "Categories": "Categories",
                 "CompanyProfile" : "Company Profile",
                 "Experiances" : "Experiances",
@@ -403,7 +407,8 @@
                 "City": "المدينة",
                 'EducationalLevel': 'مستوي التعليم',
                 'CareerLevel': 'مستوي الوظيفة',
-                'HotJobFlag': 'وظيفة مهمة'
+                'HotJobFlag': 'وظيفة مهمة',
+                'Area': 'المنطقة'
             },
             "LanguageSkill": {
                 "Language": "اللغة",
@@ -423,7 +428,7 @@
                 "ModifiedBy": "عدل بواسطة"
             },
             "Industry": {
-                "Description": "الوصف"
+                "Name": "الأسم"
             },
             "Specialization": {
                 "Name": "الأسم"
@@ -435,10 +440,10 @@
                 "Name": "الأسم"
             },
             "JobType": {
-                "JobTypeName": "نوع الوظيفة"
+                "Name": "نوع الوظيفة"
             },
             "JobRole": {
-                "JobRoleName": "نوع المجال"
+                "Name": "نوع المجال"
             },
             "Address": {
                 "Country": "دولة",
@@ -460,7 +465,7 @@
                 "FunctionalTasks": "المهام"
             },
             "Category": {
-                "Description": "الوصف"
+                "Name": "الأسم"
             },
             "InnerPage": {
                 "PageTitle": "عنوان الصفحة",
@@ -472,6 +477,8 @@
                 'Faculty': 'الكلية',
                 'Specialization': 'التخصص',
                 'Grade': 'التقدير'
+            }, 'EducationalLevel': {
+                "Name": "الأسم"
             },
             'Course': {
                 'Title': 'اسم الدورة',
@@ -522,6 +529,7 @@
                 "JobSeekers" : "الباحثين عن العمل",
                 "Signout" : "تسجيل الخروج",
                 "UserMenu": "قائمة المستخدم",
+                "EducationalLevels": "المستويات التعليمية",
                 "Categories": "التصنيفات",
                 "CompanyProfile" : "بيانات الشركة",
                 "Experiances" : "الخبرات",
@@ -542,44 +550,14 @@
             }
         };
         
-        var french = {
-            "Title": "أختبار ",
-            "Language": "اللغات",
-            "Languages": {
-                "English": "English",
-                "French": "Fr",
-                "Arabic": "عربى"
-            },
-            "Created_By": "اضيف بواسطة",
-            "First_Name": "الاسم الاول",
-            "Last_Name": "الاسم الثانى",
-            "Age": "العمر",
-            "Location": "الموقع",
-            "Messages": "الرسائل",
-            "People": "الاشخاص",
-            "Splash_Msg": "تحميل . . .",
-            "Message_Count": "{messageCount, plural, =0{No Messages} one{1 Message} other{# Messages}}",
-            "Conference_Date": "May 18 - 19, 2015",
-            "Dashboard": "Dashboard",
-            "Admin": "Admin",
-            "Greeting": "{{name}} is logged in",
-            "Admin_Message": "The quick brown fox jumped over the lazy dog",
-            "Activation_Dash": "Activated Dashboard View",
-            "Activation_Admin": "Activated Admin View",
-            "Featured_Jobs": "الوظائف المفضلة",
-            "Welcome": "مرحبا بكم فى Empower",
-            "Signin": "تسجيل الدخول",
-            "New_Jobs": " فرنساوى الوظائف الجديده",
-            "Jobs_Title": "Jobs Title"
-        };
+        
         
         $translateProvider.translations('en', english);
         $translateProvider.translations('ar', arabic);
-        $translateProvider.translations('fr', french);
-        $translateProvider.registerAvailableLanguageKeys(['en', 'ar', 'fr'], {
+       
+        $translateProvider.registerAvailableLanguageKeys(['en', 'ar'], {
             'en-US': 'en',
-            'ar-EG': 'ar',
-            'fr-FR': 'fr'
+            'ar-EG': 'ar'
         });
         $translateProvider.preferredLanguage('ar');
         //$translateProvider.determinePreferredLanguage();

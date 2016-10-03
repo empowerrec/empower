@@ -31,11 +31,13 @@ function createDefaultTrainingCenters() {
                 if (col.length === 0) {
                     
                     TrainingCenter.create({
+                Deleted : false,
                 Name: [{ "Text": "Global Knowledge" , "Lang": "en" }, { "Text": "Global Knowledge" , "Lang": "ar" }]
                         
                     });
                     
                     TrainingCenter.create({
+                Deleted : false,
                 Name: [{ "Text": "IT Share" , "Lang": "en" }, { "Text": "IT Share" , "Lang": "ar" }]
                        
                     });

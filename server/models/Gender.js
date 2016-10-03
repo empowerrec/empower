@@ -26,16 +26,6 @@ var GenderSchema = mongoose.Schema({
         timestamps: { createdAt: 'CreatedAt' , updatedAt:"UpdatedAt" }
     });
 
-/*
-employerSchema.methods = {
-  authenticate: function(passwordToMatch) {
-    return encryption.hashPassword(this.Salt, passwordToMatch) === this.HashedPassword;
-  },
-  hasRole: function(role) {
-      return this.UserType.indexOf(role) > -1;
-  }
-};
-*/
 var Gender = mongoose.model('Gender', GenderSchema);
 
 function createDefaultGenders() {
@@ -43,12 +33,14 @@ function createDefaultGenders() {
         if (col.length === 0) {
 
             Gender.create({
+                Deleted : false,
                 Name: [{"Text":"Male" , "Lang":"en"},{"Text":"ذكر" , "Lang":"ar"}]
 
           });
 
 
             Gender.create({
+                Deleted : false,
                 Name: [{"Text":"Female" , "Lang":"en"},{"Text":"أنثى" , "Lang":"ar"}]
 
             });

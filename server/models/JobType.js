@@ -32,10 +32,12 @@ function createDefaultJobTypes() {
         if (col.length === 0) {
             
             JobType.create({
+                Deleted : false,
                 Name: [{ "Text": "Full Time" , "Lang": "en" }, { "Text": "باجر كامل" , "Lang": "ar" }]
             });
             
             JobType.create({
+                Deleted : false,
                 Name: [{ "Text": "Part Time" , "Lang": "en" }, { "Text": "نصف اجر" , "Lang": "ar" }]
             });
         }

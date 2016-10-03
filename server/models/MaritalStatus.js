@@ -33,12 +33,14 @@ function createDefaultMaritalStatuss() {
         if (col.length === 0) {
 
             MaritalStatus.create({
+                Deleted : false,
                 Name: [{"Text":"Single" , "Lang":"en"},{"Text":"أعزب" , "Lang":"ar"}]
 
           });
 
 
             MaritalStatus.create({
+                Deleted : false,
                 Name: [{"Text":"Married" , "Lang":"en"},{"Text":"متزوج" , "Lang":"ar"}]
 
             });

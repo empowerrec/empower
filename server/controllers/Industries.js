@@ -1,30 +1,12 @@
 var Industry = require('mongoose').model('Industry');
 
-//exports.getIndustries = function (req, res) {
-//    if (req.query.currentLang) {
-//        Industry.find({ 'Description.Lang': { "$eq": req.query.currentLang } }, { 'Description.$': 1 })
-//            .populate('ModifiedBy').populate('CreatedBy')
-//            .populate('Description', null, { Lang: 'ar' })
-//            .exec(function(err, col) {
-//                res.send(col);
-//            });
-//    } else {
-//        Industry.find({})
-//            .populate('ModifiedBy').populate('CreatedBy')
-//            .populate('Description', null, { Lang: 'ar' })
-//            .exec(function (err, col) {
-//            res.send(col);
-//        });
-//    }
-//};
-
 exports.getIndustries = function (req, res) {
     
     var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     if (req.query.currentLang) {
 
-        Industry.find({ 'Description.Lang': { "$eq": req.query.currentLang } }, { 'Description.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
+        Industry.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
             res.send(col);
         });
     } else {

@@ -31,11 +31,13 @@ function createDefaultGrades() {
                 if (col.length === 0) {
                     
                     Grade.create({
+                Deleted : false,
                 Name: [{ "Text": "Exxlent" , "Lang": "en" }, { "Text": "„„ «“" , "Lang": "ar" }]
                         
                     });
                     
                     Grade.create({
+                Deleted : false,
                 Name: [{ "Text": "Very Good" , "Lang": "en" }, { "Text": "ÃÌœ Ãœ«" , "Lang": "ar" }]
                        
                     });

@@ -54,10 +54,12 @@ function createDefaultExperiances() {
                 if (col.length === 0) {
                     
                     Experiance.create({
+                Deleted : false,
                 Salary : 2006 , Achievements:"Many Achievements" , FunctionalTasks:"Many Tasks "
                     });
                     
                     Experiance.create({
+                Deleted : false,
                 Salary : 2007 ,Achievements:"Many Achievements" , FunctionalTasks: "Many Tasks "
                     });
                 }

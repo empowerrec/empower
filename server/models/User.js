@@ -69,6 +69,7 @@ function createDefaultUsers() {
             salt = encryption.createSalt();
             hash = encryption.hashPassword(salt, 'gamal');
             User.create({
+                Deleted : false,
                 FirstName: 'Mohamed',
                 LastName: 'Gamal',
                 UserName: 'gamal@yahoo.com',
@@ -81,6 +82,7 @@ function createDefaultUsers() {
             salt = encryption.createSalt();
             hash = encryption.hashPassword(salt, 'ali');
             User.create({
+                Deleted : false,
                 FirstName: 'Ali',
                 LastName: 'Mohamed',
                 UserName: 'ali@yahoo.com',

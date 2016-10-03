@@ -47,11 +47,13 @@ function createDefaultAddresss() {
                 if (col.length === 0) {
                     
                     Address.create({
+                Deleted : false, 
                 AddressLine1 : "AddressLine1",
                 AddressLine2 : "AddressLine2"
                     });
                     
                     Address.create({
+                Deleted : false, 
                 AddressLine1 : "AddressLine1",
                 AddressLine2 : "AddressLine2"
                     });

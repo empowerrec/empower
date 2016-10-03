@@ -4,6 +4,9 @@ angular.module('app').factory('mvVacancy', function ($resource, mvIdentity) {
         update: { method: 'PUT', isArray: false },
         getForDetail: {
             url: 'api/vacancies/getForDetail/:_id', method: 'GET', params: { _id: '@id' }
+        },
+        vacanciesSearchResult: {
+            url: 'api/vacanciesSearchResult/', method: 'GET'
         }
   
     });

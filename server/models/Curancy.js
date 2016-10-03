@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var CurancySchema = mongoose.Schema({
 
-    CurancyName:
+    Name:
       [{
           Lang: String,
           Text: String
@@ -43,13 +43,15 @@ function createDefaultCurancies() {
         if (col.length === 0) {
 
             Curancy.create({
-                CurancyName: [{"Text":"Egyptien Pound" , "Lang":"en"},{"Text":"جنيه مصرى" , "Lang":"ar"}]
+                Deleted : false, 
+                Name: [{"Text":"Egyptien Pound" , "Lang":"en"},{"Text":"جنيه مصرى" , "Lang":"ar"}]
 
           });
 
 
             Curancy.create({
-                CurancyName: [{"Text":"US Dollar" , "Lang":"en"},{"Text":"دولار أمريكى" , "Lang":"ar"}]
+                Deleted : false, 
+                Name: [{"Text":"US Dollar" , "Lang":"en"},{"Text":"دولار أمريكى" , "Lang":"ar"}]
 
             });
     }

@@ -30,11 +30,13 @@ function createDefaultCareerLevels() {
         if (col.length === 0) {
             
             CareerLevel.create({
+                Deleted : false, 
                 Name: [{ "Text": "Student" , "Lang": "en" }, { "Text": "طالب" , "Lang": "ar" }]
             });
             
             
             CareerLevel.create({
+                Deleted : false, 
                 Name: [{ "Text": "Entry Level" , "Lang": "en" }, { "Text": "مبتدأ" , "Lang": "ar" }]
             });
         }

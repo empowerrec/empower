@@ -6,12 +6,12 @@ angular.module('app').controller('mvJobRoleCtrl', function ($scope,  mvNotifier,
     if(id)
     {
         $scope.jobRole = mvJobRole.get({_id:id },(function(){
-        if($scope.jobRole.JobRoleName) {
-            for (var i = 0; i < $scope.jobRole.JobRoleName.length; i++) {
+        if($scope.jobRole.Name) {
+            for (var i = 0; i < $scope.jobRole.Name.length; i++) {
 
-                if ($scope.jobRole.JobRoleName[i].Lang == $scope.currentLang) {
-                    $scope.descriptionText = $scope.jobRole.JobRoleName[i].Text;
-                    $scope.lang = $scope.jobRole.JobRoleName[i].Lang;
+                if ($scope.jobRole.Name[i].Lang == $scope.currentLang) {
+                    $scope.descriptionText = $scope.jobRole.Name[i].Text;
+                    $scope.lang = $scope.jobRole.Name[i].Lang;
                 }
             }
         }
@@ -84,25 +84,25 @@ angular.module('app').controller('mvJobRoleCtrl', function ($scope,  mvNotifier,
 
     $scope.loop = function(){
 
-        var listItems = $("#JobRoleNames li");
+        var listItems = $("#Names li");
         listItems.each(function(idx, li) {
             $scope.lang = $(li).attr('id');
-            var input = $(li).find("#JobRoleNameText2");
+            var input = $(li).find("#NameText2");
             $scope.descriptionText = input.val();
-            $scope.saveJobRoleName();
+            $scope.saveName();
 
         });
     };
 
-   $scope.saveJobRoleName = function () {
+   $scope.saveName = function () {
 
         var old = false;
-        if($scope.jobRole.JobRoleName) {
-            for (var i = 0; i < $scope.jobRole.JobRoleName.length; i++) {
-                var obj = $scope.jobRole.JobRoleName[i];
+        if($scope.jobRole.Name) {
+            for (var i = 0; i < $scope.jobRole.Name.length; i++) {
+                var obj = $scope.jobRole.Name[i];
 
-                if ($scope.jobRole.JobRoleName[i].Lang == $scope.lang) {
-                    $scope.jobRole.JobRoleName[i].Text = $scope.descriptionText;
+                if ($scope.jobRole.Name[i].Lang == $scope.lang) {
+                    $scope.jobRole.Name[i].Text = $scope.descriptionText;
                     old = true;
                 }
 
@@ -110,39 +110,39 @@ angular.module('app').controller('mvJobRoleCtrl', function ($scope,  mvNotifier,
         }
 
         if(!old) {
-            if(!$scope.jobRole.JobRoleName)
+            if(!$scope.jobRole.Name)
             {
-                $scope.jobRole.JobRoleName = [];
+                $scope.jobRole.Name = [];
             }
             var description = {"Lang": $scope.lang, "Text": $scope.descriptionText};
-            $scope.jobRole.JobRoleName.push(description);
+            $scope.jobRole.Name.push(description);
         }
         $scope.descriptionText = "";
         $scope.lang = "";
 
     };
      /*
-    $scope.updateJobRoleName = function (jobRole) {
+    $scope.updateName = function (jobRole) {
       $scope.lang = jobRole.Lang;
       $scope.descriptionText = jobRole.Text;
     };
 
-    $scope.deleteJobRoleName = function (jobRole) {
+    $scope.deleteName = function (jobRole) {
 
-        for(var i = 0; i < $scope.jobRole.JobRoleName.length; i++) {
-            var obj = $scope.jobRole.JobRoleName[i];
+        for(var i = 0; i < $scope.jobRole.Name.length; i++) {
+            var obj = $scope.jobRole.Name[i];
             console.log("Old" + obj.Lang);
             console.log("New " + jobRole.Lang);
             if(jobRole.Lang == obj.Lang) {
-                $scope.jobRole.JobRoleName.splice(i, 1);
+                $scope.jobRole.Name.splice(i, 1);
                 i--;
             }
         }
         /*
-        var descriptions = $scope.jobRole.JobRoleName;
+        var descriptions = $scope.jobRole.Name;
         console.log(descriptions);
         descriptions.delete(jobRole);
-        $scope.jobRole.JobRoleName = descriptions;
+        $scope.jobRole.Name = descriptions;
 
 
 

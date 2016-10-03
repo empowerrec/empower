@@ -31,11 +31,13 @@ function createDefaultSkillTypes() {
                 if (col.length === 0) {
                     
                     SkillType.create({
+                Deleted : false,
                 Name: [{ "Text": "C#" , "Lang": "en" }, { "Text": "C#" , "Lang": "ar" }]
                         
                     });
                     
                     SkillType.create({
+                Deleted : false,
                 Name: [{ "Text": "Java" , "Lang": "en" }, { "Text": "Java" , "Lang": "ar" }]
                        
                     });

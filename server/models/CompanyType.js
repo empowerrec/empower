@@ -27,24 +27,24 @@ var CompanyType = mongoose.model('CompanyType', CompanyTypeSchema);
 
 
 function createDefaultCompanyTypes() {
-            CompanyType.find({}).exec(function (err1, col) {
-                if (col.length === 0) {
-                    
-                    CompanyType.create({
-                Name: [{ "Text": "MultiNational" , "Lang": "en" }, { "Text": "„ ⁄œœ… «·Ã‰”Ì« " , "Lang": "ar" }]
-                        
-                    });
-                    
-                    CompanyType.create({
-                Name: [{ "Text": "Regional" , "Lang": "en" }, { "Text": "«ﬁ·Ì„Ì…" , "Lang": "ar" }]
-                       
-                    });
-                }
+    CompanyType.find({}).exec(function (err1, col) {
+        if (col.length === 0) {
+            
+            CompanyType.create({
+                Deleted : false, 
+                Name: [{ "Text": "MultiNational" , "Lang": "en" }, { "Text": "„ ⁄œœ… «·Ã‰”Ì« " , "Lang": "ar" }]                        
             });
             
+            CompanyType.create({
+                Deleted : false, 
+                Name: [{ "Text": "Regional" , "Lang": "en" }, { "Text": "«ﬁ·Ì„Ì…" , "Lang": "ar" }]                       
+            });
+        }
+    });
+            
         
-    };
-    
+};
+
 
 
 exports.createDefaultCompanyTypes = createDefaultCompanyTypes;

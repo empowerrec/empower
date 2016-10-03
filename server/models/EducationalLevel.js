@@ -30,10 +30,12 @@ function createDefaultEducationalLevels() {
         if (col.length === 0) {
             
             EducationalLevel.create({
+                Deleted : false,
                 Name: [{ "Text": "Universty" , "Lang": "en" }, { "Text": "جامعي" , "Lang": "ar" }]
             });
             
             EducationalLevel.create({
+                Deleted : false,
                 Name: [{ "Text": "High School" , "Lang": "en" }, { "Text": "ثانوي" , "Lang": "ar" }]
             });
         }

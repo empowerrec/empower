@@ -3,26 +3,22 @@
 
     <div class="well">
         <h3>
-        <div ng-repeat="ind in industry.Description | filter:{Lang:currentLang}">{{ind.Text}}</div>
+        <div ng-repeat="ind in industry.Name | filter:{Lang:currentLang}">{{ind.Text}}</div>
         </h3>
         <form name="industryForm" class="form-horizontal">
             <fieldset>
             
                 <div class="form-group">
-                    <label for="Text" class="col-md-2 control-label">{{"Industry.Description"
+                    <label for="Text" class="col-md-2 control-label">{{"Industry.Name"
                         | translate}}</label>
                     <div class="col-md-10">
 
-                        <ul ng-repeat="lang in languages" id="Descriptions">
-
+                        <ul ng-repeat="lang in languages" id="Names">
                             <li id="{{lang.value}}">
-
                                 {{ lang.text}}
-                                  <input id="DescriptionText2" type="text"
-                                                                placeholder="Description"
-                                                                value="{{getName(industry.Description , lang.value)}}"
-                                                                class="form-control"/>
-
+                                <input id="NameText2" type="text" required="required" ng-model="Name"
+                                    placeholder="Name" value="{{getName(industry.Name , lang.value)}}"
+                                    class="form-control"/>
                             </li>
                         </ul>
                     </div>

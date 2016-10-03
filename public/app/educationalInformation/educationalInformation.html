@@ -28,8 +28,6 @@
                         <label id="selectedUnivirsty" />
 
                         <div ng-repeat="emp in educationalInformation.Univirsty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
-                        <!--<select ng-model="address.City" ng-options="city._id as city.Name[0].Text for city in cities"
-                class="form-control"></select>-->
                     </div>
 
 
@@ -43,8 +41,6 @@
 
                         <label id="selectedFaculty" />
                         <div ng-repeat="emp in educationalInformation.Faculty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
-                        <!--<select ng-model="address.Area" ng-options="area._id as area.Name[0].Text for area in areas"
-                    class="form-control"></select>-->
                     </div>
 
                 </div>
@@ -59,8 +55,6 @@
 
                         <label id="selectedSpecialization" />
                         <div ng-repeat="emp in educationalInformation.Specialization.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
-                        <!--<select ng-model="address.Area" ng-options="area._id as area.Name[0].Text for area in areas"
-        class="form-control"></select>-->
                     </div>
                    
                 </div>

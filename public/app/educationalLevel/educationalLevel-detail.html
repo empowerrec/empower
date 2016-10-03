@@ -1,0 +1,9 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container admin-area">
+
+    <div ng-repeat="ind in educationalLevel.Name | filter:{Lang:currentLang}">
+        <h1>{{"EducationalLevel.Name" | translate}} :  {{ind.Text}}</h1>
+    </div>
+
+
+</div>

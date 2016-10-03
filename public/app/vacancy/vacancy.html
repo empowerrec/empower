@@ -5,7 +5,7 @@
         <h3>
             {{vacancy.JobTitle}}
         </h3>
-        <form name="employerForm" class="form-horizontal">
+        <form name="vacancyForm" class="form-horizontal">
             <fieldset>
                 <div class="form-group">
                     <label for="jobTitle" class="col-md-2 control-label">
@@ -58,7 +58,8 @@
                     <label for="salaryCurancy" class="col-md-2 control-label">{{"Vacancy.SalaryCurancy"| translate}}</label>
 
                     <div class="col-md-2">
-                        <select ng-model="vacancy.SalaryCurancy" ng-options="curancy._id as curancy.CurancyName[0].Text for curancy in curancies"
+                        <select ng-model="vacancy.SalaryCurancy"  required="required" 
+                                ng-options="curancy._id as curancy.Name[0].Text for curancy in curancies"
                                 class="form-control">
                             <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                         </select>
@@ -88,22 +89,26 @@
                                class="form-control" />
                     </div>
                     
-                    <label for="EducationalLevel" class="col-md-2 control-label">{{"Vacancy.EducationalLevel"| translate}}</label>
+                    <label for="JobRole" class="col-md-2 control-label">{{"Vacancy.JobRole"| translate}}</label>
 
                     <div class="col-md-2">
-                        <select name="EducationalLevel" ng-model="vacancy.EducationalLevel" ng-options="educationalLevel._id as educationalLevel.Name[0].Text for educationalLevel in educationalLevels"
+                        <select name="JobRole" ng-model="vacancy.JobRole" required="required"
+                                ng-options="jobRole._id as jobRole.Name[0].Text for jobRole in jobRoles"
                                 class="form-control">
                             <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                         </select>
                     </div>
 
                 </div>
+                
+                
 
                 <div class="form-group">
                     <label for="JobType" class="col-md-2 control-label">{{"Vacancy.JobType"| translate}}</label>
 
                     <div class="col-md-2">
-                        <select name="JobType" ng-model="vacancy.JobType" ng-options="jobType._id as jobType.Name[0].Text for jobType in jobTypes"
+                        <select name="JobType" ng-model="vacancy.JobType"  required="required" 
+                                ng-options="jobType._id as jobType.Name[0].Text for jobType in jobTypes"
                                 class="form-control">
                             <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                         </select>
@@ -113,7 +118,8 @@
                     <label for="Industry" class="col-md-2 control-label">{{"Vacancy.Industry"| translate}}</label>
 
                     <div class="col-md-2">
-                        <select name="Industry" ng-model="vacancy.Industry" ng-options="industry._id as industry.Description[0].Text for industry in industries"
+                        <select name="Industry" ng-model="vacancy.Industry"  required="required" 
+                                ng-options="industry._id as industry.Name[0].Text for industry in industries"
                                 class="form-control">
                             <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                         </select>
@@ -136,7 +142,7 @@
 
 
                     <div class="col-md-2">
-                        <select ng-model="vacancy.Country" ng-options="country._id as country.Name[0].Text for country in countries"
+                        <select ng-model="vacancy.Country"  required="required" ng-options="country._id as country.Name[0].Text for country in countries"
                                 class="form-control">
                             <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                         </select>
@@ -151,22 +157,32 @@
                         <div ng-repeat="name in vacancy.City.Name | filter:{Lang:currentLang}">{{name.Text}}</div>
                     </div>
 
-                    <!--<label for="city" class="col-md-2 control-label">
-                        {{"Vacancy.City"| translate}}
-                    </label>
-
-                    <div class="col-md-2">
-                        <input name="city" type="text" placeholder="{{'Vacancy.City' | translate}}"
-                               ng-model="vacancy.City" required="required"
-                               class="form-control" />
-                    </div>-->
+                    <label for="Area" class="col-md-1 control-label">{{"Vacancy.Area"| translate}}</label>
+                    <div class="col-md-3">
+                        <input id="areaName" name="Area" />
+                        <input type="hidden" id="hfAreaId" ng-model="vacanvy.Area" />
+                        <input type="hidden" id="currentLang" value="ar" />
+                        <label id="selectedArea" />
+                        <div ng-repeat="name in vacancy.Area.Name | filter:{Lang:currentLang}">{{name.Text}}</div>
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="CareerLevel" class="col-md-2 control-label">{{"Vacancy.CareerLevel"| translate}}</label>
 
                     <div class="col-md-2">
-                        <select name="CareerLevel" ng-model="vacancy.CareerLevel" ng-options="careerLevel._id as careerLevel.Name[0].Text for careerLevel in careerLevels"
+                        <select name="CareerLevel" ng-model="vacancy.CareerLevel"  required="required" 
+                                ng-options="careerLevel._id as careerLevel.Name[0].Text for careerLevel in careerLevels"
+                                class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
+                    </div>
+                    
+                    <label for="EducationalLevel" class="col-md-2 control-label">{{"Vacancy.EducationalLevel"| translate}}</label>
+
+                    <div class="col-md-2">
+                        <select name="EducationalLevel" ng-model="vacancy.EducationalLevel" required="required"
+                                ng-options="educationalLevel._id as educationalLevel.Name[0].Text for educationalLevel in educationalLevels"
                                 class="form-control">
                             <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                         </select>
@@ -184,11 +200,11 @@
                     <div class="form-group">
                         <div class="col-md-10 col-md-offset-2">
                             <div class="pull-right">
-                                <button ng-click="update()" ng-show="updateMode" ng-disabled="employerForm.$invalid" class="btn btn-primary">
+                                <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
                                     {{"Buttons.Save" | translate}}
                                 </button>
 
-                                <button ng-click="add()" ng-show="addMode" ng-disabled="employerForm.$invalid||!addEnabled" class="btn btn-primary">
+                                <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
                                     {{"Buttons.Add" | translate}}
                                 </button>
                                 &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>

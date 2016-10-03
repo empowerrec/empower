@@ -1,7 +1,7 @@
 angular.module('app').controller('mvCategoryListCtrl', function ($scope, mvCategory,$translate, $rootScope) {
 
     $scope.categories = mvCategory.query();
-    $scope.sortOptions = [{value: 'Description', text: 'Sort by Description'}];
+    $scope.sortOptions = [{value: 'Name', text: 'Sort by Name'}];
 
     $scope.sortOrder = $scope.sortOptions[0].value;
     $scope.getName = function(list){

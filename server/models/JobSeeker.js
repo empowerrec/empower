@@ -127,10 +127,12 @@ function createDefaultJobSeekers() {
         if (col.length === 0) {
             
             JobSeeker.create({
+                Deleted : false,
                 Gender: 'Male'
             });
             
             JobSeeker.create({
+                Deleted : false,
                 Gender: 'Female'
             });
         }

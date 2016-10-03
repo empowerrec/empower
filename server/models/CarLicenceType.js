@@ -32,11 +32,13 @@ function createDefaultCarLicenceTypes() {
         if (col.length === 0) {
             
             CarLicenceType.create({
+                Deleted : false, 
                 Name: [{ "Text": "Private" , "Lang": "en" }, { "Text": "خاصة" , "Lang": "ar" }]
             });
             
             
             CarLicenceType.create({
+                Deleted : false, 
                 Name: [{ "Text": "First Class" , "Lang": "en" }, { "Text": "درجة أولى" , "Lang": "ar" }]
             });
         }

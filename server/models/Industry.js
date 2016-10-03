@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var industrySchema = mongoose.Schema({
-    Description:
+    Name:
         [{
             Lang: String,
             Text: String
@@ -33,11 +33,13 @@ function createDefaultIndustry() {
         if (col.length === 0) {
             
             Industry.create({
-                Description: [{ "Text": "Information Technology Services" , "Lang": "en" }, { "Text": "Œœ„«   ﬂ‰Ê·ÊÃÌ« «·„⁄·Ê„« " , "Lang": "ar" }]
+                Deleted : false,
+                Name: [{ "Text": "Information Technology Services" , "Lang": "en" }, { "Text": "Œœ„«   ﬂ‰Ê·ÊÃÌ« «·„⁄·Ê„« " , "Lang": "ar" }]
             });
             
             Industry.create({
-                Description: [{ "Text": "Computer Software" , "Lang": "en" }, { "Text": "»—„Ã… «·ﬂÊ„»ÌÊ —" , "Lang": "ar" }]
+                Deleted : false,
+                Name: [{ "Text": "Computer Software" , "Lang": "en" }, { "Text": "»—„Ã… «·ﬂÊ„»ÌÊ —" , "Lang": "ar" }]
 
             });
           

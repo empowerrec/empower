@@ -31,11 +31,13 @@ function createDefaultEducationTypes() {
                 if (col.length === 0) {
                     
                     EducationType.create({
+                Deleted : false,
                 Name: [{ "Text": "Univirsty" , "Lang": "en" }, { "Text": "ÌÇãÚì" , "Lang": "ar" }]
                         
                     });
                     
                     EducationType.create({
+                Deleted : false,
                 Name: [{ "Text": "Secondry" , "Lang": "en" }, { "Text": "ËÇäæì" , "Lang": "ar" }]
                        
                     });

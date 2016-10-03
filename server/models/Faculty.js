@@ -32,11 +32,13 @@ function createDefaultFaculties() {
                 if (col.length === 0) {
                     
                     Faculty.create({
+                Deleted : false,
                 Name: [{ "Text": "Sience Faculty" , "Lang": "en" }, { "Text": "ﬂ·Ì… «·⁄·Ê„" , "Lang": "ar" }]
                         
                     });
                     
                     Faculty.create({
+                Deleted : false,
                 Name: [{ "Text": "Enginering Faculty" , "Lang": "en" }, { "Text": "ﬂ·Ì… «·⁄·Ê„" , "Lang": "ar" }]
                        
                     });

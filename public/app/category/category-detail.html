@@ -1,8 +1,8 @@
 <div ng-include="'/partials/main/sidebar-menu'"></div>
 <div class="container admin-area">
     
-    <div ng-repeat="ind in category.Description | filter:{Lang:currentLang}">
-        <h1>{{"Category.Description" | translate}} :  {{ind.Text}}</h1>
+    <div ng-repeat="ind in category.Name | filter:{Lang:currentLang}">
+        <h1>{{"Category.Name" | translate}} :  {{ind.Text}}</h1>
     </div>
 
 

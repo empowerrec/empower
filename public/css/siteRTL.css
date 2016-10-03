@@ -183,3 +183,19 @@ input.submitted.ng-invalid {
     float: left!important;
     margin-right: -15px;
 }
+
+.ui-accordion .ui-accordion-content {
+	padding: 1em 1em !important;
+	border-top: 0;
+	overflow: auto;
+}
+
+.ui-accordion .ui-accordion-header {
+	display: block;
+	cursor: pointer;
+	position: relative;
+	margin: 2px 0 0 0;
+	padding: .3em .3em .3em .5em  !important;
+	min-height: 0; /* support: IE7 */
+	font-size: 100%;
+}

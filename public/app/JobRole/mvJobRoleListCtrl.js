@@ -2,7 +2,7 @@ angular.module('app').controller('mvJobRoleListCtrl', function ($scope, mvJobRol
     $scope.currentUser = mvIdentity.currentUser;
     //$scope.jobRoles = mvJobRole.query();
     //$scope.currentLang = $translate.use();
-    //$scope.sortOptions = [{value: 'JobRoleName', text: 'Sort by JobRoleName'}];
+    //$scope.sortOptions = [{value: 'Name', text: 'Sort by Name'}];
 
     //$scope.sortOrder = $scope.sortOptions[0].value;
     //$scope.getName = function(list){

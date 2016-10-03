@@ -32,11 +32,13 @@ function createDefaultLanguages() {
         if (col.length === 0) {
             
             Language.create({
+                Deleted : false,
                 Name: "ÚÑÈí",
                 Abbreviation: "ar"
             });
             
             Language.create({
+                Deleted : false,
                 Name: "English",
                 Abbreviation: "en"
             });

@@ -67,12 +67,14 @@ function createDefaultEmployers() {
         if (col.length === 0) {
 
             Employer.create({
+                Deleted : false,
                 EmployerType: 'D',
                 NumberOfEmployees: 5000,
                 AverageNumberOfJobOpeningsPerMonth: 50
             });
 
             Employer.create({
+                Deleted : false,
                 EmployerType: 'S',
                 NumberOfEmployees: 10,
                 AverageNumberOfJobOpeningsPerMonth: 1

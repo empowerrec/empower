@@ -3,24 +3,24 @@
 
     <div class="well">
         <h3>
-        <div ng-repeat="ind in jobRole.JobRoleName | filter:{Lang:currentLang}">{{ind.Text}}</div>
+        <div ng-repeat="ind in jobRole.Name | filter:{Lang:currentLang}">{{ind.Text}}</div>
         </h3>
         <form name="jobRoleForm" class="form-horizontal">
             <fieldset>
             
                 <div class="form-group">
-                    <label for="Text" class="col-md-2 control-label">{{"JobRole.JobRoleName"
+                    <label for="Text" class="col-md-2 control-label">{{"JobRole.Name"
                         | translate}}</label>
                     <div class="col-md-10">
 
-                        <ul ng-repeat="lang in languages" id="JobRoleNames">
+                        <ul ng-repeat="lang in languages" id="Names">
 
                             <li id="{{lang.value}}">
 
                                 {{ lang.text}}
-                                <input id="JobRoleNameText2" type="text"
-                                       placeholder="JobRoleName" required="required"
-                                       value="{{getName(jobRole.JobRoleName , lang.value)}}"
+                                <input id="NameText2" type="text"
+                                       placeholder="Name" required="required"
+                                       value="{{getName(jobRole.Name , lang.value)}}"
                                        class="form-control" />
 
                             </li>

@@ -7,7 +7,7 @@
             <h3>{{"Vacancy.JobDescrption" | translate}} : {{vacancy.JobDescription}}</h3>
             <h3>{{"Vacancy.SalaryRangeFrom" | translate}} : {{vacancy.SalaryRangeFrom}}</h3>
             <h3>{{"Vacancy.SalaryRangeTo" | translate}} : {{vacancy.SalaryRangeTo }}</h3>
-            <h3>{{"Vacancy.SalaryCurancy" | translate}} : <span ng-repeat="name in vacancy.SalaryCurancy.CurancyName |filter:currentLang">{{name.Text}}</span></h3>
+            <h3>{{"Vacancy.SalaryCurancy" | translate}} : <span ng-repeat="name in vacancy.SalaryCurancy.Name |filter:currentLang">{{name.Text}}</span></h3>
         </div>
     </div>
 

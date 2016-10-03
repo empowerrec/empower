@@ -194,6 +194,18 @@ angular.module('app').config(function ($routeProvider) {
     }).when('/experiances', {
         templateUrl: '/partials/experiance/experiance-list.html',
         controller: 'mvExperianceListCtrl'
+    }).when('/educationalLevels/:id', {
+        templateUrl: '/partials/educationalLevels/educationalInformatio-detail',
+        controller: 'mvEducationalLevelDetailCtrl'
+    }).when('/updateEducationalLevel/:id', {
+        templateUrl: '/partials/educationalLevel/educationalLevel',
+        controller: 'mvEducationalLevelCtrl'
+    }).when('/addEducationalLevel', {
+        templateUrl: '/partials/educationalLevel/educationalLevel',
+        controller: 'mvEducationalLevelCtrl'
+    }).when('/educationalLevels', {
+        templateUrl: '/partials/educationalLevel/educationalLevel-list.html',
+        controller: 'mvEducationalLevelListCtrl'
     }).when('/educationalInformations/:id', {
         templateUrl: '/partials/educationalInformations/educationalInformatio-detail',
         controller: 'mvEducationalInformationDetailCtrl'

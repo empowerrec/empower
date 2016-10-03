@@ -32,11 +32,13 @@ function createDefaultUnivirsties() {
                 if (col.length === 0) {
                     
                     Univirsty.create({
+                Deleted : false,
                 Name: [{ "Text": "Cairo Univirsty" , "Lang": "en" }, { "Text": "Ã«„⁄… «·ﬁ«Â—…" , "Lang": "ar" }]
                         
                     });
                     
                     Univirsty.create({
+                Deleted : false,
                 Name: [{ "Text": "Ain Shams Univirsty" , "Lang": "en" }, { "Text": "Ã«„⁄… ⁄Ì‰ ‘„”" , "Lang": "ar" }]
                        
                     });

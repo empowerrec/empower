@@ -31,11 +31,13 @@ function createDefaultPositions() {
                 if (col.length === 0) {
                     
                     Position.create({
+                Deleted : false,
                 Name: [{ "Text": "Senior Developer" , "Lang": "en" }, { "Text": "„»—„Ã √Ê·" , "Lang": "ar" }]
                         
                     });
                     
                     Position.create({
+                Deleted : false,
                 Name: [{ "Text": "Team Leader" , "Lang": "en" }, { "Text": "„œÌ— ›—Ìﬁ" , "Lang": "ar" }]
                        
                     });

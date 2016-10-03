@@ -1,18 +1,18 @@
 <div ng-include="'/partials/main/sidebar-menu'"></div>
 <div class="container admin-area">
     <div class="well">
-        <div ng-repeat="ind in category.Description | filter:{Lang:currentLang}"><h3>{{ind.Text}}</h3></div>
+        <div ng-repeat="ind in category.Name | filter:{Lang:currentLang}"><h3>{{ind.Text}}</h3></div>
         <form name="categoryForm" class="form-horizontal">
             <fieldset>
 
                 <div class="form-group">
-                    <label for="Description" class="col-md-2 control-label">{{"Category.Description"| translate}}</label>
+                    <label for="Name" class="col-md-2 control-label">{{"Category.Name"| translate}}</label>
                     <div class="col-md-10">
-                        <ul ng-repeat="lang in languages" id="Descriptions">
+                        <ul ng-repeat="lang in languages" id="Names">
                             <li id="{{lang.value}}">
                                 {{ lang.text}}
-                                <input id="DescriptionText" name="Description" type="text" placeholder="Description"
-                                       value="{{getName(category.Description , lang.value)}}" class="form-control" />
+                                <input id="NameText" name="Name" type="text" placeholder="Name"
+                                       value="{{getName(category.Name , lang.value)}}" class="form-control" />
                             </li>
                         </ul>
                     </div>

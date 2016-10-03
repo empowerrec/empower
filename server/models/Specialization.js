@@ -32,11 +32,13 @@ function createDefaultSpecializations() {
                 if (col.length === 0) {
                     
                     Specialization.create({
+                Deleted : false,
                 Name: [{ "Text": "IT" , "Lang": "en" }, { "Text": " ﬂ‰Ê·ÊÃÌ« «·„⁄·Ê„« " , "Lang": "ar" }]
                         
                     });
                     
                     Specialization.create({
+                Deleted : false,
                 Name: [{ "Text": "CS" , "Lang": "en" }, { "Text": "⁄·Ê„ Õ«”»" , "Lang": "ar" }]
                        
                     });

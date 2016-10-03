@@ -31,11 +31,13 @@ function createDefaultLanguageLevels() {
                 if (col.length === 0) {
                     
                     LanguageLevel.create({
+                Deleted : false,
                 Name: [{ "Text": "Exxlent" , "Lang": "en" }, { "Text": "„„ «“" , "Lang": "ar" }]
                         
                     });
                     
                     LanguageLevel.create({
+                Deleted : false,
                 Name: [{ "Text": "Very Good" , "Lang": "en" }, { "Text": "ÃÌœ Ãœ«" , "Lang": "ar" }]
                        
                     });

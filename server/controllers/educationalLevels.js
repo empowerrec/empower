@@ -1,13 +1,22 @@
 var EducationalLevel = require('mongoose').model('EducationalLevel');
 
 exports.getEducationalLevels = function (req, res) {
+    
+    var currentPage = parseInt(req.query.currentPage) > 0 ? parseInt(req.query.currentPage) : 1,
+        pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     if (req.query.currentLang) {
+        
         EducationalLevel.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
-        EducationalLevel.find({}).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
+        EducationalLevel.find(JSON.parse(req.query.query))
+            .populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize).skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+            EducationalLevel.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                res.send([{ collection: col, allDataCount: count }]);
+            });
         });
     }
 };

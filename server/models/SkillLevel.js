@@ -31,11 +31,13 @@ function createDefaultSkillLevels() {
                 if (col.length === 0) {
                     
                     SkillLevel.create({
+                Deleted : false,
                 Name: [{ "Text": "Exxlent" , "Lang": "en" }, { "Text": "„„ «“" , "Lang": "ar" }]
                         
                     });
                     
                     SkillLevel.create({
+                Deleted : false,
                 Name: [{ "Text": "Very Good" , "Lang": "en" }, { "Text": "ÃÌœ Ãœ«" , "Lang": "ar" }]
                        
                     });

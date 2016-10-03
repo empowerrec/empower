@@ -53,10 +53,12 @@ function createDefaultEducationalInformations() {
         if (col.length === 0) {
             
             EducationalInformation.create({
+                Deleted : false,
                 GraduationYear : 2006
             });
             
             EducationalInformation.create({
+                Deleted : false,
                 GraduationYear : 2007
             });
         }

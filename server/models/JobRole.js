@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var JobRoleSchema = mongoose.Schema({
-    JobRoleName:
+    Name:
       [{
           Lang: String,
           Text: String
@@ -33,13 +33,15 @@ function createDefaultJobRoles() {
         if (col.length === 0) {
 
             JobRole.create({
-                JobRoleName: [{"Text":"Administraion" , "Lang":"en"},{"Text":"اداري" , "Lang":"ar"}]
+                Deleted : false, 
+                Name: [{"Text":"Administraion" , "Lang":"en"},{"Text":"اداري" , "Lang":"ar"}]
 
           });
 
 
             JobRole.create({
-                JobRoleName: [{"Text":"Banking" , "Lang":"en"},{"Text":"ايداع" , "Lang":"ar"}]
+                Deleted : false, 
+                Name: [{"Text":"Banking" , "Lang":"en"},{"Text":"ايداع" , "Lang":"ar"}]
 
             });
     }

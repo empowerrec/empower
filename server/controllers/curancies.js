@@ -2,7 +2,7 @@ var Curancy = require('mongoose').model('Curancy');
 
 exports.getCurancies = function (req, res) {
     if (req.query.currentLang) {
-        Curancy.find({ 'CurancyName.Lang': { "$eq": req.query.currentLang } }, { 'CurancyName.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        Curancy.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             
             res.send(col);
 

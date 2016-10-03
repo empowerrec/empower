@@ -38,11 +38,13 @@ function createDefaultInnerPages() {
         if (col.length === 0) {
 
             InnerPage.create({
+                Deleted : false,
                 PageTitle: [{"Lang":"en" , "Text":"About US Page Title"}, { "Lang": "ar" , "Text": "⁄‰ «·‘—ﬂ…" }],
                 PageBody: [{ "Lang": "en" , "Text": "About US Page Body" }, { "Lang": "ar" , "Text": "⁄‰ «·‘—ﬂ…" }],
             });
 
             InnerPage.create({
+                Deleted : false,
                 PageTitle: [{ "Lang": "en" , "Text": "Contact US Page Title" }, { "Lang": "ar" , "Text": "« ’· »‰«" }],
                 PageBody: [{ "Lang": "en" , "Text": "Contact US Page Body" }, { "Lang": "ar" , "Text": "« ’· »‰«" }],
             });

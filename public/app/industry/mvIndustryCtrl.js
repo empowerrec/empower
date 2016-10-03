@@ -1,17 +1,17 @@
 angular.module('app').controller('mvIndustryCtrl', function ($scope,  mvNotifier, mvIndustryRepo,mvIndustry,$routeParams,$translate) {
     var id = $routeParams.id;
-    $scope.descriptionText = "";
+    $scope.nameText = "";
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
     if(id)
     {
         $scope.industry = mvIndustry.get({_id:id },(function(){
-        if($scope.industry.Description) {
-            for (var i = 0; i < $scope.industry.Description.length; i++) {
+        if($scope.industry.Name) {
+            for (var i = 0; i < $scope.industry.Name.length; i++) {
 
-                if ($scope.industry.Description[i].Lang == $scope.currentLang) {
-                    $scope.descriptionText = $scope.industry.Description[i].Text;
-                    $scope.lang = $scope.industry.Description[i].Lang;
+                if ($scope.industry.Name[i].Lang == $scope.currentLang) {
+                    $scope.nameText = $scope.industry.Name[i].Text;
+                    $scope.lang = $scope.industry.Name[i].Lang;
                 }
             }
         }
@@ -82,25 +82,25 @@ angular.module('app').controller('mvIndustryCtrl', function ($scope,  mvNotifier
 
     $scope.loop = function(){
 
-        var listItems = $("#descriptions li");
+        var listItems = $("#names li");
         listItems.each(function(idx, li) {
             $scope.lang = $(li).attr('id');
-            var input = $(li).find("#DescriptionText2");
-            $scope.descriptionText = input.val();
-            $scope.saveDescription();
+            var input = $(li).find("#NameText2");
+            $scope.nameText = input.val();
+            $scope.saveName();
 
         });
     };
 
-   $scope.saveDescription = function () {
+   $scope.saveName = function () {
 
         var old = false;
-        if($scope.industry.Description) {
-            for (var i = 0; i < $scope.industry.Description.length; i++) {
-                var obj = $scope.industry.Description[i];
+        if($scope.industry.Name) {
+            for (var i = 0; i < $scope.industry.Name.length; i++) {
+                var obj = $scope.industry.Name[i];
 
-                if ($scope.industry.Description[i].Lang == $scope.lang) {
-                    $scope.industry.Description[i].Text = $scope.descriptionText;
+                if ($scope.industry.Name[i].Lang == $scope.lang) {
+                    $scope.industry.Name[i].Text = $scope.nameText;
                     old = true;
                 }
 
@@ -108,39 +108,39 @@ angular.module('app').controller('mvIndustryCtrl', function ($scope,  mvNotifier
         }
 
         if(!old) {
-            if(!$scope.industry.Description)
+            if(!$scope.industry.Name)
             {
-                $scope.industry.Description = [];
+                $scope.industry.Name = [];
             }
-            var description = {"Lang": $scope.lang, "Text": $scope.descriptionText};
-            $scope.industry.Description.push(description);
+            var name = {"Lang": $scope.lang, "Text": $scope.nameText};
+            $scope.industry.Name.push(name);
         }
-        $scope.descriptionText = "";
+        $scope.nameText = "";
         $scope.lang = "";
 
     };
      /*
-    $scope.updateDescription = function (industry) {
+    $scope.updateName = function (industry) {
       $scope.lang = industry.Lang;
-      $scope.descriptionText = industry.Text;
+      $scope.nameText = industry.Text;
     };
 
-    $scope.deleteDescription = function (industry) {
+    $scope.deleteName = function (industry) {
 
-        for(var i = 0; i < $scope.industry.Description.length; i++) {
-            var obj = $scope.industry.Description[i];
+        for(var i = 0; i < $scope.industry.Name.length; i++) {
+            var obj = $scope.industry.Name[i];
             console.log("Old" + obj.Lang);
             console.log("New " + industry.Lang);
             if(industry.Lang == obj.Lang) {
-                $scope.industry.Description.splice(i, 1);
+                $scope.industry.Name.splice(i, 1);
                 i--;
             }
         }
         /*
-        var descriptions = $scope.industry.Description;
-        console.log(descriptions);
-        descriptions.delete(industry);
-        $scope.industry.Description = descriptions;
+        var names = $scope.industry.Name;
+        console.log(names);
+        names.delete(industry);
+        $scope.industry.Name = names;
 
 
 

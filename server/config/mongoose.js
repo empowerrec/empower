@@ -40,13 +40,20 @@ var skillLevelsModel = require('../models/SkillLevel');
 var skillModel = require('../models/Skill');
 var langaugeLevelsModel = require('../models/LanguageLevel');
 var educationalLevelModel = require('../models/EducationalLevel');
-
 var applicant = require('../models/Applicant');
 
 module.exports = function (config) {
     mongoose.connect(config.db);
+    
+    //mongoose.connect(config.db, function (err) {
+    //    if (err) throw err;
+    //});
+    
     var db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'connection error...'));
+    db.on('error', function (err) {
+        console.log(err);
+        console.error.bind(console, 'connection error...');
+    });
     db.once('open', function callback() {
         console.log('multivision db opened');
     });
