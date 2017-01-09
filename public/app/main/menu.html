@@ -1,13 +1,254 @@
-<div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-        <li><a href="/#/">{{"Menu.Home" | translate}}</a></li>
-        <li><a href="/#/innerPages/570b44faed84c3a40f207bee/">{{"Menu.AboutUs" | translate}}</a></li>
-        <li><a href="/#/innerPages/570b44faed84c3a40f207bf3/">{{"Menu.ContactUs" | translate}}</a></li>
-        <li><a href="/#profile/">{{"Menu.MyProfile" | translate}}</a></li>
-        <li><a href="/#vacanciesSearchResult/">{{"Menu.SearchJobs" | translate}}</a></li>
-        <!--<li><a href="/#/courses">{{"Menu.Jobs" | translate}}</a></li>
-        <li><a href="/#/employers">{{"Menu.Employers" | translate}}</a></li>
-        <li><a href="/#/vacancies">{{"Menu.Vacancies" | translate}}</a></li>-->
-    </ul>
-    <div ng-include="'/partials/account/navbar-login'"></div>
-</div>
+
+
+    <div class="navbar-wrapper" ng-controller="mvFrontLoginCtrl">
+        <div class="navbar navbar-default fixed-top shrinkable">
+            <div class="container-boxed max">
+                <div class="navbar-header">
+                    <h1 class="sr-only">JobMonster</h1>
+                    <a class="navbar-toggle collapsed" data-toggle="collapse" data-target=".noo-navbar-collapse">
+                        <span class="sr-only">Navigation</span>
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <a class="navbar-toggle member-navbar-toggle collapsed" data-toggle="collapse" data-target=".noo-user-navbar-collapse">
+                        <i class="fa fa-user"></i>
+                    </a>
+                    <a href="/#/" class="navbar-brand">
+                        <img class="noo-logo-img noo-logo-normal" src="images/logo-jobmonster.png" alt="">
+                        <img class="noo-logo-mobile-img noo-logo-normal" src="images/logo-mobile.png" alt="">
+                    </a>
+                </div>
+                <nav class="collapse navbar-collapse noo-user-navbar-collapse">
+                    
+                    <ul class="navbar-nav sf-menu">
+                        <li>
+                            <a href="member.html"><i class="fa fa-sign-in"></i> Login</a>
+                        </li>
+                        <li class="button_socical fb">
+                            <i class="fa fa-facebook-square"></i>
+                            <em class="fa-facebook-square">Login with Facebook</em>
+                        </li>
+                        <li class="button_socical gg">
+                            <i class="fa fa-google-plus"></i>
+                            <em class="fa-google-plus">Login with Google</em>
+                        </li>
+                        <li class="button_socical linkedin">
+                            <i class="fa fa-linkedin-square"></i>
+                            <em class="fa-linkedin-square">Login with LinkedIn</em>
+                        </li>
+                        <li>
+                            <a href="member.html"><i class="fa fa-key"></i> Register</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="collapse navbar-collapse noo-navbar-collapse">
+                    <ul class="navbar-nav sf-menu">
+                        <li class="current-menu-item align-left">
+                            <a href="/#/">Home</a>
+                            <ul class="sub-menu">
+                                <li><a href="home-resume.html">Home Resume</a></li>
+                                <li><a href="home-2.html">Home Ver.2</a></li>
+                                <li><a href="home-map.html">Home Search Map</a></li>
+                            </ul>
+                        </li>
+                        <li class="align-left">
+                            <a href="jobs.html">Jobs</a>
+                            <ul class="sub-menu">
+                                <li><a href="jobs-fullwidth.html">Jobs Fullwidth</a></li>
+                                <li><a href="jobs-detail.html">Jobs Detail</a></li>
+                                <li><a href="post-a-job-step-1.html">Post a job - Step 1</a></li>
+                                <li><a href="post-a-job-step-2.html">Post a job - Step 2</a></li>
+                                <li><a href="post-a-job-step-3.html">Post a job - Step 3</a></li>
+                                <li><a href="post-a-job-step-4.html">Post a job - Step 4</a></li>
+                            </ul>
+                        </li>
+                        <li class="align-left">
+                            <a href="company.html">Companies</a>
+                            <ul class="sub-menu">
+                                <li><a href="company-detail.html">Company Detail</a></li>
+                            </ul>
+                        </li>
+                        <li class="align-left">
+                            <a href="resume.html">Resumes</a>
+                            <ul class="sub-menu">
+                                <li><a href="resume-detail.html">Resume Detail</a></li>
+                                <li><a href="post-a-resume-step-1.html">Post a resume - Step 1</a></li>
+                                <li><a href="post-a-resume-step-2.html">Post a resume - Step 2</a></li>
+                                <li><a href="post-a-resume-step-3.html">Post a resume - Step 3</a></li>
+                                <li><a href="post-a-resume-step-4.html">Post a resume - Step 4</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="menu-item-post-btn">
+                            <a href="post-a-job-step-2.html">Post a Job</a>
+                        </li>
+                        <li class="nav-item-member-profile login-link align-center" ng-hide="identity.isAuthenticated()">
+                            <a href="#" class="member-links member-login-link" data-rel="loginModal">
+                                <i class="fa fa-sign-in"></i>&nbsp;Login
+                            </a>
+
+                            <ul class="sub-menu login-socical">
+                                <li class="button_socical fb">
+                                    <i class="fa fa-facebook-square"></i>
+                                    <em class="fa-facebook-square">Login with Facebook</em>
+                                </li>
+                                <li class="button_socical gg">
+                                    <i class="fa fa-google-plus"></i>
+                                    <em class="fa-google-plus">Login with Google</em>
+                                </li>
+                                <li class="button_socical linkedin">
+                                    <i class="fa fa-linkedin-square"></i>
+                                    <em class="fa-linkedin-square">Login with LinkedIn</em>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item-member-profile register-link" ng-hide="identity.isAuthenticated()">
+                            <a class="member-links member-register-link" href="#" data-rel="registerModal">
+                                <i class="fa fa-key"></i>&nbsp;Register
+                            </a>
+                        </li>
+                        <li ng-show="identity.isAuthenticated() && identity.currentUser.isAdmin()" class="align-left">
+                            <a href="#/profile">
+                                Setup
+                            </a>
+
+                            <ul class="sub-menu">
+
+
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/industries">{{"Menu.Industries" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/jobTypes">{{"Menu.JobTypes" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/jobRoles">{{"Menu.JobRoles" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/innerPages">{{"Menu.InnerPages" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/Categories">{{"Menu.Categories" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/educationalLevels">{{"Menu.EducationalLevels" | translate}}</a>
+                                </li>
+
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/cities">{{"Menu.Cities" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/citiesNotConfirmed">{{"Menu.CitiesNotConfirmed" | translate}}</a>
+                                </li>
+
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/areas">{{"Menu.Areas" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/areasNotConfirmed">{{"Menu.AreasNotConfirmed" | translate}}</a>
+                                </li>
+
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/specializations">{{"Menu.Specializations" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/faculties">{{"Menu.Faculties" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/univirsties">{{"Menu.Univirsties" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/univirstiesNotConfirmed">{{"Menu.UnivirstiesNotConfirmed" | translate}}</a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li ng-show="identity.isAuthenticated()" class="align-left">
+                            <a href="#/profile"  >
+                                Welcome {{ identity.currentUser.FirstName + ' ' + identity.currentUser.LastName}}
+                            </a>
+
+                            <ul class="sub-menu">
+                                
+                                                             
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/admin/users">{{"Menu.Users" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/employers">{{"Menu.Employers" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin() || identity.currentUser.isEmployer()">
+                                    <a href="#/vacancies">{{"Menu.Vacancies" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/jobSeekers">{{"Menu.JobSeekers" | translate}}</a>
+                                </li>
+                                
+
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/experiances">{{"Menu.Experiances" | translate}}</a>
+                                </li>
+
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/applicants">{{"Menu.Applicants" | translate}}</a>
+                                </li>
+
+
+                                <li ng-show="identity.currentUser.isEmployer()">
+                                    <a href="#/updateemployer/profile">{{"Menu.CompanyProfile" | translate}}</a>
+                                </li>
+
+                                <li ng-show="identity.currentUser.isJobSeeker()">
+                                    <a href="#/updateJobSeeker/PersonalInformation/profile">{{"Menu.JobSeekerProfile" | translate}}</a>
+                                </li>
+                                <li><a href="#/profile">Profile</a></li>
+                                <li><a href="" ng-click="signout()">Sign Out</a></li>
+                            </ul>
+                        </li>
+
+
+                        
+
+                        <li ng-show="identity.isAuthenticated()" class="nav-item-member-profile register-link"><a href="" ng-click="signout()">Sign Out</a></li>
+</ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+   
+<!--<ul class="navbar-nav sf-menu">
+        <li class="align-left"><a href="/#/">{{"Menu.Home" | translate}}</a></li>
+
+        <li class="align-left"><a href="/#profile/">{{"Menu.MyProfile" | translate}}</a></li>
+        <li class="align-left"><a href="/#vacanciesSearchResult/">{{"Menu.SearchJobs" | translate}}</a></li>
+        <li class="current-menu-item align-left">
+            <a href="./">Home</a>
+            <ul class="sub-menu">
+                <li><a href="home-resume.html">Home Resume</a></li>
+                <li><a href="home-2.html">Home Ver.2</a></li>
+                <li><a href="home-map.html">Home Search Map</a></li>
+            </ul>
+        </li>
+        <li class="align-left">
+            <a href="jobs.html">Jobs</a>
+            <ul class="sub-menu">
+                <li><a href="jobs-fullwidth.html">Jobs Fullwidth</a></li>
+                <li><a href="jobs-detail.html">Jobs Detail</a></li>
+                <li><a href="post-a-job-step-1.html">Post a job - Step 1</a></li>
+                <li><a href="post-a-job-step-2.html">Post a job - Step 2</a></li>
+                <li><a href="post-a-job-step-3.html">Post a job - Step 3</a></li>
+                <li><a href="post-a-job-step-4.html">Post a job - Step 4</a></li>
+            </ul>
+        </li>
+
+        <li class="menu-item-post-btn">
+            <a href="post-a-job-step-2.html">Post a Job</a>
+        </li>
+
+        <li class="align-left" class="nav-item-member-profile login-link align-center">
+            <nav  ng-include="'/partials/account/navbar-login'" ></nav>       
+
+</li>
+
+    </ul>-->
+

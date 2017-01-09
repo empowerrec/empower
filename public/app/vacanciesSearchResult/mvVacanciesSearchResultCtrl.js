@@ -1,4 +1,5 @@
-angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope, $translate, mvVacancy, mvVacancyRepo, queryBulider, mvNotifier, mvIdentity) {
+angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope, $translate, mvVacancy,
+    mvVacancyRepo, queryBulider, mvNotifier, mvIdentity) {
     
     //to add new search in accordion 
     //1- add new accordion header and content at html  
@@ -36,6 +37,12 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     
     var SelectedCareerLevels = [];
     var CareerLevelsHeaderFlag = false;
+
+    var jobSeekerId = mvIdentity.currentJobSeeker._id;
+    debugger;
+    if (!jobSeekerId)
+        jobSeekerId = 0;
+
     
     $scope.paging = {
         currentPage: 1,
@@ -243,11 +250,12 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
 
         
         if (qr.length > 0) { qr = '!Deleted&&(' + qr.slice(0, -2) + ')'; } else { qr = '!Deleted'; }
-        
+        debugger;
         mvVacancy.query({
             query: queryBulider.qb(qr),
             currentPage: $scope.paging.currentPage,
-            pageSize: $scope.paging.pageSize
+            pageSize: $scope.paging.pageSize,
+            jobSeeker: jobSeekerId,
         }, (function (res) {
             $scope.vacancies = res[0].collection;
             $scope.allDataCount = res[0].allDataCount;

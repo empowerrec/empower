@@ -1,4 +1,22 @@
-<footer ng-controller="mvFooterCtrl" class="container text-center"><p>{{"Footer.Copy" | translate}}</p>
+
+    <div class="container-full" ng-controller="mvFooterCtrl">
+        <div class="footer-more">
+            <div class="container-boxed">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="noo-bottom-bar-content">
+                            {{"Footer.Copy" | translate}}
+                            <a href="" ng-click="changeLanguage('en')">{{"Languages.English" | translate}}</a>
+                            <a href="" ng-click="changeLanguage('ar')">{{"Languages.Arabic" | translate}}</a>
+                            <i> </i> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--<footer ng-controller="mvFooterCtrl" class="container text-center"><p>{{"Footer.Copy" | translate}}</p>
     <a href="" ng-click="changeLanguage('en')" >{{"Languages.English" | translate}}</a>
     <a href="" ng-click="changeLanguage('ar')" >{{"Languages.Arabic" | translate}}</a>
-</footer>
+</footer>-->

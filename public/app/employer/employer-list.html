@@ -1,57 +1,105 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container top-padding-med admin-area">
-
-    <div class="pull-left">
-        <a href="#/addemployer" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+<div class="noo-page-heading">
+    <div class="container-boxed max parallax-content">
+        <div class="page-heading-info">
+            <h1 class="page-title">Employers</h1>
+        </div>
     </div>
-    <div class="pull-right">
-        <form class="form-inline">
-            <div class="form-group"><input ng-model="searchText" placeholder="Filter" class="form-control"/></div>
-            <div class="form-group margin-left-med">
-                <select ng-model="sortOrder" ng-options="item.value as item.text for item in sortOptions"
-                        class="form-control">
+    <div class="parallax heading" data-parallax="1" data-parallax_no_mobile="1" data-velocity="0.1" style="background-position: 50% 7px;"></div>
+</div>
+<div class="container-wrap">
+    <div class="main-content container-boxed max offset">
+        
+        <div class="row">
+            <div class="pull-left">
+                <a href="#/addemployer" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+            </div>
+            <div class="pull-right">
+                <form class="form-inline">
+                    <div class="form-group"><input ng-model="searchText" placeholder="Filter" class="form-control" /></div>
+                    <div class="form-group margin-left-med">
+                        <select ng-model="sortOrder" ng-options="item.value as item.text for item in sortOptions"
+                                class="form-control"></select>
+                    </div>
 
-                </select>
+                </form>
+            </div>
+            <div class="noo-main col-md-12">
+                <div class="jobs posts-loop">
+                   
+                    <div class="posts-loop-content">
+                        <article class="noo_job hentry" ng-repeat="employer in employers | filter:searchText | orderBy:sortOrder">
+                            <div class="loop-item-wrap">
+                                <div class="item-featured">
+                                    <a href="#">
+                                        <img width="50" height="50" src="images/company/company_50x50.jpg" alt="Villa Senang" />
+                                    </a>
+                                </div>
+                                <div class="loop-item-content">
+                                    <h2 class="loop-item-title">
+                                        <a href="#/employers/{{employer._id}}"><div ng-repeat="emp in employer.EmployerName | filter:{Lang:currentLang}">{{emp.Text}}</div></a>
+                                    </h2>
+                                    <p class="content-meta">
+                                        <span class="job-company">
+                                            <a href="#"> {{ employer.AverageNumberOfJobOpeningsPerMonth}} Job Per month</a>
+                                        </span>
+                                        <span class="job-type contract">
+                                            <a href="#">
+                                                <i class="fa fa-bookmark"></i>{{ employer.NumberOfEmployees}} employee
+                                            </a>
+                                        </span>
+                                        <span class="job-company">
+                                            <a href="#"> , Class {{ employer.EmployerType}}</a>
+                                        </span>
+                                        <span class="job-company">
+                                            <a href="#"> modified by  {{ employer.ModifiedBy.FirstName}} {{ employer.ModifiedBy.LastName}}</a>
+                                        </span>
+
+                                        <span>
+                                            <time class="entry-date" datetime="{{ employer.UpdatedAt }}">
+                                                <i class="fa fa-calendar"></i>
+                                                at  {{employer.UpdatedAt | date:'fullDate'}}
+                                            </time>
+                                        </span>
+
+                                        <span class="job-company">
+                                            <a href="#"> created by  {{ employer.CreatedBy.FirstName}} {{ employer.CreatedBy.LastName}}</a>
+                                        </span>
+
+                                        <span>
+                                            <time class="entry-date" datetime="{{ employer.CreatedAt }}">
+                                                <i class="fa fa-calendar"></i>
+                                                at {{employer.CreatedAt | date:'fullDate'}}
+                                            </time>
+                                        </span>
+
+                                        
+                                    </p>
+                                </div>
+                                <div class="show-view-more">
+                                    <a href="#/updateemployer/{{employer._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a>
+                                    <a class="btn btn-danger" ng-click="deleteEmployer(employer)"> {{"Buttons.Delete" | translate}}</a>
+                                </div>
+                            </div>
+                        </article>
+
+
+                    </div>
+                    <uib-pagination total-items="allDataCount"
+                                    items-per-page="paging.pageSize"
+                                    ng-model="paging.currentPage"
+                                    max-size="paging.maxPagesToShow"
+                                    ng-change="getData()"
+                                    class="pagination-lg"
+                                    boundary-links="true"
+                                    previous-text="{{'Buttons.Previous' | translate}}"
+                                    next-text="{{'Buttons.Next' | translate}}"
+                                    first-text="{{'Buttons.First' | translate}}"
+                                    last-text="{{'Buttons.Last' | translate}}">
+                    </uib-pagination>   
+                </div>
             </div>
 
-        </form>
-    </div>
-    <table class="table table-hover table-striped table-condensed">
-        <thead>
-            <tr>
-                <th>{{"Employer.EmployerName" | translate}}</th>
-                <th>{{"Employer.AverageNumberOfJobOpeningsPerMonth" | translate}}</th>
-                <th>{{"Employer.NumberOfEmployees" | translate}}</th>
-                <th>{{"Employer.EmployerType" | translate}}</th>
-                <th>{{"User.CreatedBy" | translate}}</th>
-                <th>{{"User.ModifiedBy" | translate}}</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="employer in employers | filter:searchText | orderBy:sortOrder">
-                <td><a href="#/employers/{{employer._id}}"> <div ng-repeat="emp in employer.EmployerName | filter:{Lang:currentLang}">{{emp.Text}}</div></a></td>
-                <td>{{ employer.AverageNumberOfJobOpeningsPerMonth}}</td>
-                <td>{{ employer.NumberOfEmployees}}</td>
-                <td>{{ employer.EmployerType}}</td>
-                <td>{{ employer.ModifiedBy.FirstName}} {{ employer.ModifiedBy.LastName}}</td>
-                <td>{{ employer.CreatedBy.FirstName}} {{ employer.CreatedBy.LastName}}</td>
 
-                <td><a href="#/updateemployer/{{employer._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a></td>
-                <td><a class="btn btn-danger" ng-click="deleteEmployer(employer)"> {{"Buttons.Delete" | translate}}</a></td>
-            </tr>
-        </tbody>
-    </table>
-    <uib-pagination total-items="allDataCount"
-                    items-per-page="paging.pageSize"
-                    ng-model="paging.currentPage"
-                    max-size="paging.maxPagesToShow"
-                    ng-change="getData()"
-                    class="pagination-lg"
-                    boundary-links="true"
-                    previous-text="{{'Buttons.Previous' | translate}}"
-                    next-text="{{'Buttons.Next' | translate}}"
-                    first-text="{{'Buttons.First' | translate}}"
-                    last-text="{{'Buttons.Last' | translate}}">
-    </uib-pagination>
+        </div>
+    </div>
 </div>

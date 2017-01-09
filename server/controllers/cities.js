@@ -46,22 +46,27 @@ exports.createCity = function (req, res, next) {
 };
 
 exports.getCityByName = function (req, res) {
-    
-    
-    if (req.query.currentLang) {
-        City.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            
+
+    if (req.query.currentLang && req.query.Confirmed) {
+        City.find({ 'Name.Lang': { "$eq": req.query.currentLang }, 'Name.Text': { "$regex": req.params.search }, 'Confirmed': { "$eq": req.query.Confirmed }  }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
+
+            res.send(col);
+
+        });
+    } else if (req.query.currentLang) {
+        City.find({ 'Name.Lang': { "$eq": req.query.currentLang }, 'Name.Text': { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
+
             res.send(col);
 
         });
     } else {
-        City.find({ 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            
+        City.find({ 'Name.Text': { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
+
             res.send(col);
 
         });
     }
-    
+
 
 };
 

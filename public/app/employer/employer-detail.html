@@ -1,14 +1,74 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container admin-area"><h1>{{"Employer.EmployerName" | translate}} :  <div ng-repeat="emp in employer.EmployerName | filter:{Lang:currentLang}">{{emp.Text}}</div></h1>
 
-    <div class="row">
-        <div class="col-md-6"><h3>{{"Employer.EmployerType" | translate}} : {{employer.EmployerType}}</h3>
+<div class="noo-page-heading">
+    <div class="container-boxed max parallax-content">
+        <div class="page-heading-info">
+            <h1 class="page-title">{{"Employer.EmployerName" | translate}} :  <div ng-repeat="emp in employer.EmployerName | filter:{Lang:currentLang}">{{emp.Text}}</div></h1>
+        </div>
+        
+    </div>
+    <div class="parallax heading" data-parallax="1" data-parallax_no_mobile="1" data-velocity="0.1"></div>
+</div>
 
-            <h3>{{"Employer.NumberOfEmployees" | translate}} : {{employer.NumberOfEmployees}}</h3>
+<div class="container-wrap">
+    <div class="container-boxed max offset main-content single-noo_job">
+        <div class="row">
+            <div class="noo-main col-md-8">
+                <div class="job-desc">
+                    <div class="col-md-6">
 
-            <h3>{{"Employer.AverageNumberOfJobOpeningsPerMonth" | translate}} :
-                {{employer.AverageNumberOfJobOpeningsPerMonth}}</h3>
+                        <h3>{{"Employer.EmployerType" | translate}} : {{employer.EmployerType}}</h3>
+                        
+                        <h3>{{"Employer.NumberOfEmployees" | translate}} : {{employer.NumberOfEmployees}}</h3>
 
+                        <h3>
+                            {{"Employer.AverageNumberOfJobOpeningsPerMonth" | translate}} :
+                            {{employer.AverageNumberOfJobOpeningsPerMonth}}
+                        </h3>
+                        </div>
+                    </div>
+                
+            </div>
+            <div class="noo-sidebar col-md-4">
+                <div class="noo-sidebar-wrap">
+                    <div class="job-social clearfix">
+                        <span class="noo-social-title">
+                            Share this job
+                        </span>
+                        <a href="#share" class="noo-icon fa fa-facebook" title="Share on Facebook"></a>
+                        <a href="#share" class="noo-icon fa fa-twitter" title="Share on Twitter"></a>
+                        <a href="#share" class="noo-icon fa fa-google-plus" title="Share on Google+"></a>
+                        <a href="#share" class="noo-icon fa fa-pinterest" title="Share on Pinterest"></a>
+                        <a href="#share" class="noo-icon fa fa-linkedin" title="Share on LinkedIn"></a>
+                    </div>
+                    <div class="company-desc">
+                        <div class="company-header">
+                            <div class="company-featured">
+                                <a href="#">
+                                    <img width="110" height="110" src="images/company/company_110x110.jpg" alt="Wild West Company" />
+                                </a>
+                            </div>
+                            <h3 class="company-title">
+                                <a href="#">Wild West Company</a>
+                            </h3>
+                        </div>
+                        <div class="company-info">
+                            Vestibulum non risus nunc. Pellentesque dignissim nunc sem. Nam sit amet odio aliquam mi mollis tempor ut eget metus. Pellentesque quis accumsan lorem.<br />
+                            Nam sit amet velit sollicitudin, maximus enim sed, pulvinar sem. Aenean sed faucibus leo, sit amet viverra turpis et.
+                            <div class="job-social clearfix">
+                                <span class="noo-social-title">Connect with us</span>
+                                <a href="#" class="company_website" target="_blank">
+                                    <span>http://www.wildwest.com</span>
+                                </a>
+                                <a class="noo-icon fa fa-facebook" href="#" target="_blank"></a>
+                                <a class="noo-icon fa fa-twitter" href="#" target="_blank"></a>
+                                <a class="noo-icon fa fa-google-plus" href="#" target="_blank"></a>
+                                <a class="noo-icon fa fa-linkedin" href="#" target="_blank"></a>
+                                <a class="noo-icon fa fa-instagram" href="#" target="_blank"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

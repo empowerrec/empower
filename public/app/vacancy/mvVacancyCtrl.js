@@ -143,10 +143,11 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     function createCity() {
         var cityId = $("#hfCityId").val();
         var cityName = $("#cityName").val();
-        if (!cityId) {
+        if (!cityId && cityName !="") {
             if (cityName != '') {
                 var city = new mvCity();
                 city.Confirmed = false;
+                city.Deleted = false;
                 city.Name = [];
                 for (var i = 0; i < $rootScope.languages.length; i++) {
                     
@@ -170,10 +171,11 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     function createArea() {
         var areaId = $("#hfAreaId").val();
         var areaName = $("#areaName").val();
-        if (!areaId) {
+        if (!areaId && areaName != "") {
             if (areaName != '') {
                 var area = new mvArea();
                 area.Confirmed = false;
+                area.Deleted = false;
                 area.Name = [];
                 for (var i = 0; i < $rootScope.languages.length; i++) {
                     

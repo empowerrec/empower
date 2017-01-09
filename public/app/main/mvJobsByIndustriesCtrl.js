@@ -1,5 +1,11 @@
-angular.module('app').controller('mvJobsByIndustriesCtrl', function ($scope, mvVacancy, queryBulider, mvVacancyRepo, $routeParams, mvNotifier,$translate, mvIdentity) {
+angular.module('app').controller('mvJobsByIndustriesCtrl', function ($scope, mvVacancy, queryBulider, mvVacancyRepo,
+    $routeParams, mvNotifier, $translate, mvIdentity) {
     $scope.currentUser = mvIdentity.currentUser;
+
+    var jobSeekerId = mvIdentity.currentJobSeeker._id;
+    debugger;
+    if (!jobSeekerId)
+        jobSeekerId = 0;
 
     $scope.paging = {
         currentPage: 1,
@@ -10,7 +16,7 @@ angular.module('app').controller('mvJobsByIndustriesCtrl', function ($scope, mvV
     $scope.getData = function () {
         mvVacancy.query({
             query: queryBulider.qb("!Deleted"),
-            jobSeeker : mvIdentity.currentJobSeeker._id,
+            jobSeeker: jobSeekerId,
             currentPage: $scope.paging.currentPage,
             pageSize: $scope.paging.pageSize
         }, (function (res) {

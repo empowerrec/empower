@@ -111,7 +111,7 @@ angular.module('app').controller('mvAreaNotConfirmedListCtrl', function ($scope,
                     type: "get",
                     async: false,
                     url: "/api/areasByName/" + request.term,
-                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    data: { prefix: request.term, currentLang: $("#currentLang").val(),Confirmed : true },
                     success: function (data) {
                         console.log(data);
                         response($.map(data, function (item) {

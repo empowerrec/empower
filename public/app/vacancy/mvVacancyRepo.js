@@ -44,6 +44,32 @@ angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy,mv
             });
 
             return dfd.promise;
+        }, updateAllVacanciesCity: function (cityId) {
+            
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "/api/updateVacanciesCity/" + cityId,
+                data: {},
+                success: function (data) {
+                    console.log(data);
+                   
+                },
+                error: function (error) {
+                    
+                    console.log(error);
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                beforeSend: function () {
+                    
+                },
+                complete: function () {
+                    
+                  
+                }
+            });
         }
     };
 });

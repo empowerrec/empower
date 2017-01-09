@@ -178,3 +178,31 @@ exports.updateVacancy = function (req, res, next) {
         res.send(vacancy);
     });
 };
+
+exports.updateVacanciesCity = function (req, res) {
+    console.log("Update City In vacancies");
+    var ids = req.params.id.split("_");
+    var newCityId = ids[0];
+    var oldCityId = ids[1];//city for change to newCityId
+    Vacancy.find({ City: oldCityId }).exec(function (err, col) {
+        col.forEach(function (entry) {
+            var query = { _id: entry._id };
+            entry.City = newCityId;
+            Vacancy.update(query, entry, function (err, vacancy) {
+                if (err) {
+                    if (err.toString().indexOf('E11000') > -1) {
+                        err = new Error('Duplicate Vacancy');
+                    }
+                    res.status(400);
+                    return res.send({ reason: err.toString() });
+                }
+                
+            });
+
+        });
+        res.send(col);
+    });
+
+
+};
+

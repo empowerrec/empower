@@ -28,15 +28,22 @@ exports.getAreaById = function (req, res) {
     });
 };
 exports.getAreaByName = function (req, res) {
-    
-   
-    if (req.query.currentLang) {
-        Area.find({ 'Name.Lang': { "$eq": req.query.currentLang } , 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            
+
+    if (req.query.currentLang && req.query.Confirmed) {
+        Area.find({ 'Name.Lang': { "$eq": req.query.currentLang }, 'Name.Text': { "$regex": req.params.search }, 'Confirmed': { "$eq": req.query.Confirmed } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
+
             res.send(col);
 
         });
-    } else {
+    } else if (req.query.currentLang) {
+        Area.find({ 'Name.Lang': { "$eq": req.query.currentLang }, 'Name.Text': { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
+
+            res.send(col);
+
+        });
+    }
+
+ else {
         Area.find({ 'Name.Text' : { "$regex": req.params.search } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             
             res.send(col);

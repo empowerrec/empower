@@ -117,7 +117,7 @@ exports.updateAddressCity = function (req, res) {
     console.log("Update City");
     var ids = req.params.id.split("_");
     var newCityId = ids[0];
-    var oldCityId = ids[1];
+    var oldCityId = ids[1];//city for change to newCityId
     Address.find({ City: oldCityId }).exec(function (err, col) {
         col.forEach(function (entry) {
             var query = { _id: entry._id };

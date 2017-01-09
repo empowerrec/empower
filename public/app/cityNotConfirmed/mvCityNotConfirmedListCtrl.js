@@ -1,5 +1,5 @@
 angular.module('app').controller('mvCityNotConfirmedListCtrl', function ($scope, mvCity, $translate, mvIdentity, 
-    mvCityRepo, mvNotifier, queryBulider, mvAddressRepo) {
+    mvCityRepo, mvNotifier, queryBulider, mvAddressRepo, mvVacancyRepo) {
     
     $scope.currentUser = mvIdentity.currentUser;
     
@@ -76,7 +76,8 @@ angular.module('app').controller('mvCityNotConfirmedListCtrl', function ($scope,
                             mvCityRepo.updateCurrentCity(ed).then(function () {
                                 mvNotifier.notify('City has been deleted!');
                                 mvAddressRepo.updateAllAddressesCity(id + "_" + entry);
-                               
+                                mvVacancyRepo.updateAllVacanciesCity(id + "_" + entry);
+                               //entry is city for change to name of id
                             }, function (reason) {
                                 
                                 mvNotifier.error(reason);
@@ -111,7 +112,7 @@ angular.module('app').controller('mvCityNotConfirmedListCtrl', function ($scope,
                     type: "get",
                     async: false,
                     url: "/api/citiesByName/" + request.term,
-                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() , Confirmed : true},
                     success: function (data) {
                         console.log(data);
                         response($.map(data, function (item) {

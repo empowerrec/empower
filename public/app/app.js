@@ -301,7 +301,7 @@ angular.module('app').config(function ($routeProvider) {
         controller: 'mvApplicantListCtrl'
     }).when('/vacanciesSearchResult', {
         templateUrl: '/partials/vacanciesSearchResult/vacanciesSearchResult.html',
-        controller: 'mvVacanciesSearchResultCtrl'
+        controller: 'mvVacanciesSearchResultCtrl', resolve: routRoleChecks.user
     });
 });
 

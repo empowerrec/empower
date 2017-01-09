@@ -53,7 +53,9 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootSco
                 $scope.firstname = '';
                 $scope.lastname = '';
                 $scope.usertype = '';
-                
+                if ($('#userregisterModal').length) {
+                    $('#userregisterModal').modal('hide');
+                }
                 if (type == 'E') {
                     $location.path('/updateemployer/' + mvIdentity.currentEmployer._id);
                 } else if (type == 'J') {
@@ -63,5 +65,17 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootSco
                 mvNotifier.error(reason);
             });
         }
+    };
+    
+    $scope.facebookLogin = function () {
+       
+                    $location.path('/auth/facebook/');
+             
+    };
+    
+    $scope.googleLogin = function () {
+        
+        $location.path('/auth/google/');
+             
     };
 });

@@ -6,9 +6,14 @@ angular.module('app').controller('mvFrontLoginCtrl',
         if ($scope.frontLoginForm.$valid) {            
             mvAuth.authenticatedUser(username, password, rememberme).then(function (success) {
                 if (success) {
+                   
                     $scope.username = '';
                     $scope.password = '';
                     mvNotifier.notify('You have successfully signed in');
+                    if ($('#userloginModal').length) {
+                        $('#userloginModal').modal('hide');
+                    }
+                    
                 } else {
                     mvNotifier.error('Username/Password combination incorrect');
                 }

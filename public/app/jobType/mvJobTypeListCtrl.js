@@ -1,20 +1,36 @@
-angular.module('app').controller('mvJobTypeListCtrl', function ($scope, mvJobType,$translate, $rootScope, mvIdentity) {
+angular.module('app').controller('mvJobTypeListCtrl', function ($scope, mvJobType,$translate, mvJobTypeRepo, queryBulider, mvNotifier,$rootScope, mvIdentity) {
     $scope.currentUser = mvIdentity.currentUser;
-    $scope.jobTypes = mvJobType.query();
-    //$scope.currentLang = $translate.use();
-    $scope.sortOptions = [{value: 'Name', text: 'Sort by Name'}];
 
-    $scope.sortOrder = $scope.sortOptions[0].value;
-    $scope.getName = function(list){
-        for(var i = 0; i < list.length; i++) {
-
-            if(list[i].Lang == $scope.currentLang) {
-                return list[i].Text;
-            }
-        }
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 10
     };
-
-    $scope.getLang = function(){
-        return $translate.use();
+    
+    $scope.getData = function () {
+        mvJobType.query({
+            query: queryBulider.qb("!Deleted"),
+            currentPage: $scope.paging.currentPage,
+            pageSize: $scope.paging.pageSize
+        }, (function (res) {
+            $scope.jobTypes = res[0].collection;
+            $scope.allDataCount = res[0].allDataCount;
+        }));
     };
+    
+    $scope.deleteJobType = function (jobType) {
+        var ed = mvJobType.get({ _id: jobType._id }, (function () {
+            ed.Deleted = true;
+            ed.DeletedBy = mvIdentity.currentUser;
+            mvJobTypeRepo.updateCurrentJobType(ed).then(function () {
+                mvNotifier.notify('JobType has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+    
+    $scope.getData();
+
 });

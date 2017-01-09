@@ -1,167 +1,180 @@
 <div ng-include="'/partials/main/sidebar-menu'"></div>
 <div class="container top-padding-med admin-area">
+    <!--<div ng-show="vacancies.length > 0">-->
+        <div class="row">
+            <div class="col-lg-5">
+                <div id="accordion1" class="ui-accordion ui-widget ui-helper-reset">
 
-    <div class="row">
-        <div class="col-lg-5">
-            <div id="accordion1" class="ui-accordion ui-widget ui-helper-reset">
-                
-                <!--Start the 1st accordion-->
-                <!-- Start Header of the accordion-->
-                <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                    Location
-                </h3>
-                <!-- End Header of the accordion-->
-                <!-- Start Content of the accordion-->
-                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-                    <div id="accordion11" class="ui-accordion ui-widget ui-helper-reset">                        
-                        <h3 id="countriesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                            Country
-                        </h3>
-                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-                            <div>
-                                <div id="countriesDiv"></div>
-                                <input style="width:350px" type="text" id="countryName" />
+                    <!--Start the 1st accordion-->
+                    <!-- Start Header of the accordion-->
+                    <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                        Location
+                    </h3>
+                    <!-- End Header of the accordion-->
+                    <!-- Start Content of the accordion-->
+                    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                        <div id="accordion11" class="ui-accordion ui-widget ui-helper-reset">
+                            <h3 id="countriesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                Country
+                            </h3>
+                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                <div>
+                                    <div id="countriesDiv"></div>
+                                    <input style="width:350px" type="text" id="countryName" />
+                                </div>
                             </div>
-                        </div>
 
-                        <h3 id="citiesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                            City
-                        </h3>
-                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-                            <div>
-                                <div id="citiesDiv"></div>
-                                <input style="width:350px" type="text" id="cityName" />
+                            <h3 id="citiesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                City
+                            </h3>
+                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                <div>
+                                    <div id="citiesDiv"></div>
+                                    <input style="width:350px" type="text" id="cityName" />
+                                </div>
                             </div>
-                        </div>
 
-                        <h3 id="areasHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                            Area
-                        </h3>
-                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-                            <div>
-                                <div id="areasDiv"></div>
-                                <input style="width:350px" type="text" id="areaName" />
+                            <h3 id="areasHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                Area
+                            </h3>
+                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                <div>
+                                    <div id="areasDiv"></div>
+                                    <input style="width:350px" type="text" id="areaName" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- End Content of the accordion-->
-                <!--End the 1st accordion-->
-                
+                    <!-- End Content of the accordion-->
+                    <!--End the 1st accordion-->
+                    <!--Start the 2nd accordion-->
+                    <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                        Job Classification
+                    </h3>
+                    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                        <div id="accordion12" class="ui-accordion ui-widget ui-helper-reset">
 
-                <!--Start the 2nd accordion-->
-                <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                    Job Classification
-                </h3>
-                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-                    <div id="accordion12" class="ui-accordion ui-widget ui-helper-reset">
-                        
-                        <h3 id="industriesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                            Industry
-                        </h3>
-                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-                            <div id="industriesDiv"></div>
-                            <input style="width:350px" type="text" id="industryName" />
-                        </div>
-                        
-                        <h3 id="jobRolesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                            Job Role
-                        </h3>
-                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-                            <div id="jobRolesDiv"></div>
-                            <input style="width:350px" type="text" id="jobRoleName" />
-                        </div>
-                        
-                        <h3 id="jobTypesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                            Job Type
-                        </h3>
-                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-                            <div id="jobTypesDiv"></div>
-                            <input style="width:350px" type="text" id="jobTypeName" />
+                            <h3 id="industriesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                Industry
+                            </h3>
+                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                <div id="industriesDiv"></div>
+                                <input style="width:350px" type="text" id="industryName" />
+                            </div>
+
+                            <h3 id="jobRolesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                Job Role
+                            </h3>
+                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                <div id="jobRolesDiv"></div>
+                                <input style="width:350px" type="text" id="jobRoleName" />
+                            </div>
+
+                            <h3 id="jobTypesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                Job Type
+                            </h3>
+                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                <div id="jobTypesDiv"></div>
+                                <input style="width:350px" type="text" id="jobTypeName" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--End the 2nd accordion-->
-                                
-                <!--Start the 3rd accordion-->
-                <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                    Job Details
-                </h3>
-                <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-                    <div id="accordion13" class="ui-accordion ui-widget ui-helper-reset">
-                        
-                        <h3 id="educationalLevelsHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                            Educational Level
-                        </h3>
-                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-                            <div id="educationalLevelsDiv"></div>
-                            <input style="width:350px" type="text" id="educationalLevelName" />
+                    <!--End the 2nd accordion-->
+                    <!--Start the 3rd accordion-->
+                    <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                        Job Details
+                    </h3>
+                    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                        <div id="accordion13" class="ui-accordion ui-widget ui-helper-reset">
+
+                            <h3 id="educationalLevelsHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                Educational Level
+                            </h3>
+                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                <div id="educationalLevelsDiv"></div>
+                                <input style="width:350px" type="text" id="educationalLevelName" />
+                            </div>
+
+                            <h3 id="careerLevelsHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                Career Level
+                            </h3>
+                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                <div id="careerLevelsDiv"></div>
+                                <input style="width:350px" type="text" id="careerLevelName" />
+                            </div>
+
                         </div>
-                        
-                        <h3 id="careerLevelsHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                            Career Level
-                        </h3>
-                        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-                            <div id="careerLevelsDiv"></div>
-                            <input style="width:350px" type="text" id="careerLevelName" />
-                        </div>
-                    
                     </div>
+                    <!--End the 3rd accordion-->
+
                 </div>
-                <!--End the 3rd accordion-->
+            </div>
+            <div class="col-md-7">
+
+
+                <input ng-model="searchText" placeholder="Search by Job Title, Location (like IT , Cairo)" class="form-control" />
+
+                <table class="table table-hover table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th>{{"Vacancy.JobTitle" | translate}}</th>
+                            <th>{{"Vacancy.SalaryRangeFrom" | translate}}</th>
+                            <th>{{"Vacancy.SalaryRangeTo" | translate}}</th>
+                            <th>{{"Vacancy.Country" | translate}}</th>
+                            <th>{{"Vacancy.Industry" | translate}}</th>
+                            <!--
+                                <th>{{"Vacancy.AvailableFrom" | translate}}</th>
+                                <th>{{"Vacancy.AvailableTo" | translate}}</th>
+                            -->
+                            <th>{{"User.CreatedBy" | translate}}</th>
+                            <th>{{"User.ModifiedBy" | translate}}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="vacancy in vacancies | filter:searchText | orderBy:sortOrder">
+                            <td><a href="#/vacancies/{{vacancy._id}}">{{vacancy.JobTitle}}</a></td>
+                            <td>{{ vacancy.SalaryRangeFrom}}</td>
+                            <td>{{ vacancy.SalaryRangeTo}}</td>
+                            <td><div ng-repeat="emp in vacancy.Country.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></td>
+                            <td><div ng-repeat="emp in vacancy.Industry.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></td>
+                            <!--
+                                <td>{{ vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</td>
+                                <td>{{ vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</td>
+                            -->
+                            <td>{{ vacancy.CreatedBy.FirstName}} {{ vacancy.CreatedBy.LastName}}</td>
+                            <td>{{ vacancy.ModifiedBy.FirstName}} {{ vacancy.ModifiedBy.LastName}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+                <uib-pagination total-items="allDataCount"
+                                items-per-page="paging.pageSize"
+                                ng-model="paging.currentPage"
+                                max-size="paging.maxPagesToShow"
+                                ng-change="getData()"
+                                class="pagination-lg"
+                                boundary-links="true"
+                                previous-text="{{'Buttons.Previous' | translate}}"
+                                next-text="{{'Buttons.Next' | translate}}"
+                                first-text="{{'Buttons.First' | translate}}"
+                                last-text="{{'Buttons.Last' | translate}}">
+                </uib-pagination>
 
             </div>
-        </div>
-        <div class="col-md-7">
-            <input ng-model="searchText" placeholder="Search by Job Title, Location (like IT , Cairo)" class="form-control" />
-            <table class="table table-hover table-striped table-condensed">
-                <thead>
-                    <tr>
-                        <th>{{"Vacancy.JobTitle" | translate}}</th>
-                        <th>{{"Vacancy.SalaryRangeFrom" | translate}}</th>
-                        <th>{{"Vacancy.SalaryRangeTo" | translate}}</th>
-                        <th>{{"Vacancy.Country" | translate}}</th>
-                        <th>{{"Vacancy.Industry" | translate}}</th>
-                        <!--
-                            <th>{{"Vacancy.AvailableFrom" | translate}}</th>
-                            <th>{{"Vacancy.AvailableTo" | translate}}</th>
-                        -->
-                        <th>{{"User.CreatedBy" | translate}}</th>
-                        <th>{{"User.ModifiedBy" | translate}}</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="vacancy in vacancies | filter:searchText | orderBy:sortOrder">
-                        <td><a href="#/vacancies/{{vacancy._id}}">{{vacancy.JobTitle}}</a></td>
-                        <td>{{ vacancy.SalaryRangeFrom}}</td>
-                        <td>{{ vacancy.SalaryRangeTo}}</td>
-                        <td><div ng-repeat="emp in vacancy.Country.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></td>
-                        <td><div ng-repeat="emp in vacancy.Industry.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></td>
-                        <!--
-                            <td>{{ vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</td>
-                            <td>{{ vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</td>
-                        -->
-                        <td>{{ vacancy.CreatedBy.FirstName}} {{ vacancy.CreatedBy.LastName}}</td>
-                        <td>{{ vacancy.ModifiedBy.FirstName}} {{ vacancy.ModifiedBy.LastName}}</td>
 
-                    </tr>
-                </tbody>
-            </table>
-            <uib-pagination total-items="allDataCount"
-                            items-per-page="paging.pageSize"
-                            ng-model="paging.currentPage"
-                            max-size="paging.maxPagesToShow"
-                            ng-change="getData()"
-                            class="pagination-lg"
-                            boundary-links="true"
-                            previous-text="{{'Buttons.Previous' | translate}}"
-                            next-text="{{'Buttons.Next' | translate}}"
-                            first-text="{{'Buttons.First' | translate}}"
-                            last-text="{{'Buttons.Last' | translate}}">
-            </uib-pagination>
+
+
+
         </div>
-    </div>
+
+    <!--</div>-->
+
+    <p ng-show="!vacancies.length">{{"Vacancy.NoData" | translate}}</p>
+
     <div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
         <img src="ajax-loader.gif" alt="" />
     </div>

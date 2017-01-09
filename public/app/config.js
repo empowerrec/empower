@@ -127,7 +127,8 @@
                 'CareerLevel': 'Career Level',
                 'HotJobFlag': 'Hot Job Flag',
                 'Area':'Area',
-                'JobRole':'Job Role'
+                'JobRole': 'Job Role',
+                'NoData':'There is no vacancies to view'
             }, 
             'City': {
                 "City": "City",
@@ -408,7 +409,8 @@
                 'EducationalLevel': 'مستوي التعليم',
                 'CareerLevel': 'مستوي الوظيفة',
                 'HotJobFlag': 'وظيفة مهمة',
-                'Area': 'المنطقة'
+                'Area': 'المنطقة',
+                'NoData': 'لا يوجد وظائف للعرض'
             },
             "LanguageSkill": {
                 "Language": "اللغة",

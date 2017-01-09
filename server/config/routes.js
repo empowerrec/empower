@@ -139,6 +139,8 @@ module.exports = function (app) {
     app.get('/api/univirstiesByName/:search', univirsties.getUnivirstyByName);
     app.get('/api/updateAddressArea/:id', addresses.updateAddressArea);
     
+    app.get('/api/updateVacanciesCity/:id', vacancies.updateVacanciesCity);
+    
     app.get('/api/innerPages', authentication.requiresRole(['A', 'J']), innerPages.getInnerPages);
     app.post('/api/innerPages', innerPages.createInnerPage);
     app.put('/api/innerPages', innerPages.updateInnerPage);
