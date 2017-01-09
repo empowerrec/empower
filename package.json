@@ -1,10 +1,41 @@
 {
-  "name": "empower",
-  "version": "0.0.0",
-  "description": "empower",
-  "main": "server.js",
-  "author": {
-    "name": "Ali",
-    "email": ""
+  "name": "empowerrec",
+  "version": "1.0.0",
+  "description": "Extreme Tech Traning Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohamed Gamal",
+  "license": "ISC",
+  "engines": {
+    "node": "4.2.x",
+    "npm": "2.14.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "connect-mongo": "^1.1.0",
+    "cookie-parser": "^1.4.1",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "mailer": "^0.6.7",
+    "mongoose": "^4.3.6",
+    "morgan": "^1.6.1",
+    "nodemailer": "^2.1.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
+    "passport-google-oauth": "^0.2.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "stylus": "^0.53.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0"
   }
 }
