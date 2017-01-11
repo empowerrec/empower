@@ -1,7 +1,15 @@
-angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, mvVacancyRepo, $rootScope,mvVacancy, $routeParams, $translate, mvCity, mvCityRepo, mvArea, mvAreaRepo) {
+angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, mvVacancyRepo, $rootScope,mvVacancy, $routeParams, $translate, mvCity, mvCityRepo, mvArea, mvAreaRepo , mvIdentity) {
     var id = $routeParams.id;
-    
+    $scope.identity = mvIdentity;
     $scope.addEnabled = false;
+    var stepclass = "";
+    var added = false;
+    
+    $scope.completed = function () {
+        if (added)
+            return true;
+        return false;
+    };
     $scope.currentLang = $translate.use();
     if (id) {
         $scope.vacancy = mvVacancy.get({ _id: id }, (function () {
@@ -30,6 +38,40 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
         }
     };
     
+    
+    $scope.getStep1Class = function () {
+        debugger;
+        if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())
+            return "completed";
+        else
+            return "active";
+    };
+    
+    $scope.getStep2Class = function () {
+        if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())
+            return "completed";
+        else
+            return "active";
+    };
+    
+    
+    $scope.getStep3Class = function () {
+        if (mvIdentity.currentUser.isEmployer() && !$scope.completed() || mvIdentity.currentUser.isAdmin() && !$scope.completed())
+            return "active";
+        else
+            return "completed";
+    };
+    
+    
+    $scope.getStep4Class = function () {
+        if ($scope.completed())
+            return "active";
+        else
+            return "";
+    };
+    
+    
+
     $scope.add = function () {
         if ($scope.vacancyForm.$valid && $scope.addEnabled) {
             createCity();
@@ -37,6 +79,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
             if (validate()) {
                 mvVacancyRepo.createVacancy($scope.vacancy).then(function() {
                     mvNotifier.notify('New Vacancy Added!');
+                    added = true;
                     $scope.addEnabled = false;
                 }, function(reason) {
                     mvNotifier.error(reason);
@@ -211,4 +254,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
             return true;
         }
     };
+    
+
+    
 });

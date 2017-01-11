@@ -21,6 +21,15 @@ angular.module('app').controller('mvFrontLoginCtrl',
         }
     };
     
+    
+    $scope.forget = function () {
+        
+                    if ($('#userloginModal').length) {
+                        $('#userloginModal').modal('hide');
+                    }
+               
+    };
+    
     $scope.signout = function () {
         mvAuth.logoutUser().then(function () {
             $scope.username = '';

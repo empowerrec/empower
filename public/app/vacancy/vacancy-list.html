@@ -13,7 +13,7 @@
 
         <div class="row">
             <div class="pull-left">
-                <a href="#/addemployer" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
+                <a href="#/addvacancy" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>
             </div>
             <div class="pull-right">
                 <form class="form-inline">
@@ -59,24 +59,24 @@
                                             <a href="#"> To <i class="fa fa-calendar"></i> {{ vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</a>
                                         </span>
                                         <span class="job-company">
-                                            <a href="#"> modified by  {{ employer.ModifiedBy.FirstName}} {{ employer.ModifiedBy.LastName}}</a>
+                                            <a href="#"> modified by  {{ vacancy.ModifiedBy.FirstName}} {{ vacancy.ModifiedBy.LastName}}</a>
                                         </span>
 
                                         <span>
-                                            <time class="entry-date" datetime="{{ employer.UpdatedAt }}">
+                                            <time class="entry-date" datetime="{{ vacancy.UpdatedAt }}">
                                                 <i class="fa fa-calendar"></i>
-                                                at  {{employer.UpdatedAt | date:'fullDate'}}
+                                                at  {{vacancy.UpdatedAt | date:'fullDate'}}
                                             </time>
                                         </span>
 
                                         <span class="job-company">
-                                            <a href="#"> created by  {{ employer.CreatedBy.FirstName}} {{ employer.CreatedBy.LastName}}</a>
+                                            <a href="#"> created by  {{ vacancy.CreatedBy.FirstName}} {{ vacancy.CreatedBy.LastName}}</a>
                                         </span>
 
                                         <span>
-                                            <time class="entry-date" datetime="{{ employer.CreatedAt }}">
+                                            <time class="entry-date" datetime="{{ vacancy.CreatedAt }}">
                                                 <i class="fa fa-calendar"></i>
-                                                at {{employer.CreatedAt | date:'fullDate'}}
+                                                at {{vacancy.CreatedAt | date:'fullDate'}}
                                             </time>
                                         </span>
 
