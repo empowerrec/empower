@@ -1,5 +1,6 @@
 angular.module('app').controller('mvJobSeekerCtrl', function ($scope, $routeParams, mvIdentity, mvJobSeeker) {
-    
+    debugger;
+    $scope.identity = mvIdentity;
     var id = $routeParams.id;
     var tabName = $routeParams.tab;
     $scope.activeTab = 1;
@@ -43,5 +44,37 @@ angular.module('app').controller('mvJobSeekerCtrl', function ($scope, $routePara
             $scope.init0();
             break;
     }
+    
+    $scope.getStep1Class = function () {
+        debugger;
+        if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())
+            return "completed";
+        else
+            return "active";
+    };
+    
+    $scope.getStep2Class = function () {
+        if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())
+            return "completed";
+        else
+            return "active";
+    };
+    
+    
+    $scope.getStep3Class = function () {
+        if (mvIdentity.currentUser.isEmployer() && !$scope.completed() || mvIdentity.currentUser.isAdmin() && !$scope.completed())
+            return "active";
+        else
+            return "completed";
+    };
+    
+    
+    $scope.getStep4Class = function () {
+        if ($scope.completed())
+            return "active";
+        else
+            return "";
+    };
+    
              
 });

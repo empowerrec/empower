@@ -1,42 +1,511 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container admin-area" ng-controller="mvJobSeekerCtrl">
-    <uib-tabset justified="true" active="activeTab">
-        <uib-tab index="0" heading="{{'JobSeeker.Personal Information' | translate}}" select="init0()">
-            <br />
-            <div ng-include="'/partials/jobSeeker/jobSeekerPersonalInformation.html'"></div>
-        </uib-tab>
-        <uib-tab index="1" heading="{{'JobSeeker.Educational Information' | translate}}" >
-            <br />
-            <div ng-include="'/partials/educationalInformation/educationalInformation-list.html'"></div>
-        </uib-tab>
-        <uib-tab index="2" heading="{{'JobSeeker.Contact Information' | translate}}" select="init0()">
-            <br />
-            <div ng-include="'/partials/jobSeeker/jobSeekerContactInformation.html'"></div>
-        </uib-tab>
-        <uib-tab index="3" heading="{{'JobSeeker.Experiances' | translate}}" >
-            <br />
-            <div ng-include="'/partials/experiance/experiance-list'"></div>
-        </uib-tab>
-        <uib-tab index="4" heading="{{'JobSeeker.Address' | translate}}" >
-            <br />
-            <div ng-include="'/partials/address/address-list'"></div>
-        </uib-tab>
-        <uib-tab index="5" heading="{{'JobSeeker.Course' | translate}}">
-            <br />
-            <div ng-include="'/partials/course/course-list'"></div>
-        </uib-tab>
-        <uib-tab index="6" heading="{{'JobSeeker.LanguageSkills' | translate}}">
-            <br />
-            <div data-ng-include="'/partials/languageSkill/languageSkill-list'"></div>
-        </uib-tab>
-        <uib-tab index="7" heading="{{'JobSeeker.Skills' | translate}}" >
-            <br />
-            <div data-ng-include="'/partials/skill/skill-list'"></div>
-        </uib-tab>
 
-        <uib-tab index="8" heading="{{'JobSeeker.Job Preferences' | translate}}" select="init0()">
-            <br />
-            <div ng-include="'/partials/jobSeeker/jobSeekerJobPreferences.html'"></div>
-        </uib-tab>        
-    </uib-tabset>
+
+<div class="jform-header" ng-controller="mvJobSeekerCtrl">
+    <div class="container-boxed max">
+        <div class="jform-steps">
+            <ul class="jsteps jsteps-4">
+                <li ng-class="getStep1Class()">
+                    <span class="jstep-num">
+                        <a href="javascript:void(0);">1</a>
+                    </span>
+                    <div class="jstep-line">
+                        <span class="jstep-dot"></span>
+                    </div>
+                    <div class="jstep-label">Login or create an account</div>
+                </li>
+                <li ng-class="getStep2Class()">
+                    <span class="jstep-num">
+                        <a href="javascript:void(0);">2</a>
+                    </span>
+                    <div class="jstep-line">
+                        <span class="jstep-dot"></span>
+                    </div>
+                    <div class="jstep-label">Choose a package</div>
+                </li>
+                <li ng-class="getStep3Class()">
+                    <span class="jstep-num">
+                        <a href="javascript:void(0);">3</a>
+                    </span>
+                    <div class="jstep-line">
+                        <span class="jstep-dot"></span>
+                    </div>
+                    <div class="jstep-label">Describe your resume deatils</div>
+                </li>
+                <li ng-class="getStep4Class()">
+                    <span class="jstep-num">
+                        <a href="javascript:void(0);">4</a>
+                    </span>
+                    <div class="jstep-line">
+                        <span class="jstep-dot"></span>
+                    </div>
+                    <div class="jstep-label">Preview and submit your resume</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container-wrap" ng-hide="identity.currentUser.isJobSeeker() || identity.currentUser.isAdmin()">
+            <div class="main-content container-fullwidth">
+                <div class="row">
+                    <div class="noo-main col-md-12">
+                        <div class="jform">
+                            <div class="jform-header">
+                                <div class="container-boxed max">
+
+                                </div>
+                            </div>
+                            <div class="jform-body">
+                                <div class="jform-body">
+                                    <div class="container-boxed max">
+                                        <div id="step_content_login" class="jstep-content">
+                                            <div class="jpanel jpanel-login">
+                                                <div class="jpanel-title">
+                                                    <h3>Login or create an account</h3>
+                                                </div>
+                                                <div class="jpanel-body">
+                                                    <div class="account-form">
+                                                        <div class="account-log-form">
+                                                            <div class="form-group row login-socical">
+                                                                <div class="col-sm-9 col-sm-offset-3">
+                                                                    <div class="button_socical fb">
+                                                                        <i class="fa fa-facebook-square"></i>
+                                                                        <em class="fa-facebook-square">Login with Facebook</em>
+                                                                    </div>
+                                                                    <div class="button_socical gg">
+                                                                        <i class="fa fa-google-plus"></i>
+                                                                        <em class="fa-google-plus">Login with Google</em>
+                                                                    </div>
+                                                                    <div class="button_socical linkedin">
+                                                                        <i class="fa fa-linkedin-square"></i>
+                                                                        <em class="fa-linkedin-square">Login with LinkedIn</em>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <form class="form-horizontal">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 control-label">Username</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" class="log form-control" name="log" required placeholder="Username">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 control-label">Password</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="password" class="form-control" required value="" name="pwd" placeholder="Password">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <div class="col-sm-9 col-sm-offset-3">
+                                                                        <div class="checkbox">
+                                                                            <div class="form-control-flat">
+                                                                                <label class="checkbox">
+                                                                                    <input type="checkbox" class="rememberme" name="rememberme" value="forever">
+                                                                                    <i></i> Remember Me
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-actions form-group text-center">
+                                                                    <button type="button" class="btn btn-primary">Continue</button>
+                                                                    <div class="login-form-links">
+                                                                        <span><a href="#"><i class="fa fa-question-circle"></i> Forgot Password?</a></span>
+                                                                        <span>
+                                                                            Don't have an account yet?
+                                                                            <a href="#" class="member-register-link">
+                                                                                Register Now <i class="fa fa-long-arrow-right"></i>
+                                                                            </a>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-wrap" ng-show="identity.currentUser.isJobSeeker() && !completed() || identity.currentUser.isAdmin() && !completed()">
+            <div class="main-content container-fullwidth">
+                <div class="row">
+                    <div class="noo-main col-md-12">
+                        <div class="jform">
+                            <div class="jform-header">
+                                <div class="container-boxed max">
+
+                                </div>
+                            </div>
+                            <div class="jform-body">
+                                <div class="container-boxed max">
+                                    <div class="form-horizontal" enctype="multipart/form-data">
+                                        <div id="step_content_form" class="jstep-content">
+                                            <div class="jpanel jpanel-job-form">
+                                                <div class="jpanel-title">
+                                                    <h3>{{'JobSeeker.Personal Information' | translate}}</h3>
+                                                </div>
+                                                <div class="jpanel-body">
+
+                                                    <div class="job-form">
+                                                        <div class="job-form-detail">
+                                                           
+                                                                <div ng-include="'/partials/jobSeeker/jobSeekerPersonalInformation.html'"></div>
+                                                            
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-wrap" ng-show="identity.currentUser.isJobSeeker() && !completed() || identity.currentUser.isAdmin() && !completed()">
+            <div class="main-content container-fullwidth">
+                <div class="row">
+                    <div class="noo-main col-md-12">
+                        <div class="jform">
+                            <div class="jform-header">
+                                <div class="container-boxed max">
+
+                                </div>
+                            </div>
+                            <div class="jform-body">
+                                <div class="container-boxed max">
+                                    <div class="form-horizontal" enctype="multipart/form-data">
+                                        <div id="step_content_form" class="jstep-content">
+                                            <div class="jpanel jpanel-job-form">
+                                                <div class="jpanel-title">
+                                                    <h3>  {{'JobSeeker.Educational Information' | translate}}</h3>
+                                                </div>
+                                                <div class="jpanel-body">
+
+                                                    <div class="job-form">
+                                                        <div class="job-form-detail">
+                                                           
+                                                                <div ng-include="'/partials/educationalInformation/educationalInformation-list.html'"></div>
+                                                           
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-wrap" ng-show="identity.currentUser.isJobSeeker() && !completed() || identity.currentUser.isAdmin() && !completed()">
+            <div class="main-content container-fullwidth">
+                <div class="row">
+                    <div class="noo-main col-md-12">
+                        <div class="jform">
+                            <div class="jform-header">
+                                <div class="container-boxed max">
+
+                                </div>
+                            </div>
+                            <div class="jform-body">
+                                <div class="container-boxed max">
+                                    <div class="form-horizontal" enctype="multipart/form-data">
+                                        <div id="step_content_form" class="jstep-content">
+                                            <div class="jpanel jpanel-job-form">
+                                                <div class="jpanel-title">
+                                                    <h3>{{'JobSeeker.Contact Information' | translate}}</h3>
+                                                </div>
+                                                <div class="jpanel-body">
+
+                                                    <div class="job-form">
+                                                        <div class="job-form-detail">
+                                                           
+                                                                <div ng-include="'/partials/jobSeeker/jobSeekerContactInformation.html'"></div>
+                                                           
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-wrap" ng-show="identity.currentUser.isJobSeeker() && !completed() || identity.currentUser.isAdmin() && !completed()">
+            <div class="main-content container-fullwidth">
+                <div class="row">
+                    <div class="noo-main col-md-12">
+                        <div class="jform">
+                            <div class="jform-header">
+                                <div class="container-boxed max">
+
+                                </div>
+                            </div>
+                            <div class="jform-body">
+                                <div class="container-boxed max">
+                                    <div class="form-horizontal" enctype="multipart/form-data">
+                                        <div id="step_content_form" class="jstep-content">
+                                            <div class="jpanel jpanel-job-form">
+                                                <div class="jpanel-title">
+                                                    <h3>{{'JobSeeker.Experiances' | translate}}</h3>
+                                                </div>
+                                                <div class="jpanel-body">
+
+                                                    <div class="job-form">
+                                                        <div class="job-form-detail">
+                                                           
+                                                                <div ng-include="'/partials/experiance/experiance-list'"></div>
+                                                            
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container-wrap" ng-show="identity.currentUser.isJobSeeker() && !completed() || identity.currentUser.isAdmin() && !completed()">
+            <div class="main-content container-fullwidth">
+                <div class="row">
+                    <div class="noo-main col-md-12">
+                        <div class="jform">
+                            <div class="jform-header">
+                                <div class="container-boxed max">
+
+                                </div>
+                            </div>
+                            <div class="jform-body">
+                                <div class="container-boxed max">
+                                    <div class="form-horizontal" enctype="multipart/form-data">
+                                        <div id="step_content_form" class="jstep-content">
+                                            <div class="jpanel jpanel-job-form">
+                                                <div class="jpanel-title">
+                                                    <h3>{{'JobSeeker.Address' | translate}}</h3>
+                                                </div>
+                                                <div class="jpanel-body">
+
+                                                    <div class="job-form">
+                                                        <div class="job-form-detail">
+                                                            
+                                                                <div ng-include="'/partials/address/address-list'"></div>
+                                                           
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-wrap" ng-show="identity.currentUser.isJobSeeker() && !completed() || identity.currentUser.isAdmin() && !completed()">
+            <div class="main-content container-fullwidth">
+                <div class="row">
+                    <div class="noo-main col-md-12">
+                        <div class="jform">
+                            <div class="jform-header">
+                                <div class="container-boxed max">
+
+                                </div>
+                            </div>
+                            <div class="jform-body">
+                                <div class="container-boxed max">
+                                    <div class="form-horizontal" enctype="multipart/form-data">
+                                        <div id="step_content_form" class="jstep-content">
+                                            <div class="jpanel jpanel-job-form">
+                                                <div class="jpanel-title">
+                                                    <h3>{{'JobSeeker.Course' | translate}}</h3>
+                                                </div>
+                                                <div class="jpanel-body">
+
+                                                    <div class="job-form">
+                                                        <div class="job-form-detail">
+                                                            
+                                                                <div ng-include="'/partials/course/course-list'"></div>
+                                                           
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-wrap" ng-show="identity.currentUser.isJobSeeker() && !completed() || identity.currentUser.isAdmin() && !completed()">
+            <div class="main-content container-fullwidth">
+                <div class="row">
+                    <div class="noo-main col-md-12">
+                        <div class="jform">
+                            <div class="jform-header">
+                                <div class="container-boxed max">
+
+                                </div>
+                            </div>
+                            <div class="jform-body">
+                                <div class="container-boxed max">
+                                    <div class="form-horizontal" enctype="multipart/form-data">
+                                        <div id="step_content_form" class="jstep-content">
+                                            <div class="jpanel jpanel-job-form">
+                                                <div class="jpanel-title">
+                                                    <h3>{{'JobSeeker.LanguageSkills' | translate}}</h3>
+                                                </div>
+                                                <div class="jpanel-body">
+
+                                                    <div class="job-form">
+                                                        <div class="job-form-detail">
+                                                           
+                                                                <div data-ng-include="'/partials/languageSkill/languageSkill-list'"></div>
+                                                            
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-wrap" ng-show="identity.currentUser.isJobSeeker() && !completed() || identity.currentUser.isAdmin() && !completed()">
+            <div class="main-content container-fullwidth">
+                <div class="row">
+                    <div class="noo-main col-md-12">
+                        <div class="jform">
+                            <div class="jform-header">
+                                <div class="container-boxed max">
+
+                                </div>
+                            </div>
+                            <div class="jform-body">
+                                <div class="container-boxed max">
+                                    <div class="form-horizontal" enctype="multipart/form-data">
+                                        <div id="step_content_form" class="jstep-content">
+                                            <div class="jpanel jpanel-job-form">
+                                                <div class="jpanel-title">
+                                                   <h3>{{'JobSeeker.Skills' | translate}}</h3> 
+                                                </div>
+                                                <div class="jpanel-body">
+
+                                                    <div class="job-form">
+                                                        <div class="job-form-detail">
+                                                            
+                                                                <div data-ng-include="'/partials/skill/skill-list'"></div>
+                                                          
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-wrap" ng-show="identity.currentUser.isJobSeeker() && !completed() || identity.currentUser.isAdmin() && !completed()">
+            <div class="main-content container-fullwidth">
+                <div class="row">
+                    <div class="noo-main col-md-12">
+                        <div class="jform">
+                            <div class="jform-header">
+                                <div class="container-boxed max">
+
+                                </div>
+                            </div>
+                            <div class="jform-body">
+                                <div class="container-boxed max">
+                                    <div class="form-horizontal" enctype="multipart/form-data">
+                                        <div id="step_content_form" class="jstep-content">
+                                            <div class="jpanel jpanel-job-form">
+                                                <div class="jpanel-title">
+                                                    <h3>{{'JobSeeker.Job Preferences' | translate}}</h3>
+                                                </div>
+                                                <div class="jpanel-body">
+
+                                                    <div class="job-form">
+                                                        <div class="job-form-detail">
+                                                           
+                                                                <div ng-include="'/partials/jobSeeker/jobSeekerJobPreferences.html'"></div>
+                                                          
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+    </div>
 </div>

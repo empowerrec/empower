@@ -1,39 +1,81 @@
-<!--<div ng-include="'/partials/main/sidebar-menu'"></div>-->
-<div class="container admin-area">
-    <div class="well">
-        <form name="profileForm" class="form-horizontal">
-            <fieldset>
-                <legend>User Profile</legend>
-                <div class="form-group"><label for="email" class="col-md-2 control-label">Email</label>
+<div class="container-wrap" >
+    <div class="main-content container-fullwidth">
+        <div class="row">
+            <div class="noo-main col-md-12">
+                <div class="jform">
+                    <div class="jform-header">
+                        <div class="container-boxed max">
 
-                    <div class="col-md-10"><input name="email" type="email" placeholder="Email" ng-model="email"
-                                                  required="required" class="form-control"/></div>
-                </div>
-                <div class="form-group"><label for="firstname" class="col-md-2 control-label">First Name</label>
+                        </div>
+                    </div>
+                    <div class="jform-body">
+                        <div class="container-boxed max">
+                            <div class="form-horizontal" enctype="multipart/form-data">
+                                <div id="step_content_form" class="jstep-content">
+                                    <div class="jpanel jpanel-job-form">
+                                        <div class="jpanel-title">
+                                            <h3>Profile</h3>
+                                        </div>
+                                        <div class="jpanel-body">
+                                            <div class="well">
+                                                <form name="profileForm" class="form-horizontal">
+                                                    <fieldset>
+                                                        <legend>User Profile</legend>
+                                                        <div class="form-group">
+                                                            <label for="email" class="col-md-2 control-label">Email</label>
 
-                    <div class="col-md-10"><input name="firstname" type="text" placeholder="First Name"
-                                                  ng-model="firstname" required="required" class="form-control"/></div>
-                </div>
-                <div class="form-group"><label for="lastname" class="col-md-2 control-label">Last Name</label>
+                                                            <div class="col-md-10">
+                                                                <input name="email" type="email" placeholder="Email" ng-model="email"
+                                                                       required="required" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="firstname" class="col-md-2 control-label">First Name</label>
 
-                    <div class="col-md-10"><input name="lastname" type="text" placeholder="Last Name"
-                                                  ng-model="lastname" required="required" class="form-control"/></div>
-                </div>
-                <div class="form-group"><label for="password" class="col-md-2 control-label">Password</label>
+                                                            <div class="col-md-10">
+                                                                <input name="firstname" type="text" placeholder="First Name"
+                                                                       ng-model="firstname" required="required" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="lastname" class="col-md-2 control-label">Last Name</label>
 
-                    <div class="col-md-10"><input name="password" type="password" placeholder="Password"
-                                                  ng-model="password" class="form-control"/></div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <div class="pull-right">
-                            <button ng-click="update()" ng-disabled="profileForm.$invalid" class="btn btn-primary">
-                                Update
-                            </button>
-                            &nbsp;<a href="#/" class="btn btn-default">Cancel</a></div>
+                                                            <div class="col-md-10">
+                                                                <input name="lastname" type="text" placeholder="Last Name"
+                                                                       ng-model="lastname" required="required" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password" class="col-md-2 control-label">Password</label>
+
+                                                            <div class="col-md-10">
+                                                                <input name="password" type="password" placeholder="Password"
+                                                                       ng-model="password" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-10 col-md-offset-2">
+                                                                <div class="pull-right">
+                                                                    <button ng-click="update()" ng-disabled="profileForm.$invalid" class="btn btn-primary">
+                                                                        Update
+                                                                    </button>
+                                                                    &nbsp;<a href="#/" class="btn btn-default">Cancel</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </fieldset>
-        </form>
+
+            </div>
+        </div>
     </div>
 </div>

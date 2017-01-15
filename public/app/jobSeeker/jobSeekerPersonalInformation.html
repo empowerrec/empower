@@ -1,103 +1,102 @@
-<div class="container admin-area" ng-controller="mvJobSeekerPersonalInformationCtrl">
-    <div class="well">
-        <form name="jobSeekerForm" class="form-horizontal">
-            <fieldset>
-                <div class="form-group">
-                    <label for="FirstName" class="col-md-2 control-label">{{"JobSeeker.FirstName" | translate}}</label>
-                    <div class="col-md-10">
-                        <input name="FirstName" type="text" placeholder="{{'JobSeeker.FirstName' | translate}}"
-                               ng-model="jobSeeker.FirstName" class="form-control" required="required" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="MiddleName" class="col-md-2 control-label">{{"JobSeeker.MiddleName" | translate}}</label>
-                    <div class="col-md-10">
-                        <input name="MiddleName" type="text" placeholder="{{'JobSeeker.MiddleName' | translate}}"
-                               ng-model="jobSeeker.MiddleName" class="form-control" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="LastName" class="col-md-2 control-label">{{"JobSeeker.LastName" | translate}}</label>
-                    <div class="col-md-10">
-                        <input name="LastName" type="text" placeholder="{{'JobSeeker.LastName' | translate}}"
-                               ng-model="jobSeeker.LastName" class="form-control" required="required" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="Gender" class="col-md-2 control-label">{{"JobSeeker.Gender" | translate}}</label>
-                    <div class="col-md-10">
-                        <select name="Gender" ng-model="jobSeeker.Gender" required
-                                ng-options="gender._id as gender.Name[0].Text for gender in genders" class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="MaritalStatus" class="col-md-2 control-label">{{"JobSeeker.MaritalStatus" | translate}}</label>
-                    <div class="col-md-10">
-                        <select name="MaritalStatus" ng-model="jobSeeker.MaritalStatus" required
-                                ng-options="maritalStatus._id as maritalStatus.Name[0].Text for maritalStatus in maritalStatuses" class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="BirthDate" class="col-md-2 control-label">{{"JobSeeker.BirthDate" | translate}}</label>
-                    <div class="col-md-10">
-                        <input name="BirthDate" type="date" placeholder="Birth Date"
-                               ng-model="jobSeeker.BirthDate" required="required" class="form-control" />
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="MilitaryStatus" class="col-md-2 control-label">{{"JobSeeker.MilitaryStatus" | translate}}</label>
-                    <div class="col-md-10">
-                        <select name="MilitaryStatus" ng-model="jobSeeker.MilitaryStatus" required
-                                ng-options="militaryStatus._id as militaryStatus.Name[0].Text for militaryStatus in militaryStatuses" class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
+    <div class="well" ng-controller="mvJobSeekerPersonalInformationCtrl">
+    <form name="jobSeekerForm" class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <label for="FirstName" class="col-md-4 control-label">{{"JobSeeker.FirstName" | translate}}</label>
+                <div class="col-md-6">
+                    <input name="FirstName" type="text" placeholder="{{'JobSeeker.FirstName' | translate}}"
+                           ng-model="jobSeeker.FirstName" class="form-control" required="required" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="MiddleName" class="col-md-4 control-label">{{"JobSeeker.MiddleName" | translate}}</label>
+                <div class="col-md-6">
+                    <input name="MiddleName" type="text" placeholder="{{'JobSeeker.MiddleName' | translate}}"
+                           ng-model="jobSeeker.MiddleName" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="LastName" class="col-md-4 control-label">{{"JobSeeker.LastName" | translate}}</label>
+                <div class="col-md-6">
+                    <input name="LastName" type="text" placeholder="{{'JobSeeker.LastName' | translate}}"
+                           ng-model="jobSeeker.LastName" class="form-control" required="required" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Gender" class="col-md-4 control-label">{{"JobSeeker.Gender" | translate}}</label>
+                <div class="col-md-6">
+                    <select name="Gender" ng-model="jobSeeker.Gender" required
+                            ng-options="gender._id as gender.Name[0].Text for gender in genders" class="form-control">
+                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="MaritalStatus" class="col-md-4 control-label">{{"JobSeeker.MaritalStatus" | translate}}</label>
+                <div class="col-md-6">
+                    <select name="MaritalStatus" ng-model="jobSeeker.MaritalStatus" required
+                            ng-options="maritalStatus._id as maritalStatus.Name[0].Text for maritalStatus in maritalStatuses" class="form-control">
+                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="BirthDate" class="col-md-4 control-label">{{"JobSeeker.BirthDate" | translate}}</label>
+                <div class="col-md-6">
+                    <input name="BirthDate" type="date" placeholder="Birth Date"
+                           ng-model="jobSeeker.BirthDate" required="required" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="MilitaryStatus" class="col-md-4 control-label">{{"JobSeeker.MilitaryStatus" | translate}}</label>
+                <div class="col-md-6">
+                    <select name="MilitaryStatus" ng-model="jobSeeker.MilitaryStatus" required
+                            ng-options="militaryStatus._id as militaryStatus.Name[0].Text for militaryStatus in militaryStatuses" class="form-control">
+                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="CarLicenceType" class="col-md-4 control-label">{{"JobSeeker.CarLicenceType" | translate}}</label>
+                <div class="col-md-6">
+                    <select name="CarLicenceType" ng-model="jobSeeker.CarLicenceType" required
+                            ng-options="carLicenceType._id as carLicenceType.Name[0].Text for carLicenceType in carLicenceTypes" class="form-control">
+                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="HasACar" class="col-md-4 control-label">{{"JobSeeker.HasACar" | translate}}</label>
+                <div class="col-sm-1">
+                    <input name="HasACar" type="checkbox" placeholder="{{'JobSeeker.HasACar' | translate}}"
+                           ng-model="jobSeeker.HasACar" class="form-control-md-first" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-2">
+                    <div class="pull-right">
+                        <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                            {{"Buttons.Update" | translate}}
+                        </button>
+
+                        <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
+                            {{"Buttons.Add" | translate}}
+                        </button>
+                        &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="CarLicenceType" class="col-md-2 control-label">{{"JobSeeker.CarLicenceType" | translate}}</label>
-                    <div class="col-md-10">
-                        <select name="CarLicenceType" ng-model="jobSeeker.CarLicenceType" required
-                                ng-options="carLicenceType._id as carLicenceType.Name[0].Text for carLicenceType in carLicenceTypes" class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
-                    </div>
-                </div>                
-                
-                <div class="form-group">
-                    <label for="HasACar" class="col-md-2 control-label">{{"JobSeeker.HasACar" | translate}}</label>
-                    <div class="col-sm-1">
-                        <input name="HasACar" type="checkbox" placeholder="{{'JobSeeker.HasACar' | translate}}"
-                               ng-model="jobSeeker.HasACar" class="form-control-md-first" />
-                    </div>
-                </div>                            
-
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <div class="pull-right">
-                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
-                                {{"Buttons.Update" | translate}}
-                            </button>
-
-                            <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
-                                {{"Buttons.Add" | translate}}
-                            </button>
-                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
-                        </div>
-                    </div>
-                </div>
-
-            </fieldset>
-        </form>
-    </div>
+        </fieldset>
+    </form>
 </div>
