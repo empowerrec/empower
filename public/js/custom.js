@@ -22,8 +22,7 @@
 				}
 			});
 			$(document).on('click','[data-rel=loginModal]',function(e){
-                debugger;
-                e.stopPropagation();
+				e.stopPropagation();
 				e.preventDefault();
 				if($('#userregisterModal').length){
 					$('#userregisterModal').modal('hide');
