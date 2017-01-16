@@ -1,5 +1,5 @@
 angular.module('app').controller('mvFrontLoginCtrl',
-    function ($scope, $http, $location, mvIdentity, mvNotifier, mvAuth) {
+    function ($scope, $http, $location, mvIdentity, mvNotifier, mvAuth, mvLookup, $translate) {
     $scope.identity = mvIdentity;
     
     $scope.signin = function (username, password, rememberme) {
@@ -38,6 +38,18 @@ angular.module('app').controller('mvFrontLoginCtrl',
             $location.path('/');
         });
     };
+
+        $scope.changeLanguage = function (lang) {
+            debugger;
+            $translate.use(lang);
+            $rootScope.currentLang = lang;
+            mvLookup.getAllLookUps();
+            $rootScope.bootstrapFile = mvStyle.getStyleFile();
+            $rootScope.siteFile = mvStyle.getSiteStyleFile();
+            $rootScope.sideBarFile = mvStyle.getSideBarStyleFile();
+            //$route.reload();
+            location.reload();
+        };
 
 
 });

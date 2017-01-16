@@ -1,45 +1,4 @@
-<!--<form name="frontSignupForm" ng-controller="mvFrontSignupCtrl" ng-hide="identity.isAuthenticated()"
-      class="form-horizontal">
-    <div class="form-group">    
-        &nbsp; &nbsp; &nbsp; &nbsp;
-        <input type="radio" name="usertype" ng-model="usertype" value="J"
-               required="required"/> {{'JobSeeker.JobSeeker' | translate}}
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <input type="radio" name="usertype" ng-model="usertype" value="E"
-               required="required"/> {{'Employer.Employer' | translate}}
-    </div>
-    <div class="form-group">
-        <input name="email" type="email" placeholder="{{'Email' | translate}}"
-               ng-model="email" required="required" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <input name="password" type="password" placeholder="{{'Password' | translate}}" ng-model="password" 
-               required="required" class="form-control-md-first"/>
-        <input name="confirmpassword" type="password" placeholder="{{'Confirm Password' | translate}}" ng-model="confirmpassword"
-               required="required" match-password-validation-error="confirmpassword != password ? 'Passwords don\'t match' : ''" class="form-control-md-second" />
-    </div>
-    <div class="form-group" ng-show="usertype == 'J'" >
-        <input name="firstname" type="text" placeholder="{{'First_Name' | translate}}" ng-model="firstname"
-               ng-required="usertype == 'J'" class="form-control"/>
-    </div>
-    <div class="form-group" ng-show="usertype == 'J'" >
-        <input name="lastname" type="text" placeholder="{{'Last_Name' | translate}}" ng-model="lastname"
-               ng-required="usertype == 'J'" class="form-control"/>
-    </div>
-    <div class="form-group" ng-show="usertype == 'E'" >
-        <input name="employername" type="text" placeholder="{{'Employer.EmployerName' | translate}}" ng-model="employername"
-               ng-required="usertype == 'E'" class="form-control" />
-    </div>
-    <div class="form-group">
-        <button ng-click="signup()" class="btn signup_button">{{'Sign Up' | translate}}</button>
-    </div>
-    <div class="form-group" ng-hide="identity.isAuthenticated() || usertype == 'E'">
-        &nbsp;
-        <a href="/auth/facebook" class="facebook_button">Facebook SignUp/Login</a>
-        <a href="/auth/google" class="google_button">Google SignUp/Login</a><br/>
-        <br/>
-    </div>
-</form>-->
+
 
 
 <div class="modal-dialog modal-member" ng-controller="mvFrontSignupCtrl">
@@ -48,7 +7,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title">Sign Up</h4>
+            <h4 class="modal-title">{{'Sign Up' | translate}}</h4>
         </div>
         <div class="modal-body">
             <form class="noo-ajax-register-form form-horizontal" name="frontSignupForm">
@@ -60,7 +19,7 @@
                     <input type="radio" name="usertype" ng-model="usertype" value="E"
                            required="required" /> {{'Employer.Employer' | translate}}
 
-                    <label class="col-sm-3 control-label">Email</label>
+                    <label class="col-sm-3 control-label">{{'Email' | translate}}</label>
                     <div class="col-sm-9">
                         <input name="email" type="email" placeholder="{{'Email' | translate}}"
                                ng-model="email" required="required" class="user_login form-control" />
@@ -70,7 +29,7 @@
                
                 <div class="form-group row">
                     
-                    <label class="col-sm-3 control-label">Password</label>
+                    <label class="col-sm-3 control-label">{{'Password' | translate}}</label>
                     <div class="col-sm-9">
                         <input name="password" type="password" placeholder="{{'Password' | translate}}" ng-model="password"
                                required="required" class="user_password form-control" />
@@ -79,7 +38,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-3 control-label">Retype your password</label>
+                    <label class="col-sm-3 control-label">{{'Confirm Password' | translate}}</label>
                     <div class="col-sm-9">
                         <input name="confirmpassword" type="password" placeholder="{{'Confirm Password' | translate}}" ng-model="confirmpassword"
                                required="required" match-password-validation-error="confirmpassword != password ? 'Passwords don\'t match' : ''" class="cuser_password form-control" />
@@ -101,9 +60,9 @@
                 <div class="form-group row" ng-hide="identity.isAuthenticated() || usertype == 'E'">
                     
 
-                    <a href="/auth/facebook" class="facebook_button">Facebook SignUp/Login</a>
+                    <a href="/auth/facebook" class="facebook_button">{{'FacebookSignin' | translate}}</a>
                     <br/>
-                    <a href="/auth/google" class="google_button">Google SignUp/Login</a><br />
+                    <a href="/auth/google" class="google_button">{{'GoogleSignin' | translate}}</a><br />
                     <br />
                 </div>
                 <div class="form-group text-center">
@@ -112,7 +71,7 @@
                             <label class="checkbox">
                                 <input class="account_reg_term" type="checkbox" title="Please agree with the term">
                                 <i></i>
-                                I agree with the <a href="#">Terms of use</a>
+                                {{'Agreement' | translate}}
                             </label>
                         </div>
                     </div>

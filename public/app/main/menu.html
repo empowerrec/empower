@@ -13,7 +13,7 @@
                         <i class="fa fa-user"></i>
                     </a>
                     <a href="/#/" class="navbar-brand">
-                        <img class="noo-logo-img noo-logo-normal" src="images/logo-jobmonster.png" alt="">
+                        <img class="noo-logo-img noo-logo-normal" src="images/logo-JobMonster.png" alt="">
                         <img class="noo-logo-mobile-img noo-logo-normal" src="images/logo-mobile.png" alt="">
                     </a>
                 </div>
@@ -21,94 +21,63 @@
                     
                     <ul class="navbar-nav sf-menu">
                         <li>
-                            <a href="member.html"><i class="fa fa-sign-in"></i> Login</a>
+                            <a href="member.html"><i class="fa fa-sign-in"></i> {{"Menu.Login" | translate}}</a>
                         </li>
                         <li class="button_socical fb">
                             <i class="fa fa-facebook-square"></i>
-                            <em class="fa-facebook-square">Login with Facebook</em>
+                            <em class="fa-facebook-square">{{'FacebookSignin' | translate}}</em>
                         </li>
                         <li class="button_socical gg">
                             <i class="fa fa-google-plus"></i>
-                            <em class="fa-google-plus">Login with Google</em>
+                            <em class="fa-google-plus">{{'GoogleSignin' | translate}}</em>
                         </li>
-                        <li class="button_socical linkedin">
-                            <i class="fa fa-linkedin-square"></i>
-                            <em class="fa-linkedin-square">Login with LinkedIn</em>
-                        </li>
+                        
                         <li>
-                            <a href="member.html"><i class="fa fa-key"></i> Register</a>
+                            <a href="member.html"><i class="fa fa-key"></i> {{"Menu.Register" | translate}}</a>
                         </li>
                     </ul>
                 </nav>
                 <nav class="collapse navbar-collapse noo-navbar-collapse">
                     <ul class="navbar-nav sf-menu">
                         <li class="current-menu-item align-left">
-                            <a href="/#/">Home</a>
-                            <ul class="sub-menu">
-                                <li><a href="home-resume.html">Home Resume</a></li>
-                                <li><a href="home-2.html">Home Ver.2</a></li>
-                                <li><a href="home-map.html">Home Search Map</a></li>
-                            </ul>
+                            <a href="/#/">{{"Menu.Home" | translate}}</a>
+                           
                         </li>
                         <li class="align-left">
-                            <a href="jobs.html">Jobs</a>
-                            <ul class="sub-menu">
-                                <li><a href="jobs-fullwidth.html">Jobs Fullwidth</a></li>
-                                <li><a href="jobs-detail.html">Jobs Detail</a></li>
-                                <li><a href="post-a-job-step-1.html">Post a job - Step 1</a></li>
-                                <li><a href="post-a-job-step-2.html">Post a job - Step 2</a></li>
-                                <li><a href="post-a-job-step-3.html">Post a job - Step 3</a></li>
-                                <li><a href="post-a-job-step-4.html">Post a job - Step 4</a></li>
-                            </ul>
+                            <a href="jobs.html">{{"Menu.Jobs" | translate}}</a>
+                           
                         </li>
-                        <li class="align-left">
-                            <a href="company.html">Companies</a>
-                            <ul class="sub-menu">
-                                <li><a href="company-detail.html">Company Detail</a></li>
-                            </ul>
-                        </li>
-                        <li class="align-left">
-                            <a href="resume.html">Resumes</a>
-                            <ul class="sub-menu">
-                                <li><a href="resume-detail.html">Resume Detail</a></li>
-                                <li><a href="post-a-resume-step-1.html">Post a resume - Step 1</a></li>
-                                <li><a href="post-a-resume-step-2.html">Post a resume - Step 2</a></li>
-                                <li><a href="post-a-resume-step-3.html">Post a resume - Step 3</a></li>
-                                <li><a href="post-a-resume-step-4.html">Post a resume - Step 4</a></li>
-                            </ul>
-                        </li>
+                       
+                        
                         
                         <li class="menu-item-post-btn">
-                            <a href="#/addvacancy">Post a Job</a>
+                            <a href="#/addvacancy">{{"Menu.PostJob" | translate}}</a>
                         </li>
                         <li class="nav-item-member-profile login-link align-center" ng-hide="identity.isAuthenticated()">
                             <a href="#" class="member-links member-login-link" data-rel="loginModal">
-                                <i class="fa fa-sign-in"></i>&nbsp;Login
+                                <i class="fa fa-sign-in"></i>&nbsp;{{"Menu.Login" | translate}}
                             </a>
 
                             <ul class="sub-menu login-socical">
                                 <li class="button_socical fb">
                                     <i class="fa fa-facebook-square"></i>
-                                    <em class="fa-facebook-square">Login with Facebook</em>
+                                    <em class="fa-facebook-square">{{'FacebookSignin' | translate}}</em>
                                 </li>
                                 <li class="button_socical gg">
                                     <i class="fa fa-google-plus"></i>
-                                    <em class="fa-google-plus">Login with Google</em>
+                                    <em class="fa-google-plus">{{'GoogleSignin' | translate}}</em>
                                 </li>
-                                <li class="button_socical linkedin">
-                                    <i class="fa fa-linkedin-square"></i>
-                                    <em class="fa-linkedin-square">Login with LinkedIn</em>
-                                </li>
+                               
                             </ul>
                         </li>
                         <li class="nav-item-member-profile register-link" ng-hide="identity.isAuthenticated()">
                             <a class="member-links member-register-link" href="#" data-rel="registerModal">
-                                <i class="fa fa-key"></i>&nbsp;Register
+                                <i class="fa fa-key"></i>&nbsp;{{"Menu.Register" | translate}}
                             </a>
                         </li>
                         <li ng-show="identity.isAuthenticated() && identity.currentUser.isAdmin()" class="align-left">
                             <a href="#/profile">
-                                Setup
+                                {{"Menu.MyProfile" | translate}}
                             </a>
 
                             <ul class="sub-menu">
@@ -165,7 +134,7 @@
                         </li>
                         <li ng-show="identity.isAuthenticated()" class="align-left">
                             <a href="#/profile"  >
-                                Welcome {{ identity.currentUser.FirstName + ' ' + identity.currentUser.LastName}}
+                                 {{ identity.currentUser.FirstName + ' ' + identity.currentUser.LastName}}
                             </a>
 
                             <ul class="sub-menu">
@@ -201,15 +170,18 @@
                                 <li ng-show="identity.currentUser.isJobSeeker()">
                                     <a href="#/updateJobSeeker/PersonalInformation/profile">{{"Menu.JobSeekerProfile" | translate}}</a>
                                 </li>
-                                <li><a href="#/profile">Profile</a></li>
-                                <li><a href="" ng-click="signout()">Sign Out</a></li>
+                                <li><a href="#/profile">{{"Menu.MyProfile" | translate}}</a></li>
+                                <li><a href="" ng-click="signout()">{{"Menu.Signout" | translate}}</a></li>
                             </ul>
                         </li>
 
 
                         
 
-                        <li ng-show="identity.isAuthenticated()" class="nav-item-member-profile register-link"><a href="" ng-click="signout()">Sign Out</a></li>
+                        <li ng-show="identity.isAuthenticated()" class="nav-item-member-profile register-link"><a href="" ng-click="signout()">{{"Menu.Signout" | translate}}</a></li>
+
+                        <li><a href="" ng-click="changeLanguage('en')">{{"Languages.English" | translate}}</a></li>
+                        <li> <a href="" ng-click="changeLanguage('ar')">{{"Languages.Arabic" | translate}}</a></li>
 </ul>
                 </nav>
             </div>

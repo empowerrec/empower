@@ -46,6 +46,9 @@
             "Signin": "Sign In",
             "New_Jobs": "New Jobs",
             'Jobs_Title': "Jobs Title",
+            "FacebookSignin": "Facebook SignUp/Login",
+            "GoogleSignin": "Google SignUp/Login",
+            "Agreement": "I agree with the Terms of use",
             "Employer": {
                 "Employer": "Employer",
                 "EmployerName": "Name",
@@ -224,7 +227,10 @@
                 'Welcome': 'Welcome to the Empower!',
                 'Search1': 'FIND THE BEST',               
                 'Search2': 'JOBS IN EGYPT',
-                'Search3':'Search Jobs (e.g. Sales in Cairo)'
+                'Search3': 'Search Jobs (e.g. Sales in Cairo)',
+                'Messge1': '1.Register an account to start',
+                'Messge2': '2. Specify & search your desired job',
+                'Messge3': '3. Send your resume to employers'
             },
             "Buttons": {
                 "Update": "Update",
@@ -259,7 +265,8 @@
                 "JobRoles" : "Job Roles",
                 "InnerPages" : "Inner Pages" ,
                 "JobSeekers" : "Job Seekers",
-                "Signout" : "Sign Out",
+                "Signout": "Sign Out",
+                "PostJob": "Post Job",
                 "UserMenu": "User Menu",
                 "EducationalLevels":"Educational Levels",
                 "Categories": "Categories",
@@ -276,6 +283,8 @@
                 'Univirsties': 'Univirsties',
                 'UnivirstiesNotConfirmed': 'Univirsties Not Confirmed',
                 'Applicants': 'Applicants',
+                'Login': 'Login',
+                'Register': 'Register ',
             },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
@@ -317,6 +326,9 @@
             "Signin": "تسجيل الدخول",
             "New_Jobs": "الوظائف الجديده",
             "Jobs_Title": "عنوان الوظيف",
+            "FacebookSignin": "تسجيل الدخول عن طريق الفيس بوك",
+            "GoogleSignin": "تسجيل الدخول عن طريق جوجل",
+            "Agreement": "أوافق على الشروط والأحكام",
             "Employer": {
                 "Employer": "معلن عن وظيفة",
                 "EmployerName": "اسم الشركة",
@@ -494,7 +506,10 @@
                 'Welcome': 'مرحبا بكم فى الموقع',
                 'Search1': 'ابحث عن أفضل',               
                 'Search2': 'الوظائف فى مصر',
-                'Search3': 'بحث عن وظائف مثلا مبيعات القاهرة'
+                'Search3': 'بحث عن وظائف مثلا مبيعات القاهرة',
+                'Messge1': '1- تسجيل مستخدم جديد',
+                'Messge2': '2. ابحث عن وظيفتك المفضله',
+                'Messge3': '3. ارسل بياناتك للشركات'
             },
             "Buttons": {
                 "Update": "تعديل",
@@ -529,7 +544,8 @@
                 "JobRoles" : "مجالات الوظائف",
                 "InnerPages" : "الصفحات الداخلية",
                 "JobSeekers" : "الباحثين عن العمل",
-                "Signout" : "تسجيل الخروج",
+                "Signout": "تسجيل الخروج",
+                "PostJob": "أعلن عن وظيفة",
                 "UserMenu": "قائمة المستخدم",
                 "EducationalLevels": "المستويات التعليمية",
                 "Categories": "التصنيفات",
@@ -546,6 +562,9 @@
                 'AreassNotConfirmed': 'المناطق التي لم يتم تاكيدها',
                 'UnivirstiesNotConfirmed': 'الجامعات التي لم يتم تاكيدها',
                 'Applicants': 'متقدم لوظيفه', 
+                'Login': 'تسجيل الدخول',
+                'Register': 'تسجيل ',
+
             },
             "Footer": {
                 "Copy": "\u00A9" + " شركة ايم باور 2016"

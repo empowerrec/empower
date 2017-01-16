@@ -48,6 +48,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     };
     
     $scope.getStep2Class = function () {
+        debugger;
         if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())
             return "completed";
         else
@@ -56,6 +57,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     
     
     $scope.getStep3Class = function () {
+        debugger;
         if (mvIdentity.currentUser.isEmployer() && !$scope.completed() || mvIdentity.currentUser.isAdmin() && !$scope.completed())
             return "active";
         else
@@ -64,6 +66,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     
     
     $scope.getStep4Class = function () {
+        debugger;
         if ($scope.completed())
             return "active";
         else
