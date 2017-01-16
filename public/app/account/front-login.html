@@ -1,77 +1,36 @@
 
-<!--<form name="frontLoginForm" ng-hide="identity.isAuthenticated()" ng-controller="mvFrontLoginCtrl" class="form-horizontal">
-    <div class="form-group">
-        <input type="email" placeholder="{{'Email' | translate}}" ng-model="username" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <input type="password" placeholder="{{'Password' | translate}}" ng-model="password" required class="form-control" />
-    </div>
-    <div class="form-group">
-        <input type="checkbox" ng-model="rememberme">
-        <span>{{"Remember Me" | translate}}</span>
-    </div>
-    <div class="form-group">
-        <button ng-click="signin(username,password,rememberme)" class="btn btn-primary">{{"Signin" | translate}}</button>
-        <a href="#/forget">{{"Forget Password" | translate}}</a>
-    </div>-->
-    <!--
-        <a href="/auth/facebook" class="btn btn-primary">Facebook</a><a href="/auth/google" class="btn btn-primary">Google</a>
-        -->
-<!--</form>-->
-
-<!--<ul ng-show="identity.isAuthenticated()" class="nav navbar-nav navbar-right">
-    <li class="dropdown">
-        <a href="" data-toggle="dropdown" class="dropdown-toggle">
-            {{ identity.currentUser.FirstName
-            + ' ' + identity.currentUser.LastName }}<b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-            <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/users">Users</a></li>
-            <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/employers">Employers</a></li>
-            <li><a href="#/profile">Profile</a></li>
-            <li><a href="" ng-click="signout()">Sign Out</a></li>
-        </ul>
-    </li>
-</ul>-->   
-
-
-
-
-    <div class="modal-dialog modal-member" ng-controller="mvFrontLoginCtrl">
+<div class="modal-dialog modal-member" ng-controller="mvFrontLoginCtrl">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Login</h4>
+                <h4 class="modal-title">{{'Menu.Login' | translate}}"</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group row login-socical">
                     <div class="col-sm-9 col-sm-offset-3">
                         <div class="button_socical fb">
                             <i class="fa fa-facebook-square"></i>
-                            <em class="fa-facebook-square">Login with Facebook</em>
+                            <em class="fa-facebook-square">{{'FacebookSignin' | translate}}</em>
                         </div>
                         <div class="button_socical gg">
                             <i class="fa fa-google-plus"></i>
-                            <em class="fa-google-plus">Login with Google</em>
+                            <em class="fa-google-plus">{{'GoogleSignin' | translate}}</em>
                         </div>
-                        <div class="button_socical linkedin">
-                            <i class="fa fa-linkedin-square"></i>
-                            <em class="fa-linkedin-square">Login with LinkedIn</em>
-                        </div>
+                      
                     </div>
                 </div>
                 <form class="noo-ajax-login-form form-horizontal" name="frontLoginForm">
                     <div class="form-group row">
-                        <label class="col-sm-3 control-label">Username</label>
+                        <label class="col-sm-3 control-label">{{'Email' | translate}}</label>
                         <div class="col-sm-9">
                             <input type="email" placeholder="{{'Email' | translate}}" ng-model="username" class="log form-control" required />
 
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 control-label">Password</label>
+                        <label class="col-sm-3 control-label">{{'Password' | translate}}</label>
                         <div class="col-sm-9">
                             <input type="password" placeholder="{{'Password' | translate}}" ng-model="password" required class="pwd form-control" />
 
