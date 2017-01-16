@@ -44,7 +44,13 @@ angular.module('app').controller('mvJobSeekerCtrl', function ($scope, $routePara
             $scope.init0();
             break;
     }
-    
+    var added = false;
+
+    $scope.completed = function () {
+        if (added)
+            return true;
+        return false;
+    };
     $scope.getStep1Class = function () {
         debugger;
         if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())

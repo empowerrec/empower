@@ -12,7 +12,7 @@ angular.module('app').factory('mvStyle', function (mvIndustry, mvJobType, $rootS
     if ($rootScope.currentLang == 'ar')
         return "css/siteRTL.css";
     else if ($rootScope.currentLang == 'en')
-        return "css/site.css";
+        return "css/siteLTR.css";
         },
         getSideBarStyleFile  : function () {
     console.log($rootScope.currentLang);

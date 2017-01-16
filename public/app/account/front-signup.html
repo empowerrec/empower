@@ -57,13 +57,22 @@
                     <input name="employername" type="text" placeholder="{{'Employer.EmployerName' | translate}}" ng-model="employername"
                            ng-required="usertype == 'E'" class="form-control" />
                 </div>
-                <div class="form-group row" ng-hide="identity.isAuthenticated() || usertype == 'E'">
-                    
+                <div class="form-group row login-socical">
+                    <div class="col-sm-8 col-sm-offset-3">
+                        <a href="/auth/facebook">
+                            <div class="button_socical fb">
+                                <i class="fa fa-facebook-square"></i>
+                                <em >{{'FacebookSignin' | translate}}</em>
+                            </div>
+                        </a>
+                        <a href="/auth/google">
+                            <div class="button_socical gg">
+                                <i class="fa fa-google-plus"></i>
+                                <em >{{'GoogleSignin' | translate}}</em>
+                            </div>
+                        </a>
 
-                    <a href="/auth/facebook" class="facebook_button">{{'FacebookSignin' | translate}}</a>
-                    <br/>
-                    <a href="/auth/google" class="google_button">{{'GoogleSignin' | translate}}</a><br />
-                    <br />
+                    </div>
                 </div>
                 <div class="form-group text-center">
                     <div class="checkbox account-reg-term">

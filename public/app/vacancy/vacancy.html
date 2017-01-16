@@ -60,64 +60,7 @@
                                                     <h3>Login or create an account</h3>
                                                 </div>
                                                 <div class="jpanel-body">
-                                                    <div class="account-form">
-                                                        <div class="account-log-form">
-                                                            <div class="form-group row login-socical">
-                                                                <div class="col-sm-9 col-sm-offset-3">
-                                                                    <div class="button_socical fb">
-                                                                        <i class="fa fa-facebook-square"></i>
-                                                                        <em class="fa-facebook-square">Login with Facebook</em>
-                                                                    </div>
-                                                                    <div class="button_socical gg">
-                                                                        <i class="fa fa-google-plus"></i>
-                                                                        <em class="fa-google-plus">Login with Google</em>
-                                                                    </div>
-                                                                    <div class="button_socical linkedin">
-                                                                        <i class="fa fa-linkedin-square"></i>
-                                                                        <em class="fa-linkedin-square">Login with LinkedIn</em>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <form class="form-horizontal">
-                                                                <div class="form-group row">
-                                                                    <label class="col-sm-3 control-label">Username</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="log form-control" name="log" required placeholder="Username">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label class="col-sm-3 control-label">Password</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="password" class="form-control" required value="" name="pwd" placeholder="Password">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-9 col-sm-offset-3">
-                                                                        <div class="checkbox">
-                                                                            <div class="form-control-flat">
-                                                                                <label class="checkbox">
-                                                                                    <input type="checkbox" class="rememberme" name="rememberme" value="forever">
-                                                                                    <i></i> Remember Me
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-actions form-group text-center">
-                                                                    <button type="button" class="btn btn-primary">Continue</button>
-                                                                    <div class="login-form-links">
-                                                                        <span><a href="#"><i class="fa fa-question-circle"></i> Forgot Password?</a></span>
-                                                                        <span>
-                                                                            Don't have an account yet?
-                                                                            <a href="#" class="member-register-link">
-                                                                                Register Now <i class="fa fa-long-arrow-right"></i>
-                                                                            </a>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
+                                                    <div ng-include="'/partials/account/front-login'"></div>
                                                 </div>
                                             </div>
                                         </div>

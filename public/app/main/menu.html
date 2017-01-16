@@ -1,6 +1,4 @@
-
-
-    <div class="navbar-wrapper" ng-controller="mvFrontLoginCtrl">
+<div class="navbar-wrapper" ng-controller="mvFrontLoginCtrl">
         <div class="navbar navbar-default fixed-top shrinkable">
             <div class="container-boxed max">
                 <div class="navbar-header">
@@ -19,13 +17,15 @@
                 </div>
                 <nav class="collapse navbar-collapse noo-user-navbar-collapse">
                     
-                    <ul class="navbar-nav sf-menu">
+                    <ul class="navbar-nav sf-menu sf-js-enabled sf-arrows">
                         <li>
                             <a href="member.html"><i class="fa fa-sign-in"></i> {{"Menu.Login" | translate}}</a>
                         </li>
                         <li class="button_socical fb">
+                            <a href="/auth/facebook">
                             <i class="fa fa-facebook-square"></i>
                             <em class="fa-facebook-square">{{'FacebookSignin' | translate}}</em>
+                                </a>
                         </li>
                         <li class="button_socical gg">
                             <i class="fa fa-google-plus"></i>
@@ -38,13 +38,13 @@
                     </ul>
                 </nav>
                 <nav class="collapse navbar-collapse noo-navbar-collapse">
-                    <ul class="navbar-nav sf-menu">
+                    <ul class="navbar-nav sf-menu sf-js-enabled sf-arrows">
                         <li class="current-menu-item align-left">
                             <a href="/#/">{{"Menu.Home" | translate}}</a>
                            
                         </li>
                         <li class="align-left">
-                            <a href="jobs.html">{{"Menu.Jobs" | translate}}</a>
+                            <a href="/#/vacancies">{{"Menu.Jobs" | translate}}</a>
                            
                         </li>
                        
@@ -58,17 +58,7 @@
                                 <i class="fa fa-sign-in"></i>&nbsp;{{"Menu.Login" | translate}}
                             </a>
 
-                            <ul class="sub-menu login-socical">
-                                <li class="button_socical fb">
-                                    <i class="fa fa-facebook-square"></i>
-                                    <em class="fa-facebook-square">{{'FacebookSignin' | translate}}</em>
-                                </li>
-                                <li class="button_socical gg">
-                                    <i class="fa fa-google-plus"></i>
-                                    <em class="fa-google-plus">{{'GoogleSignin' | translate}}</em>
-                                </li>
-                               
-                            </ul>
+                            
                         </li>
                         <li class="nav-item-member-profile register-link" ng-hide="identity.isAuthenticated()">
                             <a class="member-links member-register-link" href="#" data-rel="registerModal">
@@ -76,7 +66,7 @@
                             </a>
                         </li>
                         <li ng-show="identity.isAuthenticated() && identity.currentUser.isAdmin()" class="align-left">
-                            <a href="#/profile">
+                            <a href="#/profile" class="sf-with-ul">
                                 {{"Menu.MyProfile" | translate}}
                             </a>
 
@@ -133,7 +123,7 @@
                             </ul>
                         </li>
                         <li ng-show="identity.isAuthenticated()" class="align-left">
-                            <a href="#/profile"  >
+                            <a href="#/profile" class="sf-with-ul" >
                                  {{ identity.currentUser.FirstName + ' ' + identity.currentUser.LastName}}
                             </a>
 
@@ -188,39 +178,5 @@
         </div>
     </div>
    
-<!--<ul class="navbar-nav sf-menu">
-        <li class="align-left"><a href="/#/">{{"Menu.Home" | translate}}</a></li>
 
-        <li class="align-left"><a href="/#profile/">{{"Menu.MyProfile" | translate}}</a></li>
-        <li class="align-left"><a href="/#vacanciesSearchResult/">{{"Menu.SearchJobs" | translate}}</a></li>
-        <li class="current-menu-item align-left">
-            <a href="./">Home</a>
-            <ul class="sub-menu">
-                <li><a href="home-resume.html">Home Resume</a></li>
-                <li><a href="home-2.html">Home Ver.2</a></li>
-                <li><a href="home-map.html">Home Search Map</a></li>
-            </ul>
-        </li>
-        <li class="align-left">
-            <a href="jobs.html">Jobs</a>
-            <ul class="sub-menu">
-                <li><a href="jobs-fullwidth.html">Jobs Fullwidth</a></li>
-                <li><a href="jobs-detail.html">Jobs Detail</a></li>
-                <li><a href="post-a-job-step-1.html">Post a job - Step 1</a></li>
-                <li><a href="post-a-job-step-2.html">Post a job - Step 2</a></li>
-                <li><a href="post-a-job-step-3.html">Post a job - Step 3</a></li>
-                <li><a href="post-a-job-step-4.html">Post a job - Step 4</a></li>
-            </ul>
-        </li>
-
-        <li class="menu-item-post-btn">
-            <a href="post-a-job-step-2.html">Post a Job</a>
-        </li>
-
-        <li class="align-left" class="nav-item-member-profile login-link align-center">
-            <nav  ng-include="'/partials/account/navbar-login'" ></nav>       
-
-</li>
-
-    </ul>-->
 

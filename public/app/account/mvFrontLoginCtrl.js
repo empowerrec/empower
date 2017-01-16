@@ -1,5 +1,5 @@
 angular.module('app').controller('mvFrontLoginCtrl',
-    function ($scope, $http, $location, mvIdentity, mvNotifier, mvAuth, mvLookup, $translate) {
+    function ($scope, $http, $location, mvIdentity, mvNotifier, mvAuth, mvLookup, $translate, $rootScope, mvStyle) {
     $scope.identity = mvIdentity;
     
     $scope.signin = function (username, password, rememberme) {
