@@ -11,7 +11,7 @@ exports.getApplicants = function (req, res) {
     } else {
         Applicant.find(JSON.parse(req.query.query))
             .populate({ path: 'Vacancy', populate: { path: 'Employer', model: 'Employer', select : 'EmployerName' } })
-            .populate('Vacancy').populate('JobSeeker')
+            .populate('JobSeeker')
             .populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize).skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
