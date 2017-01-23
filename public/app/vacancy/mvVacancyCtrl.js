@@ -1,4 +1,4 @@
-angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, mvVacancyRepo, $rootScope,mvVacancy, $routeParams, $translate, mvCity, mvCityRepo, mvArea, mvAreaRepo , mvIdentity) {
+angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, mvVacancyRepo, $rootScope,mvVacancy, $routeParams, $translate, mvCity, mvCityRepo, mvArea, mvAreaRepo , mvIdentity , $location) {
     var id = $routeParams.id;
     $scope.identity = mvIdentity;
     $scope.addEnabled = false;
@@ -77,17 +77,23 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
 
     $scope.add = function () {
         if ($scope.vacancyForm.$valid && $scope.addEnabled) {
-            createCity();
-            createArea();
-            if (validate()) {
-                mvVacancyRepo.createVacancy($scope.vacancy).then(function() {
-                    mvNotifier.notify('New Vacancy Added!');
-                    added = true;
-                    $scope.addEnabled = false;
-                }, function(reason) {
-                    mvNotifier.error(reason);
-                });
-            }
+            var cityPromise = createCity();
+            cityPromise.then(createArea().then(function() {
+
+                if (validate()) {
+                    mvVacancyRepo.createVacancy($scope.vacancy).then(function() {
+                        mvNotifier.notify('New Vacancy Added!');
+                        added = true;
+                        $scope.addEnabled = false;
+                    }, function(reason) {
+                        mvNotifier.error(reason);
+                    });
+                }
+            }))
+        ;
+
+            
+            
         }
     };
     
@@ -203,6 +209,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
                 return mvCityRepo.createCity(city).then(function (createdCity) {
                     mvNotifier.notify('New City Added!');
                     $scope.vacancy.City = createdCity._id;
+                    $("#hfCityId").val(createdCity._id);
                 }, function (reason) {
                     mvNotifier.error(reason);
                 });
@@ -231,6 +238,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
                 return mvAreaRepo.createArea(area).then(function (createdArea) {
                     mvNotifier.notify('New Area Added!');
                     $scope.vacancy.Area = createdArea._id;
+                    $("#hfAreaId").val(createdArea._id);
                 }, function (reason) {
                     mvNotifier.error(reason);
                 });
@@ -256,6 +264,11 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
         else {
             return true;
         }
+    };
+    
+
+    $scope.finish =  function finish() {
+        $location.path('/vacancies');
     };
     
 

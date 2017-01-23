@@ -1,5 +1,6 @@
-angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvApplicant,$translate, mvIdentity, mvApplicantRepo, mvNotifier, queryBulider) {
+angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvApplicant,$translate, mvIdentity, mvApplicantRepo, mvNotifier, queryBulider, $routeParams) {
     $scope.currentUser = mvIdentity.currentUser;
+    var id = $routeParams.vacancyId;
     //$scope.applicants = mvApplicant.query();
     //$scope.currentLang = $translate.use();
     //$scope.sortOptions = [{value: 'Description', text: 'Sort by Description'}];
@@ -27,7 +28,7 @@ angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvAppl
     
     $scope.getData = function () {
         mvApplicant.query({
-            query: queryBulider.qb("!Deleted"),
+            query: queryBulider.qb("Vacancy=='" + id + "'&&!Deleted"),
             currentPage: $scope.paging.currentPage,
             pageSize: $scope.paging.pageSize
         }, (function (res) {

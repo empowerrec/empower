@@ -33,19 +33,19 @@ exports.requiresApiLogin = function (req, res, next) {
 };
 
 exports.requiresRole = function (role) {
-    return function (req, res, next) {        
-        if (!req.isAuthenticated() || checkRole(req,role)) {
+    return function (req, res, next) {
+        if (!req.isAuthenticated() || checkRole(req, role)) {
             res.status(403);
             res.end();
         } else {
             next();
-        }    
+        }
     };
 };
 
-function checkRole(req,roles) {
+function checkRole(req, roles) {
     for (var role in roles) {
-       
+
         if (req.user.UserType.indexOf(roles[role]) != -1) {
             return false;
         }

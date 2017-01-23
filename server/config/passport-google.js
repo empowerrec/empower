@@ -6,13 +6,13 @@ var encryption = require('../utilities/encryption');
 module.exports = function (config) {
 
     passport.use(new GoogleStrategy({
-            clientID: config.googleAuthentication.clientID,
-            clientSecret: config.googleAuthentication.clientSecret,
-            callbackURL: config.googleAuthentication.callbackURL,
-            passReqToCallback: true,
-            profileFields: ['id', 'name', 'emails']
-        },
-        function (req,token, refreshToken, profile, done) {
+        clientID: config.googleAuthentication.clientID,
+        clientSecret: config.googleAuthentication.clientSecret,
+        callbackURL: config.googleAuthentication.callbackURL,
+        passReqToCallback: true,
+        profileFields: ['id', 'name', 'emails']
+    },
+        function (req, token, refreshToken, profile, done) {
 
             console.log(profile);
 

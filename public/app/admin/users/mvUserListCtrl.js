@@ -2,13 +2,13 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
     //$scope.users = mvUser.query();
     console.log(mvUser.query());
     console.log($scope.users);
-    
+
     $scope.paging = {
         currentPage: 1,
         maxPagesToShow: 5,
         pageSize: 10
     };
-    
+
     $scope.getData = function () {
         mvUser.query({
             query: queryBulider.qb("!Deleted"),
@@ -19,7 +19,7 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
             $scope.allDataCount = res[0].allDataCount;
         }));
     };
-    
+
     //$scope.deleteCity = function (city) {
     //    var ed = mvUser.get({ _id: city._id }, (function () {
     //        ed.Deleted = true;
@@ -32,6 +32,6 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
     //        });
     //    }));
     //};
-    
+
     $scope.getData();
 });

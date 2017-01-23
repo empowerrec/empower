@@ -1,6 +1,6 @@
 
-<div ng-controller="mvNavBarLoginCtrl" class="collapse navbar-collapse noo-user-navbar-collapse">  
-<ul class="navbar-nav sf-menu"  ng-show="!identity.isAuthenticated()">
+<div ng-controller="mvNavBarLoginCtrl" class="collapse navbar-collapse noo-user-navbar-collapse">
+    <ul class="navbar-nav sf-menu" ng-show="!identity.isAuthenticated()">
         <li>
             <a href="member.html"><i class="fa fa-sign-in"></i> Login</a>
         </li>
@@ -21,24 +21,33 @@
         </li>
     </ul>
 
-
-<ul ng-show="identity.isAuthenticated()" class="navbar-nav sf-menu">
+    <ul ng-show="identity.isAuthenticated()" class="navbar-nav sf-menu">
         <li class="align-left">
             <a href="" data-toggle="dropdown" class="dropdown-toggle">
-                {{
- identity.currentUser.FirstName
-                + ' ' + identity.currentUser.LastName
-                }}<b class="caret"></b>
+                {{ identity.currentUser.FirstName + ' ' + identity.currentUser.LastName }}
+                <b class="caret"></b>
             </a>
             <ul class="sub-menu">
-                <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/users">{{"Menu.Users" | translate}}</a></li>
-                <li ng-show="identity.currentUser.isAdmin()"><a href="#/admin/employers">{{"Menu.Employers" | translate}}</a></li>
+                <li ng-show="identity.currentUser.isAdmin()">
+                    <a href="#/admin/users">
+                        {{"Menu.Users" | translate}}
+                    </a>
+                </li>
+                <li ng-show="identity.currentUser.isAdmin()">
+                    <a href="#/admin/employers">
+                        {{"Menu.Employers" | translate}}
+                    </a>
+                </li>
                 <li ng-show="identity.currentUser.isEmployer()">
-                    <a href="#/updateemployer/profile">{{"Menu.CompanyProfile" | translate}}</a>
+                    <a href="#/updateemployer/profile">
+                        {{"Menu.CompanyProfile" | translate}}
+                    </a>
                 </li>
 
                 <li ng-show="identity.currentUser.isJobSeeker()">
-                    <a href="#/updateJobSeeker/PersonalInformation/profile">{{"Menu.JobSeekerProfile" | translate}}</a>
+                    <a href="#/updateJobSeeker/PersonalInformation/profile">
+                        {{"Menu.JobSeekerProfile" | translate}}
+                    </a>
                 </li>
                 <li><a href="#/profile">{{"Menu.MyProfile" | translate}}</a></li>
                 <li><a href="" ng-click="signout()">{{"Menu.Signout" | translate}}</a></li>
@@ -46,5 +55,5 @@
         </li>
     </ul>
 
-    </div>  
+</div>
 

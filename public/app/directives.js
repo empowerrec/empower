@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
-    
+
     angular.module('app').directive('matchPasswordValidationError', function () {
         return {
             require: 'ngModel',

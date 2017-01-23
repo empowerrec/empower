@@ -1,21 +1,21 @@
 (function () {
     'use strict';
-    
+
     var core = angular.module('app');
-    
+
     var config = {
         appErrorPrefix: '[hot-towel Error] ',
         appTitle: 'hot-towel'
     };
-    
+
     core.value('config', config);
-    
+
     core.config(configure);
-    
+
     configure.$inject = ['$translateProvider'];
     /* @ngInject */
     function configure($translateProvider) {
-        
+
         var english = {
             'Title': 'Internationalization Test',
             "Language": "Language",
@@ -31,7 +31,7 @@
             "Age": "Age",
             "Location": "Location",
             "Messages": "Messages",
-            "People": "People", 
+            "People": "People",
             "Splash_Msg": "Loading . . .",
             "Message_Count": "{messageCount, plural, =0{No Messages} one{1 Message} other{# Messages}}",
             "Conference_Date": "May 18 - 19, 2015",
@@ -92,7 +92,7 @@
                 "Country": "Country",
                 "MobileNo": "MobileNo",
                 "Email": "Email",
-                "Experiances" : "Experiances",
+                "Experiances": "Experiances",
                 'FirstName': 'First Name',
                 'MiddleName': 'Middle Name',
                 'LastName': 'Last Name',
@@ -113,32 +113,32 @@
                 'Job Preferences': 'Job Preferences'
             },
             "Vacancy": {
-                "Vacancy":"Vacancy",
+                "Vacancy": "Vacancy",
                 "JobTitle": "Job Title",
                 "JobDescrption": "Job Descrption",
                 "AvailableFrom": "Available From",
-                "AvailableTo": "Available To" ,
-                "SalaryRangeFrom": "Salary Range From",
-                "SalaryRangeTo": "Salary Range To",
-                "SalaryCurancy": "Salary Curancy",
+                "AvailableTo": "Available To",
+                "SalaryRangeFrom": "Salary From",
+                "SalaryRangeTo": "Salary To",
+                "SalaryCurancy": "Curancy",
                 "RequiredExperiance": "Required Experience",
-                "JobType" : "Job Type",
+                "JobType": "Job Type",
                 "Industry": "Industry",
                 "Country": "Country",
                 "City": "City",
                 'EducationalLevel': 'Educational Level',
                 'CareerLevel': 'Career Level',
                 'HotJobFlag': 'Hot Job Flag',
-                'Area':'Area',
+                'Area': 'Area',
                 'JobRole': 'Job Role',
-                'NoData':'There is no vacancies to view'
-            }, 
+                'NoData': 'There is no vacancies to view'
+            },
             'City': {
                 "City": "City",
                 "Name": "Name",
                 "Country": "Country",
                 "Confirmed": "Confirmed"
-            }, 
+            },
             'Area': {
                 "Area": "Area",
                 "City": "City",
@@ -193,7 +193,7 @@
             "LanguageSkill": {
                 "Language": "Language",
                 "LanguageLevel": "LanguageLevel"
-                
+
             },
             "Skill": {
                 "SkillType": "SkillType",
@@ -205,7 +205,7 @@
             "InnerPage": {
                 "PageTitle": "Page Title",
                 "PageBody": "Page Body"
-            }, 
+            },
             "EducationalInformation": {
                 'EducationType': 'Education Type',
                 'Univirsty': 'Univirsty',
@@ -218,14 +218,14 @@
             'Course': {
                 'Title': 'Title',
                 'TrainingCenter': 'Training Center',
-                'Specialization': 'Specialization',               
+                'Specialization': 'Specialization',
                 'Grade': 'Grade',
                 'CourseYear': 'CourseYear'
             },
             'Main': {
                 'Empower': 'Empower',
                 'Welcome': 'Welcome to the Empower!',
-                'Search1': 'FIND THE BEST',               
+                'Search1': 'FIND THE BEST',
                 'Search2': 'JOBS IN EGYPT',
                 'Search3': 'Search Jobs (e.g. Sales in Cairo)',
                 'Messge1': '1.Register an account to start',
@@ -247,7 +247,8 @@
                 'Previous': 'Previous',
                 'Next': 'Next',
                 'First': 'First',
-                'Last': 'Last'
+                'Last': 'Last',
+                'Finish': 'Finish'
             },
             "Menu": {
                 "SubTitle": "Jobs IN Egypt",
@@ -257,21 +258,21 @@
                 "Vacancies": "Vacancies",
                 "ContactUs": "Contact US",
                 "AboutUs": "About US",
-                "MyProfile": "User Profile" ,
-                "SearchJobs": "Search Jobs" ,
-                "Users" : "Users",
-                "Industries" : "Industries",
-                "JobTypes" : "Job Types",
-                "JobRoles" : "Job Roles",
-                "InnerPages" : "Inner Pages" ,
-                "JobSeekers" : "Job Seekers",
+                "MyProfile": "User Profile",
+                "SearchJobs": "Search Jobs",
+                "Users": "Users",
+                "Industries": "Industries",
+                "JobTypes": "Job Types",
+                "JobRoles": "Job Roles",
+                "InnerPages": "Inner Pages",
+                "JobSeekers": "Job Seekers",
                 "Signout": "Sign Out",
                 "PostJob": "Post Job",
                 "UserMenu": "User Menu",
-                "EducationalLevels":"Educational Levels",
+                "EducationalLevels": "Educational Levels",
                 "Categories": "Categories",
-                "CompanyProfile" : "Company Profile",
-                "Experiances" : "Experiances",
+                "CompanyProfile": "Company Profile",
+                "Experiances": "Experiances",
                 'SelectValue': 'Select Value',
                 'JobSeekerProfile': 'Job Seeker Profile',
                 'Cities': 'Cities',
@@ -290,7 +291,7 @@
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
             }
         };
-        
+
         var arabic = {
             "Title": "أختبار ",
             "Language": "اللغات",
@@ -390,13 +391,13 @@
                 'PeriodOfEnrollment': 'مهلة ترك الشركة الحالية',
                 'MoreInformation': 'معلومات اضافية',
                 'Job Preferences': 'خيارات الوظيفة'
-            }, 
+            },
             'City': {
                 "City": "المدينة",
                 "Name": "الاسم",
                 "Country": "البلد",
                 "Confirmed": "تاكيد"
-            }, 
+            },
             'Area': {
                 "Area": "المنطقة",
                 "City": "المدينة",
@@ -408,13 +409,13 @@
                 "JobTitle": "عنوان الوظيفة",
                 "JobDescrption": "وصف الوظيفة",
                 "AvailableFrom": "متاحة من",
-                "AvailableTo": "متاحة الى" ,
+                "AvailableTo": "متاحة الى",
                 "SalaryRangeFrom": "المرتب من ",
                 "SalaryRangeTo": "المرتب الى",
                 "SalaryCurancy": "عملة المرتب",
                 "RequiredExperiance": "الخبرة المطلوبة",
-                "JobType" : "نوع الوظيفة",
-                "JobRole" : "مجال الوظيفة",
+                "JobType": "نوع الوظيفة",
+                "JobRole": "مجال الوظيفة",
                 "Industry": "قطاع العمل",
                 "Country": "الدولة",
                 "City": "المدينة",
@@ -427,7 +428,7 @@
             "LanguageSkill": {
                 "Language": "اللغة",
                 "LanguageLevel": "مستوى اللغة"
-                
+
             },
             "Skill": {
                 "SkillType": "نوع المهارة",
@@ -437,7 +438,7 @@
                 "UserName": "اسم المستخدم",
                 "FirstName": "الاسم الأول",
                 "LastName": "الاسم الأخير",
-                "UserType": "نوع المستخدم",                
+                "UserType": "نوع المستخدم",
                 "CreatedBy": "سجل بواسطة",
                 "ModifiedBy": "عدل بواسطة"
             },
@@ -497,14 +498,14 @@
             'Course': {
                 'Title': 'اسم الدورة',
                 'TrainingCenter': 'مركز التدريب',
-                'Specialization': 'التخصص',               
+                'Specialization': 'التخصص',
                 'Grade': 'التقدير',
                 'CourseYear': 'السنة'
             },
             'Main': {
                 'Empower': 'ايم باور',
                 'Welcome': 'مرحبا بكم فى الموقع',
-                'Search1': 'ابحث عن أفضل',               
+                'Search1': 'ابحث عن أفضل',
                 'Search2': 'الوظائف فى مصر',
                 'Search3': 'بحث عن وظائف مثلا مبيعات القاهرة',
                 'Messge1': '1- تسجيل مستخدم جديد',
@@ -526,7 +527,8 @@
                 'Previous': 'السابق',
                 'Next': 'التالي',
                 'First': 'الاول',
-                'Last': 'الاخير'
+                'Last': 'الاخير',
+                'Finish': 'تم'
             },
             "Menu": {
                 "SubTitle": "وظائف فى مصر",
@@ -536,21 +538,21 @@
                 "Vacancies": "فرص العمل",
                 "ContactUs": "اتصل بنا",
                 "AboutUs": "عنا",
-                "MyProfile": "بيانات المستخدم" ,
-                "SearchJobs": "بحث في الوظائف" ,
-                "Users" : "المستخدمين" ,
-                "Industries" : "قطاعات العمل",
-                "JobTypes" : "انواع الوظائف",
-                "JobRoles" : "مجالات الوظائف",
-                "InnerPages" : "الصفحات الداخلية",
-                "JobSeekers" : "الباحثين عن العمل",
+                "MyProfile": "بيانات المستخدم",
+                "SearchJobs": "بحث في الوظائف",
+                "Users": "المستخدمين",
+                "Industries": "قطاعات العمل",
+                "JobTypes": "انواع الوظائف",
+                "JobRoles": "مجالات الوظائف",
+                "InnerPages": "الصفحات الداخلية",
+                "JobSeekers": "الباحثين عن العمل",
                 "Signout": "تسجيل الخروج",
                 "PostJob": "أعلن عن وظيفة",
                 "UserMenu": "قائمة المستخدم",
                 "EducationalLevels": "المستويات التعليمية",
                 "Categories": "التصنيفات",
-                "CompanyProfile" : "بيانات الشركة",
-                "Experiances" : "الخبرات",
+                "CompanyProfile": "بيانات الشركة",
+                "Experiances": "الخبرات",
                 'SelectValue': 'اختار من القائمة',
                 'JobSeekerProfile': 'بيانات طالب العمل',
                 'Cities': 'المدن',
@@ -558,10 +560,10 @@
                 'Specializations': 'التخصصات',
                 'Faculties': 'الكليات',
                 'Univirsties': 'الجامعات',
-                'CitiesNotConfirmed': 'المدن التي لم يتم تاكيدها', 
+                'CitiesNotConfirmed': 'المدن التي لم يتم تاكيدها',
                 'AreassNotConfirmed': 'المناطق التي لم يتم تاكيدها',
                 'UnivirstiesNotConfirmed': 'الجامعات التي لم يتم تاكيدها',
-                'Applicants': 'متقدم لوظيفه', 
+                'Applicants': 'متقدم لوظيفه',
                 'Login': 'تسجيل الدخول',
                 'Register': 'تسجيل ',
 
@@ -570,26 +572,26 @@
                 "Copy": "\u00A9" + " شركة ايم باور 2016"
             }
         };
-        
-        
-        
+
+
+
         $translateProvider.translations('en', english);
         $translateProvider.translations('ar', arabic);
-       
+
         $translateProvider.registerAvailableLanguageKeys(['en', 'ar'], {
             'en-US': 'en',
             'ar-EG': 'ar'
         });
         $translateProvider.preferredLanguage('ar');
         //$translateProvider.determinePreferredLanguage();
-        
+
         $translateProvider.useCookieStorage();
         $translateProvider.useLocalStorage();
-        
+
         console.log(navigator.language);
 
     }
-    
+
     core.run(function ($rootScope) {
         $rootScope.$on('$translateChangeSuccess', function () {
             console.log('Translation Change Success!');

@@ -8,7 +8,7 @@ var express = require('express'),
     MongoStore = require('connect-mongo')(session);
 
 module.exports = function (app, config) {
-    
+
     function compile(str, path) {
         return stylus(str).set('filename', path);
     }
@@ -16,12 +16,12 @@ module.exports = function (app, config) {
     app.engine('html', require('ejs').renderFile);
     app.set('views', config.rootPath + '/server/views');
     app.set('view engine', 'html');
-    
+
     //use function used Every time the app receives a request
     app.use(logger('dev'));
     app.use(cookieParser());
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(session({
         store: new MongoStore({
             url: config.db
@@ -30,22 +30,22 @@ module.exports = function (app, config) {
         saveUninitialized: true,
         secret: config.sessionSecret
     }));
-    
+
     app.use(passport.initialize());
     app.use(passport.session());
-    
+
     app.use(stylus.middleware(
         {
             src: config.rootPath + '/public',
             compile: compile
         }
     ));
-    
+
     app.use(express.static(config.rootPath + '/public'));
 
     app.use(function (req, res, next) {
         if (req.method == 'POST' && req.url == '/login') {
-           
+
             if (req.body.rememberme) {
                 req.session.cookie.maxAge = 604800000; // 7*24*60*60*1000 Rememeber 'me' for 7 days
             } else {
