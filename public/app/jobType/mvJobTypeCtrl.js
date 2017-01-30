@@ -51,7 +51,7 @@ angular.module('app').controller('mvJobTypeCtrl', function ($scope, mvNotifier, 
     
     
     $scope.update = function () {
-        if ($scope.jobTypeForm.$valid) {
+        //if ($scope.jobTypeForm.$valid) {
             
             $scope.loop();
             mvJobTypeRepo.updateCurrentJobType($scope.jobType).then(function () {
@@ -59,12 +59,12 @@ angular.module('app').controller('mvJobTypeCtrl', function ($scope, mvNotifier, 
             }, function (reason) {
                 mvNotifier.error(reason);
             });
-        }
+        //}
 
     };
     
     $scope.add = function () {
-        if ($scope.jobTypeForm.$valid && $scope.addEnabled) {
+        //if ($scope.jobTypeForm.$valid && $scope.addEnabled) {
             
             $scope.loop();
             
@@ -75,7 +75,7 @@ angular.module('app').controller('mvJobTypeCtrl', function ($scope, mvNotifier, 
             }, function (reason) {
                 mvNotifier.error(reason);
             });
-        }
+        //}
     };
     
     $scope.loop = function () {

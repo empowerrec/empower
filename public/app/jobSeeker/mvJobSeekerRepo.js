@@ -45,6 +45,34 @@ angular.module('app').factory('mvJobSeekerRepo', function ($http, $q, mvJobSeeke
             });
             
             return dfd.promise;
+        }, updateAllJobSeekersUnivirsty: function (areaId) {
+            
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "/api/updateJobSeekersUnivirsty/" + areaId,
+                data: {},
+                success: function (data) {
+                    console.log(data);
+    
+                },
+                error: function (error) {
+                    
+                    console.log(error);
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                beforeSend: function () {
+    
+                },
+                complete: function () {
+    
+    
+                }
+            });
         }
+    
+    
     };
 });

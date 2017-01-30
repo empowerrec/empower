@@ -1,6 +1,6 @@
 
 angular.module('app').controller('mvUnivirstyNotConfirmedListCtrl', function ($scope, mvUnivirsty, $translate, mvIdentity, 
-    mvUnivirstyRepo, mvNotifier, queryBulider, mvAddressRepo) {
+    mvUnivirstyRepo, mvNotifier, queryBulider, mvAddressRepo, mvJobSeekerRepo) {
     
     $scope.currentUser = mvIdentity.currentUser;
     
@@ -76,8 +76,9 @@ angular.module('app').controller('mvUnivirstyNotConfirmedListCtrl', function ($s
                             ed.DeletedBy = mvIdentity.currentUser;
                             mvUnivirstyRepo.updateCurrentUnivirsty(ed).then(function () {
                                 mvNotifier.notify('Univirsty has been deleted!');
-                                mvAddressRepo.updateAllAddressesUnivirsty(id + "_" + entry);
-                               
+                                mvAddressRepo.updateAllAddressesUnivirsty(id + "_" + entry);//
+                                mvJobSeekerRepo.updateAllJobSeekersUnivirsty(id + "_" + entry);
+                                
                             }, function (reason) {
                                 
                                 mvNotifier.error(reason);

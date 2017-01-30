@@ -1,5 +1,5 @@
 angular.module('app').controller('mvAreaNotConfirmedListCtrl', function ($scope, mvArea, $translate, mvIdentity, 
-    mvAreaRepo, mvNotifier, queryBulider, mvAddressRepo) {
+    mvAreaRepo, mvNotifier, queryBulider, mvAddressRepo, mvVacancyRepo) {
     
     $scope.currentUser = mvIdentity.currentUser;
     
@@ -76,7 +76,7 @@ angular.module('app').controller('mvAreaNotConfirmedListCtrl', function ($scope,
                             mvAreaRepo.updateCurrentArea(ed).then(function () {
                                 mvNotifier.notify('Area has been deleted!');
                                 mvAddressRepo.updateAllAddressesArea(id + "_" + entry);
-                               
+                                mvVacancyRepo.updateAllVacanciesArea(id + "_" + entry);
                             }, function (reason) {
                                 
                                 mvNotifier.error(reason);

@@ -1,51 +1,93 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container admin-area">
 
-    <div class="well">
-        <h3>
-        <div ng-repeat="ind in industry.Name | filter:{Lang:currentLang}">{{ind.Text}}</div>
-        </h3>
-        <form name="industryForm" class="form-horizontal">
-            <fieldset>
-            
-                <div class="form-group">
-                    <label for="Text" class="col-md-2 control-label">{{"Industry.Name"
-                        | translate}}</label>
-                    <div class="col-md-10">
 
-                        <ul ng-repeat="lang in languages" id="Names">
-                            <li id="{{lang.value}}">
-                                {{ lang.text}}
-                                <input id="NameText2" type="text" required="required" ng-model="Name"
-                                    placeholder="Name" value="{{getName(industry.Name , lang.value)}}"
-                                    class="form-control"/>
-                            </li>
-                        </ul>
+<div class="container-wrap">
+    <div class="main-content container-fullwidth">
+        <div class="row">
+            <div class="noo-main col-md-12">
+                <div class="jform">
+                    <div class="jform-header">
+                        <div class="container-boxed max">
+
+                        </div>
+                    </div>
+                    <div class="jform-body">
+                        <div class="container-boxed max">
+                            <div class="form-horizontal" enctype="multipart/form-data">
+                                <div id="step_content_form" class="jstep-content">
+                                    <div class="jpanel jpanel-job-form">
+                                        <div class="jpanel-title">
+                                            <h3>Industry</h3>
+                                        </div>
+                                        <div class="jpanel-body">
+
+                                            <div class="job-form">
+                                                <div class="job-form-detail">
+                                                    <div class="well">
+                                                        <div class="form-group row">
+                                                            <div class="form-group">
+
+                                                                <label for="Text" class="col-md-2 control-label">
+                                                                    {{"Industry.Name" | translate }}
+                                                                </label>
+                                                                <div class="col-md-10">
+
+                                                                    <ul ng-repeat="lang in languages" id="Names">
+
+                                                                        <li id="{{lang.value}}">
+
+                                                                            {{ lang.text}}
+                                                                            <input id="NameText2" type="text"
+                                                                                   placeholder="{{'Industry.Name' | translate}}"
+                                                                                   value="{{getName(industry.Name , lang.value)}}"
+                                                                                   class="form-control" />
+
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+
+
+
+
+
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-10 col-md-offset-2">
+                                                                <div class="pull-right">
+                                                                    <button ng-click="update()" ng-show="updateMode" ng-disabled="employerForm.$invalid" class="btn btn-primary">
+                                                                        {{"Buttons.Save" | translate}}
+                                                                    </button>
+
+                                                                    <button ng-click="add()" ng-show="addMode" ng-disabled="employerForm.$invalid||!addEnabled" class="btn btn-primary">
+                                                                        {{"Buttons.Add" | translate}}
+                                                                    </button>
+                                                                    &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <div class="pull-right">
-                            <button ng-click="update()" ng-show="updateMode" ng-disabled="industryForm.$invalid" class="btn btn-primary">
-                                {{"Buttons.Update" | translate}}
-                            </button>
-
-                            <button ng-click="add()" ng-show="addMode" ng-disabled="industryForm.$invalid||!addEnabled" class="btn btn-primary">
-                                {{"Buttons.Add" | translate}}
-                            </button>
-                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a></div>
-                    </div>
-                </div>
-
-            </fieldset>
-        </form>
+            </div>
+        </div>
     </div>
 </div>

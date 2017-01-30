@@ -1,51 +1,110 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container admin-area">
-    <h1>{{"Vacancy.JobTitle" | translate}} :   {{vacancy.JobTitle}}</h1>
-
-    <div class="row">
-        <div class="col-md-8">
-            <h3>{{"Vacancy.JobDescrption" | translate}} : {{vacancy.JobDescription}}</h3>
-            <h3>{{"Vacancy.SalaryRangeFrom" | translate}} : {{vacancy.SalaryRangeFrom}}</h3>
-            <h3>{{"Vacancy.SalaryRangeTo" | translate}} : {{vacancy.SalaryRangeTo }}</h3>
-            <h3>{{"Vacancy.SalaryCurancy" | translate}} : <span ng-repeat="name in vacancy.SalaryCurancy.Name |filter:currentLang">{{name.Text}}</span></h3>
+<div class="noo-page-heading">
+    <div class="container-boxed max parallax-content">
+        <div class="page-heading-info">
+            <h1 class="page-title">{{vacancy.JobTitle}} </h1>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-8">
-            <h3>{{"Vacancy.AvailableFrom" | translate}} : {{vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</h3>
-            <h3>{{"Vacancy.AvailableTo" | translate}} : {{vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</h3>
-            <h3>{{"Vacancy.EducationalLevel" | translate}} : <span ng-repeat="name in vacancy.EducationalLevel.Name |filter:currentLang">{{name.Text}}</span></h3>
-            <h3>{{"Vacancy.JobType" | translate}} : <span ng-repeat="name in vacancy.JobType.Name |filter:currentLang">{{name.Text}}</span></h3>
-        </div>
     </div>
+    <div class="parallax heading" data-parallax="1" data-parallax_no_mobile="1" data-velocity="0.1"></div>
+</div>
+<div class="container-wrap">
+    <div class="container-boxed max offset main-content single-noo_job">
+        <div class="row">
+            <div class="noo-main col-md-8">
+                <div class="job-desc">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>{{"Vacancy.JobDescrption" | translate}} </h3> {{vacancy.JobDescription}}
+                            <h3>{{"Vacancy.SalaryRangeFrom" | translate}} </h3> {{vacancy.SalaryRangeFrom}}
+                            <h3>{{"Vacancy.SalaryRangeTo" | translate}}  </h3>{{vacancy.SalaryRangeTo }}
+                            <h3>{{"Vacancy.SalaryCurancy" | translate}}  </h3><p ng-repeat="name in vacancy.SalaryCurancy.Name |filter:currentLang">{{name.Text}}</p>
+                        </div>
+                    </div>
 
-    <div class="row">
-        <div class="col-md-8">
-            <h3>{{"Vacancy.Industry" | translate}} : <span ng-repeat="name in vacancy.Industry.Description |filter:currentLang">{{name.Text}}</span></h3>
-            <h3>{{"Vacancy.RequiredExperiance" | translate}} : {{vacancy.RequiredExperience}}</h3>
-            <h3>{{"Vacancy.Country" | translate}} : <span ng-repeat="name in vacancy.Country.Name |filter:currentLang">{{name.Text}}</span></h3>
-            <h3>{{"Vacancy.City" | translate}} : <span ng-repeat="name in vacancy.City.Name |filter:currentLang">{{name.Text}}</span></h3>
-            <h3>{{"Vacancy.Area" | translate}} : <span ng-repeat="name in vacancy.Area.Name |filter:currentLang">{{name.Text}}</span></h3>
-        </div>
-    </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3>{{"Vacancy.AvailableFrom" | translate}} </h3><p> {{vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</p>
+                                <h3>{{"Vacancy.AvailableTo" | translate}}  </h3><p>{{vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</p>
+                                <h3>{{"Vacancy.EducationalLevel" | translate}} : </h3><p ng-repeat="name in vacancy.EducationalLevel.Name |filter:currentLang">{{name.Text}}</p>
+                                <h3>{{"Vacancy.JobType" | translate}} </h3> <p ng-repeat="name in vacancy.JobType.Name |filter:currentLang">{{name.Text}}</p>
+                            </div>
+                        </div>
 
-    <div class="row">
-        <div class="col-md-8">
-            <h3>{{"Vacancy.CareerLevel" | translate}} : <span ng-repeat="name in vacancy.CareerLevel.Name |filter:currentLang">{{name.Text}}</span></h3>
-            <h3>{{"Vacancy.HotJobFlag" | translate}} : <input type="checkbox" ng-model="vacancy.HotJobFlag" disabled="disabled"></h3>
-        </div>
-    </div>
-    
-    <div class="form-group">
-        <div class="col-md-10 col-md-offset-2">
-            <div class="pull-right">
-              
-                <button ng-click="apply()" ng-show="isJobSeeker" ng-disabled="isApplied" title="{{appliedMessage}}" class="btn btn-primary">
-                    {{"Buttons.Apply" | translate}}
-                </button>
-               
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3>{{"Vacancy.Industry" | translate}}  </h3><p ng-repeat="name in vacancy.Industry.Description |filter:currentLang">{{name.Text}}</p>
+                                <h3>{{"Vacancy.RequiredExperiance" | translate}} </h3><p> {{vacancy.RequiredExperience}}</p>
+                                <h3>{{"Vacancy.Country" | translate}} </h3> <p ng-repeat="name in vacancy.Country.Name |filter:currentLang">{{name.Text}}</p>
+                                <h3>{{"Vacancy.City" | translate}} </h3> <p ng-repeat="name in vacancy.City.Name |filter:currentLang">{{name.Text}}</p>
+                                <h3>{{"Vacancy.Area" | translate}}  </h3><p ng-repeat="name in vacancy.Area.Name |filter:currentLang">{{name.Text}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3>{{"Vacancy.CareerLevel" | translate}}  </h3><p ng-repeat="name in vacancy.CareerLevel.Name |filter:currentLang">{{name.Text}}</p>
+                                <h3>{{"Vacancy.HotJobFlag" | translate}} </h3> <input type="checkbox" ng-model="vacancy.HotJobFlag" disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
+                                <div class="pull-right">
+
+                                    <button ng-click="apply()" ng-show="isJobSeeker" ng-disabled="isApplied" title="{{appliedMessage}}" class="btn btn-primary">
+                                        {{"Buttons.Apply" | translate}}
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+                <div class="noo-sidebar col-md-4">
+                    <div class="noo-sidebar-wrap">
+                        <div class="job-social clearfix">
+                            <p class="noo-social-title">
+                                Share this job
+                            </p>
+                            
+                            
+                            <a href="#share" class="noo-icon fa fa-facebook" title="Share on Facebook"></a>
+                            <a href="#share" class="noo-icon fa fa-twitter" title="Share on Twitter"></a>
+                            <a href="#share" class="noo-icon fa fa-google-plus" title="Share on Google+"></a>
+                            <a href="#share" class="noo-icon fa fa-pinterest" title="Share on Pinterest"></a>
+                            <a href="#share" class="noo-icon fa fa-linkedin" title="Share on LinkedIn"></a>
+                        </div>
+                        <div class="company-desc">
+                            <div class="company-header">
+                                <div class="company-featured">
+                                    <a href="#">
+                                        <img width="110" height="110" src="images/company/company_110x110.jpg" alt="Wild West Company" />
+                                    </a>
+                                </div>
+                                <h3 class="company-title">
+                                    <a href="#">Wild West Company</a>
+                                </h3>
+                            </div>
+                            <div class="company-info">
+                                Vestibulum non risus nunc. Pellentesque dignissim nunc sem. Nam sit amet odio aliquam mi mollis tempor ut eget metus. Pellentesque quis accumsan lorem.<br />
+                                Nam sit amet velit sollicitudin, maximus enim sed, pulvinar sem. Aenean sed faucibus leo, sit amet viverra turpis et.
+                                <div class="job-social clearfix">
+                                    <p class="noo-social-title">Connect with us</p>
+                                    <a href="#" class="company_website" target="_blank">
+                                        <p>http://www.wildwest.com</p>
+                                    </a>
+                                    <a class="noo-icon fa fa-facebook" href="#" target="_blank"></a>
+                                    <a class="noo-icon fa fa-twitter" href="#" target="_blank"></a>
+                                    <a class="noo-icon fa fa-google-plus" href="#" target="_blank"></a>
+                                    <a class="noo-icon fa fa-linkedin" href="#" target="_blank"></a>
+                                    <a class="noo-icon fa fa-instagram" href="#" target="_blank"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+

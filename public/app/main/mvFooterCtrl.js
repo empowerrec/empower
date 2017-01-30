@@ -7,6 +7,8 @@ angular.module('app').controller('mvFooterCtrl', function ($scope, mvCourse, mvI
         $rootScope.bootstrapFile = mvStyle.getStyleFile();
         $rootScope.siteFile = mvStyle.getSiteStyleFile();
         $rootScope.sideBarFile = mvStyle.getSideBarStyleFile();
+        $rootScope.customBootstrapStyleFile = mvStyle.getCustomBootstrapStyleFile();
+
         //$route.reload();
         location.reload();
     };

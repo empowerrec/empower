@@ -7,15 +7,17 @@ angular.module('app').controller('mvVacancyDetailCtrl', function ($scope, mvVaca
     $scope.appliedMessage = "";
     if (mvIdentity.currentJobSeeker)
         $scope.isJobSeeker = true;
+    if ($scope.isJobSeeker) {
+        $scope.oldApplicant = mvApplicant.getVacancyForApplicant({ jobSeeker: mvIdentity.currentJobSeeker._id, vacancy: $routeParams.id },
+            function(data, getResponseHeaders) {
+                if (data.Vacancy) {
+                    $scope.isApplied = true;
+                    $scope.appliedMessage = "You Already Applied For this Job";
+                }
 
-    $scope.oldApplicant = mvApplicant.getVacancyForApplicant({ jobSeeker: mvIdentity.currentJobSeeker._id, vacancy: $routeParams.id },
-                      function (data, getResponseHeaders) {
-        if (data.Vacancy) {
-            $scope.isApplied = true;
-            $scope.appliedMessage = "You Already Applied For this Job";
-        }
-                          
-                      });
+
+            });
+    }           
     $scope.apply = function () {
         $scope.applicant = new mvApplicant();
         $scope.applicant.JobSeeker = mvIdentity.currentJobSeeker;

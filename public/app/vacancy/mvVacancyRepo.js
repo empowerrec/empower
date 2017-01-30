@@ -70,6 +70,32 @@ angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy,mv
                   
                 }
             });
+        }, updateAllVacanciesArea: function (areaId) {
+            
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "/api/updateVacanciesArea/" + areaId,
+                data: {},
+                success: function (data) {
+                    console.log(data);
+                   
+                },
+                error: function (error) {
+                    
+                    console.log(error);
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                beforeSend: function () {
+                    
+                },
+                complete: function () {
+                    
+                  
+                }
+            });
         }
     };
 });

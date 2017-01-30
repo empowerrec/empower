@@ -31,7 +31,7 @@
                 <td><a href="#/applicants/{{applicant._id}}"> {{applicant.JobSeeker.FirstName}} {{applicant.JobSeeker.LastName}}</a></td>
 
                 <td>{{ applicant.Vacancy.JobTitle}}</td>
-                <td>{{ applicant.Vacancy.Employer.EmployerName}}</td>
+                <td><div ng-repeat="name in applicant.Vacancy.Employer.EmployerName | filter:{Lang:currentLang}">{{name.Text}}</div></td>
                 <td>{{ applicant.CreatedBy.FirstName}} {{ applicant.CreatedBy.LastName}}</td>
                 <td>{{ applicant.ModifiedBy.FirstName}} {{ applicant.ModifiedBy.LastName}}</td>
 

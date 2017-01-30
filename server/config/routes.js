@@ -141,6 +141,11 @@ module.exports = function (app) {
     
     app.get('/api/updateVacanciesCity/:id', vacancies.updateVacanciesCity);
     
+    app.get('/api/updateVacanciesArea/:id', vacancies.updateVacanciesArea);
+    
+    app.get('/api/updateJobSeekersUnivirsty/:id', jobSeekers.updateJobSeekersUnivirsty);
+    
+    
     app.get('/api/innerPages', authentication.requiresRole(['A', 'J']), innerPages.getInnerPages);
     app.post('/api/innerPages', innerPages.createInnerPage);
     app.put('/api/innerPages', innerPages.updateInnerPage);

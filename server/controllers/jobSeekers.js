@@ -76,3 +76,29 @@ exports.updateJobSeeker = function (req, res, next) {
         res.send(jobSeeker);
     });
 };
+exports.updateJobSeekersUnivirsty = function (req, res) {
+    console.log("Update Univirsty In JobSeekers");
+    var ids = req.params.id.split("_");
+    var newUnivirstyId = ids[0];
+    var oldUnivirstyId = ids[1];//Univirsty for change to newUnivirstyId
+    JobSeeker.find({ Univirsty: oldUnivirstyId }).exec(function (err, col) {
+        col.forEach(function (entry) {
+            var query = { _id: entry._id };
+            entry.Univirsty = newUnivirstyId;
+            JobSeeker.update(query, entry, function (err, jobSeeker) {
+                if (err) {
+                    if (err.toString().indexOf('E11000') > -1) {
+                        err = new Error('Duplicate JobSeeker');
+                    }
+                    res.status(400);
+                    return res.send({ reason: err.toString() });
+                }
+                
+            });
+
+        });
+        res.send(col);
+    });
+
+
+};

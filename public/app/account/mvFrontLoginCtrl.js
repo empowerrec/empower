@@ -47,6 +47,8 @@ angular.module('app').controller('mvFrontLoginCtrl',
             $rootScope.bootstrapFile = mvStyle.getStyleFile();
             $rootScope.siteFile = mvStyle.getSiteStyleFile();
             $rootScope.sideBarFile = mvStyle.getSideBarStyleFile();
+            $rootScope.customBootstrapStyleFile = mvStyle.getCustomBootstrapStyleFile();
+
             //$route.reload();
             location.reload();
         };
