@@ -4422,7 +4422,7 @@ body.boxed-layout.nice-scroll .navbar-fixed-top {
     border-radius: 4px;
   }
   .navbar-nav.sf-menu > li > ul.sub-menu {
-    margin-top: 2px;
+    margin-top: 0px;
     padding: 5px 0;
   }
   .navbar-nav.sf-menu > li li.fly-left > ul.sub-menu {
