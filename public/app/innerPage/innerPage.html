@@ -36,13 +36,13 @@
                     </label>
                     <div class="col-md-10">
 
-                        <ul ng-repeat="lang in languages" id="Descriptions">
+                        <ul ng-repeat="lang in languages" id="DescriptionsBody">
 
                             <li id="{{lang.value}}">
 
                                 {{ lang.text}}
-                                <input id="DescriptionText2" type="text"
-                                       placeholder="Description"
+                                <input id="DescriptionText3" type="text"
+                                       placeholder="Title"
                                        value="{{getName(innerPage.PageBody , lang.value)}}"
                                        class="form-control" />
 

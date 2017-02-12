@@ -28,6 +28,14 @@ angular.module('app').factory('mvStyle', function (mvIndustry, mvJobType, $rootS
             else if ($rootScope.currentLang == 'en')
                 return "css/custombootstrap.css";
         }
+         , getCustomStyleFile: function () {
+             console.log($rootScope.currentLang);         
+             if ($rootScope.currentLang == 'ar')
+                 return "css/styleRTL.css";
+             else if ($rootScope.currentLang == 'en')
+                 return "css/style.css";
+         }
+        
 
     };
 

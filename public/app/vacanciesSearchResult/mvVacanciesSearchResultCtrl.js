@@ -343,7 +343,7 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     
     
     // start code #3
-    $("#industriesHeader").click(function () {
+    var IndustriesHeaderClickFunction = function () {
         if (IndustriesHeaderFlag) {
             IndustriesHeaderFlag = false;
         } else {
@@ -353,12 +353,12 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                 url: "/api/vacanciesSearchResult",
                 data: { groupBy: "Industry", currentLang: $translate.use() },
                 success: function (data) {
-                    
+
                     var count = 0;
                     $.map(data, function (item) { count += item.count; });
-                    
+
                     addCheckBoxToDiv(0, 'All   (' + count + ')  ', true, 'industries', SelectedIndustries);
-                    
+
                     $.map(data.splice(0, 3), function (item) {
                         var lab = '';
                         for (var i = 0; i < item.groupByObject.Name.length; i++) {
@@ -369,15 +369,15 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                                 break;
                             }
                         }
-                        addCheckBoxToDiv(item._id, lab , false, 'industries', SelectedIndustries);
+                        addCheckBoxToDiv(item._id, lab, false, 'industries', SelectedIndustries);
                     });
                 }
             });
-            
+
             IndustriesHeaderFlag = true;
         }
-    });
-    
+    }
+    $("#industriesHeader").click(IndustriesHeaderClickFunction);    
     $(function () {
         $("#industryName").autocomplete({
             source: function (request, response) {
@@ -430,7 +430,7 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     //end code #3
     
     //start country code #3
-    $("#countriesHeader").click(function () {
+    var CountriesHeaderClickFunction = function () {
         if (CountriesHeaderFlag) {
             CountriesHeaderFlag = false;
         } else {
@@ -440,12 +440,12 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                 url: "/api/vacanciesSearchResult",
                 data: { groupBy: "Country", currentLang: $translate.use() },
                 success: function (data) {
-                    
+
                     var count = 0;
                     $.map(data, function (item) { count += item.count; });
-                    
+
                     addCheckBoxToDiv(0, 'All   (' + count + ')  ', true, 'countries', SelectedCountries);
-                    
+
                     $.map(data.splice(0, 3), function (item) {
                         var lab = '';
                         for (var i = 0; i < item.groupByObject.Name.length; i++) {
@@ -456,15 +456,15 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                                 break;
                             }
                         }
-                        addCheckBoxToDiv(item._id, lab , false, 'countries', SelectedCountries);
+                        addCheckBoxToDiv(item._id, lab, false, 'countries', SelectedCountries);
                     });
                 }
             });
-            
+
             CountriesHeaderFlag = true;
         }
-    });
-    
+    }
+    $("#countriesHeader").click(CountriesHeaderClickFunction);    
     $(function () {
         $("#countryName").autocomplete({
             source: function (request, response) {
@@ -518,7 +518,7 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     
 
     //start city code #3
-    $("#citiesHeader").click(function () {
+    var citiesHeaderClickFunction = function () {
         if (CitiesHeaderFlag) {
             CitiesHeaderFlag = false;
         } else {
@@ -528,12 +528,12 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                 url: "/api/vacanciesSearchResult",
                 data: { groupBy: "City", currentLang: $translate.use() },
                 success: function (data) {
-                    
+
                     var count = 0;
                     $.map(data, function (item) { count += item.count; });
-                    
+
                     addCheckBoxToDiv(0, 'All   (' + count + ')  ', true, 'cities', SelectedCities);
-                    
+
                     $.map(data.splice(0, 3), function (item) {
                         var lab = '';
                         for (var i = 0; i < item.groupByObject.Name.length; i++) {
@@ -544,15 +544,15 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                                 break;
                             }
                         }
-                        addCheckBoxToDiv(item._id, lab , false, 'cities', SelectedCities);
+                        addCheckBoxToDiv(item._id, lab, false, 'cities', SelectedCities);
                     });
                 }
             });
-            
+
             CitiesHeaderFlag = true;
         }
-    });
-    
+    }
+    $("#citiesHeader").click(citiesHeaderClickFunction);    
     $(function () {
         $("#cityName").autocomplete({
             source: function (request, response) {
@@ -605,7 +605,7 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     //start city code #3
     
     //start area code #3
-    $("#areasHeader").click(function () {
+    var AreasHeaderClickFunction = function () {
         if (AreasHeaderFlag) {
             AreasHeaderFlag = false;
         } else {
@@ -615,12 +615,12 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                 url: "/api/vacanciesSearchResult",
                 data: { groupBy: "Area", currentLang: $translate.use() },
                 success: function (data) {
-                    
+
                     var count = 0;
                     $.map(data, function (item) { count += item.count; });
-                    
+
                     addCheckBoxToDiv(0, 'All   (' + count + ')  ', true, 'areas', SelectedAreas);
-                    
+
                     $.map(data.splice(0, 3), function (item) {
                         var lab = '';
                         for (var i = 0; i < item.groupByObject.Name.length; i++) {
@@ -631,15 +631,15 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                                 break;
                             }
                         }
-                        addCheckBoxToDiv(item._id, lab , false, 'areas', SelectedAreas);
+                        addCheckBoxToDiv(item._id, lab, false, 'areas', SelectedAreas);
                     });
                 }
             });
-            
+
             AreasHeaderFlag = true;
         }
-    });
-    
+    }
+    $("#areasHeader").click(AreasHeaderClickFunction);    
     $(function () {
         $("#areaName").autocomplete({
             source: function (request, response) {
@@ -692,7 +692,7 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     //start area code #3    
     
     //start job role code #3
-    $("#jobRolesHeader").click(function () {
+    var JobRolesHeaderClickFunction = function () {
         if (JobRolesHeaderFlag) {
             JobRolesHeaderFlag = false;
         } else {
@@ -702,12 +702,12 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                 url: "/api/vacanciesSearchResult",
                 data: { groupBy: "JobRole", currentLang: $translate.use() },
                 success: function (data) {
-                    
+
                     var count = 0;
                     $.map(data, function (item) { count += item.count; });
-                    
+
                     addCheckBoxToDiv(0, 'All   (' + count + ')  ', true, 'jobRoles', SelectedJobRoles);
-                    
+
                     $.map(data.splice(0, 3), function (item) {
                         var lab = '';
                         for (var i = 0; i < item.groupByObject.Name.length; i++) {
@@ -718,15 +718,15 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                                 break;
                             }
                         }
-                        addCheckBoxToDiv(item._id, lab , false, 'jobRoles', SelectedJobRoles);
+                        addCheckBoxToDiv(item._id, lab, false, 'jobRoles', SelectedJobRoles);
                     });
                 }
             });
-            
+
             JobRolesHeaderFlag = true;
         }
-    });
-    
+    }     
+    $("#jobRolesHeader").click(JobRolesHeaderClickFunction);    
     $(function () {
         $("#jobRoleName").autocomplete({
             source: function (request, response) {
@@ -779,7 +779,7 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     //start job role code #3    
     
     //start job type code #3
-    $("#jobTypesHeader").click(function () {
+    var JobTypesHeaderClickFunction = function () {
         if (JobTypesHeaderFlag) {
             JobTypesHeaderFlag = false;
         } else {
@@ -789,12 +789,12 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                 url: "/api/vacanciesSearchResult",
                 data: { groupBy: "JobType", currentLang: $translate.use() },
                 success: function (data) {
-                    
+
                     var count = 0;
                     $.map(data, function (item) { count += item.count; });
-                    
+
                     addCheckBoxToDiv(0, 'All   (' + count + ')  ', true, 'jobTypes', SelectedJobTypes);
-                    
+
                     $.map(data.splice(0, 3), function (item) {
                         var lab = '';
                         for (var i = 0; i < item.groupByObject.Name.length; i++) {
@@ -805,15 +805,15 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                                 break;
                             }
                         }
-                        addCheckBoxToDiv(item._id, lab , false, 'jobTypes', SelectedJobTypes);
+                        addCheckBoxToDiv(item._id, lab, false, 'jobTypes', SelectedJobTypes);
                     });
                 }
             });
-            
+
             JobTypesHeaderFlag = true;
         }
-    });
-    
+    }
+    $("#jobTypesHeader").click(JobTypesHeaderClickFunction);    
     $(function () {
         $("#jobTypeName").autocomplete({
             source: function (request, response) {
@@ -866,7 +866,7 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     //start job type code #3    
         
     //start educational level code #3
-    $("#educationalLevelsHeader").click(function () {
+    var EducationalLevelsHeaderClickFunction = function () {
         if (EducationalLevelsHeaderFlag) {
             EducationalLevelsHeaderFlag = false;
         } else {
@@ -876,12 +876,12 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                 url: "/api/vacanciesSearchResult",
                 data: { groupBy: "EducationalLevel", currentLang: $translate.use() },
                 success: function (data) {
-                    
+
                     var count = 0;
                     $.map(data, function (item) { count += item.count; });
-                    
+
                     addCheckBoxToDiv(0, 'All   (' + count + ')  ', true, 'educationalLevels', SelectedEducationalLevels);
-                    
+
                     $.map(data.splice(0, 3), function (item) {
                         var lab = '';
                         for (var i = 0; i < item.groupByObject.Name.length; i++) {
@@ -892,15 +892,15 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                                 break;
                             }
                         }
-                        addCheckBoxToDiv(item._id, lab , false, 'educationalLevels', SelectedEducationalLevels);
+                        addCheckBoxToDiv(item._id, lab, false, 'educationalLevels', SelectedEducationalLevels);
                     });
                 }
             });
-            
+
             EducationalLevelsHeaderFlag = true;
         }
-    });
-    
+    }
+    $("#educationalLevelsHeader").click(EducationalLevelsHeaderClickFunction);    
     $(function () {
         $("#educationalLevelName").autocomplete({
             source: function (request, response) {
@@ -953,7 +953,7 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     //start educational level code #3    
     
     //start career level code #3
-    $("#careerLevelsHeader").click(function () {
+    var CareerLevelsHeaderClickFunction = function () {
         if (CareerLevelsHeaderFlag) {
             CareerLevelsHeaderFlag = false;
         } else {
@@ -963,12 +963,12 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                 url: "/api/vacanciesSearchResult",
                 data: { groupBy: "CareerLevel", currentLang: $translate.use() },
                 success: function (data) {
-                    
+
                     var count = 0;
                     $.map(data, function (item) { count += item.count; });
-                    
+
                     addCheckBoxToDiv(0, 'All   (' + count + ')  ', true, 'careerLevels', SelectedCareerLevels);
-                    
+
                     $.map(data.splice(0, 3), function (item) {
                         var lab = '';
                         for (var i = 0; i < item.groupByObject.Name.length; i++) {
@@ -979,15 +979,15 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
                                 break;
                             }
                         }
-                        addCheckBoxToDiv(item._id, lab , false, 'careerLevels', SelectedCareerLevels);
+                        addCheckBoxToDiv(item._id, lab, false, 'careerLevels', SelectedCareerLevels);
                     });
                 }
             });
-            
+
             CareerLevelsHeaderFlag = true;
         }
-    });
-    
+    }
+    $("#careerLevelsHeader").click(CareerLevelsHeaderClickFunction);    
     $(function () {
         $("#careerLevelName").autocomplete({
             source: function (request, response) {
@@ -1045,7 +1045,7 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     //// accordions start
     
     var headers = $('#accordion1 .accordion-header');
-    var contentAreas = $('#accordion1 .ui-accordion-content ').hide();
+    var contentAreas = $('#accordion1 .ui-accordion-content').show();
     var expandLink = $('.accordion-expand-all');
     
     // add the accordion functionality
@@ -1089,5 +1089,17 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
         }
     });
     //// accordions end
-                 
+
+
+    $(function () {
+        IndustriesHeaderClickFunction();
+        CountriesHeaderClickFunction();
+        citiesHeaderClickFunction();
+        AreasHeaderClickFunction();
+        JobRolesHeaderClickFunction();
+        JobTypesHeaderClickFunction();
+        EducationalLevelsHeaderClickFunction();
+        CareerLevelsHeaderClickFunction();
+    });
+
 });

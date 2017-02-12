@@ -98,8 +98,6 @@
                             </ul>
                         </div>
                         
-
-                        </
                     </div>
                 </div>
                 <div class="row pt-4 bg-white">
@@ -108,8 +106,8 @@
                             <div class="noo-tabs">
                                 <div class="tab-control tab-control-right clearfix">
                                     <ul class="nav nav-tabs" role="tablist" id="noo-tabs-2">
-                                        <li><a role="tab" data-toggle="tab" href="#tab-1">{{"New_Jobs" | translate}}</a></li>
-                                        <li><a role="tab" data-toggle="tab" href="#tab-2">{{"Featured_Jobs" | translate}}</a></li>
+                                        <li><a role="tab" data-toggle="tab" href="tab-1">{{"New_Jobs" | translate}}</a></li>
+                                        <li><a role="tab" data-toggle="tab" href="tab-2">{{"Featured_Jobs" | translate}}</a></li>
                                     </ul>
                                 </div>
                                 <div class="tab-content clearfix">
@@ -554,37 +552,3 @@
         </div>
     </div>
 </div> 
-
-<script>
-        jQuery('document').ready(function ($) {
-            $('#noo-slider-3 .sliders').carouFredSel({
-                infinite: true,
-                circular: true,
-                responsive: true,
-                debug: false,
-                items: {
-                    start: 0
-                },
-                scroll: {
-                    items: 1,
-                    duration: 400,
-
-                    fx: "scroll"
-                },
-                auto: {
-                    timeoutDuration: 3000,
-
-                    play: true
-                },
-
-                pagination: {
-                    container: "#noo-slider-3-pagination"
-                },
-                swipe: {
-                    onTouch: true,
-                    onMouse: true
-                }
-            });
-            $('#noo-tabs-2 a:eq(0)').tab('show');
-        });
-</script>

@@ -315,7 +315,9 @@ angular.module('app').run(function ($rootScope, $location, $translate, mvLookup,
     $rootScope.siteFile = mvStyle.getSiteStyleFile();
     $rootScope.sideBarFile = mvStyle.getSideBarStyleFile();
     $rootScope.customBootstrapStyleFile = mvStyle.getCustomBootstrapStyleFile();
+    $rootScope.customStyleFile = mvStyle.getCustomStyleFile();
 
+    
     mvLookup.getAllLookUps();
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
         if (rejection === 'not authorized') {

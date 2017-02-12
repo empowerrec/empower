@@ -51,7 +51,7 @@ angular.module('app').controller('mvJobRoleCtrl', function ($scope, mvNotifier, 
     
     
     $scope.update = function () {
-        if ($scope.jobRoleForm.$valid) {
+        //if ($scope.jobRoleForm.$valid) {
             
             $scope.loop();
             mvJobRoleRepo.updateCurrentJobRole($scope.jobRole).then(function () {
@@ -59,12 +59,12 @@ angular.module('app').controller('mvJobRoleCtrl', function ($scope, mvNotifier, 
             }, function (reason) {
                 mvNotifier.error(reason);
             });
-        }
+        //}
 
     };
     
     $scope.add = function () {
-        if ($scope.jobRoleForm.$valid && $scope.addEnabled) {
+        //if ($scope.jobRoleForm.$valid && $scope.addEnabled) {
             
             $scope.loop();
             
@@ -75,7 +75,7 @@ angular.module('app').controller('mvJobRoleCtrl', function ($scope, mvNotifier, 
             }, function (reason) {
                 mvNotifier.error(reason);
             });
-        }
+        //}
     };
     
     $scope.loop = function () {

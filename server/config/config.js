@@ -13,8 +13,8 @@ module.exports = {
             'callbackURL': 'http://localhost:3030/auth/facebook/callback'
         },
         googleAuthentication: {
-            'clientID': '632246168328-uh62qkm2itogthjofivs8pq8kjgca72d.apps.googleusercontent.com',
-            'clientSecret': '3aNpsCkTkmp4lZnlGdTubGA0',
+            'clientID': '591834079484-kcos7safva4drele71eekv5bbu971m28.apps.googleusercontent.com',
+            'clientSecret': 'F0_Vj094rgHaKKHENOMnfBi7',
             'callbackURL': 'http://localhost:3030/auth/google/callback'
         }
     },
@@ -29,8 +29,8 @@ module.exports = {
             'callbackURL': 'https://empowerrec.herokuapp.com/auth/facebook/callback'
         },
         googleAuthentication: {
-            'clientID': '632246168328-uh62qkm2itogthjofivs8pq8kjgca72d.apps.googleusercontent.com',
-            'clientSecret': '3aNpsCkTkmp4lZnlGdTubGA0',
+            'clientID': '591834079484-kcos7safva4drele71eekv5bbu971m28.apps.googleusercontent.com',
+            'clientSecret': 'F0_Vj094rgHaKKHENOMnfBi7',
             'callbackURL': 'https://empowerrec.herokuapp.com/auth/google/callback'
         }
     }
