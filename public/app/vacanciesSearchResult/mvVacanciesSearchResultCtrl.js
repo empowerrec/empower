@@ -47,7 +47,7 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     $scope.paging = {
         currentPage: 1,
         maxPagesToShow: 5,
-        pageSize: 5
+        pageSize: 10
     };
     
     $scope.getData = function () {

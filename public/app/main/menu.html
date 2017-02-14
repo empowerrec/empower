@@ -170,8 +170,8 @@
 
                         <li ng-show="identity.isAuthenticated()" class="nav-item-member-profile register-link"><a href="" ng-click="signout()">{{"Menu.Signout" | translate}}</a></li>
 
-                        <li><a href="" ng-click="changeLanguage('en')">{{"Languages.English" | translate}}</a></li>
-                        <li> <a href="" ng-click="changeLanguage('ar')">{{"Languages.Arabic" | translate}}</a></li>
+                        <li><a href="" ng-show="currentLang == 'ar' " ng-click="changeLanguage('en')">{{"Languages.English" | translate}}</a></li>
+                        <li> <a href="" ng-show="currentLang == 'en' " ng-click="changeLanguage('ar')">{{"Languages.Arabic" | translate}}</a></li>
 </ul>
                 </nav>
             </div>

@@ -289,6 +289,19 @@
             },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
+            },
+            "AccordionHeader": {
+                'Location': 'Location',
+                'Country': 'Country',
+                'City': 'City',
+                'Area': 'Area',
+                'JobClassification': 'Job Classification',
+                'Industry': 'Industry',
+                'JobRole': 'Job Role',
+                'JobType': 'Job Type',
+                'JobDetails': 'Job Details',
+                'EducationalLevel': 'Educational Level',
+                'CareerLevel': 'Career Level'
             }
         };
 
@@ -570,6 +583,19 @@
             },
             "Footer": {
                 "Copy": "\u00A9" + " شركة ايم باور 2016"
+            },
+            "AccordionHeader": {
+                'Location': 'الموقع',
+                'Country': 'البلد',
+                'City': 'المدينة',
+                'Area': 'المنطقة',
+                'JobClassification': 'تصنيف الوظائف',
+                'Industry': 'صناعة',
+                'JobRole': 'الدور الوظيفي',
+                'JobType': 'نوع الوظيفة',
+                'JobDetails': 'تفاصيل الوظيفة',
+                'EducationalLevel': 'المستوى التعليمي',
+                'CareerLevel': 'المستوى الوظيفي'
             }
         };
 

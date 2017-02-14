@@ -10,21 +10,19 @@
     <div class="main-content container-boxed max offset">
 
         <div class="row">
-
             <div class="col-lg-5">
                 <div id="accordion1" class="ui-accordion ui-widget ui-helper-reset">
-
                     <!--Start the 1st accordion-->
                     <!-- Start Header of the accordion-->
                     <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                        Location
-                    </h3>
+                        {{"AccordionHeader.Location" | translate}}
+                    </h3>                    
                     <!-- End Header of the accordion-->
                     <!-- Start Content of the accordion-->
                     <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
                         <div id="accordion11" class="ui-accordion ui-widget ui-helper-reset">
                             <h3 id="countriesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                                Country
+                                {{"AccordionHeader.Country" | translate}}
                             </h3>
                             <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
                                 <div>
@@ -34,7 +32,7 @@
                             </div>
 
                             <h3 id="citiesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                                City
+                                {{"AccordionHeader.City" | translate}}
                             </h3>
                             <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
                                 <div>
@@ -44,7 +42,7 @@
                             </div>
 
                             <h3 id="areasHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                                Area
+                                {{"AccordionHeader.Area" | translate}}
                             </h3>
                             <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
                                 <div>
@@ -58,13 +56,13 @@
                     <!--End the 1st accordion-->
                     <!--Start the 2nd accordion-->
                     <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                        Job Classification
+                        {{"AccordionHeader.JobClassification" | translate}}
                     </h3>
                     <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
                         <div id="accordion12" class="ui-accordion ui-widget ui-helper-reset">
 
                             <h3 id="industriesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                                Industry
+                                {{"AccordionHeader.Industry" | translate}}
                             </h3>
                             <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
                                 <div id="industriesDiv"></div>
@@ -72,7 +70,7 @@
                             </div>
 
                             <h3 id="jobRolesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                                Job Role
+                                {{"AccordionHeader.JobRole" | translate}}
                             </h3>
                             <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
                                 <div id="jobRolesDiv"></div>
@@ -80,7 +78,7 @@
                             </div>
 
                             <h3 id="jobTypesHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                                Job Type
+                                {{"AccordionHeader.JobType" | translate}}
                             </h3>
                             <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
                                 <div id="jobTypesDiv"></div>
@@ -91,13 +89,13 @@
                     <!--End the 2nd accordion-->
                     <!--Start the 3rd accordion-->
                     <h3 class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                        Job Details
+                        {{"AccordionHeader.JobDetails" | translate}}
                     </h3>
                     <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
                         <div id="accordion13" class="ui-accordion ui-widget ui-helper-reset">
 
                             <h3 id="educationalLevelsHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                                Educational Level
+                                {{"AccordionHeader.EducationalLevel" | translate}}
                             </h3>
                             <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
                                 <div id="educationalLevelsDiv"></div>
@@ -105,7 +103,7 @@
                             </div>
 
                             <h3 id="careerLevelsHeader" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
-                                Career Level
+                                {{"AccordionHeader.CareerLevel" | translate}}
                             </h3>
                             <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
                                 <div id="careerLevelsDiv"></div>
@@ -179,11 +177,11 @@
                 </div>
             </div>
         </div>
-        
-    </div>
-        <p ng-show="!vacancies.length">{{"Vacancy.NoData" | translate}}</p>
 
-        <div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
-            <img src="ajax-loader.gif" alt="" />
-        </div>
     </div>
+    <p ng-show="!vacancies.length">{{"Vacancy.NoData" | translate}}</p>
+
+    <div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
+        <img src="ajax-loader.gif" alt="" />
+    </div>
+</div>
