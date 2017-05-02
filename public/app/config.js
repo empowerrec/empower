@@ -1,21 +1,21 @@
 (function () {
     'use strict';
-
+    
     var core = angular.module('app');
-
+    
     var config = {
         appErrorPrefix: '[hot-towel Error] ',
         appTitle: 'hot-towel'
     };
-
+    
     core.value('config', config);
-
+    
     core.config(configure);
-
+    
     configure.$inject = ['$translateProvider'];
     /* @ngInject */
     function configure($translateProvider) {
-
+        
         var english = {
             'Title': 'Internationalization Test',
             "Language": "Language",
@@ -63,7 +63,9 @@
                 "CompanyPhone": "CompanyPhone",
                 "CompanyWebsite": "Company Website",
                 "CompanySize": "Company Size",
-                "Country": "Country"
+                "Country": "Country",
+                "Photo": "Photo"
+
             },
             "JobSeeker": {
                 "JobSeeker": "JobSeeker",
@@ -119,7 +121,7 @@
                 "AvailableFrom": "Available From",
                 "AvailableTo": "Available To",
                 "SalaryRangeFrom": "Salary From",
-                "SalaryRangeTo": "Salary To",
+                "SalaryRangeTo": "To",
                 "SalaryCurancy": "Curancy",
                 "RequiredExperiance": "Required Experience",
                 "JobType": "Job Type",
@@ -131,7 +133,13 @@
                 'HotJobFlag': 'Hot Job Flag',
                 'Area': 'Area',
                 'JobRole': 'Job Role',
-                'NoData': 'There is no vacancies to view'
+                'JobRequirements': 'Requirements',
+                'Benfits': 'Benfits',
+                'HideSalary': 'Hide Salary',
+                'ReciveApplicationsByEmail': 'Recive Applications By Email',
+                'HideCompany': 'Hide Company',
+                'SendRecommendedCandidatesDailyOrWeekly': 'Send Recommended Candidates Daily Or Weekly'
+
             },
             'City': {
                 "City": "City",
@@ -151,7 +159,9 @@
                 "LastName": "Last Name",
                 "UserType": "User Type",
                 "CreatedBy": "Created By",
-                "ModifiedBy": "Modified By"
+                "ModifiedBy": "Modified By",
+                "Package": "Package",
+                'Features': 'Features'
             },
             "Industry": {
                 "Name": "Name"
@@ -248,7 +258,12 @@
                 'Next': 'Next',
                 'First': 'First',
                 'Last': 'Last',
-                'Finish': 'Finish'
+                'Finish': 'Finish',
+                "Accept": "Accept",
+                "Reject": "Decline",
+                "Rollback": "Rollback",
+                "ShortList": "ShortList",
+                "Approve": "Approve"
             },
             "Menu": {
                 "SubTitle": "Jobs IN Egypt",
@@ -272,6 +287,7 @@
                 "EducationalLevels": "Educational Levels",
                 "Categories": "Categories",
                 "CompanyProfile": "Company Profile",
+                "InviteSubUser": "Invite Sub User",
                 "Experiances": "Experiances",
                 'SelectValue': 'Select Value',
                 'JobSeekerProfile': 'Job Seeker Profile',
@@ -286,6 +302,10 @@
                 'Applicants': 'Applicants',
                 'Login': 'Login',
                 'Register': 'Register ',
+                'Packages': 'Packages',
+                'Features': 'Features'
+
+
             },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
@@ -302,9 +322,47 @@
                 'JobDetails': 'Job Details',
                 'EducationalLevel': 'Educational Level',
                 'CareerLevel': 'Career Level'
+            },
+            'Package': {
+                "Name": "Name",
+                "Type": "Type",
+                "Features": "Features",
+                "Costs": "Costs"
+            },
+            'Feature': {
+                "Name": "Name",
+                "Code": "Code",
+                "Type": "Type"
+            },
+            'PackageFeature': {
+                "Points": "Points",
+                "Feature": "Feature"
+            },
+            'PackageCost': {
+                "PeriodFromByMonth": "Period From By Month",
+                "PeriodToByMonth": "Period To By Month",
+                "CostPerMonth": "Cost Per Month"
+            },
+            'UserPackage': {
+                "NoOfMonths": "No Of Months",
+                "Discount": "Discount",
+                "TotalAmount": "Total Amount",
+                "PackageAmount": "Package Amount",
+                "StartDate": "Start Date",
+                "ExpiryDate": "Expiry Date",
+                "Package": "Package"
+            },
+            'UserFeature': {
+                "Points": "Points",
+                "DistrbuitedForSubUsers": "Distrbuited For Sub Users",
+                "UsedFromPoints": "Used From Points",
+                "Package": "Package",
+                "Feature": "Feature",
+                "ExpiryDate": "Expiry Date",
+                "User": "User"
             }
         };
-
+        
         var arabic = {
             "Title": "أختبار ",
             "Language": "اللغات",
@@ -357,7 +415,8 @@
                 "CompanyPhone": "تليفون الشركة",
                 "CompanyWebsite": "الموقع الاليكترونى",
                 "CompanySize": "عدد الموظفين",
-                "Country": "الدولة"
+                "Country": "الدولة",
+                "Photo": "الصورة"
             },
             "JobSeeker": {
                 "JobSeeker": "باحث عن وظيفة",
@@ -424,7 +483,7 @@
                 "AvailableFrom": "متاحة من",
                 "AvailableTo": "متاحة الى",
                 "SalaryRangeFrom": "المرتب من ",
-                "SalaryRangeTo": "المرتب الى",
+                "SalaryRangeTo": " الى",
                 "SalaryCurancy": "عملة المرتب",
                 "RequiredExperiance": "الخبرة المطلوبة",
                 "JobType": "نوع الوظيفة",
@@ -436,7 +495,13 @@
                 'CareerLevel': 'مستوي الوظيفة',
                 'HotJobFlag': 'وظيفة مهمة',
                 'Area': 'المنطقة',
-                'NoData': 'لا يوجد وظائف للعرض'
+                'NoData': 'لا يوجد وظائف للعرض',
+                'JobRequirements': 'المتطلبات',
+                'Benfits': 'المزايا',
+                'HideSalary': 'اخفاءالمرتب',
+                'ReciveApplicationsByEmail': 'استلام الطلبات عن طريق الايميل',
+                'HideCompany': 'اخفاء بيانات الشركة',
+                'SendRecommendedCandidatesDailyOrWeekly': 'ارسال المرشحين يوميا أو اسبوعيا'
             },
             "LanguageSkill": {
                 "Language": "اللغة",
@@ -453,7 +518,9 @@
                 "LastName": "الاسم الأخير",
                 "UserType": "نوع المستخدم",
                 "CreatedBy": "سجل بواسطة",
-                "ModifiedBy": "عدل بواسطة"
+                "ModifiedBy": "عدل بواسطة",
+                "Package": "الحزمة",
+                'Features': 'الخواص'
             },
             "Industry": {
                 "Name": "الأسم"
@@ -541,7 +608,12 @@
                 'Next': 'التالي',
                 'First': 'الاول',
                 'Last': 'الاخير',
-                'Finish': 'تم'
+                'Finish': 'تم',
+                "Accept": "موافق",
+                "Reject": "رفض",
+                "Rollback": "رجوع",
+                "ShortList": "قائمة مختصره",
+                "Approve": "مقبول"
             },
             "Menu": {
                 "SubTitle": "وظائف فى مصر",
@@ -565,6 +637,7 @@
                 "EducationalLevels": "المستويات التعليمية",
                 "Categories": "التصنيفات",
                 "CompanyProfile": "بيانات الشركة",
+                "InviteSubUser": "دعوة المستخدمين",
                 "Experiances": "الخبرات",
                 'SelectValue': 'اختار من القائمة',
                 'JobSeekerProfile': 'بيانات طالب العمل',
@@ -579,6 +652,8 @@
                 'Applicants': 'متقدم لوظيفه',
                 'Login': 'تسجيل الدخول',
                 'Register': 'تسجيل ',
+                'Features': 'الخواص',
+                'Packages': 'الحزم'
 
             },
             "Footer": {
@@ -596,28 +671,66 @@
                 'JobDetails': 'تفاصيل الوظيفة',
                 'EducationalLevel': 'المستوى التعليمي',
                 'CareerLevel': 'المستوى الوظيفي'
+            },
+            'Package': {
+                "Name": "الأسم",
+                "Type": "النوع",
+                "Features": "الخواص",
+                "Costs": "القيم"
+            },
+            'Feature': {
+                "Name": "الأسم",
+                "Code": "Code",
+                "Type": "النوع"
+            },
+            'PackageFeature': {
+                "Points": "النقاط",
+                "Feature": "الخاصية"
+            },
+            'PackageCost': {
+                "PeriodFromByMonth": "بداية الفترة بالشهورر",
+                "PeriodToByMonth": "نهاية الفترة بالشهور",
+                "CostPerMonth": "القيمة الشهر"
+            },
+            'UserPackage': {
+                "NoOfMonths": "عدد الاشهر",
+                "Discount": "الخصم",
+                "TotalAmount": "القيمة الكلية",
+                "PackageAmount": "قيمة الحزمة",
+                "StartDate": "تاريخ البداية",
+                "ExpiryDate": "تاريخ النهاية",
+                "Package": "الحزمة"
+            },
+            'UserFeature': {
+                "Points": "النقاط",
+                "DistrbuitedForSubUsers": "الموزع علي المستخدمين التابعين",
+                "UsedFromPoints": "المستخدم من النقاط",
+                "Package": "الحزمة",
+                "Feature": "الخاصية",
+                "ExpiryDate": "تاريخ النهاية",
+                "User": "المستخدم"
             }
         };
-
-
-
+        
+        
+        
         $translateProvider.translations('en', english);
         $translateProvider.translations('ar', arabic);
-
+        
         $translateProvider.registerAvailableLanguageKeys(['en', 'ar'], {
             'en-US': 'en',
             'ar-EG': 'ar'
         });
         $translateProvider.preferredLanguage('ar');
         //$translateProvider.determinePreferredLanguage();
-
+        
         $translateProvider.useCookieStorage();
         $translateProvider.useLocalStorage();
-
+        
         console.log(navigator.language);
 
     }
-
+    
     core.run(function ($rootScope) {
         $rootScope.$on('$translateChangeSuccess', function () {
             console.log('Translation Change Success!');

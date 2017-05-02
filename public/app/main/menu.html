@@ -60,11 +60,14 @@
 
                             
                         </li>
+
                         <li class="nav-item-member-profile register-link" ng-hide="identity.isAuthenticated()">
                             <a class="member-links member-register-link" href="#/" data-rel="registerModal">
                                 <i class="fa fa-key"></i>&nbsp;{{"Menu.Register" | translate}}
                             </a>
                         </li>
+
+
                         <li ng-show="identity.isAuthenticated() && identity.currentUser.isAdmin()" class="align-left">
                             <a href="#/profile" class="sf-with-ul">
                                 {{"Menu.MyProfile" | translate}}
@@ -119,9 +122,12 @@
                                     <a href="#/univirstiesNotConfirmed">{{"Menu.UnivirstiesNotConfirmed" | translate}}</a>
                                 </li>
 
+                               
+
 
                             </ul>
                         </li>
+
                         <li ng-show="identity.isAuthenticated()" class="align-left">
                             <a href="#/profile" class="sf-with-ul" >
                                  {{ identity.currentUser.FirstName + ' ' + identity.currentUser.LastName}}
@@ -152,11 +158,18 @@
                                     <a href="#/applicants">{{"Menu.Applicants" | translate}}</a>
                                 </li>
 
-
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/packages">{{"Menu.Packages" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/features">{{"Menu.Features" | translate}}</a>
+                                </li>
                                 <li ng-show="identity.currentUser.isEmployer()">
                                     <a href="#/updateemployer/profile">{{"Menu.CompanyProfile" | translate}}</a>
                                 </li>
-
+                                <li ng-show="identity.currentUser.isEmployer()">
+                                    <a href="#/subUserInvitations">{{"Menu.InviteSubUser" | translate}}</a>
+                                </li>
                                 <li ng-show="identity.currentUser.isJobSeeker()">
                                     <a href="#/updateJobSeeker/PersonalInformation/profile">{{"Menu.JobSeekerProfile" | translate}}</a>
                                 </li>

@@ -5,7 +5,8 @@ var LanguageLevelSchema = mongoose.Schema({
     Name: [{
             Lang: String,
             Text: String
-        }],
+    }],
+    Percent : Number,
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

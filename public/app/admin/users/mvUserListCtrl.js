@@ -1,6 +1,6 @@
 angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulider, mvNotifier, mvUser) {
     //$scope.users = mvUser.query();
-    console.log(mvUser.query());
+    //console.log(mvUser.query());
     console.log($scope.users);
 
     $scope.paging = {

@@ -111,11 +111,13 @@ exports.getVacanciesSearchResult = function (req, res) {
 
 exports.getVacancyById = function (req, res) {
     if (req.params.id == 'profile') {
-        Vacancy.findOne({ User: req.user }).populate('City').populate('Area').populate('ModifiedBy').exec(function (err, col) {
+        Vacancy.findOne({ User: req.user }).populate('EducationalLevel').populate('JobType')
+            .populate('Industry').populate('Country').populate('City').populate('CareerLevel').populate('SalaryCurancy').populate('Area').exec(function (err, col) {
             res.send(col);
         });
     } else {
-        Vacancy.findOne({ _id: req.params.id }).populate('City').populate('Area').populate('ModifiedBy').exec(function (err, col) {
+        Vacancy.findOne({ _id: req.params.id }).populate('EducationalLevel').populate('JobType')
+            .populate('Industry').populate('Country').populate('City').populate('CareerLevel').populate('SalaryCurancy').populate('Area').exec(function (err, col) {
             res.send(col);
         });
     }
@@ -135,6 +137,32 @@ exports.getVacancyByIdForDetail = function (req, res) {
             .populate('ModifiedBy').exec(function (err, col) {
             res.send(col);
         });
+    }
+};
+
+exports.getVacancyByIdForUpdate = function (req, res) {
+    if (req.params.id == 'profile') {
+        Vacancy.findOne({ User: req.user }).exec(function (err, col) {
+                res.send(col);
+            });
+    } else {
+        Vacancy.findOne({ _id: req.params.id }).populate({
+            path: 'LanguageSkills.LanguageLevel',
+            model: 'LanguageLevel'
+        }).populate({
+            path: 'LanguageSkills.Language',
+            model: 'Language'
+            }).populate({
+                path: 'Industry',
+                model: 'Industry'
+            }).populate({
+                path: 'JobRole',
+                model: 'JobRole'
+            }).populate('City').populate('Area').populate('Questions')
+            .exec(function (err, col) {
+
+                res.send(col);
+            });
     }
 };
 

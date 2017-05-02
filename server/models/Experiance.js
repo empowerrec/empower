@@ -20,14 +20,14 @@ CompanyType: {
         ref: 'Country'
     },
     Position: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Position'
+        type: String
     },
     Salary: Number,
     Achievements: String,
     FunctionalTasks: String,
     PeriodFrom: { type: Date },
     PeriodTo: { type: Date },
+    Current: Boolean, 
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

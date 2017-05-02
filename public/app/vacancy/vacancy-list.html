@@ -40,7 +40,10 @@
                                     <h2 class="loop-item-title">
                                         <a href="#/vacancies/{{vacancy._id}}">
                                             {{vacancy.JobTitle}}
+                                            <i class="fa fa-send" ng-show="{{vacancy.Puplished}}"></i>
                                         </a>
+
+                                       
                                     </h2>
                                     <p class="content-meta">
                                         <span class="job-company">
@@ -84,9 +87,10 @@
                                     </p>
                                 </div>
                                 <div class="show-view-more">
-                                    <a href="#/updatevacancy/{{vacancy._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a>
+                                    <a href="#/updatevacancy/{{vacancy._id}}" ng-hide="{{vacancy.Puplished}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a>
                                     <a href="#/vacancyApplicants/{{vacancy._id}}" class="btn btn-primary"> {{"Menu.Applicants" | translate}}</a>
-                                    <a class="btn btn-danger" ng-click="deleteVacancy(vacancy)"> {{"Buttons.Delete" | translate}}</a>
+                                    <a class="btn btn-danger" ng-hide="{{vacancy.Puplished}}" ng-click="deleteVacancy(vacancy)"> {{"Buttons.Delete" | translate}}</a>
+                                    <a class="btn btn-primary" href="#/vacancies/{{vacancy._id}}">View more </a>
                                 </div>
                             </div>
                         </article>

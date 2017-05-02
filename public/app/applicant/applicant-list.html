@@ -21,22 +21,29 @@
                 <th>{{"JobSeeker.JobSeeker" | translate}}</th>
                 <th>{{"Vacancy.Vacancy" | translate}}</th>
                 <th>{{"Employer.Employer" | translate}}</th>
-                <th>{{"User.CreatedBy" | translate}}</th>
-                <th>{{"User.ModifiedBy" | translate}}</th>
+                
                 <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="applicant in applicants | filter:searchText | orderBy:sortOrder">
-                <td><a href="#/applicants/{{applicant._id}}"> {{applicant.JobSeeker.FirstName}} {{applicant.JobSeeker.LastName}}</a></td>
+                <td><a href="#/jobSeekers/{{applicant.JobSeeker._id}}"> {{applicant.JobSeeker.FirstName}} {{applicant.JobSeeker.LastName}}</a></td>
 
                 <td>{{ applicant.Vacancy.JobTitle}}</td>
                 <td><div ng-repeat="name in applicant.Vacancy.Employer.EmployerName | filter:{Lang:currentLang}">{{name.Text}}</div></td>
-                <td>{{ applicant.CreatedBy.FirstName}} {{ applicant.CreatedBy.LastName}}</td>
-                <td>{{ applicant.ModifiedBy.FirstName}} {{ applicant.ModifiedBy.LastName}}</td>
+               
+               
+                <!--<td><a class="btn btn-danger" ng-click="deleteApplicant(applicant)"> {{"Buttons.Delete" | translate}}</a></td>-->
+                <td ng-show="{{applicant.Status == 'N'}}"><a class="btn btn-success" ng-click="shortListApplicant(applicant)" >   {{"Buttons.ShortList" | translate}}</a></td>
+                <td ng-show="{{applicant.Status == 'S'}}"><a class="btn btn-success" ng-click="approveApplicant(applicant)" > {{"Buttons.Approve" | translate}}</a></td>
+                <td ng-show="{{applicant.Status == 'N'}}"><a class="btn btn-danger" ng-click="rejectApplicant(applicant)" >   {{"Buttons.Reject" | translate}}</a></td>
+                <td ng-show="{{applicant.Status == 'S'}}"><a class="btn btn-danger" ng-click="arrangInterview(applicant)" >   {{"Buttons.ArrangeInterview" | translate}}</a></td>
 
-                <td><a href="#/updateapplicant/{{applicant._id}}"> {{"Buttons.Update" | translate}}</a></td>
-                <td><a class="btn btn-danger" ng-click="deleteApplicant(applicant)"> {{"Buttons.Delete" | translate}}</a></td>
+
             </tr>
         </tbody>
     </table>

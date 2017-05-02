@@ -20,11 +20,11 @@ exports.getUsers = function (req, res) {
             res.send(col);
         });
     } else {
-        User.find()
+        User.find(JSON.parse(req.query.query))
             .populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize).skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-            User.count().exec(function (errr, count) {
+                User.count(JSON.parse(req.query.query)).exec(function (errr, count) {
                 res.send([{ collection: col, allDataCount: count }]);
             });
         });

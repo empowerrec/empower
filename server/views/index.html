@@ -19,9 +19,7 @@
     <link rel='stylesheet' href='vendor/build/loading-bar.min.css' type='text/css' media='all' />
     <link rel="stylesheet" ng-href="{{siteFile}}" />
     <link rel='stylesheet' href='css/jquery-ui.css' type='text/css' media='all' />
-
-
-   
+  
 
 </head>
 
@@ -58,6 +56,8 @@
         <div ng-include="'/partials/account/front-signup'"></div>
     </div>
 
+    
+
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script type='text/javascript' src='js/jquery-migrate.min.js'></script>
@@ -93,8 +93,12 @@
     <script type="text/javascript" src="vendor/angular-animate/angular-animate.min.js"></script>
     <script type="text/javascript" src="vendor/angular-dragdrop/src/angular-dragdrop.min.js"></script>
     <script type="text/javascript" src="js/angular-filter.min.js"></script>
-
-    <!-- Main -->
+    <script type="text/javascript" src="vendor/ng-file-upload/ng-file-upload.min.js"></script>
+    <script type="text/javascript" src="vendor/ng-file-upload/ng-file-upload-shim.min.js"></script>
+    <script type="text/javascript" src="vendor/moment/min/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="vendor/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="vendor/moment/min/locales.min.js"></script>
+     <!-- Main -->
     <script type="text/javascript" src="app/app.js"></script>
     <script type="text/javascript" src="app/main/mvlookup.js"></script>
     <script type="text/javascript" src="app/main/mvStyle.js"></script>
@@ -162,7 +166,17 @@
     <script type="text/javascript" src="app/languageSkill/mvLanguageSkillCtrl.js"></script>
     <script type="text/javascript" src="app/languageSkill/mvLanguageSkillDetailCtrl.js"></script>
     <script type="text/javascript" src="app/languageSkill/mvLanguageSkillListCtrl.js"></script>
+    <script type="text/javascript" src="app/languageSkill/mvjobLanguageSkillCtrl.js"></script>
     <script type="text/javascript" src="app/languageSkill/mvLanguageSkillRepo.js"></script>
+
+    <!-- Question -->
+    <script type="text/javascript" src="app/question/mvCachedQuestion.js"></script>
+    <script type="text/javascript" src="app/question/mvQuestion.js"></script>
+    <script type="text/javascript" src="app/question/mvQuestionCtrl.js"></script>
+    <script type="text/javascript" src="app/question/mvQuestionDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/question/mvQuestionListCtrl.js"></script>
+    <script type="text/javascript" src="app/question/mvjobQuestionCtrl.js"></script>
+    <script type="text/javascript" src="app/question/mvQuestionRepo.js"></script>
 
     <!-- Employer -->
     <script type="text/javascript" src="app/employer/mvEmployer.js"></script>
@@ -349,6 +363,63 @@
     <script type="text/javascript" src="app/applicant/mvApplicantListCtrl.js"></script>
     <script type="text/javascript" src="app/applicant/mvApplicantRepo.js"></script>
     <script type="text/javascript" src="app/applicant/mvCachedApplicant.js"></script>
+
+    <!-- Package -->
+    <script type="text/javascript" src="app/package/mvPackage.js"></script>
+    <script type="text/javascript" src="app/package/mvPackageCtrl.js"></script>
+    <script type="text/javascript" src="app/package/mvPackageDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/package/mvPackageListCtrl.js"></script>
+    <script type="text/javascript" src="app/package/mvPackageRepo.js"></script>
+    <script type="text/javascript" src="app/package/mvCachedPackage.js"></script>
+
+    <!-- Feature -->
+    <script type="text/javascript" src="app/feature/mvFeature.js"></script>
+    <script type="text/javascript" src="app/feature/mvFeatureCtrl.js"></script>
+    <script type="text/javascript" src="app/feature/mvFeatureDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/feature/mvFeatureListCtrl.js"></script>
+    <script type="text/javascript" src="app/feature/mvFeatureRepo.js"></script>
+    <script type="text/javascript" src="app/feature/mvCachedFeature.js"></script>
+
+    <!-- Package Feature-->
+    <script type="text/javascript" src="app/packageFeature/mvPackageFeature.js"></script>
+    <script type="text/javascript" src="app/packageFeature/mvPackageFeatureCtrl.js"></script>
+    <script type="text/javascript" src="app/packageFeature/mvPackageFeatureDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/packageFeature/mvPackageFeatureListCtrl.js"></script>
+    <script type="text/javascript" src="app/packageFeature/mvPackageFeatureRepo.js"></script>
+    <script type="text/javascript" src="app/packageFeature/mvCachedPackageFeature.js"></script>
+
+    <!-- Package Cost-->
+    <script type="text/javascript" src="app/packageCost/mvPackageCost.js"></script>
+    <script type="text/javascript" src="app/packageCost/mvPackageCostCtrl.js"></script>
+    <script type="text/javascript" src="app/packageCost/mvPackageCostDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/packageCost/mvPackageCostListCtrl.js"></script>
+    <script type="text/javascript" src="app/packageCost/mvPackageCostRepo.js"></script>
+    <script type="text/javascript" src="app/packageCost/mvCachedPackageCost.js"></script>
+
+    <!-- User Package-->
+    <script type="text/javascript" src="app/userPackage/mvUserPackage.js"></script>
+    <script type="text/javascript" src="app/userPackage/mvUserPackageCtrl.js"></script>
+    <script type="text/javascript" src="app/userPackage/mvUserPackageDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/userPackage/mvUserPackageListCtrl.js"></script>
+    <script type="text/javascript" src="app/userPackage/mvUserPackageRepo.js"></script>
+    <script type="text/javascript" src="app/userPackage/mvCachedUserPackage.js"></script>
+
+    <!-- User Feature-->
+    <script type="text/javascript" src="app/userFeature/mvUserFeature.js"></script>
+    <script type="text/javascript" src="app/userFeature/mvUserFeatureCtrl.js"></script>
+    <script type="text/javascript" src="app/userFeature/mvUserFeatureDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/userFeature/mvUserFeatureListCtrl.js"></script>
+    <script type="text/javascript" src="app/userFeature/mvUserFeatureRepo.js"></script>
+    <script type="text/javascript" src="app/userFeature/mvCachedUserFeature.js"></script>
+
+
+    <!-- SubUserInvitation-->
+    <script type="text/javascript" src="app/subUserInvitation/mvSubUserInvitation.js"></script>
+    <script type="text/javascript" src="app/subUserInvitation/mvSubUserInvitationCtrl.js"></script>
+    <script type="text/javascript" src="app/subUserInvitation/mvSubUserInvitationDetailCtrl.js"></script>
+    <script type="text/javascript" src="app/subUserInvitation/mvSubUserInvitationListCtrl.js"></script>
+    <script type="text/javascript" src="app/subUserInvitation/mvSubUserInvitationRepo.js"></script>
+    <script type="text/javascript" src="app/subUserInvitation/mvCachedSubUserInvitation.js"></script>
 
 </body>
 </html>

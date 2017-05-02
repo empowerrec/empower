@@ -1,4 +1,4 @@
-angular.module('app').controller('mvJobSeekerCtrl', function ($scope, $routeParams, mvIdentity, mvJobSeeker) {
+angular.module('app').controller('mvJobSeekerCtrl', function ($scope, $routeParams, mvIdentity, mvJobSeeker, $rootScope) {
     debugger;
     $scope.identity = mvIdentity;
     var id = $routeParams.id;

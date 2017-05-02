@@ -7,9 +7,9 @@ angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy,mv
             newVacancy.Employer = mvIdentity.currentEmployer;
             var dfd = $q.defer();
             console.log("Saving Vacancy");
-            newVacancy.$save().then(function () {
+            newVacancy.$save().then(function (newVancancy) {
                 console.log("Vacancy Saved");
-                dfd.resolve();
+                dfd.resolve(newVancancy);
             }, function (response) {
                 dfd.reject(response.data.reason);
             });

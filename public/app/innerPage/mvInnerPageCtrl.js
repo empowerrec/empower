@@ -26,6 +26,7 @@ angular.module('app').controller('mvInnerPageCtrl', function ($scope, mvNotifier
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
+        $scope.innerPage.Deleted = false;
 
 
     }

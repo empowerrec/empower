@@ -36,8 +36,26 @@ var jobSeekerSchema = mongoose.Schema({
         ref: 'CarLicenceType'
     },
     Address: [{
+        Country: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Address'
+            ref: 'Country'
+        },
+
+        City: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'City'
+        },
+        Area: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Area'
+        },
+        AddressLine1: String,
+        AddressLine2: String,
+        Current: Boolean,
+        JobSeeker: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'JobSeeker'
+        }
         }],
     FacebookAcount: String ,
     TwitterAcount: String ,
@@ -46,21 +64,115 @@ var jobSeekerSchema = mongoose.Schema({
     MobileNo : String ,
     
     EducationalInformation: [{
+        JobSeeker: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'EducationalInformation'
+            ref: 'JobSeeker'
+        },
+        EducationType: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'EducationType'
+        },
+        Univirsty: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Univirsty'
+        },
+        Faculty: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Faculty'
+        },
+        Specialization: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Specialization'
+        },
+        Grade: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Grade'
+        },
+        GraduationYear: Number,
+        Current: Boolean
         }],
     Courses: [{
+        Title: { type: String },
+        TrainingCenter: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Course'
-        }], 
+            ref: 'TrainingCenter'
+        },
+        JobSeeker: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'JobSeeker'
+        },
+        Specialization: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Specialization'
+        },
+        Grade: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Grade'
+        },
+        CourseYear: Number,
+        ModifiedBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    }], 
     Experiances: [{
+        Company: String,
+        JobSeeker: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Experiance'
-        }],
+            ref: 'JobSeeker'
+        },
+
+        CompanySize: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'CompanySize'
+        },
+        CompanyType: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'CompanyType'
+        },
+        Country: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Country'
+        },
+        Position: {
+            type: String
+        },
+        Salary: Number,
+        Achievements: String,
+        FunctionalTasks: String,
+        PeriodFrom: { type: Date },
+        PeriodTo: { type: Date },
+        Current: Boolean
+    }],
     Skills: [{
+        JobSeeker: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Skill'
-        }],
+            ref: 'JobSeeker'
+        },
+        SkillType: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'SkillType'
+        },
+        SkillLevel: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'SkillLevel'
+        }
+    }],
+    
+    LanguageSkills: [{
+        JobSeeker: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'JobSeeker'
+        },
+        Language: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Language'
+        },
+        LanguageSkillLevel: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'LanguageLevel'
+        }
+    }],
     ExpectedSalary: Number,
     PeriodOfEnrollment : Number,
     MoreInformation : String,

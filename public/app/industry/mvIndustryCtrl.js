@@ -1,4 +1,4 @@
-angular.module('app').controller('mvIndustryCtrl', function ($scope,  mvNotifier, mvIndustryRepo,mvIndustry,$routeParams,$translate) {
+angular.module('app').controller('mvIndustryCtrl', function ($scope, $location,  mvNotifier, mvIndustryRepo,mvIndustry,$routeParams,$translate) {
     var id = $routeParams.id;
     $scope.nameText = "";
     $scope.addEnabled = false;
@@ -60,24 +60,31 @@ angular.module('app').controller('mvIndustryCtrl', function ($scope,  mvNotifier
 
 
     $scope.update = function () {
-        $scope.loop();
-        mvIndustryRepo.updateCurrentIndustry($scope.industry).then(function () {
-            mvNotifier.notify('Industry has been updated!');
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
+        if ($scope.industryForm.$valid) {
 
+            $scope.loop();
+            mvIndustryRepo.updateCurrentIndustry($scope.industry).then(function () {
+                mvNotifier.notify('Industry has been updated!');
+                $location.path('/industries/');
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
 
     };
 
-    $scope.add = function(){
-        $scope.loop();
-        mvIndustryRepo.createIndustry($scope.industry).then(function () {
-            mvNotifier.notify('New Industry Added!');
-            $scope.addEnabled = false;
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
+    $scope.add = function () {
+        if ($scope.industryForm.$valid && $scope.addEnabled) {
+
+            $scope.loop();
+            mvIndustryRepo.createIndustry($scope.industry).then(function () {
+                mvNotifier.notify('New Industry Added!');
+                $scope.addEnabled = false;
+                $location.path('/industries/');
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
     };
 
     $scope.loop = function(){

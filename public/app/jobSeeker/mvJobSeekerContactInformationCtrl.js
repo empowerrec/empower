@@ -9,23 +9,23 @@ angular.module('app').controller('mvJobSeekerContactInformationCtrl', function (
     
     $scope.addEnabled = false;
     $scope.IsMobileInserted = false;
-    //$scope.jobSeekers = mvJobSeeker.query();
+    // $rootScope.jobSeekers = mvJobSeeker.query();
     if (id) {
-        $scope.jobSeeker = mvJobSeeker.get({ _id: id }, (function() {
+         $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function() {
             $scope.updateMode = true;
             $scope.addMode = false;
             $scope.IsMobileInserted = true;
-            $scope.jobSeeker.MobileNo = $scope.jobSeeker.MobileNo;
-            $scope.jobSeeker.Email = $scope.jobSeeker.Email;
+             $rootScope.jobSeeker.MobileNo =  $rootScope.jobSeeker.MobileNo;
+             $rootScope.jobSeeker.Email =  $rootScope.jobSeeker.Email;
            
-                //if ($scope.jobSeeker.MobileNo == null || $scope.jobSeeker.MobileNo == "" || $scope.jobSeeker.Email == null || $scope.jobSeeker.Email == "") {
+                //if ( $rootScope.jobSeeker.MobileNo == null ||  $rootScope.jobSeeker.MobileNo == "" ||  $rootScope.jobSeeker.Email == null ||  $rootScope.jobSeeker.Email == "") {
                 //    $scope.IsMobileInserted = false;
                 //}
                 
           
-            //$scope.jobSeeker.BirthDate = new Date($scope.jobSeeker.BirthDate);
-            //if (!$scope.jobSeeker.Gender) {
-            //    $scope.jobSeeker.Gender = $scope.genders[0].value;
+            // $rootScope.jobSeeker.BirthDate = new Date( $rootScope.jobSeeker.BirthDate);
+            //if (! $rootScope.jobSeeker.Gender) {
+            //     $rootScope.jobSeeker.Gender = $scope.genders[0].value;
             //}
         }));
     } else {
@@ -34,8 +34,8 @@ angular.module('app').controller('mvJobSeekerContactInformationCtrl', function (
                 //mvNotifier.notify('This link is expired please make another link');
         //$location.path('/forget');
         
-        $scope.jobSeeker = new mvJobSeeker();
-        $scope.jobSeeker.Deleted = false;
+         $rootScope.jobSeeker = new mvJobSeeker();
+         $rootScope.jobSeeker.Deleted = false;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
@@ -46,8 +46,8 @@ angular.module('app').controller('mvJobSeekerContactInformationCtrl', function (
         //    success: function (data) {
         //        if (data) {
                
-        //            $scope.jobSeeker = new mvJobSeeker();
-        //            //$scope.jobSeeker.Gender = $scope.genders[0].value;
+        //             $rootScope.jobSeeker = new mvJobSeeker();
+        //            // $rootScope.jobSeeker.Gender = $scope.genders[0].value;
         //            $scope.IsMobileInserted = true;
         //            $scope.updateMode = false;
         //            $scope.addMode = true;
@@ -55,8 +55,8 @@ angular.module('app').controller('mvJobSeekerContactInformationCtrl', function (
         //        } 
         //    },
         //    error: function (err) {
-        //        $scope.jobSeeker = new mvJobSeeker();
-        //        //$scope.jobSeeker.Gender = $scope.genders[0].value;
+        //         $rootScope.jobSeeker = new mvJobSeeker();
+        //        // $rootScope.jobSeeker.Gender = $scope.genders[0].value;
         //        $scope.IsMobileInserted = false;
         //        $scope.updateMode = false;
         //        $scope.addMode = true;
@@ -67,16 +67,16 @@ angular.module('app').controller('mvJobSeekerContactInformationCtrl', function (
             //}
         //});
     }
-    //$scope.jobSeeker = mvJobSeeker.get({ MobileNumber: "" }, (function() {
-        //    if (!$scope.jobSeekers.lenght > 0) {
+    // $rootScope.jobSeeker = mvJobSeeker.get({ MobileNumber: "" }, (function() {
+        //    if (! $rootScope.jobSeekers.lenght > 0) {
               
         //    }
 
         //}));
     
     $scope.update = function () {
-        if ($scope.jobSeekerForm.$valid) {
-            mvJobSeekerRepo.updateCurrentJobSeeker($scope.jobSeeker).then(function () {
+        if ( $scope.jobSeekerForm.$valid) {
+            mvJobSeekerRepo.updateCurrentJobSeeker( $rootScope.jobSeeker).then(function () {
                 //$scope.IsMobileInserted = true;
                 mvNotifier.notify('JobSeeker has been updated!');
             }, function (reason) {
@@ -88,7 +88,7 @@ angular.module('app').controller('mvJobSeekerContactInformationCtrl', function (
     $scope.add = function () {
         if ($scope.jobSeekerForm.$valid && $scope.addEnabled) {
             $scope.addEnabled = false;
-            mvJobSeekerRepo.createJobSeeker($scope.jobSeeker).then(function () {
+            mvJobSeekerRepo.createJobSeeker( $rootScope.jobSeeker).then(function () {
                 
                 mvNotifier.notify('New Contact Added!'); 
                 //$scope.IsMobileInserted = true;    

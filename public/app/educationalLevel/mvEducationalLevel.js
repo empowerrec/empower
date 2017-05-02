@@ -4,4 +4,4 @@ angular.module('app').factory('mvEducationalLevel', function ($resource) {
     });
 
     return educationalLevelResource;
-});
+}); 

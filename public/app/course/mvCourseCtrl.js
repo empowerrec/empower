@@ -1,150 +1,118 @@
-angular.module('app').controller('mvCourseCtrl', function ($scope,  mvNotifier, mvCourseRepo, mvCourse,$routeParams,$translate, mvIdentity, $location) {
-    var id = $routeParams.id;
-    $scope.courseNameText = "";
+angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
+    mvCourseRepo, mvCourse, $routeParams, $translate, mvIdentity, $location, $rootScope, mvJobSeekerRepo) {
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
-    if(id)
-    {
-        $scope.course = mvCourse.get({_id:id },(function(){
-            //$scope.course.PeriodFrom = new Date($scope.course.PeriodFrom);
-            //$scope.course.PeriodTo = new Date($scope.course.PeriodTo);
-            $scope.updateMode = true;
-            $scope.addMode = false;
-    }));
+    $("#currentLang").val($rootScope.currentLang);
 
+    $scope.course = new mvCourse();
 
+    if (mvIdentity.currentJobSeeker)
+        $scope.course.JobSeeker = mvIdentity.currentJobSeeker;
+    $scope.course.Deleted = false;
+    $scope.updateMode = false;
+    $scope.addMode = true;
+    $scope.addEnabled = true;
+    $scope.showForm = false;
+
+    $scope.updateCourse = function updateCourse(course) {
+        $scope.updateMode = true;
+        $scope.addMode = false;
+        $scope.showForm = true;
+        course.TrainingCenter = course.TrainingCenter._id;
+        course.Specialization = course.Specialization._id;
+        course.Grade = course.Grade._id;
+
+        $scope.course = course;
     }
 
-    else
-    {
-        $scope.course = new mvCourse();
-        //console.log(mvIdentity.currentJobSeeker._id);
-        $scope.course.JobSeeker = mvIdentity.currentJobSeeker;
-        $scope.course.Deleted = false;
+    $scope.addCourse = function addCourse() {
         $scope.updateMode = false;
         $scope.addMode = true;
-        $scope.addEnabled = true;
-
+        $scope.showForm = true;
+        $scope.course = new mvCourse();
 
     }
 
-    $scope.getName = function(list , lang){
-        var selectedLang ;
-        if(lang)
-        selectedLang = lang;
-        else
-        selectedLang = $scope.currentLang;
+    $scope.deleteCourse = function (course) {
 
-        if(list)
-        {
-        for(var i = 0; i < list.length; i++) {
+        var array = $rootScope.jobSeeker.Courses;
 
-            if(list[i].Lang == selectedLang) {
-                return list[i].Text;
+        $rootScope.jobSeeker.Courses.forEach(function (element) {
+            if (element._id == course._id) {
+                var index = array.indexOf(element);
+                array.splice(index, 1);
+                //$rootScope.vacancy.Questions.remove(element);
             }
-        }
-        }
+
+        });
+
+        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+            mvNotifier.notify('JobSeeker has been updated!');
+            //$location.path('/updateJobSeeker/Courses/' + mvIdentity.currentJobSeeker._id);
+
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+
     };
 
+    $scope.add = function () {
 
-    $scope.languages = [{value: 'en', text: 'English'},
-        {value: 'ar', text: 'عربى'},
-        {value: 'fr', text: 'French'}];
+        var course = {
+            Title: $scope.course.Title,
+            JobSeeker: $scope.course.JobSeeker,
+            TrainingCenter: $scope.course.TrainingCenter,
+            Specialization: $scope.course.Specialization,
+            Grade: $scope.course.Grade,
+            CourseYear: $scope.course.CourseYear
+        };
+        if ($rootScope.jobSeeker.Courses == undefined)
+            $rootScope.jobSeeker.Courses = [];
 
-    $scope.lang = $scope.languages[0].value;
+        $rootScope.jobSeeker.Courses.push(course);
 
+        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+            mvNotifier.notify('JobSeeker has been updated!');
+            $scope.showForm = false;
+            //$location.path('/updateJobSeeker/Courses/' + mvIdentity.currentJobSeeker._id);
 
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
 
-    //$scope.courseTypes = [{value: 'D', text: 'Direct Course'},
-    //    {value: 'S', text: 'Staffing Firm'}];
-    //$scope.course.CourseType = $scope.courseTypes[0].value;
+    };
+
 
     $scope.update = function () {
-        $scope.loop();
-        mvCourseRepo.updateCurrentCourse($scope.course).then(function () {
-            mvNotifier.notify('Course has been updated!');
-            $location.path('/updateJobSeeker/Courses/'+ mvIdentity.currentJobSeeker._id);
+
+        var course = {
+            Title: $scope.course.Title,
+            JobSeeker: $scope.course.JobSeeker,
+            TrainingCenter: $scope.course.TrainingCenter,
+            Specialization: $scope.course.Specialization,
+            Grade: $scope.course.Grade,
+            CourseYear: $scope.course.CourseYear,
+            _id: $scope.course._id
+        };
+
+        var array = $rootScope.jobSeeker.Courses;
+
+        $rootScope.jobSeeker.Courses.forEach(function (element) {
+            if (element._id == course._id) {
+                var index = array.indexOf(element);
+                array[index] = course;
+            }
+
+        });
+
+        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+            mvNotifier.notify('JobSeeker has been updated!');
+            $scope.showForm = false;
+            //$location.path('/updateJobSeeker/Courses/' + mvIdentity.currentJobSeeker._id);
+
         }, function (reason) {
             mvNotifier.error(reason);
         });
 
-
-    };
-
-    //$scope.saveCourseName = function () {
-
-    //    var old = false;
-    //    if($scope.course.CourseName) {
-    //        for (var i = 0; i < $scope.course.CourseName.length; i++) {
-    //            var obj = $scope.course.CourseName[i];
-
-    //            if ($scope.course.CourseName[i].Lang == $scope.lang) {
-    //                $scope.course.CourseName[i].Text = $scope.courseNameText;
-    //                old = true;
-    //            }
-
-    //        }
-    //    }
-
-    //    if(!old) {
-    //        if(!$scope.course.CourseName)
-    //        {
-    //            $scope.course.CourseName = [];
-    //        }
-    //        var courseName = {"Lang": $scope.lang, "Text": $scope.courseNameText};
-    //        $scope.course.CourseName.push(courseName);
-    //    }
-    //    $scope.courseNameText = "";
-    //    $scope.lang = "";
-
-    //};
-
-    //$scope.updateCourseName = function (course) {
-    //  $scope.lang = course.Lang;
-    //  $scope.courseNameText = course.Text;
-    //};
-
-    //$scope.deleteCourseName = function (course) {
-
-    //    for(var i = 0; i < $scope.course.CourseName.length; i++) {
-    //        var obj = $scope.course.CourseName[i];
-    //        console.log("Old" + obj.Lang);
-    //        console.log("New " + course.Lang);
-    //        if(course.Lang == obj.Lang) {
-    //            $scope.course.CourseName.splice(i, 1);
-    //            i--;
-    //        }
-    //    }
-    //    /*
-    //    var courseNames = $scope.course.CourseName;
-    //    console.log(courseNames);
-    //    courseNames.delete(course);
-    //    $scope.course.CourseName = courseNames;
-    //    */
-
-
-    //};
-
-    $scope.add = function(){
-        $scope.loop();
-        mvCourseRepo.createCourse($scope.course).then(function () {
-            mvNotifier.notify('New Course Added!');
-            $scope.addEnabled = false;
-            $location.path('/updateJobSeeker/Courses/'+ mvIdentity.currentJobSeeker._id);
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
-    };
-
-    $scope.loop = function(){
-
-        var listItems = $("#courseNames li");
-        listItems.each(function(idx, li) {
-            $scope.lang = $(li).attr('id');
-            var input = $(li).find("#CourseNameText2");
-            $scope.courseNameText = input.val();
-            $scope.saveCourseName();
-
-        });
     };
 });

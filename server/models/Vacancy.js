@@ -8,11 +8,38 @@ var VacancySchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
     },
-    Industry: {
+    Industry: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Industry'
-    },
+    }],
     HotJobFlag: { type: Boolean },
+    HideSalary: { type: Boolean },
+    HideCompany: { type: Boolean },
+    ReciveApplicationsByEmail: { type: Boolean },
+    SendRecommendedCandidatesDailyOrWeekly: { type: Boolean },
+    Puplished: { type: Boolean },
+    Gender: { type: Boolean },
+    
+    LanguageSkills: [
+        {
+            Language: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Language'
+            }, LanguageLevel: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'LanguageLevel'
+            }
+        }
+    ],
+   
+    Questions: [      
+            {
+            Title: { type: String },
+            Type: { type: String },
+            Answers: [{ Answer: { type: String } }]
+            }
+       
+    ],
     AvailableFrom: { type: Date },
     AvailableTo: { type: Date },
     Country: {
@@ -50,15 +77,17 @@ var VacancySchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'JobType'
     }, 
-    JobRole: {
+    JobRole: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'JobRole'
-    },   
+    }],   
     JobDescription: { type: String },
     JobTitle: { type: String },
     JobRequirements: { type: String },
     RequiredExperience  : { type: Number },
-    Position : { type: String }   , 
+    Position: { type: String }, 
+    Benfits: { type: String },
+   
     
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,

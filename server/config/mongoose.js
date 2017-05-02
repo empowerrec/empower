@@ -30,6 +30,11 @@ var univirstyModel = require('../models/Univirsty');
 var facultyModel = require('../models/Faculty');
 var specializationModel = require('../models/Specialization');
 var gradeModel = require('../models/Grade');
+var featureModel = require('../models/Feature');
+var packageFeatureModel = require('../models/PackageFeature');
+var packageCostModel = require('../models/PackageCost');
+var userPackageModel = require('../models/UserPackage');
+var userFeatureModel = require('../models/UserFeature');
 var trainingCenterModel = require('../models/TrainingCenter');
 var experianceModel = require('../models/Experiance');
 var companyTypeModel = require('../models/CompanyType');
@@ -41,61 +46,72 @@ var skillModel = require('../models/Skill');
 var langaugeLevelsModel = require('../models/LanguageLevel');
 var educationalLevelModel = require('../models/EducationalLevel');
 var applicant = require('../models/Applicant');
+var packageModel = require('../models/Package');
+var questionModel = require('../models/Question');
+var subUserInvitationModel = require('../models/SubUserInvitation');
 
 module.exports = function (config) {
-    mongoose.connect(config.db);
-    
-    //mongoose.connect(config.db, function (err) {
-    //    if (err) throw err;
-    //});
-    
-    var db = mongoose.connection;
-    db.on('error', function (err) {
-        console.log(err);
-        console.error.bind(console, 'connection error...');
-    });
-    db.once('open', function callback() {
-        console.log('empower db opened');
-    });
-    
-    userModel.createDefaultUsers();
-    courseModel.createDefaultCourses();
-    languageSkillModel.createDefaultLanguageSkills();
-    employerModel.createDefaultEmployers();
-    categoryModel.createDefaultCategories();
-    jobSeekerModel.createDefaultJobSeekers();
-    vacancyModel.createDefaultVacancies();
-    industryModel.createDefaultIndustry();
-    jobTypeModel.createDefaultJobTypes();
-    innerPageModel.createDefaultInnerPages();
-    languageModel.createDefaultLanguages();
-    countryModel.createDefaultCountries();
-    careerLevelModel.createDefaultCareerLevels();
-    curancyModel.createDefaultCurancies();
-    salaryTypeModel.createDefaultSalaryTypes();
-    jobRoleModel.createDefaultJobRoles();
-    cityModel.createDefaultCities();
-    areaModel.createDefaultAreas();
-    addressModel.createDefaultAddresss();
-    genderModel.createDefaultGenders();
-    maritalStatusModel.createDefaultMaritalStatuss();
-    militaryStatusModel.createDefaultMilitaryStatuss();    
-    carLicenceTypeModel.createDefaultCarLicenceTypes();    
-    educationalInformatioModel.createDefaultEducationalInformations();
-    educationTypeModel.createDefaultEducationTypes();
-    univirstyModel.createDefaultUnivirsties();
-    facultyModel.createDefaultFaculties();
-    specializationModel.createDefaultSpecializations();
-    gradeModel.createDefaultGrades();
-    trainingCenterModel.createDefaultTrainingCenters();    
-    companyTypeModel.createDefaultCompanyTypes();
-    companySizeModel.createDefaultCompanySizes();
-    positionModel.createDefaultPositions();
-    experianceModel.createDefaultExperiances();    
-    skillTypeModel.createDefaultSkillTypes();
-    skillLevelsModel.createDefaultSkillLevels();
-    langaugeLevelsModel.createDefaultLanguageLevels();
-    skillModel.createDefaultSkills();
-    educationalLevelModel.createDefaultEducationalLevels();
+	mongoose.connect(config.db);
+	
+	//mongoose.connect(config.db, function (err) {
+	//    if (err) throw err;
+	//});
+	
+	var db = mongoose.connection;
+	db.on('error', function (err) {
+		console.log(err);
+		console.error.bind(console, 'connection error...');
+	});
+	db.once('open', function callback() {
+		console.log('empower db opened');
+	});
+	
+	userModel.createDefaultUsers();
+	courseModel.createDefaultCourses();
+	languageSkillModel.createDefaultLanguageSkills();
+	employerModel.createDefaultEmployers();
+	categoryModel.createDefaultCategories();
+	jobSeekerModel.createDefaultJobSeekers();
+	vacancyModel.createDefaultVacancies();
+	industryModel.createDefaultIndustry();
+	subUserInvitationModel.createDefaultSubUserInvitation();
+	jobTypeModel.createDefaultJobTypes();
+	innerPageModel.createDefaultInnerPages();
+	languageModel.createDefaultLanguages();
+	countryModel.createDefaultCountries();
+	careerLevelModel.createDefaultCareerLevels();
+	curancyModel.createDefaultCurancies();
+	salaryTypeModel.createDefaultSalaryTypes();
+	jobRoleModel.createDefaultJobRoles();
+	cityModel.createDefaultCities();
+	areaModel.createDefaultAreas();
+	addressModel.createDefaultAddresss();
+	genderModel.createDefaultGenders();
+	maritalStatusModel.createDefaultMaritalStatuss();
+	militaryStatusModel.createDefaultMilitaryStatuss();    
+	carLicenceTypeModel.createDefaultCarLicenceTypes();    
+	educationalInformatioModel.createDefaultEducationalInformations();
+	educationTypeModel.createDefaultEducationTypes();
+	univirstyModel.createDefaultUnivirsties();
+	facultyModel.createDefaultFaculties();
+	specializationModel.createDefaultSpecializations();
+	gradeModel.createDefaultGrades();
+	featureModel.createDefaultFeatures();
+	packageFeatureModel.createDefaultPackageFeatures();
+    packageCostModel.createDefaultPackageCosts();
+    userPackageModel.createDefaultUserPackages();
+    userFeatureModel.createDefaultUserFeatures();
+	trainingCenterModel.createDefaultTrainingCenters();    
+	companyTypeModel.createDefaultCompanyTypes();
+	companySizeModel.createDefaultCompanySizes();
+	positionModel.createDefaultPositions();
+	experianceModel.createDefaultExperiances();    
+	skillTypeModel.createDefaultSkillTypes();
+	skillLevelsModel.createDefaultSkillLevels();
+	langaugeLevelsModel.createDefaultLanguageLevels();
+	skillModel.createDefaultSkills();
+	educationalLevelModel.createDefaultEducationalLevels();
+	packageModel.createDefaultPackages();
+	questionModel.createDefaultQuestions();
 
 };

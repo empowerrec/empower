@@ -18,12 +18,127 @@ exports.getJobSeekerById = function (req, res) {
     
     if (req.params.id == 'profile') {
         
-        JobSeeker.findOne({ User: req.user }).populate('ModifiedBy').exec(function (err, col) {
+        JobSeeker.findOne({ User: req.user })
+            .populate('ModifiedBy')
+            .populate({
+                path: 'Address.Country',
+                model: 'Country'
+            })
+            .populate({
+                path: 'Address.City',
+                model: 'City'
+            })
+            .populate({
+                path: 'Address.Area',
+                model: 'Area'
+            })
+            .populate({
+                path: 'Courses.TrainingCenter',
+                model: 'TrainingCenter'
+            })
+            .populate({
+                path: 'Courses.Specialization',
+                model: 'Specialization'
+            })
+            .populate({
+                path: 'Courses.Grade',
+                model: 'Grade'
+            }).populate({
+                path: 'EducationalInformation.EducationType',
+                model: 'EducationType'
+            })
+            .populate({
+                path: 'EducationalInformation.Univirsty',
+                model: 'Univirsty'
+            })
+            .populate({
+                path: 'EducationalInformation.Faculty',
+                model: 'Faculty'
+            }).populate({
+                path: 'EducationalInformation.Grade',
+                model: 'Grade'
+            })
+            .populate({
+                path: 'Skills.SkillType',
+                model: 'SkillType'
+            })
+            .populate({
+                path: 'Skills.SkillLevel',
+                model: 'SkillLevel'
+            }).populate({
+                path: 'LanguageSkills.Language',
+                model: 'Language'
+            }).populate({
+                path: 'LanguageSkills.LanguageSkillLevel',
+                model: 'LanguageLevel'
+            })
+            .populate({
+                path: 'EducationalInformation.Specialization',
+                model: 'Specialization'
+            })
+            .exec(function (err, col) {
             
             res.send(col);
         });
     } else {
-        JobSeeker.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
+        JobSeeker.findOne({ _id: req.params.id })
+            .populate('ModifiedBy')
+            .populate({
+                path: 'Address.Country',
+                model: 'Country'
+            })
+            .populate({
+                path: 'Address.City',
+                model: 'City'
+            })
+            .populate({
+                path: 'Address.Area',
+                model: 'Area'
+            })
+            .populate({
+                path: 'Courses.TrainingCenter',
+                model: 'TrainingCenter'
+            })
+            .populate({
+                path: 'Courses.Specialization',
+                model: 'Specialization'
+            })
+            .populate({
+                path: 'Courses.Grade',
+                model: 'Grade'
+            }).populate({
+                path: 'EducationalInformation.EducationType',
+                model: 'EducationType'
+            })
+            .populate({
+                path: 'EducationalInformation.Univirsty',
+                model: 'Univirsty'
+            })
+            .populate({
+                path: 'EducationalInformation.Faculty',
+                model: 'Faculty'
+            }).populate({
+                path: 'EducationalInformation.Grade',
+                model: 'Grade'
+            })
+            .populate({
+                path: 'Skills.SkillType',
+                model: 'SkillType'
+            })
+            .populate({
+                path: 'Skills.SkillLevel',
+                model: 'SkillLevel'
+            }).populate({
+                path: 'LanguageSkills.Language',
+                model: 'Language'
+            }).populate({
+                path: 'LanguageSkills.LanguageSkillLevel',
+                model: 'LanguageLevel'
+            })
+            .populate({
+                path: 'EducationalInformation.Specialization',
+                model: 'Specialization'
+            }).exec(function (err, col) {
             res.send(col);
         });
     }

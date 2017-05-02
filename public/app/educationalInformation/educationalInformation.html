@@ -1,261 +1,160 @@
 <div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container top-padding-med  admin-area">
+<div class="modal-dialog modal-member modal-jobSeeker" >
 
-    <div class="well">
+    <div class="modal-content" ng-controller="mvEducationalInformationCtrl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">{{"JobSeeker.Educational Information" | translate}}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container top-padding-med  admin-area">
 
-        <form name="educationalInformationForm" class="form-horizontal">
-            <fieldset>
+                <div class="well">
+                    <button ng-click="addEducationalInformation()" class="btn btn-primary">
+                        {{"Buttons.Add" | translate}}
+                    </button>
+                    <br />
+                    <br />
+                    <table class="table table-hover table-striped table-condensed" ng-show="!showForm">
+                        <thead>
+                            <tr>
+                                <th>{{"EducationalInformation.EducationType" | translate}}</th>
+                                <th>{{"EducationalInformation.Univirsty" | translate}}</th>
+                                <th>{{"EducationalInformation.Faculty" | translate}}</th>
+                                <th>{{"EducationalInformation.Specialization" | translate}}</th>
+                                <th>{{"EducationalInformation.Grade" | translate}}</th>
+                               
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="educationalInformation in jobSeeker.EducationalInformation | filter:searchText | orderBy:sortOrder">
+                                <td>
+                                    <a href="#/educationalInformations/{{educationalInformation._id}}">
+                                        <span ng-repeat="name in educationalInformation.EducationType.Name |filter:currentLang">{{name.Text}}</span>
+                                    </a>
+                                </td>
+                                <td><span ng-repeat="name in educationalInformation.Univirsty.Name |filter:currentLang">{{name.Text}}</span></td>
+                                <td><span ng-repeat="name in educationalInformation.Faculty.Name |filter:currentLang">{{name.Text}}</span></td>
+                                <td><span ng-repeat="name in educationalInformation.Specialization.Name |filter:currentLang">{{name.Text}}</span></td>
+                                <td><span ng-repeat="name in educationalInformation.Grade.Name |filter:currentLang">{{name.Text}}</span></td>
+                                <td><button ng-click="updateEducationalInformation(educationalInformation)"> {{"Buttons.Update" | translate}}</button></td>
+                                <td><button ng-click="deleteEducationalInformation(educationalInformation)"> {{"Buttons.Delete" | translate}}</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                <div class="form-group">
-                    <label for="EducationType" class="col-md-2 control-label">{{"EducationalInformation.EducationType"| translate}}</label>
-                    <div class="col-md-2">
-                        <select name="EducationType" ng-model="educationalInformation.EducationType" required="required"
-                                ng-options="educationType._id as educationType.Name[0].Text for educationType in educationTypes" class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
-                    </div>
+                    <form name="educationalInformationForm" class="form-horizontal" ng-show="showForm">
+                        <fieldset>
+
+                            <div class="form-group">
+                                <label for="EducationType" class="col-md-2 control-label">{{"EducationalInformation.EducationType"| translate}}</label>
+                                <div class="col-md-2">
+                                    <select name="EducationType" ng-model="educationalInformation.EducationType" required="required"
+                                            ng-options="educationType._id as educationType.Name[0].Text for educationType in educationTypes" class="form-control">
+                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="univirsty" class="col-md-2 control-label">{{"EducationalInformation.Univirsty"| translate}}</label>
+
+
+                                <div class="col-md-4">
+
+                                    <input id="univirstyName" />
+                                    <input type="hidden" id="hfUnivirstyId" />
+                                    <input type="hidden" id="currentLang" value="ar" />
+                                    <label id="selectedUnivirsty" />
+
+                                    <div ng-repeat="emp in educationalInformation.Univirsty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                                </div>
+
+
+
+                                <label for="faculty" class="col-md-2 control-label">{{"EducationalInformation.Faculty"| translate}}</label>
+
+
+                                <div class="col-md-4">
+                                    <input id="facultyName" />
+                                    <input type="hidden" id="hfFacultyId" />
+
+                                    <label id="selectedFaculty" />
+                                    <div ng-repeat="emp in educationalInformation.Faculty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="specialization" class="col-md-2 control-label">{{"EducationalInformation.Specialization"| translate}}</label>
+
+
+                                <div class="col-md-4">
+                                    <input id="specializationName" />
+                                    <input type="hidden" id="hfSpecializationId" />
+
+                                    <label id="selectedSpecialization" />
+                                    <div ng-repeat="emp in educationalInformation.Specialization.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Grade" class="col-md-2 control-label">{{"EducationalInformation.Grade"| translate}}</label>
+                                <div class="col-md-2">
+                                    <select name="Grade" ng-model="educationalInformation.Grade" required="required"
+                                            ng-options="grade._id as grade.Name[0].Text for grade in grades" class="form-control">
+                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                    </select>
+                                </div>
+                                                            <label for="courseYear" class="col-md-4 control-label">
+                                    {{
+"EducationalInformation.GraduationYear"
+                        | translate
+}}
+                                </label>
+
+                                <div class="col-md-2">
+                                    <input name="courseYear" type="number"
+                                           placeholder="{{'EducationalInformation.GraduationYear' | translate}}"
+                                           ng-model="educationalInformation.GraduationYear"
+                                           class="form-control" />
+                                </div>
+
+
+
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <div class="pull-right">
+                                        <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                                            {{"Buttons.Save" | translate}}
+                                        </button>
+
+                                        <button ng-click="add()" ng-show="addMode" ng-disabled="!addEnabled" class="btn btn-primary">
+                                            {{"Buttons.Add" | translate}}
+                                        </button>
+                                        &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
                 </div>
-
-                <div class="form-group">
-                    <label for="univirsty" class="col-md-1 control-label">{{"EducationalInformation.Univirsty"| translate}}</label>
+            </div>
 
 
-                    <div class="col-md-4">
-
-                        <input id="univirstyName" />
-                        <input type="hidden" id="hfUnivirstyId" />
-                        <input type="hidden" id="currentLang" value="ar" />
-                        <label id="selectedUnivirsty" />
-
-                        <div ng-repeat="emp in educationalInformation.Univirsty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
-                    </div>
-
-
-
-                    <label for="faculty" class="col-md-1 control-label">{{"EducationalInformation.Faculty"| translate}}</label>
-
-
-                    <div class="col-md-4">
-                        <input id="facultyName"   />
-                        <input type="hidden" id="hfFacultyId" />
-
-                        <label id="selectedFaculty" />
-                        <div ng-repeat="emp in educationalInformation.Faculty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <label for="specialization" class="col-md-1 control-label">{{"EducationalInformation.Specialization"| translate}}</label>
-
-
-                    <div class="col-md-4">
-                        <input id="specializationName" />
-                        <input type="hidden" id="hfSpecializationId" />
-
-                        <label id="selectedSpecialization" />
-                        <div ng-repeat="emp in educationalInformation.Specialization.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
-                    </div>
-                   
-                </div>
-
-                <div class="form-group">
-                    <label for="Grade" class="col-md-2 control-label">{{"EducationalInformation.Grade"| translate}}</label>
-                    <div class="col-md-2">
-                        <select name="Grade" ng-model="educationalInformation.Grade" required="required"
-                                ng-options="grade._id as grade.Name[0].Text for grade in grades" class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <div class="pull-right">
-                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
-                                {{"Buttons.Save" | translate}}
-                            </button>
-
-                            <button ng-click="add()" ng-show="addMode" ng-disabled="!addEnabled" class="btn btn-primary">
-                                {{"Buttons.Add" | translate}}
-                            </button>
-                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
-                        </div>
-                    </div>
-                </div>
-
-            </fieldset>
-        </form>
+            <div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
+                <img src="ajax-loader.gif" alt="" />
+            </div>
+        </div>
     </div>
-</div>
-
-
-<div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
-    <img src="ajax-loader.gif" alt="" />
-</div>
-<script>
-    $(function () {
-        $("#univirstyName").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    url: "/api/universtiesByName/" + request.term,
-                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
-                    success: function (data) {
-                        console.log(data);
-                        response($.map(data, function (item) {
-                            console.log(item.Name[0].Text);
-                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
-                        }));
-                    },
-                    error: function (error) {
-
-                        console.log(error);
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    beforeSend: function () {
-                        var p = $("#selectedUnivirsty");
-                        var offset = p.offset();
-
-                        //set
-                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
-                        $('#loader').css("visibility", "visible");
-                    },
-                    complete: function () {
-
-                        $('#loader').css("visibility", "hidden");
-                    }
-                });
-            },
-            select: function (e, i) {
-                console.log(i.item);
-                $("#hfUnivirstyId").val(i.item.id);
-                $('#hfUnivirstyId').trigger('change');
-                var p = $("#selectedUnivirsty");
-                p.text(i.item.label);
-
-            },
-            minLength: 2
-        });
-
-
-    });
-    $('#hfUnivirstyId').change(function () {
-        var customerID = $(this).val();
-
-
-    });
-
-    $(function () {
-        $("#facultyName").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    url: "/api/facultiesByName/" + request.term,
-                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
-                    success: function (data) {
-                        console.log(data);
-                        response($.map(data, function (item) {
-                            console.log(item.Name[0].Text);
-                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
-                        }));
-                    },
-                    error: function (error) {
-
-                        console.log(error);
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    beforeSend: function () {
-                        var p = $("#selectedFaculty");
-                        var offset = p.offset();
-
-                        //set
-                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
-                        $('#loader').css("visibility", "visible");
-                    },
-                    complete: function () {
-
-                        $('#loader').css("visibility", "hidden");
-                    }
-                });
-            },
-            select: function (e, i) {
-                console.log(i.item);
-                $("#hfFacultyId").val(i.item.id);
-                $('#hfFacultyId').trigger('change');
-                var p = $("#selectedFaculty");
-                p.text(i.item.label);
-
-            },
-            minLength: 2
-        });
-
-
-    });
-    $('#hfFacultyId').change(function () {
-        var customerID = $(this).val();
-
-
-    });
-    
-    $(function () {
-        $("#specializationName").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    url: "/api/specializationsByName/" + request.term,
-                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
-                    success: function (data) {
-                        console.log(data);
-                        response($.map(data, function (item) {
-                            console.log(item.Name[0].Text);
-                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
-                        }));
-                    },
-                    error: function (error) {
-
-                        console.log(error);
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    beforeSend: function () {
-                        var p = $("#selectedFaculty");
-                        var offset = p.offset();
-
-                        //set
-                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
-                        $('#loader').css("visibility", "visible");
-                    },
-                    complete: function () {
-
-                        $('#loader').css("visibility", "hidden");
-                    }
-                });
-            },
-            select: function (e, i) {
-                console.log(i.item);
-                $("#hfSpecializationId").val(i.item.id);
-                $('#hfSpecializationId').trigger('change');
-                var p = $("#selectedSpecialization");
-                p.text(i.item.label);
-
-            },
-            minLength: 2
-        });
-
-
-    });
-    $('#hfSpecializationId').change(function () {
-        var customerID = $(this).val();
-
-
-    });
-</script>
+    </div>
+   

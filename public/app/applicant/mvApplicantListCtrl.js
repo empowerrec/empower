@@ -1,24 +1,7 @@
 angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvApplicant,$translate, mvIdentity, mvApplicantRepo, mvNotifier, queryBulider, $routeParams) {
     $scope.currentUser = mvIdentity.currentUser;
     var id = $routeParams.vacancyId;
-    //$scope.applicants = mvApplicant.query();
-    //$scope.currentLang = $translate.use();
-    //$scope.sortOptions = [{value: 'Description', text: 'Sort by Description'}];
-
-    //$scope.sortOrder = $scope.sortOptions[0].value;
-    //$scope.getName = function(list){
-    //    for(var i = 0; i < list.length; i++) {
-
-    //        if(list[i].Lang == $scope.currentLang) {
-    //            return list[i].Text;
-    //        }
-    //    }
-    //};
-
-    //$scope.getLang = function(){
-    //    return $translate.use();
-    //};
-    
+   
 
     $scope.paging = {
         currentPage: 1,
@@ -43,6 +26,46 @@ angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvAppl
             ed.DeletedBy = mvIdentity.currentUser;
             mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
                 mvNotifier.notify('Applicant has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+
+
+    $scope.shortListApplicant = function (applicant) {
+        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
+            ed.Status = 'S';
+            ed.ModifiedBy = mvIdentity.currentUser;
+            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
+                mvNotifier.notify('Applicant has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+
+    $scope.rejectApplicant = function (applicant) {
+        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
+            ed.Status = 'R';
+            ed.ModifiedBy = mvIdentity.currentUser;
+            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
+                mvNotifier.notify('Applicant has been Rejected!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+
+    $scope.approveApplicant = function (applicant) {
+        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
+            ed.Status = 'A';
+            ed.ModifiedBy = mvIdentity.currentUser;
+            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
+                mvNotifier.notify('Applicant has been Approved!');
                 $scope.getData();
             }, function (reason) {
                 mvNotifier.error(reason);

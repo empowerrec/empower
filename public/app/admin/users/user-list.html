@@ -30,14 +30,14 @@
                                         </span>
                                         <span class="job-type contract">
                                             <a href="#">
-                                                <i class="fa fa-bookmark"></i>{{ user.UserType }} 
+                                                <i class="fa fa-bookmark"></i>{{ user.UserType }}
                                             </a>
                                         </span>
-                                       
+
                                         <span>
                                             <time class="entry-date" datetime="{{ user.CreatedAt }}">
                                                 <i class="fa fa-calendar"></i>
-                                                 Created {{user.CreatedAt | date:'fullDate'}}
+                                                Created {{user.CreatedAt | date:'fullDate'}}
                                             </time>
                                         </span>
 
@@ -50,7 +50,9 @@
                                     </p>
                                 </div>
                                 <div class="show-view-more">
-                                    <a class="btn btn-primary" href="jobs-detail.html">View more </a>
+                                    <a href="#/userPackages/{{user._id}}" class="btn btn-primary"> {{"User.Package" | translate}}</a>
+                                    <a href="#/userFeatures/{{user._id}}" class="btn btn-primary"> {{"User.Features" | translate}}</a>
+
                                 </div>
                             </div>
                         </article>

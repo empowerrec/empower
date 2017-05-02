@@ -1,9 +1,224 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container admin-area">
-    <div class="row">
-        <div class="col-md-6">
-            <h3>{{"JobSeeker.Gender" | translate}} : {{jobSeeker.Gender}}</h3>
-            <h3>{{"JobSeeker.BirthDate" | translate}} : {{jobSeeker.BirthDate | date}}</h3>            
+<div class="container-wrap">
+    <div class="container-boxed max offset main-content">
+        <div class="row">
+            <div class="noo-main col-md-12">
+                <article class="resume">
+                    <div class="resume-candidate-profile">
+                        <div class="row">
+                            <div class="col-sm-3 profile-avatar">
+                                <img alt='' src='images/avatar/user_160x160.jpg' height='160' width='160' />
+                            </div>
+                            <div class="col-sm-9 candidate-detail">
+                                <div class="candidate-title clearfix">
+                                    <h2>{{jobSeeker.FirstName}} {{jobSeeker.LastName}}</h2>
+                                </div>
+                                <div class="candidate-info">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <i class="fa fa-suitcase text-primary"></i>
+                                            &nbsp;&nbsp;{{jobSeeker.Experiances[0].Position}}
+                                        </div>
+                                        <div>
+                                            <button ng-click="showContactInformationFunction()">Show Contact Information </button>
+                                        </div>
+                                        <div class="col-sm-6" ng-show="showContactInformation">
+                                            <i class="fa fa-map-marker text-primary"></i>
+                                            &nbsp;&nbsp;<span ng-repeat="emp in jobSeeker.Address[0].Country.Name | filter:{Lang:currentLang}">{{emp.Text}}</span>
+                                            ,<span ng-repeat="emp in jobSeeker.Address[0].City.Name | filter:{Lang:currentLang}">{{emp.Text}}</span>
+                                            ,<span ng-repeat="emp in jobSeeker.Address[0].Area.Name | filter:{Lang:currentLang}">{{emp.Text}}</span>
+                                        </div>
+                                        <d`iv class="col-sm-6">
+                                            <i class="fa fa-birthday-cake text-primary"></i>
+                                            &nbsp;&nbsp;{{jobSeeker.BirthDate | date:'dd MMM yyyy'}}
+                                        </d`iv>
+                                        <div class="col-sm-6" ng-show="showContactInformation">
+                                            <i class="fa fa-phone text-primary"></i>
+                                            &nbsp;&nbsp;{{jobSeeker.MobileNo}}
+                                        </div>
+                                        <div class="col-sm-6 pull-right" ng-show="showContactInformation">
+                                            <a href="{{jobSeeker.Email}}">
+                                                <i class="fa fa-envelope text-primary"></i>
+                                                &nbsp;&nbsp;{{jobSeeker.Email}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="showContactInformation">
+                                        <div class="col-sm-6 pull-left"></div>
+                                        <div class="candidate-social col-sm-6 pull-right">
+                                            <a class="noo-icon fa fa-facebook" ng-href="{{jobSeeker.FacebookAcount}}" target="_blank"></a>
+                                            <a class="noo-icon fa fa-twitter" ng-href="{{jobSeeker.TwitterAcount}}" target="_blank"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="resume-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="resume-desc">
+                                    <div class="resume-general row">
+                                        <!--<div class="col-sm-3">
+                                            <h3 class="title-general">
+                                                <span>General Infomation</span>
+                                            </h3>
+                                        </div>-->
+                                        <!--<div class="col-sm-9">
+                                            <ul>
+                                                <li>
+                                                    <span>{{"JobSeeker.BirthDate" | translate}}</span>
+                                                    {{jobSeeker.BirthDate}}
+                                                </li>
+                                                <li>
+                                                    <span>Highest Degree Level</span>
+                                                    Bachelor Degree
+                                                </li>
+                                                <li>
+                                                    <span>Total Year Experience</span>
+                                                    2
+                                                </li>
+                                                <li>
+                                                    <span>Job Category</span>
+                                                    Designer
+                                                </li>
+                                                <li>
+                                                    <span>Expected Job Level</span>
+                                                    Junior
+                                                </li>
+                                                <li>
+                                                    <span>Job Location</span>
+                                                    Amsterdam
+                                                </li>
+                                            </ul>
+                                        </div>-->
+                                        <div class="col-sm-12">
+                                            <p>
+                                               {{jobSeeker.MoreInformation}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="resume-timeline row">
+                                        <div class="col-md-3 col-sm-12">
+                                            <h3 class="title-general">
+                                                <span>Education</span>
+                                            </h3>
+                                        </div>
+                                        <div class="col-md-9 col-sm-12">
+                                            <div class="timeline-container education" ng-repeat="educationalInformation in jobSeeker.EducationalInformation">
+                                                <div class="timeline-wrapper ">
+                                                    <div class="timeline-time">
+                                                        <span>{{educationalInformation.GraduationYear}}</span>
+                                                    </div>
+                                                    <dl class="timeline-series">
+                                                        <dt class="timeline-event">
+                                                            <a>
+                                                                <span ng-repeat="name in educationalInformation.EducationType.Name |filter:currentLang">{{name.Text}}</span>
+                                                            </a>
+                                                        </dt>
+                                                        <dd class="timeline-event-content">
+                                                           <p>
+                                                               <span ng-repeat="name in educationalInformation.Univirsty.Name |filter:currentLang">{{name.Text}}</span> ,
+                                                               <span ng-repeat="name in educationalInformation.Faculty.Name |filter:currentLang">{{name.Text}}</span>,
+                                                               <span ng-repeat="name in educationalInformation.Specialization.Name |filter:currentLang">{{name.Text}}</span>,
+                                                               <span ng-repeat="name in educationalInformation.Grade.Name |filter:currentLang">{{name.Text}}</span>
+                                                           </p>
+                                                            <br class="clear">
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="resume-timeline row">
+                                        <div class="col-md-3 col-sm-12">
+                                            <h3 class="title-general">
+                                                <span>Work Experience</span>
+                                            </h3>
+                                        </div>
+                                        <div class="col-md-9 col-sm-12">
+                                            <div class="timeline-container experience" ng-repeat="experiance in jobSeeker.Experiances">
+                                                <div class="timeline-wrapper ">
+                                                    <div class="timeline-time">
+                                                        <span>{{experiance.PeriodFrom | date:'MMMM yyyy'}} - {{experiance.PeriodTo | date:'MMMM yyyy'}}</span>
+                                                    </div>
+                                                    <dl class="timeline-series">
+                                                        <dt class="timeline-event">
+                                                            <a>
+                                                               {{ experiance.Company}}<span class="tick tick-after">{{ experiance.Position}}</span>
+                                                            </a>
+                                                        </dt>
+                                                        <dd class="timeline-event-content">
+                                                            <p>
+                                                                <span> {{ experiance.Achievements}} </span>,
+                                                                <span> {{ experiance.FunctionalTasks}} </span>,
+                                                               <span> {{ experiance.Salary}} </span>
+                                                            </p>
+                                                            <br class="clear">
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="resume-timeline row">
+                                        <div class="col-md-3 col-sm-12">
+                                            <h3 class="title-general">
+                                                <span>Summary of Skills</span>
+                                            </h3>
+                                        </div>
+                                        <div class="col-md-9 col-sm-12">
+                                            <div class="skill" ng-repeat="skill in jobSeeker.Skills">
+                                                
+                                                <div class="pregress-bar clearfix">
+                                                    <div class="progress_title">
+                                                        <span><span ng-repeat="name in skill.SkillType.Name |filter:currentLang">{{name.Text}}</span></span>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div role="progressbar" aria-valuemax="100" aria-valuemin="0" class="progress-bar progress-bar-bg" aria-valuenow="{{skill.SkillLevel.Percent}}" style="width: {{skill.SkillLevel.Percent}}%;">
+                                                            <div class="progress_label"><span><span ng-repeat="name in skill.SkillLevel.Name |filter:currentLang">{{name.Text}}</span></span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="resume-timeline row">
+                                        <div class="col-md-3 col-sm-12">
+                                            <h3 class="title-general">
+                                                <span>Summary of Skills</span>
+                                            </h3>
+                                        </div>
+                                        <div class="col-md-9 col-sm-12">
+                                            <div class="skill" ng-repeat="languageSkill in jobSeeker.LanguageSkills">
+
+                                                <div class="pregress-bar clearfix">
+                                                    <div class="progress_title">
+                                                        <span>{{languageSkill.Language.Name}}</span>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div role="progressbar" aria-valuemax="100" aria-valuemin="0" class="progress-bar progress-bar-bg" aria-valuenow="{{languageSkill.LanguageSkillLevel.Percent}}" style="width: {{languageSkill.LanguageSkillLevel.Percent}}%;">
+                                                            <div class="progress_label"><span><span ng-repeat="name in languageSkill.LanguageSkillLevel.Name |filter:currentLang">{{name.Text}}</span></span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
     </div>
 </div>

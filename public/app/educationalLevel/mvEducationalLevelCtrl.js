@@ -22,6 +22,7 @@ angular.module('app').controller('mvEducationalLevelCtrl', function ($scope, mvN
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
+        $scope.educationalLevel.Deleted = false;
     }
     
     $scope.languages = [{ value: 'en', text: 'English' },
@@ -48,18 +49,18 @@ angular.module('app').controller('mvEducationalLevelCtrl', function ($scope, mvN
     };
     
     $scope.update = function () {
-        if ($scope.educationalLevelForm.$valid) {
+        //if ($scope.educationalLevelForm.$valid) {
             $scope.loop();
             mvEducationalLevelRepo.updateCurrentEducationalLevel($scope.educationalLevel).then(function () {
                 mvNotifier.notify('EducationalLevel has been updated!');
             }, function (reason) {
                 mvNotifier.error(reason);
             });
-        }
+        //}
     };
     
     $scope.add = function () {
-        if ($scope.educationalLevelForm.$valid && $scope.addEnabled) {            
+        //if ($scope.educationalLevelForm.$valid && $scope.addEnabled) {            
             $scope.loop();
             mvEducationalLevelRepo.createEducationalLevel($scope.educationalLevel).then(function () {
                 mvNotifier.notify('New EducationalLevel Added!');
@@ -67,14 +68,14 @@ angular.module('app').controller('mvEducationalLevelCtrl', function ($scope, mvN
             }, function (reason) {
                 mvNotifier.error(reason);
             });
-        }
+        //}
     };
     
     $scope.loop = function () {
         var listItems = $("#names li");
         listItems.each(function (idx, li) {
             $scope.lang = $(li).attr('id');
-            var input = $(li).find("#NameText");
+            var input = $(li).find("#NameText2");
             $scope.nameText = input.val();
             $scope.saveName();
         });

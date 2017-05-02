@@ -3,7 +3,7 @@ angular.module('app').controller('mvFacultyCtrl', function ($scope, mvNotifier, 
     $scope.facultyNameText = "";
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
-    $scope.languages = [{ value: 'en', text: 'English' }, { value: 'ar', text: 'ÚÑÈì' }];
+    $scope.languages = [{ value: 'en', text: 'English' }, { value: 'ar', text: '????' }];
         
     $scope.init = function () {
         if (id) {

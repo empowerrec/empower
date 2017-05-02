@@ -1,105 +1,152 @@
 <div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container admin-area" ng-controller="mvCourseCtrl">
+<div class="modal-dialog modal-member modal-jobSeeker">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">{{"JobSeeker.Course" | translate}}</h4>
+        </div>
+        
+        <div class="modal-body">
+            <div class="container admin-area" ng-controller="mvCourseCtrl">
 
-    <div class="well">
+                <div class="well">
+                    <button ng-click="addCourse()" class="btn btn-primary">
+                        {{"Buttons.Add" | translate}}
+                    </button>
+                    <br />
+                    <br />
+                    <table class="table table-hover table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>{{"Course.Title" | translate}}</th>
+                                <th>{{"Course.TrainingCenter" | translate}}</th>
+                                <th>{{"Course.Specialization" | translate}}</th>
+                                <th>{{"Course.Grade" | translate}}</th>
+                                <th>{{"Course.CourseYear" | translate}}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="course in jobSeeker.Courses | filter:searchText | orderBy:sortOrder">
+                                <td><a href="#/courses/{{course._id}}">{{ course.Title}}</a></td>
+                                <td> <div ng-repeat="tr in course.TrainingCenter.Name | filter:{Lang:currentLang}">{{tr.Text}}</div></td>
+                                <td> <div ng-repeat="emp in course.Specialization.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></td>
+                                <td> <div ng-repeat="grd in course.Grade.Name | filter:{Lang:currentLang}">{{grd.Text}}</div></td>
+                                <td>{{ course.CourseYear}}</td>
 
-        <form name="courseForm" class="form-horizontal">
-            <fieldset>
+                                <td><button ng-click="updateCourse(course)"> {{"Buttons.Update" | translate}}</button></td>
+                                <td><button ng-click="deleteCourse(course)"> {{"Buttons.Delete" | translate}}</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <form name="courseForm" class="form-horizontal" ng-show="showForm">
+                        <fieldset>
 
 
-                <div class="form-group">
-                    <label for="Title" class="col-md-2 control-label">
-                        {{"Course.Title" | translate}}
-                    </label>
+                            <div class="form-group">
+                                <label for="Title" class="col-md-2 control-label">
+                                    {{"Course.Title" | translate}}
+                                </label>
 
-                    <div class="col-md-10">
-                        <input name="Title" type="text" placeholder="{{'Course.Title' | translate}}"
-                               ng-model="course.Title" required="required"
-                               class="form-control" />
-                    </div>
+                                <div class="col-md-10">
+                                    <input name="Title" type="text" placeholder="{{'Course.Title' | translate}}"
+                                           ng-model="course.Title" required="required"
+                                           class="form-control" />
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="form-group">
+                                <label for="trainingCenter" class="col-md-2 control-label">{{"Course.TrainingCenter"| translate}}</label>
+
+
+                                <div class="col-md-2">
+                                    <select ng-model="course.TrainingCenter" ng-options="trainingCenter._id as trainingCenter.Name[0].Text for trainingCenter in trainingCenters"
+                                            class="form-control">
+                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                    </select>
+                                </div>
+
+                                <label for="Specialization" class="col-md-2 control-label">
+                                    {{
+"Course.Specialization"
+                        | translate
+                                    }}
+                                </label>
+                                <div class="col-md-3">
+                                    <select ng-model="course.Specialization" ng-options="specialization._id as specialization.Name[0].Text for specialization in specializations"
+                                            class="form-control">
+                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                    </select>
+                                </div>
+                                <label for="Grade" class="col-md-2 control-label">
+                                    {{
+"Course.Grade"
+                        | translate
+                                    }}
+                                </label>
+                                <div class="col-md-3">
+                                    <select ng-model="course.Grade" ng-options="grade._id as grade.Name[0].Text for grade in grades"
+                                            class="form-control">
+                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                    </select>
+                                </div>
+
+                                <!--<label for="position" class="col-md-2 control-label">
+                                    {{"Course.Position"
+                                    | translate}}
+                                </label>
+
+                                <div class="col-md-1"><input name="position" type="number" placeholder="{{'Course.Position' | translate}}"
+                                                             ng-model="course.Position" required="required"
+                                                             class="form-control" /></div>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="courseYear" class="col-md-2 control-label">
+                                    {{
+"Course.CourseYear"
+                        | translate
+                                    }}
+                                </label>
+
+                                <div class="col-md-2">
+                                    <input name="courseYear" type="number"
+                                           placeholder="{{'Course.CourseYear' | translate}}"
+                                           ng-model="course.CourseYear"
+                                           class="form-control" />
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <div class="pull-right">
+                                        <button ng-click="update()" ng-show="updateMode" ng-disabled="courseForm.$invalid" class="btn btn-primary">
+                                            {{"Buttons.Save" | translate}}
+                                        </button>
+
+                                        <button ng-click="add()" ng-show="addMode" ng-disabled="courseForm.$invalid||!addEnabled" class="btn btn-primary">
+                                            {{"Buttons.Add" | translate}}
+                                        </button>
+                                        &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
                 </div>
-
-
-       
-
-
-                <div class="form-group">
-                    <label for="trainingCenter" class="col-md-2 control-label">{{"Course.TrainingCenter"| translate}}</label>
-
-
-                    <div class="col-md-2">
-                        <select ng-model="course.TrainingCenter" ng-options="trainingCenter._id as trainingCenter.Name[0].Text for trainingCenter in trainingCenters"
-                                class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
-                    </div>
-
-                    <label for="Specialization" class="col-md-2 control-label">
-                        {{"Course.Specialization"
-                        | translate}}
-                    </label>
-                    <div class="col-md-3">
-                        <select ng-model="course.Specialization" ng-options="specialization._id as specialization.Name[0].Text for specialization in specializations"
-                                class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
-                    </div>
-                    <label for="Grade" class="col-md-2 control-label">
-                        {{"Course.Grade"
-                        | translate}}
-                    </label>
-                    <div class="col-md-3">
-                        <select ng-model="course.Grade" ng-options="grade._id as grade.Name[0].Text for grade in grades"
-                                class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
-                    </div>
-
-                    <!--<label for="position" class="col-md-2 control-label">
-                        {{"Course.Position"
-                        | translate}}
-                    </label>
-
-                    <div class="col-md-1"><input name="position" type="number" placeholder="{{'Course.Position' | translate}}"
-                                                 ng-model="course.Position" required="required"
-                                                 class="form-control" /></div>-->
-                </div>
-                <div class="form-group">
-                    <label for="courseYear" class="col-md-2 control-label">
-                        {{"Course.CourseYear"
-                        | translate}}
-                    </label>
-
-                    <div class="col-md-2">
-                        <input name="courseYear" type="number"
-                               placeholder="{{'Course.CourseYear' | translate}}"
-                               ng-model="course.CourseYear"
-                               class="form-control" />
-                    </div>
-
-
-
-
-                </div>
-
-
-
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <div class="pull-right">
-                            <button ng-click="update()" ng-show="updateMode" ng-disabled="courseForm.$invalid" class="btn btn-primary">
-                                {{"Buttons.Save" | translate}}
-                            </button>
-
-                            <button ng-click="add()" ng-show="addMode" ng-disabled="courseForm.$invalid||!addEnabled" class="btn btn-primary">
-                                {{"Buttons.Add" | translate}}
-                            </button>
-                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
-                        </div>
-                    </div>
-                </div>
-
-            </fieldset>
-        </form>
-    </div>
+            </div>
+        </div>
+        </div>
 </div>

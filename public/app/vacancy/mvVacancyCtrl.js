@@ -1,9 +1,12 @@
-angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, mvVacancyRepo, $rootScope,mvVacancy, $routeParams, $translate, mvCity, mvCityRepo, mvArea, mvAreaRepo , mvIdentity , $location) {
+angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, mvVacancyRepo, $rootScope, mvVacancy, $routeParams, $translate, mvCity, mvCityRepo, mvArea, mvAreaRepo, mvIdentity, $location) {
     var id = $routeParams.id;
     $scope.identity = mvIdentity;
     $scope.addEnabled = false;
     var stepclass = "";
     var added = false;
+    $scope.selectedJobRole = {};
+    $scope.selectedIndustry = {};
+
     
     $scope.completed = function () {
         if (added)
@@ -12,14 +15,20 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     };
     $scope.currentLang = $translate.use();
     if (id) {
-        $scope.vacancy = mvVacancy.get({ _id: id }, (function () {
+        $scope.vacancy = mvVacancy.getForUpdate({ _id: id }, (function () {
             $scope.updateMode = true;
             $scope.addMode = false;
             $scope.vacancy.AvailableFrom = new Date($scope.vacancy.AvailableFrom);
             $scope.vacancy.AvailableTo = new Date($scope.vacancy.AvailableTo);
+            $("#hfCityId").val($scope.vacancy.City._id);
+            $("#hfAreaId").val($scope.vacancy.Area._id);
+            $rootScope.vacancy = $scope.vacancy;
         }));
+
+
     } else {
         $scope.vacancy = new mvVacancy();
+        $rootScope.vacancy = $scope.vacancy;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
@@ -28,19 +37,28 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     
     $scope.update = function () {
         if ($scope.vacancyForm.$valid) {
+            $scope.vacancy.LanguageSkills = $rootScope.vacancy.LanguageSkills;
             createCity();
             createArea();
-            mvVacancyRepo.updateCurrentVacancy($scope.vacancy).then(function () {
-                mvNotifier.notify('Vacancy has been updated!');
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
+            if (validate()) {
+                mvVacancyRepo.updateCurrentVacancy($scope.vacancy).then(function () {
+                    mvNotifier.notify('Vacancy has been updated!');
+                    added = true;
+                    $scope.vacancy = mvVacancy.get({ _id: $scope.vacancy._id }, (function () {
+
+                        $scope.vacancy.AvailableFrom = new Date($scope.vacancy.AvailableFrom);
+                        $scope.vacancy.AvailableTo = new Date($scope.vacancy.AvailableTo);
+                    }));
+                }, function (reason) {
+                    mvNotifier.error(reason);
+                });
+            }
         }
     };
     
     
     $scope.getStep1Class = function () {
-        debugger;
+        
         if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())
             return "completed";
         else
@@ -48,7 +66,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     };
     
     $scope.getStep2Class = function () {
-        debugger;
+        
         if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())
             return "completed";
         else
@@ -57,7 +75,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     
     
     $scope.getStep3Class = function () {
-        debugger;
+        
         if (mvIdentity.currentUser.isEmployer() && !$scope.completed() || mvIdentity.currentUser.isAdmin() && !$scope.completed())
             return "active";
         else
@@ -66,7 +84,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     
     
     $scope.getStep4Class = function () {
-        debugger;
+        
         if ($scope.completed())
             return "active";
         else
@@ -76,25 +94,68 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     
 
     $scope.add = function () {
+
+
+        $scope.vacancy.LanguageSkills = $rootScope.vacancy.LanguageSkills;
+
         if ($scope.vacancyForm.$valid && $scope.addEnabled) {
             var cityPromise = createCity();
-            cityPromise.then(createArea().then(function() {
+            if (cityPromise) {
+                cityPromise.then(createArea().then(function () {
 
-                if (validate()) {
-                    mvVacancyRepo.createVacancy($scope.vacancy).then(function() {
-                        mvNotifier.notify('New Vacancy Added!');
-                        added = true;
-                        $scope.addEnabled = false;
-                    }, function(reason) {
-                        mvNotifier.error(reason);
+                    if (validate()) {
+                        mvVacancyRepo.createVacancy($scope.vacancy).then(function (newVacancy) {
+                            mvNotifier.notify('New Vacancy Added!');
+                            added = true;
+                            $scope.addEnabled = false;
+                            
+                            $scope.vacancy = mvVacancy.get({ _id: newVacancy._id }, (function () {
+
+                                $scope.vacancy.AvailableFrom = new Date($scope.vacancy.AvailableFrom);
+                                $scope.vacancy.AvailableTo = new Date($scope.vacancy.AvailableTo);
+                            }));
+                        }, function (reason) {
+                            mvNotifier.error(reason);
+                        });
+                    }
+                }))
+                    ;
+
+            }
+            else
+            {
+                var areaPromise = createArea();
+                if (areaPromise) {
+                    createArea().then(function () {
+
+
                     });
                 }
-            }))
-        ;
+                else {
+                    if (validate()) {
+                        mvVacancyRepo.createVacancy($scope.vacancy).then(function (newVacancy) {
+                            mvNotifier.notify('New Vacancy Added!');
+                            added = true;
+                            $scope.addEnabled = false;
+                            
+                            $scope.vacancy = mvVacancy.get({ _id: newVacancy._id }, (function () {
+
+                                $scope.vacancy.AvailableFrom = new Date($scope.vacancy.AvailableFrom);
+                                $scope.vacancy.AvailableTo = new Date($scope.vacancy.AvailableTo);
+                            }));
+                        }, function (reason) {
+                            mvNotifier.error(reason);
+                        });
+                    }
+                }
+                
+            }
+            
 
             
             
         }
+       
     };
     
     $(function () {
@@ -251,26 +312,121 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
 
 
     function validate() {
+        var flag = true;
         var cityId = $("#hfCityId").val();
         var areaId = $("#hfAreaId").val();
+
+        var startDate = new Date($("#availableFrom").val());
+        var endDate = new Date($("#availableTo").val());
+
+        if (startDate.getTime() > endDate.getTime()) {
+            mvNotifier.error("Available To Date is greater than Available From Date");
+            flag = false;
+        }
+
+        var salaryFrom = new Date($("#salaryRangeFrom").val());
+        var salaryTo = new Date($("#salaryRangeTo").val());
+
+        if (salaryFrom > salaryTo) {
+            mvNotifier.error("Salary From is greater than Salary To");
+            flag = false;
+        }
+
         if (!cityId) {
             mvNotifier.error("City is required");
-            return false;
+            flag = false;
         }
         else if (!areaId) {
             mvNotifier.error("Area is required");
-            return false;
+            flag = false;
         }
-        else {
-            return true;
-        }
+
+        return flag;
+
+
     };
     
 
     $scope.finish =  function finish() {
         $location.path('/vacancies');
     };
-    
 
+    $scope.puplish = function puplish() {
+
+        $scope.vacancy.Puplished = true;
+        mvVacancyRepo.updateCurrentVacancy($scope.vacancy).then(function () {
+            mvNotifier.notify('Vacancy has been Puplished!');
+            
+            $location.path('/vacancies');
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+    };
+
+
+    $scope.addJobRole = function () {
+        var flag = true;
+        if ($scope.vacancy.JobRole == undefined)
+            $scope.vacancy.JobRole = [];
+
+        $scope.vacancy.JobRole.forEach(function (element) {
+            if (element._id == $scope.selectedJobRole._id) {
+                flag = false;
+            }
+
+        });
+        if (flag) 
+        $scope.vacancy.JobRole.push($scope.selectedJobRole);
+    };
+
+
+    $scope.addIndustry = function () {
+        var flag = true;
+        if ($scope.vacancy.Industry == undefined)
+            $scope.vacancy.Industry = [];
+
+        $scope.vacancy.Industry.forEach(function (element) {
+            if (element._id == $scope.selectedIndustry._id) {
+                flag = false;
+                
+            }
+
+
+        });
+        if(flag)
+        $scope.vacancy.Industry.push($scope.selectedIndustry);
+    };
+
+
+    $scope.deleteIndustry = function (industry) {
+
+        var array = $scope.vacancy.Industry;
+
+        $scope.vacancy.Industry.forEach(function (element) {
+            if (element == industry) {
+                var index = array.indexOf(element);
+                array.splice(index, 1);
+                //$rootScope.vacancy.Questions.remove(element);
+            }
+
+        });
+    };
+
+        $scope.deleteJobRole = function (jobRole) {
+
+            var array = $scope.vacancy.JobRole;
+
+            $scope.vacancy.JobRole.forEach(function (element) {
+                if (element == jobRole) {
+                    var index = array.indexOf(element);
+                    array.splice(index, 1);
+                    //$rootScope.vacancy.Questions.remove(element);
+                }
+
+            });
+
+    };
+
+    
     
 });

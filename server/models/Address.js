@@ -17,6 +17,7 @@ City: {
     },
     AddressLine1: String,
     AddressLine2: String,
+    Current: Boolean,
  JobSeeker: {
 type: mongoose.Schema.Types.ObjectId,
         ref: 'JobSeeker'

@@ -1,63 +1,66 @@
 var mongoose = require('mongoose');
 
 var employerSchema = mongoose.Schema({
-        User: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        },
-        Industry: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Industry'
-        },
-        EmployerName: [{
-            Lang: String,
-            Text: String
-        }]
-        ,
-        Address: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Address'
+    User: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    Industry: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Industry'
+    },
+    EmployerName: [{
+        Lang: String,
+        Text: String
+    }]
+    ,
+    Address: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Address'
 
-        }],
-        EmployerType: {
-            type: String
-        },
-        NumberOfEmployees: {
-            type: Number
-        },
-        AverageNumberOfJobOpeningsPerMonth: {
-            type: Number
-        },
-        ContactFirstName: {type: String},
-        ContactLastName: {type: String},
-        ContactTitle: {type: String},
+    }],
+    Photo: {
+        type: String
+    },
+    EmployerType: {
+        type: String
+    },
+    NumberOfEmployees: {
+        type: Number
+    },
+    AverageNumberOfJobOpeningsPerMonth: {
+        type: Number
+    },
+    ContactFirstName: { type: String },
+    ContactLastName: { type: String },
+    ContactTitle: { type: String },
     ContactMobileNumber: { type: String },
     CompanyPhone: { type: String },
     CompanyWebsite: { type: String },
-         CompanySize: {
-type: mongoose.Schema.Types.ObjectId,
-            ref: 'CompanySize'
+    CompanySize: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CompanySize'
     },
- Country: {
-type: mongoose.Schema.Types.ObjectId,
-            ref: 'Country'
-},
-        ModifiedBy: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        },
+    Country: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Country'
+    },
+    ModifiedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
 
-        CreatedBy: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        }, Deleted : Boolean  ,   
+    CreatedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }, Deleted: Boolean,
     DeletedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
-    },
+},
     {
-        timestamps: {createdAt: 'CreatedAt', updatedAt: "UpdatedAt"}
+        timestamps: { createdAt: 'CreatedAt', updatedAt: "UpdatedAt" }
     });
 
 var Employer = mongoose.model('Employer', employerSchema);
@@ -67,14 +70,14 @@ function createDefaultEmployers() {
         if (col.length === 0) {
 
             Employer.create({
-                Deleted : false,
+                Deleted: false,
                 EmployerType: 'D',
                 NumberOfEmployees: 5000,
                 AverageNumberOfJobOpeningsPerMonth: 50
             });
 
             Employer.create({
-                Deleted : false,
+                Deleted: false,
                 EmployerType: 'S',
                 NumberOfEmployees: 10,
                 AverageNumberOfJobOpeningsPerMonth: 1

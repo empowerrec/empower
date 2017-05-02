@@ -3,7 +3,7 @@ html {
 	-ms-text-size-adjust:100%;
 	-webkit-text-size-adjust:100%;
 }
-
+.ui-autocomplete { z-index:2147483647 !important; }
 body {
 	margin:0;
     
@@ -4784,6 +4784,10 @@ body.boxed-layout.nice-scroll .navbar-fixed-top {
   .modal-member {
     width: 430px;
   }
+
+  .modal-jobSeeker {
+    width: 1200px !important;
+  }
 }
 .modal-member .noo-ajax-register-form .control-label,
 .modal-member .noo-ajax-login-form .control-label {
@@ -4807,6 +4811,7 @@ body.boxed-layout.nice-scroll .navbar-fixed-top {
 .modal-member .noo-ajax-login-form .form-group .chosen-container-multi .chosen-choices {
   width: 100%;
 }
+
 #applyJobviaLinkedInModal .in-profile-picture img {
   width: 100%;
 }

@@ -1,211 +1,148 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container admin-area" ng-controller="mvAddressCtrl">
-
-    <div class="well">
-       
-        <form name="addressForm" class="form-horizontal">
-            <fieldset>
-
-              
-                <div class="form-group">
-                    
-                    <label for="country" class="col-md-1 control-label">{{"Address.Country"| translate}}</label>
-
-
-                    <div class="col-md-2">
-                        <select ng-model="address.Country" ng-options="country._id as country.Name[0].Text for country in countries"
-                                class="form-control"></select>
-                    </div>
-
-                
-                    <label for="city" class="col-md-1 control-label">{{"Address.City"| translate}}</label>
-
-
-                    <div class="col-md-3">
-                       
-                            <input id="cityName" />
-                            <input type="hidden" id="hfCityId" />
-                            <input type="hidden" id="currentLang" value="ar" />
-                        <label id="selectedCity" />
-                       
-                        <div ng-repeat="emp in address.City.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
-                        <!--<select ng-model="address.City" ng-options="city._id as city.Name[0].Text for city in cities"
-                                class="form-control"></select>-->
-                    </div>
-
-                   
-                    
-                        <label for="area" class="col-md-1 control-label">{{"Address.Area"| translate}}</label>
-
-
-                        <div class="col-md-3">
-                            <input id="areaName" />
-                            <input type="hidden" id="hfAreaId" />
-                            
-                            <label id="selectedArea" />
-                            <div ng-repeat="emp in address.Area.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
-                            <!--<select ng-model="address.Area" ng-options="area._id as area.Name[0].Text for area in areas"
-                                        class="form-control"></select>-->
-                        </div>
-
-                    </div>
-        <div class="form-group">
-            <label for="AddressLine1" class="col-md-2 control-label">
-                {{"Address.AddressLine1"| translate}}
-            </label>
-
-            <div class="col-md-8">
-                <textarea name="AddressLine1" placeholder="{{'Address.AddressLine1' | translate}}"
-                          ng-model="address.AddressLine1" required="required"
-                          class="form-control" />
-            </div>
+<div class="modal-dialog modal-member modal-jobSeeker">
+    <div class="modal-content" ng-controller="mvExperianceCtrl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">{{"JobSeeker.Address" | translate}}</h4>
         </div>
-                <div class="form-group">
-                    <label for="AddressLine2" class="col-md-2 control-label">
-                        {{"Address.AddressLine2"| translate}}
-                    </label>
+        <div class="modal-body">
+            <div class="container admin-area" ng-controller="mvAddressCtrl">
 
-                    <div class="col-md-8">
-                        <textarea name="AddressLine2" placeholder="{{'Address.AddressLine2' | translate}}"
-                               ng-model="address.AddressLine2" required="required"
-                               class="form-control" />
-                    </div>
+                <div class="well">
+                    <button ng-click="addaddress()" class="btn btn-primary">
+                        {{"Buttons.Add" | translate}}
+                    </button>
+                    <br />
+                    <br />
+                    <table class="table table-hover table-striped table-condensed">
+                        <thead>
+                            <tr>
+                               
+                                <th>{{"Address.City" | translate}}</th>
+                                <th>{{"Address.Area" | translate}}</th>
+                                <th>{{"Address.AddressLine1" | translate}}</th>
+                                <th>{{"Address.AddressLine2" | translate}}</th>
+                              
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="address in jobSeeker.Address | filter:searchText | orderBy:sortOrder">
+                                
+                                <td><div ng-repeat="emp in address.City.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></td>
+                                <td><div ng-repeat="emp in address.Area.Name | filter:{Lang:currentLang}">{{emp.Text}}</div></td>
+                                <td>{{address.AddressLine1}}</td>
+                                <td>{{address.AddressLine2}}</td>
+                               
+
+
+                                <td><button ng-click="updateaddress(address)"> {{"Buttons.Update" | translate}}</button></td>
+                                <td><button ng-click="deleteaddress(address)"> {{"Buttons.Delete" | translate}}</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <form name="addressForm" class="form-horizontal" ng-show="showForm">
+                        <fieldset>
+
+
+                            <div class="form-group">
+
+                                <label for="country" class="col-md-1 control-label">{{"Address.Country"| translate}}</label>
+
+
+                                <div class="col-md-2">
+                                    <select ng-model="address.Country" ng-options="country._id as country.Name[0].Text for country in countries"
+                                                                                   
+                                            class="form-control"></select>
+                                </div>
+
+
+                                <label for="city" class="col-md-1 control-label">{{"Address.City"| translate}}</label>
+
+
+                                <div class="col-md-3">
+
+                                    <input id="cityName" />
+                                    <input type="hidden" id="hfCityId" />
+                                    <input type="hidden" id="currentLang" value="ar" />
+                                    <label id="selectedCity" />
+
+                                    <div ng-repeat="emp in address.City.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                                    <!--<select ng-model="address.City" ng-options="city._id as city.Name[0].Text for city in cities"
+                                            class="form-control"></select>-->
+                                </div>
+
+
+
+                                <label for="area" class="col-md-1 control-label">{{"Address.Area"| translate}}</label>
+
+
+                                <div class="col-md-3">
+                                    <input id="areaName" />
+                                    <input type="hidden" id="hfAreaId" />
+
+                                    <label id="selectedArea" />
+                                    <div ng-repeat="emp in address.Area.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                                    <!--<select ng-model="address.Area" ng-options="area._id as area.Name[0].Text for area in areas"
+                                                class="form-control"></select>-->
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="AddressLine1" class="col-md-2 control-label">
+                                    {{"Address.AddressLine1"| translate}}
+                                </label>
+
+                                <div class="col-md-8">
+                                    <textarea name="AddressLine1" placeholder="{{'Address.AddressLine1' | translate}}"
+                                              ng-model="address.AddressLine1" required="required"
+                                              class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="AddressLine2" class="col-md-2 control-label">
+                                    {{"Address.AddressLine2"| translate}}
+                                </label>
+
+                                <div class="col-md-8">
+                                    <textarea name="AddressLine2" placeholder="{{'Address.AddressLine2' | translate}}"
+                                              ng-model="address.AddressLine2" required="required"
+                                              class="form-control" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <div class="pull-right">
+                                        <button ng-click="update()" ng-show="updateMode" ng-disabled="addressForm.$invalid" class="btn btn-primary">
+                                            {{"Buttons.Update" | translate}}
+                                        </button>
+
+                                        <button ng-click="add()" ng-show="addMode" ng-disabled="addressForm.$invalid||!addEnabled" class="btn btn-primary">
+                                            {{"Buttons.NewAddress" | translate}}
+                                        </button>
+                                        &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+
 
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <div class="pull-right">
-                            <button ng-click="update()" ng-show="updateMode" ng-disabled="addressForm.$invalid" class="btn btn-primary">
-                                {{"Buttons.Update" | translate}}
-                            </button>
+            <div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
+                <img src="ajax-loader.gif" alt="" />
+            </div>
+          
 
-                            <button ng-click="add()" ng-show="addMode" ng-disabled="addressForm.$invalid||!addEnabled" class="btn btn-primary">
-                                {{"Buttons.NewAddress" | translate}}
-                            </button>
-                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
-                        </div>
-                    </div>
-                </div>
-               
-            </fieldset>
-        </form>
-      
+
+        </div>
 
     </div>
-</div>
-
-<div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
-    <img src="ajax-loader.gif" alt="" />
-</div>
-<script>
-    $(function () {
-        $("#cityName").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    url: "/api/citiesByName/" + request.term,
-                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
-                    success: function (data) {
-                        console.log(data);
-                        response($.map(data, function (item) {
-                            console.log(item.Name[0].Text);
-                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
-                        }));
-                    },
-                    error: function (error) {
-
-                        console.log(error);
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    beforeSend: function () {
-                        var p = $("#selectedCity");
-                        var offset = p.offset();
-
-                        //set
-                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
-                        $('#loader').css("visibility", "visible");
-                    },
-                    complete: function () {
-
-                        $('#loader').css("visibility", "hidden");
-                    }
-                });
-            },
-            select: function (e, i) {
-                console.log(i.item);
-                $("#hfCityId").val(i.item.id);
-                $('#hfCityId').trigger('change');
-                var p = $("#selectedCity");
-                p.text(i.item.label);
-
-            },
-            minLength: 2
-        });
-
-
-    });
-    $('#hfCityId').change(function () {
-        var customerID = $(this).val();
-      
-
-    });
-    
-    $(function () {
-        $("#areaName").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    url: "/api/areasByName/" + request.term,
-                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
-                    success: function (data) {
-                        console.log(data);
-                        response($.map(data, function (item) {
-                            console.log(item.Name[0].Text);
-                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
-                        }));
-                    },
-                    error: function (error) {
-
-                        console.log(error);
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    beforeSend: function () {
-                        var p = $("#selectedArea");
-                        var offset = p.offset();
-
-                        //set
-                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
-                        $('#loader').css("visibility", "visible");
-                    },
-                    complete: function () {
-
-                        $('#loader').css("visibility", "hidden");
-                    }
-                });
-            },
-            select: function (e, i) {
-                console.log(i.item);
-                $("#hfAreaId").val(i.item.id);
-                $('#hfAreaId').trigger('change');
-                var p = $("#selectedArea");
-                p.text(i.item.label);
-
-            },
-            minLength: 2
-        });
-
-
-    });
-    $('#hfAreaId').change(function () {
-        var customerID = $(this).val();
-
-
-    });
-</script>
+    </div>

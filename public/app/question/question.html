@@ -1,0 +1,58 @@
+<div ng-include="'/partials/main/sidebar-menu'"></div>
+<div class="container admin-area" ng-controller="mvQuestionCtrl">
+
+    <div class="well">
+
+        <form name="QuestionForm" class="form-horizontal">
+            <fieldset>
+
+
+              
+
+                <div class="form-group">
+                  
+
+                    <label for="language" class="col-md-2 control-label">{{"Question.Language"| translate}}</label>
+
+
+                    <div class="col-md-3">
+                        <select ng-model="Question.Language" ng-options="language._id as language.Name for language in languages"
+                                class="form-control"><option selected value="">{{"Menu.SelectValue" | translate}}</option></select>
+                    </div>
+
+                    <label for="QuestionLevel" class="col-md-2 control-label">
+                        {{"Question.LanguageLevel" | translate}}
+                    </label>
+                    <div class="col-md-3">
+                        <select ng-model="Question.QuestionLevel" ng-options="languageLevel._id as languageLevel.Name[0].Text for languageLevel in languageLevels"
+                                class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
+                    </div>
+   
+
+                 
+                </div>
+               
+
+
+
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <div class="pull-right">
+                            <button ng-click="update()" ng-show="updateMode" ng-disabled="QuestionForm.$invalid" class="btn btn-primary">
+                                {{"Buttons.Save" | translate}}
+                            </button>
+
+                            <button ng-click="add()" ng-show="addMode" ng-disabled="QuestionForm.$invalid||!addEnabled" class="btn btn-primary">
+                                {{"Buttons.Add" | translate}}
+                            </button>
+                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>

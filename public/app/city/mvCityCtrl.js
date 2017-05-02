@@ -22,7 +22,7 @@ angular.module('app').controller('mvCityCtrl', function ($scope, mvNotifier, mvC
     };
     
     $scope.update = function () {
-        if ($scope.cityForm.$valid) {
+       // if ($scope.cityForm.$valid) {
             $scope.loop();
             mvCityRepo.updateCurrentCity($scope.city).then(function () {
                 mvNotifier.notify('City has been updated!');
@@ -30,11 +30,11 @@ angular.module('app').controller('mvCityCtrl', function ($scope, mvNotifier, mvC
             }, function (reason) {
                 mvNotifier.error(reason);
             });
-        }
+        //}
     };
     
     $scope.add = function () {
-        if ($scope.cityForm.$valid && $scope.addEnabled) {
+        //if ($scope.cityForm.$valid && $scope.addEnabled) {
             $scope.loop();
             mvCityRepo.createCity($scope.city).then(function () {
                 mvNotifier.notify('New City Added!');
@@ -42,7 +42,7 @@ angular.module('app').controller('mvCityCtrl', function ($scope, mvNotifier, mvC
             }, function (reason) {
                 mvNotifier.error(reason);
             });
-        }
+        //}
     };
     
     $scope.getName = function (list , lang) {

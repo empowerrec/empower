@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngCookies', 'ui.bootstrap', 'angular-loading-bar', 'autocomplete', 'ngAnimate', 'angular.filter'])
+angular.module('app', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ngCookies', 'ui.bootstrap', 'angular-loading-bar', 'autocomplete', 'ngAnimate', 'angular.filter', 'ngFileUpload'])
     .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.latencyThreshold = 110;
     }]);
@@ -305,7 +305,105 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/vacanciesSearchResult', {
             templateUrl: '/partials/vacanciesSearchResult/vacanciesSearchResult.html',
             controller: 'mvVacanciesSearchResultCtrl', resolve: routRoleChecks.user
+        }).when('/packages/:id', {
+            templateUrl: '/partials/package/package-detail',
+            controller: 'mvPackageDetailCtrl'
+        }).when('/updatePackage/:id', {
+            templateUrl: '/partials/package/package',
+            controller: 'mvPackageCtrl'
+        }).when('/addPackage', {
+            templateUrl: '/partials/package/package',
+            controller: 'mvPackageCtrl'
+        }).when('/packages', {
+            templateUrl: '/partials/package/package-list.html',
+            controller: 'mvPackageListCtrl'
+        }).when('/features/:id', {
+            templateUrl: '/partials/feature/feature-detail',
+            controller: 'mvFeatureDetailCtrl'
+        }).when('/updateFeature/:id', {
+            templateUrl: '/partials/feature/feature',
+            controller: 'mvFeatureCtrl'
+        }).when('/addFeature', {
+            templateUrl: '/partials/feature/feature',
+            controller: 'mvFeatureCtrl'
+        }).when('/features', {
+            templateUrl: '/partials/feature/feature-list.html',
+            controller: 'mvFeatureListCtrl'
+        }).when('/packageFeatures/:pId/:id', {
+            templateUrl: '/partials/packageFeature/packageFeature-detail',
+            controller: 'mvPackageFeatureDetailCtrl'
+        }).when('/updatePackageFeature/:id', {
+            templateUrl: '/partials/packageFeature/packageFeature',
+            controller: 'mvPackageFeatureCtrl'
+        }).when('/addPackageFeature/:pId', {
+            templateUrl: '/partials/packageFeature/packageFeature',
+            controller: 'mvPackageFeatureCtrl'
+        }).when('/packageFeatures/:pId', {
+            templateUrl: '/partials/packageFeature/packageFeature-list.html',
+            controller: 'mvPackageFeatureListCtrl'
+        }).when('/packageCosts/:pId/:id', {
+            templateUrl: '/partials/packageCost/packageCost-detail',
+            controller: 'mvPackageCostDetailCtrl'
+        }).when('/updatePackageCost/:pId/:id', {
+            templateUrl: '/partials/packageCost/packageCost',
+            controller: 'mvPackageCostCtrl'
+        }).when('/addPackageCost/:pId', {
+            templateUrl: '/partials/packageCost/packageCost',
+            controller: 'mvPackageCostCtrl'
+        }).when('/packageCosts/:pId', {
+            templateUrl: '/partials/packageCost/packageCost-list.html',
+            controller: 'mvPackageCostListCtrl'
+        }).when('/userPackages/:uId/:id', {
+            templateUrl: '/partials/userPackage/userPackage-detail',
+            controller: 'mvUserPackageDetailCtrl'
+        }).when('/updateUserPackage/:uId/:id', {
+            templateUrl: '/partials/userPackage/userPackage',
+            controller: 'mvUserPackageCtrl'
+        }).when('/addUserPackage/:uId', {
+            templateUrl: '/partials/userPackage/userPackage',
+            controller: 'mvUserPackageCtrl'
+        }).when('/userPackages/:uId', {
+            templateUrl: '/partials/userPackage/userPackage-list.html',
+            controller: 'mvUserPackageListCtrl'
+        })
+
+
+
+        .when('/userFeatures/:uId/:id', {
+            templateUrl: '/partials/userFeature/userFeature-detail',
+            controller: 'mvUserFeatureDetailCtrl'
+        }).when('/updateUserFeature/:uId/:id', {
+            templateUrl: '/partials/userFeature/userFeature',
+            controller: 'mvUserFeatureCtrl'
+        }).when('/addUserFeature/:uId', {
+            templateUrl: '/partials/userFeature/userFeature',
+            controller: 'mvUserFeatureCtrl'
+        }).when('/userFeatures/:uId', {
+            templateUrl: '/partials/userFeature/userFeature-list.html',
+            controller: 'mvUserFeatureListCtrl'
+        })
+
+
+
+
+
+
+
+
+        .when('/subUserInvitations/:id', {
+            templateUrl: '/partials/subUserInvitation/subUserInvitation-detail',
+            controller: 'mvSubUserInvitationDetailCtrl'
+        }).when('/updatesubUserInvitation/:id', {
+            templateUrl: '/partials/subUserInvitation/subUserInvitation',
+            controller: 'mvSubUserInvitationCtrl'
+        }).when('/addsubUserInvitation', {
+            templateUrl: '/partials/subUserInvitation/subUserInvitation',
+            controller: 'mvSubUserInvitationCtrl'
+        }).when('/subUserInvitations', {
+            templateUrl: '/partials/subUserInvitation/subUserInvitation-list.html',
+            controller: 'mvSubUserInvitationListCtrl'
         });
+
 });
 
 
@@ -317,7 +415,7 @@ angular.module('app').run(function ($rootScope, $location, $translate, mvLookup,
     $rootScope.customBootstrapStyleFile = mvStyle.getCustomBootstrapStyleFile();
     $rootScope.customStyleFile = mvStyle.getCustomStyleFile();
 
-    
+
     mvLookup.getAllLookUps();
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
         if (rejection === 'not authorized') {

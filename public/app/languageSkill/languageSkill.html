@@ -1,58 +1,102 @@
 <div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="container admin-area" ng-controller="mvLanguageSkillCtrl">
+<div class="modal-dialog modal-member modal-jobSeeker">
+    <div class="modal-content" ng-controller="mvExperianceCtrl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">{{"JobSeeker.LanguageSkill" | translate}}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container admin-area" ng-controller="mvLanguageSkillCtrl">
 
-    <div class="well">
+                <div class="well">
+                    <button ng-click="addLanguageSkill()" class="btn btn-primary">
+                        {{"Buttons.Add" | translate}}
+                    </button>
+                    <br />
+                    <br />
+                    <table class="table table-hover table-striped table-condensed">
+                        <thead>
+                            <tr>
 
-        <form name="languageSkillForm" class="form-horizontal">
-            <fieldset>
+                                <th>{{"LanguageSkill.Language" | translate}}</th>
+                                <th>{{"LanguageSkill.LanguageLevel" | translate}}</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="languageSkill in jobSeeker.LanguageSkills | filter:searchText | orderBy:sortOrder">
 
 
-              
+                                <td> {{languageSkill.Language.Name}}</td>
 
-                <div class="form-group">
-                  
+                                <td><div ng-repeat="ermp in languageSkill.LanguageSkillLevel.Name | filter:{Lang:currentLang}">{{ermp.Text}}</div></td>
 
-                    <label for="language" class="col-md-2 control-label">{{"LanguageSkill.Language"| translate}}</label>
+                                <td><button ng-click="updateLanguageSkill(languageSkill)"> {{"Buttons.Update" | translate}}</button></td>
+                                <td><button ng-click="deleteLanguageSkill(languageSkill)"> {{"Buttons.Delete" | translate}}</button></td>
+                               
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <form name="languageSkillForm" class="form-horizontal" ng-show="showForm">
+                        <fieldset>
 
 
-                    <div class="col-md-2">
-                        <select ng-model="languageSkill.Language" ng-options="language._id as language.Name for language in languages"
-                                class="form-control"><option selected value="">{{"Menu.SelectValue" | translate}}</option></select>
-                    </div>
 
-                    <label for="LanguageSkillLevel" class="col-md-2 control-label">
-                        {{"LanguageSkill.LanguageLevel" | translate}}
-                    </label>
-                    <div class="col-md-2">
-                        <select ng-model="languageSkill.LanguageSkillLevel" ng-options="languageLevel._id as languageLevel.Name[0].Text for languageLevel in languageLevels"
-                                class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
-                    </div>
-   
 
-                 
+                            <div class="form-group">
+
+
+                                <label for="language" class="col-md-2 control-label">{{"LanguageSkill.Language"| translate}}</label>
+
+
+                                <div class="col-md-3">
+                                    <select ng-model="LanguageSkill.Language" ng-options="language._id as language.Name for language in languages"
+                                            class="form-control">
+                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                    </select>
+                                </div>
+
+                                <label for="LanguageSkillLevel" class="col-md-2 control-label">
+                                    {{"LanguageSkill.LanguageLevel" | translate}}
+                                </label>
+                                <div class="col-md-3">
+                                    <select ng-model="LanguageSkill.LanguageSkillLevel" ng-options="languageLevel._id as languageLevel.Name[0].Text for languageLevel in languageLevels"
+                                            class="form-control">
+                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                    </select>
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <div class="pull-right">
+                                        <button ng-click="update()" ng-show="updateMode" ng-disabled="languageSkillForm.$invalid" class="btn btn-primary">
+                                            {{"Buttons.Save" | translate}}
+                                        </button>
+
+                                        <button ng-click="add()" ng-show="addMode" ng-disabled="languageSkillForm.$invalid||!addEnabled" class="btn btn-primary">
+                                            {{"Buttons.Add" | translate}}
+                                        </button>
+                                        &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
                 </div>
-               
+            </div>
 
-
-
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <div class="pull-right">
-                            <button ng-click="update()" ng-show="updateMode" ng-disabled="languageSkillForm.$invalid" class="btn btn-primary">
-                                {{"Buttons.Save" | translate}}
-                            </button>
-
-                            <button ng-click="add()" ng-show="addMode" ng-disabled="languageSkillForm.$invalid||!addEnabled" class="btn btn-primary">
-                                {{"Buttons.Add" | translate}}
-                            </button>
-                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
-                        </div>
-                    </div>
-                </div>
-
-            </fieldset>
-        </form>
+        </div>
     </div>
-</div>
+    </div>

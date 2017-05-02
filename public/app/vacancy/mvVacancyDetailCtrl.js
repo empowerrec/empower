@@ -22,6 +22,7 @@ angular.module('app').controller('mvVacancyDetailCtrl', function ($scope, mvVaca
         $scope.applicant = new mvApplicant();
         $scope.applicant.JobSeeker = mvIdentity.currentJobSeeker;
         $scope.applicant.Vacancy = $scope.vacancy._id;
+        $scope.applicant.Status = "N";
         mvApplicantRepo.createApplicant($scope.applicant).then(function () {
             $scope.isApplied = true;
             $scope.appliedMessage = "You Already Applied For this Job";

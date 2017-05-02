@@ -11,7 +11,8 @@ var applicantSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Vacancy'
     },
-    Confirmed : Boolean  ,
+    Confirmed: Boolean,
+    Status: String,
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

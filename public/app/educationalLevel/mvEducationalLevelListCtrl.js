@@ -14,9 +14,9 @@ angular.module('app').controller('mvEducationalLevelListCtrl',
             query: queryBulider.qb("!Deleted"),
             currentPage: $scope.paging.currentPage,
             pageSize: $scope.paging.pageSize
-        }, (function (res) {
-            $scope.educationalLevels = res[0].collection;
-            $scope.allDataCount = res[0].allDataCount;
+        }, (function (res2) {
+            $scope.educationalLevels = res2[0].collection;
+            $scope.allDataCount = res2[0].allDataCount;
         }));
     };
     

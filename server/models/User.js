@@ -32,6 +32,10 @@ var userSchema = mongoose.Schema({
     AddressLine1: { type: String },
     AddressLine2: { type: String },
     AddressLine3: { type: String },
+    Employer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Employer'
+    },
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

@@ -4783,6 +4783,10 @@ body.boxed-layout.nice-scroll .navbar-fixed-top {
   .modal-member {
     width: 430px;
   }
+
+   .modal-jobSeeker {
+    width: 1200px !important;
+  }
 }
 .modal-member .noo-ajax-register-form .control-label,
 .modal-member .noo-ajax-login-form .control-label {

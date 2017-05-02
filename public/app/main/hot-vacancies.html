@@ -1,7 +1,7 @@
 <div class="tab-pane" id="tab-1" ng-controller="mvNewVacanciesCtrl">
     <div class="jobs posts-loop">
         
-        <div class="posts-loop-content" ng-repeat="vacancy in vacancies | filter:{HotJobFlag:'true'} | limitTo:10">
+        <div class="posts-loop-content" ng-repeat="vacancy in vacancies | filter:{HotJobFlag:'true', Puplished:'true'} | limitTo:10">
             <article class="noo_job hentry">
                 <div class="loop-item-wrap">
                     <div class="item-featured">
