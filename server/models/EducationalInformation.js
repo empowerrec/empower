@@ -5,9 +5,9 @@ var EducationalInformationSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'JobSeeker'
     },
-    EducationType: {
+    EducationalLevel: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'EducationType'
+        ref: 'EducationalLevel'
     },    
     Univirsty: {
         type: mongoose.Schema.Types.ObjectId,

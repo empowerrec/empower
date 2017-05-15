@@ -1,6 +1,6 @@
 angular.module('app').factory('mvLookup'
     , function (mvIndustry, mvJobType, mvGender, mvMaritalStatus, mvMilitaryStatus, mvCarLicenceType,
-        mvCountry, mvCity, mvLanguage,  mvArea, mvCurancy, mvCompanyType, mvEducationType, mvUnivirsty, mvFaculty, 
+        mvCountry, mvCity, mvLanguage,  mvArea, mvCurancy, mvCompanyType, mvUnivirsty, mvFaculty, 
         mvSpecialization, mvGrade, mvCompanySize,mvTrainingCenter, mvEducationalLevel, mvJobRole,mvCareerLevel, $rootScope , mvSkillType, mvSkillLevel, mvLanguageLevel) {
     
     return {
@@ -16,7 +16,6 @@ angular.module('app').factory('mvLookup'
             $rootScope.maritalStatuses = mvMaritalStatus.query({ currentLang: $rootScope.currentLang });
             $rootScope.militaryStatuses = mvMilitaryStatus.query({ currentLang: $rootScope.currentLang });
             $rootScope.carLicenceTypes = mvCarLicenceType.query({ currentLang: $rootScope.currentLang });            
-            $rootScope.educationTypes = mvEducationType.query({ currentLang: $rootScope.currentLang });
             $rootScope.univirsties = mvUnivirsty.query({ currentLang: $rootScope.currentLang });
             $rootScope.faculties = mvFaculty.query({ currentLang: $rootScope.currentLang });
             $rootScope.specializations = mvSpecialization.query({ currentLang: $rootScope.currentLang });

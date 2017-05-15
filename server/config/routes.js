@@ -43,7 +43,6 @@ module.exports = function (app) {
 	app.use('/api/militaryStatuses', require('../routes/militaryStatuses'));
 	app.use('/api/carLicenceTypes', require('../routes/carLicenceTypes'));
 	app.use('/api/educationalInformations', require('../routes/educationalInformations'));
-	app.use('/api/educationTypes', require('../routes/educationTypes'));
 	app.use('/api/univirsties', require('../routes/univirsties'));
 	app.use('/api/faculties', require('../routes/faculties'));
 	app.use('/api/specializations', require('../routes/specializations'));

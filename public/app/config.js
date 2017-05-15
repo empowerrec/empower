@@ -217,7 +217,7 @@
                 "PageBody": "Page Body"
             },
             "EducationalInformation": {
-                'EducationType': 'Education Type',
+                'EducationalLevel': 'Educational Level',
                 'Univirsty': 'Univirsty',
                 'Faculty': 'Faculty',
                 'Specialization': 'Specialization',
@@ -303,8 +303,8 @@
                 'Login': 'Login',
                 'Register': 'Register ',
                 'Packages': 'Packages',
-                'Features': 'Features'
-
+                'Features': 'Features',
+                'Candidates': 'Candidates'
 
             },
             "Footer": {
@@ -567,7 +567,7 @@
                 "PageBody": "تفاصيل الصفحة"
             },
             'EducationalInformation': {
-                'EducationType': 'المرحلة التعليمية',
+                'Educational Level': 'المرحلة التعليمية',
                 'Univirsty': 'الجامعة',
                 'Faculty': 'الكلية',
                 'Specialization': 'التخصص',
@@ -653,7 +653,8 @@
                 'Login': 'تسجيل الدخول',
                 'Register': 'تسجيل ',
                 'Features': 'الخواص',
-                'Packages': 'الحزم'
+                'Packages': 'الحزم',
+                'Candidates': 'المرشحين'
 
             },
             "Footer": {

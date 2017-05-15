@@ -88,8 +88,9 @@
                                 </div>
                                 <div class="show-view-more">
                                     <a href="#/updatevacancy/{{vacancy._id}}" ng-hide="{{vacancy.Puplished}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a>
-                                    <a href="#/vacancyApplicants/{{vacancy._id}}" class="btn btn-primary"> {{"Menu.Applicants" | translate}}</a>
                                     <a class="btn btn-danger" ng-hide="{{vacancy.Puplished}}" ng-click="deleteVacancy(vacancy)"> {{"Buttons.Delete" | translate}}</a>
+                                    <a href="#/vacancyApplicants/{{vacancy._id}}" class="btn btn-primary"> {{"Menu.Applicants" | translate}}</a>
+                                    <a href="#/candidates/{{vacancy._id}}" class="btn btn-primary"> {{"Menu.Candidates" | translate}}</a>
                                     <a class="btn btn-primary" href="#/vacancies/{{vacancy._id}}">View more </a>
                                 </div>
                             </div>

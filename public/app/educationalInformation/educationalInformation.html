@@ -20,7 +20,7 @@
                     <table class="table table-hover table-striped table-condensed" ng-show="!showForm">
                         <thead>
                             <tr>
-                                <th>{{"EducationalInformation.EducationType" | translate}}</th>
+                                <th>{{"EducationalInformation.EducationalLevel" | translate}}</th>
                                 <th>{{"EducationalInformation.Univirsty" | translate}}</th>
                                 <th>{{"EducationalInformation.Faculty" | translate}}</th>
                                 <th>{{"EducationalInformation.Specialization" | translate}}</th>
@@ -34,7 +34,7 @@
                             <tr ng-repeat="educationalInformation in jobSeeker.EducationalInformation | filter:searchText | orderBy:sortOrder">
                                 <td>
                                     <a href="#/educationalInformations/{{educationalInformation._id}}">
-                                        <span ng-repeat="name in educationalInformation.EducationType.Name |filter:currentLang">{{name.Text}}</span>
+                                        <span ng-repeat="name in educationalInformation.EducationalLevel.Name |filter:currentLang">{{name.Text}}</span>
                                     </a>
                                 </td>
                                 <td><span ng-repeat="name in educationalInformation.Univirsty.Name |filter:currentLang">{{name.Text}}</span></td>
@@ -51,10 +51,10 @@
                         <fieldset>
 
                             <div class="form-group">
-                                <label for="EducationType" class="col-md-2 control-label">{{"EducationalInformation.EducationType"| translate}}</label>
+                                <label for="EducationalLevel" class="col-md-2 control-label">{{"EducationalInformation.EducationalLevel"| translate}}</label>
                                 <div class="col-md-2">
-                                    <select name="EducationType" ng-model="educationalInformation.EducationType" required="required"
-                                            ng-options="educationType._id as educationType.Name[0].Text for educationType in educationTypes" class="form-control">
+                                    <select name="EducationalLevel" ng-model="educationalInformation.EducationalLevel" required="required"
+                                            ng-options="educationalLevel._id as educationalLevel.Name[0].Text for educationType in educationTypes" class="form-control">
                                         <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                                     </select>
                                 </div>

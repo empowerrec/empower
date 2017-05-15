@@ -6,7 +6,7 @@ exports.getEducationalInformations = function (req, res) {
     
     if (req.query.jobSeeker) {
         EducationalInformation.find(JSON.parse(req.query.query))
-            .populate('EducationType').populate('Univirsty')
+            .populate('EducationalLevel').populate('Univirsty')
             .populate('Faculty').populate('Specialization').populate('Grade')
             .populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize)
@@ -17,7 +17,7 @@ exports.getEducationalInformations = function (req, res) {
             });
         });
     } else if (isAdmin(req)) {
-        EducationalInformation.find({ Deleted: false }).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
+        EducationalInformation.find({ Deleted: false }).populate('EducationalLevel').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
             .populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
@@ -27,7 +27,7 @@ exports.getEducationalInformations = function (req, res) {
             });
         });
     } else {
-        EducationalInformation.find({ CreatedBy: req.user, Deleted: false }).populate('EducationType').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
+        EducationalInformation.find({ CreatedBy: req.user, Deleted: false }).populate('EducationalLevel').populate('Univirsty').populate('Faculty').populate('Specialization').populate('Grade')
             .populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))

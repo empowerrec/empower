@@ -13,7 +13,8 @@ exports.getVacancies = function (req, res) {
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     console.log(req.query.jobSeeker);
     if (req.query.Industry) {
-        Vacancy.find({ $and: [{ Industry: req.query.Industry }, { Deleted: false }] }).populate('ModifiedBy').populate('CreatedBy')
+        Vacancy.find({ $and: [{ Industry: req.query.Industry }, { Deleted: false }] })
+            .populate('ModifiedBy').populate('CreatedBy')
             .populate('Industry').populate('Country')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
@@ -23,7 +24,8 @@ exports.getVacancies = function (req, res) {
             });
         });
     } else if (req.query.jobSeeker) {
-        Vacancy.find(JSON.parse(req.query.query)).populate('ModifiedBy').populate('CreatedBy').populate('Industry').populate('Country')
+        Vacancy.find(JSON.parse(req.query.query)).populate('ModifiedBy')
+            .populate('CreatedBy').populate('Industry').populate('Country')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
@@ -34,7 +36,8 @@ exports.getVacancies = function (req, res) {
     } else if (isAdmin(req)) {
         var xx = JSON.parse(req.query.query);
         console.log(xx);
-        Vacancy.find(JSON.parse(req.query.query)).populate('Industry').populate('ModifiedBy').populate('CreatedBy').populate('Country')
+        Vacancy.find(JSON.parse(req.query.query)).populate('Industry')
+            .populate('ModifiedBy').populate('CreatedBy').populate('Country')
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
@@ -43,7 +46,8 @@ exports.getVacancies = function (req, res) {
             });
         });
     } else {
-        Vacancy.find({ CreatedBy: req.user, Deleted : false }).populate('ModifiedBy').populate('CreatedBy').populate('Industry').populate('Country').limit(pageSize)
+        Vacancy.find({ CreatedBy: req.user, Deleted: false }).populate('ModifiedBy')
+            .populate('CreatedBy').populate('Industry').populate('Country').limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
             Vacancy.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
@@ -111,13 +115,19 @@ exports.getVacanciesSearchResult = function (req, res) {
 
 exports.getVacancyById = function (req, res) {
     if (req.params.id == 'profile') {
-        Vacancy.findOne({ User: req.user }).populate('EducationalLevel').populate('JobType')
-            .populate('Industry').populate('Country').populate('City').populate('CareerLevel').populate('SalaryCurancy').populate('Area').exec(function (err, col) {
+        Vacancy.findOne({ User: req.user }).populate('EducationalLevel')
+            .populate('JobType').populate('Industry').populate('Country')
+            .populate('City').populate('CareerLevel').populate('SalaryCurancy')
+            .populate('Area').exec(function (err, col) {
             res.send(col);
         });
     } else {
-        Vacancy.findOne({ _id: req.params.id }).populate('EducationalLevel').populate('JobType')
-            .populate('Industry').populate('Country').populate('City').populate('CareerLevel').populate('SalaryCurancy').populate('Area').exec(function (err, col) {
+        Vacancy.findOne({ _id: req.params.id })
+            .populate('EducationalLevel').populate('JobType')
+            .populate('Industry').populate('Country')
+            .populate('City').populate('CareerLevel')
+            .populate('SalaryCurancy')
+            .populate('Area').exec(function (err, col) {
             res.send(col);
         });
     }
@@ -126,14 +136,17 @@ exports.getVacancyById = function (req, res) {
 exports.getVacancyByIdForDetail = function (req, res) {
     if (req.params.id == 'profile') {
         Vacancy.findOne({ User: req.user }).populate('EducationalLevel').populate('JobType')
-            .populate('Industry').populate('Country').populate('City').populate('CareerLevel').populate('SalaryCurancy').populate('Area')
+            .populate('Industry').populate('Country')
+            .populate('City').populate('CareerLevel')
+            .populate('SalaryCurancy').populate('Area')
             .populate('ModifiedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
         Vacancy.findOne({ _id: req.params.id })
             .populate('EducationalLevel').populate('JobType')
-            .populate('Industry').populate('Country').populate('City').populate('CareerLevel').populate('SalaryCurancy').populate('Area')
+            .populate('Industry').populate('Country').populate('City')
+            .populate('CareerLevel').populate('SalaryCurancy').populate('Area')
             .populate('ModifiedBy').exec(function (err, col) {
             res.send(col);
         });

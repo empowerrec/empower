@@ -329,6 +329,18 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/features', {
             templateUrl: '/partials/feature/feature-list.html',
             controller: 'mvFeatureListCtrl'
+        }).when('/candidates/:vId/:id', {
+            templateUrl: '/partials/candidate/candidate-detail',
+            controller: 'mvCandidateDetailCtrl'
+        }).when('/updateCandidate/:id', {
+            templateUrl: '/partials/candidate/candidate',
+            controller: 'mvCandidateCtrl'
+        }).when('/addCandidate/:vId', {
+            templateUrl: '/partials/candidate/candidate',
+            controller: 'mvCandidateCtrl'
+        }).when('/candidates/:vId', {
+            templateUrl: '/partials/candidate/candidate-list.html',
+            controller: 'mvCandidateListCtrl'
         }).when('/packageFeatures/:pId/:id', {
             templateUrl: '/partials/packageFeature/packageFeature-detail',
             controller: 'mvPackageFeatureDetailCtrl'
@@ -341,7 +353,10 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/packageFeatures/:pId', {
             templateUrl: '/partials/packageFeature/packageFeature-list.html',
             controller: 'mvPackageFeatureListCtrl'
-        }).when('/packageCosts/:pId/:id', {
+        })
+
+
+        .when('/packageCosts/:pId/:id', {
             templateUrl: '/partials/packageCost/packageCost-detail',
             controller: 'mvPackageCostDetailCtrl'
         }).when('/updatePackageCost/:pId/:id', {

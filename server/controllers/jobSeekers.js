@@ -44,8 +44,8 @@ exports.getJobSeekerById = function (req, res) {
                 path: 'Courses.Grade',
                 model: 'Grade'
             }).populate({
-                path: 'EducationalInformation.EducationType',
-                model: 'EducationType'
+                path: 'EducationalInformation.EducationalLevel',
+                model: 'EducationalLevel'
             })
             .populate({
                 path: 'EducationalInformation.Univirsty',
@@ -107,8 +107,8 @@ exports.getJobSeekerById = function (req, res) {
                 path: 'Courses.Grade',
                 model: 'Grade'
             }).populate({
-                path: 'EducationalInformation.EducationType',
-                model: 'EducationType'
+                path: 'EducationalInformation.EducationalLevel',
+                model: 'EducationalLevel'
             })
             .populate({
                 path: 'EducationalInformation.Univirsty',

@@ -22,7 +22,7 @@ angular.module('app').controller('mvEducationalInformationCtrl'
             $scope.updateMode = true;
             $scope.addMode = false;
             $scope.showForm = true;
-            educationalInformation.EducationType = educationalInformation.EducationType._id;
+            educationalInformation.EducationalLevel = educationalInformation.EducationalLevel._id;
             educationalInformation.Grade = educationalInformation.Grade._id;
             //educationalInformation.Grade = educationalInformation.Grade._id;
 
@@ -65,7 +65,7 @@ angular.module('app').controller('mvEducationalInformationCtrl'
                 createFaculty(function () {
                     createSpecialization(function () {
                         var educationalInformation = {
-                            EducationType: $scope.educationalInformation.EducationType,
+                            EducationalLevel: $scope.educationalInformation.EducationalLevel,
                             JobSeeker: $scope.educationalInformation.JobSeeker,
                             Univirsty: $scope.educationalInformation.Univirsty,
                             Faculty: $scope.educationalInformation.Faculty,
@@ -103,7 +103,7 @@ angular.module('app').controller('mvEducationalInformationCtrl'
                 createFaculty(function () {
                     createSpecialization(function () {
             var educationalInformation = {
-                EducationType: $scope.educationalInformation.EducationType,
+                EducationalLevel: $scope.educationalInformation.EducationalLevel,
                 JobSeeker: $scope.educationalInformation.JobSeeker,
                 Univirsty: $scope.educationalInformation.Univirsty,
                 Faculty: $scope.educationalInformation.Faculty,

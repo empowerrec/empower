@@ -25,7 +25,6 @@ var maritalStatusModel = require('../models/MaritalStatus');
 var militaryStatusModel = require('../models/MilitaryStatus');
 var carLicenceTypeModel = require('../models/CarLicenceType');
 var educationalInformatioModel = require('../models/EducationalInformation');
-var educationTypeModel = require('../models/EducationType');
 var univirstyModel = require('../models/Univirsty');
 var facultyModel = require('../models/Faculty');
 var specializationModel = require('../models/Specialization');
@@ -91,7 +90,6 @@ module.exports = function (config) {
 	militaryStatusModel.createDefaultMilitaryStatuss();    
 	carLicenceTypeModel.createDefaultCarLicenceTypes();    
 	educationalInformatioModel.createDefaultEducationalInformations();
-	educationTypeModel.createDefaultEducationTypes();
 	univirstyModel.createDefaultUnivirsties();
 	facultyModel.createDefaultFaculties();
 	specializationModel.createDefaultSpecializations();
