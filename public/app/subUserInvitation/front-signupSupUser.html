@@ -1,0 +1,93 @@
+<div class="modal-dialog modal-member" ng-controller="mvFrontSubUserSignupCtrl">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">{{'Sign Up' | translate}}</h4>
+        </div>
+        <div class="modal-body">
+            <form class="noo-ajax-register-form form-horizontal" name="frontSignupForm">
+                <div class="form-group row user_login_container">
+                    
+                    <!--<input type="radio" name="usertype" ng-model="usertype" value="J"
+                           required="required" /> {{'JobSeeker.JobSeeker' | translate}}
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <input type="radio" name="usertype" ng-model="usertype" value="E"
+                           required="required" /> {{'Employer.Employer' | translate}}-->
+
+                    <label class="col-sm-3 control-label">{{'Email' | translate}}</label>
+                    <div class="col-sm-9">
+                        <input name="email" type="email" placeholder="{{'Email' | translate}}"
+                               ng-model="email" required="required" value="sar_foly@yahoo.com" class="user_login form-control" ng-disabled="true" />
+                       
+                    </div>
+                </div>
+               
+                <div class="form-group row">
+                    
+                    <label class="col-sm-3 control-label">{{'Password' | translate}}</label>
+                    <div class="col-sm-9">
+                        <input name="password" type="password" placeholder="{{'Password' | translate}}" ng-model="password"
+                               required="required" class="user_password form-control" />
+                        
+                        
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">{{'Confirm Password' | translate}}</label>
+                    <div class="col-sm-9">
+                        <input name="confirmpassword" type="password" placeholder="{{'Confirm Password' | translate}}" ng-model="confirmpassword"
+                               required="required" match-password-validation-error="confirmpassword != password ? 'Passwords don\'t match' : ''" class="cuser_password form-control" />
+                        
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <input name="firstname" type="text" placeholder="{{'First_Name' | translate}}" ng-model="firstname"
+                           ng-required="true" class="form-control" />
+                </div>
+                <div class="form-group row">
+                    <input name="lastname" type="text" placeholder="{{'Last_Name' | translate}}" ng-model="lastname"
+                           ng-required="true" class="form-control" />
+                </div>
+                
+                <div class="form-group row">
+                    <label class="checkbox account-reg-term text-center">
+                        <input class="account_reg_term" type="checkbox" ng-model="agreement" required title="Please agree with the term">
+                        <i></i>
+                        {{'Agreement' | translate}}
+                    </label>
+                </div>
+                <!--<div class="form-group row login-socical">
+                    <div class="col-sm-8 col-sm-offset-3">
+                        <a href="/auth/facebook">
+                            <div class="button_socical fb">
+                                <i class="fa fa-facebook-square"></i>
+                                <em >{{'FacebookSignin' | translate}}</em>
+                            </div>
+                        </a>
+                        <a href="/auth/google">
+                            <div class="button_socical gg">
+                                <i class="fa fa-google-plus"></i>
+                                <em >{{'GoogleSignin' | translate}}</em>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>-->
+                <div class="form-group text-center">
+                    <!--<div class="checkbox account-reg-term">
+                        <div class="form-control-flat">
+                            <label class="checkbox">
+                                <input class="account_reg_term" type="checkbox" required title="Please agree with the term">
+                                <i></i>
+                                {{'Agreement' | translate}}
+                            </label>
+                        </div>
+                    </div>-->
+                    <button ng-click="signup()" class="btn signup_button">{{'Sign Up' | translate}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -7,9 +7,9 @@ angular.module('app').factory('mvSubUserInvitationRepo', function ($http, $q, mv
             newSubUserInvitation.CreatedBy = mvIdentity.currentUser;
             var dfd = $q.defer();
             console.log("Saving SubUserInvitation");
-            newSubUserInvitation.$save().then(function () {
+            newSubUserInvitation.$save().then(function (res) {
                 console.log("SubUserInvitation Saved");
-                dfd.resolve();
+                dfd.resolve(res);
             }, function (response) {
                 dfd.reject(response.data.reason);
             });

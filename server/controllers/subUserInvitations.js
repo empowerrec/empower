@@ -1,4 +1,5 @@
 var SubUserInvitation = require('mongoose').model('SubUserInvitation');
+var sendMail = require('../config/mailer');
 //Get All subUserInvitation
 exports.getSubUserInvitations = function (req, res) {
     
@@ -42,6 +43,7 @@ exports.createSubUserInvitation = function (req, res, next) {
 
             return res.send({reason: err.toString()});
         }
+        sendMail.sendMail('ali7ussein@live.com', subUserInvitation.Email, 'Welcome To Empower', 'Welcome To Empower');
         res.send(subUserInvitation);
     });
 };

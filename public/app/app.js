@@ -28,6 +28,10 @@ angular.module('app').config(function ($routeProvider) {
             controller: 'mvEmployerListCtrl', resolve: routRoleChecks.admin
         }).when('/signup', {
             templateUrl: '/partials/account/signup', controller: 'mvSignupCtrl'
+
+        }).when('/signupSupUser', {
+            templateUrl: '/partials/subUserInvitation/front-signupSupUser', controller: 'mvFrontSubUserSignupCtrl'
+
         }).when('/profile', {
             templateUrl: '/partials/account/profile',
             controller: 'mvProfileCtrl', resolve: routRoleChecks.user
@@ -302,6 +306,9 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/vacancyApplicants/:vacancyId', {
             templateUrl: '/partials/applicant/applicant-list.html',
             controller: 'mvApplicantListCtrl'
+        }).when('/applicants/arrangeInterview/:id', {
+            templateUrl: '/partials/applicant/arrangeInterview.html',
+            controller: 'mvArrangeInterviewCtrl'
         }).when('/vacanciesSearchResult', {
             templateUrl: '/partials/vacanciesSearchResult/vacanciesSearchResult.html',
             controller: 'mvVacanciesSearchResultCtrl', resolve: routRoleChecks.user
@@ -399,13 +406,24 @@ angular.module('app').config(function ($routeProvider) {
         })
 
 
+        .when('/subUserInvitationDetails/:id', {
+    templateUrl: '/partials/subUserInvitationDetail/subUserInvitationDetail-detail',
+    controller: 'mvSubUserInvitationDetailDetailCtrl'
+}).when('/updatesubUserInvitationDetail/:id', {
+    templateUrl: '/partials/subUserInvitationDetail/subUserInvitationDetail',
+    controller: 'mvSubUserInvitationDetailCtrl'
+}).when('/addsubUserInvitationDetail', {
+    templateUrl: '/partials/subUserInvitationDetail/subUserInvitationDetail',
+    controller: 'mvSubUserInvitationDetailCtrl'
+}).when('/subUserInvitationDetails', {
+    templateUrl: '/partials/subUserInvitationDetail/subUserInvitationDetail-list.html',
+    controller: 'mvSubUserInvitationDetailListCtrl'
+})
 
 
 
 
-
-
-        .when('/subUserInvitations/:id', {
+.when('/subUserInvitations/:id', {
             templateUrl: '/partials/subUserInvitation/subUserInvitation-detail',
             controller: 'mvSubUserInvitationDetailCtrl'
         }).when('/updatesubUserInvitation/:id', {
@@ -418,6 +436,7 @@ angular.module('app').config(function ($routeProvider) {
             templateUrl: '/partials/subUserInvitation/subUserInvitation-list.html',
             controller: 'mvSubUserInvitationListCtrl'
         });
+
 
 });
 

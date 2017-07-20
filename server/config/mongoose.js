@@ -48,7 +48,7 @@ var applicant = require('../models/Applicant');
 var packageModel = require('../models/Package');
 var questionModel = require('../models/Question');
 var subUserInvitationModel = require('../models/SubUserInvitation');
-
+var subUserInvitationDetailModel = require('../models/SubUserInvitationDetail');
 module.exports = function (config) {
 	mongoose.connect(config.db);
 	
@@ -73,7 +73,8 @@ module.exports = function (config) {
 	jobSeekerModel.createDefaultJobSeekers();
 	vacancyModel.createDefaultVacancies();
 	industryModel.createDefaultIndustry();
-	subUserInvitationModel.createDefaultSubUserInvitation();
+    subUserInvitationModel.createDefaultSubUserInvitation();
+    subUserInvitationDetailModel.createDefaultSubUserInvitationDetail();
 	jobTypeModel.createDefaultJobTypes();
 	innerPageModel.createDefaultInnerPages();
 	languageModel.createDefaultLanguages();

@@ -192,10 +192,6 @@ var jobSeekerSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
     },
-    PreferredJobCategory: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Category'
-        }],
     EducationLevel: { type: String, enum: educationLevels },
     SchoolName: { type: String },
     GraduationGrade: { type: String, enum: graduationGrades },
@@ -210,6 +206,36 @@ var jobSeekerSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'City'
     },
+    PreferredJobCategory: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category'
+    }],
+
+    PreferredIndustry: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Industry'
+    }],
+    
+    PreferredCareerLevel: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CareerLevel'
+    },
+    PreferredSalaryCurancy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Curancy'
+    },
+    PreferredSalaryType: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'SalaryType'
+    },
+    PreferredJobType: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'JobType'
+    },
+    PreferredJobRole: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'JobRole'
+    }],   
     Reference1: { type: String },
     Reference1Contact: { type: String },
     Reference2: { type: String },

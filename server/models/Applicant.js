@@ -12,6 +12,9 @@ var applicantSchema = mongoose.Schema({
         ref: 'Vacancy'
     },
     Confirmed: Boolean,
+    ArrangeInterviewDate: { type: Date },
+    ArrangeInterviewTime: { type: Date },
+    ArrangeInterviewLocation: String,
     Status: String,
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,

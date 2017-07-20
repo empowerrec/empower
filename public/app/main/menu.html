@@ -170,6 +170,11 @@
                                 <li ng-show="identity.currentUser.isEmployer()">
                                     <a href="#/subUserInvitations">{{"Menu.InviteSubUser" | translate}}</a>
                                 </li>
+
+                                <li ng-show="identity.currentUser.isEmployer()">
+                                    <a href="#/signupSupUser">{{"Menu.SignUpSubUser" | translate}}</a>
+                                </li>
+
                                 <li ng-show="identity.currentUser.isJobSeeker()">
                                     <a href="#/updateJobSeeker/PersonalInformation/profile">{{"Menu.JobSeekerProfile" | translate}}</a>
                                 </li>

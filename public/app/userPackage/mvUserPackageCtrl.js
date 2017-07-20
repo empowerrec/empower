@@ -64,8 +64,8 @@ angular.module('app').controller('mvUserPackageCtrl', function ($scope, mvPackag
         $scope.packageAmount = undefined;
         $scope.totalAmount = undefined;
 
-        if ($scope.UserPackage.Package && $scope.UserPackage.NoOfMonths) {
-            $scope.expiryDate = new Date(moment($scope.UserPackage.StartDate).add($scope.UserPackage.NoOfMonths, 'month'));
+            if ($scope.UserPackage.Package && $scope.UserPackage.NoOfMonths) {
+                $scope.expiryDate = new Date(moment($scope.UserPackage.StartDate).add($scope.UserPackage.NoOfMonths, 'month'));
             $scope.UserPackage.ExpiryDate = new Date($scope.expiryDate);
 
             mvPackageCost.query({

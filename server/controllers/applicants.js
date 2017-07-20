@@ -56,6 +56,24 @@ exports.getApplicantByName = function (req, res) {
     
 
 };
+
+exports.arrangeInterview = function (req, res, next) {
+    var applicantData = req.body;
+
+    Applicant.create(applicantData, function (err, applicant) {
+        if (err) {
+            if (err.toString().indexOf('E11000') > -1) {
+                err = new Error('Duplicate Applicant');
+            }
+            res.status(400);
+
+            return res.send({ reason: err.toString() });
+        }
+        res.send(applicant);
+    });
+};
+
+
 exports.createApplicant = function (req, res, next) {
     var applicantData = req.body;
     

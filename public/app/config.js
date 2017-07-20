@@ -109,7 +109,6 @@
                 'Skills': 'Skills',
                 'LanguageSkills': 'Language Skills',
                 'HasACar': 'Has a Car',
-                'ExpectedSalary': 'Expected Salary',
                 'PeriodOfEnrollment': 'Period Of Enrollment',
                 'MoreInformation': 'More Information',
                 'Job Preferences': 'Job Preferences'
@@ -243,6 +242,7 @@
                 'Messge3': '3. Send your resume to employers'
             },
             "Buttons": {
+                "ArrangeInterview":"Arrange Interview",
                 "Update": "Update",
                 "Save": "Save",
                 "Cancel": "Cancel",
@@ -288,6 +288,7 @@
                 "Categories": "Categories",
                 "CompanyProfile": "Company Profile",
                 "InviteSubUser": "Invite Sub User",
+                "SignUpSubUser": "SignUpSubUser",
                 "Experiances": "Experiances",
                 'SelectValue': 'Select Value',
                 'JobSeekerProfile': 'Job Seeker Profile',
@@ -360,6 +361,11 @@
                 "Feature": "Feature",
                 "ExpiryDate": "Expiry Date",
                 "User": "User"
+            },
+            'Applicant': {
+                "ArrangeInterviewLocation": "Interview Location",
+                "ArrangeInterviewDate": "Interview Date",
+                "ArrangeInterviewTime": "Interview Time"
             }
         };
         
@@ -459,7 +465,6 @@
                 'Skills': 'المهارات',
                 'LanguageSkills': 'مهارات اللغة',
                 'HasACar': 'لديك سيارة',
-                'ExpectedSalary': 'المرتب المتوقع',
                 'PeriodOfEnrollment': 'مهلة ترك الشركة الحالية',
                 'MoreInformation': 'معلومات اضافية',
                 'Job Preferences': 'خيارات الوظيفة'
@@ -593,6 +598,7 @@
                 'Messge3': '3. ارسل بياناتك للشركات'
             },
             "Buttons": {
+                "ArrangeInterview":"تنظيم مقابلة",
                 "Update": "تعديل",
                 "Save": "حفظ",
                 "Cancel": "الغاء",
@@ -638,6 +644,7 @@
                 "Categories": "التصنيفات",
                 "CompanyProfile": "بيانات الشركة",
                 "InviteSubUser": "دعوة المستخدمين",
+                "SignUpSubUser":"SignUpSubUser",
                 "Experiances": "الخبرات",
                 'SelectValue': 'اختار من القائمة',
                 'JobSeekerProfile': 'بيانات طالب العمل',
@@ -710,6 +717,11 @@
                 "Feature": "الخاصية",
                 "ExpiryDate": "تاريخ النهاية",
                 "User": "المستخدم"
+            },
+            'Applicant': {
+                "ArrangeInterviewLocation": "مكان المقابلة",
+                "ArrangeInterviewDate": "تاريخ المقابلة",
+                "ArrangeInterviewTime": "وقت المقابلة"
             }
         };
         

@@ -54,7 +54,7 @@ exports.createUser = function (req, res, next) {
             return res.send({ reason: err.toString() });
         }
         console.log('Send Message');
-        sendMail.sendMail('info@empowerrec.com',userData.UserName , 'Welcome To Empower' , 'Welcome To Empower' );
+        sendMail.sendMail('ali7ussein@live.com',userData.UserName , 'Welcome To Empower' , 'Welcome To Empower' );
         req.logIn(user, function (err) {
             if (err) {
                 return next(err);
@@ -133,11 +133,11 @@ exports.sendResetPasswordLink = function (req, res) {
                 port: "465",                     // smtp server port
                 domain: "[https://empowerrec.herokuapp.com]",            // domain used by client to identify itself to server
                 to: user.UserName,
-                from: 'info@empowerrec.com',
+                from: 'ali7ussein@live.com',
                 subject: 'Empower Password Reset',
                 body: text,
                 authentication: "login",        // auth login is supported; anything else is no auth
-                username: "info@empowerrec.com",       // Base64 encoded username
+                username: "ali7ussein@live.com",       // Base64 encoded username
                 password: "abc@147852"        // Base64 encoded password
    
             };
@@ -199,11 +199,11 @@ exports.updatePassword = function (req, res) {
                             port: "465",                     // smtp server port
                             domain: "[https://empowerrec.herokuapp.com]",            // domain used by client to identify itself to server
                             to: user.UserName,
-                            from: 'info@empowerrec.com',
+                            from: 'ali7ussein@live.com',
                             subject: 'Empower your password has been changed',
                             body: text,
                             authentication: "login",        // auth login is supported; anything else is no auth
-                            username: "info@empowerrec.com",       // Base64 encoded username
+                            username: "ali7ussein@live.com",       // Base64 encoded username
                             password: "abc@147852"        // Base64 encoded password   
                         };
                         

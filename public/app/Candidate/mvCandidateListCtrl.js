@@ -1,18 +1,29 @@
-angular.module('app').controller('mvCandidateListCtrl', function ($scope, mvCandidate, mvVacancy, mvJobSeeker, $translate, mvIdentity, mvCandidateRepo, mvNotifier, queryBulider) {
+angular.module('app').controller('mvCandidateListCtrl', function ($scope, $routeParams,mvCandidate, mvVacancy, mvJobSeeker, $translate, mvIdentity, mvCandidateRepo, mvNotifier, queryBulider) {
     $scope.currentUser = mvIdentity.currentUser;
     $scope.paging = {
         currentPage: 1,
         maxPagesToShow: 5,
         pageSize: 10
     };
+    var vId = $routeParams.vId;
 
     $scope.getData = function () {
 
         var vacancy = mvVacancy.get({ _id: vId }, (function () {
-            var whereString = "";
+            var whereString = "SalaryPreference >=" + vacancy.SalaryRangeFrom +
+                " && SalaryPreference <= " + vacancy.SalaryRangeTo + "";
+                //"' && PreferredCountryOfWork == '" + vacancy.Country +
+                //"' && PreferredCityOfWork == '" + vacancy.City +
+                ////"' && '" + vacancy.Category + "' == PreferredJobCategory" +
+                ////" && '" + vacancy.Industry + "' == PreferredIndustry" +
+                //"' && PreferredCareerLevel == '" + vacancy.CareerLevel +
+                //"' && PreferredSalaryCurancy == '" + vacancy.SalaryCurancy +
+                //"' && PreferredSalaryType == '" + vacancy.SalaryType +
+                ////"' && " + vacancy.JobRole + " == PreferredJobRole" +
+                //"' && PreferredJobType == '" + vacancy.JobType + "'";
             mvJobSeeker.query({
                 
-                query: queryBulider.qb("!Deleted"),
+                query: queryBulider.qb(whereString + "&&!Deleted"),
                 currentPage: $scope.paging.currentPage,
                 pageSize: $scope.paging.pageSize
             }, (function (res) {

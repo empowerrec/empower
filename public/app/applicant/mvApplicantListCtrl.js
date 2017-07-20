@@ -72,6 +72,20 @@ angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvAppl
             });
         }));
     };
+
+
+    $scope.arrangeInterview = function (applicant) {
+        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
+            ed.Status = 'A';
+            ed.ModifiedBy = mvIdentity.currentUser;
+            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
+                mvNotifier.notify('Applicant has been Approved!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
     
     $scope.getData();
 

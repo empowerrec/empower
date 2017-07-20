@@ -60,8 +60,32 @@
                                                                     </div>
                                                                 </div>
 
-
-                                                          
+                                                                <table class="table table-hover table-striped table-condensed">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>{{"Feature.Name" | translate}}</th>
+                                                                            <th>{{"PackageFeature.Points" | translate}}</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr ng-repeat="packageFeature in packageFeatures | filter:searchText | orderBy:sortOrder">
+                                                                            <td><div ng-repeat="name in packageFeature.Feature.Name | filter:{Lang:currentLang}">{{name.Text}}</div></td>
+                                                                            <td><input type="number" min="0" ng-model="packageFeature.Points" ng-change="EditData()"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <uib-pagination total-items="allDataCount"
+                                                                                items-per-page="paging.pageSize"
+                                                                                ng-model="paging.currentPage"
+                                                                                max-size="paging.maxPagesToShow"
+                                                                                ng-change="EditData()"
+                                                                                class="pagination-lg"
+                                                                                boundary-links="true"
+                                                                                previous-text="{{'Buttons.Previous' | translate}}"
+                                                                                next-text="{{'Buttons.Next' | translate}}"
+                                                                                first-text="{{'Buttons.First' | translate}}"
+                                                                                last-text="{{'Buttons.Last' | translate}}">
+                                                                </uib-pagination>
                                                                 <div class="form-group">
                                                                     <div class="col-md-10 col-md-offset-2">
                                                                         <div class="pull-right">

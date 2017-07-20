@@ -26,7 +26,7 @@ angular.module('app').controller('mvNewVacanciesCtrl', function ($scope, mvVacan
     $scope.getData = function () {
         mvVacancy.query({
             query: queryBulider.qb("!Deleted"),
-            jobSeeker: mvIdentity.currentJobSeeker._id,
+            jobSeeker: $scope.currentUser._id,
             Puplished: true,
             currentPage: $scope.paging.currentPage,
             pageSize: $scope.paging.pageSize
