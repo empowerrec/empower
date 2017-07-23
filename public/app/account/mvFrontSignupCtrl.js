@@ -20,6 +20,7 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootSco
                 FirstName: name ,
                 LastName: $scope.lastname,
                 UserType: $scope.usertype
+             
             };
             
             mvAuth.createUser(newUserData)

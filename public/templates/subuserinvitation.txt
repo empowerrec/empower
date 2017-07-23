@@ -1,0 +1,5 @@
+<p>You has been invited for a new user at toptalents.info</p>
+<p>To Accept the invitaion click the link below </p>
+<a href="{{appurl}}/#/signupSupUser/{{subUserInvitationId}}">Accept</a>
+<p>To Decline the invitaion click the link below</p>
+<a href="{{appurl}}/#/DeclineSupUser/{{subUserInvitationId}}">Decline</a>

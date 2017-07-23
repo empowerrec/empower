@@ -70,7 +70,7 @@
                                                                     <tbody>
                                                                         <tr ng-repeat="packageFeature in packageFeatures | filter:searchText | orderBy:sortOrder">
                                                                             <td><div ng-repeat="name in packageFeature.Feature.Name | filter:{Lang:currentLang}">{{name.Text}}</div></td>
-                                                                            <td><input type="number" min="0" ng-model="packageFeature.Points" ng-change="EditData()"></td>
+                                                                            <td><input type="number" min="0"  ng-model="packageFeature.Points" ng-change="checkData(packageFeature)"></td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>

@@ -29,8 +29,11 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/signup', {
             templateUrl: '/partials/account/signup', controller: 'mvSignupCtrl'
 
-        }).when('/signupSupUser', {
+        }).when('/signupSupUser/:id', {
             templateUrl: '/partials/subUserInvitation/front-signupSupUser', controller: 'mvFrontSubUserSignupCtrl'
+
+        }).when('/DeclineSupUser/:id', {
+            templateUrl: '/partials/subUserInvitation/DeclineSubUserInvitation', controller: 'mvDeclineSupUserCtrl'
 
         }).when('/profile', {
             templateUrl: '/partials/account/profile',

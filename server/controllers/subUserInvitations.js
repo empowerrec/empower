@@ -1,5 +1,7 @@
 var SubUserInvitation = require('mongoose').model('SubUserInvitation');
 var sendMail = require('../config/mailer');
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var config = require('../config/config')[env];
 //Get All subUserInvitation
 exports.getSubUserInvitations = function (req, res) {
     
@@ -43,7 +45,15 @@ exports.createSubUserInvitation = function (req, res, next) {
 
             return res.send({reason: err.toString()});
         }
-        sendMail.sendMail('ali7ussein@live.com', subUserInvitation.Email, 'Welcome To Empower', 'Welcome To Empower');
+
+        
+        var template = "./public/templates/subuserinvitation.txt"  // path to template name
+        var data = {
+            "subUserInvitationId": subUserInvitation._id,
+            "appurl": config.AppURL
+        };
+
+        sendMail.sendMail('ali7ussein@live.com', subUserInvitation.Email, 'Sub User Invitation at Toptalents.online', '', template , data);
         res.send(subUserInvitation);
     });
 };

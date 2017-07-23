@@ -44,6 +44,7 @@ exports.createUser = function (req, res, next) {
     userData.Salt = encryption.createSalt();
     userData.HashedPassword = encryption.hashPassword(userData.Salt, userData.Password);
     userData.AuthenticationStrategyName = 'local';
+    userData.Deleted = false;
     User.create(userData, function (err, user) {
         if (err) {
             if (err.toString().indexOf('E11000') > -1) {

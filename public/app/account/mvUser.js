@@ -14,6 +14,10 @@ angular.module('app').factory('mvUser', function ($resource) {
         return this.UserType && this.UserType.indexOf('E') > -1;
     };
 
+    UserResource.prototype.isSubUser = function () {
+        return this.UserType && this.UserType.indexOf('S') > -1;
+    };
+
     UserResource.prototype.isTrainingCenter = function () {
         return this.UserType && this.UserType.indexOf('T') > -1;
     };

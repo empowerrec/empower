@@ -39,7 +39,7 @@ exports.getEmployerById = function (req, res) {
 };
 
 exports.getEmployerByUser = function (req, res) {
-    Employer.findOne({ User: req.user }).populate('ModifiedBy').exec(function(err, col) {
+    Employer.findOne({$or:[{ '_id': req.user.Employer }, { User: req.user }]}).populate('ModifiedBy').exec(function(err, col) {
        
         res.send(col);
     });

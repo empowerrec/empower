@@ -16,7 +16,8 @@ module.exports = {
             'clientID': '591834079484-kcos7safva4drele71eekv5bbu971m28.apps.googleusercontent.com',
             'clientSecret': 'F0_Vj094rgHaKKHENOMnfBi7',
             'callbackURL': 'http://localhost:3030/auth/google/callback'
-        }
+        },
+        AppURL : 'http://localhost:3030'
     },
     production: {
         rootPath: rootPath,
@@ -32,6 +33,7 @@ module.exports = {
             'clientID': '591834079484-kcos7safva4drele71eekv5bbu971m28.apps.googleusercontent.com',
             'clientSecret': 'F0_Vj094rgHaKKHENOMnfBi7',
             'callbackURL': 'https://empowerrec.herokuapp.com/auth/google/callback'
-        }
+        },
+        AppURL : 'https://empowerrec.herokuapp.com/'
     }
 };

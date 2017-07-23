@@ -1,8 +1,21 @@
 angular.module('app').controller('mvFrontSubUserSignupCtrl', function ($scope, $rootScope, $location, $q,
-    mvUser, mvJobSeekerRepo, mvNotifier, mvAuth, mvIdentity, mvEmployer, mvEmployerRepo) {
-    
-    $scope.usertype = "S";
-    $scope.email = 'sar_foly@yahoo.com';
+    mvUser, mvJobSeekerRepo, mvNotifier, mvAuth, mvIdentity, mvEmployer,
+    mvEmployerRepo, mvSubUserInvitation, $routeParams, mvSubUserInvitationRepo) {
+    var invitationId = $routeParams.id;
+
+    if (invitationId) {
+       $scope.invitation = mvSubUserInvitation.get({ _id: invitationId }, (function () {
+            
+
+            $scope.usertype = "S";
+            $scope.email = $scope.invitation.Email;
+            $scope.employer = $scope.invitation.Employer;
+
+
+
+        }));
+    };
+
     $scope.signup = function () {
         if ($scope.frontSignupForm.$valid) {
             var newUserData = {
@@ -10,7 +23,8 @@ angular.module('app').controller('mvFrontSubUserSignupCtrl', function ($scope, $
                 Password: $scope.password,
                 FirstName: $scope.firstname,
                 LastName: $scope.lastname,
-                UserType: $scope.usertype
+                UserType: $scope.usertype,
+                Employer: $scope.employer
             };
             
             mvAuth.createUser(newUserData)
@@ -25,23 +39,33 @@ angular.module('app').controller('mvFrontSubUserSignupCtrl', function ($scope, $
                 if ($('#userregisterModal').length) {
                     $('#userregisterModal').modal('hide');
                 }
-               
+                $scope.UpdateStatus($scope.invitation, "Accept");
                 $location.path('/profile');
             }, function (reason) {
                 mvNotifier.error(reason);
             });
         }
     };
-    
-    $scope.facebookLogin = function () {
+
+    $scope.UpdateStatus = function (subUserInvitation, type) {
+        var ed = mvSubUserInvitation.get({ _id: subUserInvitation._id }, (function () {
+            if (type == 'Cancel')
+                ed.Status = "C";
+            else if (type == 'Accept')
+                ed.Status = "A";
+            else if (type == 'Reject')
+                ed.Status = "R";
+
+            else
+                ed.Status = "O";
+            mvSubUserInvitationRepo.updateCurrentSubUserInvitation(ed).then(function () {
+                mvNotifier.notify('Status has been updated!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
        
-                    $location.path('/auth/facebook/');
-             
-    };
-    
-    $scope.googleLogin = function () {
-        
-        $location.path('/auth/google/');
-             
-    };
+       
 });

@@ -11,7 +11,7 @@
                 <div class="form-group row user_login_container">
                     
                     <input type="radio" name="usertype" ng-model="usertype" value="J"
-                           required="required" /> {{'JobSeeker.JobSeeker' | translate}}
+                           required="required" selected="selected"/> {{'JobSeeker.JobSeeker' | translate}}
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     <input type="radio" name="usertype" ng-model="usertype" value="E"
                            required="required" /> {{'Employer.Employer' | translate}}
@@ -61,23 +61,7 @@
                         {{'Agreement' | translate}}
                     </label>
                 </div>
-                <div class="form-group row login-socical">
-                    <div class="col-sm-8 col-sm-offset-3">
-                        <a href="/auth/facebook">
-                            <div class="button_socical fb">
-                                <i class="fa fa-facebook-square"></i>
-                                <em >{{'FacebookSignin' | translate}}</em>
-                            </div>
-                        </a>
-                        <a href="/auth/google">
-                            <div class="button_socical gg">
-                                <i class="fa fa-google-plus"></i>
-                                <em >{{'GoogleSignin' | translate}}</em>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
+                
                 <div class="form-group text-center">
                     <!--<div class="checkbox account-reg-term">
                         <div class="form-control-flat">
@@ -89,6 +73,23 @@
                         </div>
                     </div>-->
                     <button ng-click="signup()" class="btn signup_button">{{'Sign Up' | translate}}</button>
+                </div>
+                <div class="form-group row login-socical">
+                    <div class="col-sm-8 col-sm-offset-3">
+                        <a href="/auth/facebook">
+                            <div class="button_socical fb">
+                                <i class="fa fa-facebook-square"></i>
+                                <em>{{'FacebookSignin' | translate}}</em>
+                            </div>
+                        </a>
+                        <a href="/auth/google">
+                            <div class="button_socical gg">
+                                <i class="fa fa-google-plus"></i>
+                                <em>{{'GoogleSignin' | translate}}</em>
+                            </div>
+                        </a>
+
+                    </div>
                 </div>
             </form>
         </div>

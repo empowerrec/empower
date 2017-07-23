@@ -56,8 +56,8 @@
                                 </div>
                                 <div class="show-view-more">
   <!--<a class="btn btn-danger" ng-show="{{subUserInvitation.Status=='O'}}" ng-click="UpdateStatus(subUserInvitation)"> {{"Buttons.Reject" | translate}}</a>-->
-                                    <a class="btn btn-success"  ng-hide="{{subUserInvitation.Status=='A' || subUserInvitation.Status=='C' || subUserInvitation.Status=='R'}}" ng-click="UpdateStatus(subUserInvitation,'Accept')"> {{"Buttons.Accept" | translate}}</a>
-                                    <a class="btn btn-danger"   ng-hide="{{subUserInvitation.Status=='R' || subUserInvitation.Status=='C' || subUserInvitation.Status=='A'}}" ng-click="UpdateStatus(subUserInvitation,'Reject')"> {{"Buttons.Reject" | translate}}</a>
+                                    <!--<a class="btn btn-success"  ng-hide="{{subUserInvitation.Status=='A' || subUserInvitation.Status=='C' || subUserInvitation.Status=='R'}}" ng-click="UpdateStatus(subUserInvitation,'Accept')"> {{"Buttons.Accept" | translate}}</a>
+                                    <a class="btn btn-danger"   ng-hide="{{subUserInvitation.Status=='R' || subUserInvitation.Status=='C' || subUserInvitation.Status=='A'}}" ng-click="UpdateStatus(subUserInvitation,'Reject')"> {{"Buttons.Reject" | translate}}</a>-->
                                     <a class="btn btn-warning" ng-show="{{subUserInvitation.Status=='O'}}" ng-click="UpdateStatus(subUserInvitation,'Cancel')"> {{"Buttons.Cancel" | translate}}</a>
                                     <a class="btn btn-warning" ng-show="{{subUserInvitation.Status=='C'}}" ng-click="UpdateStatus(subUserInvitation,'Rollback')"> {{"Buttons.Rollback" | translate}}</a>
                                     <!--<a href="#/updatesubUserInvitation/{{subUserInvitation._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a>-->

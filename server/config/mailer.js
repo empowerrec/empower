@@ -1,18 +1,21 @@
 var email = require('mailer');
 
-exports.sendMail = function sendMail(sender , reciver , messageSubject , messageBody) {
+
+exports.sendMail = function sendMail(sender , reciver , messageSubject , messageBody , template , data) {
     email.send({
         ssl: true,
-        host: "smtp.live.com",              // smtp server hostname
-        port: "587",                     // smtp server port
-        domain: "[https://empowerrec.herokuapp.com]",            // domain used by client to identify itself to server
+        host: "smtp.gmail.com",              // smtp server hostname
+        port: "465",                     // smtp server port
+        domain: "[127.0.0.1]",            // domain used by client to identify itself to server
         to: reciver,
         from: sender,
         subject: messageSubject,
+        template: template,   // path to template name
+        data: data,
         body: messageBody,
         authentication: "login",        // auth login is supported; anything else is no auth
-        username: "ali7ussein@live.com",       // Base64 encoded username
-        password: "mobman9284"        // Base64 encoded password
+        username: "toptalentsonline@gmail.com",       // Base64 encoded username
+        password: "toptalents@123"        // Base64 encoded password
     },
     function (err, result) {
         if (err) {

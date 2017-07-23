@@ -41,7 +41,7 @@
             </ul>
         </div>
 
-        <div class="container-wrap" ng-hide="identity.currentUser.isEmployer() || identity.currentUser.isAdmin()">
+        <div class="container-wrap" ng-hide="identity.currentUser.isEmployer() || identity.currentUser.isSubUser() || identity.currentUser.isAdmin()">
             <div class="main-content container-fullwidth">
                 <div class="row">
                     <div class="noo-main col-md-12">
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-wrap" ng-show="identity.currentUser.isEmployer() && !completed() || identity.currentUser.isAdmin() && !completed()">
+        <div class="container-wrap" ng-show="identity.currentUser.isEmployer() || identity.currentUser.isSubUser() && !completed() || identity.currentUser.isAdmin() && !completed()">
             <div class="main-content container-fullwidth">
                 <div class="row">
                     <div class="noo-main col-md-12">

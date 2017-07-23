@@ -1,5 +1,5 @@
 <div class="modal-dialog modal-member" ng-controller="mvFrontSubUserSignupCtrl">
-    <div class="modal-content">
+    <div class="modal-content" ng-show="invitation.Status == 'O'">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -89,5 +89,17 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <div ng-show="invitation.Status == 'A'">
+        <h5>Invitation Already Accpeted</h5>
+    </div>
+
+    <div ng-show="invitation.Status == 'R'">
+        <h5>Invitation Already Declined</h5>
+    </div>
+
+    <div ng-show="invitation.Status == 'C'">
+        <h5>Invitation Already Cancled</h5>
     </div>
 </div>

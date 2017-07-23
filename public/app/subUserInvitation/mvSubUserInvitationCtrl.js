@@ -1,15 +1,19 @@
-angular.module('app').controller('mvSubUserInvitationCtrl', function ($scope, $location, mvNotifier, mvSubUserInvitationRepo, mvSubUserInvitationDetail, mvSubUserInvitationDetailRepo, mvSubUserInvitation, mvUserPackage, $routeParams, mvPackageFeature, mvFeature, mvPackage, queryBulider, $translate, mvIdentity) {
+angular.module('app').controller('mvSubUserInvitationCtrl', function ($scope, $location, mvNotifier, mvUserFeatureRepo, mvSubUserInvitationRepo, mvSubUserInvitationDetail, mvUserFeature, mvSubUserInvitationDetailRepo, mvSubUserInvitation, mvUserPackage, $routeParams, mvPackageFeature, mvFeature, mvPackage, queryBulider, $translate, mvIdentity) {
     var id = $routeParams.id;
     var curUser = mvIdentity.currentUser._id;
     //$scope.pId = $routeParams.pId;
     //var routeParamspId = '58f6342423b01eec147214e5'
     var routeParamspId = undefined;
-
+    $scope.packageFeaturesMax = undefined;
     //$scope.pId = $routeParams.pId;
     $scope.pId = routeParamspId;
-
+    $scope.maxVal = 0;
     $scope.nameText = "";
     $scope.addEnabled = false;
+    $scope.UserFeature = undefined;
+    $scope.subInvitationDetail = undefined;
+    $scope.packageFeaturesss = [];
+    $scope.UserFeature2 = undefined;
     $scope.currentLang = $translate.use();
     if (id) {
         $scope.subUserInvitation = mvSubUserInvitation.get({ _id: id }, (function () {
@@ -94,11 +98,63 @@ angular.module('app').controller('mvSubUserInvitationCtrl', function ($scope, $l
                                         pf.Feature = feature;
                                         pf.Points = 0;
                                         pf.Deleted = false;
+                                        //$scope.packageFeaturesss = $scope.packageFeatures
+                                        $scope.packageFeaturesss = angular.copy(packageFeatures[0].collection);
+                                        //angular.extend(clone,);
+                                        //$scope.packageFeaturesss = angular.clo .extend(true, {}, packageFeatures[0].collection);
                                         packageFeatures[0].collection.push(pf);
                                     }
                                 });
                                 $scope.packageFeatures = packageFeatures[0].collection;
+
                                 $scope.allDataCount = packageFeatures[0].allDataCount;
+                                //$scope.calculatePoints();
+
+
+
+                                $scope.UserFeature = mvUserFeature.query({
+                                    //query: queryBulider.qb("User=='" + curUser + "'&&!Deleted&&" + "Package=='" + $scope.packageFeatures[infoIndex].Package + "'&&Feature=='" +
+                                    //    $scope.packageFeatures[infoIndex].Feature._id + "'&&" + "ExpiryDate>=" + Date.now()),
+                                    query: queryBulider.qb("User=='" + curUser + "'&&!Deleted&&" + "ExpiryDate>=" + Date.now()),
+                                    currentPage: $scope.paging.currentPage,
+                                    pageSize: $scope.paging.pageSize
+
+                                }, (function (userFeatures) {
+
+                                    userFeatures[0].collection.forEach(function (userfFeatures) {
+                                        var i = userfFeatures;
+                                        var ii = $scope.packageFeatures;
+
+                                        $.each($scope.packageFeatures, function (i, v) {
+                                            var flag = false;
+                                            if (v.Feature._id == userfFeatures.Feature._id && v.Package == userfFeatures.Package._id) {
+                                                //alert(v);
+                                                v.Points = v.Points - userfFeatures.DistrbuitedForSubUsers - userfFeatures.UsedFromPoints
+                                                //$scope.maxVal = v.Points;
+                                                flag = true;
+                                                //alert(v.Points);
+
+                                            }
+                                            if (flag == true)
+                                                return false;
+                                        });
+                                    });
+                                    $scope.packageFeaturesMax = jQuery.extend(true, {}, $scope.packageFeatures);
+
+                                    $scope.UserFeature2 = userFeatures[0].collection
+
+
+
+                                    //if (infoIndex == $scope.packageFeatures.length) infoIndex = 0;
+                                    //$scope.userFeatures = userFeatures[0].collection;
+                                    //$scope.packageFeatures[infoIndex].Points = $scope.packageFeatures[infoIndex].Points - $scope.userFeatures[0].DistrbuitedForSubUsers - $scope.userFeatures[0].UsedFromPoints
+                                    //$scope.allDataCount = userFeatures[0].allDataCount;
+                                    //infoIndex++;
+
+                                }));
+
+
+
                             }))
 
 
@@ -119,7 +175,6 @@ angular.module('app').controller('mvSubUserInvitationCtrl', function ($scope, $l
 
     $scope.lang = $scope.languages[0].value;
 
-
     $scope.update = function () {
         if ($scope.subUserInvitationForm.$valid) {
 
@@ -133,11 +188,35 @@ angular.module('app').controller('mvSubUserInvitationCtrl', function ($scope, $l
         }
 
     };
+    $scope.checkData = function (packageFeaturess) {
+        //if (packageFeatures.Points > $scope.maxVal)
+        //    postMessage('error max valueee');
+        $.each($scope.packageFeaturesMax, function (i, v) {
+            var flag = false;
+            if (v.Feature._id == packageFeaturess.Feature._id && v.Package == packageFeaturess.Package) {
+                flag = true;
+
+                if (packageFeaturess.Points > v.Points)
+                    packageFeaturess.Points = v.Points;
+                //alert("v");
+                //v.Points = v.Points - userfFeatures.DistrbuitedForSubUsers - userfFeatures.UsedFromPoints
+                //$scope.maxVal = v.Points;
+
+                //alert(v.Points);
+
+            }
+            if (flag == true)
+                return false;
+        });
+
+    }
     $scope.EditData = function (SubUserInvitationObj) {
+
+        //var dfd = $q.defer();
         $scope.subInvitationDetail.SubUserInvitation = SubUserInvitationObj;
         $scope.subInvitationDetail.Points = $scope.packageFeatures[0].Points
         $scope.subInvitationDetail.Feature = $scope.packageFeatures[0].Feature
-        $scope.subInvitationDetail.Deleted = false;  
+        $scope.subInvitationDetail.Deleted = false;
         mvSubUserInvitationDetailRepo.createSubUserInvitationDetail($scope.subInvitationDetail).then(function (res) {
             mvNotifier.notify('New SubUserInvitationDetails Added!');
 
@@ -160,6 +239,9 @@ angular.module('app').controller('mvSubUserInvitationCtrl', function ($scope, $l
                 $scope.subInvitationDetail.Feature = $scope.packageFeatures[infoIndex].Feature
                 $scope.subInvitationDetail.Deleted = false;
                 mvSubUserInvitationDetailRepo.createSubUserInvitationDetail($scope.subInvitationDetail).then(function (res) {
+
+
+
                     //mvNotifier.notify('New SubUserInvitationDetails Added!');
 
                 }, function (reason) {
@@ -172,21 +254,38 @@ angular.module('app').controller('mvSubUserInvitationCtrl', function ($scope, $l
         }, function (reason) {
             mvNotifier.error(reason);
         });
-
+        //return dfd.promise;
 
     }
     $scope.add = function () {
         if ($scope.subUserInvitationForm.$valid && $scope.addEnabled) {
             mvSubUserInvitationRepo.createSubUserInvitation($scope.subUserInvitation).then(function (SubUserInvitationObj) {
-                //var Invitation_id = SubUserInvitationObj._id;
-                //$scope.EditData(Invitation_id);
+
+
+                //mvUserFeatureRepo.updateCurrentUserFeature($scope.UserFeature2).then(function () {
+                //    mvNotifier.notify('UserFeature has been updated!');
+                //    $location.path('/userFeatures/' + uId);
+                //}, function (reason) {
+                //    mvNotifier.error(reason);
+                //});
+                //$scope.UserFeature3 = mvUserFeature.get({ _id: '596778439d67d220184658b6' }, (function () {
+                //    $scope.UserFeature3.DistrbuitedForSubUsers += 15;
+                //    mvUserFeatureRepo.updateCurrentUserFeature($scope.UserFeature3);
+
+                //}));
+
+
+
                 //put save detail here
                 var temp1 = $scope.packageFeatures;
                 var temp2 = $scope.subInvitationDetail
-
+                $scope.subInvitationDetail = new mvSubUserInvitationDetail();
+                var Invitation_id = SubUserInvitationObj._id;
+                $scope.EditData(Invitation_id);
                 mvNotifier.notify('New SubUserInvitation Added!');
                 $scope.subInvitationDetail = new mvSubUserInvitationDetail();
-                $scope.EditData(SubUserInvitationObj);
+
+
                 //$scope.subInvitationDetail.Deleted = false;
                 //$scope.subInvitationDetail.Employer = mvIdentity.currentEmployer;;
                 //mvSubUserInvitationDetailRepo.createSubUserInvitationDetail($scope.subInvitationDetail).then(function (res) {
@@ -194,10 +293,58 @@ angular.module('app').controller('mvSubUserInvitationCtrl', function ($scope, $l
                 //}, function (reason) {
                 //    mvNotifier.error(reason);
                 //});
-                var mail=SubUserInvitationObj.Email;
+                var mail = SubUserInvitationObj.Email;
+                //pass distrbuted
+                for (infoIndex = 0; infoIndex < $scope.packageFeaturesss.length; infoIndex++) {
+                    $.each($scope.UserFeature[0].collection, function (i, v) {
+                        var flag = false;
+                        if (v.Feature._id == $scope.packageFeaturesss[infoIndex].Feature._id && v.Package._id == $scope.packageFeaturesss[infoIndex].Package) {
+                            //v.DistrbuitedForSubUsers += packFeature.Points
+                            //var gg = 596778439d67d220184658b6;
+
+                            $scope.UserFeature3 = mvUserFeature.get({ _id: v._id }
+                                //$scope.UserFeature3 = mvUserFeature.query({                                           
+                                //    query: queryBulider.qb("_id=='" + v._id +"'"),
+                                //     currentPage: $scope.paging.currentPage,
+                                //     pageSize: $scope.paging.pageSize
+
+                                , (function (UserFeature3) {
+                                    //$scope.packageFeaturesss.forEach(function (packFeature) {
+                                    //    if (UserFeature3.Feature == packFeature.Feature._id && UserFeature3.Package == packFeature.Package) {
+                                    //        UserFeature3.DistrbuitedForSubUsers += packFeature.Points;
+                                    //        mvUserFeatureRepo.updateCurrentUserFeature(UserFeature3);
+                                    //    }
+
+                                        $.each($scope.packageFeatures, function (i, v2) {
+                                            var flag1 = false;
+                                            if (UserFeature3.Feature == v2.Feature._id && UserFeature3.Package == v2.Package) {
+                                                UserFeature3.DistrbuitedForSubUsers += v2.Points;
+                                                mvUserFeatureRepo.updateCurrentUserFeature(UserFeature3);
+                                                flag1 = true;
+                                            }
+                                            if (flag1 == true)
+                                                return false;
+                                        });
+
+
+                                    //});
+
+
+                                }));
+                            flag = true;
+                            //alert(v.Points);
+                        }
+                        if (flag == true)
+                            return false;
+                    })
+                }
+
+
+
                 $scope.addEnabled = false;
                 console.log('Send Message');
-             
+
+
                 $location.path('/subUserInvitations/');
 
             }, function (reason) {

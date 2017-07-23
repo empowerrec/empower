@@ -96,8 +96,7 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope, $http, $q, 
     };
 
     $scope.languages = [{ value: 'en', text: 'English' },
-        { value: 'ar', text: 'عربى' },
-        { value: 'fr', text: 'French' }];
+        { value: 'ar', text: 'عربى' }];
 
     $scope.lang = $scope.languages[0].value;
 

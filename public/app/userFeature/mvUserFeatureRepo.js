@@ -23,9 +23,9 @@ angular.module('app').factory('mvUserFeatureRepo', function ($http, $q, mvUserFe
 
             var clone = angular.copy(newUserFeatureData);
             angular.extend(clone,newUserFeatureData);
-            clone.$update({currentUser:mvIdentity.currentUser}).then(function () {
+            clone.$update({currentUser:mvIdentity.currentUser}).then(function (res) {
 
-                dfd.resolve();
+                dfd.resolve(res);
             }, function (response) {
                 dfd.reject(response.data.reason);
             });
