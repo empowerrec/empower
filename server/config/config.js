@@ -17,7 +17,8 @@ module.exports = {
             'clientSecret': 'F0_Vj094rgHaKKHENOMnfBi7',
             'callbackURL': 'http://localhost:3030/auth/google/callback'
         },
-        AppURL : 'http://localhost:3030'
+        AppURL: 'http://localhost:3030',
+        Domain: '127.0.0.1'
     },
     production: {
         rootPath: rootPath,
@@ -34,6 +35,7 @@ module.exports = {
             'clientSecret': 'F0_Vj094rgHaKKHENOMnfBi7',
             'callbackURL': 'https://empowerrec.herokuapp.com/auth/google/callback'
         },
-        AppURL : 'https://empowerrec.herokuapp.com/'
+        AppURL: 'https://empowerrec.herokuapp.com/',
+        Domain: 'empowerrec.herokuapp.com'
     }
 };

@@ -1,12 +1,12 @@
 var email = require('mailer');
-
-
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var config = require('../config/config')[env];
 exports.sendMail = function sendMail(sender , reciver , messageSubject , messageBody , template , data) {
     email.send({
         ssl: true,
         host: "smtp.gmail.com",              // smtp server hostname
         port: "465",                     // smtp server port
-        domain: "[127.0.0.1]",            // domain used by client to identify itself to server
+        domain: config.Domain,            // domain used by client to identify itself to server
         to: reciver,
         from: sender,
         subject: messageSubject,
