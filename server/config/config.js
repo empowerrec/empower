@@ -35,7 +35,7 @@ module.exports = {
             'clientSecret': 'F0_Vj094rgHaKKHENOMnfBi7',
             'callbackURL': 'https://empowerrec.herokuapp.com/auth/google/callback'
         },
-        AppURL: 'https://empowerrec.herokuapp.com/',
+        AppURL: 'https://empowerrec.herokuapp.com',
         Domain: 'empowerrec.herokuapp.com'
     }
 };
