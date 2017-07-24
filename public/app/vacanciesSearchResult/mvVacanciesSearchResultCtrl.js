@@ -1092,11 +1092,11 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
 
 
     $(function () {
-        IndustriesHeaderClickFunction();
+        //IndustriesHeaderClickFunction();
         CountriesHeaderClickFunction();
         citiesHeaderClickFunction();
         AreasHeaderClickFunction();
-        JobRolesHeaderClickFunction();
+        //JobRolesHeaderClickFunction();
         JobTypesHeaderClickFunction();
         EducationalLevelsHeaderClickFunction();
         CareerLevelsHeaderClickFunction();
