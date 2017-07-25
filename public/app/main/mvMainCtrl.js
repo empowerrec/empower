@@ -1,40 +1,43 @@
-angular.module('app').controller('mvMainCtrl', function ($scope, mvCourse, mvIdentity, $location) {
-    $scope.identity = mvIdentity;
-    $scope.courses = mvCourse.query();
+angular.module('app').controller('mvMainCtrl', ['$scope', 'mvCourse', 'mvIdentity', '$location',
 
-    $scope.search = function () {
-        $location.path('/vacanciesSearchResult');
-    };
+    function ($scope, mvCourse, mvIdentity, $location) {
+        $scope.identity = mvIdentity;
+        $scope.courses = mvCourse.query();
 
-    $(function () {
-        $('#noo-slider-3 .sliders').carouFredSel({
-            infinite: true,
-            circular: true,
-            responsive: true,
-            debug: false,
-            items: {
-                start: 0
-            },
-            scroll: {
-                items: 1,
-                duration: 400,
+        $scope.search = function () {
+            $location.path('/vacanciesSearchResult');
+        };
 
-                fx: "scroll"
-            },
-            auto: {
-                timeoutDuration: 3000,
+        $(function () {
+            $('#noo-slider-3 .sliders').carouFredSel({
+                infinite: true,
+                circular: true,
+                responsive: true,
+                debug: false,
+                items: {
+                    start: 0
+                },
+                scroll: {
+                    items: 1,
+                    duration: 400,
 
-                play: true
-            },
+                    fx: "scroll"
+                },
+                auto: {
+                    timeoutDuration: 3000,
 
-            pagination: {
-                container: "#noo-slider-3-pagination"
-            },
-            swipe: {
-                onTouch: true,
-                onMouse: true
-            }
+                    play: true
+                },
+
+                pagination: {
+                    container: "#noo-slider-3-pagination"
+                },
+                swipe: {
+                    onTouch: true,
+                    onMouse: true
+                }
+            });
+            $('#noo-tabs-2 a:eq(1)').tab('show');
         });
-        $('#noo-tabs-2 a:eq(1)').tab('show');
-    });
-});
+    }
+]);

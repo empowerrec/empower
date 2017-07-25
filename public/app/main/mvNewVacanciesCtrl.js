@@ -22,11 +22,17 @@ angular.module('app').controller('mvNewVacanciesCtrl', function ($scope, mvVacan
         maxPagesToShow: 5,
         pageSize: 10
     };
-    
+
+    var currentUserId;
+    if ($scope.currentUser)
+        currentUserId = $scope.currentUser._id;
+    else
+        currentUserId = null;
+
     $scope.getData = function () {
         mvVacancy.query({
             query: queryBulider.qb("!Deleted"),
-            jobSeeker: $scope.currentUser._id,
+            jobSeeker: currentUserId,
             Puplished: true,
             currentPage: $scope.paging.currentPage,
             pageSize: $scope.paging.pageSize

@@ -37,8 +37,11 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     
     var SelectedCareerLevels = [];
     var CareerLevelsHeaderFlag = false;
+    if (mvIdentity.currentJobSeeker)
 
-    var jobSeekerId = mvIdentity.currentJobSeeker._id;
+        var jobSeekerId = null;
+        if (mvIdentity.currentJobSeeker)
+        jobSeekerId = mvIdentity.currentJobSeeker._id;
     debugger;
     if (!jobSeekerId)
         jobSeekerId = 0;

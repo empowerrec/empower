@@ -314,7 +314,7 @@ angular.module('app').config(function ($routeProvider) {
             controller: 'mvArrangeInterviewCtrl'
         }).when('/vacanciesSearchResult', {
             templateUrl: '/partials/vacanciesSearchResult/vacanciesSearchResult.html',
-            controller: 'mvVacanciesSearchResultCtrl', resolve: routRoleChecks.user
+            controller: 'mvVacanciesSearchResultCtrl'
         }).when('/packages/:id', {
             templateUrl: '/partials/package/package-detail',
             controller: 'mvPackageDetailCtrl'
@@ -537,46 +537,49 @@ angular.module('app').factory('mvStyle', function (mvIndustry, mvJobType, $rootS
 
 
 });
-angular.module('app').controller('mvMainCtrl', function ($scope, mvCourse, mvIdentity, $location) {
-    $scope.identity = mvIdentity;
-    $scope.courses = mvCourse.query();
+angular.module('app').controller('mvMainCtrl', ['$scope', 'mvCourse', 'mvIdentity', '$location',
 
-    $scope.search = function () {
-        $location.path('/vacanciesSearchResult');
-    };
+    function ($scope, mvCourse, mvIdentity, $location) {
+        $scope.identity = mvIdentity;
+        $scope.courses = mvCourse.query();
 
-    $(function () {
-        $('#noo-slider-3 .sliders').carouFredSel({
-            infinite: true,
-            circular: true,
-            responsive: true,
-            debug: false,
-            items: {
-                start: 0
-            },
-            scroll: {
-                items: 1,
-                duration: 400,
+        $scope.search = function () {
+            $location.path('/vacanciesSearchResult');
+        };
 
-                fx: "scroll"
-            },
-            auto: {
-                timeoutDuration: 3000,
+        $(function () {
+            $('#noo-slider-3 .sliders').carouFredSel({
+                infinite: true,
+                circular: true,
+                responsive: true,
+                debug: false,
+                items: {
+                    start: 0
+                },
+                scroll: {
+                    items: 1,
+                    duration: 400,
 
-                play: true
-            },
+                    fx: "scroll"
+                },
+                auto: {
+                    timeoutDuration: 3000,
 
-            pagination: {
-                container: "#noo-slider-3-pagination"
-            },
-            swipe: {
-                onTouch: true,
-                onMouse: true
-            }
+                    play: true
+                },
+
+                pagination: {
+                    container: "#noo-slider-3-pagination"
+                },
+                swipe: {
+                    onTouch: true,
+                    onMouse: true
+                }
+            });
+            $('#noo-tabs-2 a:eq(1)').tab('show');
         });
-        $('#noo-tabs-2 a:eq(1)').tab('show');
-    });
-});
+    }
+]);
 angular.module('app').controller('mvMainHeadCtrl', function ($scope , $rootScope) {
     $scope.styleFile = "vendor/bootstrap/dist/css/bootstrap.min.css";
     $scope.rtlstyleFile = "vendor/bootstrap/dist/css/bootstrap-rtl.css";
@@ -968,11 +971,17 @@ angular.module('app').controller('mvNewVacanciesCtrl', function ($scope, mvVacan
         maxPagesToShow: 5,
         pageSize: 10
     };
-    
+
+    var currentUserId;
+    if ($scope.currentUser)
+        currentUserId = $scope.currentUser._id;
+    else
+        currentUserId = null;
+
     $scope.getData = function () {
         mvVacancy.query({
             query: queryBulider.qb("!Deleted"),
-            jobSeeker: $scope.currentUser._id,
+            jobSeeker: currentUserId,
             Puplished: true,
             currentPage: $scope.paging.currentPage,
             pageSize: $scope.paging.pageSize
@@ -3730,8 +3739,11 @@ angular.module('app').controller('mvVacanciesSearchResultCtrl', function ($scope
     
     var SelectedCareerLevels = [];
     var CareerLevelsHeaderFlag = false;
+    if (mvIdentity.currentJobSeeker)
 
-    var jobSeekerId = mvIdentity.currentJobSeeker._id;
+        var jobSeekerId = null;
+        if (mvIdentity.currentJobSeeker)
+        jobSeekerId = mvIdentity.currentJobSeeker._id;
     debugger;
     if (!jobSeekerId)
         jobSeekerId = 0;

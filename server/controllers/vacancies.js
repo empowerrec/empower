@@ -45,7 +45,7 @@ exports.getVacancies = function (req, res) {
                 res.send([{ collection: col, allDataCount: count }]);
             });
         });
-    } else {
+    } else if (req.user){
         Vacancy.find({ CreatedBy: req.user, Deleted: false }).populate('ModifiedBy')
             .populate('CreatedBy').populate('Industry').populate('Country').limit(pageSize)
             .skip(pageSize * (currentPage - 1))
@@ -54,6 +54,15 @@ exports.getVacancies = function (req, res) {
                 res.send([{ collection: col, allDataCount: count }]);
             });
         });
+    } else {
+        Vacancy.find({ Deleted: false }).populate('ModifiedBy')
+            .populate('CreatedBy').populate('Industry').populate('Country').limit(pageSize)
+            .skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+                Vacancy.count({ Deleted: false }).exec(function (errr, count) {
+                    res.send([{ collection: col, allDataCount: count }]);
+                });
+            });
     }
 };
 
@@ -180,12 +189,14 @@ exports.getVacancyByIdForUpdate = function (req, res) {
 };
 
 function isAdmin(req) {
-    
-    for (var role in req.user.UserType) {
-        if (req.user.UserType[role] == 'A') {
-            return true;
+    if (req.user) {
+        for (var role in req.user.UserType) {
+            if (req.user.UserType[role] == 'A') {
+                return true;
+            }
         }
     }
+    return false;
 }
 
 exports.createVacancy = function (req, res, next) {

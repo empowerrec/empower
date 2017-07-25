@@ -314,7 +314,7 @@ angular.module('app').config(function ($routeProvider) {
             controller: 'mvArrangeInterviewCtrl'
         }).when('/vacanciesSearchResult', {
             templateUrl: '/partials/vacanciesSearchResult/vacanciesSearchResult.html',
-            controller: 'mvVacanciesSearchResultCtrl', resolve: routRoleChecks.user
+            controller: 'mvVacanciesSearchResultCtrl'
         }).when('/packages/:id', {
             templateUrl: '/partials/package/package-detail',
             controller: 'mvPackageDetailCtrl'

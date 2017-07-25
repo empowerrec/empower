@@ -21,7 +21,7 @@
                                                 <label class="sr-only" for="search-keyword">keyword</label>
                                                 <input type="text" class="form-control" id="search-keyword" name="s" placeholder='{{"Main.Search3" | translate}}' value="">
                                             </div>
-                                            <div class="form-group">
+                                            <!--<div class="form-group">
                                                 <label class="sr-only">Category</label>
                                                 <div class="advance-search-form-control">
                                                     <select name="category" class="form-control-chosen form-control">
@@ -47,7 +47,7 @@
                                                         <option value="">Kuta, Indonesia</option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                             <div class="form-group form-action">
                                                 <button type="button" ng-click="search()" class="btn btn-primary btn-search-submit">{{"Buttons.Search" | translate}}</button>
                                             </div>
@@ -100,7 +100,7 @@
                         
                     </div>
                 </div>
-                <div class="row pt-4 bg-white">
+                <!--<div class="row pt-4 bg-white">
                     <div class="container-boxed max">
                         <div class="col-md-12">
                             <div class="noo-tabs">
@@ -116,6 +116,18 @@
                                     <div ng-include="'/partials/main/new-vacancies'"></div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="row pt-4 bg-white">
+                    <div class="container-boxed max">
+                        <div class="col-md-12">
+                            <h5>{{"Featured_Jobs" | translate}}</h5>
+                                    <div ng-include="'/partials/main/hot-vacancies'"></div>
+                            <h5>{{"New_Jobs" | translate}}</h5>
+                                    <div ng-include="'/partials/main/new-vacancies'"></div>
+                               
                         </div>
                     </div>
                 </div>
