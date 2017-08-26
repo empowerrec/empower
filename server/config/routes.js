@@ -31,6 +31,7 @@ var packages = require('../controllers/packages');
 var passport = require('passport');
 var subUserInvitations = require('../controllers/subUserInvitations');
 var subUserInvitationDetails = require('../controllers/subUserInvitationDetails');
+var subUserFeatures = require('../controllers/subUserFeatures');
 
 module.exports = function (app) {
 	
@@ -185,7 +186,8 @@ module.exports = function (app) {
 	app.get('/api/applicants/:id', applicants.getApplicantById);
 	app.get('/api/applicants/getVacancyForApplicant/:jobSeeker/:vacancy', applicants.getVacancyForApplicant);
     app.put('/api/applicants/arrangeInterview', applicants.arrangeInterview);
-
+    app.get('/api/applicantsSearchResult', applicants.getApplicantsSearchResult);
+    
 	app.get('/api/packages', authentication.requiresRole(['A', 'E']), packages.getPackages);
 	app.post('/api/packages', packages.createPackage);
 	app.put('/api/packages', packages.updatePackage);
@@ -201,6 +203,11 @@ module.exports = function (app) {
     app.post('/api/subUserInvitationDetails', subUserInvitationDetails.createSubUserInvitationDetail);
     app.put('/api/subUserInvitationDetails', subUserInvitationDetails.updateSubUserInvitationDetail);
     app.get('/api/subUserInvitationDetails/:id', subUserInvitationDetails.getSubUserInvitationDetailById);
+
+    app.get('/api/subUserFeatures', subUserFeatures.getSubUserFeatures);
+    app.post('/api/subUserFeatures', subUserFeatures.createSubUserFeature);
+    app.put('/api/subUserFeatures', subUserFeatures.updateSubUserFeature);
+    app.get('/api/subUserFeatures/:id', subUserFeatures.getSubUserFeatureById);
 
 	app.get('/api/getJobSeekerWhereMobileNumberNotNull', jobSeekers.getJobSeekerByMobileNumber);
 

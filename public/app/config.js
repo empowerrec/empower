@@ -289,6 +289,7 @@
                 "CompanyProfile": "Company Profile",
                 "InviteSubUser": "Invite Sub User",
                 "SignUpSubUser": "SignUpSubUser",
+                "subUserFeatures": "SubUserFeatures",
                 "Experiances": "Experiances",
                 'SelectValue': 'Select Value',
                 'JobSeekerProfile': 'Job Seeker Profile',
@@ -322,7 +323,9 @@
                 'JobType': 'Job Type',
                 'JobDetails': 'Job Details',
                 'EducationalLevel': 'Educational Level',
-                'CareerLevel': 'Career Level'
+                'CareerLevel': 'Career Level',
+                'Dates': 'Dates',
+                'BirthDate': 'Birth Date'
             },
             'Package': {
                 "Name": "Name",
@@ -644,7 +647,8 @@
                 "Categories": "التصنيفات",
                 "CompanyProfile": "بيانات الشركة",
                 "InviteSubUser": "دعوة المستخدمين",
-                "SignUpSubUser":"SignUpSubUser",
+                "SignUpSubUser": "SignUpSubUser",
+                "subUserFeatures": "SubUserFeatures",
                 "Experiances": "الخبرات",
                 'SelectValue': 'اختار من القائمة',
                 'JobSeekerProfile': 'بيانات طالب العمل',
@@ -678,7 +682,9 @@
                 'JobType': 'نوع الوظيفة',
                 'JobDetails': 'تفاصيل الوظيفة',
                 'EducationalLevel': 'المستوى التعليمي',
-                'CareerLevel': 'المستوى الوظيفي'
+                'CareerLevel': 'المستوى الوظيفي',
+                'Dates': 'التواريخ',
+                'BirthDate' : 'تاريخ الميلاد'
             },
             'Package': {
                 "Name": "الأسم",

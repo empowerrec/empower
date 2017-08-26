@@ -32,6 +32,9 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/signupSupUser/:id', {
             templateUrl: '/partials/subUserInvitation/front-signupSupUser', controller: 'mvFrontSubUserSignupCtrl'
 
+        }).when('/subUser-list', {
+            templateUrl: '/partials/subUserInvitation/subUser-list', controller: 'mvSubUserListCtrl'
+
         }).when('/DeclineSupUser/:id', {
             templateUrl: '/partials/subUserInvitation/DeclineSubUserInvitation', controller: 'mvDeclineSupUserCtrl'
 
@@ -408,6 +411,19 @@ angular.module('app').config(function ($routeProvider) {
             controller: 'mvUserFeatureListCtrl'
         })
 
+        .when('/subUserFeatures/:uId/:id', {
+            templateUrl: '/partials/subUserFeature/subUserFeature-detail',
+            controller: 'mvSubUserFeatureDetailCtrl'
+        }).when('/updateSubUserFeature/:uId/:id', {
+            templateUrl: '/partials/subUserFeature/subUserFeature',
+            controller: 'mvSubUserFeatureCtrl'
+        }).when('/addSubUserFeature/:uId', {
+            templateUrl: '/partials/subUserFeature/subUserFeature',
+            controller: 'mvSubUserFeatureCtrl'
+        }).when('/subUserFeatures/:uId', {
+            templateUrl: '/partials/subUserFeature/subUserFeature-list.html',
+            controller: 'mvSubUserFeatureListCtrl'
+        })
 
         .when('/subUserInvitationDetails/:id', {
     templateUrl: '/partials/subUserInvitationDetail/subUserInvitationDetail-detail',

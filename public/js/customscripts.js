@@ -32,6 +32,9 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/signupSupUser/:id', {
             templateUrl: '/partials/subUserInvitation/front-signupSupUser', controller: 'mvFrontSubUserSignupCtrl'
 
+        }).when('/subUser-list', {
+            templateUrl: '/partials/subUserInvitation/subUser-list', controller: 'mvSubUserListCtrl'
+
         }).when('/DeclineSupUser/:id', {
             templateUrl: '/partials/subUserInvitation/DeclineSubUserInvitation', controller: 'mvDeclineSupUserCtrl'
 
@@ -408,6 +411,19 @@ angular.module('app').config(function ($routeProvider) {
             controller: 'mvUserFeatureListCtrl'
         })
 
+        .when('/subUserFeatures/:uId/:id', {
+            templateUrl: '/partials/subUserFeature/subUserFeature-detail',
+            controller: 'mvSubUserFeatureDetailCtrl'
+        }).when('/updateSubUserFeature/:uId/:id', {
+            templateUrl: '/partials/subUserFeature/subUserFeature',
+            controller: 'mvSubUserFeatureCtrl'
+        }).when('/addSubUserFeature/:uId', {
+            templateUrl: '/partials/subUserFeature/subUserFeature',
+            controller: 'mvSubUserFeatureCtrl'
+        }).when('/subUserFeatures/:uId', {
+            templateUrl: '/partials/subUserFeature/subUserFeature-list.html',
+            controller: 'mvSubUserFeatureListCtrl'
+        })
 
         .when('/subUserInvitationDetails/:id', {
     templateUrl: '/partials/subUserInvitationDetail/subUserInvitationDetail-detail',
@@ -1154,7 +1170,7 @@ angular.module('app').factory('mvAuth', function ($http, $q, mvIdentity, mvUser)
             
             newUser.$save().then(function () {
                 mvIdentity.currentUser = newUser;
-                dfd.resolve();
+                dfd.resolve(newUser);
             }, function (response) {
                 dfd.reject(response.data.reason);
             });
@@ -2766,6 +2782,8 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope, $http, $q, 
                 }
             }
 
+            $scope.photoFile = $scope.employer.Photo;
+
 
 
             $.ajax({
@@ -2888,7 +2906,7 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope, $http, $q, 
 
                 mvEmployerRepo.updateCurrentEmployer($scope.employer).then(function () {
                     mvNotifier.notify('Employer has been updated!');
-                    $location.path('/employers');
+                    //$location.path('/employers');
                 }, function (reason) {
                     mvNotifier.error(reason);
                 });
@@ -9937,6 +9955,7 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "CompanyProfile": "Company Profile",
                 "InviteSubUser": "Invite Sub User",
                 "SignUpSubUser": "SignUpSubUser",
+                "subUserFeatures": "SubUserFeatures",
                 "Experiances": "Experiances",
                 'SelectValue': 'Select Value',
                 'JobSeekerProfile': 'Job Seeker Profile',
@@ -9970,7 +9989,9 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'JobType': 'Job Type',
                 'JobDetails': 'Job Details',
                 'EducationalLevel': 'Educational Level',
-                'CareerLevel': 'Career Level'
+                'CareerLevel': 'Career Level',
+                'Dates': 'Dates',
+                'BirthDate': 'Birth Date'
             },
             'Package': {
                 "Name": "Name",
@@ -10292,7 +10313,8 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "Categories": "التصنيفات",
                 "CompanyProfile": "بيانات الشركة",
                 "InviteSubUser": "دعوة المستخدمين",
-                "SignUpSubUser":"SignUpSubUser",
+                "SignUpSubUser": "SignUpSubUser",
+                "subUserFeatures": "SubUserFeatures",
                 "Experiances": "الخبرات",
                 'SelectValue': 'اختار من القائمة',
                 'JobSeekerProfile': 'بيانات طالب العمل',
@@ -10326,7 +10348,9 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'JobType': 'نوع الوظيفة',
                 'JobDetails': 'تفاصيل الوظيفة',
                 'EducationalLevel': 'المستوى التعليمي',
-                'CareerLevel': 'المستوى الوظيفي'
+                'CareerLevel': 'المستوى الوظيفي',
+                'Dates': 'التواريخ',
+                'BirthDate' : 'تاريخ الميلاد'
             },
             'Package': {
                 "Name": "الأسم",
@@ -10973,96 +10997,302 @@ angular.module('app').controller('mvApplicantCtrl', function ($scope,  mvNotifie
 angular.module('app').controller('mvApplicantDetailCtrl', function ($scope, mvApplicant, $routeParams) {
     $scope.applicant = mvApplicant.get({_id: $routeParams.id});
 });
-angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvApplicant,$translate, mvIdentity, mvApplicantRepo, mvNotifier, queryBulider, $routeParams) {
+angular.module('app').controller('mvApplicantListCtrl', function ($scope, $translate, mvApplicant, $routeParams,
+    mvApplicantRepo, queryBulider, mvNotifier, mvIdentity) {
+
+    //to add new search in accordion 
+    //1- add new accordion header and content at html  
+    //   change name of the field ,in these blocks I use 'Industry' 
+    //2- add list  like one at code #1    
+    //3- add block like one at code #2
+    //4- add block like one at code #3 
+    //5- change name of the field in these blocks I use 'Industry' 
+    //6- go to applicants controller at server to change at function getApplicantsSearchResult
+
     $scope.currentUser = mvIdentity.currentUser;
     var id = $routeParams.vacancyId;
-   
+
+    var SelectedBirthDates = [];
+    var BirthDatesHeaderFlag = false;
+
+    if (mvIdentity.currentJobSeeker)
+        var jobSeekerId = null;
+    if (mvIdentity.currentJobSeeker)
+        jobSeekerId = mvIdentity.currentJobSeeker._id;
+    debugger;
+    if (!jobSeekerId)
+        jobSeekerId = 0;
 
     $scope.paging = {
         currentPage: 1,
         maxPagesToShow: 5,
         pageSize: 10
     };
-    
+
     $scope.getData = function () {
+
+        var qr = '';
+
+        // start code #2
+        if (SelectedBirthDates.length > 0) {
+            var qrBirthDate = '';
+
+            if (SelectedBirthDates[0].flag !== true) {
+                for (var y = 0; y < SelectedBirthDates.length; y++) {
+                    if (SelectedBirthDates[y].flag) {
+                        qrBirthDate += "BirthDate=='" + SelectedBirthDates[y].id + "'||";
+                    }
+                }
+            } else {
+                for (var y = 1; y < SelectedBirthDates.length; y++) {
+                    qrBirthDate += "BirthDate=='" + SelectedBirthDates[y].id + "'||";
+                }
+            }
+
+            if (qrBirthDate.length > 0) {
+                qr += '(' + qrBirthDate.slice(0, -2) + ')&&';
+            }
+        }
+        // end code #2
+
+
+        if (qr.length > 0) {
+            qr = "Vacancy=='" + id + "'&&!Deleted&&(" + qr.slice(0, -2) + ')';
+        }
+        else {
+            qr = "Vacancy=='" + id + "'&&!Deleted";
+        }
+
         mvApplicant.query({
-            query: queryBulider.qb("Vacancy=='" + id + "'&&!Deleted"),
+            query: queryBulider.qb(qr),
             currentPage: $scope.paging.currentPage,
-            pageSize: $scope.paging.pageSize
+            pageSize: $scope.paging.pageSize,
+            jobSeeker: jobSeekerId,
         }, (function (res) {
             $scope.applicants = res[0].collection;
             $scope.allDataCount = res[0].allDataCount;
         }));
     };
-    
-    $scope.deleteApplicant = function (applicant) {
-        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
-            ed.Deleted = true;
-            ed.DeletedBy = mvIdentity.currentUser;
-            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
-                mvNotifier.notify('Applicant has been deleted!');
-                $scope.getData();
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }));
-    };
 
-
-    $scope.shortListApplicant = function (applicant) {
-        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
-            ed.Status = 'S';
-            ed.ModifiedBy = mvIdentity.currentUser;
-            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
-                mvNotifier.notify('Applicant has been deleted!');
-                $scope.getData();
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }));
-    };
-
-    $scope.rejectApplicant = function (applicant) {
-        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
-            ed.Status = 'R';
-            ed.ModifiedBy = mvIdentity.currentUser;
-            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
-                mvNotifier.notify('Applicant has been Rejected!');
-                $scope.getData();
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }));
-    };
-
-    $scope.approveApplicant = function (applicant) {
-        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
-            ed.Status = 'A';
-            ed.ModifiedBy = mvIdentity.currentUser;
-            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
-                mvNotifier.notify('Applicant has been Approved!');
-                $scope.getData();
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }));
-    };
-
-
-    $scope.arrangeInterview = function (applicant) {
-        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
-            ed.Status = 'A';
-            ed.ModifiedBy = mvIdentity.currentUser;
-            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
-                mvNotifier.notify('Applicant has been Approved!');
-                $scope.getData();
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }));
-    };
-    
     $scope.getData();
+
+    var addCheckBoxToDiv = function (id, lab, flag, name, selectedList) {
+        var flg = true;
+        for (var y = 0; y < selectedList.length; y++) {
+            if (selectedList[y].id == id) {
+                flg = false;
+                break;
+            }
+        }
+        if (flg) {
+            selectedList.push({ 'id': id, 'flag': flag });
+            var div = document.getElementById(name + 'Div');
+            var checkbox = document.createElement('input');
+            checkbox.type = "checkbox";
+            checkbox.name = name;
+            checkbox.value = id;
+            checkbox.id = id;
+            checkbox.checked = flag;
+
+            var label = document.createElement('label');
+            label.htmlFor = "id";
+            label.appendChild(document.createTextNode(lab));
+
+            var br = document.createElement("br");
+
+            div.appendChild(checkbox);
+            div.appendChild(label);
+            div.appendChild(br);
+
+
+            checkbox.addEventListener('change', function (event) {
+
+                var name = checkbox.name;
+                var checkboxes = document.getElementsByName(name); //checkbox items                                          
+
+                //uncheck all check boxes when check select all 
+                if (checkbox.id == 0) {
+                    if ($(this).is(":checked")) {
+                        for (i = 1; i < checkboxes.length; i++) {
+                            checkboxes[i].checked = false;
+                        }
+                    } else {
+                        checkboxes[0].checked = true;
+                    }
+                } else {
+                    if ($(this).is(":checked")) {
+                        checkboxes[0].checked = false;
+                    }
+                }
+
+                //check "select all" if all checkbox items are checked                
+                //if ($('input[name="' + name + '"]:checked').length == checkboxes.length - 1) {
+                //    checkboxes[0].checked = true; //change "select all" checked status to true
+                //    for (i = 1; i < checkboxes.length; i++) {
+                //        checkboxes[i].checked = false;
+                //    }
+                //}
+
+                //check "select all" if all checkbox items are unchecked                
+                if ($('input[name="' + name + '"]:not(:checked)').not(":eq(0)").length == checkboxes.length - 1) {
+                    checkboxes[0].checked = true; //change "select all" checked status to true
+                }
+
+                for (i = 0; i < checkboxes.length; i++) {
+                    $.each(selectedList, function () {
+                        if (this.id == checkboxes[i].id) {
+                            this.flag = checkboxes[i].checked;
+                        }
+                    });
+                }
+
+                $scope.getData();
+
+            });
+
+        }
+    };
+
+    // start code #3
+    var BirthDatesHeaderClickFunction = function () {
+        if (BirthDatesHeaderFlag) {
+            BirthDatesHeaderFlag = false;
+        } else {
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "/api/applicantsSearchResult",
+                data: { groupBy: "JobSeeker.BirthDate", currentLang: $translate.use() ,vacancyId : id},
+                success: function (data) {
+
+                    var count = 0;
+                    $.map(data, function (item) { count += item.count; });
+
+                    addCheckBoxToDiv(0, 'All   (' + count + ')  ', true, 'birthDates', SelectedBirthDates);
+
+                    $.map(data.splice(0, 3), function (item) {
+                        var lab = '';
+                        for (var i = 0; i < item.groupByObject.Name.length; i++) {
+                            var lang = item.groupByObject.Name[i].Lang;
+                            var text = item.groupByObject.Name[i].Text;
+                            if (lang == $translate.use()) {
+                                lab = text + '   (' + item.count + ')  ';
+                                break;
+                            }
+                        }
+                        addCheckBoxToDiv(item._id, lab, false, 'birthDates', SelectedBirthDates);
+                    });
+                }
+            });
+
+            BirthDatesHeaderFlag = true;
+        }
+    }
+    $("#birthDatesHeader").click(BirthDatesHeaderClickFunction);
+    $(function () {
+        $("#birthDateName").autocomplete({
+            source: function (request, response) {
+                $scope.SelectedBirthDates = [];
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/applicantsSearchResult",
+                    data: { groupBy: "JobSeeker.BirthDate", currentLang: $translate.use(), vacancyId: id },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            var prefix = request.term;
+                            var lab = '';
+                            for (var i = 0; i < item.groupByObject.Name.length; i++) {
+                                var lang = item.groupByObject.Name[i].Lang;
+                                var text = item.groupByObject.Name[i].Text;
+                                if (lang == $translate.use() && text.toLowerCase().indexOf(prefix.toLowerCase()) >= 0) {
+                                    lab = text + '   (' + item.count + ')  ';
+                                    break;
+                                }
+                            }
+
+                            if (lab == '') {
+                                return;
+                            }
+
+                            return { label: lab, value: lab, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                    },
+                    complete: function () {
+                    }
+                });
+            },
+            select: function (e, i) {
+                addCheckBoxToDiv(i.item.id, i.item.label, true, 'birthDates', SelectedBirthDates);
+                this.value = "";
+                return false;
+            },
+            minLength: 2
+        });
+    });
+    //end code #3 
+
+
+    //// accordions start
+
+    var headers = $('#accordion1 .accordion-header');
+    var contentAreas = $('#accordion1 .ui-accordion-content').show();
+    var expandLink = $('.accordion-expand-all');
+
+    // add the accordion functionality
+    headers.click(function () {
+        var panel = $(this).next();
+        var isOpen = panel.is(':visible');
+
+        // open or close as necessary
+        panel[isOpen ? 'slideUp' : 'slideDown']()
+            // trigger the correct custom event
+            .trigger(isOpen ? 'hide' : 'show');
+
+        // stop the link from causing a pagescroll
+        return false;
+    });
+
+    // hook up the expand/collapse all
+    expandLink.click(function () {
+        var isAllOpen = $(this).data('isAllOpen');
+
+        contentAreas[isAllOpen ? 'hide' : 'show']().trigger(isAllOpen ? 'hide' : 'show');
+    });
+
+    // when panels open or close, check to see if they're all open
+    contentAreas.on({
+        // whenever we open a panel, check to see if they're all open
+        // if all open, swap the button to collapser
+        show: function () {
+            var isAllOpen = !contentAreas.is(':hidden');
+            if (isAllOpen) {
+                expandLink.text('Collapse All').data('isAllOpen', true);
+            }
+        },
+        // whenever we close a panel, check to see if they're all open
+        // if not all open, swap the button to expander
+        hide: function () {
+            var isAllOpen = !contentAreas.is(':hidden');
+            if (!isAllOpen) {
+                expandLink.text('Expand all').data('isAllOpen', false);
+            }
+        }
+    });
+    //// accordions end
+
+
+    $(function () {
+        BirthDatesHeaderClickFunction();
+    });
 
 });
 
@@ -13038,18 +13268,16 @@ angular.module('app').factory('mvCachedSubUserInvitation', function (mvCourse) {
 });
 angular.module('app').controller('mvFrontSubUserSignupCtrl', function ($scope, $rootScope, $location, $q,
     mvUser, mvJobSeekerRepo, mvNotifier, mvAuth, mvIdentity, mvEmployer,
-    mvEmployerRepo, mvSubUserInvitation, $routeParams, mvSubUserInvitationRepo) {
+    mvEmployerRepo, mvSubUserInvitation, mvSubUserInvitationDetail, $routeParams, mvSubUserInvitationRepo, queryBulider, mvSubUserFeature, mvSubUserFeatureRepo) {
     var invitationId = $routeParams.id;
 
     if (invitationId) {
-       $scope.invitation = mvSubUserInvitation.get({ _id: invitationId }, (function () {
-            
+        $scope.invitation = mvSubUserInvitation.get({ _id: invitationId }, (function () {
 
             $scope.usertype = "S";
             $scope.email = $scope.invitation.Email;
+            //$scope.email = "nnnnnnnnnn@gmail.com"
             $scope.employer = $scope.invitation.Employer;
-
-
 
         }));
     };
@@ -13064,24 +13292,63 @@ angular.module('app').controller('mvFrontSubUserSignupCtrl', function ($scope, $
                 UserType: $scope.usertype,
                 Employer: $scope.employer
             };
-            
-            mvAuth.createUser(newUserData)
-            .then(function () {
-            mvNotifier.notify('User account created!');
-            var type = $scope.usertype;
-                $scope.email = '';
-                $scope.password = '';
-                $scope.firstname = '';
-                $scope.lastname = '';
-                $scope.usertype = '';
-                if ($('#userregisterModal').length) {
-                    $('#userregisterModal').modal('hide');
-                }
-                $scope.UpdateStatus($scope.invitation, "Accept");
-                $location.path('/profile');
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
+
+            mvSubUserInvitationDetail.query({
+                query: queryBulider.qb("SubUserInvitation=='" + $scope.invitation._id + "'&&!Deleted"),
+                //currentPage: $scope.paging.currentPage,
+                //pageSize: $scope.paging.pageSize
+            }, (function (ress) {
+                $scope.invitationFeatures = ress[0].collection;
+                $scope.allDataCount = ress[0].allDataCount;
+                //newUserData._id; subUserFeatures
+                mvAuth.createUser(newUserData)
+                    .then(function (newUser) {
+                        mvNotifier.notify('User account created!');
+
+                        //newUserData._id;            
+                        //$scope.invitation._id
+                        //pass features to sub user fetures
+                        for (infoIndexx = 0; infoIndexx < $scope.invitationFeatures.length; infoIndexx++) {
+
+                            //var newJobSeekerData = {
+                            //    User: mvIdentity.currentUser,
+                            //    CreatedBy: mvIdentity.currentUser,
+                            //    FirstName: name,
+                            //    Deleted: false,
+                            //    LastName: $scope.lastname
+                            //};
+
+                            $scope.mvSubUserFeature = new mvSubUserFeature();
+                            $scope.mvSubUserFeature.UsedFromPoints = 0;
+                            $scope.mvSubUserFeature.User = newUser._id;
+                            $scope.mvSubUserFeature.Points = $scope.invitationFeatures[infoIndexx].Points
+                            $scope.mvSubUserFeature.Feature = $scope.invitationFeatures[infoIndexx].Feature
+                            $scope.mvSubUserFeature.Deleted = false;
+                            mvSubUserFeatureRepo.createSubUserFeature($scope.mvSubUserFeature).then(function (res) {
+
+                            }, function (reason) {
+                                mvNotifier.error(reason);
+                            });
+
+                        }
+
+                        var type = $scope.usertype;
+                        $scope.email = '';
+                        $scope.password = '';
+                        $scope.firstname = '';
+                        $scope.lastname = '';
+                        $scope.usertype = '';
+                        if ($('#userregisterModal').length) {
+                            $('#userregisterModal').modal('hide');
+                        }
+                        $scope.UpdateStatus($scope.invitation, "Accept");
+                        $location.path('/profile');
+                    }, function (reason) {
+                        mvNotifier.error(reason);
+                    });
+
+            }));
+
         }
     };
 
@@ -13098,14 +13365,14 @@ angular.module('app').controller('mvFrontSubUserSignupCtrl', function ($scope, $
                 ed.Status = "O";
             mvSubUserInvitationRepo.updateCurrentSubUserInvitation(ed).then(function () {
                 mvNotifier.notify('Status has been updated!');
-                $scope.getData();
+                //$scope.getData();
             }, function (reason) {
                 mvNotifier.error(reason);
             });
         }));
     };
-       
-       
+
+
 });
 angular.module('app').controller('mvDeclineSupUserCtrl', function ($scope, $rootScope, $location, $q,
     mvUser, mvJobSeekerRepo, mvNotifier, mvAuth, mvIdentity, mvEmployer,
@@ -13149,6 +13416,44 @@ angular.module('app').controller('mvDeclineSupUserCtrl', function ($scope, $root
     };
        
        
+});
+angular.module('app').controller('mvSubUserListCtrl', function ($scope, queryBulider, mvNotifier, mvUser) {
+    //$scope.users = mvUser.query();
+    console.log(mvUser.query());
+    //console.log(mvUserPackage.query());
+    //console.log($scope.users);
+
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 10
+    };
+
+    $scope.getData = function () {
+        mvUser.query({
+            query: queryBulider.qb("UserType=='S'&&!Deleted"),
+            currentPage: $scope.paging.currentPage,
+            pageSize: $scope.paging.pageSize
+        }, (function (res) {
+            $scope.users = res[0].collection;
+            $scope.allDataCount = res[0].allDataCount;
+        }));
+    };
+
+    //$scope.deleteCity = function (city) {
+    //    var ed = mvUser.get({ _id: city._id }, (function () {
+    //        ed.Deleted = true;
+    //        ed.DeletedBy = mvIdentity.currentUser;
+    //        mvUserRepo.updateCurrentCity(ed).then(function () {
+    //            mvNotifier.notify('City has been deleted!');
+    //            $scope.getData();
+    //        }, function (reason) {
+    //            mvNotifier.error(reason);
+    //        });
+    //    }));
+    //};
+
+    $scope.getData();
 });
 angular.module('app').factory('mvCandidate', function ($resource,mvIdentity) {
     var CandidateResource = $resource('/api/candidates/:_id', {_id: '@id'},
@@ -13310,4 +13615,200 @@ angular.module('app').factory('mvCachedCandidate', function (mvCourse) {
             return CandidateList;
         }
     };
+});
+angular.module('app').factory('mvCachedSubUserFeature', function (mvCourse) {
+    var SubUserFeatureList;
+    return {
+        query: function () {
+            if (!SubUserFeatureList) {
+                SubUserFeatureList = mvSubUserFeature.query();
+            }
+            return SubUserFeatureList;
+        }
+    };
+});
+angular.module('app').factory('mvSubUserFeature', function ($resource, mvIdentity) {
+    var SubUserFeatureResource = $resource('/api/subUserFeatures/:_id', { _id: '@id' },
+        {
+            update: { method: 'PUT', isArray: false }
+        });
+    return SubUserFeatureResource;
+});
+angular.module('app').controller('mvSubUserFeatureCtrl', function ($scope, mvFeatureCost, queryBulider, $location, mvFeature, mvUser, mvNotifier, mvSubUserFeatureRepo, mvSubUserFeature, $routeParams, $translate, $rootScope) {
+
+    var uId = $scope.uId = $routeParams.uId;
+
+    var id = $routeParams.id;
+    $scope.nameText = "";
+    $scope.addEnabled = false;
+    $scope.currentLang = $translate.use();
+
+    if (id) {
+        $scope.SubUserFeature = mvSubUserFeature.get({ _id: id }, (function () {            
+            mvFeature.query({ currentLang: $rootScope.currentLang, userType: $scope.SubUserFeature.User.UserType[0] }, (function (packs) {
+                $scope.features = packs;
+                $scope.startDate = new Date($scope.SubUserFeature.StartDate);
+                $scope.expiryDate = new Date($scope.SubUserFeature.ExpiryDate);
+                $scope.updateMode = true;
+                $scope.addMode = false;
+            }));            
+        }));        
+    }
+    else {
+        if (uId) {
+            mvUser.query({
+                query: queryBulider.qb("_id=='" + $routeParams.uId + "'&&!Deleted"),
+                currentPage: 1,
+                pageSize: 10
+            }, (function (users) {
+                mvFeature.query({ currentLang: $rootScope.currentLang, userType: users[0].collection[0].UserType[0] }, (function (packs) {
+                    $scope.features = packs;
+                    $scope.SubUserFeature = new mvSubUserFeature();
+                    $scope.startDate = new Date();
+                    $scope.SubUserFeature.StartDate = new Date($scope.startDate);
+                    $scope.updateMode = false;
+                    $scope.addMode = true;
+                    $scope.addEnabled = true;
+                    $scope.SubUserFeature.User = users[0].collection[0];
+                    $scope.SubUserFeature.Deleted = false;
+                    $scope.SubUserFeature.Deleted = false;
+                }));
+            }));
+        }
+    }
+
+    $scope.updateFields = function () {
+        $scope.expiryDate = undefined;
+        $scope.featureAmount = undefined;
+        $scope.totalAmount = undefined;
+
+        if ($scope.SubUserFeature.Feature && $scope.SubUserFeature.NoOfMonths) {
+            $scope.expiryDate = new Date(moment($scope.SubUserFeature.StartDate).add($scope.SubUserFeature.NoOfMonths, 'month'));
+            $scope.SubUserFeature.ExpiryDate = new Date($scope.expiryDate);
+
+            mvFeatureCost.query({
+                query: queryBulider.qb("Feature=='" + $scope.SubUserFeature.Feature + "'&&!Deleted"),
+                currentPage: 1,
+                pageSize: 500
+            }, (function (res) {
+                var flagg = false;
+                res[0].collection.forEach(function (entry) {
+                    if ($scope.SubUserFeature.NoOfMonths >= entry.PeriodFromByMonth && $scope.SubUserFeature.NoOfMonths <= entry.PeriodToByMonth) {
+                        $scope.featureAmount = entry.CostPerMonth;
+                        $scope.totalAmount = entry.CostPerMonth * $scope.SubUserFeature.NoOfMonths;
+                        $scope.SubUserFeature.TotalAmount = $scope.totalAmount;
+                        $scope.SubUserFeature.FeatureAmount = $scope.featureAmount;
+                        flagg = true;
+                    }
+                });
+                if (!flagg) {
+                    $scope.featureAmount = undefined;
+                    $scope.totalAmount = undefined;
+                    $scope.SubUserFeature.TotalAmount = $scope.totalAmount;
+                    $scope.SubUserFeature.FeatureAmount = $scope.featureAmount;
+                }
+            }));
+        }
+    };
+
+
+    $scope.update = function () {
+        if ($scope.subUserFeatureForm.$valid) {
+            mvSubUserFeatureRepo.updateCurrentSubUserFeature($scope.SubUserFeature).then(function () {
+                mvNotifier.notify('SubUserFeature has been updated!');
+                $location.path('/subUserFeatures/' + uId);
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
+    };
+
+    $scope.add = function () {
+        if ($scope.subUserFeatureForm.$valid && $scope.addEnabled) {
+            mvSubUserFeatureRepo.createSubUserFeature($scope.SubUserFeature).then(function () {
+                mvNotifier.notify('New SubUserFeature Added!');
+                $scope.addEnabled = false;
+                $location.path('/subUserFeatures/' + uId);
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
+    };
+
+});
+angular.module('app').controller('mvSubUserFeatureDetailCtrl', function ($scope, mvSubUserFeature, $routeParams) {
+    $scope.SubUserFeature = mvSubUserFeature.get({_id: $routeParams.pfid});
+});
+angular.module('app').factory('mvSubUserFeatureRepo', function ($http, $q, mvSubUserFeature, mvIdentity) {
+    return {
+
+        createSubUserFeature: function (newSubUserFeatureData) {
+
+            var newSubUserFeature = new mvSubUserFeature(newSubUserFeatureData);
+            newSubUserFeature.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving SubUserFeature");
+            newSubUserFeature.$save().then(function () {
+                console.log("SubUserFeature Saved");
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+        updateCurrentSubUserFeature: function (newSubUserFeatureData) {
+            newSubUserFeatureData.ModifiedBy = mvIdentity.currentUser;
+
+            var dfd = $q.defer();
+
+            var clone = angular.copy(newSubUserFeatureData);
+            angular.extend(clone, newSubUserFeatureData);
+            clone.$update({ currentUser: mvIdentity.currentUser }).then(function (res) {
+
+                dfd.resolve(res);
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        }
+    };
+});
+angular.module('app').controller('mvSubUserFeatureListCtrl', function ($scope,$routeParams, mvSubUserFeature, $translate, mvIdentity, mvSubUserFeatureRepo, mvNotifier, queryBulider) {
+    $scope.currentUser = mvIdentity.currentUser;
+    $scope.uId = $routeParams.uId;
+
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 10
+    };
+
+    $scope.getData = function () {
+        mvSubUserFeature.query({
+            query: queryBulider.qb("User=='" + $routeParams.uId + "'&&!Deleted"),
+            currentPage: $scope.paging.currentPage,
+            pageSize: $scope.paging.pageSize
+        }, (function (res) {
+            $scope.subUserFeatures = res[0].collection;
+            $scope.allDataCount = res[0].allDataCount;
+        }));
+    };
+
+    $scope.deleteSubUserFeature = function (SubUserFeature) {
+        var ed = mvSubUserFeature.get({ _id: SubUserFeature._id }, (function () {
+            ed.Deleted = true;
+            ed.DeletedBy = mvIdentity.currentUser;
+            mvSubUserFeatureRepo.updateCurrentSubUserFeature(ed).then(function () {
+                mvNotifier.notify('SubUserFeature has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+
+    $scope.getData();
+
 });

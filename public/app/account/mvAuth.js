@@ -22,7 +22,7 @@ angular.module('app').factory('mvAuth', function ($http, $q, mvIdentity, mvUser)
             
             newUser.$save().then(function () {
                 mvIdentity.currentUser = newUser;
-                dfd.resolve();
+                dfd.resolve(newUser);
             }, function (response) {
                 dfd.reject(response.data.reason);
             });

@@ -49,6 +49,7 @@ var packageModel = require('../models/Package');
 var questionModel = require('../models/Question');
 var subUserInvitationModel = require('../models/SubUserInvitation');
 var subUserInvitationDetailModel = require('../models/SubUserInvitationDetail');
+var subUserFeatureModel = require('../models/SubUserFeature');
 module.exports = function (config) {
 	mongoose.connect(config.db);
 	
@@ -75,6 +76,7 @@ module.exports = function (config) {
 	industryModel.createDefaultIndustry();
     subUserInvitationModel.createDefaultSubUserInvitation();
     subUserInvitationDetailModel.createDefaultSubUserInvitationDetail();
+    subUserFeatureModel.createDefaultSubUserFeatures();
 	jobTypeModel.createDefaultJobTypes();
 	innerPageModel.createDefaultInnerPages();
 	languageModel.createDefaultLanguages();

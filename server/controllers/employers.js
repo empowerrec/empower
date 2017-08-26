@@ -26,12 +26,12 @@ exports.getEmployerById = function (req, res) {
     if (req.params.id == 'profile') {
        
         Employer.findOne({ User: req.user }).populate('ModifiedBy').exec(function (err, col) {
-         
+            col.Photo = 'images/uploads/' + col.Photo;
             res.send(col);
         });
     } else {
         Employer.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
-            
+            col.Photo = 'images/uploads/' + col.Photo;
             res.send(col);
         }); 
     }
@@ -40,7 +40,7 @@ exports.getEmployerById = function (req, res) {
 
 exports.getEmployerByUser = function (req, res) {
     Employer.findOne({$or:[{ '_id': req.user.Employer }, { User: req.user }]}).populate('ModifiedBy').exec(function(err, col) {
-       
+        col.Photo = 'images/uploads/' + col.Photo;
         res.send(col);
     });
 

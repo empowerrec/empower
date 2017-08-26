@@ -67,7 +67,7 @@ module.exports = function (app, config) {
     No cors required */
     var storage = multer.diskStorage({ //multers disk storage settings
         destination: function (req, file, cb) {
-            cb(null, './server/uploads/')
+            cb(null, './public/images/uploads/')
         },
         filename: function (req, file, cb) {
             var datetimestamp = Date.now();
@@ -91,7 +91,7 @@ module.exports = function (app, config) {
     });
     app.get('/upload/*', function (req, res) {
 
-        var filePath = config.rootPath + 'server\\uploads\\' + req.params[0];
+        var filePath = config.rootPath + 'public\\images\\uploads\\' + req.params[0];
         // Check if file specified by the filePath exists 
         fs.readFile(filePath, function (err, content) {
             if (err) {

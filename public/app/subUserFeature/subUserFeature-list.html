@@ -1,0 +1,99 @@
+<div class="noo-page-heading">
+    <div class="container-boxed max parallax-content">
+        <div class="page-heading-info">
+            <h1 class="page-title">Sub User Features</h1>
+        </div>
+    </div>
+    <div class="parallax heading" data-parallax="1" data-parallax_no_mobile="1" data-velocity="0.1" style="background-position: 50% 7px;"></div>
+</div>
+<div class="container-wrap">
+    <div class="main-content container-boxed max offset">
+
+        <div class="row">
+            <div class="pull-left">
+                <!--<a href="#/addSubUserFeature/{{uId}}" ng-show="{{currentUser}}" class="btn btn-success">{{"Buttons.Add" | translate}}</a>-->
+            </div>
+            <div class="pull-right">
+                <form class="form-inline">
+                    <div class="form-group"><input ng-model="searchText" placeholder="Filter" class="form-control" /></div>
+                    <div class="form-group margin-left-med">
+                        <select ng-model="sortOrder" ng-options="item.value as item.text for item in sortOptions"
+                                class="form-control"></select>
+                    </div>
+
+                </form>
+            </div>
+            <div class="noo-main col-md-12">
+                <div class="jobs posts-loop">
+
+                    <div class="posts-loop-content">
+                        <article class="noo_job hentry" ng-repeat="SubUserFeature in subUserFeatures | filter:searchText | orderBy:sortOrder">
+                            <div class="loop-item-wrap">
+                                <div class="item-featured">
+                                    <a href="#">
+                                        <img width="50" height="50" src="images/company/company_50x50.jpg" alt="Villa Senang" />
+                                    </a>
+                                </div>
+                                <div class="loop-item-content">
+                                    <h2 class="loop-item-title">
+                                        <a href="#/subUserFeatures/{{SubUserFeature._id}}">
+                                            <div ng-repeat="ind in SubUserFeature.Name | filter:{Lang:currentLang}">
+                                                {{ind.Text}}
+                                            </div>
+                                        </a>
+                                    </h2>
+                                    <p class="content-meta">
+                                        <span class="job-company">
+                                            {{"UserFeature.Package" | translate}} : <a href="#" ng-repeat="name in SubUserFeature.Package.Name | filter:{Lang:currentLang}">{{name.Text}} </a>
+                                        </span>
+                                        <span class="job-company">
+                                            {{"UserFeature.Feature" | translate}} : <a href="#" ng-repeat="name in SubUserFeature.Feature.Name | filter:{Lang:currentLang}">{{name.Text}} </a>
+                                        </span>
+                                        <span class="job-company">
+                                            <a href="#"> {{"UserFeature.Points" | translate}} : {{ SubUserFeature.Points}}  </a>
+                                        </span>
+                                        <span class="job-company">
+                                            <a href="#"> {{"UserFeature.DistrbuitedForSubUsers" | translate}} : {{ SubUserFeature.DistrbuitedForSubUsers}}  </a>
+                                        </span>
+                                        <span class="job-company">
+                                            <a href="#"> {{"UserFeature.UsedFromPoints" | translate}} : {{ SubUserFeature.UsedFromPoints}}  </a>
+                                        </span>
+                                        <span class="job-company">
+                                            <a href="#"> {{"UserFeature.ExpiryDate" | translate}} : {{ SubUserFeature.ExpiryDate | date}}  </a>
+                                        </span>
+                                        <span class="job-company">
+                                            <a href="#"> modified by  {{ SubUserFeature.ModifiedBy.FirstName}} {{ SubUserFeature.ModifiedBy.LastName}}</a>
+                                        </span>
+                                        <span class="job-company">
+                                            <a href="#"> created by  {{ SubUserFeature.CreatedBy.FirstName}} {{ SubUserFeature.CreatedBy.LastName}}</a>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="show-view-more">
+                                    <!--<a href="#/updateSubUserFeature/{{uId}}/{{SubUserFeature._id}}" class="btn btn-primary"> {{"Buttons.Update" | translate}}</a>
+                                    <a class="btn btn-danger" ng-click="deleteSubUserFeature(SubUserFeature)"> {{"Buttons.Delete" | translate}}</a>-->
+                                </div>
+                            </div>
+                        </article>
+
+
+                    </div>
+                    <uib-pagination total-items="allDataCount"
+                                    items-per-page="paging.pageSize"
+                                    ng-model="paging.currentPage"
+                                    max-size="paging.maxPagesToShow"
+                                    ng-change="getData()"
+                                    class="pagination-lg"
+                                    boundary-links="true"
+                                    previous-text="{{'Buttons.Previous' | translate}}"
+                                    next-text="{{'Buttons.Next' | translate}}"
+                                    first-text="{{'Buttons.First' | translate}}"
+                                    last-text="{{'Buttons.Last' | translate}}">
+                    </uib-pagination>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
