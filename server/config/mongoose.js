@@ -23,7 +23,7 @@ var referenceRelationshipModel = require('../models/ReferenceRelationship');
 
 var addressModel = require('../models/Address');
 var religionModel = require('../models/Religion');
-var visaStatusModel = require('../models/visaStatus');
+var visaStatusModel = require('../models/VisaStatus');
 var genderModel = require('../models/Gender');
 var hearAboutUsModel = require('../models/HearAboutUs');
 var contactViaModel = require('../models/ContactVia');
