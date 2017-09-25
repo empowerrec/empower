@@ -4,6 +4,10 @@ angular.module('app').controller('mvSkillCtrl', function ($scope, $rootScope, mv
     $scope.currentLang = $translate.use();
     $("#currentLang").val($rootScope.currentLang);
 
+    $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+        $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+    }));
+
     $scope.skill = new mvSkill();
 
     if (mvIdentity.currentJobSeeker)
@@ -44,6 +48,10 @@ angular.module('app').controller('mvSkillCtrl', function ($scope, $rootScope, mv
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             //$location.path('/updateJobSeeker/Skills/' + mvIdentity.currentJobSeeker._id);
 
         }, function (reason) {
@@ -65,6 +73,10 @@ angular.module('app').controller('mvSkillCtrl', function ($scope, $rootScope, mv
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             $scope.showForm = false;
             //$location.path('/updateJobSeeker/Skills/' + mvIdentity.currentJobSeeker._id);
 
@@ -95,6 +107,10 @@ angular.module('app').controller('mvSkillCtrl', function ($scope, $rootScope, mv
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             $scope.showForm = false;
             //$location.path('/updateJobSeeker/Skills/' + mvIdentity.currentJobSeeker._id);
 

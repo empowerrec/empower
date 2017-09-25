@@ -46,6 +46,10 @@ angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
         }, function (reason) {
             mvNotifier.error(reason);
         });

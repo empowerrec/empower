@@ -4,6 +4,9 @@ angular.module('app').controller('mvLanguageSkillCtrl', function ($scope, mvNoti
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
     $("#currentLang").val($rootScope.currentLang);
+    $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+        $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+    }));
 
     $scope.LanguageSkill = new mvLanguageSkill();
 
@@ -45,6 +48,10 @@ angular.module('app').controller('mvLanguageSkillCtrl', function ($scope, mvNoti
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             //$location.path('/updateJobSeeker/LanguageSkills/' + mvIdentity.currentJobSeeker._id);
 
         }, function (reason) {
@@ -66,6 +73,10 @@ angular.module('app').controller('mvLanguageSkillCtrl', function ($scope, mvNoti
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             $scope.showForm = false;
             //$location.path('/updateJobSeeker/LanguageSkills/' + mvIdentity.currentJobSeeker._id);
 
@@ -96,6 +107,10 @@ angular.module('app').controller('mvLanguageSkillCtrl', function ($scope, mvNoti
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             $scope.showForm = false;
             //$location.path('/updateJobSeeker/LanguageSkills/' + mvIdentity.currentJobSeeker._id);
 
