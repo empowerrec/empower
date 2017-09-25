@@ -1,10 +1,12 @@
 angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $rootScope, mvNotifier, mvMembershipAndAwardRepo, mvMembershipAndAward, $routeParams
-    , $translate, mvIdentity, $location, mvJobSeekerRepo) {
+    , $translate, mvIdentity, $location, mvJobSeekerRepo, mvJobSeeker) {
 
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
     $("#currentLang").val($rootScope.currentLang);
-
+    $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+        $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+    }));
     $scope.membershipAndAward = new mvMembershipAndAward();
 
     if (mvIdentity.currentJobSeeker)
@@ -64,6 +66,9 @@ angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
             $scope.showForm = false;
         }, function (reason) {
             mvNotifier.error(reason);
@@ -91,6 +96,9 @@ angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
             $scope.showForm = false;
         }, function (reason) {
             mvNotifier.error(reason);

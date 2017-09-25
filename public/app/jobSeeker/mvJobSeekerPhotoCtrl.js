@@ -1,34 +1,26 @@
 angular.module('app').controller('mvJobSeekerPhotoCtrl'
     , function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, mvGender, $routeParams, $rootScope, $q, Upload) {
     
-    var id = $routeParams.id;
-    $scope.addEnabled = false;
-    
-    if (id) {
-        $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function () {
-            $scope.updateMode = true;
-            $scope.addMode = false;
-            
-            $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
-            $scope.photoName = $rootScope.jobSeeker.Photo;
-           
-        }));
+        var id = $routeParams.id;
+        $scope.addEnabled = false;
 
-        
+        if (id) {
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function () {
+                $scope.updateMode = true;
+                $scope.addMode = false;
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+                $scope.photoName = $rootScope.jobSeeker.Photo;
+                $scope.cvName = $rootScope.jobSeeker.CVLink;
+            }));
 
-       
-
-    } else {
-        $rootScope.jobSeeker = new mvJobSeeker();
-        
-        $rootScope.jobSeeker.Confirmed = false;
-        $rootScope.jobSeeker.Deleted = false;
-        $scope.updateMode = false;
-        $scope.addMode = true;
-        $scope.addEnabled = true;
-        
-    }
-
+        } else {
+            $rootScope.jobSeeker = new mvJobSeeker();
+            $rootScope.jobSeeker.Confirmed = false;
+            $rootScope.jobSeeker.Deleted = false;
+            $scope.updateMode = false;
+            $scope.addMode = true;
+            $scope.addEnabled = true;
+        }
     $scope.upload = function (file , type) {
        
             var dfd = $q.defer();

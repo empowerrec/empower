@@ -2,12 +2,14 @@ angular.module('app').controller('mvEducationalInformationCtrl'
     , function ($scope, mvNotifier, mvEducationalInformationRepo,
         mvEducationalInformation, mvIdentity, mvGender, $routeParams, mvCity ,
         $location, mvUnivirsty, mvUnivirstyRepo, mvFaculty,
-        mvFacultyRepo, $rootScope, mvSpecialization, mvSpecializationRepo, $translate, mvJobSeekerRepo, mvJobSeeker) {
+        mvFacultyRepo, $rootScope, mvSpecialization, mvSpecializationRepo, $translate, mvJobSeekerRepo, mvJobSeeker, mvCityRepo) {
 
         $scope.addEnabled = false;
         $scope.currentLang = $translate.use();
         $("#currentLang").val($rootScope.currentLang);
-
+        $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+            $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+        }));
         $scope.educationalInformation = new mvEducationalInformation();
 
         if (mvIdentity.currentJobSeeker)

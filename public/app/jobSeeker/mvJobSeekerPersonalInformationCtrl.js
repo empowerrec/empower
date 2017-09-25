@@ -8,29 +8,20 @@ angular.module('app').controller('mvJobSeekerPersonalInformationCtrl'
         $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function () {
             $scope.updateMode = true;
             $scope.addMode = false;
-            
             $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
             $scope.photoName = $rootScope.jobSeeker.Photo;
             $scope.cvName = $rootScope.jobSeeker.CVLink;
         }));
 
-        
-
-       
-
     } else {
         $rootScope.jobSeeker = new mvJobSeeker();
-        
         $rootScope.jobSeeker.Confirmed = false;
         $rootScope.jobSeeker.Deleted = false;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
-        
     }
-
     $scope.upload = function (file , type) {
-       
             var dfd = $q.defer();
             if (file) {
                 Upload.upload({
@@ -38,7 +29,7 @@ angular.module('app').controller('mvJobSeekerPersonalInformationCtrl'
                     data: { file: file } //pass file as data, should be user ng-model
                 }).then(function (resp) { //upload function returns a promise
                     if (resp.data.error_code === 0) { //validate success
-                        console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ');
+                        console.log('Success ' + resp.config.data.file.name + ' Uploaded Response: ');
                         if (type == "P")
                             $scope.photoName = resp.data.file_name;
                         else if (type == "C")
@@ -64,13 +55,11 @@ angular.module('app').controller('mvJobSeekerPersonalInformationCtrl'
     };
     $scope.update = function () {
         if ($scope.jobSeekerForm.$valid) {
-           
                     mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
                         mvNotifier.notify('JobSeeker has been updated!');
                     }, function (reason) {
                         mvNotifier.error(reason);
                     });
-               
     };
     };
     

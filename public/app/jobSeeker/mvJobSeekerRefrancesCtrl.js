@@ -7,72 +7,26 @@ angular.module('app').controller('mvJobSeekerRefrancesCtrl', function ($scope, m
         { value: 'Female', text: 'Female' }
     ];
     
+    var id = $routeParams.id;
     $scope.addEnabled = false;
-    $scope.IsMobileInserted = false;
-    // $rootScope.jobSeekers = mvJobSeeker.query();
+
     if (id) {
-         $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function() {
+        $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function () {
             $scope.updateMode = true;
             $scope.addMode = false;
-            $scope.IsMobileInserted = true;
-             $rootScope.jobSeeker.MobileNo =  $rootScope.jobSeeker.MobileNo;
-             $rootScope.jobSeeker.Email =  $rootScope.jobSeeker.Email;
-           
-                //if ( $rootScope.jobSeeker.MobileNo == null ||  $rootScope.jobSeeker.MobileNo == "" ||  $rootScope.jobSeeker.Email == null ||  $rootScope.jobSeeker.Email == "") {
-                //    $scope.IsMobileInserted = false;
-                //}
-                
-          
-            // $rootScope.jobSeeker.BirthDate = new Date( $rootScope.jobSeeker.BirthDate);
-            //if (! $rootScope.jobSeeker.Gender) {
-            //     $rootScope.jobSeeker.Gender = $scope.genders[0].value;
-            //}
+            $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            $scope.photoName = $rootScope.jobSeeker.Photo;
+            $scope.cvName = $rootScope.jobSeeker.CVLink;
         }));
+
     } else {
-        //$http.get('/api/getJobSeekerWhereMobileNumberNotNull').then(function(res) {
-            //if (res.data.length > 0) {
-                //mvNotifier.notify('This link is expired please make another link');
-        //$location.path('/forget');
-        
-         $rootScope.jobSeeker = new mvJobSeeker();
-         $rootScope.jobSeeker.Deleted = false;
+        $rootScope.jobSeeker = new mvJobSeeker();
+        $rootScope.jobSeeker.Confirmed = false;
+        $rootScope.jobSeeker.Deleted = false;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
-        //$.ajax({
-        //    url: "api/getJobSeekerWhereMobileNumberNotNull",
-        //    dataType: 'json',
-        //    async: false,
-        //    success: function (data) {
-        //        if (data) {
-               
-        //             $rootScope.jobSeeker = new mvJobSeeker();
-        //            // $rootScope.jobSeeker.Gender = $scope.genders[0].value;
-        //            $scope.IsMobileInserted = true;
-        //            $scope.updateMode = false;
-        //            $scope.addMode = true;
-        //            $scope.addEnabled = false;
-        //        } 
-        //    },
-        //    error: function (err) {
-        //         $rootScope.jobSeeker = new mvJobSeeker();
-        //        // $rootScope.jobSeeker.Gender = $scope.genders[0].value;
-        //        $scope.IsMobileInserted = false;
-        //        $scope.updateMode = false;
-        //        $scope.addMode = true;
-        //        $scope.addEnabled = true;
-        //  }
-        //});
-               
-            //}
-        //});
     }
-    // $rootScope.jobSeeker = mvJobSeeker.get({ MobileNumber: "" }, (function() {
-        //    if (! $rootScope.jobSeekers.lenght > 0) {
-              
-        //    }
-
-        //}));
     
     $scope.update = function () {
         if ( $scope.jobSeekerForm.$valid) {

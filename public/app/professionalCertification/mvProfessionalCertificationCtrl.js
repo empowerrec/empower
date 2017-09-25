@@ -1,10 +1,12 @@
 angular.module('app').controller('mvProfessionalCertificationCtrl', function ($scope, $rootScope, mvNotifier, mvProfessionalCertificationRepo, mvProfessionalCertification, $routeParams
-    , $translate, mvIdentity, $location, mvJobSeekerRepo) {
+    , $translate, mvIdentity, $location, mvJobSeekerRepo, mvJobSeeker) {
 
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
     $("#currentLang").val($rootScope.currentLang);
-
+    $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+        $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+    }));
     $scope.professionalCertification = new mvProfessionalCertification();
 
     if (mvIdentity.currentJobSeeker)
@@ -46,6 +48,9 @@ angular.module('app').controller('mvProfessionalCertificationCtrl', function ($s
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
         }, function (reason) {
             mvNotifier.error(reason);
         });
@@ -70,6 +75,9 @@ angular.module('app').controller('mvProfessionalCertificationCtrl', function ($s
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
             $scope.showForm = false;
         }, function (reason) {
             mvNotifier.error(reason);
@@ -103,6 +111,9 @@ angular.module('app').controller('mvProfessionalCertificationCtrl', function ($s
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
             $scope.showForm = false;
         }, function (reason) {
             mvNotifier.error(reason);

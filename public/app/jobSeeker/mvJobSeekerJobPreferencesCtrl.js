@@ -1,21 +1,26 @@
 angular.module('app').controller('mvJobSeekerJobPreferencesCtrl'
     , function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, mvGender, $routeParams, $rootScope) {
     
+    
     var id = $routeParams.id;
     $scope.addEnabled = false;
-    
+
     if (id) {
         $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function () {
             $scope.updateMode = true;
-            $scope.addMode = false; 
+            $scope.addMode = false;
             $("#hfCityId1").val($rootScope.jobSeeker.FirstPreferredCity._id);
             $("#hfCityId2").val($rootScope.jobSeeker.SecondPreferredCity._id);
-            $("#hfCityId3").val($rootScope.jobSeeker.ThirdPreferredCity._id);          
+            $("#hfCityId3").val($rootScope.jobSeeker.ThirdPreferredCity._id);  
+            $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            $scope.photoName = $rootScope.jobSeeker.Photo;
+            $scope.cvName = $rootScope.jobSeeker.CVLink;
         }));
+
     } else {
-         $rootScope.jobSeeker = new mvJobSeeker();
-        
-         $rootScope.jobSeeker.Deleted = false;
+        $rootScope.jobSeeker = new mvJobSeeker();
+        $rootScope.jobSeeker.Confirmed = false;
+        $rootScope.jobSeeker.Deleted = false;
         $scope.updateMode = false;
         $scope.addMode = true;
         $scope.addEnabled = true;
