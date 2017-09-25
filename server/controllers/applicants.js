@@ -12,16 +12,9 @@ exports.getApplicants = function (req, res) {
             res.send(col);
         });
     } else {
-<<<<<<< HEAD
-        Applicant
-            .find(JSON.parse(req.query.query))
-            .populate({ path: 'Vacancy', populate: { path: 'Employer', model: 'Employer', select: 'EmployerName' } })
-            .populate({ path: 'JobSeeker', match: { "BirthDate": "1979-09-10T22:00:00.000Z"} })
-=======
         Applicant.find(JSON.parse(req.query.query))
             .populate({ path: 'Vacancy', populate: { path: 'Employer', model: 'Employer', select: 'EmployerName' } })
-            .populate('JobSeeker')
->>>>>>> origin/master
+            .populate({ path: 'JobSeeker', match: { "BirthDate": "1979-09-10T22:00:00.000Z"} })
             .populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize).skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
@@ -37,7 +30,6 @@ exports.getApplicantsSearchResult = function (req, res) {
     var groupBy = req.query.groupBy;
 
     Applicant.aggregate([
-<<<<<<< HEAD
         { $match: { "Vacancy": { "$eq": ObjectId(req.query.vacancyId) } } },
         {
             $lookup:
@@ -52,22 +44,12 @@ exports.getApplicantsSearchResult = function (req, res) {
             $group: {
                 _id: '$JobSeeker_Docs.BirthDate',
                 groupByObject: { $first: '$JobSeeker_Docs.BirthDate' },
-=======
-        {
-            $group: {
-                _id: '$' + groupBy,
-                groupByObject: { $first: '$' + groupBy },
->>>>>>> origin/master
                 count: { $sum: 1 }
             }
         }
     ]).exec(function (err, col) {
 
-<<<<<<< HEAD
         if (groupBy == 'BirthDate') {
-=======
-        if (groupBy == 'JobSeeker.BirthDate') {
->>>>>>> origin/master
             res.send(col);
         }
 
