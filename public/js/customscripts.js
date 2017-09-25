@@ -6295,23 +6295,13 @@ angular.module('app').controller('mvJobSeekerPersonalInformationCtrl'
     };
     $scope.update = function () {
         if ($scope.jobSeekerForm.$valid) {
-            $scope.upload($scope.photoFile , "P").then(function () {
-                if ($rootScope.jobSeeker.Photo != $scope.photoName) {
-                    $rootScope.jobSeeker.Photo = $scope.photoName;
-                }
-
-                $scope.upload($scope.cvFile , "C").then(function () {
-                    if ($rootScope.jobSeeker.CVLink && $rootScope.jobSeeker.CVLink != $scope.cvName) {
-                        $rootScope.jobSeeker.CVLink = $scope.cvName;
-                    }
+           
                     mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
                         mvNotifier.notify('JobSeeker has been updated!');
                     }, function (reason) {
                         mvNotifier.error(reason);
                     });
-                });
-            });
-
+               
     };
     };
     
