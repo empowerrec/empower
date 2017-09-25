@@ -56,7 +56,6 @@ angular.module('app').controller('mvApplicantListCtrl', function ($scope, $trans
         }
         // end code #2
 
-<<<<<<< HEAD
         if (qr.length > 0) {
             var qr1 = "(" + qr.slice(0, -2) + ')';
         }
@@ -69,21 +68,6 @@ angular.module('app').controller('mvApplicantListCtrl', function ($scope, $trans
             currentPage: $scope.paging.currentPage,
             pageSize: $scope.paging.pageSize,
             jobSeeker: jobSeekerId
-=======
-
-        if (qr.length > 0) {
-            qr = "Vacancy=='" + id + "'&&!Deleted&&(" + qr.slice(0, -2) + ')';
-        }
-        else {
-            qr = "Vacancy=='" + id + "'&&!Deleted";
-        }
-
-        mvApplicant.query({
-            query: queryBulider.qb(qr),
-            currentPage: $scope.paging.currentPage,
-            pageSize: $scope.paging.pageSize,
-            jobSeeker: jobSeekerId,
->>>>>>> origin/master
         }, (function (res) {
             $scope.applicants = res[0].collection;
             $scope.allDataCount = res[0].allDataCount;
@@ -178,11 +162,7 @@ angular.module('app').controller('mvApplicantListCtrl', function ($scope, $trans
                 type: "get",
                 async: false,
                 url: "/api/applicantsSearchResult",
-<<<<<<< HEAD
                 data: { groupBy: "BirthDate", currentLang: $translate.use(), vacancyId: id },
-=======
-                data: { groupBy: "JobSeeker.BirthDate", currentLang: $translate.use() ,vacancyId : id},
->>>>>>> origin/master
                 success: function (data) {
 
                     var count = 0;
@@ -192,21 +172,10 @@ angular.module('app').controller('mvApplicantListCtrl', function ($scope, $trans
 
                     $.map(data.splice(0, 3), function (item) {
                         var lab = '';
-<<<<<<< HEAD
                         var datee = new Date(item.groupByObject);
                         var datee = datee.getDate() + '/' + (datee.getMonth() + 1) + '/' + datee.getFullYear();
                         lab = datee + '   (' + item.count + ')  ';
 
-=======
-                        for (var i = 0; i < item.groupByObject.Name.length; i++) {
-                            var lang = item.groupByObject.Name[i].Lang;
-                            var text = item.groupByObject.Name[i].Text;
-                            if (lang == $translate.use()) {
-                                lab = text + '   (' + item.count + ')  ';
-                                break;
-                            }
-                        }
->>>>>>> origin/master
                         addCheckBoxToDiv(item._id, lab, false, 'birthDates', SelectedBirthDates);
                     });
                 }
@@ -224,29 +193,14 @@ angular.module('app').controller('mvApplicantListCtrl', function ($scope, $trans
                     type: "get",
                     async: false,
                     url: "/api/applicantsSearchResult",
-<<<<<<< HEAD
                     data: { groupBy: "BirthDate", currentLang: $translate.use(), vacancyId: id },
-=======
-                    data: { groupBy: "JobSeeker.BirthDate", currentLang: $translate.use(), vacancyId: id },
->>>>>>> origin/master
                     success: function (data) {
                         response($.map(data, function (item) {
                             var prefix = request.term;
                             var lab = '';
-<<<<<<< HEAD
                             var datee = new Date(item.groupByObject);
                             var datee = datee.getDate() + '/' + (datee.getMonth() + 1) + '/' + datee.getFullYear();
                             lab = datee + '   (' + item.count + ')  ';
-=======
-                            for (var i = 0; i < item.groupByObject.Name.length; i++) {
-                                var lang = item.groupByObject.Name[i].Lang;
-                                var text = item.groupByObject.Name[i].Text;
-                                if (lang == $translate.use() && text.toLowerCase().indexOf(prefix.toLowerCase()) >= 0) {
-                                    lab = text + '   (' + item.count + ')  ';
-                                    break;
-                                }
-                            }
->>>>>>> origin/master
 
                             if (lab == '') {
                                 return;

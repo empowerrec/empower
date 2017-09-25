@@ -476,23 +476,6 @@ angular.module('app').config(function ($routeProvider) {
             controller: 'mvSubUserFeatureListCtrl'
         })
 
-<<<<<<< HEAD
-=======
-        .when('/subUserFeatures/:uId/:id', {
-            templateUrl: '/partials/subUserFeature/subUserFeature-detail',
-            controller: 'mvSubUserFeatureDetailCtrl'
-        }).when('/updateSubUserFeature/:uId/:id', {
-            templateUrl: '/partials/subUserFeature/subUserFeature',
-            controller: 'mvSubUserFeatureCtrl'
-        }).when('/addSubUserFeature/:uId', {
-            templateUrl: '/partials/subUserFeature/subUserFeature',
-            controller: 'mvSubUserFeatureCtrl'
-        }).when('/subUserFeatures/:uId', {
-            templateUrl: '/partials/subUserFeature/subUserFeature-list.html',
-            controller: 'mvSubUserFeatureListCtrl'
-        })
-
->>>>>>> origin/master
         .when('/subUserInvitationDetails/:id', {
     templateUrl: '/partials/subUserInvitationDetail/subUserInvitationDetail-detail',
     controller: 'mvSubUserInvitationDetailDetailCtrl'

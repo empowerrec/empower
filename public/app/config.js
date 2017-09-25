@@ -830,11 +830,7 @@
                 'EducationalLevel': 'المستوى التعليمي',
                 'CareerLevel': 'المستوى الوظيفي',
                 'Dates': 'التواريخ',
-<<<<<<< HEAD
                 'BirthDate': 'تاريخ الميلاد'
-=======
-                'BirthDate' : 'تاريخ الميلاد'
->>>>>>> origin/master
             },
             'Package': {
                 "Name": "الأسم",
