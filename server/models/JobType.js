@@ -33,12 +33,34 @@ function createDefaultJobTypes() {
             
             JobType.create({
                 Deleted : false,
-                Name: [{ "Text": "Full Time" , "Lang": "en" }, { "Text": "باجر كامل" , "Lang": "ar" }]
+                Name: [{ "Text": "Full Time Employee" , "Lang": "en" }, { "Text": "باجر كامل" , "Lang": "ar" }]
             });
             
+
+
             JobType.create({
-                Deleted : false,
-                Name: [{ "Text": "Part Time" , "Lang": "en" }, { "Text": "نصف اجر" , "Lang": "ar" }]
+                Deleted: false,
+                Name: [{ "Text": "Part Time Employee", "Lang": "en" }, { "Text": "نصف اجر", "Lang": "ar" }]
+            });
+
+            JobType.create({
+                Deleted: false,
+                Name: [{ "Text": "Temporary Employee", "Lang": "en" }, { "Text": "Temporary Employee", "Lang": "ar" }]
+            });
+
+            JobType.create({
+                Deleted: false,
+                Name: [{ "Text": "Internship", "Lang": "en" }, { "Text": "Internship", "Lang": "ar" }]
+            });
+
+            JobType.create({
+                Deleted: false,
+                Name: [{ "Text": "Freelancer", "Lang": "en" }, { "Text": "Freelancer", "Lang": "ar" }]
+            });
+
+            JobType.create({
+                Deleted: false,
+                Name: [{ "Text": "Volunteer", "Lang": "en" }, { "Text": "Volunteer", "Lang": "ar" }]
             });
         }
     });

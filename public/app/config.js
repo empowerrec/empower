@@ -1,21 +1,21 @@
 (function () {
     'use strict';
-    
+
     var core = angular.module('app');
-    
+
     var config = {
         appErrorPrefix: '[hot-towel Error] ',
         appTitle: 'hot-towel'
     };
-    
+
     core.value('config', config);
-    
+
     core.config(configure);
-    
+
     configure.$inject = ['$translateProvider'];
     /* @ngInject */
     function configure($translateProvider) {
-        
+
         var english = {
             'Title': 'Internationalization Test',
             "Language": "Language",
@@ -26,6 +26,7 @@
             },
             "Created_By": "Created by John Papa",
             "Forget Password": "Forget Password",
+            "HearAboutUs": "How did you hear about Us",
             "First_Name": "First Name",
             "Last_Name": "Last Name",
             "Age": "Age",
@@ -70,7 +71,7 @@
             "JobSeeker": {
                 "JobSeeker": "JobSeeker",
                 "Gender": "Gender",
-                "BirthDate": "Birth Date",
+                "BirthDate": "Date of Birth",
                 "Address": "Address",
                 "ResumeLink": "Resume Link",
                 "ExperienceLevel": "Experience Years",
@@ -80,38 +81,90 @@
                 "PreferredJobCategory": "PreferredJobCategory",
                 "EducationLevel": "Education Level",
                 "SchoolName": "School Name",
+                "Religion": "Religion",
+                "Nationality": "Nationality",
+                "SecondNationality": "Second Nationality",
                 "GraduationGrade": "GraduationGrade",
                 "LanguageSpoken": "Language Spoken",
-                "SalaryPreference": "Salary Preference",
+                "SalaryPreference": "Minimum Net Monthly Salary ",
                 "PreferredWork": "PreferredWork",
                 "Reference1": "Reference1",
                 "Reference1Contact": "Reference1 Contact",
                 "Reference2": "Reference2",
                 "Reference2Contact": "Reference2 Contact",
                 'Personal Information': 'Personal Information',
-                'Educational Information': 'Educational',
+                'PersonalInformationDescrption': '(Tell us a few things about yourself)',
+                'Educational Information': 'Education',
+                'Educational InformationDescrption': 'Profile Education',
                 'Contact Information': 'Contact Information',
+                'Contact InformationDescrption': 'Contact Information',
                 "Country": "Country",
-                "MobileNo": "MobileNo",
-                "Email": "Email",
+                "MobileNo": "Mobile Number",
+                "ContactVia": "I prefer to be contacted via",
+                "HomePhoneNo": "Home Phone Number",
+                "Email": "Email Address",
                 "Experiances": "Experiances",
+                "ExperiancesDescrption": "Profile Experience",
+                "ProfessionalCertifications": "Professional Certifications",
+                "ProfessionalCertificationsDescrption": "Profile Certification",
+                "MembershipsAndAwards": "Memberships And Awards",
+                "Interests": "Interests",
                 'FirstName': 'First Name',
                 'MiddleName': 'Middle Name',
                 'LastName': 'Last Name',
                 'FullName': 'Full Name',
                 'MaritalStatus': 'Marital Status',
                 'MilitaryStatus': 'Military Status',
-                'CarLicenceType': 'Car Licence Type',
-                'FacebookAcount': 'Facebook Acount',
-                'TwitterAcount': 'Twitter Acount',
-                'LinkedinAccount': 'Linkedin Account',
-                'Course': 'Course',
+                'CarLicenceType': 'Do you have a valid Driving License',
+                'VisaStatus': 'Visa Status',
+                'DrivingLicenseIssuedIn': 'Driving license issued in /if Applicable',
+                'FacebookAcount': 'Facebook (optional)',
+                'TwitterAcount': 'Twitter (optional)',
+                'LinkedinAccount': 'LinkedIn (optional)',
+                'Course': ' Professional Course',
+                'CourseDescrption': ' Profile Course',
                 'Skills': 'Skills',
+                'SkillsDecrption': 'Profile Skills',
                 'LanguageSkills': 'Language Skills',
-                'HasACar': 'Has a Car',
+                'LanguageSkillsDecrption': 'Language Skills',
+                'ProfessionalOverviewDescrption': 'Profile Professional Overview',
+                'ProfessionalOverview': 'Professional Overview',
+                'ProfessionalOverviewCareerLevel': 'Experience Level / Seniority',
+                'ProfessionalOverviewTotalYearsOfExperianceDescrption': 'e.g. "Electrical engineer with 5 years of professional experience in the field of Switching stations installation"',
+                'ProfessionalOverviewTotalYearsOfExperiance': 'Total years of experience',
+                'ProfessionalOverviewSummary': 'Summary',
+                'ProfessionalOverviewSummaryDescrption': 'Tip: For established professionals, we recommend summarizing the experience and established skills you have to build upon. If you’re newer to the professional world, try positioning it as an objective statement to let prospective employers know where you see your career heading next.',
+                'HasACar': 'Do you have a car',
                 'PeriodOfEnrollment': 'Period Of Enrollment',
                 'MoreInformation': 'More Information',
-                'Job Preferences': 'Job Preferences'
+                'Job Preferences': 'Job Preferences',
+                'JobPreferencesDescrption': 'Job Preferences',
+                'PreferredJobLevel': 'Preferred Job Level',
+                'PreferredJobTitle': 'Preferred Job Title',
+                'FirstPreferredIndustry': '1st Preferred Industry ',
+                'SecondPreferredIndustry': '2nd Preferred Industry ',
+                'ThirdPreferredIndustry': '3rd Preferred Industry ',
+                'FirstPreferredLocation': '1st Preferred Location',
+                'SecondPreferredLocation': '2nd Preferred Location',
+                'ThirdPreferredLocation': '3rd Preferred Location',
+                'TravelPreference': 'Travel Preference',
+                'EmploymentType': 'Employment Type',
+                'References': 'References',
+                'ReferencesDescrption': 'Add a new reference (Preferably former employers)',
+                'ReferenceFullName': 'Full Name',
+                'ReferencePosition': 'Position',
+                'ReferenceCompany': 'Company',
+                'ReferenceEmailAddress': 'Email Address',
+                'ReferencePhoneNumber': 'Travel Preference',
+                'ReferenceRelationship': 'Relationship with you (Current/previous)',
+                "LanguageSkill": "Language Skills",
+                "Photo": "Photo",
+                "CV": "Upload CV",
+                "CVLink": "CV File",
+                "PhotoDescrption": "Profile Photo",
+                "CVDescrption": "You may upload and attach your own CV along with your Empower CV. However, to be able to apply to jobs, you must complete your Empower CV."
+
+
             },
             "Vacancy": {
                 "Vacancy": "Vacancy",
@@ -187,25 +240,47 @@
                 "AddressLine1": "Address Line1",
                 "AddressLine2": "Address Line2"
             },
+            "ProfessionalCertification": {
+                "CertificationName": "Certification Name",
+                "InstitutionName": "Institution Name",
+                "DateIssued": "Date Issued",
+                "CountryOfExamination": "Country Of Examination",
+                "OverallGradeGPA": "Overall Grade / GPA",
+                "Summary": "Summary (optional)"
+            },
+            "MembershipAndAward": {
+                "Membership": "Membership",
+                "HonorAndAward": "Honor & Award"
+            },
+            "Interest": {
+                "Interest": "Interest"
+            },   
             "Experiance": {
-                "Country": "Country",
-                "Company": "Company",
+                "Country": "Country (Work Place)",
+                "City": "City/location (Work Place)",
+                "Company": "Company Name",
                 "CompanySize": "Company Size",
-                "CompanyType": "Company Type",
+                "CompanyType": "Industry Type",
                 "Position": "Position",
-                "Salary": "Salary",
+                "CompanyWebsite": "Company Website",
+                "JobRole": "Job Category",
+                "ReportTo": "Position of your direct manager / the person you report to",
+                "TransportAllowance": "Transport Allowance",
+                "HousingAllowance": "Housing Allowance",
+                "OtherAllowance": "Other Allowance",
+                "Salary": "current net salary",
                 "PeriodFrom": "Period From",
                 "PeriodTo": "Period To",
-                "Achievements": "Achievements",
+                "Achievements": "Main Achievements / Tasks / Job Description",
                 "FunctionalTasks": "Functional Tasks"
             },
             "LanguageSkill": {
-                "Language": "Language",
+                "Language": "Native Language",
                 "LanguageLevel": "LanguageLevel"
 
             },
             "Skill": {
-                "SkillType": "SkillType",
+                "SkillType": "Title",
                 "SkillLevel": "SkillLevel"
             },
             "Category": {
@@ -218,18 +293,27 @@
             "EducationalInformation": {
                 'EducationalLevel': 'Educational Level',
                 'Univirsty': 'Univirsty',
-                'Faculty': 'Faculty',
-                'Specialization': 'Specialization',
-                'Grade': 'Grade'
+                'Faculty': 'Field of Study/Faculty',
+                'Specialization': 'Major',
+                'Grade': 'Grade / GPA',
+                'GraduationYear': 'Graduation Date',
+                'StartYear': 'Start Date',
+                'Country': 'Country',
+                'City': 'City',
+                'Description': 'Description (optional)',
+                'Skills': 'Skills (optional)'
             }, "EducationalLevel": {
+                "Name": "Name"
+            }, "Nationality": {
                 "Name": "Name"
             },
             'Course': {
-                'Title': 'Title',
-                'TrainingCenter': 'Training Center',
+                'Title': 'Course Name',
+                'TrainingCenter': 'Institution Name',
                 'Specialization': 'Specialization',
                 'Grade': 'Grade',
-                'CourseYear': 'CourseYear'
+                'CourseYear': 'Date Issued',
+                'Summary': 'Summary (optional)'
             },
             'Main': {
                 'Empower': 'Empower',
@@ -242,7 +326,7 @@
                 'Messge3': '3. Send your resume to employers'
             },
             "Buttons": {
-                "ArrangeInterview":"Arrange Interview",
+                "ArrangeInterview": "Arrange Interview",
                 "Update": "Update",
                 "Save": "Save",
                 "Cancel": "Cancel",
@@ -285,11 +369,18 @@
                 "PostJob": "Post Job",
                 "UserMenu": "User Menu",
                 "EducationalLevels": "Educational Levels",
+                "Nationality": "Nationality",
                 "Categories": "Categories",
                 "CompanyProfile": "Company Profile",
                 "InviteSubUser": "Invite Sub User",
                 "SignUpSubUser": "SignUpSubUser",
+                "subUserFeatures": "SubUserFeatures",
                 "Experiances": "Experiances",
+                "ProfessionalCertifications": "Professional Certifications",
+                "MembershipsAndAwards": "Memberships & Awards",
+                "MembershipsAndAwardsDescrption": "Profile Memberships & Awards",
+                "Interests": "Interests",
+                "InterestsDescrption": "Interests",
                 'SelectValue': 'Select Value',
                 'JobSeekerProfile': 'Job Seeker Profile',
                 'Cities': 'Cities',
@@ -322,7 +413,9 @@
                 'JobType': 'Job Type',
                 'JobDetails': 'Job Details',
                 'EducationalLevel': 'Educational Level',
-                'CareerLevel': 'Career Level'
+                'CareerLevel': 'Career Level',
+                'Dates': 'Dates',
+                'BirthDate': 'Birth Date'
             },
             'Package': {
                 "Name": "Name",
@@ -368,7 +461,7 @@
                 "ArrangeInterviewTime": "Interview Time"
             }
         };
-        
+
         var arabic = {
             "Title": "أختبار ",
             "Language": "اللغات",
@@ -379,6 +472,7 @@
             },
             "Email": "البريد الالكتروني",
             "Password": "كلمة السر",
+            "HearAboutUs": "كيف سمعت عنا",
             "Remember Me": "تذكرني",
             "Forget Password": "نسيت كلمة السر",
             "Confirm Password": "تاكيد كلمة السر",
@@ -438,9 +532,12 @@
                 "EducationLevel": "مستوي التعليم",
                 "SchoolName": "اسم المدرسة او الجامعة",
                 "GraduationGrade": "درجة التخرج",
+                "Nationality": "الجنسية",
+                "SecondNationality": "الجنسية الثانية (إن وجدت)",
                 "LanguageSpoken": "اللغات",
                 "SalaryPreference": "المرتب المفضل",
                 "PreferredWork": "نوع العمل",
+                "Religion": "الديانة",
                 "Reference1": "Reference1",
                 "Reference1Contact": "Reference1 Contact",
                 "Reference2": "Reference2",
@@ -448,9 +545,14 @@
                 'Personal Information': 'المعلومات الشخصية',
                 'Educational Information': 'المعلومات الدراسية',
                 'Contact Information': 'معلومات الاتصال',
-                "MobileNo": "رقم المبيل",
+                "MobileNo": "رقم المحمول",
+                "HomePhoneNo": "رقم تليفون المنزل",
+                "ContactVia": "انا افضل الاتصال بي عبر",
                 "Email": "البريد الألكتروني",
                 "Experiances": "الخبرات",
+                "ProfessionalCertifications": "الشهادات المهنية",
+                "MembershipsAndAwards": "العضويات والجوائز",
+                "Interests": "الإهتمامات",
                 'FirstName': 'الاسم الاول',
                 'MiddleName': 'الاسم الاوسط',
                 'LastName': 'الاسم الاخير',
@@ -458,6 +560,8 @@
                 'MaritalStatus': 'الحالة الاجتماعية',
                 'MilitaryStatus': 'موقف من التجنيد',
                 'CarLicenceType': 'نوع رخصة السيارة',
+                'VisaStatus': 'حالة الفيزا',
+                'DrivingLicenseIssuedIn': 'رخصة القيادة الصادرة في / إذا وجدت',
                 'FacebookAcount': 'حساب الفيسبوك',
                 'TwitterAcount': 'حساب التويتر',
                 'LinkedinAccount': 'حساب لينكدان',
@@ -467,7 +571,17 @@
                 'HasACar': 'لديك سيارة',
                 'PeriodOfEnrollment': 'مهلة ترك الشركة الحالية',
                 'MoreInformation': 'معلومات اضافية',
-                'Job Preferences': 'خيارات الوظيفة'
+                'Job Preferences': 'خيارات الوظيفة',
+                'PreferredJobLevel': 'Preferred Job Level',
+                'PreferredJobTitle': 'Preferred Job Title',
+                'FirstPreferredIndustry': '1st Preferred Industry ',
+                'SecondPreferredIndustry': '2nd Preferred Industry ',
+                'ThirdPreferredIndustry': '3rd Preferred Industry ',
+                'FirstPreferredLocation': '1st Preferred Location',
+                'SecondPreferredLocation': '2nd Preferred Location',
+                'ThirdPreferredLocation': '3rd Preferred Location',
+                'TravelPreference': 'Travel Preference',
+                'EmploymentType': 'Employment Type'
             },
             'City': {
                 "City": "المدينة",
@@ -552,13 +666,35 @@
                 "AddressLine1": "العنوان الأول",
                 "AddressLine2": "العنوان الثاني"
             },
+            "ProfessionalCertification": {
+                "CertificationName": "اسم الشهادة",
+                "InstitutionName": "اسم المعهد",
+                "DateIssued": "تاريخ الإصدار",
+                "CountryOfExamination": "بلد الاختبار",
+                "OverallGradeGPA": "الصف العام / المعدل التراكمي",
+                "Summary": "ملخص (اختياري)"
+            },
+            "MembershipAndAward": {
+                "Membership": "العضويه",
+                "HonorAndAward": "التكريم والمكافاة"
+            },
+            "Interest": {
+                "Interest": "الاهتمام"
+            },
             "Experiance": {
                 "Country": "الدولة",
+                "City": "المدينة",
                 "Company": "الشركة",
                 "CompanySize": "حجم الشركة",
                 "CompanyType": "نوع الشركة",
                 "Position": "الوظيفة",
+                "CompanyWebsite": "موقع الشركة",
+                "JobRole": "مجال الوظيفة",
+                "ReportTo": "وظيفة مديرك المباشر / الشخص الذي ترفع تقاريرك له",
                 "Salary": "المرتب",
+                "TransportAllowance": "بدل النقل",
+                "HousingAllowance": "بدل سكن",
+                "OtherAllowance": "بدلات أخرى",
                 "PeriodFrom": "الفتره من ",
                 "PeriodTo": "الفتره الى",
                 "Achievements": "الانجازات",
@@ -576,8 +712,16 @@
                 'Univirsty': 'الجامعة',
                 'Faculty': 'الكلية',
                 'Specialization': 'التخصص',
-                'Grade': 'التقدير'
+                'Grade': 'التقدير',
+                'GraduationYear': 'تاريخ التخرج',
+                'StartYear': 'تاريخ البدء',
+                'Country': 'البلد',
+                'City': 'المدينة',
+                'Description': 'الوصف (اختياري)',
+                'Skills': 'المهارات (اختياري)'
             }, 'EducationalLevel': {
+                "Name": "الأسم"
+            }, 'Nationality': {
                 "Name": "الأسم"
             },
             'Course': {
@@ -585,7 +729,8 @@
                 'TrainingCenter': 'مركز التدريب',
                 'Specialization': 'التخصص',
                 'Grade': 'التقدير',
-                'CourseYear': 'السنة'
+                'CourseYear': 'السنة',
+                'Summary': 'الملخص (اختياري)'
             },
             'Main': {
                 'Empower': 'ايم باور',
@@ -598,7 +743,7 @@
                 'Messge3': '3. ارسل بياناتك للشركات'
             },
             "Buttons": {
-                "ArrangeInterview":"تنظيم مقابلة",
+                "ArrangeInterview": "تنظيم مقابلة",
                 "Update": "تعديل",
                 "Save": "حفظ",
                 "Cancel": "الغاء",
@@ -641,11 +786,16 @@
                 "PostJob": "أعلن عن وظيفة",
                 "UserMenu": "قائمة المستخدم",
                 "EducationalLevels": "المستويات التعليمية",
+                "Nationality": "الجنسية",
                 "Categories": "التصنيفات",
                 "CompanyProfile": "بيانات الشركة",
                 "InviteSubUser": "دعوة المستخدمين",
-                "SignUpSubUser":"SignUpSubUser",
+                "SignUpSubUser": "SignUpSubUser",
+                "subUserFeatures": "SubUserFeatures",
                 "Experiances": "الخبرات",
+                "ProfessionalCertifications": "الشهادات المهنية",
+                "MembershipsAndAwards": "العضويات والجوائز",
+                "Interests": "الإهتمامات",
                 'SelectValue': 'اختار من القائمة',
                 'JobSeekerProfile': 'بيانات طالب العمل',
                 'Cities': 'المدن',
@@ -678,7 +828,9 @@
                 'JobType': 'نوع الوظيفة',
                 'JobDetails': 'تفاصيل الوظيفة',
                 'EducationalLevel': 'المستوى التعليمي',
-                'CareerLevel': 'المستوى الوظيفي'
+                'CareerLevel': 'المستوى الوظيفي',
+                'Dates': 'التواريخ',
+                'BirthDate': 'تاريخ الميلاد'
             },
             'Package': {
                 "Name": "الأسم",
@@ -724,26 +876,26 @@
                 "ArrangeInterviewTime": "وقت المقابلة"
             }
         };
-        
-        
-        
+
+
+
         $translateProvider.translations('en', english);
         $translateProvider.translations('ar', arabic);
-        
+
         $translateProvider.registerAvailableLanguageKeys(['en', 'ar'], {
             'en-US': 'en',
             'ar-EG': 'ar'
         });
         $translateProvider.preferredLanguage('ar');
         //$translateProvider.determinePreferredLanguage();
-        
+
         $translateProvider.useCookieStorage();
         $translateProvider.useLocalStorage();
-        
+
         console.log(navigator.language);
 
     }
-    
+
     core.run(function ($rootScope) {
         $rootScope.$on('$translateChangeSuccess', function () {
             console.log('Translation Change Success!');

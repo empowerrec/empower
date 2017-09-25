@@ -15,6 +15,8 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope, $http, $q, 
                 }
             }
 
+            $scope.photoFile = $scope.employer.Photo;
+
 
 
             $.ajax({
@@ -137,7 +139,7 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope, $http, $q, 
 
                 mvEmployerRepo.updateCurrentEmployer($scope.employer).then(function () {
                     mvNotifier.notify('Employer has been updated!');
-                    $location.path('/employers');
+                    //$location.path('/employers');
                 }, function (reason) {
                     mvNotifier.error(reason);
                 });

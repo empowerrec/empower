@@ -1,0 +1,126 @@
+<div class="row bg-gray pb-0">
+    <div class="col-md-12">
+        <div class="container-boxed max">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div ng-include="'/partials/jobseeker/sidebar-menu'"></div>
+
+                </div>
+                <div class="col-md-9 col-sm-12">
+                    <h5>{{'JobSeeker.ProfessionalCertificationsDescrption' | translate}}</h5>
+                    <div ng-controller="mvProfessionalCertificationCtrl">
+
+
+
+                        <div>
+                            <!--<button ng-click="addProfessionalCertification()" class="btn btn-primary">
+                                {{"Buttons.Add" | translate}}
+                            </button>
+                            <br />
+                            <br />-->
+                            <table class="table table-hover table-striped table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>{{"ProfessionalCertification.CertificationName" | translate}}</th>
+                                        <th>{{"ProfessionalCertification.InstitutionName" | translate}}</th>                                      
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="professionalCertification in jobSeeker.ProfessionalCertifications" | filter:searchText | orderBy:sortOrder">
+                                        <td><a href="#/professionalCertifications/{{professionalCertification._id}}">{{ professionalCertification.CertificationName}}</a></td>
+                                        <td>{{ professionalCertification.InstitutionName}}</td>
+                                        <td><button ng-click="updateProfessionalCertification(professionalCertification)"> {{"Buttons.Update" | translate}}</button></td>
+                                        <td><button ng-click="deleteProfessionalCertification(professionalCertification)"> {{"Buttons.Delete" | translate}}</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <form name="professionalCertificationForm" class="form-horizontal" >
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <label for="certificationName" class="col-md-4 control-label"> {{ "ProfessionalCertification.CertificationName" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="certificationName" placeholder="{{'ProfessionalCertification.CertificationName' | translate}}"
+                                                   ng-model="professionalCertification.CertificationName" required="required"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="institutionName" class="col-md-4 control-label"> {{"ProfessionalCertification.InstitutionName"| translate}} </label>
+                                        <div class="col-md-4">
+                                            <input name="institutionName" type="text" placeholder="{{'ProfessionalCertification.InstitutionName' | translate}}"
+                                                   ng-model="professionalCertification.InstitutionName" required="required"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="dateIssued" class="col-md-4 control-label"> {{ "ProfessionalCertification.DateIssued" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="dateIssued" type="date" placeholder="{{'ProfessionalCertification.DateIssued' | translate}}"
+                                                   ng-model="professionalCertification.DateIssued" required="required"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="countryOfExamination" class="col-md-4 control-label">{{"ProfessionalCertification.CountryOfExamination"| translate}}</label>
+                                        <div class="col-md-4">
+                                            <select ng-model="professionalCertification.CountryOfExamination" ng-options="countryOfExamination._id as countryOfExamination.Name[0].Text for countryOfExamination in countries"
+                                                    class="form-control">
+                                                <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="overallGradeGPA" class="col-md-4 control-label"> {{ "ProfessionalCertification.OverallGradeGPA" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="overallGradeGPA" type="number" placeholder="{{'ProfessionalCertification.OverallGradeGPA' | translate}}"
+                                                   ng-model="professionalCertification.OverallGradeGPA" class="form-control" />
+                                        </div>
+                                    </div>                                  
+
+                                    <div class="form-group">
+                                        <label for="summary" class="col-md-4 control-label"> {{ "ProfessionalCertification.Summary" | translate }} </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-9">
+                                            <input name="summary" type="text" placeholder="{{'ProfessionalCertification.Summary' | translate}}"
+                                                   ng-model="professionalCertification.Summary" required="required"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-9 col-md-offset-2">
+                                            <div class="pull-right">
+                                                <button ng-click="update()" ng-show="updateMode" ng-disabled="professionalCertificationForm.$invalid" class="btn btn-primary">
+                                                    {{"Buttons.Save" | translate}}
+                                                </button>
+
+                                                <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
+                                                    {{"Buttons.Add" | translate}}
+                                                </button>
+                                                &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </fieldset>
+                            </form>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,8 +19,14 @@ var curancyModel = require('../models/Curancy');
 var salaryTypeModel = require('../models/SalaryType');
 var jobTypeModel = require('../models/JobType');
 var jobRoleModel = require('../models/JobRole');
+var referenceRelationshipModel = require('../models/ReferenceRelationship');
+
 var addressModel = require('../models/Address');
+var religionModel = require('../models/Religion');
+var visaStatusModel = require('../models/visaStatus');
 var genderModel = require('../models/Gender');
+var hearAboutUsModel = require('../models/HearAboutUs');
+var contactViaModel = require('../models/ContactVia');
 var maritalStatusModel = require('../models/MaritalStatus');
 var militaryStatusModel = require('../models/MilitaryStatus');
 var carLicenceTypeModel = require('../models/CarLicenceType');
@@ -43,12 +49,13 @@ var skillTypeModel = require('../models/SkillType');
 var skillLevelsModel = require('../models/SkillLevel');
 var skillModel = require('../models/Skill');
 var langaugeLevelsModel = require('../models/LanguageLevel');
-var educationalLevelModel = require('../models/EducationalLevel');
+var nationalityModel = require('../models/Nationality');
 var applicant = require('../models/Applicant');
 var packageModel = require('../models/Package');
 var questionModel = require('../models/Question');
 var subUserInvitationModel = require('../models/SubUserInvitation');
 var subUserInvitationDetailModel = require('../models/SubUserInvitationDetail');
+var subUserFeatureModel = require('../models/SubUserFeature');
 module.exports = function (config) {
 	mongoose.connect(config.db);
 	
@@ -75,6 +82,7 @@ module.exports = function (config) {
 	industryModel.createDefaultIndustry();
     subUserInvitationModel.createDefaultSubUserInvitation();
     subUserInvitationDetailModel.createDefaultSubUserInvitationDetail();
+    subUserFeatureModel.createDefaultSubUserFeatures();
 	jobTypeModel.createDefaultJobTypes();
 	innerPageModel.createDefaultInnerPages();
 	languageModel.createDefaultLanguages();
@@ -85,8 +93,12 @@ module.exports = function (config) {
 	jobRoleModel.createDefaultJobRoles();
 	cityModel.createDefaultCities();
 	areaModel.createDefaultAreas();
-	addressModel.createDefaultAddresss();
-	genderModel.createDefaultGenders();
+    addressModel.createDefaultAddresss();
+    religionModel.createDefaultReligions();
+    visaStatusModel.createDefaultVisaStatuss();
+    genderModel.createDefaultGenders();
+    hearAboutUsModel.createDefaultHearAboutUss();
+    contactViaModel.createDefaultContactVias();
 	maritalStatusModel.createDefaultMaritalStatuss();
 	militaryStatusModel.createDefaultMilitaryStatuss();    
 	carLicenceTypeModel.createDefaultCarLicenceTypes();    
@@ -111,6 +123,8 @@ module.exports = function (config) {
 	skillModel.createDefaultSkills();
 	educationalLevelModel.createDefaultEducationalLevels();
 	packageModel.createDefaultPackages();
-	questionModel.createDefaultQuestions();
+    questionModel.createDefaultQuestions();
+    nationalityModel.createDefaultNationalities();
+    referenceRelationshipModel.createDefaultReferenceRelationships();
 
 };

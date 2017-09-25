@@ -32,6 +32,9 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/signupSupUser/:id', {
             templateUrl: '/partials/subUserInvitation/front-signupSupUser', controller: 'mvFrontSubUserSignupCtrl'
 
+        }).when('/subUser-list', {
+            templateUrl: '/partials/subUserInvitation/subUser-list', controller: 'mvSubUserListCtrl'
+
         }).when('/DeclineSupUser/:id', {
             templateUrl: '/partials/subUserInvitation/DeclineSubUserInvitation', controller: 'mvDeclineSupUserCtrl'
 
@@ -72,8 +75,20 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/jobSeekers/:id', {
             templateUrl: '/partials/jobSeeker/jobSeeker-detail.html',
             controller: 'mvJobSeekerDetailCtrl'
-        }).when('/updateJobSeeker/:tab/:id', {
-            templateUrl: '/partials/jobSeeker/jobSeeker.html'
+        }).when('/updateJobSeeker/PersonalInformation/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerPersonalInformation.html'
+        }).when('/updateJobSeeker/Photo/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerPhoto.html'
+        }).when('/updateJobSeeker/CV/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerCV.html'
+        }).when('/updateJobSeeker/ContactInformation/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerContactInformation.html'
+        }).when('/updateJobSeeker/ProfessionalOverview/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerProfessionalOverview.html'
+        }).when('/updateJobSeeker/Refrances/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerRefrances.html'
+        }).when('/updateJobSeeker/JobSeekerJobPreferences/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerJobPreferences.html'
         }).when('/addJobSeeker', {
             templateUrl: '/partials/jobSeeker/jobSeeker.html'
         }).when('/jobSeekerMain', {
@@ -201,6 +216,42 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/experiances', {
             templateUrl: '/partials/experiance/experiance-list.html',
             controller: 'mvExperianceListCtrl'
+        }).when('/membershipAndAwards/:id', {
+            templateUrl: '/partials/membershipAndAward/membershipAndAward-detail',
+            controller: 'mvMembershipAndAwardDetailCtrl'
+        }).when('/updateMembershipAndAward/:id', {
+            templateUrl: '/partials/membershipAndAward/membershipAndAward',
+            controller: 'mvMembershipAndAwardCtrl'
+        }).when('/addMembershipAndAward', {
+            templateUrl: '/partials/membershipAndAward/membershipAndAward',
+            controller: 'mvMembershipAndAwardCtrl'
+        }).when('/membershipAndAwards', {
+            templateUrl: '/partials/membershipAndAward/membershipAndAward-list.html',
+            controller: 'mvMembershipAndAwardListCtrl'
+        }).when('/interests/:id', {
+            templateUrl: '/partials/interest/interest-detail',
+            controller: 'mvInterestDetailCtrl'
+        }).when('/updateInterest/:id', {
+            templateUrl: '/partials/interest/interest',
+            controller: 'mvInterestCtrl'
+        }).when('/addInterest', {
+            templateUrl: '/partials/interest/interest',
+            controller: 'mvInterestCtrl'
+        }).when('/interests', {
+            templateUrl: '/partials/interest/interest-list.html',
+            controller: 'mvInterestListCtrl'
+        }).when('/professionalCertifications/:id', {
+            templateUrl: '/partials/professionalCertification/professionalCertification-detail',
+            controller: 'mvProfessionalCertificationDetailCtrl'
+        }).when('/updateProfessionalCertification/:id', {
+            templateUrl: '/partials/professionalCertification/professionalCertification',
+            controller: 'mvProfessionalCertificationCtrl'
+        }).when('/addProfessionalCertification', {
+            templateUrl: '/partials/professionalCertification/professionalCertification',
+            controller: 'mvProfessionalCertificationCtrl'
+        }).when('/professionalCertifications', {
+            templateUrl: '/partials/professionalCertification/professionalCertification-list.html',
+            controller: 'mvProfessionalCertificationListCtrl'
         }).when('/educationalLevels/:id', {
             templateUrl: '/partials/educationalLevels/educationalInformatio-detail',
             controller: 'mvEducationalLevelDetailCtrl'
@@ -213,6 +264,18 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/educationalLevels', {
             templateUrl: '/partials/educationalLevel/educationalLevel-list.html',
             controller: 'mvEducationalLevelListCtrl'
+        }).when('/nationalities/:id', {
+            templateUrl: '/partials/nationalities/educationalInformatio-detail',
+            controller: 'mvNationalityDetailCtrl'
+        }).when('/updateNationality/:id', {
+            templateUrl: '/partials/nationality/nationality',
+            controller: 'mvNationalityCtrl'
+        }).when('/addNationality', {
+            templateUrl: '/partials/nationality/nationality',
+            controller: 'mvNationalityCtrl'
+        }).when('/nationalities', {
+            templateUrl: '/partials/nationality/nationality-list.html',
+            controller: 'mvNationalityListCtrl'
         }).when('/educationalInformations/:id', {
             templateUrl: '/partials/educationalInformations/educationalInformatio-detail',
             controller: 'mvEducationalInformationDetailCtrl'
@@ -363,10 +426,7 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/packageFeatures/:pId', {
             templateUrl: '/partials/packageFeature/packageFeature-list.html',
             controller: 'mvPackageFeatureListCtrl'
-        })
-
-
-        .when('/packageCosts/:pId/:id', {
+        }).when('/packageCosts/:pId/:id', {
             templateUrl: '/partials/packageCost/packageCost-detail',
             controller: 'mvPackageCostDetailCtrl'
         }).when('/updatePackageCost/:pId/:id', {
@@ -390,11 +450,7 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/userPackages/:uId', {
             templateUrl: '/partials/userPackage/userPackage-list.html',
             controller: 'mvUserPackageListCtrl'
-        })
-
-
-
-        .when('/userFeatures/:uId/:id', {
+        }).when('/userFeatures/:uId/:id', {
             templateUrl: '/partials/userFeature/userFeature-detail',
             controller: 'mvUserFeatureDetailCtrl'
         }).when('/updateUserFeature/:uId/:id', {
@@ -406,8 +462,19 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/userFeatures/:uId', {
             templateUrl: '/partials/userFeature/userFeature-list.html',
             controller: 'mvUserFeatureListCtrl'
+        }).when('/subUserFeatures/:uId/:id', {
+            templateUrl: '/partials/subUserFeature/subUserFeature-detail',
+            controller: 'mvSubUserFeatureDetailCtrl'
+        }).when('/updateSubUserFeature/:uId/:id', {
+            templateUrl: '/partials/subUserFeature/subUserFeature',
+            controller: 'mvSubUserFeatureCtrl'
+        }).when('/addSubUserFeature/:uId', {
+            templateUrl: '/partials/subUserFeature/subUserFeature',
+            controller: 'mvSubUserFeatureCtrl'
+        }).when('/subUserFeatures/:uId', {
+            templateUrl: '/partials/subUserFeature/subUserFeature-list.html',
+            controller: 'mvSubUserFeatureListCtrl'
         })
-
 
         .when('/subUserInvitationDetails/:id', {
     templateUrl: '/partials/subUserInvitationDetail/subUserInvitationDetail-detail',

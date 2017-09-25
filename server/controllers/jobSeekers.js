@@ -8,7 +8,9 @@ exports.getJobSeekers = function (req, res) {
             .populate('Gender').populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize).skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
-        JobSeeker.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                JobSeeker.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                    if (col && col.Photo)
+                        col.Photo = 'images/uploads/' + col.Photo;
             res.send([{ collection: col, allDataCount: count }]);
         });
     });
@@ -76,8 +78,23 @@ exports.getJobSeekerById = function (req, res) {
                 path: 'EducationalInformation.Specialization',
                 model: 'Specialization'
             })
+            .populate({
+                path: 'FirstPreferredCity',
+                model: 'City'
+            })
+            .populate({
+                path: 'SecondPreferredCity',
+                model: 'City'
+            })
+            .populate({
+                path: 'ThirdPreferredCity',
+                model: 'City'
+            })
             .exec(function (err, col) {
-            
+                if (col && col.Photo)
+                    col.Photo = 'images/uploads/' + col.Photo;
+                if (col && col.CVFile)
+                    col.CVFile = 'images/uploads/' + col.CVFile;
             res.send(col);
         });
     } else {
@@ -139,6 +156,8 @@ exports.getJobSeekerById = function (req, res) {
                 path: 'EducationalInformation.Specialization',
                 model: 'Specialization'
             }).exec(function (err, col) {
+                if (col && col.Photo)
+                    col.Photo = 'images/uploads/' + col.Photo;
             res.send(col);
         });
     }
@@ -150,13 +169,16 @@ exports.getJobSeekerById = function (req, res) {
 exports.getJobSeekerByUser = function (req, res) {
     console.log(req.user._id);
     JobSeeker.findOne({ User: req.user._id }).populate('ModifiedBy').exec(function (err, col) {
-        
+        if (col && col.Photo)
+            col.Photo = 'images/uploads/' + col.Photo;
         res.send(col);
     });
 };
 
 exports.getJobSeekerByMobileNumber = function (req, res) {
     JobSeeker.findOne({ CreatedBy: req.user, MobileNo: { $nin: [""] } }).populate('ModifiedBy').exec(function (err, col) {
+        if (col && col.Photo)
+            col.Photo = 'images/uploads/' + col.Photo;
         res.send(col);
     });
 };

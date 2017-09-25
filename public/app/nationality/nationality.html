@@ -1,0 +1,82 @@
+<div class="container-wrap">
+    <div class="main-content container-fullwidth">
+        <div class="row">
+            <div class="noo-main col-md-12">
+                <div class="jform">
+                    <div class="jform-header">
+                        <div class="container-boxed max">
+
+                        </div>
+                    </div>
+                    <div class="jform-body">
+                        <div class="container-boxed max">
+                            <div class="form-horizontal" enctype="multipart/form-data">
+                                <div id="step_content_form" class="jstep-content">
+                                    <div class="jpanel jpanel-job-form">
+                                        <div class="jpanel-title">
+                                            <h3>Educational Level</h3>
+                                        </div>
+                                        <div class="jpanel-body">
+
+                                            <div class="job-form">
+                                                <div class="job-form-detail">
+                                                    <div class="well">
+                                                        <div class="form-group row">
+                                                            <div class="form-group">
+
+                                                                <label for="Text" class="col-md-2 control-label">
+                                                                    {{"nationality.Name" | translate }}
+                                                                </label>
+                                                                <div class="col-md-10">
+
+                                                                    <ul ng-repeat="lang in languages" id="Names">
+
+                                                                        <li id="{{lang.value}}">
+
+                                                                            {{ lang.text}}
+                                                                            <input id="NameText2" type="text"
+                                                                                   placeholder="{{'Nationality.Name' | translate}}"
+                                                                                   value="{{getName(nationality.Name , lang.value)}}"
+                                                                                   class="form-control" />
+
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-10 col-md-offset-2">
+                                                                <div class="pull-right">
+                                                                    <button ng-click="update()" ng-show="updateMode" ng-disabled="employerForm.$invalid" class="btn btn-primary">
+                                                                        {{"Buttons.Save" | translate}}
+                                                                    </button>
+
+                                                                    <button ng-click="add()" ng-show="addMode" ng-disabled="employerForm.$invalid||!addEnabled" class="btn btn-primary">
+                                                                        {{"Buttons.Add" | translate}}
+                                                                    </button>
+                                                                    &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

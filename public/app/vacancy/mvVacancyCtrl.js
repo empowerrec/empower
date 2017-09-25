@@ -2,7 +2,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     var id = $routeParams.id;
     $scope.identity = mvIdentity;
     $scope.addEnabled = false;
-    var stepclass = "";
+   
     var added = false;
     $scope.selectedJobRole = {};
     $scope.selectedIndustry = {};
@@ -55,42 +55,6 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
             }
         }
     };
-    
-    
-    $scope.getStep1Class = function () {
-        
-        if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())
-            return "completed";
-        else
-            return "active";
-    };
-    
-    $scope.getStep2Class = function () {
-        
-        if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())
-            return "completed";
-        else
-            return "active";
-    };
-    
-    
-    $scope.getStep3Class = function () {
-        
-        if (mvIdentity.currentUser.isEmployer() && !$scope.completed() || mvIdentity.currentUser.isAdmin() && !$scope.completed())
-            return "active";
-        else
-            return "completed";
-    };
-    
-    
-    $scope.getStep4Class = function () {
-        
-        if ($scope.completed())
-            return "active";
-        else
-            return "";
-    };
-    
     
 
     $scope.add = function () {

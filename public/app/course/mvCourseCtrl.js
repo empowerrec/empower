@@ -41,15 +41,12 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
             if (element._id == course._id) {
                 var index = array.indexOf(element);
                 array.splice(index, 1);
-                //$rootScope.vacancy.Questions.remove(element);
             }
 
         });
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
-            //$location.path('/updateJobSeeker/Courses/' + mvIdentity.currentJobSeeker._id);
-
         }, function (reason) {
             mvNotifier.error(reason);
         });
@@ -64,9 +61,12 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
             TrainingCenter: $scope.course.TrainingCenter,
             Specialization: $scope.course.Specialization,
             Grade: $scope.course.Grade,
-            CourseYear: $scope.course.CourseYear
+            CourseYear: $scope.course.CourseYear,
+            Summary: $scope.course.Summary
+
         };
-        if ($rootScope.jobSeeker.Courses == undefined)
+        
+        if (!$rootScope.jobSeeker.Courses || $rootScope.jobSeeker.Courses == undefined)
             $rootScope.jobSeeker.Courses = [];
 
         $rootScope.jobSeeker.Courses.push(course);
@@ -74,8 +74,6 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
             $scope.showForm = false;
-            //$location.path('/updateJobSeeker/Courses/' + mvIdentity.currentJobSeeker._id);
-
         }, function (reason) {
             mvNotifier.error(reason);
         });
@@ -91,7 +89,8 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
             TrainingCenter: $scope.course.TrainingCenter,
             Specialization: $scope.course.Specialization,
             Grade: $scope.course.Grade,
-            CourseYear: $scope.course.CourseYear,
+            CourseYear: $scope.course.CourseYear,            
+            Summary: $scope.course.Summary,
             _id: $scope.course._id
         };
 
@@ -108,8 +107,6 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
             $scope.showForm = false;
-            //$location.path('/updateJobSeeker/Courses/' + mvIdentity.currentJobSeeker._id);
-
         }, function (reason) {
             mvNotifier.error(reason);
         });

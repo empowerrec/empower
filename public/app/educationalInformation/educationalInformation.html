@@ -1,160 +1,191 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="modal-dialog modal-member modal-jobSeeker" >
 
-    <div class="modal-content" ng-controller="mvEducationalInformationCtrl">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title">{{"JobSeeker.Educational Information" | translate}}</h4>
-        </div>
-        <div class="modal-body">
-            <div class="container top-padding-med  admin-area">
+<div class="row bg-gray pb-0">
+    <div class="col-md-12">
+        <div class="container-boxed max">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div ng-include="'/partials/jobseeker/sidebar-menu'"></div>
 
-                <div class="well">
-                    <button ng-click="addEducationalInformation()" class="btn btn-primary">
-                        {{"Buttons.Add" | translate}}
-                    </button>
-                    <br />
-                    <br />
-                    <table class="table table-hover table-striped table-condensed" ng-show="!showForm">
-                        <thead>
-                            <tr>
-                                <th>{{"EducationalInformation.EducationalLevel" | translate}}</th>
-                                <th>{{"EducationalInformation.Univirsty" | translate}}</th>
-                                <th>{{"EducationalInformation.Faculty" | translate}}</th>
-                                <th>{{"EducationalInformation.Specialization" | translate}}</th>
-                                <th>{{"EducationalInformation.Grade" | translate}}</th>
-                               
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="educationalInformation in jobSeeker.EducationalInformation | filter:searchText | orderBy:sortOrder">
-                                <td>
-                                    <a href="#/educationalInformations/{{educationalInformation._id}}">
-                                        <span ng-repeat="name in educationalInformation.EducationalLevel.Name |filter:currentLang">{{name.Text}}</span>
-                                    </a>
-                                </td>
-                                <td><span ng-repeat="name in educationalInformation.Univirsty.Name |filter:currentLang">{{name.Text}}</span></td>
-                                <td><span ng-repeat="name in educationalInformation.Faculty.Name |filter:currentLang">{{name.Text}}</span></td>
-                                <td><span ng-repeat="name in educationalInformation.Specialization.Name |filter:currentLang">{{name.Text}}</span></td>
-                                <td><span ng-repeat="name in educationalInformation.Grade.Name |filter:currentLang">{{name.Text}}</span></td>
-                                <td><button ng-click="updateEducationalInformation(educationalInformation)"> {{"Buttons.Update" | translate}}</button></td>
-                                <td><button ng-click="deleteEducationalInformation(educationalInformation)"> {{"Buttons.Delete" | translate}}</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                </div>
+                <div class="col-md-9 col-sm-12">
+                    <h5>{{'JobSeeker.Educational Information' | translate}}</h5>
+                    <div ng-controller="mvEducationalInformationCtrl">
 
-                    <form name="educationalInformationForm" class="form-horizontal" ng-show="showForm">
-                        <fieldset>
+                        <div>
+                            <!--<button ng-click="addEducationalInformation()" class="btn btn-primary">
+                                {{"Buttons.Add" | translate}}
+                            </button>
+                            <br />
+                            <br />-->
+                            <table class="table table-hover table-striped table-condensed" ng-show="!showForm">
+                                <thead>
+                                    <tr>
+                                        <th>{{"EducationalInformation.EducationalLevel" | translate}}</th>
+                                        <th>{{"EducationalInformation.Univirsty" | translate}}</th>
+                                        <th>{{"EducationalInformation.Faculty" | translate}}</th>
+                                        <th>{{"EducationalInformation.Specialization" | translate}}</th>
+                                        <th>{{"EducationalInformation.Grade" | translate}}</th>
 
-                            <div class="form-group">
-                                <label for="EducationalLevel" class="col-md-2 control-label">{{"EducationalInformation.EducationalLevel"| translate}}</label>
-                                <div class="col-md-2">
-                                    <select name="EducationalLevel" ng-model="educationalInformation.EducationalLevel" required="required"
-                                            ng-options="educationalLevel._id as educationalLevel.Name[0].Text for educationType in educationTypes" class="form-control">
-                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                    </select>
-                                </div>
-                            </div>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="educationalInformation in jobSeeker.EducationalInformation | filter:searchText | orderBy:sortOrder">
+                                        <td>
+                                            <a href="#/educationalInformations/{{educationalInformation._id}}">
+                                                <span ng-repeat="name in educationalInformation.EducationalLevel.Name |filter:currentLang">{{name.Text}}</span>
+                                            </a>
+                                        </td>
+                                        <td><span ng-repeat="name in educationalInformation.Univirsty.Name |filter:currentLang">{{name.Text}}</span></td>
+                                        <td><span ng-repeat="name in educationalInformation.Faculty.Name |filter:currentLang">{{name.Text}}</span></td>
+                                        <td><span ng-repeat="name in educationalInformation.Specialization.Name |filter:currentLang">{{name.Text}}</span></td>
+                                        <td><span ng-repeat="name in educationalInformation.Grade.Name |filter:currentLang">{{name.Text}}</span></td>
+                                        <td><button ng-click="updateEducationalInformation(educationalInformation)"> {{"Buttons.Update" | translate}}</button></td>
+                                        <td><button ng-click="deleteEducationalInformation(educationalInformation)"> {{"Buttons.Delete" | translate}}</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                            <div class="form-group">
-                                <label for="univirsty" class="col-md-2 control-label">{{"EducationalInformation.Univirsty"| translate}}</label>
+                            <form name="educationalInformationForm" class="form-horizontal" >
+                                <fieldset>
 
-
-                                <div class="col-md-4">
-
-                                    <input id="univirstyName" />
-                                    <input type="hidden" id="hfUnivirstyId" />
-                                    <input type="hidden" id="currentLang" value="ar" />
-                                    <label id="selectedUnivirsty" />
-
-                                    <div ng-repeat="emp in educationalInformation.Univirsty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
-                                </div>
-
-
-
-                                <label for="faculty" class="col-md-2 control-label">{{"EducationalInformation.Faculty"| translate}}</label>
-
-
-                                <div class="col-md-4">
-                                    <input id="facultyName" />
-                                    <input type="hidden" id="hfFacultyId" />
-
-                                    <label id="selectedFaculty" />
-                                    <div ng-repeat="emp in educationalInformation.Faculty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="specialization" class="col-md-2 control-label">{{"EducationalInformation.Specialization"| translate}}</label>
-
-
-                                <div class="col-md-4">
-                                    <input id="specializationName" />
-                                    <input type="hidden" id="hfSpecializationId" />
-
-                                    <label id="selectedSpecialization" />
-                                    <div ng-repeat="emp in educationalInformation.Specialization.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="Grade" class="col-md-2 control-label">{{"EducationalInformation.Grade"| translate}}</label>
-                                <div class="col-md-2">
-                                    <select name="Grade" ng-model="educationalInformation.Grade" required="required"
-                                            ng-options="grade._id as grade.Name[0].Text for grade in grades" class="form-control">
-                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                    </select>
-                                </div>
-                                                            <label for="courseYear" class="col-md-4 control-label">
-                                    {{
-"EducationalInformation.GraduationYear"
-                        | translate
-}}
-                                </label>
-
-                                <div class="col-md-2">
-                                    <input name="courseYear" type="number"
-                                           placeholder="{{'EducationalInformation.GraduationYear' | translate}}"
-                                           ng-model="educationalInformation.GraduationYear"
-                                           class="form-control" />
-                                </div>
-
-
-
-
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-10 col-md-offset-2">
-                                    <div class="pull-right">
-                                        <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
-                                            {{"Buttons.Save" | translate}}
-                                        </button>
-
-                                        <button ng-click="add()" ng-show="addMode" ng-disabled="!addEnabled" class="btn btn-primary">
-                                            {{"Buttons.Add" | translate}}
-                                        </button>
-                                        &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                    <div class="form-group">
+                                        <label for="EducationalLevel" class="col-md-4 control-label">{{"EducationalInformation.EducationalLevel"| translate}}</label>
+                                        <div class="col-md-4">
+                                            <select name="EducationalLevel" ng-model="educationalInformation.EducationalLevel" required="required"
+                                                    ng-options="educationalLevel._id as educationalLevel.Name[0].Text for educationalLevel in educationalLevels" class="form-control">
+                                                <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
-                        </fieldset>
-                    </form>
+                                    <div class="form-group">
+                                        <label for="univirsty" class="col-md-4 control-label">{{"EducationalInformation.Univirsty"| translate}}</label>
+                                        <div class="col-md-4">
+                                            <input id="univirstyName" />
+                                            <input type="hidden" id="hfUnivirstyId" />
+                                            <input type="hidden" id="currentLang" value="ar" />
+                                            <label id="selectedUnivirsty" />
+                                            <div ng-repeat="emp in educationalInformation.Univirsty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="faculty" class="col-md-4 control-label">{{"EducationalInformation.Faculty"| translate}}</label>
+                                        <div class="col-md-4">
+                                            <input id="facultyName" />
+                                            <input type="hidden" id="hfFacultyId" />
+                                            <label id="selectedFaculty" />
+                                            <div ng-repeat="emp in educationalInformation.Faculty.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="specialization" class="col-md-4 control-label">{{"EducationalInformation.Specialization"| translate}}</label>
+                                        <div class="col-md-4">
+                                            <input id="specializationName" />
+                                            <input type="hidden" id="hfSpecializationId" />
+                                            <label id="selectedSpecialization" />
+                                            <div ng-repeat="emp in educationalInformation.Specialization.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Grade" class="col-md-4 control-label">{{"EducationalInformation.Grade"| translate}}</label>
+                                        <div class="col-md-4">
+                                            <select name="Grade" ng-model="educationalInformation.Grade" required="required"
+                                                    ng-options="grade._id as grade.Name[0].Text for grade in grades" class="form-control">
+                                                <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="startYear" class="col-md-4 control-label"> {{"EducationalInformation.StartYear" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="startYear" type="number"
+                                                   placeholder="{{'EducationalInformation.StartYear' | translate}}"
+                                                   ng-model="educationalInformation.StartYear"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="graduationYear" class="col-md-4 control-label"> {{"EducationalInformation.GraduationYear" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="graduationYear" type="number"
+                                                   placeholder="{{'EducationalInformation.GraduationYear' | translate}}"
+                                                   ng-model="educationalInformation.GraduationYear"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="country" class="col-md-4 control-label">{{"EducationalInformation.Country"| translate}}</label>
+                                        <div class="col-md-4">
+                                            <select ng-model="educationalInformation.Country" ng-options="country._id as country.Name[0].Text for country in countries"
+                                                    class="form-control">
+                                                <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="city" class="col-md-4 control-label">{{"EducationalInformation.City"| translate}}</label>
+                                        <div class="col-md-4">
+                                            <input id="cityName" />
+                                            <input type="hidden" id="hfCityId" />
+                                            <input type="hidden" id="currentLang" value="ar" />
+                                            <label id="selectedCity" />
+                                            <div ng-repeat="emp in educationalInformation.City.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="Description" class="col-md-4 control-label">{{"EducationalInformation.Description" | translate}}</label>
+                                        <div class="col-md-4">
+                                            <input name="Description" type="text" placeholder="{{'EducationalInformation.Description' | translate}}"
+                                                   ng-model="educationalInformation.Description" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Skills" class="col-md-4 control-label">{{"EducationalInformation.Skills" | translate}}</label>
+                                        <div class="col-md-4">
+                                            <input name="Skills" type="text" placeholder="{{'EducationalInformation.Skills' | translate}}"
+                                                   ng-model="educationalInformation.Skills" class="form-control" required="required" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-10 col-md-offset-2">
+                                            <div class="pull-right">
+                                                <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                                                    {{"Buttons.Save" | translate}}
+                                                </button>
+
+                                                <button ng-click="add()" ng-show="addMode" ng-disabled="!addEnabled" class="btn btn-primary">
+                                                    {{"Buttons.Add" | translate}}
+                                                </button>
+                                                &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
+                        <img src="ajax-loader.gif" alt="" />
+                    </div>
                 </div>
             </div>
-
-
-            <div id="loader" style="visibility:hidden ; position:absolute ; top:15% ; left:40%">
-                <img src="ajax-loader.gif" alt="" />
-            </div>
         </div>
     </div>
-    </div>
-   
+</div>
+

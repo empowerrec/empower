@@ -5,6 +5,8 @@ var vacancies = require('../controllers/vacancies');
 var industries = require('../controllers/industries');
 var jobTypes = require('../controllers/jobTypes');
 var jobRoles = require('../controllers/jobRoles');
+var referenceRelationship = require('../controllers/referenceRelationships');
+
 var innerPages = require('../controllers/innerPages');
 var categories = require('../controllers/categories');
 var languages = require('../controllers/languages');
@@ -31,6 +33,7 @@ var packages = require('../controllers/packages');
 var passport = require('passport');
 var subUserInvitations = require('../controllers/subUserInvitations');
 var subUserInvitationDetails = require('../controllers/subUserInvitationDetails');
+var subUserFeatures = require('../controllers/subUserFeatures');
 
 module.exports = function (app) {
 	
@@ -38,8 +41,12 @@ module.exports = function (app) {
 	app.use('/api/languageSkills', require('../routes/languageSkills'));
 	app.use('/api/jobSeekers', require('../routes/jobSeekers'));
 	app.use('/api/addresses', require('../routes/addresses'));
-	app.use('/api/genders', require('../routes/genders'));
+    app.use('/api/genders', require('../routes/genders'));
+    app.use('/api/hearAboutUss', require('../routes/hearAboutUss'));
+    app.use('/api/contactVias', require('../routes/contactVias'));
 	app.use('/api/maritalStatuses', require('../routes/maritalStatuses'));
+    app.use('/api/religions', require('../routes/religions'));
+    app.use('/api/visaStatuses', require('../routes/visaStatuses'));
 	app.use('/api/militaryStatuses', require('../routes/militaryStatuses'));
 	app.use('/api/carLicenceTypes', require('../routes/carLicenceTypes'));
 	app.use('/api/educationalInformations', require('../routes/educationalInformations'));
@@ -52,7 +59,8 @@ module.exports = function (app) {
 	app.use('/api/packageCosts', require('../routes/packageCosts'));
     app.use('/api/userPackages', require('../routes/userPackages'));
     app.use('/api/userFeatures', require('../routes/userFeatures'));
-	app.use('/api/educationalLevels', require('../routes/educationalLevels'));
+    app.use('/api/educationalLevels', require('../routes/educationalLevels'));
+    app.use('/api/nationalities', require('../routes/nationalities'));
 	app.use('/api/careerLevels', require('../routes/careerLevels'));
 	
 	app.get('/api/users', authentication.requiresRole(['A', 'J']), users.getUsers);
@@ -85,7 +93,12 @@ module.exports = function (app) {
 	app.get('/api/jobRoles', jobRoles.getJobRoles);
 	app.post('/api/jobRoles', jobRoles.createJobRole);
 	app.put('/api/jobRoles', jobRoles.updateJobRole);
-	app.get('/api/jobRoles/:id', jobRoles.getJobRoleById);
+    app.get('/api/jobRoles/:id', jobRoles.getJobRoleById);
+
+    app.get('/api/referenceRelationships', referenceRelationship.getReferenceRelationships);
+    app.post('/api/referenceRelationship', referenceRelationship.createReferenceRelationship);
+    app.put('/api/referenceRelationship', referenceRelationship.updateReferenceRelationship);
+    app.get('/api/referenceRelationship/:id', referenceRelationship.getReferenceRelationshipById);
 
 	app.get('/api/categories', authentication.requiresRole(['A', 'J']), categories.getCategories);
 	app.post('/api/categories', categories.createCategory);
@@ -162,8 +175,8 @@ module.exports = function (app) {
 	app.get('/api/experiances', experinces.getExperiances);
 	app.post('/api/experiances', experinces.createExperiance);
 	app.put('/api/experiances', experinces.updateExperiance);
-	app.get('/api/experiances/:id', experinces.getExperianceById);
-	
+    app.get('/api/experiances/:id', experinces.getExperianceById);
+
 	app.get('/api/skills', skills.getSkills);
 	app.post('/api/skills', skills.createSkill);
 	app.put('/api/skills', skills.updateSkill);
@@ -185,7 +198,8 @@ module.exports = function (app) {
 	app.get('/api/applicants/:id', applicants.getApplicantById);
 	app.get('/api/applicants/getVacancyForApplicant/:jobSeeker/:vacancy', applicants.getVacancyForApplicant);
     app.put('/api/applicants/arrangeInterview', applicants.arrangeInterview);
-
+    app.get('/api/applicantsSearchResult', applicants.getApplicantsSearchResult);
+    
 	app.get('/api/packages', authentication.requiresRole(['A', 'E']), packages.getPackages);
 	app.post('/api/packages', packages.createPackage);
 	app.put('/api/packages', packages.updatePackage);
@@ -201,6 +215,11 @@ module.exports = function (app) {
     app.post('/api/subUserInvitationDetails', subUserInvitationDetails.createSubUserInvitationDetail);
     app.put('/api/subUserInvitationDetails', subUserInvitationDetails.updateSubUserInvitationDetail);
     app.get('/api/subUserInvitationDetails/:id', subUserInvitationDetails.getSubUserInvitationDetailById);
+
+    app.get('/api/subUserFeatures', subUserFeatures.getSubUserFeatures);
+    app.post('/api/subUserFeatures', subUserFeatures.createSubUserFeature);
+    app.put('/api/subUserFeatures', subUserFeatures.updateSubUserFeature);
+    app.get('/api/subUserFeatures/:id', subUserFeatures.getSubUserFeatureById);
 
 	app.get('/api/getJobSeekerWhereMobileNumberNotNull', jobSeekers.getJobSeekerByMobileNumber);
 

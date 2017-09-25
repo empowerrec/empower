@@ -1,0 +1,87 @@
+    <div class="row bg-gray pb-0">
+        <div class="col-md-12">
+            <div class="container-boxed max">
+                <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                        <div ng-include="'/partials/jobseeker/sidebar-menu'"></div>
+
+                    </div>
+                    <div class="col-md-9 col-sm-12">
+                        <h5>{{'JobSeeker.ReferencesDescrption' | translate}}</h5>
+                    <div ng-controller="mvJobSeekerRefrancesCtrl" ng-hide="addMode && IsMobileInserted">
+                        <form name="jobSeekerForm" class="form-horizontal">
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <label for="MobileNo" class="col-md-4 control-label">{{"JobSeeker.ReferenceFullName"| translate}}</label>
+                                    <div class="col-md-4">
+                                        <input name="ReferenceFullName" placeholder="{{'JobSeeker.ReferenceFullName' | translate}}"
+                                               ng-model="jobSeeker.ReferenceFullName" required="required"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ReferencePosition" class="col-md-4 control-label">{{"JobSeeker.ReferencePosition"| translate}}</label>
+                                    <div class="col-md-4">
+                                        <input name="ReferencePosition" placeholder="{{'JobSeeker.ReferencePosition' | translate}}"
+                                               ng-model="jobSeeker.ReferencePosition" required="required"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ReferenceCompany" class="col-md-4 control-label">{{"JobSeeker.ReferenceCompany" | translate}}</label>
+                                    <div class="col-md-4">
+                                        <input name="ReferenceCompany" type="text" placeholder="{{'JobSeeker.ReferenceCompany' | translate}}"
+                                               ng-model="jobSeeker.ReferenceCompany" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ReferenceEmailAddress" class="col-md-4 control-label">{{"JobSeeker.ReferenceEmailAddress" | translate}}</label>
+                                    <div class="col-md-4">
+                                        <input name="ReferenceEmailAddress" type="text" placeholder="{{'JobSeeker.ReferenceEmailAddress' | translate}}"
+                                               ng-model="jobSeeker.ReferenceEmailAddress" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ReferencePhoneNumber" class="col-md-4 control-label">{{"JobSeeker.ReferencePhoneNumber" | translate}}</label>
+                                    <div class="col-md-4">
+                                        <input name="ReferencePhoneNumber" type="text" placeholder="{{'JobSeeker.ReferencePhoneNumber' | translate}}"
+                                               ng-model="jobSeeker.ReferencePhoneNumber" class="form-control" />
+                                    </div>
+                                </div>
+                           
+
+                                <div class="form-group">
+                                    <label for="ReferenceRelationship" class="col-md-4 control-label">{{"JobSeeker.ReferenceRelationship" | translate}}</label>
+                                    <div class="col-md-4">
+                                        <select name="ReferenceRelationship" ng-model="jobSeeker.ReferenceRelationship" required
+                                                ng-options="referenceRelationship._id as referenceRelationship.Name[0].Text for referenceRelationship in referenceRelationships" class="form-control">
+                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-10 col-md-offset-2">
+                                        <div class="pull-right">
+                                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                                                {{"Buttons.Update" | translate}}
+                                            </button>
+
+                                            <button ng-click="add()" ng-show="addMode" class="btn btn-primary" ng-disabled="IsMobileInserted">
+                                                {{"Buttons.Add" | translate}}
+                                            </button>
+                                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -33,16 +33,30 @@ function createDefaultSkillLevels() {
                     
                     SkillLevel.create({
                 Deleted : false,
-                Name: [{ "Text": "Exxlent" , "Lang": "en" }, { "Text": "„„ «“" , "Lang": "ar" }]
+                Name: [{ "Text": "Basic" , "Lang": "en" }, { "Text": "„„ «“" , "Lang": "ar" }]
                         
                     });
                     
                     SkillLevel.create({
                 Deleted : false,
-                Name: [{ "Text": "Very Good" , "Lang": "en" }, { "Text": "ÃÌœ Ãœ«" , "Lang": "ar" }]
+                Name: [{ "Text": "Intermediate" , "Lang": "en" }, { "Text": "ÃÌœ Ãœ«" , "Lang": "ar" }]
                        
                     });
                 }
+
+
+    });
+
+            SkillLevel.create({
+                Deleted: false,
+                Name: [{ "Text": "Advanced", "Lang": "en" }, { "Text": "„„ «“", "Lang": "ar" }]
+
+            });
+
+            SkillLevel.create({
+                Deleted: false,
+                Name: [{ "Text": "Expert", "Lang": "en" }, { "Text": "„„ «“", "Lang": "ar" }]
+
             });
             
         

@@ -1,0 +1,143 @@
+<div class="container-wrap">
+    <div class="main-content container-fullwidth">
+        <div class="row">
+            <div class="noo-main col-md-12">
+                <div class="jform">
+                    <div class="jform-header">
+                        <div class="container-boxed max">
+
+                        </div>
+                    </div>
+                    <div class="jform-body">
+                        <div class="container-boxed max">
+                            <div class="form-horizontal" enctype="multipart/form-data">
+                                <div id="step_content_form" class="jstep-content">
+                                    <div class="jpanel jpanel-job-form">
+                                        <div class="jpanel-title">
+                                            <h3>User Feature </h3>
+                                        </div>
+                                        <div class="jpanel-body">
+
+                                            <div class="job-form">
+                                                <div class="job-form-detail">
+                                                    <div class="well">
+                                                        <form name="subUserFeatureForm" class="form-horizontal">
+                                                            <fieldset>
+
+                                                                <div class="form-group">
+
+                                                                    <label for="country" class="col-md-2 control-label">{{"SubUserFeature.Feature"| translate}}</label>
+
+
+                                                                    <div class="col-md-4">
+                                                                        <select ng-model="SubUserFeature.Feature" ng-options="feature._id as feature.Name[0].Text for feature in features"
+                                                                                class="form-control" required="required" ng-change="updateFields()">
+                                                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                                                        </select>
+
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                                <div class="form-group">
+
+                                                                    <label for="Code" class="col-md-3 control-label">
+                                                                        {{"SubUserFeature.NoOfMonths" | translate}}
+                                                                    </label>
+
+                                                                    <div class="col-md-3">
+                                                                        <input name="Code" type="number" ng-change="updateFields()" placeholder="{{'SubUserFeature.NoOfMonths' | translate}}"
+                                                                               ng-model="SubUserFeature.NoOfMonths" required="required" class="form-control" />
+                                                                    </div>
+                                                                    <label for="Code" class="col-md-3 control-label">
+                                                                        {{"SubUserFeature.Discount" | translate}}
+                                                                    </label>
+
+                                                                    <div class="col-md-3">
+                                                                        <input name="Code" type="number" step="any" placeholder="{{'SubUserFeature.Discount' | translate}}"
+                                                                               ng-model="SubUserFeature.Discount" class="form-control" />
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="Code" class="col-md-3 control-label">
+                                                                        {{"SubUserFeature.StartDate" | translate}}
+                                                                    </label>
+
+                                                                    <div class="col-md-3">
+                                                                        <input name="Code" type="date" value="{{ startDate | date: 'yyyy-MM-dd' }}" placeholder="{{'SubUserFeature.StartDate' | translate}}"
+                                                                               ng-model="SubUserFeature.StartDate" class="form-control" disabled="disabled" />
+                                                                    </div>
+                                                                    <label for="Code" class="col-md-3 control-label">
+                                                                        {{"SubUserFeature.ExpiryDate" | translate}}
+                                                                    </label>
+
+                                                                    <div class="col-md-3">
+                                                                        <input name="Code" type="date" value="{{ expiryDate | date: 'yyyy-MM-dd' }}"  placeholder="{{'SubUserFeature.ExpiryDate' | translate}}"
+                                                                               ng-model="SubUserFeature.ExpiryDate" class="form-control" disabled="disabled" />
+                                                                    </div>
+
+
+                                                                </div>
+
+
+                                                                <div class="form-group">
+
+
+
+                                                                    <label for="Code" class="col-md-3 control-label">
+                                                                        {{"SubUserFeature.TotalAmount" | translate}}
+                                                                    </label>
+
+                                                                    <div class="col-md-3">
+                                                                        <input name="Code" type="number" placeholder="{{'SubUserFeature.TotalAmount' | translate}}"
+                                                                               ng-model="SubUserFeature.TotalAmount" value ="{{totalAmount}}" required="required" class="form-control" disabled="disabled" />
+                                                                    </div>
+
+                                                                    <label for="Code" class="col-md-3 control-label">
+                                                                        {{"SubUserFeature.FeatureAmount" | translate}}
+                                                                    </label>
+
+                                                                    <div class="col-md-3">
+                                                                        <input name="Code" type="number" value ="{{featureAmount}}"  placeholder="{{'SubUserFeature.FeatureAmount' | translate}}"
+                                                                               ng-model="SubUserFeature.FeatureAmount" required="required" class="form-control" disabled="disabled" />
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <div class="col-md-10 col-md-offset-2">
+                                                                        <div class="pull-right">
+                                                                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                                                                                {{"Buttons.Save" | translate}}
+                                                                            </button>
+
+                                                                            <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
+                                                                                {{"Buttons.Add" | translate}}
+                                                                            </button>
+                                                                            &nbsp;<a href="#/subUserFeatures/{{uId}}" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

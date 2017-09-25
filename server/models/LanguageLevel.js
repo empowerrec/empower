@@ -4,7 +4,8 @@ var LanguageLevelSchema = mongoose.Schema({
     
     Name: [{
             Lang: String,
-            Text: String
+            Text: String,
+            Descrption : String
     }],
     Percent : Number,
     ModifiedBy: {
@@ -33,20 +34,32 @@ function createDefaultLanguageLevels() {
                     
                     LanguageLevel.create({
                 Deleted : false,
-                Name: [{ "Text": "Exxlent" , "Lang": "en" }, { "Text": "„„ «“" , "Lang": "ar" }]
+                Name: [{ "Text": "Basic", "Lang": "en", "Descrption":"I can have a simple conversation and understand the written language" }, { "Text": "„„ «“" , "Lang": "ar" }]
                         
                     });
-                    
+
                     LanguageLevel.create({
-                Deleted : false,
-                Name: [{ "Text": "Very Good" , "Lang": "en" }, { "Text": "ÃÌœ Ãœ«" , "Lang": "ar" }]
-                       
+                        Deleted: false,
+                        Name: [{ "Text": "Working knowledge", "Lang": "en", "Descrption": " I can use the language for business, read documents and be interviewed" }, { "Text": "„„ «“", "Lang": "ar" }]
+
                     });
-                }
-            });
+                    LanguageLevel.create({
+                        Deleted: false,
+                        Name: [{ "Text": "Fluent", "Lang": "en", "Descrption": " I can read, write and speak fluently in this language without any mistakes" }, { "Text": "„„ «“", "Lang": "ar" }]
+
+                    });
+
+                    LanguageLevel.create({
+                        Deleted: false,
+                        Name: [{ "Text": "Native", "Lang": "en", "Descrption": "Mother tongue" }, { "Text": "„„ «“", "Lang": "ar" }]
+
+                    });
+
+                }; 
             
-        
-    };
+    });
+};
+   
     
 
 

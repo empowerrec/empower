@@ -374,8 +374,8 @@ h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,.h1 a,.h2 a,.h3 a,.h4 a,.h5 a,.h6 a {
 }
 
 h1,.h1,h2,.h2,h3,.h3 {
-	margin-top:1.6428571428571rem;
-	margin-bottom:.82142857142857rem;
+	margin-top:7px;
+	margin-bottom:7px;
 }
 
 h1 small,.h1 small,h2 small,.h2 small,h3 small,.h3 small,h1 .small,.h1 .small,h2 .small,.h2 .small,h3 .small,.h3 .small {
@@ -2680,7 +2680,6 @@ label {
   font-weight: 300;
 }
 .control-label {
-  text-transform: uppercase;
   margin-bottom: 10px;
   font-weight: bold;
   line-height: 30px;
@@ -2729,7 +2728,6 @@ output {
 .form-group .chosen-container-multi .chosen-choices {
   display: block;
   width: 100%;
-  height: 50px;
   padding: 0.42857142857142855em 1.2857142857142856em;
   font-size: 14px;
   line-height: 1.7;
@@ -2809,23 +2807,22 @@ input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
-  line-height: 50px;
-  line-height: 1.7 \0;
+
 }
 input[type="date"].input-sm,
 input[type="time"].input-sm,
 input[type="datetime-local"].input-sm,
 input[type="month"].input-sm {
-  line-height: 30px;
+
 }
 input[type="date"].input-lg,
 input[type="time"].input-lg,
 input[type="datetime-local"].input-lg,
 input[type="month"].input-lg {
-  line-height: 60px;
+
 }
 .form-group {
-  margin-bottom: 2.142857142857143em;
+  margin-bottom: 7px;
   position: relative;
 }
 @media (max-width: 767px) {
@@ -4503,7 +4500,6 @@ body.boxed-layout.nice-scroll .navbar-fixed-top {
   }
   .navbar-nav.sf-menu > li.megamenu > ul.sub-menu > li.menu-item-has-children > a {
     background-color: transparent;
-    text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
   }
@@ -4922,7 +4918,6 @@ body.boxed-layout.nice-scroll .navbar-fixed-top {
 .wigetized .widget .widget-title {
   color: #ffffff;
   font-size: 14px;
-  text-transform: uppercase;
   font-weight: bold;
   padding-bottom: 0.8214285714285714em;
   position: relative;
@@ -7530,7 +7525,6 @@ fieldset[disabled] .read-more {
   top: 0;
   color: #44494b;
   line-height: 1;
-  text-transform: uppercase;
   font-weight: bold;
 }
 .noo-recent-news .noo-rn-date span {
@@ -7572,7 +7566,6 @@ fieldset[disabled] .read-more {
 }
 .noo-recent-news .loop-item-wrap .loop-item-content .loop-item-title a {
   color: #fff;
-  text-transform: uppercase;
   font-weight: bold;
 }
 .noo-recent-news .loop-item-wrap .loop-item-content .content-meta {
@@ -7821,7 +7814,6 @@ fieldset[disabled] .read-more {
   font-size: 14px;
   font-weight: 300;
   padding: 0.42857142857142855em;
-  text-transform: uppercase;
   background-color: #ebeeef;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -7876,7 +7868,6 @@ fieldset[disabled] .read-more {
   font-weight: 300;
   padding: 0.35714285714285715em 0.7142857142857143em;
   text-shadow: none;
-  text-transform: uppercase;
   position: absolute;
   top: 0;
 }
@@ -8061,7 +8052,6 @@ fieldset[disabled] .read-more {
 .widget_rss .rss-date {
   display: block;
   margin-top: 0.35714285714285715em;
-  text-transform: uppercase;
 }
 .widget_rss .rss-date:not(:empty):before {
   content: "\f133";
@@ -8085,7 +8075,7 @@ fieldset[disabled] .read-more {
 }
 .widget_rss cite {
   display: block;
-  text-transform: uppercase;
+  
 }
 .widget_rss cite:not(:empty):before {
   content: "\f007";
@@ -12616,7 +12606,7 @@ a#thumb-info span.badge {
 }
 .noo-cta-btn .btn,
 .noo-cta-btn .widget_newsletterwidget .newsletter-submit {
-  text-transform: uppercase;
+  
 }
 @media (max-width: 767px) {
   .noo-cta-btn {
@@ -12899,7 +12889,7 @@ a#thumb-info span.badge {
 }
 .noo-pricing-table.ascending .noo-pricing-column .pricing-content .pricing-header .pricing-title {
   padding: 0.42857142857142855em 0.8571428571428571em;
-  text-transform: uppercase;
+  
   margin: 0;
   color: #2e2e2e;
   font-size: 14px;
@@ -13001,7 +12991,7 @@ a#thumb-info span.badge {
 .noo-member .member-info .team-meta {
   font-size: 1.2857142857142858em;
   font-weight: 400;
-  text-transform: uppercase;
+  
 }
 .noo-member .member-info .team-meta small {
   float: right;
@@ -13283,7 +13273,7 @@ a#thumb-info span.badge {
   font-size: 14px;
   margin-bottom: 0.5rem;
   color: #fff;
-  text-transform: uppercase;
+  
 }
 .posts-loop .loop-item-title a {
   color: #fff;
@@ -14182,7 +14172,7 @@ fieldset[disabled] .navbar-nav li.menu-item-post-btn > a:hover {
   margin: -8px 0 0 -8px;
 }
 .jsteps .jstep-label {
-  text-transform: uppercase;
+  
   padding-left: 1.0714285714285714em;
   padding-right: 1.0714285714285714em;
   text-align: center;
@@ -14262,7 +14252,7 @@ fieldset[disabled] .navbar-nav li.menu-item-post-btn > a:hover {
 }
 .job-form .control-label,
 .account-form .control-label {
-  text-transform: uppercase;
+  
   font-weight: bold;
 }
 .job-form .form-group button,
@@ -14371,7 +14361,7 @@ fieldset[disabled] .navbar-nav li.menu-item-post-btn > a:hover {
 .member-manage .table thead th {
   padding-left: 1.0714285714285714em;
   padding-right: 1.0714285714285714em;
-  text-transform: uppercase;
+  
   vertical-align: middle;
 }
 @media (max-width: 767px) {
@@ -15054,7 +15044,7 @@ fieldset[disabled] .navbar-nav li.menu-item-post-btn > a:hover {
 }
 .resume .title-general {
   font-size: 22px;
-  text-transform: uppercase;
+  
   padding-right: 2.142857142857143em;
   margin-top: 0;
 }
@@ -15292,7 +15282,7 @@ fieldset[disabled] .navbar-nav li.menu-item-post-btn > a:hover {
 .featured_slider .box_testimonial .box-info .box-info-entry h4 {
   color: #fff;
   margin: 3px;
-  text-transform: uppercase;
+  
 }
 .featured_slider .box_testimonial .box-info .box-info-entry h5 {
   color: #C3C6CA;

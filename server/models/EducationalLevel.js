@@ -31,12 +31,27 @@ function createDefaultEducationalLevels() {
             
             EducationalLevel.create({
                 Deleted : false,
-                Name: [{ "Text": "Universty" , "Lang": "en" }, { "Text": "جامعي" , "Lang": "ar" }]
+                Name: [{ "Text": "Bachelor's degree (BSc/BA)" , "Lang": "en" }, { "Text": "جامعي" , "Lang": "ar" }]
             });
             
             EducationalLevel.create({
                 Deleted : false,
-                Name: [{ "Text": "High School" , "Lang": "en" }, { "Text": "ثانوي" , "Lang": "ar" }]
+                Name: [{ "Text": "MBA" , "Lang": "en" }, { "Text": "ثانوي" , "Lang": "ar" }]
+            });
+
+            EducationalLevel.create({
+                Deleted: false,
+                Name: [{ "Text": "Master's degree (MSc/MA)", "Lang": "en" }, { "Text": "ثانوي", "Lang": "ar" }]
+            });
+
+            EducationalLevel.create({
+                Deleted: false,
+                Name: [{ "Text": "Doctorate (PhD)", "Lang": "en" }, { "Text": "ثانوي", "Lang": "ar" }]
+            });
+
+            EducationalLevel.create({
+                Deleted: false,
+                Name: [{ "Text": "Others", "Lang": "en" }, { "Text": "ثانوي", "Lang": "ar" }]
             });
         }
     });

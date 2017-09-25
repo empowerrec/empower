@@ -1,7 +1,7 @@
 angular.module('app').factory('mvLookup'
-    , function (mvIndustry, mvJobType, mvGender, mvMaritalStatus, mvMilitaryStatus, mvCarLicenceType,
+    , function (mvIndustry, mvJobType, mvGender,mvHearAboutUs, mvMaritalStatus, mvMilitaryStatus, mvCarLicenceType,
         mvCountry, mvCity, mvLanguage,  mvArea, mvCurancy, mvCompanyType, mvUnivirsty, mvFaculty, 
-        mvSpecialization, mvGrade, mvCompanySize,mvTrainingCenter, mvEducationalLevel, mvJobRole,mvCareerLevel, $rootScope , mvSkillType, mvSkillLevel, mvLanguageLevel) {
+        mvSpecialization, mvGrade, mvReligion, mvVisaStatus, mvContactVia, mvCompanySize, mvTrainingCenter, mvEducationalLevel, mvNationality, mvJobRole, mvCareerLevel, $rootScope, mvSkillType, mvSkillLevel, mvLanguageLevel, mvReferenceRelationship) {
     
     return {
         getAllLookUps: function () {
@@ -13,7 +13,11 @@ angular.module('app').factory('mvLookup'
             $rootScope.companyTypes = mvCompanyType.query({ currentLang: $rootScope.currentLang });
             $rootScope.companySizes = mvCompanySize.query({ currentLang: $rootScope.currentLang });
             $rootScope.genders = mvGender.query({ currentLang: $rootScope.currentLang });
+            $rootScope.hearAboutUss = mvHearAboutUs.query({ currentLang: $rootScope.currentLang });
+            $rootScope.contactVias = mvContactVia.query({ currentLang: $rootScope.currentLang });
             $rootScope.maritalStatuses = mvMaritalStatus.query({ currentLang: $rootScope.currentLang });
+            $rootScope.religions = mvReligion.query({ currentLang: $rootScope.currentLang });
+            $rootScope.visaStatuses = mvVisaStatus.query({ currentLang: $rootScope.currentLang });
             $rootScope.militaryStatuses = mvMilitaryStatus.query({ currentLang: $rootScope.currentLang });
             $rootScope.carLicenceTypes = mvCarLicenceType.query({ currentLang: $rootScope.currentLang });            
             $rootScope.univirsties = mvUnivirsty.query({ currentLang: $rootScope.currentLang });
@@ -29,6 +33,9 @@ angular.module('app').factory('mvLookup'
             $rootScope.careerLevels = mvCareerLevel.query({ currentLang: $rootScope.currentLang });
             $rootScope.industries = mvIndustry.query({ currentLang: $rootScope.currentLang });
             $rootScope.jobRoles = mvJobRole.query({ currentLang: $rootScope.currentLang });
+            $rootScope.nationalities = mvNationality.query({ currentLang: $rootScope.currentLang });
+            $rootScope.referenceRelationships = mvReferenceRelationship.query({ currentLang: $rootScope.currentLang });
+
         }
     };
 });

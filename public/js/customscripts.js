@@ -32,6 +32,9 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/signupSupUser/:id', {
             templateUrl: '/partials/subUserInvitation/front-signupSupUser', controller: 'mvFrontSubUserSignupCtrl'
 
+        }).when('/subUser-list', {
+            templateUrl: '/partials/subUserInvitation/subUser-list', controller: 'mvSubUserListCtrl'
+
         }).when('/DeclineSupUser/:id', {
             templateUrl: '/partials/subUserInvitation/DeclineSubUserInvitation', controller: 'mvDeclineSupUserCtrl'
 
@@ -72,8 +75,20 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/jobSeekers/:id', {
             templateUrl: '/partials/jobSeeker/jobSeeker-detail.html',
             controller: 'mvJobSeekerDetailCtrl'
-        }).when('/updateJobSeeker/:tab/:id', {
-            templateUrl: '/partials/jobSeeker/jobSeeker.html'
+        }).when('/updateJobSeeker/PersonalInformation/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerPersonalInformation.html'
+        }).when('/updateJobSeeker/Photo/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerPhoto.html'
+        }).when('/updateJobSeeker/CV/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerCV.html'
+        }).when('/updateJobSeeker/ContactInformation/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerContactInformation.html'
+        }).when('/updateJobSeeker/ProfessionalOverview/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerProfessionalOverview.html'
+        }).when('/updateJobSeeker/Refrances/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerRefrances.html'
+        }).when('/updateJobSeeker/JobSeekerJobPreferences/:id', {
+            templateUrl: '/partials/jobSeeker/jobSeekerJobPreferences.html'
         }).when('/addJobSeeker', {
             templateUrl: '/partials/jobSeeker/jobSeeker.html'
         }).when('/jobSeekerMain', {
@@ -201,6 +216,42 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/experiances', {
             templateUrl: '/partials/experiance/experiance-list.html',
             controller: 'mvExperianceListCtrl'
+        }).when('/membershipAndAwards/:id', {
+            templateUrl: '/partials/membershipAndAward/membershipAndAward-detail',
+            controller: 'mvMembershipAndAwardDetailCtrl'
+        }).when('/updateMembershipAndAward/:id', {
+            templateUrl: '/partials/membershipAndAward/membershipAndAward',
+            controller: 'mvMembershipAndAwardCtrl'
+        }).when('/addMembershipAndAward', {
+            templateUrl: '/partials/membershipAndAward/membershipAndAward',
+            controller: 'mvMembershipAndAwardCtrl'
+        }).when('/membershipAndAwards', {
+            templateUrl: '/partials/membershipAndAward/membershipAndAward-list.html',
+            controller: 'mvMembershipAndAwardListCtrl'
+        }).when('/interests/:id', {
+            templateUrl: '/partials/interest/interest-detail',
+            controller: 'mvInterestDetailCtrl'
+        }).when('/updateInterest/:id', {
+            templateUrl: '/partials/interest/interest',
+            controller: 'mvInterestCtrl'
+        }).when('/addInterest', {
+            templateUrl: '/partials/interest/interest',
+            controller: 'mvInterestCtrl'
+        }).when('/interests', {
+            templateUrl: '/partials/interest/interest-list.html',
+            controller: 'mvInterestListCtrl'
+        }).when('/professionalCertifications/:id', {
+            templateUrl: '/partials/professionalCertification/professionalCertification-detail',
+            controller: 'mvProfessionalCertificationDetailCtrl'
+        }).when('/updateProfessionalCertification/:id', {
+            templateUrl: '/partials/professionalCertification/professionalCertification',
+            controller: 'mvProfessionalCertificationCtrl'
+        }).when('/addProfessionalCertification', {
+            templateUrl: '/partials/professionalCertification/professionalCertification',
+            controller: 'mvProfessionalCertificationCtrl'
+        }).when('/professionalCertifications', {
+            templateUrl: '/partials/professionalCertification/professionalCertification-list.html',
+            controller: 'mvProfessionalCertificationListCtrl'
         }).when('/educationalLevels/:id', {
             templateUrl: '/partials/educationalLevels/educationalInformatio-detail',
             controller: 'mvEducationalLevelDetailCtrl'
@@ -213,6 +264,18 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/educationalLevels', {
             templateUrl: '/partials/educationalLevel/educationalLevel-list.html',
             controller: 'mvEducationalLevelListCtrl'
+        }).when('/nationalities/:id', {
+            templateUrl: '/partials/nationalities/educationalInformatio-detail',
+            controller: 'mvNationalityDetailCtrl'
+        }).when('/updateNationality/:id', {
+            templateUrl: '/partials/nationality/nationality',
+            controller: 'mvNationalityCtrl'
+        }).when('/addNationality', {
+            templateUrl: '/partials/nationality/nationality',
+            controller: 'mvNationalityCtrl'
+        }).when('/nationalities', {
+            templateUrl: '/partials/nationality/nationality-list.html',
+            controller: 'mvNationalityListCtrl'
         }).when('/educationalInformations/:id', {
             templateUrl: '/partials/educationalInformations/educationalInformatio-detail',
             controller: 'mvEducationalInformationDetailCtrl'
@@ -363,10 +426,7 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/packageFeatures/:pId', {
             templateUrl: '/partials/packageFeature/packageFeature-list.html',
             controller: 'mvPackageFeatureListCtrl'
-        })
-
-
-        .when('/packageCosts/:pId/:id', {
+        }).when('/packageCosts/:pId/:id', {
             templateUrl: '/partials/packageCost/packageCost-detail',
             controller: 'mvPackageCostDetailCtrl'
         }).when('/updatePackageCost/:pId/:id', {
@@ -390,11 +450,7 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/userPackages/:uId', {
             templateUrl: '/partials/userPackage/userPackage-list.html',
             controller: 'mvUserPackageListCtrl'
-        })
-
-
-
-        .when('/userFeatures/:uId/:id', {
+        }).when('/userFeatures/:uId/:id', {
             templateUrl: '/partials/userFeature/userFeature-detail',
             controller: 'mvUserFeatureDetailCtrl'
         }).when('/updateUserFeature/:uId/:id', {
@@ -406,8 +462,19 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/userFeatures/:uId', {
             templateUrl: '/partials/userFeature/userFeature-list.html',
             controller: 'mvUserFeatureListCtrl'
+        }).when('/subUserFeatures/:uId/:id', {
+            templateUrl: '/partials/subUserFeature/subUserFeature-detail',
+            controller: 'mvSubUserFeatureDetailCtrl'
+        }).when('/updateSubUserFeature/:uId/:id', {
+            templateUrl: '/partials/subUserFeature/subUserFeature',
+            controller: 'mvSubUserFeatureCtrl'
+        }).when('/addSubUserFeature/:uId', {
+            templateUrl: '/partials/subUserFeature/subUserFeature',
+            controller: 'mvSubUserFeatureCtrl'
+        }).when('/subUserFeatures/:uId', {
+            templateUrl: '/partials/subUserFeature/subUserFeature-list.html',
+            controller: 'mvSubUserFeatureListCtrl'
         })
-
 
         .when('/subUserInvitationDetails/:id', {
     templateUrl: '/partials/subUserInvitationDetail/subUserInvitationDetail-detail',
@@ -461,9 +528,9 @@ angular.module('app').run(function ($rootScope, $location, $translate, mvLookup,
     });
 });
 angular.module('app').factory('mvLookup'
-    , function (mvIndustry, mvJobType, mvGender, mvMaritalStatus, mvMilitaryStatus, mvCarLicenceType,
+    , function (mvIndustry, mvJobType, mvGender,mvHearAboutUs, mvMaritalStatus, mvMilitaryStatus, mvCarLicenceType,
         mvCountry, mvCity, mvLanguage,  mvArea, mvCurancy, mvCompanyType, mvUnivirsty, mvFaculty, 
-        mvSpecialization, mvGrade, mvCompanySize,mvTrainingCenter, mvEducationalLevel, mvJobRole,mvCareerLevel, $rootScope , mvSkillType, mvSkillLevel, mvLanguageLevel) {
+        mvSpecialization, mvGrade, mvReligion, mvVisaStatus, mvContactVia, mvCompanySize, mvTrainingCenter, mvEducationalLevel, mvNationality, mvJobRole, mvCareerLevel, $rootScope, mvSkillType, mvSkillLevel, mvLanguageLevel, mvReferenceRelationship) {
     
     return {
         getAllLookUps: function () {
@@ -475,7 +542,11 @@ angular.module('app').factory('mvLookup'
             $rootScope.companyTypes = mvCompanyType.query({ currentLang: $rootScope.currentLang });
             $rootScope.companySizes = mvCompanySize.query({ currentLang: $rootScope.currentLang });
             $rootScope.genders = mvGender.query({ currentLang: $rootScope.currentLang });
+            $rootScope.hearAboutUss = mvHearAboutUs.query({ currentLang: $rootScope.currentLang });
+            $rootScope.contactVias = mvContactVia.query({ currentLang: $rootScope.currentLang });
             $rootScope.maritalStatuses = mvMaritalStatus.query({ currentLang: $rootScope.currentLang });
+            $rootScope.religions = mvReligion.query({ currentLang: $rootScope.currentLang });
+            $rootScope.visaStatuses = mvVisaStatus.query({ currentLang: $rootScope.currentLang });
             $rootScope.militaryStatuses = mvMilitaryStatus.query({ currentLang: $rootScope.currentLang });
             $rootScope.carLicenceTypes = mvCarLicenceType.query({ currentLang: $rootScope.currentLang });            
             $rootScope.univirsties = mvUnivirsty.query({ currentLang: $rootScope.currentLang });
@@ -491,6 +562,9 @@ angular.module('app').factory('mvLookup'
             $rootScope.careerLevels = mvCareerLevel.query({ currentLang: $rootScope.currentLang });
             $rootScope.industries = mvIndustry.query({ currentLang: $rootScope.currentLang });
             $rootScope.jobRoles = mvJobRole.query({ currentLang: $rootScope.currentLang });
+            $rootScope.nationalities = mvNationality.query({ currentLang: $rootScope.currentLang });
+            $rootScope.referenceRelationships = mvReferenceRelationship.query({ currentLang: $rootScope.currentLang });
+
         }
     };
 });
@@ -1154,7 +1228,7 @@ angular.module('app').factory('mvAuth', function ($http, $q, mvIdentity, mvUser)
             
             newUser.$save().then(function () {
                 mvIdentity.currentUser = newUser;
-                dfd.resolve();
+                dfd.resolve(newUser);
             }, function (response) {
                 dfd.reject(response.data.reason);
             });
@@ -1622,15 +1696,12 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
             if (element._id == course._id) {
                 var index = array.indexOf(element);
                 array.splice(index, 1);
-                //$rootScope.vacancy.Questions.remove(element);
             }
 
         });
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
-            //$location.path('/updateJobSeeker/Courses/' + mvIdentity.currentJobSeeker._id);
-
         }, function (reason) {
             mvNotifier.error(reason);
         });
@@ -1645,9 +1716,12 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
             TrainingCenter: $scope.course.TrainingCenter,
             Specialization: $scope.course.Specialization,
             Grade: $scope.course.Grade,
-            CourseYear: $scope.course.CourseYear
+            CourseYear: $scope.course.CourseYear,
+            Summary: $scope.course.Summary
+
         };
-        if ($rootScope.jobSeeker.Courses == undefined)
+        
+        if (!$rootScope.jobSeeker.Courses || $rootScope.jobSeeker.Courses == undefined)
             $rootScope.jobSeeker.Courses = [];
 
         $rootScope.jobSeeker.Courses.push(course);
@@ -1655,8 +1729,6 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
             $scope.showForm = false;
-            //$location.path('/updateJobSeeker/Courses/' + mvIdentity.currentJobSeeker._id);
-
         }, function (reason) {
             mvNotifier.error(reason);
         });
@@ -1672,7 +1744,8 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
             TrainingCenter: $scope.course.TrainingCenter,
             Specialization: $scope.course.Specialization,
             Grade: $scope.course.Grade,
-            CourseYear: $scope.course.CourseYear,
+            CourseYear: $scope.course.CourseYear,            
+            Summary: $scope.course.Summary,
             _id: $scope.course._id
         };
 
@@ -1689,8 +1762,6 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
             $scope.showForm = false;
-            //$location.path('/updateJobSeeker/Courses/' + mvIdentity.currentJobSeeker._id);
-
         }, function (reason) {
             mvNotifier.error(reason);
         });
@@ -2766,6 +2837,8 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope, $http, $q, 
                 }
             }
 
+            $scope.photoFile = $scope.employer.Photo;
+
 
 
             $.ajax({
@@ -2888,7 +2961,7 @@ angular.module('app').controller('mvEmployerCtrl', function ($scope, $http, $q, 
 
                 mvEmployerRepo.updateCurrentEmployer($scope.employer).then(function () {
                     mvNotifier.notify('Employer has been updated!');
-                    $location.path('/employers');
+                    //$location.path('/employers');
                 }, function (reason) {
                     mvNotifier.error(reason);
                 });
@@ -3181,7 +3254,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
     var id = $routeParams.id;
     $scope.identity = mvIdentity;
     $scope.addEnabled = false;
-    var stepclass = "";
+   
     var added = false;
     $scope.selectedJobRole = {};
     $scope.selectedIndustry = {};
@@ -3234,42 +3307,6 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
             }
         }
     };
-    
-    
-    $scope.getStep1Class = function () {
-        
-        if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())
-            return "completed";
-        else
-            return "active";
-    };
-    
-    $scope.getStep2Class = function () {
-        
-        if (mvIdentity.currentUser.isEmployer() || mvIdentity.currentUser.isAdmin())
-            return "completed";
-        else
-            return "active";
-    };
-    
-    
-    $scope.getStep3Class = function () {
-        
-        if (mvIdentity.currentUser.isEmployer() && !$scope.completed() || mvIdentity.currentUser.isAdmin() && !$scope.completed())
-            return "active";
-        else
-            return "completed";
-    };
-    
-    
-    $scope.getStep4Class = function () {
-        
-        if ($scope.completed())
-            return "active";
-        else
-            return "";
-    };
-    
     
 
     $scope.add = function () {
@@ -5539,6 +5576,246 @@ angular.module('app').factory('mvJobRoleRepo', function ($http, $q, mvJobRole,mv
         }
     };
 });
+angular.module('app').factory('mvReferenceRelationship', function ($resource) {
+    var referenceRelationshipResource = $resource('/api/referenceRelationships/:_id', {_id: '@id'},
+        {update: {method: 'PUT', isArray: false}
+    });
+    return referenceRelationshipResource;
+});
+angular.module('app').factory('mvCachedreferenceRelationship', function (mvCourse) {
+    var referenceRelationshipList;
+    return {
+        query: function () {
+            if (!referenceRelationshipList) {
+                referenceRelationshipList = mvreferenceRelationship.query();
+            }
+            return referenceRelationshipList;
+        }
+    };
+});
+angular.module('app').controller('mvreferenceRelationshipDetailCtrl', function ($scope, mvreferenceRelationship, $routeParams) {
+    $scope.referenceRelationship = mvreferenceRelationship.get({_id: $routeParams.id});
+});
+angular.module('app').controller('mvreferenceRelationshipCtrl', function ($scope, mvNotifier, mvreferenceRelationshipRepo, mvreferenceRelationship, $routeParams, $translate) {
+    var id = $routeParams.id;
+    $scope.descriptionText = "";
+    $scope.addEnabled = false;
+    $scope.currentLang = $translate.use();
+    if (id) {
+        $scope.referenceRelationship = mvreferenceRelationship.get({ _id: id }, (function () {
+            if ($scope.referenceRelationship.Name) {
+                for (var i = 0; i < $scope.referenceRelationship.Name.length; i++) {
+                    
+                    if ($scope.referenceRelationship.Name[i].Lang == $scope.currentLang) {
+                        $scope.descriptionText = $scope.referenceRelationship.Name[i].Text;
+                        $scope.lang = $scope.referenceRelationship.Name[i].Lang;
+                    }
+                }
+            }
+            $scope.updateMode = true;
+            $scope.addMode = false;
+        }));
+    } else {
+        $scope.referenceRelationship = new mvreferenceRelationship();
+        $scope.updateMode = false;
+        $scope.addMode = true;
+        $scope.addEnabled = true;
+        $scope.referenceRelationship.Deleted = false;
+    }
+    
+    $scope.getName = function (list , lang) {
+        var selectedLang;
+        if (lang)
+            selectedLang = lang;
+        else
+            selectedLang = $scope.currentLang;
+        
+        if (list) {
+            for (var i = 0; i < list.length; i++) {
+                
+                if (list[i].Lang == selectedLang) {
+                    return list[i].Text;
+                }
+            }
+        }
+    };
+    
+    
+    $scope.languages = [{ value: 'en', text: 'English' },
+        { value: 'ar', text: 'عربى' },
+        { value: 'fr', text: 'French' }];
+    
+    $scope.lang = $scope.languages[0].value;
+    
+    
+    $scope.update = function () {
+        //if ($scope.referenceRelationshipForm.$valid) {
+            
+            $scope.loop();
+            mvreferenceRelationshipRepo.updateCurrentreferenceRelationship($scope.referenceRelationship).then(function () {
+                mvNotifier.notify('referenceRelationship has been updated!');
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        //}
+
+    };
+    
+    $scope.add = function () {
+        //if ($scope.referenceRelationshipForm.$valid && $scope.addEnabled) {
+            
+            $scope.loop();
+            
+            mvreferenceRelationshipRepo.createreferenceRelationship($scope.referenceRelationship).then(function () {
+                mvNotifier.notify('New referenceRelationship Added!');
+                console.log("jj");
+                $scope.addEnabled = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        //}
+    };
+    
+    $scope.loop = function () {
+        
+        var listItems = $("#Names li");
+        listItems.each(function (idx, li) {
+            $scope.lang = $(li).attr('id');
+            var input = $(li).find("#NameText2");
+            $scope.descriptionText = input.val();
+            $scope.saveName();
+
+        });
+    };
+    
+    $scope.saveName = function () {
+        
+        var old = false;
+        if ($scope.referenceRelationship.Name) {
+            for (var i = 0; i < $scope.referenceRelationship.Name.length; i++) {
+                var obj = $scope.referenceRelationship.Name[i];
+                
+                if ($scope.referenceRelationship.Name[i].Lang == $scope.lang) {
+                    $scope.referenceRelationship.Name[i].Text = $scope.descriptionText;
+                    old = true;
+                }
+
+            }
+        }
+        
+        if (!old) {
+            if (!$scope.referenceRelationship.Name) {
+                $scope.referenceRelationship.Name = [];
+            }
+            var description = { "Lang": $scope.lang, "Text": $scope.descriptionText };
+            $scope.referenceRelationship.Name.push(description);
+        }
+        $scope.descriptionText = "";
+        $scope.lang = "";
+
+    };
+     /*
+    $scope.updateName = function (referenceRelationship) {
+      $scope.lang = referenceRelationship.Lang;
+      $scope.descriptionText = referenceRelationship.Text;
+    };
+
+    $scope.deleteName = function (referenceRelationship) {
+
+        for(var i = 0; i < $scope.referenceRelationship.Name.length; i++) {
+            var obj = $scope.referenceRelationship.Name[i];
+            console.log("Old" + obj.Lang);
+            console.log("New " + referenceRelationship.Lang);
+            if(referenceRelationship.Lang == obj.Lang) {
+                $scope.referenceRelationship.Name.splice(i, 1);
+                i--;
+            }
+        }
+        /*
+        var descriptions = $scope.referenceRelationship.Name;
+        console.log(descriptions);
+        descriptions.delete(referenceRelationship);
+        $scope.referenceRelationship.Name = descriptions;
+
+
+
+    };*/
+
+
+});
+angular.module('app').controller('mvreferenceRelationshipListCtrl', function ($scope, mvreferenceRelationship,$translate, mvreferenceRelationshipRepo, queryBulider, mvNotifier,$rootScope, mvIdentity) {
+    $scope.currentUser = mvIdentity.currentUser;
+
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 10
+    };
+    
+    $scope.getData = function () {
+        mvreferenceRelationship.query({
+            query: queryBulider.qb("!Deleted"),
+            currentPage: $scope.paging.currentPage,
+            pageSize: $scope.paging.pageSize
+        }, (function (res) {
+            $scope.referenceRelationships = res[0].collection;
+            $scope.allDataCount = res[0].allDataCount;
+        }));
+    };
+    
+    $scope.deletereferenceRelationship = function (referenceRelationship) {
+        var ed = mvreferenceRelationship.get({ _id: referenceRelationship._id }, (function () {
+            ed.Deleted = true;
+            ed.DeletedBy = mvIdentity.currentUser;
+            mvreferenceRelationshipRepo.updateCurrentreferenceRelationship(ed).then(function () {
+                mvNotifier.notify('referenceRelationship has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+    
+    $scope.getData();
+
+});
+
+angular.module('app').factory('mvreferenceRelationshipRepo', function ($http, $q, mvreferenceRelationship,mvIdentity) {
+    return {
+
+        createreferenceRelationship: function (newreferenceRelationshipData) {
+
+            var newreferenceRelationship = new mvreferenceRelationship(newreferenceRelationshipData);
+            newreferenceRelationship.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving referenceRelationship");
+            newreferenceRelationship.$save().then(function () {
+                console.log("referenceRelationship Saved");
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+        updateCurrentreferenceRelationship: function (newreferenceRelationshipData) {
+            newreferenceRelationshipData.ModifiedBy = mvIdentity.currentUser;
+
+            var dfd = $q.defer();
+
+            var clone = angular.copy(newreferenceRelationshipData);
+            angular.extend(clone,newreferenceRelationshipData);
+            clone.$update({currentUser:mvIdentity.currentUser}).then(function () {
+
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        }
+    };
+});
 angular.module('app').factory('mvCategory', function ($resource) {
     var categoryResource = $resource('/api/categories/:_id', {_id: '@id'},
         {update: {method: 'PUT', isArray: false}
@@ -5953,7 +6230,7 @@ angular.module('app').controller('mvJobSeekerListCtrl', function ($scope, mvJobS
 });
 
 angular.module('app').controller('mvJobSeekerPersonalInformationCtrl'
-    , function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, mvGender, $routeParams, $rootScope) {
+    , function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, mvGender, $routeParams, $rootScope, $q, Upload) {
     
     var id = $routeParams.id;
     $scope.addEnabled = false;
@@ -5964,8 +6241,14 @@ angular.module('app').controller('mvJobSeekerPersonalInformationCtrl'
             $scope.addMode = false;
             
             $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
-            
+            $scope.photoName = $rootScope.jobSeeker.Photo;
+            $scope.cvName = $rootScope.jobSeeker.CVLink;
         }));
+
+        
+
+       
+
     } else {
         $rootScope.jobSeeker = new mvJobSeeker();
         
@@ -5976,15 +6259,60 @@ angular.module('app').controller('mvJobSeekerPersonalInformationCtrl'
         $scope.addEnabled = true;
         
     }
-    
+
+    $scope.upload = function (file , type) {
+       
+            var dfd = $q.defer();
+            if (file) {
+                Upload.upload({
+                    url: '/upload', //webAPI exposed to upload the file
+                    data: { file: file } //pass file as data, should be user ng-model
+                }).then(function (resp) { //upload function returns a promise
+                    if (resp.data.error_code === 0) { //validate success
+                        console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ');
+                        if (type == "P")
+                            $scope.photoName = resp.data.file_name;
+                        else if (type == "C")
+                            $scope.cvName = resp.data.file_name;
+                        dfd.resolve();
+                    } else {
+                        mvNotifier.error('an error occured at upload photo');
+                        dfd.reject('an error occured at upload photo');
+
+                    }
+                }, function (resp) { //catch error
+                    console.log('Error status: ' + resp.status);
+                }, function (evt) {
+                    console.log(evt);
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                    $scope.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+                });
+            }
+            return dfd.promise;
+        
+
+    };
     $scope.update = function () {
         if ($scope.jobSeekerForm.$valid) {
-            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-                mvNotifier.notify('JobSeeker has been updated!');
-            }, function (reason) {
-                mvNotifier.error(reason);
+            $scope.upload($scope.photoFile , "P").then(function () {
+                if ($rootScope.jobSeeker.Photo != $scope.photoName) {
+                    $rootScope.jobSeeker.Photo = $scope.photoName;
+                }
+
+                $scope.upload($scope.cvFile , "C").then(function () {
+                    if ($rootScope.jobSeeker.CVLink && $rootScope.jobSeeker.CVLink != $scope.cvName) {
+                        $rootScope.jobSeeker.CVLink = $scope.cvName;
+                    }
+                    mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                        mvNotifier.notify('JobSeeker has been updated!');
+                    }, function (reason) {
+                        mvNotifier.error(reason);
+                    });
+                });
             });
-        }
+
+    };
     };
     
     $scope.add = function () {
@@ -6111,7 +6439,10 @@ angular.module('app').controller('mvJobSeekerJobPreferencesCtrl'
     if (id) {
         $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function () {
             $scope.updateMode = true;
-            $scope.addMode = false;            
+            $scope.addMode = false; 
+            $("#hfCityId1").val($rootScope.jobSeeker.FirstPreferredCity._id);
+            $("#hfCityId2").val($rootScope.jobSeeker.SecondPreferredCity._id);
+            $("#hfCityId3").val($rootScope.jobSeeker.ThirdPreferredCity._id);          
         }));
     } else {
          $rootScope.jobSeeker = new mvJobSeeker();
@@ -6124,6 +6455,13 @@ angular.module('app').controller('mvJobSeekerJobPreferencesCtrl'
     
     $scope.update = function () {
         if ($scope.jobSeekerForm.$valid) {
+            var firstPreferredCity = $("#hfCityId1").val();
+            var secondPreferredCity = $("#hfCityId2").val();
+            var thirdPreferredCity = $("#hfCityId3").val();
+            $rootScope.jobSeeker.FirstPreferredCity = firstPreferredCity;
+            $rootScope.jobSeeker.SecondPreferredCity = secondPreferredCity;
+            $rootScope.jobSeeker.ThirdPreferredCity = thirdPreferredCity;
+
             mvJobSeekerRepo.updateCurrentJobSeeker( $rootScope.jobSeeker).then(function () {
                 mvNotifier.notify('JobSeeker has been updated!');
             }, function (reason) {
@@ -6142,6 +6480,613 @@ angular.module('app').controller('mvJobSeekerJobPreferencesCtrl'
             });
         }
     };
+
+    $(function () {
+        $("#cityName1").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/citiesByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedCity1");
+                        var offset = p.offset();
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfCityId1").val(i.item.id);
+                $('#hfCityId1').trigger('change');
+                var p = $("#selectedCity1");
+                p.text(i.item.label);
+            },
+            minLength: 2
+        });
+    });
+
+    $(function () {
+        $("#cityName2").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/citiesByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedCity1");
+                        var offset = p.offset();
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfCityId2").val(i.item.id);
+                $('#hfCityId2').trigger('change');
+                var p = $("#selectedCity2");
+                p.text(i.item.label);
+            },
+            minLength: 2
+        });
+    });
+
+
+    $(function () {
+        $("#cityName3").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/citiesByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedCity3");
+                        var offset = p.offset();
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfCityId3").val(i.item.id);
+                $('#hfCityId3').trigger('change');
+                var p = $("#selectedCity3");
+                p.text(i.item.label);
+            },
+            minLength: 2
+        });
+    });
+     
+});
+angular.module('app').controller('mvJobSeekerRefrancesCtrl', function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, $routeParams, $rootScope) {
+    
+    var id = $routeParams.id;
+    
+    $scope.genders = [
+        { value: 'Male', text: 'Male' },
+        { value: 'Female', text: 'Female' }
+    ];
+    
+    $scope.addEnabled = false;
+    $scope.IsMobileInserted = false;
+    // $rootScope.jobSeekers = mvJobSeeker.query();
+    if (id) {
+         $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function() {
+            $scope.updateMode = true;
+            $scope.addMode = false;
+            $scope.IsMobileInserted = true;
+             $rootScope.jobSeeker.MobileNo =  $rootScope.jobSeeker.MobileNo;
+             $rootScope.jobSeeker.Email =  $rootScope.jobSeeker.Email;
+           
+                //if ( $rootScope.jobSeeker.MobileNo == null ||  $rootScope.jobSeeker.MobileNo == "" ||  $rootScope.jobSeeker.Email == null ||  $rootScope.jobSeeker.Email == "") {
+                //    $scope.IsMobileInserted = false;
+                //}
+                
+          
+            // $rootScope.jobSeeker.BirthDate = new Date( $rootScope.jobSeeker.BirthDate);
+            //if (! $rootScope.jobSeeker.Gender) {
+            //     $rootScope.jobSeeker.Gender = $scope.genders[0].value;
+            //}
+        }));
+    } else {
+        //$http.get('/api/getJobSeekerWhereMobileNumberNotNull').then(function(res) {
+            //if (res.data.length > 0) {
+                //mvNotifier.notify('This link is expired please make another link');
+        //$location.path('/forget');
+        
+         $rootScope.jobSeeker = new mvJobSeeker();
+         $rootScope.jobSeeker.Deleted = false;
+        $scope.updateMode = false;
+        $scope.addMode = true;
+        $scope.addEnabled = true;
+        //$.ajax({
+        //    url: "api/getJobSeekerWhereMobileNumberNotNull",
+        //    dataType: 'json',
+        //    async: false,
+        //    success: function (data) {
+        //        if (data) {
+               
+        //             $rootScope.jobSeeker = new mvJobSeeker();
+        //            // $rootScope.jobSeeker.Gender = $scope.genders[0].value;
+        //            $scope.IsMobileInserted = true;
+        //            $scope.updateMode = false;
+        //            $scope.addMode = true;
+        //            $scope.addEnabled = false;
+        //        } 
+        //    },
+        //    error: function (err) {
+        //         $rootScope.jobSeeker = new mvJobSeeker();
+        //        // $rootScope.jobSeeker.Gender = $scope.genders[0].value;
+        //        $scope.IsMobileInserted = false;
+        //        $scope.updateMode = false;
+        //        $scope.addMode = true;
+        //        $scope.addEnabled = true;
+        //  }
+        //});
+               
+            //}
+        //});
+    }
+    // $rootScope.jobSeeker = mvJobSeeker.get({ MobileNumber: "" }, (function() {
+        //    if (! $rootScope.jobSeekers.lenght > 0) {
+              
+        //    }
+
+        //}));
+    
+    $scope.update = function () {
+        if ( $scope.jobSeekerForm.$valid) {
+            mvJobSeekerRepo.updateCurrentJobSeeker( $rootScope.jobSeeker).then(function () {
+                //$scope.IsMobileInserted = true;
+                mvNotifier.notify('JobSeeker has been updated!');
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        } 
+    };
+    
+    $scope.add = function () {
+        if ($scope.jobSeekerForm.$valid && $scope.addEnabled) {
+            $scope.addEnabled = false;
+            mvJobSeekerRepo.createJobSeeker( $rootScope.jobSeeker).then(function () {
+                
+                mvNotifier.notify('New Contact Added!'); 
+                //$scope.IsMobileInserted = true;    
+                //var u = $rootScope.AddressId;
+                $scope.addEnabled = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
+    };
+     
+});
+angular.module('app').controller('mvJobSeekerPhotoCtrl'
+    , function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, mvGender, $routeParams, $rootScope, $q, Upload) {
+    
+    var id = $routeParams.id;
+    $scope.addEnabled = false;
+    
+    if (id) {
+        $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function () {
+            $scope.updateMode = true;
+            $scope.addMode = false;
+            
+            $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            $scope.photoName = $rootScope.jobSeeker.Photo;
+           
+        }));
+
+        
+
+       
+
+    } else {
+        $rootScope.jobSeeker = new mvJobSeeker();
+        
+        $rootScope.jobSeeker.Confirmed = false;
+        $rootScope.jobSeeker.Deleted = false;
+        $scope.updateMode = false;
+        $scope.addMode = true;
+        $scope.addEnabled = true;
+        
+    }
+
+    $scope.upload = function (file , type) {
+       
+            var dfd = $q.defer();
+           
+                Upload.upload({
+                    url: '/upload', //webAPI exposed to upload the file
+                    data: { file: file } //pass file as data, should be user ng-model
+                }).then(function (resp) { //upload function returns a promise
+                    if (resp.data.error_code === 0) { //validate success
+                        console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ');
+                        if (type == "P")
+                            $scope.photoName = resp.data.file_name;
+                        else if (type == "C")
+                            $scope.cvName = resp.data.file_name;
+                        dfd.resolve();
+                    } else {
+                        mvNotifier.error('an error occured at upload photo');
+                        dfd.reject('an error occured at upload photo');
+
+                    }
+                }, function (resp) { //catch error
+                    console.log('Error status: ' + resp.status);
+                }, function (evt) {
+                    console.log(evt);
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                    $scope.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+                });
+            
+            return dfd.promise;
+        
+
+    };
+    $scope.update = function () {
+        if ($scope.jobSeekerForm.$valid) {
+            $scope.upload($scope.photoFile , "P").then(function () {
+                if ($rootScope.jobSeeker.Photo != $scope.photoName) {
+                    $rootScope.jobSeeker.Photo = $scope.photoName;
+                }
+
+               
+                    mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                        mvNotifier.notify('JobSeeker has been updated!');
+                    }, function (reason) {
+                        mvNotifier.error(reason);
+                    });
+                });
+           
+    };
+    };
+    
+    $scope.add = function () {
+        if ($rootScope.jobSeekerForm.$valid && $scope.addEnabled) {
+            mvJobSeekerRepo.createJobSeeker($rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('New JobSeeker Added!');
+                $scope.addEnabled = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
+    };
+     
+});
+angular.module('app').controller('mvJobSeekerCVCtrl'
+    , function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, mvGender, $routeParams, $rootScope, $q, Upload) {
+    
+    var id = $routeParams.id;
+    $scope.addEnabled = false;
+    
+    if (id) {
+        $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function () {
+            $scope.updateMode = true;
+            $scope.addMode = false;
+            
+            $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            
+            $scope.cvName = $rootScope.jobSeeker.CVFile;
+        }));
+
+        
+
+       
+
+    } else {
+        $rootScope.jobSeeker = new mvJobSeeker();
+        
+        $rootScope.jobSeeker.Confirmed = false;
+        $rootScope.jobSeeker.Deleted = false;
+        $scope.updateMode = false;
+        $scope.addMode = true;
+        $scope.addEnabled = true;
+        
+    }
+
+    $scope.upload = function (file , type) {
+       
+            var dfd = $q.defer();
+          
+                Upload.upload({
+                    url: '/upload', //webAPI exposed to upload the file
+                    data: { file: file } //pass file as data, should be user ng-model
+                }).then(function (resp) { //upload function returns a promise
+                    if (resp.data.error_code === 0) { //validate success
+                        console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ');
+                        if (type == "P")
+                            $scope.photoName = resp.data.file_name;
+                        else if (type == "C")
+                            $scope.cvName = resp.data.file_name;
+                        dfd.resolve();
+                    } else {
+                        mvNotifier.error('an error occured at upload photo');
+                        dfd.reject('an error occured at upload photo');
+
+                    }
+                }, function (resp) { //catch error
+                    console.log('Error status: ' + resp.status);
+                }, function (evt) {
+                    console.log(evt);
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                    $scope.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+                });
+            
+            return dfd.promise;
+        
+
+    };
+    $scope.update = function () {
+        if ($scope.jobSeekerForm.$valid) {
+            
+                $scope.upload($scope.cvFile , "C").then(function () {
+                    if ($rootScope.jobSeeker.CVFile != $scope.cvName) {
+                        $rootScope.jobSeeker.CVFile = $scope.cvName;
+                    }
+                    mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                        mvNotifier.notify('JobSeeker has been updated!');
+                    }, function (reason) {
+                        mvNotifier.error(reason);
+                    });
+                });
+           
+
+    };
+    };
+    
+    $scope.add = function () {
+        if ($rootScope.jobSeekerForm.$valid && $scope.addEnabled) {
+            mvJobSeekerRepo.createJobSeeker($rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('New JobSeeker Added!');
+                $scope.addEnabled = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
+    };
+     
+});
+angular.module('app').controller('mvJobSeekerProfessionalOverviewCtrl'
+    , function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, mvGender, $routeParams, $rootScope) {
+    
+    var id = $routeParams.id;
+    $scope.addEnabled = false;
+    
+    if (id) {
+        $rootScope.jobSeeker = mvJobSeeker.get({ _id: id }, (function () {
+            $scope.updateMode = true;
+            $scope.addMode = false; 
+          
+        }));
+    } else {
+         $rootScope.jobSeeker = new mvJobSeeker();
+        
+         $rootScope.jobSeeker.Deleted = false;
+        $scope.updateMode = false;
+        $scope.addMode = true;
+        $scope.addEnabled = true;
+    }
+    
+    $scope.update = function () {
+        if ($scope.jobSeekerForm.$valid) {
+           
+            mvJobSeekerRepo.updateCurrentJobSeeker( $rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('JobSeeker has been updated!');
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
+    };
+    
+    $scope.add = function () {
+        if ($scope.jobSeekerForm.$valid && $scope.addEnabled) {
+            mvJobSeekerRepo.createJobSeeker( $rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('New JobSeeker Added!');
+                $scope.addEnabled = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
+    };
+
+    $(function () {
+        $("#cityName1").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/citiesByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedCity1");
+                        var offset = p.offset();
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfCityId1").val(i.item.id);
+                $('#hfCityId1').trigger('change');
+                var p = $("#selectedCity1");
+                p.text(i.item.label);
+            },
+            minLength: 2
+        });
+    });
+
+    $(function () {
+        $("#cityName2").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/citiesByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedCity1");
+                        var offset = p.offset();
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfCityId2").val(i.item.id);
+                $('#hfCityId2').trigger('change');
+                var p = $("#selectedCity2");
+                p.text(i.item.label);
+            },
+            minLength: 2
+        });
+    });
+
+
+    $(function () {
+        $("#cityName3").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/citiesByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedCity3");
+                        var offset = p.offset();
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfCityId3").val(i.item.id);
+                $('#hfCityId3').trigger('change');
+                var p = $("#selectedCity3");
+                p.text(i.item.label);
+            },
+            minLength: 2
+        });
+    });
      
 });
 angular.module('app').factory('mvInnerPage', function ($resource,mvIdentity) {
@@ -6478,15 +7423,15 @@ angular.module('app').factory('mvExperianceRepo', function ($http, $q, mvExperia
 });
 angular.module('app').controller('mvExperianceCtrl', function ($scope, $rootScope, mvNotifier, mvExperianceRepo, mvExperiance, $routeParams
     , $translate, mvIdentity, $location, mvJobSeekerRepo) {
-    
+
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
     $("#currentLang").val($rootScope.currentLang);
-    
+
     $scope.experiance = new mvExperiance();
-        
-    if(mvIdentity.currentJobSeeker)
-            $scope.experiance.JobSeeker = mvIdentity.currentJobSeeker;
+
+    if (mvIdentity.currentJobSeeker)
+        $scope.experiance.JobSeeker = mvIdentity.currentJobSeeker;
     $scope.experiance.Deleted = false;
     $scope.updateMode = false;
     $scope.addMode = true;
@@ -6507,7 +7452,7 @@ angular.module('app').controller('mvExperianceCtrl', function ($scope, $rootScop
         $scope.addMode = true;
         $scope.showForm = true;
         $scope.experiance = new mvExperiance();
-        
+
     }
 
     $scope.deleteExperiance = function (experiane) {
@@ -6518,15 +7463,12 @@ angular.module('app').controller('mvExperianceCtrl', function ($scope, $rootScop
             if (element._id == experiane._id) {
                 var index = array.indexOf(element);
                 array.splice(index, 1);
-                //$rootScope.vacancy.Questions.remove(element);
             }
 
         });
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
-            //$location.path('/updateJobSeeker/Experiances/' + mvIdentity.currentJobSeeker._id);
-
         }, function (reason) {
             mvNotifier.error(reason);
         });
@@ -6534,81 +7476,187 @@ angular.module('app').controller('mvExperianceCtrl', function ($scope, $rootScop
     };
 
     $scope.add = function () {
+        createCity(function () {
 
-        var experiance = {
-            Company: $scope.experiance.Company,
-            JobSeeker: $scope.experiance.JobSeeker,
-            CompanySize: $scope.experiance.CompanySize,
-            CompanyType: $scope.experiance.CompanyType,
-            Country: $scope.experiance.Country,
-            Position: $scope.experiance.Position,
-            Salary: $scope.experiance.Salary,
-            Achievements: $scope.experiance.Achievements,
-            FunctionalTasks: $scope.experiance.FunctionalTasks,
-            PeriodFrom: $scope.experiance.PeriodFrom,
-            PeriodTo: $scope.experiance.PeriodTo,
-            Current: $scope.experiance.Current
-        };
-        if ($rootScope.jobSeeker.Experiances == undefined)
-            $rootScope.jobSeeker.Experiances = [];
+            var experiance = {
+                Company: $scope.experiance.Company,
+                JobSeeker: $scope.experiance.JobSeeker,
+                CompanySize: $scope.experiance.CompanySize,
+                CompanyType: $scope.experiance.CompanyType,
+                Country: $scope.experiance.Country,
+                City: $scope.experiance.City,
+                Position: $scope.experiance.Position,
+                CompanyWebsite: $scope.experiance.CompanyWebsite,
+                Salary: $scope.experiance.Salary,
+                JobRole: $scope.experiance.JobRole,
+                ReportTo: $scope.experiance.ReportTo,
+                Achievements: $scope.experiance.Achievements,
+                FunctionalTasks: $scope.experiance.FunctionalTasks,
+                PeriodFrom: $scope.experiance.PeriodFrom,
+                PeriodTo: $scope.experiance.PeriodTo,
+                Current: $scope.experiance.Current
+            };
+            if ($rootScope.jobSeeker.Experiances == undefined)
+                $rootScope.jobSeeker.Experiances = [];
 
-        $rootScope.jobSeeker.Experiances.push(experiance);
+            $rootScope.jobSeeker.Experiances.push(experiance);
 
-        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-            mvNotifier.notify('JobSeeker has been updated!');
-            $scope.showForm = false;
-            //$location.path('/updateJobSeeker/Experiances/' + mvIdentity.currentJobSeeker._id);
-                    
-        }, function (reason) {
-            mvNotifier.error(reason);
+            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('JobSeeker has been updated!');
+                $scope.showForm = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+
+
+
         });
+
 
     };
 
 
     $scope.update = function () {
+        createCity(function () {
 
-        var experiance = {
-            Company: $scope.experiance.Company,
-            JobSeeker: $scope.experiance.JobSeeker,
-            CompanySize: $scope.experiance.CompanySize,
-            CompanyType: $scope.experiance.CompanyType,
-            Country: $scope.experiance.Country,
-            Position: $scope.experiance.Position,
-            Salary: $scope.experiance.Salary,
-            Achievements: $scope.experiance.Achievements,
-            FunctionalTasks: $scope.experiance.FunctionalTasks,
-            PeriodFrom: new Date($scope.experiance.PeriodFrom),
-            PeriodTo: new Date($scope.experiance.PeriodTo),
-            Current: $scope.experiance.Current,
-            _id :  $scope.experiance._id
-        };
+            var experiance = {
+                Company: $scope.experiance.Company,
+                JobSeeker: $scope.experiance.JobSeeker,
+                CompanySize: $scope.experiance.CompanySize,
+                CompanyType: $scope.experiance.CompanyType,
+                Country: $scope.experiance.Country,
+                City: $scope.experiance.City,
+                Position: $scope.experiance.Position,
+                CompanyWebsite: $scope.experiance.CompanyWebsite,
+                JobRole: $scope.experiance.JobRole,
+                ReportTo: $scope.experiance.ReportTo,
+                Salary: $scope.experiance.Salary,
+                Achievements: $scope.experiance.Achievements,
+                FunctionalTasks: $scope.experiance.FunctionalTasks,
+                PeriodFrom: new Date($scope.experiance.PeriodFrom),
+                PeriodTo: new Date($scope.experiance.PeriodTo),
+                Current: $scope.experiance.Current,
+                _id: $scope.experiance._id
+            };
 
-        var array = $rootScope.jobSeeker.Experiances;
+            var array = $rootScope.jobSeeker.Experiances;
 
-        $rootScope.jobSeeker.Experiances.forEach(function (element) {
-            if (element._id == experiance._id) {
-                var index = array.indexOf(element);
-                array[index] = experiance;
-            }
+            $rootScope.jobSeeker.Experiances.forEach(function (element) {
+                if (element._id == experiance._id) {
+                    var index = array.indexOf(element);
+                    array[index] = experiance;
+                }
+
+            });
+
+            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('JobSeeker has been updated!');
+                $scope.showForm = false;
+                //$location.path('/updateJobSeeker/Experiances/' + mvIdentity.currentJobSeeker._id);
+
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+
+
 
         });
 
-        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-            mvNotifier.notify('JobSeeker has been updated!');
-            $scope.showForm = false;
-            //$location.path('/updateJobSeeker/Experiances/' + mvIdentity.currentJobSeeker._id);
-
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
 
     };
 
+    function createCity(callback) {
+        var cityId = $("#hfCityId").val();
+        var cityName = $("#cityName").val();
+        if (!cityId) {
+            if (cityName != '') {
+                var city = new mvCity();
+                city.Confirmed = false;
+                city.Deleted = false;
+                city.Country = $scope.experiance.Country;
+                city.Name = [];
+                for (var i = 0; i < $rootScope.languages.length; i++) {
+
+                    var cityNameObj = { "Lang": $rootScope.languages[i].Abbreviation, "Text": cityName };
+                    city.Name.push(cityNameObj);
+                }
 
 
-    
-   
+
+                return mvCityRepo.createCity(city).then(function (createdCity) {
+
+                    mvNotifier.notify('New City Added!');
+                    $scope.experiance.City = createdCity._id;
+                    callback();
+                }, function (reason) {
+                    mvNotifier.error(reason);
+                });
+            } else {
+                callback();
+            }
+
+        }
+        else {
+            $scope.experiance.City = cityId;
+            callback();
+        }
+    }
+    $(function () {
+        $("#cityName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/citiesByName/" + request.term,
+                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            console.log(item.Name[0].Text);
+                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                        var p = $("#selectedCity");
+                        var offset = p.offset();
+
+                        //set
+                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                        $('#loader').css("visibility", "visible");
+                    },
+                    complete: function () {
+
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            },
+            select: function (e, i) {
+                console.log(i.item);
+                $("#hfCityId").val(i.item.id);
+                $('#hfCityId').trigger('change');
+                var p = $("#selectedCity");
+                p.text(i.item.label);
+
+            },
+            minLength: 2
+        });
+
+
+    });
+    $('#hfCityId').change(function () {
+        var customerID = $(this).val();
+
+
+    });
+
+
 });
 angular.module('app').controller('mvExperianceListCtrl', function ($scope, mvExperiance, $translate, mvIdentity, mvExperianceRepo,
     mvNotifier , queryBulider , mvJobSeeker , $routeParams) {
@@ -6663,6 +7711,685 @@ angular.module('app').controller('mvExperianceListCtrl', function ($scope, mvExp
    
 });
 
+angular.module('app').factory('mvInterest', function ($resource) {
+    var InterestResource = $resource('/api/interests/:_id', {_id: '@id'},
+        {update: {method: 'PUT', isArray: false}
+    });
+    return InterestResource;
+});
+angular.module('app').factory('mvCachedInterest', function (mvCourse) {
+    var interestList;
+    return {
+        query: function () {
+            if (!interestList) {
+                interestList = mvInterest.query();
+            }
+            return interestList;
+        }
+    };
+});
+angular.module('app').controller('mvInterestDetailCtrl', function ($scope, mvInterest, $routeParams) {
+    $scope.interest = mvInterest.get({_id: $routeParams.id});
+});
+angular.module('app').factory('mvInterestRepo', function ($http, $q, mvInterest,mvIdentity) {
+    return {
+
+        createInterest: function (newInterestData) {
+            var newInterest = new mvInterest(newInterestData);
+            newInterest.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving Interest");
+            newInterest.$save().then(function () {
+                console.log("Interest Saved");
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+        createInterestAfterCreatingUser: function (newInterestData) {
+            var newInterest = new mvInterest(newInterestData);
+            var dfd = $q.defer();
+            console.log("Saving Interest");
+            newInterest.$save().then(function (interest) {
+                console.log("Interest Saved");
+                mvIdentity.currentInterest = interest;
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+        updateCurrentInterest: function (newInterestData) {
+            newInterestData.ModifiedBy = mvIdentity.currentUser;
+
+            var dfd = $q.defer();
+
+            var clone = angular.copy(newInterestData);
+            angular.extend(clone,newInterestData);
+            clone.$update({currentUser:mvIdentity.currentUser}).then(function () {
+
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        }
+    };
+});
+angular.module('app').controller('mvInterestCtrl', function ($scope, $rootScope, mvNotifier, mvInterestRepo, mvInterest, $routeParams
+    , $translate, mvIdentity, $location, mvJobSeekerRepo) {
+
+    $scope.addEnabled = false;
+    $scope.currentLang = $translate.use();
+    $("#currentLang").val($rootScope.currentLang);
+
+    $scope.interest = new mvInterest();
+
+    if (mvIdentity.currentJobSeeker)
+        $scope.interest.JobSeeker = mvIdentity.currentJobSeeker;
+    $scope.interest.Deleted = false;
+    $scope.updateMode = false;
+    $scope.addMode = true;
+    $scope.addEnabled = true;
+    $scope.showForm = false;
+
+    $scope.updateInterest = function updateInterest(experiane) {
+        $scope.updateMode = true;
+        $scope.addMode = false;
+        $scope.showForm = true;
+        $scope.interest = experiane;
+    }
+
+    $scope.addInterest = function addInterest() {
+        $scope.updateMode = false;
+        $scope.addMode = true;
+        $scope.showForm = true;
+        $scope.interest = new mvInterest();
+
+    }
+
+    $scope.deleteInterest = function (experiane) {
+
+        var array = $rootScope.jobSeeker.Interests;
+
+        $rootScope.jobSeeker.Interests.forEach(function (element) {
+            if (element._id == experiane._id) {
+                var index = array.indexOf(element);
+                array.splice(index, 1);
+            }
+
+        });
+
+        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+            mvNotifier.notify('JobSeeker has been updated!');
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+
+    };
+
+    $scope.add = function () {
+
+            var interest = {
+                Interest: $scope.interest.Interest,
+                JobSeeker: $scope.interest.JobSeeker
+            };
+            if ($rootScope.jobSeeker.Interests == undefined)
+                $rootScope.jobSeeker.Interests = [];
+
+            $rootScope.jobSeeker.Interests.push(interest);
+
+            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('JobSeeker has been updated!');
+                $scope.showForm = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+
+    };
+
+
+    $scope.update = function () {
+
+            var interest = {
+                Interest: $scope.interest.Interest,
+                JobSeeker: $scope.interest.JobSeeker,
+                _id: $scope.interest._id
+            };
+
+            var array = $rootScope.jobSeeker.Interests;
+
+            $rootScope.jobSeeker.Interests.forEach(function (element) {
+                if (element._id == interest._id) {
+                    var index = array.indexOf(element);
+                    array[index] = interest;
+                }
+
+            });
+
+            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('JobSeeker has been updated!');
+                $scope.showForm = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+
+    };
+    
+});
+angular.module('app').controller('mvInterestListCtrl', function ($scope, mvInterest, $translate, mvIdentity, mvInterestRepo,
+    mvNotifier , queryBulider , mvJobSeeker , $routeParams) {
+    $scope.currentUser = mvIdentity.currentUser;
+    var id = $routeParams.id;
+    $scope.sortOptions = [{value: 'InterestName', text: 'Sort by InterestName'},
+        {value: 'NumberOfEmployees', text: 'Sort by NumberOfEmployees'}];
+    $scope.sortOrder = $scope.sortOptions[0].value;
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 3
+    };
+    
+    $scope.getData = function () {
+        if (id) {
+            mvIdentity.currentJobSeeker = mvJobSeeker.get({ _id: id }, (function (js) {
+                mvInterest.query({
+                    query: queryBulider.qb("JobSeeker=='" + js._id + "'&&!Deleted"),
+                    jobSeeker: js._id,
+                    currentPage: $scope.paging.currentPage,
+                    pageSize: $scope.paging.pageSize
+                }, (function (res) {
+                    $scope.interests = res[0].collection;
+                    $scope.allDataCount = res[0].allDataCount;
+                }));
+            }));
+        }
+    };
+    
+    $scope.getData();
+    $scope.deleteInterest = function (interest) {
+        
+        var ex = mvInterest.get({ _id: interest._id }, (function () {
+            ex.Deleted = true;
+            ex.DeletedBy = mvIdentity.currentUser;
+            mvInterestRepo.updateCurrentInterest(ex).then(function () {
+                mvNotifier.notify('Interest has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+
+    $scope.getLang = function(){
+        return $translate.use();
+    };
+    
+   
+});
+
+angular.module('app').factory('mvMembershipAndAward', function ($resource) {
+    var MembershipAndAwardResource = $resource('/api/membershipAndAwards/:_id', { _id: '@id' },
+        {
+            update: { method: 'PUT', isArray: false }
+        });
+
+    return MembershipAndAwardResource;
+});
+angular.module('app').factory('mvCachedMembershipAndAward', function (mvCourse) {
+    var membershipAndAwardList;
+    return {
+        query: function () {
+            if (!membershipAndAwardList) {
+                membershipAndAwardList = mvMembershipAndAward.query();
+            }
+            return membershipAndAwardList;
+        }
+    };
+});
+angular.module('app').controller('mvMembershipAndAwardDetailCtrl', function ($scope, mvMembershipAndAward, $routeParams) {
+    $scope.membershipAndAward = mvMembershipAndAward.get({_id: $routeParams.id});
+});
+angular.module('app').factory('mvMembershipAndAwardRepo', function ($http, $q, mvMembershipAndAward,mvIdentity) {
+    return {
+
+        createMembershipAndAward: function (newMembershipAndAwardData) {
+            var newMembershipAndAward = new mvMembershipAndAward(newMembershipAndAwardData);
+            newMembershipAndAward.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving MembershipAndAward");
+            newMembershipAndAward.$save().then(function () {
+                console.log("MembershipAndAward Saved");
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+        createMembershipAndAwardAfterCreatingUser: function (newMembershipAndAwardData) {
+            var newMembershipAndAward = new mvMembershipAndAward(newMembershipAndAwardData);
+            var dfd = $q.defer();
+            console.log("Saving MembershipAndAward");
+            newMembershipAndAward.$save().then(function (membershipAndAward) {
+                console.log("MembershipAndAward Saved");
+                mvIdentity.currentMembershipAndAward = membershipAndAward;
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+        updateCurrentMembershipAndAward: function (newMembershipAndAwardData) {
+            newMembershipAndAwardData.ModifiedBy = mvIdentity.currentUser;
+
+            var dfd = $q.defer();
+
+            var clone = angular.copy(newMembershipAndAwardData);
+            angular.extend(clone,newMembershipAndAwardData);
+            clone.$update({currentUser:mvIdentity.currentUser}).then(function () {
+
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        }
+    };
+});
+angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $rootScope, mvNotifier, mvMembershipAndAwardRepo, mvMembershipAndAward, $routeParams
+    , $translate, mvIdentity, $location, mvJobSeekerRepo) {
+
+    $scope.addEnabled = false;
+    $scope.currentLang = $translate.use();
+    $("#currentLang").val($rootScope.currentLang);
+
+    $scope.membershipAndAward = new mvMembershipAndAward();
+
+    if (mvIdentity.currentJobSeeker)
+        $scope.membershipAndAward.JobSeeker = mvIdentity.currentJobSeeker;
+    $scope.membershipAndAward.Deleted = false;
+    $scope.updateMode = false;
+    $scope.addMode = true;
+    $scope.addEnabled = true;
+    $scope.showForm = false;
+
+    $scope.updateMembershipAndAward = function updateMembershipAndAward(experiane) {
+        $scope.updateMode = true;
+        $scope.addMode = false;
+        $scope.showForm = true;
+        $scope.membershipAndAward = experiane;
+    }
+
+    $scope.addMembershipAndAward = function addMembershipAndAward() {
+        $scope.updateMode = false;
+        $scope.addMode = true;
+        $scope.showForm = true;
+        $scope.membershipAndAward = new mvMembershipAndAward();
+
+    }
+
+    $scope.deleteMembershipAndAward = function (experiane) {
+
+        var array = $rootScope.jobSeeker.MembershipAndAwards;
+
+        $rootScope.jobSeeker.MembershipAndAwards.forEach(function (element) {
+            if (element._id == experiane._id) {
+                var index = array.indexOf(element);
+                array.splice(index, 1);
+            }
+
+        });
+
+        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+            mvNotifier.notify('JobSeeker has been updated!');
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+
+    };
+
+    $scope.add = function () {
+
+        var membershipAndAward = {
+            Membership: $scope.membershipAndAward.Membership,
+            HonorAndAward: $scope.membershipAndAward.HonorAndAward,
+            JobSeeker: $scope.membershipAndAward.JobSeeker
+        };
+        if ($rootScope.jobSeeker.MembershipAndAwards == undefined)
+            $rootScope.jobSeeker.MembershipAndAwards = [];
+
+        $rootScope.jobSeeker.MembershipAndAwards.push(membershipAndAward);
+
+        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+            mvNotifier.notify('JobSeeker has been updated!');
+            $scope.showForm = false;
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+    };
+
+
+    $scope.update = function () {
+        var membershipAndAward = {
+            Membership: $scope.membershipAndAward.Membership,
+            HonorAndAward: $scope.membershipAndAward.HonorAndAward,
+            JobSeeker: $scope.membershipAndAward.JobSeeker,
+            _id: $scope.membershipAndAward._id
+        };
+
+        var array = $rootScope.jobSeeker.MembershipAndAwards;
+
+        $rootScope.jobSeeker.MembershipAndAwards.forEach(function (element) {
+            if (element._id == membershipAndAward._id) {
+                var index = array.indexOf(element);
+                array[index] = membershipAndAward;
+            }
+
+        });
+
+        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+            mvNotifier.notify('JobSeeker has been updated!');
+            $scope.showForm = false;
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+
+
+    };
+
+
+});
+angular.module('app').controller('mvMembershipAndAwardListCtrl', function ($scope, mvMembershipAndAward, $translate, mvIdentity, mvMembershipAndAwardRepo,
+    mvNotifier , queryBulider , mvJobSeeker , $routeParams) {
+    $scope.currentUser = mvIdentity.currentUser;
+    var id = $routeParams.id;
+    $scope.sortOptions = [{value: 'MembershipAndAwardName', text: 'Sort by MembershipAndAwardName'},
+        {value: 'NumberOfEmployees', text: 'Sort by NumberOfEmployees'}];
+    $scope.sortOrder = $scope.sortOptions[0].value;
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 3
+    };
+    
+    $scope.getData = function () {
+        if (id) {
+            mvIdentity.currentJobSeeker = mvJobSeeker.get({ _id: id }, (function (js) {
+                mvMembershipAndAward.query({
+                    query: queryBulider.qb("JobSeeker=='" + js._id + "'&&!Deleted"),
+                    jobSeeker: js._id,
+                    currentPage: $scope.paging.currentPage,
+                    pageSize: $scope.paging.pageSize
+                }, (function (res) {
+                    $scope.membershipAndAwards = res[0].collection;
+                    $scope.allDataCount = res[0].allDataCount;
+                }));
+            }));
+        }
+    };
+    
+    $scope.getData();
+    $scope.deleteMembershipAndAward = function (membershipAndAward) {
+        
+        var ex = mvMembershipAndAward.get({ _id: membershipAndAward._id }, (function () {
+            ex.Deleted = true;
+            ex.DeletedBy = mvIdentity.currentUser;
+            mvMembershipAndAwardRepo.updateCurrentMembershipAndAward(ex).then(function () {
+                mvNotifier.notify('MembershipAndAward has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+
+    $scope.getLang = function(){
+        return $translate.use();
+    };
+    
+   
+});
+
+angular.module('app').factory('mvProfessionalCertification', function ($resource) {
+    var ProfessionalCertificationResource = $resource('/api/professionalCertifications/:_id', {_id: '@id'},
+        {update: {method: 'PUT', isArray: false}
+    });
+    return ProfessionalCertificationResource;
+});
+angular.module('app').factory('mvCachedProfessionalCertification', function (mvCourse) {
+    var professionalCertificationList;
+    return {
+        query: function () {
+            if (!professionalCertificationList) {
+                professionalCertificationList = mvProfessionalCertification.query();
+            }
+            return professionalCertificationList;
+        }
+    };
+});
+angular.module('app').controller('mvProfessionalCertificationDetailCtrl', function ($scope, mvProfessionalCertification, $routeParams) {
+    $scope.professionalCertification = mvProfessionalCertification.get({_id: $routeParams.id});
+});
+angular.module('app').factory('mvProfessionalCertificationRepo', function ($http, $q, mvProfessionalCertification,mvIdentity) {
+    return {
+
+        createProfessionalCertification: function (newProfessionalCertificationData) {
+            var newProfessionalCertification = new mvProfessionalCertification(newProfessionalCertificationData);
+            newProfessionalCertification.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving ProfessionalCertification");
+            newProfessionalCertification.$save().then(function () {
+                console.log("ProfessionalCertification Saved");
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+        createProfessionalCertificationAfterCreatingUser: function (newProfessionalCertificationData) {
+            var newProfessionalCertification = new mvProfessionalCertification(newProfessionalCertificationData);
+            var dfd = $q.defer();
+            console.log("Saving ProfessionalCertification");
+            newProfessionalCertification.$save().then(function (professionalCertification) {
+                console.log("ProfessionalCertification Saved");
+                mvIdentity.currentProfessionalCertification = professionalCertification;
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+        updateCurrentProfessionalCertification: function (newProfessionalCertificationData) {
+            newProfessionalCertificationData.ModifiedBy = mvIdentity.currentUser;
+
+            var dfd = $q.defer();
+
+            var clone = angular.copy(newProfessionalCertificationData);
+            angular.extend(clone,newProfessionalCertificationData);
+            clone.$update({currentUser:mvIdentity.currentUser}).then(function () {
+
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        }
+    };
+});
+angular.module('app').controller('mvProfessionalCertificationCtrl', function ($scope, $rootScope, mvNotifier, mvProfessionalCertificationRepo, mvProfessionalCertification, $routeParams
+    , $translate, mvIdentity, $location, mvJobSeekerRepo) {
+
+    $scope.addEnabled = false;
+    $scope.currentLang = $translate.use();
+    $("#currentLang").val($rootScope.currentLang);
+
+    $scope.professionalCertification = new mvProfessionalCertification();
+
+    if (mvIdentity.currentJobSeeker)
+        $scope.professionalCertification.JobSeeker = mvIdentity.currentJobSeeker;
+    $scope.professionalCertification.Deleted = false;
+    $scope.updateMode = false;
+    $scope.addMode = true;
+    $scope.addEnabled = true;
+    $scope.showForm = false;
+
+    $scope.updateProfessionalCertification = function updateProfessionalCertification(experiane) {
+        $scope.updateMode = true;
+        $scope.addMode = false;
+        $scope.showForm = true;
+        experiane.PeriodFrom = new Date(experiane.PeriodFrom)
+        experiane.PeriodTo = new Date(experiane.PeriodTo)
+        $scope.professionalCertification = experiane;
+    }
+
+    $scope.addProfessionalCertification = function addProfessionalCertification() {
+        $scope.updateMode = false;
+        $scope.addMode = true;
+        $scope.showForm = true;
+        $scope.professionalCertification = new mvProfessionalCertification();
+
+    }
+
+    $scope.deleteProfessionalCertification = function (experiane) {
+
+        var array = $rootScope.jobSeeker.ProfessionalCertifications;
+
+        $rootScope.jobSeeker.ProfessionalCertifications.forEach(function (element) {
+            if (element._id == experiane._id) {
+                var index = array.indexOf(element);
+                array.splice(index, 1);
+            }
+
+        });
+
+        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+            mvNotifier.notify('JobSeeker has been updated!');
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+
+    };
+
+    $scope.add = function () {
+
+        var professionalCertification = {
+            CertificationName: $scope.professionalCertification.CertificationName,
+            JobSeeker: $scope.professionalCertification.JobSeeker,
+            InstitutionName: $scope.professionalCertification.InstitutionName,
+            DateIssued: $scope.professionalCertification.DateIssued,
+            CountryOfExamination: $scope.professionalCertification.CountryOfExamination,
+            OverallGradeGPA: $scope.professionalCertification.OverallGradeGPA,
+            Summary: $scope.professionalCertification.Summary
+        };
+        if ($rootScope.jobSeeker.ProfessionalCertifications == undefined)
+            $rootScope.jobSeeker.ProfessionalCertifications = [];
+
+        $rootScope.jobSeeker.ProfessionalCertifications.push(professionalCertification);
+
+        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+            mvNotifier.notify('JobSeeker has been updated!');
+            $scope.showForm = false;
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+
+    };
+
+
+    $scope.update = function () {
+
+        var professionalCertification = {
+            CertificationName: $scope.professionalCertification.CertificationName,
+            JobSeeker: $scope.professionalCertification.JobSeeker,
+            InstitutionName: $scope.professionalCertification.InstitutionName,
+            DateIssued: $scope.professionalCertification.DateIssued,
+            CountryOfExamination: $scope.professionalCertification.CountryOfExamination,
+            OverallGradeGPA: $scope.professionalCertification.OverallGradeGPA,
+            Summary: $scope.professionalCertification.Summary,
+            _id: $scope.professionalCertification._id
+        };
+
+        var array = $rootScope.jobSeeker.ProfessionalCertifications;
+
+        $rootScope.jobSeeker.ProfessionalCertifications.forEach(function (element) {
+            if (element._id == professionalCertification._id) {
+                var index = array.indexOf(element);
+                array[index] = professionalCertification;
+            }
+
+        });
+
+        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+            mvNotifier.notify('JobSeeker has been updated!');
+            $scope.showForm = false;
+        }, function (reason) {
+            mvNotifier.error(reason);
+        });
+    };
+});
+angular.module('app').controller('mvProfessionalCertificationListCtrl', function ($scope, mvProfessionalCertification, $translate, mvIdentity, mvProfessionalCertificationRepo,
+    mvNotifier , queryBulider , mvJobSeeker , $routeParams) {
+    $scope.currentUser = mvIdentity.currentUser;
+    //$scope.professionalCertifications = mvProfessionalCertification.query({ jobSeeker: mvIdentity.currentJobSeeker });
+    var id = $routeParams.id;
+    //$scope.currentLang = $translate.use();
+    $scope.sortOptions = [{value: 'ProfessionalCertificationName', text: 'Sort by ProfessionalCertificationName'},
+        {value: 'NumberOfEmployees', text: 'Sort by NumberOfEmployees'}];
+    $scope.sortOrder = $scope.sortOptions[0].value;
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 3
+    };
+    
+    $scope.getData = function () {
+        if (id) {
+            mvIdentity.currentJobSeeker = mvJobSeeker.get({ _id: id }, (function (js) {
+                mvProfessionalCertification.query({
+                    query: queryBulider.qb("JobSeeker=='" + js._id + "'&&!Deleted"),
+                    jobSeeker: js._id,
+                    currentPage: $scope.paging.currentPage,
+                    pageSize: $scope.paging.pageSize
+                }, (function (res) {
+                    $scope.professionalCertifications = res[0].collection;
+                    $scope.allDataCount = res[0].allDataCount;
+                }));
+            }));
+        }
+    };
+    
+    $scope.getData();
+    $scope.deleteProfessionalCertification = function (professionalCertification) {
+        
+        var ex = mvProfessionalCertification.get({ _id: professionalCertification._id }, (function () {
+            ex.Deleted = true;
+            ex.DeletedBy = mvIdentity.currentUser;
+            mvProfessionalCertificationRepo.updateCurrentProfessionalCertification(ex).then(function () {
+                mvNotifier.notify('ProfessionalCertification has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+
+    $scope.getLang = function(){
+        return $translate.use();
+    };
+    
+   
+});
+
 angular.module('app').factory('mvEducationalInformation', function ($resource) {
     var educationalInformationResource = $resource('/api/educationalInformations/:_id'
         , { _id: '@id' }
@@ -6672,10 +8399,10 @@ angular.module('app').factory('mvEducationalInformation', function ($resource) {
 });
 angular.module('app').controller('mvEducationalInformationCtrl'
     , function ($scope, mvNotifier, mvEducationalInformationRepo,
-        mvEducationalInformation, mvIdentity, mvGender, $routeParams,
-        $location , mvUnivirsty , mvUnivirstyRepo , mvFaculty , 
-        mvFacultyRepo, $rootScope, mvSpecialization, mvSpecializationRepo, $translate, mvJobSeekerRepo, mvJobSeeker ) {
-    
+        mvEducationalInformation, mvIdentity, mvGender, $routeParams, mvCity ,
+        $location, mvUnivirsty, mvUnivirstyRepo, mvFaculty,
+        mvFacultyRepo, $rootScope, mvSpecialization, mvSpecializationRepo, $translate, mvJobSeekerRepo, mvJobSeeker) {
+
         $scope.addEnabled = false;
         $scope.currentLang = $translate.use();
         $("#currentLang").val($rootScope.currentLang);
@@ -6696,8 +8423,8 @@ angular.module('app').controller('mvEducationalInformationCtrl'
             $scope.showForm = true;
             educationalInformation.EducationalLevel = educationalInformation.EducationalLevel._id;
             educationalInformation.Grade = educationalInformation.Grade._id;
-            //educationalInformation.Grade = educationalInformation.Grade._id;
-
+            if (educationalInformation.Country != undefined)
+                educationalInformation.Country = educationalInformation.Country._id;
             $scope.educationalInformation = educationalInformation;
         }
 
@@ -6717,15 +8444,12 @@ angular.module('app').controller('mvEducationalInformationCtrl'
                 if (element._id == educationalInformation._id) {
                     var index = array.indexOf(element);
                     array.splice(index, 1);
-                    //$rootScope.vacancy.Questions.remove(element);
                 }
 
             });
 
             mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
                 mvNotifier.notify('JobSeeker has been updated!');
-                //$location.path('/updateJobSeeker/EducationalInformations/' + mvIdentity.currentJobSeeker._id);
-
             }, function (reason) {
                 mvNotifier.error(reason);
             });
@@ -6733,36 +8457,36 @@ angular.module('app').controller('mvEducationalInformationCtrl'
         };
 
         $scope.add = function () {
-            createUnivirsty(function () {
-                createFaculty(function () {
-                    createSpecialization(function () {
-                        var educationalInformation = {
-                            EducationalLevel: $scope.educationalInformation.EducationalLevel,
-                            JobSeeker: $scope.educationalInformation.JobSeeker,
-                            Univirsty: $scope.educationalInformation.Univirsty,
-                            Faculty: $scope.educationalInformation.Faculty,
-                            Grade: $scope.educationalInformation.Grade,
-                            Specialization: $scope.educationalInformation.Specialization,
-                            GraduationYear: $scope.educationalInformation.GraduationYear
-                        };
-                        if ($rootScope.jobSeeker.EducationalInformation == undefined)
-                            $rootScope.jobSeeker.EducationalInformation = [];
-
-                        $rootScope.jobSeeker.EducationalInformation.push(educationalInformation);
-
-                        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-                            mvNotifier.notify('JobSeeker has been updated!');
-                            $scope.showForm = false;
-                            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
-                               
-
-                                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
-
-                            }));
-                            //$location.path('/updateJobSeeker/EducationalInformations/' + mvIdentity.currentJobSeeker._id);
-
-                        }, function (reason) {
-                            mvNotifier.error(reason);
+            createCity(function () {
+                createUnivirsty(function () {
+                    createFaculty(function () {
+                        createSpecialization(function () {
+                            var educationalInformation = {
+                                EducationalLevel: $scope.educationalInformation.EducationalLevel,
+                                JobSeeker: $scope.educationalInformation.JobSeeker,
+                                Univirsty: $scope.educationalInformation.Univirsty,
+                                Faculty: $scope.educationalInformation.Faculty,
+                                Grade: $scope.educationalInformation.Grade,
+                                Specialization: $scope.educationalInformation.Specialization,
+                                GraduationYear: $scope.educationalInformation.GraduationYear,
+                                StartYear: $scope.educationalInformation.StartYear,
+                                Country: $scope.educationalInformation.Country,
+                                City: $scope.educationalInformation.City,
+                                Description: $scope.educationalInformation.Description,
+                                Skills: $scope.educationalInformation.Skills
+                            };
+                            if ($rootScope.jobSeeker.EducationalInformation == undefined)
+                                $rootScope.jobSeeker.EducationalInformation = [];
+                            $rootScope.jobSeeker.EducationalInformation.push(educationalInformation);
+                            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                                mvNotifier.notify('JobSeeker has been updated!');
+                                $scope.showForm = false;
+                                $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                                    $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+                                }));
+                            }, function (reason) {
+                                mvNotifier.error(reason);
+                            });
                         });
                     });
                 });
@@ -6771,320 +8495,418 @@ angular.module('app').controller('mvEducationalInformationCtrl'
 
 
         $scope.update = function () {
-            createUnivirsty(function () {
-                createFaculty(function () {
-                    createSpecialization(function () {
-            var educationalInformation = {
-                EducationalLevel: $scope.educationalInformation.EducationalLevel,
-                JobSeeker: $scope.educationalInformation.JobSeeker,
-                Univirsty: $scope.educationalInformation.Univirsty,
-                Faculty: $scope.educationalInformation.Faculty,
-                Grade: $scope.educationalInformation.Grade,
-                Specialization: $scope.educationalInformation.Specialization,
-                GraduationYear: $scope.educationalInformation.GraduationYear,
-                _id: $scope.educationalInformation._id
-            };
+            createCity(function () {
+                createUnivirsty(function () {
+                    createFaculty(function () {
+                        createSpecialization(function () {
+                            var educationalInformation = {
+                                EducationalLevel: $scope.educationalInformation.EducationalLevel,
+                                JobSeeker: $scope.educationalInformation.JobSeeker,
+                                Univirsty: $scope.educationalInformation.Univirsty,
+                                Faculty: $scope.educationalInformation.Faculty,
+                                Grade: $scope.educationalInformation.Grade,
+                                Specialization: $scope.educationalInformation.Specialization,
+                                GraduationYear: $scope.educationalInformation.GraduationYear,
+                                StartYear: $scope.educationalInformation.StartYear,
+                                Country: $scope.educationalInformation.Country,
+                                City: $scope.educationalInformation.City,
+                                Description: $scope.educationalInformation.Description,
+                                Skills: $scope.educationalInformation.Skills,
+                                _id: $scope.educationalInformation._id
+                            };
 
-            var array = $rootScope.jobSeeker.EducationalInformation;
+                            var array = $rootScope.jobSeeker.EducationalInformation;
+                            $rootScope.jobSeeker.EducationalInformation.forEach(function (element) {
+                                if (element._id == educationalInformation._id) {
+                                    var index = array.indexOf(element);
+                                    array[index] = educationalInformation;
+                                }
+                            });
 
-            $rootScope.jobSeeker.EducationalInformation.forEach(function (element) {
-                if (element._id == educationalInformation._id) {
-                    var index = array.indexOf(element);
-                    array[index] = educationalInformation;
-                }
-
-            });
-
-            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-                $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                                $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
 
 
-                    $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+                                    $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
 
-                }));
-                mvNotifier.notify('JobSeeker has been updated!');
-                $scope.showForm = false;
-                //$location.path('/updateJobSeeker/EducationalInformations/' + mvIdentity.currentJobSeeker._id);
+                                }));
+                                mvNotifier.notify('JobSeeker has been updated!');
+                                $scope.showForm = false;
 
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
+                            }, function (reason) {
+                                mvNotifier.error(reason);
+                            });
+                        });
                     });
                 });
             });
+
         };
-    function createUnivirsty(callback) {
-        var univirstyId = $("#hfUnivirstyId").val();
-        var univirstyName = $("#univirstyName").val();
-        if (!univirstyId) {
-            if (univirstyName != '') {
-                var univirsty = new mvUnivirsty();
-                univirsty.Confirmed = false;
-                univirsty.Deleted = false;
-                univirsty.Name = [];
-                for (var i = 0; i < $rootScope.languages.length; i++) {
-                    
-                    var univirstyNameObj = { "Lang": $rootScope.languages[i].Abbreviation, "Text": univirstyName };
-                    univirsty.Name.push(univirstyNameObj);
-                }
-                
-                
-                
-                return mvUnivirstyRepo.createUnivirsty(univirsty).then(function (createdUnivirsty) {
-                    
-                    mvNotifier.notify('New Univirsty Added!');
-                    $scope.educationalInformation.Univirsty = createdUnivirsty._id;
+
+        function createCity(callback) {
+            var cityId = $("#hfCityId").val();
+            var cityName = $("#cityName").val();
+            if (!cityId) {
+                if (cityName != '') {
+                    var city = new mvCity();
+                    city.Confirmed = false;
+                    city.Deleted = false;
+                    city.Country = $scope.educationalInformation.Country;
+                    city.Name = [];
+                    for (var i = 0; i < $rootScope.languages.length; i++) {
+
+                        var cityNameObj = { "Lang": $rootScope.languages[i].Abbreviation, "Text": cityName };
+                        city.Name.push(cityNameObj);
+                    }
+
+
+
+                    return mvCityRepo.createCity(city).then(function (createdCity) {
+
+                        mvNotifier.notify('New City Added!');
+                        $scope.educationalInformation.City = createdCity._id;
+                        callback();
+                    }, function (reason) {
+                        mvNotifier.error(reason);
+                    });
+                } else {
                     callback();
-                }, function (reason) {
-                    mvNotifier.error(reason);
-                });
+                }
+
+            }
+            else {
+                $scope.educationalInformation.City = cityId;
+                callback();
+            }
+        }
+
+        $(function () {
+            $("#cityName").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "get",
+                        async: false,
+                        url: "/api/citiesByName/" + request.term,
+                        data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                        success: function (data) {
+                            console.log(data);
+                            response($.map(data, function (item) {
+                                console.log(item.Name[0].Text);
+                                return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                            }));
+                        },
+                        error: function (error) {
+
+                            console.log(error);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        beforeSend: function () {
+                            var p = $("#selectedCity");
+                            var offset = p.offset();
+
+                            //set
+                            $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                            $('#loader').css("visibility", "visible");
+                        },
+                        complete: function () {
+
+                            $('#loader').css("visibility", "hidden");
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    console.log(i.item);
+                    $("#hfCityId").val(i.item.id);
+                    $('#hfCityId').trigger('change');
+                    var p = $("#selectedCity");
+                    p.text(i.item.label);
+
+                },
+                minLength: 2
+            });
+
+
+        });
+        $('#hfCityId').change(function () {
+            var customerID = $(this).val();
+
+
+        });
+
+        function createUnivirsty(callback) {
+            var univirstyId = $("#hfUnivirstyId").val();
+            var univirstyName = $("#univirstyName").val();
+            if (!univirstyId) {
+                if (univirstyName != '') {
+                    var univirsty = new mvUnivirsty();
+                    univirsty.Confirmed = false;
+                    univirsty.Deleted = false;
+                    univirsty.Name = [];
+                    for (var i = 0; i < $rootScope.languages.length; i++) {
+
+                        var univirstyNameObj = { "Lang": $rootScope.languages[i].Abbreviation, "Text": univirstyName };
+                        univirsty.Name.push(univirstyNameObj);
+                    }
+
+
+
+                    return mvUnivirstyRepo.createUnivirsty(univirsty).then(function (createdUnivirsty) {
+
+                        mvNotifier.notify('New Univirsty Added!');
+                        $scope.educationalInformation.Univirsty = createdUnivirsty._id;
+                        callback();
+                    }, function (reason) {
+                        mvNotifier.error(reason);
+                    });
+                } else {
+                    callback();
+                }
+
+            }
+            else {
+                $scope.educationalInformation.Univirsty = univirstyId;
+                callback();
+            }
+        }
+
+        function createFaculty(callback) {
+            var facultyId = $("#hfFacultyId").val();
+            var facultyName = $("#facultyName").val();
+            if (!facultyId) {
+                if (facultyName != '') {
+                    var faculty = new mvFaculty();
+                    faculty.Confirmed = false;
+                    faculty.Deleted = false;
+                    faculty.Name = [];
+                    for (var i = 0; i < $rootScope.languages.length; i++) {
+
+                        var facultyNameObj = { "Lang": $rootScope.languages[i].Abbreviation, "Text": facultyName };
+                        faculty.Name.push(facultyNameObj);
+                    }
+
+
+
+                    return mvFacultyRepo.createFaculty(faculty).then(function (createdFaculty) {
+
+                        mvNotifier.notify('New Faculty Added!');
+                        $scope.educationalInformation.Faculty = createdFaculty._id;
+                        callback();
+                    }, function (reason) {
+                        mvNotifier.error(reason);
+                    });
+                } else {
+                    callback();
+                }
             } else {
+                $scope.educationalInformation.Faculty = facultyId;
                 callback();
             }
 
         }
-        else {
-            $scope.educationalInformation.Univirsty = univirstyId;
-            callback();
-        }
-    }
-    
-    function createFaculty(callback) {
-        var facultyId = $("#hfFacultyId").val();
-        var facultyName = $("#facultyName").val();
-        if (!facultyId) {
-            if (facultyName != '') {
-                var faculty = new mvFaculty();
-                faculty.Confirmed = false;
-                faculty.Deleted = false;
-                faculty.Name = [];
-                for (var i = 0; i < $rootScope.languages.length; i++) {
-                    
-                    var facultyNameObj = { "Lang": $rootScope.languages[i].Abbreviation, "Text": facultyName };
-                    faculty.Name.push(facultyNameObj);
-                }
-                
-                
-                
-                return mvFacultyRepo.createFaculty(faculty).then(function (createdFaculty) {
-                    
-                    mvNotifier.notify('New Faculty Added!');
-                    $scope.educationalInformation.Faculty = createdFaculty._id;
+
+        function createSpecialization(callback) {
+            var specializationId = $("#hfSpecializationId").val();
+            var specializationName = $("#specializationName").val();
+            if (!specializationId) {
+                if (specializationName != '') {
+                    var specialization = new mvSpecialization();
+                    specialization.Confirmed = false;
+                    specialization.Deleted = false;
+                    specialization.Name = [];
+                    for (var i = 0; i < $rootScope.languages.length; i++) {
+
+                        var specializationNameObj = { "Lang": $rootScope.languages[i].Abbreviation, "Text": specializationName };
+                        specialization.Name.push(specializationNameObj);
+                    }
+
+
+
+                    return mvSpecializationRepo.createSpecialization(specialization).then(function (createdSpecialization) {
+
+                        mvNotifier.notify('New Specialization Added!');
+                        $scope.educationalInformation.Specialization = createdSpecialization._id;
+                        callback();
+                    }, function (reason) {
+                        mvNotifier.error(reason);
+                    });
+                } else {
                     callback();
-                }, function (reason) {
-                    mvNotifier.error(reason);
-                });
+                }
             } else {
+                $scope.educationalInformation.Specialization = specializationId;
                 callback();
             }
-        } else {
-            $scope.educationalInformation.Faculty = facultyId;
-            callback();
+
         }
-        
-    }
-        
-    function createSpecialization(callback) {
-        var specializationId = $("#hfSpecializationId").val();
-        var specializationName = $("#specializationName").val();
-        if (!specializationId) {
-            if (specializationName != '') {
-                var specialization = new mvSpecialization();
-                specialization.Confirmed = false;
-                specialization.Deleted = false;
-                specialization.Name = [];
-                for (var i = 0; i < $rootScope.languages.length; i++) {
-                    
-                    var specializationNameObj = { "Lang": $rootScope.languages[i].Abbreviation, "Text": specializationName };
-                    specialization.Name.push(specializationNameObj);
-                }
-                
-                
-                
-                return mvSpecializationRepo.createSpecialization(specialization).then(function (createdSpecialization) {
-                    
-                    mvNotifier.notify('New Specialization Added!');
-                    $scope.educationalInformation.Specialization = createdSpecialization._id;
-                    callback();
-                }, function (reason) {
-                    mvNotifier.error(reason);
-                });
-            } else {
-                callback();
-            }
-        } else {
-            $scope.educationalInformation.Specialization = specializationId;
-            callback();
-        }
-        
-    } 
 
-    $(function () {
-        $("#univirstyName").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    url: "/api/universtiesByName/" + request.term,
-                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
-                    success: function (data) {
-                        console.log(data);
-                        response($.map(data, function (item) {
-                            console.log(item.Name[0].Text);
-                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
-                        }));
-                    },
-                    error: function (error) {
+        $(function () {
+            $("#univirstyName").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "get",
+                        async: false,
+                        url: "/api/universtiesByName/" + request.term,
+                        data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                        success: function (data) {
+                            console.log(data);
+                            response($.map(data, function (item) {
+                                console.log(item.Name[0].Text);
+                                return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                            }));
+                        },
+                        error: function (error) {
 
-                        console.log(error);
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    beforeSend: function () {
-                        var p = $("#selectedUnivirsty");
-                        var offset = p.offset();
+                            console.log(error);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        beforeSend: function () {
+                            var p = $("#selectedUnivirsty");
+                            var offset = p.offset();
 
-                        //set
-                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
-                        $('#loader').css("visibility", "visible");
-                    },
-                    complete: function () {
+                            //set
+                            $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                            $('#loader').css("visibility", "visible");
+                        },
+                        complete: function () {
 
-                        $('#loader').css("visibility", "hidden");
-                    }
-                });
-            },
-            select: function (e, i) {
-                console.log(i.item);
-                $("#hfUnivirstyId").val(i.item.id);
-                $('#hfUnivirstyId').trigger('change');
-                var p = $("#selectedUnivirsty");
-                p.text(i.item.label);
+                            $('#loader').css("visibility", "hidden");
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    console.log(i.item);
+                    $("#hfUnivirstyId").val(i.item.id);
+                    $('#hfUnivirstyId').trigger('change');
+                    var p = $("#selectedUnivirsty");
+                    p.text(i.item.label);
 
-            },
-            minLength: 2
+                },
+                minLength: 2
+            });
+
+
+        });
+        $('#hfUnivirstyId').change(function () {
+            var customerID = $(this).val();
+
+
         });
 
+        $(function () {
+            $("#facultyName").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "get",
+                        async: false,
+                        url: "/api/facultiesByName/" + request.term,
+                        data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                        success: function (data) {
+                            console.log(data);
+                            response($.map(data, function (item) {
+                                console.log(item.Name[0].Text);
+                                return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                            }));
+                        },
+                        error: function (error) {
 
-    });
-    $('#hfUnivirstyId').change(function () {
-        var customerID = $(this).val();
+                            console.log(error);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        beforeSend: function () {
+                            var p = $("#selectedFaculty");
+                            var offset = p.offset();
+
+                            //set
+                            $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                            $('#loader').css("visibility", "visible");
+                        },
+                        complete: function () {
+
+                            $('#loader').css("visibility", "hidden");
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    console.log(i.item);
+                    $("#hfFacultyId").val(i.item.id);
+                    $('#hfFacultyId').trigger('change');
+                    var p = $("#selectedFaculty");
+                    p.text(i.item.label);
+
+                },
+                minLength: 2
+            });
 
 
-    });
+        });
+        $('#hfFacultyId').change(function () {
+            var customerID = $(this).val();
 
-    $(function () {
-        $("#facultyName").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    url: "/api/facultiesByName/" + request.term,
-                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
-                    success: function (data) {
-                        console.log(data);
-                        response($.map(data, function (item) {
-                            console.log(item.Name[0].Text);
-                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
-                        }));
-                    },
-                    error: function (error) {
 
-                        console.log(error);
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    beforeSend: function () {
-                        var p = $("#selectedFaculty");
-                        var offset = p.offset();
-
-                        //set
-                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
-                        $('#loader').css("visibility", "visible");
-                    },
-                    complete: function () {
-
-                        $('#loader').css("visibility", "hidden");
-                    }
-                });
-            },
-            select: function (e, i) {
-                console.log(i.item);
-                $("#hfFacultyId").val(i.item.id);
-                $('#hfFacultyId').trigger('change');
-                var p = $("#selectedFaculty");
-                p.text(i.item.label);
-
-            },
-            minLength: 2
         });
 
+        $(function () {
+            $("#specializationName").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "get",
+                        async: false,
+                        url: "/api/specializationsByName/" + request.term,
+                        data: { prefix: request.term, currentLang: $("#currentLang").val() },
+                        success: function (data) {
+                            console.log(data);
+                            response($.map(data, function (item) {
+                                console.log(item.Name[0].Text);
+                                return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
+                            }));
+                        },
+                        error: function (error) {
 
-    });
-    $('#hfFacultyId').change(function () {
-        var customerID = $(this).val();
+                            console.log(error);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        beforeSend: function () {
+                            var p = $("#selectedFaculty");
+                            var offset = p.offset();
+
+                            //set
+                            $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
+                            $('#loader').css("visibility", "visible");
+                        },
+                        complete: function () {
+
+                            $('#loader').css("visibility", "hidden");
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    console.log(i.item);
+                    $("#hfSpecializationId").val(i.item.id);
+                    $('#hfSpecializationId').trigger('change');
+                    var p = $("#selectedSpecialization");
+                    p.text(i.item.label);
+
+                },
+                minLength: 2
+            });
 
 
-    });
+        });
+        $('#hfSpecializationId').change(function () {
+            var customerID = $(this).val();
 
-    $(function () {
-        $("#specializationName").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    url: "/api/specializationsByName/" + request.term,
-                    data: { prefix: request.term, currentLang: $("#currentLang").val() },
-                    success: function (data) {
-                        console.log(data);
-                        response($.map(data, function (item) {
-                            console.log(item.Name[0].Text);
-                            return { label: item.Name[0].Text, value: item.Name[0].Text, id: item._id };
-                        }));
-                    },
-                    error: function (error) {
 
-                        console.log(error);
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    },
-                    beforeSend: function () {
-                        var p = $("#selectedFaculty");
-                        var offset = p.offset();
-
-                        //set
-                        $("#loader").offset({ top: offset.top + 10, left: offset.left + 200 });
-                        $('#loader').css("visibility", "visible");
-                    },
-                    complete: function () {
-
-                        $('#loader').css("visibility", "hidden");
-                    }
-                });
-            },
-            select: function (e, i) {
-                console.log(i.item);
-                $("#hfSpecializationId").val(i.item.id);
-                $('#hfSpecializationId').trigger('change');
-                var p = $("#selectedSpecialization");
-                p.text(i.item.label);
-
-            },
-            minLength: 2
         });
 
-
     });
-    $('#hfSpecializationId').change(function () {
-        var customerID = $(this).val();
-
-
-    });
-     
-});
 angular.module('app').controller('mvEducationalInformationDetailCtrl', function ($scope, mvEducationalInformation, $routeParams) {
     $scope.educationalInformation = mvEducationalInformation.get({_id: $routeParams.id});
 });
@@ -7204,7 +9026,7 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
         $scope.addMode = false;
         $scope.showForm = true;
         if (address.Country != undefined)
-        address.Country = address.Country._id;
+            address.Country = address.Country._id;
         $scope.address = address;
     }
 
@@ -7241,62 +9063,63 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
 
     $scope.add = function () {
         createCity(function () {
-            createArea(function () { 
-        var address = {
-            Country: $scope.address.Country,
-            City: $scope.address.City,
-            Area: $scope.address.Area,
-            AddressLine1: $scope.address.AddressLine1,
-            AddressLine2: $scope.address.AddressLine2
-        };
-        if ($rootScope.jobSeeker.address == undefined)
-            $rootScope.jobSeeker.address = [];
+            createArea(function () {
+                var address = {
+                    Country: $scope.address.Country,
+                    City: $scope.address.City,
+                    Area: $scope.address.Area,
+                    AddressLine1: $scope.address.AddressLine1,
+                    AddressLine2: $scope.address.AddressLine2
+                };
+                if ($rootScope.jobSeeker.address == undefined)
+                    $rootScope.jobSeeker.address = [];
 
-        $rootScope.jobSeeker.Address.push(address);
+                $rootScope.jobSeeker.Address.push(address);
 
-        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-            mvNotifier.notify('JobSeeker has been updated!');
-            $scope.showForm = false;
-            //$location.path('/updateJobSeeker/addresss/' + mvIdentity.currentJobSeeker._id);
+                mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                    mvNotifier.notify('JobSeeker has been updated!');
+                    $scope.showForm = false;
+                    //$location.path('/updateJobSeeker/addresss/' + mvIdentity.currentJobSeeker._id);
 
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
+                }, function (reason) {
+                    mvNotifier.error(reason);
+                });
             });
         })
     };
 
 
     $scope.update = function () {
-        createCity(function () { createArea(function () { 
-        var address = {
-            Country: $scope.address.Country,
-            City: $scope.address.City,
-            Area: $scope.address.Area,
-            AddressLine1: $scope.address.AddressLine1,
-            AddressLine2: $scope.address.AddressLine2,
-            _id: $scope.address._id
-        };
+        createCity(function () {
+            createArea(function () {
+                var address = {
+                    Country: $scope.address.Country,
+                    City: $scope.address.City,
+                    Area: $scope.address.Area,
+                    AddressLine1: $scope.address.AddressLine1,
+                    AddressLine2: $scope.address.AddressLine2,
+                    _id: $scope.address._id
+                };
 
-        var array = $rootScope.jobSeeker.Address;
+                var array = $rootScope.jobSeeker.Address;
 
-        $rootScope.jobSeeker.Address.forEach(function (element) {
-            if (element._id == address._id) {
-                var index = array.indexOf(element);
-                array[index] = address;
-            }
+                $rootScope.jobSeeker.Address.forEach(function (element) {
+                    if (element._id == address._id) {
+                        var index = array.indexOf(element);
+                        array[index] = address;
+                    }
 
-        });
+                });
 
-        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-            mvNotifier.notify('JobSeeker has been updated!');
-            $scope.showForm = false;
-            //$location.path('/updateJobSeeker/addresss/' + mvIdentity.currentJobSeeker._id);
+                mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                    mvNotifier.notify('JobSeeker has been updated!');
+                    $scope.showForm = false;
+                    //$location.path('/updateJobSeeker/addresss/' + mvIdentity.currentJobSeeker._id);
 
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
-        })
+                }, function (reason) {
+                    mvNotifier.error(reason);
+                });
+            });
         });
     };
 
@@ -7371,7 +9194,7 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
             callback();
         }
 
-    }  
+    }
 
     $(function () {
         $("#cityName").autocomplete({
@@ -7691,6 +9514,88 @@ angular.module('app').factory('mvGenderRepo', function ($http, $q, mvGender, mvI
         }
     };
 });
+angular.module('app').factory('mvHearAboutUs', function ($resource) {
+    var hearAboutUsResource = $resource('/api/hearAboutUss/:_id', {_id: '@id'}, {
+        update: {method: 'PUT', isArray: false}
+    });
+
+    return hearAboutUsResource;
+});
+angular.module('app').factory('mvHearAboutUsRepo', function ($http, $q, mvHearAboutUs, mvIdentity) {
+    return {
+        createHearAboutUs: function (newHearAboutUsData) {
+            var newHearAboutUs = new mvHearAboutUs(newHearAboutUsData);
+            newHearAboutUs.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving HearAboutUs");
+            newHearAboutUs.$save().then(function (response) {
+                console.log(response.data);
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            
+            return dfd.promise;
+        }
+        ,updateCurrentHearAboutUs: function (newHearAboutUsData) {
+            newHearAboutUsData.ModifiedBy = mvIdentity.currentUser;
+            
+            var dfd = $q.defer();
+            
+            var clone = angular.copy(newHearAboutUsData);
+            angular.extend(clone, newHearAboutUsData);
+            clone.$update({ currentUser: mvIdentity.currentUser }).then(function () {
+                
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            
+            return dfd.promise;
+        }
+    };
+});
+angular.module('app').factory('mvContactVia', function ($resource) {
+    var contactViaResource = $resource('/api/contactVias/:_id', {_id: '@id'}, {
+        update: {method: 'PUT', isArray: false}
+    });
+
+    return contactViaResource;
+});
+angular.module('app').factory('mvGenderRepo', function ($http, $q, mvGender, mvIdentity) {
+    return {
+        createGender: function (newGenderData) {
+            var newGender = new mvGender(newGenderData);
+            newGender.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving Gender");
+            newGender.$save().then(function (response) {
+                console.log(response.data);
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            
+            return dfd.promise;
+        }
+        ,updateCurrentGender: function (newGenderData) {
+            newGenderData.ModifiedBy = mvIdentity.currentUser;
+            
+            var dfd = $q.defer();
+            
+            var clone = angular.copy(newGenderData);
+            angular.extend(clone, newGenderData);
+            clone.$update({ currentUser: mvIdentity.currentUser }).then(function () {
+                
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            
+            return dfd.promise;
+        }
+    };
+});
 angular.module('app').factory('mvMaritalStatus', function ($resource) {
     var maritalStatusResource = $resource('/api/maritalStatuses/:_id', {_id: '@id'}, {
         update: {method: 'PUT', isArray: false}
@@ -7721,6 +9626,88 @@ angular.module('app').factory('mvMaritalStatusRepo', function ($http, $q, mvMari
             
             var clone = angular.copy(newMaritalStatusData);
             angular.extend(clone, newMaritalStatusData);
+            clone.$update({ currentUser: mvIdentity.currentUser }).then(function () {
+                
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            
+            return dfd.promise;
+        }
+    };
+});
+angular.module('app').factory('mvReligion', function ($resource) {
+    var religionResource = $resource('/api/religions/:_id', {_id: '@id'}, {
+        update: {method: 'PUT', isArray: false}
+    });
+
+    return religionResource;
+});
+angular.module('app').factory('mvReligionRepo', function ($http, $q, mvReligion, mvIdentity) {
+    return {
+        createReligion: function (newReligionData) {
+            var newReligion = new mvReligion(newReligionData);
+            newReligion.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving Religion");
+            newReligion.$save().then(function (response) {
+                console.log(response.data);
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            
+            return dfd.promise;
+        }
+        ,updateCurrentReligion: function (newReligionData) {
+            newReligionData.ModifiedBy = mvIdentity.currentUser;
+            
+            var dfd = $q.defer();
+            
+            var clone = angular.copy(newReligionData);
+            angular.extend(clone, newReligionData);
+            clone.$update({ currentUser: mvIdentity.currentUser }).then(function () {
+                
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            
+            return dfd.promise;
+        }
+    };
+});
+angular.module('app').factory('mvVisaStatus', function ($resource) {
+    var visaStatusResource = $resource('/api/visaStatuses/:_id', {_id: '@id'}, {
+        update: {method: 'PUT', isArray: false}
+    });
+
+    return visaStatusResource;
+});
+angular.module('app').factory('mvVisaStatusRepo', function ($http, $q, mvVisaStatus, mvIdentity) {
+    return {
+        createVisaStatus: function (newVisaStatusData) {
+            var newVisaStatus = new mvVisaStatus(newVisaStatusData);
+            newVisaStatus.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving VisaStatus");
+            newVisaStatus.$save().then(function (response) {
+                console.log(response.data);
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            
+            return dfd.promise;
+        }
+        ,updateCurrentVisaStatus: function (newVisaStatusData) {
+            newVisaStatusData.ModifiedBy = mvIdentity.currentUser;
+            
+            var dfd = $q.defer();
+            
+            var clone = angular.copy(newVisaStatusData);
+            angular.extend(clone, newVisaStatusData);
             clone.$update({ currentUser: mvIdentity.currentUser }).then(function () {
                 
                 dfd.resolve();
@@ -7993,6 +9980,196 @@ angular.module('app').controller('mvEducationalLevelListCtrl',
             ed.DeletedBy = mvIdentity.currentUser;
             mvEducationalLevelRepo.updateCurrentEducationalLevel(ed).then(function () {
                 mvNotifier.notify('EducationalLevel has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+    
+    $scope.getData();
+
+});
+
+angular.module('app').factory('mvNationality', function ($resource) {
+    var nationalityResource = $resource('/api/nationalities/:_id', {_id: '@id'}, {
+        update: {method: 'PUT', isArray: false}
+    });
+
+    return nationalityResource;
+}); 
+angular.module('app').factory('mvNationalityRepo', function ($http, $q, mvNationality, mvIdentity) {
+    return {
+        createNationality: function (newNationalityData) {
+            var newNationality = new mvNationality(newNationalityData);
+            newNationality.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving Nationality");
+            newNationality.$save().then(function (response) {
+                console.log(response.data);
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            
+            return dfd.promise;
+        }
+        ,updateCurrentNationality: function (newNationalityData) {
+            newNationalityData.ModifiedBy = mvIdentity.currentUser;
+            
+            var dfd = $q.defer();
+            
+            var clone = angular.copy(newNationalityData);
+            angular.extend(clone, newNationalityData);
+            clone.$update({ currentUser: mvIdentity.currentUser }).then(function () {
+                
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            
+            return dfd.promise;
+        }
+    };
+});
+angular.module('app').controller('mvNationalityCtrl', function ($scope, mvNotifier, mvNationalityRepo, mvNationality, $routeParams, $translate) {
+    var id = $routeParams.id;
+    $scope.nameText = "";
+    $scope.addEnabled = false;
+    $scope.currentLang = $translate.use();
+    
+    if (id) {
+        $scope.nationality = mvNationality.get({ _id: id }, (function () {
+            if ($scope.nationality.Name) {
+                for (var i = 0; i < $scope.nationality.Name.length; i++) {
+                    if ($scope.nationality.Name[i].Lang == $scope.currentLang) {
+                        $scope.nameText = $scope.nationality.Name[i].Text;
+                        $scope.lang = $scope.nationality.Name[i].Lang;
+                    }
+                }
+            }
+            $scope.updateMode = true;
+            $scope.addMode = false;
+        }));
+    } else {
+        $scope.nationality = new mvNationality();
+        $scope.updateMode = false;
+        $scope.addMode = true;
+        $scope.addEnabled = true;
+        $scope.nationality.Deleted = false;
+    }
+    
+    $scope.languages = [{ value: 'en', text: 'English' },
+        { value: 'ar', text: '����' },
+        { value: 'fr', text: 'French' }];
+    
+    $scope.lang = $scope.languages[0].value;
+    
+    $scope.getName = function (list , lang) {
+        var selectedLang;
+        if (lang)
+            selectedLang = lang;
+        else
+            selectedLang = $scope.currentLang;
+        
+        if (list) {
+            for (var i = 0; i < list.length; i++) {
+                
+                if (list[i].Lang == selectedLang) {
+                    return list[i].Text;
+                }
+            }
+        }
+    };
+    
+    $scope.update = function () {
+        //if ($scope.nationalityForm.$valid) {
+            $scope.loop();
+            mvNationalityRepo.updateCurrentNationality($scope.nationality).then(function () {
+                mvNotifier.notify('Nationality has been updated!');
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        //}
+    };
+    
+    $scope.add = function () {
+        //if ($scope.nationalityForm.$valid && $scope.addEnabled) {            
+            $scope.loop();
+            mvNationalityRepo.createNationality($scope.nationality).then(function () {
+                mvNotifier.notify('New Nationality Added!');
+                $scope.addEnabled = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        //}
+    };
+    
+    $scope.loop = function () {
+        var listItems = $("#names li");
+        listItems.each(function (idx, li) {
+            $scope.lang = $(li).attr('id');
+            var input = $(li).find("#NameText2");
+            $scope.nameText = input.val();
+            $scope.saveName();
+        });
+    };
+    
+    $scope.saveName = function () {
+        var old = false;
+        if ($scope.nationality.Name) {
+            for (var i = 0; i < $scope.nationality.Name.length; i++) {
+                if ($scope.nationality.Name[i].Lang == $scope.lang) {
+                    $scope.nationality.Name[i].Text = $scope.nameText;
+                    old = true;
+                }
+            }
+        }
+        
+        if (!old) {
+            if (!$scope.nationality.Name) {
+                $scope.nationality.Name = [];
+            }
+            var name = { "Lang": $scope.lang, "Text": $scope.nameText };
+            $scope.nationality.Name.push(name);
+        }
+        $scope.nameText = "";
+        $scope.lang = "";
+
+    };
+
+});
+angular.module('app').controller('mvNationalityDetailCtrl', function ($scope, mvNationality, $routeParams) {
+    $scope.nationality = mvNationality.get({_id: $routeParams.id});
+});
+angular.module('app').controller('mvNationalityListCtrl', 
+    function ($scope, mvNationality, mvNationalityRepo, queryBulider,$translate, mvIdentity, mvIndustryRepo, mvNotifier) {
+        
+    $scope.currentUser = mvIdentity.currentUser;
+    
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 10
+    };
+    
+    $scope.getData = function () {
+        mvNationality.query({
+            query: queryBulider.qb("!Deleted"),
+            currentPage: $scope.paging.currentPage,
+            pageSize: $scope.paging.pageSize
+        }, (function (res2) {
+            $scope.nationalities = res2[0].collection;
+            $scope.allDataCount = res2[0].allDataCount;
+        }));
+    };
+    
+    $scope.deleteNationality = function (nationality) {
+        var ed = mvNationality.get({ _id: nationality._id }, (function () {
+            ed.Deleted = true;
+            ed.DeletedBy = mvIdentity.currentUser;
+            mvNationalityRepo.updateCurrentNationality(ed).then(function () {
+                mvNotifier.notify('Nationality has been deleted!');
                 $scope.getData();
             }, function (reason) {
                 mvNotifier.error(reason);
@@ -9648,22 +11825,22 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
 });
 (function () {
     'use strict';
-    
+
     var core = angular.module('app');
-    
+
     var config = {
         appErrorPrefix: '[hot-towel Error] ',
         appTitle: 'hot-towel'
     };
-    
+
     core.value('config', config);
-    
+
     core.config(configure);
-    
+
     configure.$inject = ['$translateProvider'];
     /* @ngInject */
     function configure($translateProvider) {
-        
+
         var english = {
             'Title': 'Internationalization Test',
             "Language": "Language",
@@ -9674,6 +11851,7 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
             },
             "Created_By": "Created by John Papa",
             "Forget Password": "Forget Password",
+            "HearAboutUs": "How did you hear about Us",
             "First_Name": "First Name",
             "Last_Name": "Last Name",
             "Age": "Age",
@@ -9718,7 +11896,7 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
             "JobSeeker": {
                 "JobSeeker": "JobSeeker",
                 "Gender": "Gender",
-                "BirthDate": "Birth Date",
+                "BirthDate": "Date of Birth",
                 "Address": "Address",
                 "ResumeLink": "Resume Link",
                 "ExperienceLevel": "Experience Years",
@@ -9728,38 +11906,90 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "PreferredJobCategory": "PreferredJobCategory",
                 "EducationLevel": "Education Level",
                 "SchoolName": "School Name",
+                "Religion": "Religion",
+                "Nationality": "Nationality",
+                "SecondNationality": "Second Nationality",
                 "GraduationGrade": "GraduationGrade",
                 "LanguageSpoken": "Language Spoken",
-                "SalaryPreference": "Salary Preference",
+                "SalaryPreference": "Minimum Net Monthly Salary ",
                 "PreferredWork": "PreferredWork",
                 "Reference1": "Reference1",
                 "Reference1Contact": "Reference1 Contact",
                 "Reference2": "Reference2",
                 "Reference2Contact": "Reference2 Contact",
                 'Personal Information': 'Personal Information',
-                'Educational Information': 'Educational',
+                'PersonalInformationDescrption': '(Tell us a few things about yourself)',
+                'Educational Information': 'Education',
+                'Educational InformationDescrption': 'Profile Education',
                 'Contact Information': 'Contact Information',
+                'Contact InformationDescrption': 'Contact Information',
                 "Country": "Country",
-                "MobileNo": "MobileNo",
-                "Email": "Email",
+                "MobileNo": "Mobile Number",
+                "ContactVia": "I prefer to be contacted via",
+                "HomePhoneNo": "Home Phone Number",
+                "Email": "Email Address",
                 "Experiances": "Experiances",
+                "ExperiancesDescrption": "Profile Experience",
+                "ProfessionalCertifications": "Professional Certifications",
+                "ProfessionalCertificationsDescrption": "Profile Certification",
+                "MembershipsAndAwards": "Memberships And Awards",
+                "Interests": "Interests",
                 'FirstName': 'First Name',
                 'MiddleName': 'Middle Name',
                 'LastName': 'Last Name',
                 'FullName': 'Full Name',
                 'MaritalStatus': 'Marital Status',
                 'MilitaryStatus': 'Military Status',
-                'CarLicenceType': 'Car Licence Type',
-                'FacebookAcount': 'Facebook Acount',
-                'TwitterAcount': 'Twitter Acount',
-                'LinkedinAccount': 'Linkedin Account',
-                'Course': 'Course',
+                'CarLicenceType': 'Do you have a valid Driving License',
+                'VisaStatus': 'Visa Status',
+                'DrivingLicenseIssuedIn': 'Driving license issued in /if Applicable',
+                'FacebookAcount': 'Facebook (optional)',
+                'TwitterAcount': 'Twitter (optional)',
+                'LinkedinAccount': 'LinkedIn (optional)',
+                'Course': ' Professional Course',
+                'CourseDescrption': ' Profile Course',
                 'Skills': 'Skills',
+                'SkillsDecrption': 'Profile Skills',
                 'LanguageSkills': 'Language Skills',
-                'HasACar': 'Has a Car',
+                'LanguageSkillsDecrption': 'Language Skills',
+                'ProfessionalOverviewDescrption': 'Profile Professional Overview',
+                'ProfessionalOverview': 'Professional Overview',
+                'ProfessionalOverviewCareerLevel': 'Experience Level / Seniority',
+                'ProfessionalOverviewTotalYearsOfExperianceDescrption': 'e.g. "Electrical engineer with 5 years of professional experience in the field of Switching stations installation"',
+                'ProfessionalOverviewTotalYearsOfExperiance': 'Total years of experience',
+                'ProfessionalOverviewSummary': 'Summary',
+                'ProfessionalOverviewSummaryDescrption': 'Tip: For established professionals, we recommend summarizing the experience and established skills you have to build upon. If you’re newer to the professional world, try positioning it as an objective statement to let prospective employers know where you see your career heading next.',
+                'HasACar': 'Do you have a car',
                 'PeriodOfEnrollment': 'Period Of Enrollment',
                 'MoreInformation': 'More Information',
-                'Job Preferences': 'Job Preferences'
+                'Job Preferences': 'Job Preferences',
+                'JobPreferencesDescrption': 'Job Preferences',
+                'PreferredJobLevel': 'Preferred Job Level',
+                'PreferredJobTitle': 'Preferred Job Title',
+                'FirstPreferredIndustry': '1st Preferred Industry ',
+                'SecondPreferredIndustry': '2nd Preferred Industry ',
+                'ThirdPreferredIndustry': '3rd Preferred Industry ',
+                'FirstPreferredLocation': '1st Preferred Location',
+                'SecondPreferredLocation': '2nd Preferred Location',
+                'ThirdPreferredLocation': '3rd Preferred Location',
+                'TravelPreference': 'Travel Preference',
+                'EmploymentType': 'Employment Type',
+                'References': 'References',
+                'ReferencesDescrption': 'Add a new reference (Preferably former employers)',
+                'ReferenceFullName': 'Full Name',
+                'ReferencePosition': 'Position',
+                'ReferenceCompany': 'Company',
+                'ReferenceEmailAddress': 'Email Address',
+                'ReferencePhoneNumber': 'Travel Preference',
+                'ReferenceRelationship': 'Relationship with you (Current/previous)',
+                "LanguageSkill": "Language Skills",
+                "Photo": "Photo",
+                "CV": "Upload CV",
+                "CVLink": "CV File",
+                "PhotoDescrption": "Profile Photo",
+                "CVDescrption": "You may upload and attach your own CV along with your Empower CV. However, to be able to apply to jobs, you must complete your Empower CV."
+
+
             },
             "Vacancy": {
                 "Vacancy": "Vacancy",
@@ -9835,25 +12065,47 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "AddressLine1": "Address Line1",
                 "AddressLine2": "Address Line2"
             },
+            "ProfessionalCertification": {
+                "CertificationName": "Certification Name",
+                "InstitutionName": "Institution Name",
+                "DateIssued": "Date Issued",
+                "CountryOfExamination": "Country Of Examination",
+                "OverallGradeGPA": "Overall Grade / GPA",
+                "Summary": "Summary (optional)"
+            },
+            "MembershipAndAward": {
+                "Membership": "Membership",
+                "HonorAndAward": "Honor & Award"
+            },
+            "Interest": {
+                "Interest": "Interest"
+            },   
             "Experiance": {
-                "Country": "Country",
-                "Company": "Company",
+                "Country": "Country (Work Place)",
+                "City": "City/location (Work Place)",
+                "Company": "Company Name",
                 "CompanySize": "Company Size",
-                "CompanyType": "Company Type",
+                "CompanyType": "Industry Type",
                 "Position": "Position",
-                "Salary": "Salary",
+                "CompanyWebsite": "Company Website",
+                "JobRole": "Job Category",
+                "ReportTo": "Position of your direct manager / the person you report to",
+                "TransportAllowance": "Transport Allowance",
+                "HousingAllowance": "Housing Allowance",
+                "OtherAllowance": "Other Allowance",
+                "Salary": "current net salary",
                 "PeriodFrom": "Period From",
                 "PeriodTo": "Period To",
-                "Achievements": "Achievements",
+                "Achievements": "Main Achievements / Tasks / Job Description",
                 "FunctionalTasks": "Functional Tasks"
             },
             "LanguageSkill": {
-                "Language": "Language",
+                "Language": "Native Language",
                 "LanguageLevel": "LanguageLevel"
 
             },
             "Skill": {
-                "SkillType": "SkillType",
+                "SkillType": "Title",
                 "SkillLevel": "SkillLevel"
             },
             "Category": {
@@ -9866,18 +12118,27 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
             "EducationalInformation": {
                 'EducationalLevel': 'Educational Level',
                 'Univirsty': 'Univirsty',
-                'Faculty': 'Faculty',
-                'Specialization': 'Specialization',
-                'Grade': 'Grade'
+                'Faculty': 'Field of Study/Faculty',
+                'Specialization': 'Major',
+                'Grade': 'Grade / GPA',
+                'GraduationYear': 'Graduation Date',
+                'StartYear': 'Start Date',
+                'Country': 'Country',
+                'City': 'City',
+                'Description': 'Description (optional)',
+                'Skills': 'Skills (optional)'
             }, "EducationalLevel": {
+                "Name": "Name"
+            }, "Nationality": {
                 "Name": "Name"
             },
             'Course': {
-                'Title': 'Title',
-                'TrainingCenter': 'Training Center',
+                'Title': 'Course Name',
+                'TrainingCenter': 'Institution Name',
                 'Specialization': 'Specialization',
                 'Grade': 'Grade',
-                'CourseYear': 'CourseYear'
+                'CourseYear': 'Date Issued',
+                'Summary': 'Summary (optional)'
             },
             'Main': {
                 'Empower': 'Empower',
@@ -9890,7 +12151,7 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'Messge3': '3. Send your resume to employers'
             },
             "Buttons": {
-                "ArrangeInterview":"Arrange Interview",
+                "ArrangeInterview": "Arrange Interview",
                 "Update": "Update",
                 "Save": "Save",
                 "Cancel": "Cancel",
@@ -9933,11 +12194,18 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "PostJob": "Post Job",
                 "UserMenu": "User Menu",
                 "EducationalLevels": "Educational Levels",
+                "Nationality": "Nationality",
                 "Categories": "Categories",
                 "CompanyProfile": "Company Profile",
                 "InviteSubUser": "Invite Sub User",
                 "SignUpSubUser": "SignUpSubUser",
+                "subUserFeatures": "SubUserFeatures",
                 "Experiances": "Experiances",
+                "ProfessionalCertifications": "Professional Certifications",
+                "MembershipsAndAwards": "Memberships & Awards",
+                "MembershipsAndAwardsDescrption": "Profile Memberships & Awards",
+                "Interests": "Interests",
+                "InterestsDescrption": "Interests",
                 'SelectValue': 'Select Value',
                 'JobSeekerProfile': 'Job Seeker Profile',
                 'Cities': 'Cities',
@@ -9970,7 +12238,9 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'JobType': 'Job Type',
                 'JobDetails': 'Job Details',
                 'EducationalLevel': 'Educational Level',
-                'CareerLevel': 'Career Level'
+                'CareerLevel': 'Career Level',
+                'Dates': 'Dates',
+                'BirthDate': 'Birth Date'
             },
             'Package': {
                 "Name": "Name",
@@ -10016,7 +12286,7 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "ArrangeInterviewTime": "Interview Time"
             }
         };
-        
+
         var arabic = {
             "Title": "أختبار ",
             "Language": "اللغات",
@@ -10027,6 +12297,7 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
             },
             "Email": "البريد الالكتروني",
             "Password": "كلمة السر",
+            "HearAboutUs": "كيف سمعت عنا",
             "Remember Me": "تذكرني",
             "Forget Password": "نسيت كلمة السر",
             "Confirm Password": "تاكيد كلمة السر",
@@ -10086,9 +12357,12 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "EducationLevel": "مستوي التعليم",
                 "SchoolName": "اسم المدرسة او الجامعة",
                 "GraduationGrade": "درجة التخرج",
+                "Nationality": "الجنسية",
+                "SecondNationality": "الجنسية الثانية (إن وجدت)",
                 "LanguageSpoken": "اللغات",
                 "SalaryPreference": "المرتب المفضل",
                 "PreferredWork": "نوع العمل",
+                "Religion": "الديانة",
                 "Reference1": "Reference1",
                 "Reference1Contact": "Reference1 Contact",
                 "Reference2": "Reference2",
@@ -10096,9 +12370,14 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'Personal Information': 'المعلومات الشخصية',
                 'Educational Information': 'المعلومات الدراسية',
                 'Contact Information': 'معلومات الاتصال',
-                "MobileNo": "رقم المبيل",
+                "MobileNo": "رقم المحمول",
+                "HomePhoneNo": "رقم تليفون المنزل",
+                "ContactVia": "انا افضل الاتصال بي عبر",
                 "Email": "البريد الألكتروني",
                 "Experiances": "الخبرات",
+                "ProfessionalCertifications": "الشهادات المهنية",
+                "MembershipsAndAwards": "العضويات والجوائز",
+                "Interests": "الإهتمامات",
                 'FirstName': 'الاسم الاول',
                 'MiddleName': 'الاسم الاوسط',
                 'LastName': 'الاسم الاخير',
@@ -10106,6 +12385,8 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'MaritalStatus': 'الحالة الاجتماعية',
                 'MilitaryStatus': 'موقف من التجنيد',
                 'CarLicenceType': 'نوع رخصة السيارة',
+                'VisaStatus': 'حالة الفيزا',
+                'DrivingLicenseIssuedIn': 'رخصة القيادة الصادرة في / إذا وجدت',
                 'FacebookAcount': 'حساب الفيسبوك',
                 'TwitterAcount': 'حساب التويتر',
                 'LinkedinAccount': 'حساب لينكدان',
@@ -10115,7 +12396,17 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'HasACar': 'لديك سيارة',
                 'PeriodOfEnrollment': 'مهلة ترك الشركة الحالية',
                 'MoreInformation': 'معلومات اضافية',
-                'Job Preferences': 'خيارات الوظيفة'
+                'Job Preferences': 'خيارات الوظيفة',
+                'PreferredJobLevel': 'Preferred Job Level',
+                'PreferredJobTitle': 'Preferred Job Title',
+                'FirstPreferredIndustry': '1st Preferred Industry ',
+                'SecondPreferredIndustry': '2nd Preferred Industry ',
+                'ThirdPreferredIndustry': '3rd Preferred Industry ',
+                'FirstPreferredLocation': '1st Preferred Location',
+                'SecondPreferredLocation': '2nd Preferred Location',
+                'ThirdPreferredLocation': '3rd Preferred Location',
+                'TravelPreference': 'Travel Preference',
+                'EmploymentType': 'Employment Type'
             },
             'City': {
                 "City": "المدينة",
@@ -10200,13 +12491,35 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "AddressLine1": "العنوان الأول",
                 "AddressLine2": "العنوان الثاني"
             },
+            "ProfessionalCertification": {
+                "CertificationName": "اسم الشهادة",
+                "InstitutionName": "اسم المعهد",
+                "DateIssued": "تاريخ الإصدار",
+                "CountryOfExamination": "بلد الاختبار",
+                "OverallGradeGPA": "الصف العام / المعدل التراكمي",
+                "Summary": "ملخص (اختياري)"
+            },
+            "MembershipAndAward": {
+                "Membership": "العضويه",
+                "HonorAndAward": "التكريم والمكافاة"
+            },
+            "Interest": {
+                "Interest": "الاهتمام"
+            },
             "Experiance": {
                 "Country": "الدولة",
+                "City": "المدينة",
                 "Company": "الشركة",
                 "CompanySize": "حجم الشركة",
                 "CompanyType": "نوع الشركة",
                 "Position": "الوظيفة",
+                "CompanyWebsite": "موقع الشركة",
+                "JobRole": "مجال الوظيفة",
+                "ReportTo": "وظيفة مديرك المباشر / الشخص الذي ترفع تقاريرك له",
                 "Salary": "المرتب",
+                "TransportAllowance": "بدل النقل",
+                "HousingAllowance": "بدل سكن",
+                "OtherAllowance": "بدلات أخرى",
                 "PeriodFrom": "الفتره من ",
                 "PeriodTo": "الفتره الى",
                 "Achievements": "الانجازات",
@@ -10224,8 +12537,16 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'Univirsty': 'الجامعة',
                 'Faculty': 'الكلية',
                 'Specialization': 'التخصص',
-                'Grade': 'التقدير'
+                'Grade': 'التقدير',
+                'GraduationYear': 'تاريخ التخرج',
+                'StartYear': 'تاريخ البدء',
+                'Country': 'البلد',
+                'City': 'المدينة',
+                'Description': 'الوصف (اختياري)',
+                'Skills': 'المهارات (اختياري)'
             }, 'EducationalLevel': {
+                "Name": "الأسم"
+            }, 'Nationality': {
                 "Name": "الأسم"
             },
             'Course': {
@@ -10233,7 +12554,8 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'TrainingCenter': 'مركز التدريب',
                 'Specialization': 'التخصص',
                 'Grade': 'التقدير',
-                'CourseYear': 'السنة'
+                'CourseYear': 'السنة',
+                'Summary': 'الملخص (اختياري)'
             },
             'Main': {
                 'Empower': 'ايم باور',
@@ -10246,7 +12568,7 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'Messge3': '3. ارسل بياناتك للشركات'
             },
             "Buttons": {
-                "ArrangeInterview":"تنظيم مقابلة",
+                "ArrangeInterview": "تنظيم مقابلة",
                 "Update": "تعديل",
                 "Save": "حفظ",
                 "Cancel": "الغاء",
@@ -10289,11 +12611,16 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "PostJob": "أعلن عن وظيفة",
                 "UserMenu": "قائمة المستخدم",
                 "EducationalLevels": "المستويات التعليمية",
+                "Nationality": "الجنسية",
                 "Categories": "التصنيفات",
                 "CompanyProfile": "بيانات الشركة",
                 "InviteSubUser": "دعوة المستخدمين",
-                "SignUpSubUser":"SignUpSubUser",
+                "SignUpSubUser": "SignUpSubUser",
+                "subUserFeatures": "SubUserFeatures",
                 "Experiances": "الخبرات",
+                "ProfessionalCertifications": "الشهادات المهنية",
+                "MembershipsAndAwards": "العضويات والجوائز",
+                "Interests": "الإهتمامات",
                 'SelectValue': 'اختار من القائمة',
                 'JobSeekerProfile': 'بيانات طالب العمل',
                 'Cities': 'المدن',
@@ -10326,7 +12653,9 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'JobType': 'نوع الوظيفة',
                 'JobDetails': 'تفاصيل الوظيفة',
                 'EducationalLevel': 'المستوى التعليمي',
-                'CareerLevel': 'المستوى الوظيفي'
+                'CareerLevel': 'المستوى الوظيفي',
+                'Dates': 'التواريخ',
+                'BirthDate': 'تاريخ الميلاد'
             },
             'Package': {
                 "Name": "الأسم",
@@ -10372,26 +12701,26 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "ArrangeInterviewTime": "وقت المقابلة"
             }
         };
-        
-        
-        
+
+
+
         $translateProvider.translations('en', english);
         $translateProvider.translations('ar', arabic);
-        
+
         $translateProvider.registerAvailableLanguageKeys(['en', 'ar'], {
             'en-US': 'en',
             'ar-EG': 'ar'
         });
         $translateProvider.preferredLanguage('ar');
         //$translateProvider.determinePreferredLanguage();
-        
+
         $translateProvider.useCookieStorage();
         $translateProvider.useLocalStorage();
-        
+
         console.log(navigator.language);
 
     }
-    
+
     core.run(function ($rootScope) {
         $rootScope.$on('$translateChangeSuccess', function () {
             console.log('Translation Change Success!');
@@ -10973,96 +13302,292 @@ angular.module('app').controller('mvApplicantCtrl', function ($scope,  mvNotifie
 angular.module('app').controller('mvApplicantDetailCtrl', function ($scope, mvApplicant, $routeParams) {
     $scope.applicant = mvApplicant.get({_id: $routeParams.id});
 });
-angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvApplicant,$translate, mvIdentity, mvApplicantRepo, mvNotifier, queryBulider, $routeParams) {
+angular.module('app').controller('mvApplicantListCtrl', function ($scope, $translate, mvApplicant, $routeParams,
+    mvApplicantRepo, queryBulider, mvNotifier, mvIdentity) {
+
+    //to add new search in accordion 
+    //1- add new accordion header and content at html  
+    //   change name of the field ,in these blocks I use 'Industry' 
+    //2- add list  like one at code #1    
+    //3- add block like one at code #2
+    //4- add block like one at code #3 
+    //5- change name of the field in these blocks I use 'Industry' 
+    //6- go to applicants controller at server to change at function getApplicantsSearchResult
+
     $scope.currentUser = mvIdentity.currentUser;
     var id = $routeParams.vacancyId;
-   
+
+    var SelectedBirthDates = [];
+    var BirthDatesHeaderFlag = false;
+
+    if (mvIdentity.currentJobSeeker)
+        var jobSeekerId = null;
+    if (mvIdentity.currentJobSeeker)
+        jobSeekerId = mvIdentity.currentJobSeeker._id;
+    debugger;
+    if (!jobSeekerId)
+        jobSeekerId = 0;
 
     $scope.paging = {
         currentPage: 1,
         maxPagesToShow: 5,
         pageSize: 10
     };
-    
+
     $scope.getData = function () {
+
+        var qr = '';
+
+        // start code #2
+        if (SelectedBirthDates.length > 0) {
+            var qrBirthDate = '';
+
+            if (SelectedBirthDates[0].flag !== true) {
+                for (var y = 0; y < SelectedBirthDates.length; y++) {
+                    if (SelectedBirthDates[y].flag) {
+                        qrBirthDate += "BirthDate=='" + SelectedBirthDates[y].id + "'||";
+                    }
+                }
+            } else {
+                for (var y = 1; y < SelectedBirthDates.length; y++) {
+                    qrBirthDate += "BirthDate=='" + SelectedBirthDates[y].id + "'||";
+                }
+            }
+
+            if (qrBirthDate.length > 0) {
+                qr += '(' + qrBirthDate.slice(0, -2) + ')&&';
+            }
+        }
+        // end code #2
+
+        if (qr.length > 0) {
+            var qr1 = "(" + qr.slice(0, -2) + ')';
+        }
+
+        qr = "Vacancy=='" + id + "'&&!Deleted";
+
         mvApplicant.query({
-            query: queryBulider.qb("Vacancy=='" + id + "'&&!Deleted"),
+            query: queryBulider.qb(qr),
+            query1: queryBulider.qb(qr1),
             currentPage: $scope.paging.currentPage,
-            pageSize: $scope.paging.pageSize
+            pageSize: $scope.paging.pageSize,
+            jobSeeker: jobSeekerId
         }, (function (res) {
             $scope.applicants = res[0].collection;
             $scope.allDataCount = res[0].allDataCount;
         }));
     };
-    
-    $scope.deleteApplicant = function (applicant) {
-        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
-            ed.Deleted = true;
-            ed.DeletedBy = mvIdentity.currentUser;
-            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
-                mvNotifier.notify('Applicant has been deleted!');
-                $scope.getData();
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }));
-    };
 
-
-    $scope.shortListApplicant = function (applicant) {
-        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
-            ed.Status = 'S';
-            ed.ModifiedBy = mvIdentity.currentUser;
-            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
-                mvNotifier.notify('Applicant has been deleted!');
-                $scope.getData();
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }));
-    };
-
-    $scope.rejectApplicant = function (applicant) {
-        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
-            ed.Status = 'R';
-            ed.ModifiedBy = mvIdentity.currentUser;
-            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
-                mvNotifier.notify('Applicant has been Rejected!');
-                $scope.getData();
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }));
-    };
-
-    $scope.approveApplicant = function (applicant) {
-        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
-            ed.Status = 'A';
-            ed.ModifiedBy = mvIdentity.currentUser;
-            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
-                mvNotifier.notify('Applicant has been Approved!');
-                $scope.getData();
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }));
-    };
-
-
-    $scope.arrangeInterview = function (applicant) {
-        var ed = mvApplicant.get({ _id: applicant._id }, (function () {
-            ed.Status = 'A';
-            ed.ModifiedBy = mvIdentity.currentUser;
-            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
-                mvNotifier.notify('Applicant has been Approved!');
-                $scope.getData();
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
-        }));
-    };
-    
     $scope.getData();
+
+    var addCheckBoxToDiv = function (id, lab, flag, name, selectedList) {
+        var flg = true;
+        for (var y = 0; y < selectedList.length; y++) {
+            if (selectedList[y].id == id) {
+                flg = false;
+                break;
+            }
+        }
+        if (flg) {
+            selectedList.push({ 'id': id, 'flag': flag });
+            var div = document.getElementById(name + 'Div');
+            var checkbox = document.createElement('input');
+            checkbox.type = "checkbox";
+            checkbox.name = name;
+            checkbox.value = id;
+            checkbox.id = id;
+            checkbox.checked = flag;
+
+            var label = document.createElement('label');
+            label.htmlFor = "id";
+            label.appendChild(document.createTextNode(lab));
+
+            var br = document.createElement("br");
+
+            div.appendChild(checkbox);
+            div.appendChild(label);
+            div.appendChild(br);
+
+
+            checkbox.addEventListener('change', function (event) {
+
+                var name = checkbox.name;
+                var checkboxes = document.getElementsByName(name); //checkbox items                                          
+
+                //uncheck all check boxes when check select all 
+                if (checkbox.id == 0) {
+                    if ($(this).is(":checked")) {
+                        for (i = 1; i < checkboxes.length; i++) {
+                            checkboxes[i].checked = false;
+                        }
+                    } else {
+                        checkboxes[0].checked = true;
+                    }
+                } else {
+                    if ($(this).is(":checked")) {
+                        checkboxes[0].checked = false;
+                    }
+                }
+
+                //check "select all" if all checkbox items are checked                
+                //if ($('input[name="' + name + '"]:checked').length == checkboxes.length - 1) {
+                //    checkboxes[0].checked = true; //change "select all" checked status to true
+                //    for (i = 1; i < checkboxes.length; i++) {
+                //        checkboxes[i].checked = false;
+                //    }
+                //}
+
+                //check "select all" if all checkbox items are unchecked                
+                if ($('input[name="' + name + '"]:not(:checked)').not(":eq(0)").length == checkboxes.length - 1) {
+                    checkboxes[0].checked = true; //change "select all" checked status to true
+                }
+
+                for (i = 0; i < checkboxes.length; i++) {
+                    $.each(selectedList, function () {
+                        if (this.id == checkboxes[i].id) {
+                            this.flag = checkboxes[i].checked;
+                        }
+                    });
+                }
+
+                $scope.getData();
+
+            });
+
+        }
+    };
+
+    // start code #3
+    var BirthDatesHeaderClickFunction = function () {
+        if (BirthDatesHeaderFlag) {
+            BirthDatesHeaderFlag = false;
+        } else {
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "/api/applicantsSearchResult",
+                data: { groupBy: "BirthDate", currentLang: $translate.use(), vacancyId: id },
+                success: function (data) {
+
+                    var count = 0;
+                    $.map(data, function (item) { count += item.count; });
+
+                    addCheckBoxToDiv(0, 'All   (' + count + ')  ', true, 'birthDates', SelectedBirthDates);
+
+                    $.map(data.splice(0, 3), function (item) {
+                        var lab = '';
+                        var datee = new Date(item.groupByObject);
+                        var datee = datee.getDate() + '/' + (datee.getMonth() + 1) + '/' + datee.getFullYear();
+                        lab = datee + '   (' + item.count + ')  ';
+
+                        addCheckBoxToDiv(item._id, lab, false, 'birthDates', SelectedBirthDates);
+                    });
+                }
+            });
+
+            BirthDatesHeaderFlag = true;
+        }
+    }
+    $("#birthDatesHeader").click(BirthDatesHeaderClickFunction);
+    $(function () {
+        $("#birthDateName").autocomplete({
+            source: function (request, response) {
+                $scope.SelectedBirthDates = [];
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/api/applicantsSearchResult",
+                    data: { groupBy: "BirthDate", currentLang: $translate.use(), vacancyId: id },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            var prefix = request.term;
+                            var lab = '';
+                            var datee = new Date(item.groupByObject);
+                            var datee = datee.getDate() + '/' + (datee.getMonth() + 1) + '/' + datee.getFullYear();
+                            lab = datee + '   (' + item.count + ')  ';
+
+                            if (lab == '') {
+                                return;
+                            }
+
+                            return { label: lab, value: lab, id: item._id };
+                        }));
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    beforeSend: function () {
+                    },
+                    complete: function () {
+                    }
+                });
+            },
+            select: function (e, i) {
+                addCheckBoxToDiv(i.item.id, i.item.label, true, 'birthDates', SelectedBirthDates);
+                this.value = "";
+                return false;
+            },
+            minLength: 2
+        });
+    });
+    //end code #3 
+
+
+    //// accordions start
+
+    var headers = $('#accordion1 .accordion-header');
+    var contentAreas = $('#accordion1 .ui-accordion-content').show();
+    var expandLink = $('.accordion-expand-all');
+
+    // add the accordion functionality
+    headers.click(function () {
+        var panel = $(this).next();
+        var isOpen = panel.is(':visible');
+
+        // open or close as necessary
+        panel[isOpen ? 'slideUp' : 'slideDown']()
+            // trigger the correct custom event
+            .trigger(isOpen ? 'hide' : 'show');
+
+        // stop the link from causing a pagescroll
+        return false;
+    });
+
+    // hook up the expand/collapse all
+    expandLink.click(function () {
+        var isAllOpen = $(this).data('isAllOpen');
+
+        contentAreas[isAllOpen ? 'hide' : 'show']().trigger(isAllOpen ? 'hide' : 'show');
+    });
+
+    // when panels open or close, check to see if they're all open
+    contentAreas.on({
+        // whenever we open a panel, check to see if they're all open
+        // if all open, swap the button to collapser
+        show: function () {
+            var isAllOpen = !contentAreas.is(':hidden');
+            if (isAllOpen) {
+                expandLink.text('Collapse All').data('isAllOpen', true);
+            }
+        },
+        // whenever we close a panel, check to see if they're all open
+        // if not all open, swap the button to expander
+        hide: function () {
+            var isAllOpen = !contentAreas.is(':hidden');
+            if (!isAllOpen) {
+                expandLink.text('Expand all').data('isAllOpen', false);
+            }
+        }
+    });
+    //// accordions end
+
+
+    $(function () {
+        BirthDatesHeaderClickFunction();
+    });
 
 });
 
@@ -13038,18 +15563,16 @@ angular.module('app').factory('mvCachedSubUserInvitation', function (mvCourse) {
 });
 angular.module('app').controller('mvFrontSubUserSignupCtrl', function ($scope, $rootScope, $location, $q,
     mvUser, mvJobSeekerRepo, mvNotifier, mvAuth, mvIdentity, mvEmployer,
-    mvEmployerRepo, mvSubUserInvitation, $routeParams, mvSubUserInvitationRepo) {
+    mvEmployerRepo, mvSubUserInvitation, mvSubUserInvitationDetail, $routeParams, mvSubUserInvitationRepo, queryBulider, mvSubUserFeature, mvSubUserFeatureRepo) {
     var invitationId = $routeParams.id;
 
     if (invitationId) {
-       $scope.invitation = mvSubUserInvitation.get({ _id: invitationId }, (function () {
-            
+        $scope.invitation = mvSubUserInvitation.get({ _id: invitationId }, (function () {
 
             $scope.usertype = "S";
             $scope.email = $scope.invitation.Email;
+            //$scope.email = "nnnnnnnnnn@gmail.com"
             $scope.employer = $scope.invitation.Employer;
-
-
 
         }));
     };
@@ -13064,24 +15587,63 @@ angular.module('app').controller('mvFrontSubUserSignupCtrl', function ($scope, $
                 UserType: $scope.usertype,
                 Employer: $scope.employer
             };
-            
-            mvAuth.createUser(newUserData)
-            .then(function () {
-            mvNotifier.notify('User account created!');
-            var type = $scope.usertype;
-                $scope.email = '';
-                $scope.password = '';
-                $scope.firstname = '';
-                $scope.lastname = '';
-                $scope.usertype = '';
-                if ($('#userregisterModal').length) {
-                    $('#userregisterModal').modal('hide');
-                }
-                $scope.UpdateStatus($scope.invitation, "Accept");
-                $location.path('/profile');
-            }, function (reason) {
-                mvNotifier.error(reason);
-            });
+
+            mvSubUserInvitationDetail.query({
+                query: queryBulider.qb("SubUserInvitation=='" + $scope.invitation._id + "'&&!Deleted"),
+                //currentPage: $scope.paging.currentPage,
+                //pageSize: $scope.paging.pageSize
+            }, (function (ress) {
+                $scope.invitationFeatures = ress[0].collection;
+                $scope.allDataCount = ress[0].allDataCount;
+                //newUserData._id; subUserFeatures
+                mvAuth.createUser(newUserData)
+                    .then(function (newUser) {
+                        mvNotifier.notify('User account created!');
+
+                        //newUserData._id;            
+                        //$scope.invitation._id
+                        //pass features to sub user fetures
+                        for (infoIndexx = 0; infoIndexx < $scope.invitationFeatures.length; infoIndexx++) {
+
+                            //var newJobSeekerData = {
+                            //    User: mvIdentity.currentUser,
+                            //    CreatedBy: mvIdentity.currentUser,
+                            //    FirstName: name,
+                            //    Deleted: false,
+                            //    LastName: $scope.lastname
+                            //};
+
+                            $scope.mvSubUserFeature = new mvSubUserFeature();
+                            $scope.mvSubUserFeature.UsedFromPoints = 0;
+                            $scope.mvSubUserFeature.User = newUser._id;
+                            $scope.mvSubUserFeature.Points = $scope.invitationFeatures[infoIndexx].Points
+                            $scope.mvSubUserFeature.Feature = $scope.invitationFeatures[infoIndexx].Feature
+                            $scope.mvSubUserFeature.Deleted = false;
+                            mvSubUserFeatureRepo.createSubUserFeature($scope.mvSubUserFeature).then(function (res) {
+
+                            }, function (reason) {
+                                mvNotifier.error(reason);
+                            });
+
+                        }
+
+                        var type = $scope.usertype;
+                        $scope.email = '';
+                        $scope.password = '';
+                        $scope.firstname = '';
+                        $scope.lastname = '';
+                        $scope.usertype = '';
+                        if ($('#userregisterModal').length) {
+                            $('#userregisterModal').modal('hide');
+                        }
+                        $scope.UpdateStatus($scope.invitation, "Accept");
+                        $location.path('/profile');
+                    }, function (reason) {
+                        mvNotifier.error(reason);
+                    });
+
+            }));
+
         }
     };
 
@@ -13098,14 +15660,14 @@ angular.module('app').controller('mvFrontSubUserSignupCtrl', function ($scope, $
                 ed.Status = "O";
             mvSubUserInvitationRepo.updateCurrentSubUserInvitation(ed).then(function () {
                 mvNotifier.notify('Status has been updated!');
-                $scope.getData();
+                //$scope.getData();
             }, function (reason) {
                 mvNotifier.error(reason);
             });
         }));
     };
-       
-       
+
+
 });
 angular.module('app').controller('mvDeclineSupUserCtrl', function ($scope, $rootScope, $location, $q,
     mvUser, mvJobSeekerRepo, mvNotifier, mvAuth, mvIdentity, mvEmployer,
@@ -13149,6 +15711,44 @@ angular.module('app').controller('mvDeclineSupUserCtrl', function ($scope, $root
     };
        
        
+});
+angular.module('app').controller('mvSubUserListCtrl', function ($scope, queryBulider, mvNotifier, mvUser) {
+    //$scope.users = mvUser.query();
+    console.log(mvUser.query());
+    //console.log(mvUserPackage.query());
+    //console.log($scope.users);
+
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 10
+    };
+
+    $scope.getData = function () {
+        mvUser.query({
+            query: queryBulider.qb("UserType=='S'&&!Deleted"),
+            currentPage: $scope.paging.currentPage,
+            pageSize: $scope.paging.pageSize
+        }, (function (res) {
+            $scope.users = res[0].collection;
+            $scope.allDataCount = res[0].allDataCount;
+        }));
+    };
+
+    //$scope.deleteCity = function (city) {
+    //    var ed = mvUser.get({ _id: city._id }, (function () {
+    //        ed.Deleted = true;
+    //        ed.DeletedBy = mvIdentity.currentUser;
+    //        mvUserRepo.updateCurrentCity(ed).then(function () {
+    //            mvNotifier.notify('City has been deleted!');
+    //            $scope.getData();
+    //        }, function (reason) {
+    //            mvNotifier.error(reason);
+    //        });
+    //    }));
+    //};
+
+    $scope.getData();
 });
 angular.module('app').factory('mvCandidate', function ($resource,mvIdentity) {
     var CandidateResource = $resource('/api/candidates/:_id', {_id: '@id'},
@@ -13310,4 +15910,200 @@ angular.module('app').factory('mvCachedCandidate', function (mvCourse) {
             return CandidateList;
         }
     };
+});
+angular.module('app').factory('mvCachedSubUserFeature', function (mvCourse) {
+    var SubUserFeatureList;
+    return {
+        query: function () {
+            if (!SubUserFeatureList) {
+                SubUserFeatureList = mvSubUserFeature.query();
+            }
+            return SubUserFeatureList;
+        }
+    };
+});
+angular.module('app').factory('mvSubUserFeature', function ($resource, mvIdentity) {
+    var SubUserFeatureResource = $resource('/api/subUserFeatures/:_id', { _id: '@id' },
+        {
+            update: { method: 'PUT', isArray: false }
+        });
+    return SubUserFeatureResource;
+});
+angular.module('app').controller('mvSubUserFeatureCtrl', function ($scope, mvFeatureCost, queryBulider, $location, mvFeature, mvUser, mvNotifier, mvSubUserFeatureRepo, mvSubUserFeature, $routeParams, $translate, $rootScope) {
+
+    var uId = $scope.uId = $routeParams.uId;
+
+    var id = $routeParams.id;
+    $scope.nameText = "";
+    $scope.addEnabled = false;
+    $scope.currentLang = $translate.use();
+
+    if (id) {
+        $scope.SubUserFeature = mvSubUserFeature.get({ _id: id }, (function () {            
+            mvFeature.query({ currentLang: $rootScope.currentLang, userType: $scope.SubUserFeature.User.UserType[0] }, (function (packs) {
+                $scope.features = packs;
+                $scope.startDate = new Date($scope.SubUserFeature.StartDate);
+                $scope.expiryDate = new Date($scope.SubUserFeature.ExpiryDate);
+                $scope.updateMode = true;
+                $scope.addMode = false;
+            }));            
+        }));        
+    }
+    else {
+        if (uId) {
+            mvUser.query({
+                query: queryBulider.qb("_id=='" + $routeParams.uId + "'&&!Deleted"),
+                currentPage: 1,
+                pageSize: 10
+            }, (function (users) {
+                mvFeature.query({ currentLang: $rootScope.currentLang, userType: users[0].collection[0].UserType[0] }, (function (packs) {
+                    $scope.features = packs;
+                    $scope.SubUserFeature = new mvSubUserFeature();
+                    $scope.startDate = new Date();
+                    $scope.SubUserFeature.StartDate = new Date($scope.startDate);
+                    $scope.updateMode = false;
+                    $scope.addMode = true;
+                    $scope.addEnabled = true;
+                    $scope.SubUserFeature.User = users[0].collection[0];
+                    $scope.SubUserFeature.Deleted = false;
+                    $scope.SubUserFeature.Deleted = false;
+                }));
+            }));
+        }
+    }
+
+    $scope.updateFields = function () {
+        $scope.expiryDate = undefined;
+        $scope.featureAmount = undefined;
+        $scope.totalAmount = undefined;
+
+        if ($scope.SubUserFeature.Feature && $scope.SubUserFeature.NoOfMonths) {
+            $scope.expiryDate = new Date(moment($scope.SubUserFeature.StartDate).add($scope.SubUserFeature.NoOfMonths, 'month'));
+            $scope.SubUserFeature.ExpiryDate = new Date($scope.expiryDate);
+
+            mvFeatureCost.query({
+                query: queryBulider.qb("Feature=='" + $scope.SubUserFeature.Feature + "'&&!Deleted"),
+                currentPage: 1,
+                pageSize: 500
+            }, (function (res) {
+                var flagg = false;
+                res[0].collection.forEach(function (entry) {
+                    if ($scope.SubUserFeature.NoOfMonths >= entry.PeriodFromByMonth && $scope.SubUserFeature.NoOfMonths <= entry.PeriodToByMonth) {
+                        $scope.featureAmount = entry.CostPerMonth;
+                        $scope.totalAmount = entry.CostPerMonth * $scope.SubUserFeature.NoOfMonths;
+                        $scope.SubUserFeature.TotalAmount = $scope.totalAmount;
+                        $scope.SubUserFeature.FeatureAmount = $scope.featureAmount;
+                        flagg = true;
+                    }
+                });
+                if (!flagg) {
+                    $scope.featureAmount = undefined;
+                    $scope.totalAmount = undefined;
+                    $scope.SubUserFeature.TotalAmount = $scope.totalAmount;
+                    $scope.SubUserFeature.FeatureAmount = $scope.featureAmount;
+                }
+            }));
+        }
+    };
+
+
+    $scope.update = function () {
+        if ($scope.subUserFeatureForm.$valid) {
+            mvSubUserFeatureRepo.updateCurrentSubUserFeature($scope.SubUserFeature).then(function () {
+                mvNotifier.notify('SubUserFeature has been updated!');
+                $location.path('/subUserFeatures/' + uId);
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
+    };
+
+    $scope.add = function () {
+        if ($scope.subUserFeatureForm.$valid && $scope.addEnabled) {
+            mvSubUserFeatureRepo.createSubUserFeature($scope.SubUserFeature).then(function () {
+                mvNotifier.notify('New SubUserFeature Added!');
+                $scope.addEnabled = false;
+                $location.path('/subUserFeatures/' + uId);
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }
+    };
+
+});
+angular.module('app').controller('mvSubUserFeatureDetailCtrl', function ($scope, mvSubUserFeature, $routeParams) {
+    $scope.SubUserFeature = mvSubUserFeature.get({_id: $routeParams.pfid});
+});
+angular.module('app').factory('mvSubUserFeatureRepo', function ($http, $q, mvSubUserFeature, mvIdentity) {
+    return {
+
+        createSubUserFeature: function (newSubUserFeatureData) {
+
+            var newSubUserFeature = new mvSubUserFeature(newSubUserFeatureData);
+            newSubUserFeature.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving SubUserFeature");
+            newSubUserFeature.$save().then(function () {
+                console.log("SubUserFeature Saved");
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+        updateCurrentSubUserFeature: function (newSubUserFeatureData) {
+            newSubUserFeatureData.ModifiedBy = mvIdentity.currentUser;
+
+            var dfd = $q.defer();
+
+            var clone = angular.copy(newSubUserFeatureData);
+            angular.extend(clone, newSubUserFeatureData);
+            clone.$update({ currentUser: mvIdentity.currentUser }).then(function (res) {
+
+                dfd.resolve(res);
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        }
+    };
+});
+angular.module('app').controller('mvSubUserFeatureListCtrl', function ($scope,$routeParams, mvSubUserFeature, $translate, mvIdentity, mvSubUserFeatureRepo, mvNotifier, queryBulider) {
+    $scope.currentUser = mvIdentity.currentUser;
+    $scope.uId = $routeParams.uId;
+
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 10
+    };
+
+    $scope.getData = function () {
+        mvSubUserFeature.query({
+            query: queryBulider.qb("User=='" + $routeParams.uId + "'&&!Deleted"),
+            currentPage: $scope.paging.currentPage,
+            pageSize: $scope.paging.pageSize
+        }, (function (res) {
+            $scope.subUserFeatures = res[0].collection;
+            $scope.allDataCount = res[0].allDataCount;
+        }));
+    };
+
+    $scope.deleteSubUserFeature = function (SubUserFeature) {
+        var ed = mvSubUserFeature.get({ _id: SubUserFeature._id }, (function () {
+            ed.Deleted = true;
+            ed.DeletedBy = mvIdentity.currentUser;
+            mvSubUserFeatureRepo.updateCurrentSubUserFeature(ed).then(function () {
+                mvNotifier.notify('SubUserFeature has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+
+    $scope.getData();
+
 });

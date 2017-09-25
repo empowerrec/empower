@@ -9,9 +9,9 @@
         <div class="modal-body">
             <form class="noo-ajax-register-form form-horizontal" name="frontSignupForm">
                 <div class="form-group row user_login_container">
-                    
+
                     <input type="radio" name="usertype" ng-model="usertype" value="J"
-                           required="required" selected="selected"/> {{'JobSeeker.JobSeeker' | translate}}
+                           required="required" selected="selected" /> {{'JobSeeker.JobSeeker' | translate}}
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     <input type="radio" name="usertype" ng-model="usertype" value="E"
                            required="required" /> {{'Employer.Employer' | translate}}
@@ -20,28 +20,26 @@
                     <div class="col-sm-9">
                         <input name="email" type="email" placeholder="{{'Email' | translate}}"
                                ng-model="email" required="required" class="user_login form-control" />
-                       
                     </div>
                 </div>
-               
+
                 <div class="form-group row">
-                    
                     <label class="col-sm-3 control-label">{{'Password' | translate}}</label>
                     <div class="col-sm-9">
                         <input name="password" type="password" placeholder="{{'Password' | translate}}" ng-model="password"
                                required="required" class="user_password form-control" />
-                        
-                        
                     </div>
                 </div>
+
                 <div class="form-group row">
                     <label class="col-sm-3 control-label">{{'Confirm Password' | translate}}</label>
                     <div class="col-sm-9">
                         <input name="confirmpassword" type="password" placeholder="{{'Confirm Password' | translate}}" ng-model="confirmpassword"
                                required="required" match-password-validation-error="confirmpassword != password ? 'Passwords don\'t match' : ''" class="cuser_password form-control" />
-                        
+
                     </div>
                 </div>
+
                 <div class="form-group row" ng-show="usertype == 'J'">
                     <input name="firstname" type="text" placeholder="{{'First_Name' | translate}}" ng-model="firstname"
                            ng-required="usertype == 'J'" class="form-control" />
@@ -50,10 +48,20 @@
                     <input name="lastname" type="text" placeholder="{{'Last_Name' | translate}}" ng-model="lastname"
                            ng-required="usertype == 'J'" class="form-control" />
                 </div>
-                <div class="form-group row"  ng-show="usertype == 'E'">
+                <div class="form-group row" ng-show="usertype == 'E'">
                     <input name="employername" type="text" placeholder="{{'Employer.EmployerName' | translate}}" ng-model="employername"
                            ng-required="usertype == 'E'" class="form-control" />
                 </div>
+                <div class="form-group row">
+                    <label for="HearAboutUs" class="row control-label" style="display:inline;text-align:center">{{"HearAboutUs" | translate}}</label>
+                    <div class="row">
+                        <select name="HearAboutUs" ng-model="HearAboutUs" required
+                                ng-options="hearAboutUs._id as hearAboutUs.Name[0].Text for hearAboutUs in hearAboutUss" class="form-control">
+                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-group row">
                     <label class="checkbox account-reg-term text-center">
                         <input class="account_reg_term" type="checkbox" ng-model="agreement" required title="Please agree with the term">
@@ -61,17 +69,17 @@
                         {{'Agreement' | translate}}
                     </label>
                 </div>
-                
+
                 <div class="form-group text-center">
                     <!--<div class="checkbox account-reg-term">
-                        <div class="form-control-flat">
-                            <label class="checkbox">
-                                <input class="account_reg_term" type="checkbox" required title="Please agree with the term">
-                                <i></i>
-                                {{'Agreement' | translate}}
-                            </label>
-                        </div>
-                    </div>-->
+                <div class="form-control-flat">
+                    <label class="checkbox">
+                        <input class="account_reg_term" type="checkbox" required title="Please agree with the term">
+                        <i></i>
+                        {{'Agreement' | translate}}
+                    </label>
+                </div>
+            </div>-->
                     <button ng-click="signup()" class="btn signup_button">{{'Sign Up' | translate}}</button>
                 </div>
                 <div class="form-group row login-socical">

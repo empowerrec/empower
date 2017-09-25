@@ -1,219 +1,242 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="modal-dialog modal-member modal-jobSeeker">
-    <div class="modal-content" ng-controller="mvExperianceCtrl">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title">{{"JobSeeker.Experiances" | translate}}</h4>
-        </div>
-        <div class="modal-body">
-            <div class="container admin-area">
+<div class="row bg-gray pb-0">
+    <div class="col-md-12">
+        <div class="container-boxed max">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div ng-include="'/partials/jobseeker/sidebar-menu'"></div>
 
-                <div class="well">
-                    <button ng-click="addExperiance()"  class="btn btn-primary">
-                        {{"Buttons.Add" | translate}}
-                    </button>
-                    <br />
-                    <br />
-                    <table class="table table-hover table-striped table-condensed">
-                        <thead>
-                            <tr>
-                                <th>{{"Experiance.Company" | translate}}</th>
-                                <th>{{"Experiance.Salary" | translate}}</th>
-                                <th>{{"Experiance.Achievements" | translate}}</th>
-                                <th>{{"Experiance.FunctionalTasks" | translate}}</th>
-                                <th>{{"Experiance.Position" | translate}}</th>
-
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="experiance in jobSeeker.Experiances" | filter:searchText | orderBy:sortOrder">
-                                <td><a href="#/experiances/{{experiance._id}}">{{ experiance.Company}}</a></td>
-
-                                <td>{{ experiance.Salary}}</td>
-                                <td>{{ experiance.Achievements}}</td>
-                                <td>{{ experiance.FunctionalTasks}}</td>
-                                <td>{{ experiance.Position}}</td>
-
-
-
-                                <td><button ng-click="updateExperiance(experiance)"> {{"Buttons.Update" | translate}}</button></td>
-                                <td><button ng-click="deleteExperiance(experiance)"> {{"Buttons.Delete" | translate}}</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                  
-                    <form name="experianceForm" class="form-horizontal" ng-show="showForm">
-                        <fieldset>
-
-
-                            <div class="form-group">
-                                <label for="company" class="col-md-2 control-label">
-                                    {{"Experiance.Company"| translate}}
-                                </label>
-
-                                <div class="col-md-10">
-                                    <input name="achievements" type="text" placeholder="{{'Experiance.Company' | translate}}"
-                                           ng-model="experiance.Company" required="required"
-                                           class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="companySize" class="col-md-2 control-label">
-                                    {{
-"Experiance.CompanySize"
-                        | translate
-                                    }}
-                                </label>
-                                <div class="col-md-3">
-                                    <select ng-model="experiance.CompanySize" ng-options="companySize._id as companySize.Name[0].Text for companySize in companySizes"
-                                            class="form-control">
-                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                    </select>
-                                </div>
-
-                                <label for="companyType" class="col-md-2 control-label">
-                                    {{
-"Experiance.CompanyType"
-                        | translate
-                                    }}
-                                </label>
-                                <div class="col-md-3">
-                                    <select ng-model="experiance.CompanyType" ng-options="companyType._id as companyType.Name[0].Text for companyType in companyTypes"
-                                            class="form-control">
-                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="position" class="col-md-2 control-label">
-                                    {{
-                           "Experiance.Position"
-                            | translate
-                                    }}
-                                </label>
-
-                                <div class="col-md-5">
-                                    <input name="position" placeholder="{{'Experiance.Position' | translate}}"
-                                           ng-model="experiance.Position" required="required"
-                                           class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="salary" class="col-md-2 control-label">
-                                    {{
-"Experiance.Salary"
-                        | translate
-                                    }}
-                                </label>
-
-                                <div class="col-md-2">
-                                    <input name="salary" type="number"
-                                           placeholder="{{'Experiance.Salary' | translate}}"
-                                           ng-model="experiance.Salary"
-                                           class="form-control" />
-                                </div>
-
-
-
-                                <label for="periodFrom" class="col-md-2 control-label">
-                                    {{
-"Experiance.PeriodFrom"
-                        | translate
-                                    }}
-                                </label>
-
-                                <div class="col-md-2">
-                                    <input name="periodFrom" type="date" placeholder="{{'Experiance.PeriodFrom' | translate}}"
-                                           ng-model="experiance.PeriodFrom" required="required"
-                                           class="form-control" />
-                                </div>
-                                <label for="periodTo" class="col-md-2 control-label">
-                                    {{
-"Experiance.PeriodTo"
-                        | translate
-                                    }}
-                                </label>
-
-                                <div class="col-md-2">
-                                    <input name="periodTo" type="date" placeholder="{{'Experiance.PeriodTo' | translate}}"
-                                           ng-model="experiance.PeriodTo" required="required" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="country" class="col-md-2 control-label">{{"Experiance.Country"| translate}}</label>
-
-
-                                <div class="col-md-2">
-                                    <select ng-model="experiance.Country" ng-options="country._id as country.Name[0].Text for country in countries"
-                                            class="form-control">
-                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                    </select>
-                                </div>
-
-
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="achievements" class="col-md-2 control-label">
-                                    {{
-"Experiance.Achievements"
-                        | translate
-                                    }}
-                                </label>
-
-                                <div class="col-md-10">
-                                    <input name="achievements" type="text" placeholder="{{'Experiance.Achievements' | translate}}"
-                                           ng-model="experiance.Achievements" required="required"
-                                           class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="functionalTasks" class="col-md-2 control-label">
-                                    {{
-"Experiance.FunctionalTasks"
-                        | translate
-                                    }}
-                                </label>
-
-                                <div class="col-md-10">
-                                    <textarea name="functionalTasks" placeholder="{{'Experiance.FunctionalTasks' | translate}}"
-                                              ng-model="experiance.FunctionalTasks"
-                                              class="form-control" />
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <div class="col-md-10 col-md-offset-2">
-                                    <div class="pull-right">
-                                        <button ng-click="update()" ng-show="updateMode" ng-disabled="experianceForm.$invalid" class="btn btn-primary">
-                                            {{"Buttons.Save" | translate}}
-                                        </button>
-
-                                        <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
-                                            {{"Buttons.Add" | translate}}
-                                        </button>
-                                        &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </fieldset>
-                    </form>
                 </div>
-                
+                <div class="col-md-9 col-sm-12">
+                    <h5>{{'JobSeeker.ExperiancesDescrption' | translate}}</h5>
+                    <div ng-controller="mvExperianceCtrl">
+
+
+
+                        <div>
+                            <!--<button ng-click="addExperiance()" class="btn btn-primary">
+                                {{"Buttons.Add" | translate}}
+                            </button>
+                            <br />
+                            <br />-->
+                            <table class="table table-hover table-striped table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>{{"Experiance.Company" | translate}}</th>
+                                        <th>{{"Experiance.Salary" | translate}}</th>
+                                        <!--<th>{{"Experiance.Achievements" | translate}}</th>
+                                        <th>{{"Experiance.FunctionalTasks" | translate}}</th>
+                                        <th>{{"Experiance.Position" | translate}}</th>-->
+
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="experiance in jobSeeker.Experiances" | filter:searchText | orderBy:sortOrder">
+                                        <td><a href="#/experiances/{{experiance._id}}">{{ experiance.Company}}</a></td>
+
+                                        <td>{{ experiance.Salary}}</td>
+                                        <!--<td>{{ experiance.Achievements}}</td>
+                                        <td>{{ experiance.FunctionalTasks}}</td>
+                                        <td>{{ experiance.Position}}</td>-->
+
+                                        <td><button ng-click="updateExperiance(experiance)"> {{"Buttons.Update" | translate}}</button></td>
+                                        <td><button ng-click="deleteExperiance(experiance)"> {{"Buttons.Delete" | translate}}</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <form name="experianceForm" class="form-horizontal" >
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <label for="position" class="col-md-4 control-label"> {{ "Experiance.Position" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="position" placeholder="{{'Experiance.Position' | translate}}"
+                                                   ng-model="experiance.Position" required="required"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="company" class="col-md-4 control-label">
+                                            {{"Experiance.Company"| translate}}
+                                        </label>
+
+                                        <div class="col-md-4">
+                                            <input name="achievements" type="text" placeholder="{{'Experiance.Company' | translate}}"
+                                                   ng-model="experiance.Company" required="required"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="companyWebsite" class="col-md-4 control-label"> {{ "Experiance.CompanyWebsite" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="companyWebsite" placeholder="{{'Experiance.CompanyWebsite' | translate}}"
+                                                   ng-model="experiance.CompanyWebsite" required="required"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="companySize" class="col-md-4 control-label"> {{ "Experiance.CompanySize" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <select ng-model="experiance.CompanySize" ng-options="companySize._id as companySize.Name[0].Text for companySize in companySizes"
+                                                    class="form-control">
+                                                <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="companyType" class="col-md-4 control-label"> {{ "Experiance.CompanyType" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <select ng-model="experiance.CompanyType" ng-options="companyType._id as companyType.Name[0].Text for companyType in companyTypes"
+                                                    class="form-control">
+                                                <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="reportTo" class="col-md-4 control-label"> {{ "Experiance.ReportTo" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="reportTo" placeholder="{{'Experiance.ReportTo' | translate}}"
+                                                   ng-model="experiance.ReportTo" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="JobRole" class="col-md-4 control-label">{{"Experiance.JobRole"| translate}}</label>
+                                        <div class="col-md-4">
+                                            <select name="JobRole" ng-model="experiance.JobRole"
+                                                    ng-options="jobRole.Name[0].Text for jobRole in jobRoles track by jobRole._id"
+                                                    class="form-control">
+                                                <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="salary" class="col-md-4 control-label"> {{ "Experiance.Salary" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="salary" type="number" placeholder="{{'Experiance.Salary' | translate}}"
+                                                   ng-model="experiance.Salary" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="transportAllowance" class="col-md-4 control-label"> {{ "Experiance.TransportAllowance" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="transportAllowance" type="number" placeholder="{{'Experiance.TransportAllowance' | translate}}"
+                                                   ng-model="experiance.TransportAllowance" class="form-control" />
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+
+                                        <label for="housingAllowance" class="col-md-4 control-label"> {{ "Experiance.HousingAllowance" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="housingAllowance" type="number" placeholder="{{'Experiance.HousingAllowance' | translate}}"
+                                                   ng-model="experiance.HousingAllowance" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="otherAllowance" class="col-md-4 control-label"> {{ "Experiance.OtherAllowance" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="otherAllowance" type="number" placeholder="{{'Experiance.OtherAllowance' | translate}}"
+                                                   ng-model="experiance.OtherAllowance" class="form-control" />
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="periodFrom" class="col-md-4 control-label"> {{ "Experiance.PeriodFrom" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="periodFrom" type="date" placeholder="{{'Experiance.PeriodFrom' | translate}}"
+                                                   ng-model="experiance.PeriodFrom" required="required"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="periodTo" class="col-md-4 control-label"> {{ "Experiance.PeriodTo" | translate }} </label>
+                                        <div class="col-md-4">
+                                            <input name="periodTo" type="date" placeholder="{{'Experiance.PeriodTo' | translate}}"
+                                                   ng-model="experiance.PeriodTo" required="required" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="country" class="col-md-4 control-label">{{"Experiance.Country"| translate}}</label>
+                                        <div class="col-md-4">
+                                            <select ng-model="experiance.Country" ng-options="country._id as country.Name[0].Text for country in countries"
+                                                    class="form-control">
+                                                <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="city" class="col-md-4 control-label">{{"Experiance.City"| translate}}</label>
+                                        <div class="col-md-4">
+                                            <input id="cityName" />
+                                            <input type="hidden" id="hfCityId" />
+                                            <input type="hidden" id="currentLang" value="ar" />
+                                            <label id="selectedCity" />
+                                            <div ng-repeat="emp in experiance.City.Name | filter:{Lang:currentLang}">{{emp.Text}}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="achievements" class="col-md-4 control-label"> {{ "Experiance.Achievements" | translate }} </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-9">
+                                            <input name="achievements" type="text" placeholder="{{'Experiance.Achievements' | translate}}"
+                                                   ng-model="experiance.Achievements" required="required"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="functionalTasks" class="col-md-4 control-label"> {{ "Experiance.FunctionalTasks"  | translate }} </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-9">
+                                            <textarea name="functionalTasks" placeholder="{{'Experiance.FunctionalTasks' | translate}}"
+                                                      ng-model="experiance.FunctionalTasks"
+                                                      class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-9 col-md-offset-2">
+                                            <div class="pull-right">
+                                                <button ng-click="update()" ng-show="updateMode" ng-disabled="experianceForm.$invalid" class="btn btn-primary">
+                                                    {{"Buttons.Save" | translate}}
+                                                </button>
+
+                                                <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
+                                                    {{"Buttons.Add" | translate}}
+                                                </button>
+                                                &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </fieldset>
+                            </form>
+                        </div>
+
+
+
+                    </div>
+                </div>
             </div>
-
-            
-
-
         </div>
     </div>
-    </div>
+</div>

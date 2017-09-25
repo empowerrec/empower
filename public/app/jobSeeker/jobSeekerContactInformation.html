@@ -1,61 +1,93 @@
+    <div class="row bg-gray pb-0">
+        <div class="col-md-12">
+            <div class="container-boxed max">
+                <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                        <div ng-include="'/partials/jobseeker/sidebar-menu'"></div>
 
-    <div class="well" ng-controller="mvJobSeekerContactInformationCtrl" ng-hide="addMode && IsMobileInserted">
-        <form name="jobSeekerForm" class="form-horizontal">
-            <fieldset>
-
-                <div class="form-group">
-                    <label for="MobileNo" class="col-md-2 control-label">{{"JobSeeker.MobileNo"| translate}}</label>
-                    <div class="col-md-3">
-                        <input name="MobileNo" placeholder="{{'JobSeeker.MobileNo' | translate}}"
-                               ng-model="jobSeeker.MobileNo" required="required"
-                               class="form-control" />
                     </div>
-                
-                    <label for="Email" class="col-md-2 control-label">{{"JobSeeker.Email" | translate}}</label>
-                    <div class="col-md-3">
-                        <input name="Email" type="text" placeholder="{{'JobSeeker.Email' | translate}}"
-                               ng-model="jobSeeker.Email" class="form-control" />
+                    <div class="col-md-9 col-sm-12">
+                        <h5>{{'JobSeeker.Contact InformationDescrption' | translate}}</h5>
+                    <div ng-controller="mvJobSeekerContactInformationCtrl" ng-hide="addMode && IsMobileInserted">
+                        <form name="jobSeekerForm" class="form-horizontal">
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <label for="MobileNo" class="col-md-4 control-label">{{"JobSeeker.MobileNo"| translate}}</label>
+                                    <div class="col-md-4">
+                                        <input name="MobileNo" placeholder="{{'JobSeeker.MobileNo' | translate}}"
+                                               ng-model="jobSeeker.MobileNo" required="required"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="HomePhoneNo" class="col-md-4 control-label">{{"JobSeeker.HomePhoneNo"| translate}}</label>
+                                    <div class="col-md-4">
+                                        <input name="HomePhoneNo" placeholder="{{'JobSeeker.HomePhoneNo' | translate}}"
+                                               ng-model="jobSeeker.HomePhoneNo" required="required"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email" class="col-md-4 control-label">{{"JobSeeker.Email" | translate}}</label>
+                                    <div class="col-md-4">
+                                        <input name="Email" type="text" placeholder="{{'JobSeeker.Email' | translate}}"
+                                               ng-model="jobSeeker.Email" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="FacebookAcount" class="col-md-4 control-label">{{"JobSeeker.FacebookAcount" | translate}}</label>
+                                    <div class="col-md-4">
+                                        <input name="FacebookAcount" type="text" placeholder="{{'JobSeeker.FacebookAcount' | translate}}"
+                                               ng-model="jobSeeker.FacebookAcount" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="TwitterAcount" class="col-md-4 control-label">{{"JobSeeker.TwitterAcount" | translate}}</label>
+                                    <div class="col-md-4">
+                                        <input name="TwitterAcount" type="text" placeholder="{{'JobSeeker.TwitterAcount' | translate}}"
+                                               ng-model="jobSeeker.TwitterAcount" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="LinkedinAccount" class="col-md-4 control-label">{{"JobSeeker.LinkedinAccount" | translate}}</label>
+                                    <div class="col-md-4">
+                                        <input name="LinkedinAccount" type="text" placeholder="{{'JobSeeker.LinkedinAccount' | translate}}"
+                                               ng-model="jobSeeker.LinkedinAccount" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ContactVia" class="col-md-4 control-label">{{"JobSeeker.ContactVia" | translate}}</label>
+                                    <div class="col-md-4">
+                                        <select name="ContactVia" ng-model="jobSeeker.ContactVia" required
+                                                ng-options="contactVia._id as contactVia.Name[0].Text for contactVia in contactVias" class="form-control">
+                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-10 col-md-offset-2">
+                                        <div class="pull-right">
+                                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                                                {{"Buttons.Update" | translate}}
+                                            </button>
+
+                                            <button ng-click="add()" ng-show="addMode" class="btn btn-primary" ng-disabled="IsMobileInserted">
+                                                {{"Buttons.Add" | translate}}
+                                            </button>
+                                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="FacebookAcount" class="col-md-2 control-label">{{"JobSeeker.FacebookAcount" | translate}}</label>
-                    <div class="col-md-3">
-                        <input name="FacebookAcount" type="text" placeholder="{{'JobSeeker.FacebookAcount' | translate}}"
-                               ng-model="jobSeeker.FacebookAcount" class="form-control" />
-                    </div>
-              
-                    <label for="TwitterAcount" class="col-md-2 control-label">{{"JobSeeker.TwitterAcount" | translate}}</label>
-                    <div class="col-md-3">
-                        <input name="TwitterAcount" type="text" placeholder="{{'JobSeeker.TwitterAcount' | translate}}"
-                               ng-model="jobSeeker.TwitterAcount" class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="LinkedinAccount" class="col-md-2 control-label">{{"JobSeeker.LinkedinAccount" | translate}}</label>
-                    <div class="col-md-3">
-                        <input name="LinkedinAccount" type="text" placeholder="{{'JobSeeker.LinkedinAccount' | translate}}"
-                               ng-model="jobSeeker.LinkedinAccount" class="form-control" />
-                    </div>
-                </div>
-                
-
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <div class="pull-right">
-                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
-                                {{"Buttons.Update" | translate}}
-                            </button>
-
-                            <button ng-click="add()" ng-show="addMode" class="btn btn-primary" ng-disabled="IsMobileInserted">
-                                {{"Buttons.Add" | translate}}
-                            </button>
-                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
-                        </div>
-                    </div>
-                </div>
-
-            </fieldset>
-        </form>
+            </div>
+        </div>
     </div>
-  
+</div>

@@ -94,6 +94,9 @@
                                 <li ng-show="identity.currentUser.isAdmin()">
                                     <a href="#/educationalLevels">{{"Menu.EducationalLevels" | translate}}</a>
                                 </li>
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/nationalities">{{"Menu.Nationalities" | translate}}</a>
+                                </li>
 
                                 <li ng-show="identity.currentUser.isAdmin()">
                                     <a href="#/cities">{{"Menu.Cities" | translate}}</a>
@@ -148,12 +151,16 @@
                                 <li ng-show="identity.currentUser.isAdmin()">
                                     <a href="#/jobSeekers">{{"Menu.JobSeekers" | translate}}</a>
                                 </li>
-                                
+                                <!--<li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/subUser-list">{{"Menu.subUserFeatures" | translate}}</a>
+                                </li>-->
 
                                 <li ng-show="identity.currentUser.isAdmin()">
                                     <a href="#/experiances">{{"Menu.Experiances" | translate}}</a>
                                 </li>
-
+                                <li ng-show="identity.currentUser.isAdmin()">
+                                    <a href="#/professionalCertifications">{{"Menu.ProfessionalCertifications" | translate}}</a>
+                                </li>                                
                                 <li ng-show="identity.currentUser.isAdmin()">
                                     <a href="#/applicants">{{"Menu.Applicants" | translate}}</a>
                                 </li>
@@ -174,7 +181,9 @@
                                 <li ng-show="identity.currentUser.isEmployer()">
                                     <a href="#/signupSupUser">{{"Menu.SignUpSubUser" | translate}}</a>
                                 </li>
-
+                                <li ng-show="identity.currentUser.isEmployer()">
+                                    <a href="#/subUser-list">{{"Menu.subUserFeatures" | translate}}</a>
+                                </li>
                                 <li ng-show="identity.currentUser.isJobSeeker()">
                                     <a href="#/updateJobSeeker/PersonalInformation/profile">{{"Menu.JobSeekerProfile" | translate}}</a>
                                 </li>

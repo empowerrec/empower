@@ -20,7 +20,7 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
         $scope.addMode = false;
         $scope.showForm = true;
         if (address.Country != undefined)
-        address.Country = address.Country._id;
+            address.Country = address.Country._id;
         $scope.address = address;
     }
 
@@ -57,62 +57,63 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
 
     $scope.add = function () {
         createCity(function () {
-            createArea(function () { 
-        var address = {
-            Country: $scope.address.Country,
-            City: $scope.address.City,
-            Area: $scope.address.Area,
-            AddressLine1: $scope.address.AddressLine1,
-            AddressLine2: $scope.address.AddressLine2
-        };
-        if ($rootScope.jobSeeker.address == undefined)
-            $rootScope.jobSeeker.address = [];
+            createArea(function () {
+                var address = {
+                    Country: $scope.address.Country,
+                    City: $scope.address.City,
+                    Area: $scope.address.Area,
+                    AddressLine1: $scope.address.AddressLine1,
+                    AddressLine2: $scope.address.AddressLine2
+                };
+                if ($rootScope.jobSeeker.address == undefined)
+                    $rootScope.jobSeeker.address = [];
 
-        $rootScope.jobSeeker.Address.push(address);
+                $rootScope.jobSeeker.Address.push(address);
 
-        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-            mvNotifier.notify('JobSeeker has been updated!');
-            $scope.showForm = false;
-            //$location.path('/updateJobSeeker/addresss/' + mvIdentity.currentJobSeeker._id);
+                mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                    mvNotifier.notify('JobSeeker has been updated!');
+                    $scope.showForm = false;
+                    //$location.path('/updateJobSeeker/addresss/' + mvIdentity.currentJobSeeker._id);
 
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
+                }, function (reason) {
+                    mvNotifier.error(reason);
+                });
             });
         })
     };
 
 
     $scope.update = function () {
-        createCity(function () { createArea(function () { 
-        var address = {
-            Country: $scope.address.Country,
-            City: $scope.address.City,
-            Area: $scope.address.Area,
-            AddressLine1: $scope.address.AddressLine1,
-            AddressLine2: $scope.address.AddressLine2,
-            _id: $scope.address._id
-        };
+        createCity(function () {
+            createArea(function () {
+                var address = {
+                    Country: $scope.address.Country,
+                    City: $scope.address.City,
+                    Area: $scope.address.Area,
+                    AddressLine1: $scope.address.AddressLine1,
+                    AddressLine2: $scope.address.AddressLine2,
+                    _id: $scope.address._id
+                };
 
-        var array = $rootScope.jobSeeker.Address;
+                var array = $rootScope.jobSeeker.Address;
 
-        $rootScope.jobSeeker.Address.forEach(function (element) {
-            if (element._id == address._id) {
-                var index = array.indexOf(element);
-                array[index] = address;
-            }
+                $rootScope.jobSeeker.Address.forEach(function (element) {
+                    if (element._id == address._id) {
+                        var index = array.indexOf(element);
+                        array[index] = address;
+                    }
 
-        });
+                });
 
-        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-            mvNotifier.notify('JobSeeker has been updated!');
-            $scope.showForm = false;
-            //$location.path('/updateJobSeeker/addresss/' + mvIdentity.currentJobSeeker._id);
+                mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                    mvNotifier.notify('JobSeeker has been updated!');
+                    $scope.showForm = false;
+                    //$location.path('/updateJobSeeker/addresss/' + mvIdentity.currentJobSeeker._id);
 
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
-        })
+                }, function (reason) {
+                    mvNotifier.error(reason);
+                });
+            });
         });
     };
 
@@ -187,7 +188,7 @@ angular.module('app').controller('mvAddressCtrl', function ($scope, $location, m
             callback();
         }
 
-    }  
+    }
 
     $(function () {
         $("#cityName").autocomplete({

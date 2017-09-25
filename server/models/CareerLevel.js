@@ -4,7 +4,8 @@ var careerLevelSchema = mongoose.Schema({
     
     Name: [{
             Lang: String,
-            Text: String
+            Text: String,
+            Descrption: String
         }],
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
@@ -31,14 +32,34 @@ function createDefaultCareerLevels() {
             
             CareerLevel.create({
                 Deleted : false, 
-                Name: [{ "Text": "Student" , "Lang": "en" }, { "Text": "طالب" , "Lang": "ar" }]
+                Name: [{ "Text": "Student/ Internship", "Lang": "en", "Descrption":"I am a student or recent graduate with and search for part-time job or internship" }, { "Text": "طالب" , "Lang": "ar" }]
             });
-            
             
             CareerLevel.create({
-                Deleted : false, 
-                Name: [{ "Text": "Entry Level" , "Lang": "en" }, { "Text": "مبتدأ" , "Lang": "ar" }]
+                Deleted: false,
+                Name: [{ "Text": "Junior Professional", "Lang": "en", "Descrption": "I have 1-3 years of full-time work experience" }, { "Text": "طالب", "Lang": "ar" }]
             });
+            CareerLevel.create({
+                Deleted: false,
+                Name: [{ "Text": "Experienced professional / Senior", "Lang": "en", "Descrption": "I have more than 4 years of experience and am an expert in my field" }, { "Text": "طالب", "Lang": "ar" }]
+            });
+
+            CareerLevel.create({
+                Deleted: false,
+                Name: [{ "Text": "Supervisor", "Lang": "en", "Descrption": "I manage a team as my subordinates and have more than 6 years of experience" }, { "Text": "طالب", "Lang": "ar" }]
+            });
+
+            CareerLevel.create({
+                Deleted: false,
+                Name: [{ "Text": "Manager", "Lang": "en", "Descrption": "I manage a function / Section and have more than 10 years of experience" }, { "Text": "طالب", "Lang": "ar" }]
+            });
+
+            CareerLevel.create({
+                Deleted: false,
+                Name: [{ "Text": "Top Management / Director", "Lang": "en", "Descrption": "I run the business or direct a group of managers in the organization and have more than 20 years of experience" }, { "Text": "طالب", "Lang": "ar" }]
+            });
+
+            
         }
     });
 }

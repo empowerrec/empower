@@ -28,6 +28,10 @@ var userSchema = mongoose.Schema({
     AuthenticationStrategyId: String,
     AuthenticationStrategyToken: String,
     Gender: { type: String },
+    HearAboutUs: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'HearAboutUs'
+    },
     BirthDate: { type: Date },
     AddressLine1: { type: String },
     AddressLine2: { type: String },

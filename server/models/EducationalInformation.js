@@ -25,7 +25,19 @@ var EducationalInformationSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Grade'
     },
+    Country: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Country'
+    },
+    City: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'City'
+    },
     GraduationYear: Number,
+    StartYear: Number,
+    Description: { type: String },
+    Skills : { type: String },
+
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

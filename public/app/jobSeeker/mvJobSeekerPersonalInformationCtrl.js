@@ -1,5 +1,5 @@
 angular.module('app').controller('mvJobSeekerPersonalInformationCtrl'
-    , function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, mvGender, $routeParams, $rootScope) {
+    , function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, mvGender, $routeParams, $rootScope, $q, Upload) {
     
     var id = $routeParams.id;
     $scope.addEnabled = false;
@@ -10,8 +10,14 @@ angular.module('app').controller('mvJobSeekerPersonalInformationCtrl'
             $scope.addMode = false;
             
             $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
-            
+            $scope.photoName = $rootScope.jobSeeker.Photo;
+            $scope.cvName = $rootScope.jobSeeker.CVLink;
         }));
+
+        
+
+       
+
     } else {
         $rootScope.jobSeeker = new mvJobSeeker();
         
@@ -22,15 +28,60 @@ angular.module('app').controller('mvJobSeekerPersonalInformationCtrl'
         $scope.addEnabled = true;
         
     }
-    
+
+    $scope.upload = function (file , type) {
+       
+            var dfd = $q.defer();
+            if (file) {
+                Upload.upload({
+                    url: '/upload', //webAPI exposed to upload the file
+                    data: { file: file } //pass file as data, should be user ng-model
+                }).then(function (resp) { //upload function returns a promise
+                    if (resp.data.error_code === 0) { //validate success
+                        console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ');
+                        if (type == "P")
+                            $scope.photoName = resp.data.file_name;
+                        else if (type == "C")
+                            $scope.cvName = resp.data.file_name;
+                        dfd.resolve();
+                    } else {
+                        mvNotifier.error('an error occured at upload photo');
+                        dfd.reject('an error occured at upload photo');
+
+                    }
+                }, function (resp) { //catch error
+                    console.log('Error status: ' + resp.status);
+                }, function (evt) {
+                    console.log(evt);
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                    $scope.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+                });
+            }
+            return dfd.promise;
+        
+
+    };
     $scope.update = function () {
         if ($scope.jobSeekerForm.$valid) {
-            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-                mvNotifier.notify('JobSeeker has been updated!');
-            }, function (reason) {
-                mvNotifier.error(reason);
+            $scope.upload($scope.photoFile , "P").then(function () {
+                if ($rootScope.jobSeeker.Photo != $scope.photoName) {
+                    $rootScope.jobSeeker.Photo = $scope.photoName;
+                }
+
+                $scope.upload($scope.cvFile , "C").then(function () {
+                    if ($rootScope.jobSeeker.CVLink && $rootScope.jobSeeker.CVLink != $scope.cvName) {
+                        $rootScope.jobSeeker.CVLink = $scope.cvName;
+                    }
+                    mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                        mvNotifier.notify('JobSeeker has been updated!');
+                    }, function (reason) {
+                        mvNotifier.error(reason);
+                    });
+                });
             });
-        }
+
+    };
     };
     
     $scope.add = function () {

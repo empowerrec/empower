@@ -1,92 +1,96 @@
-<div ng-include="'/partials/main/sidebar-menu'"></div>
-<div class="modal-dialog modal-member modal-jobSeeker">
-    <div class="modal-content" ng-controller="mvSkillCtrl">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title">{{"JobSeeker.Skill" | translate}}</h4>
-        </div>
-        <div class="modal-body">
-            <div class="container admin-area">
 
-                <div class="well">
-                    <button ng-click="addSkill()" class="btn btn-primary">
-                        {{"Buttons.Add" | translate}}
-                    </button>
-                    <br />
-                    <br />
-                    <table class="table table-hover table-striped table-condensed">
-                        <thead>
-                            <tr>
-                                <th>{{"Skill.SkillType" | translate}}</th>
-                                <th>{{"Skill.SkillLevel" | translate}}</th>
+<div class="row bg-gray pb-0">
+    <div class="col-md-12">
+        <div class="container-boxed max">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div ng-include="'/partials/jobseeker/sidebar-menu'"></div>
 
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="skill in jobSeeker.Skills | filter:searchText | orderBy:sortOrder">
-                                <td><span ng-repeat="name in skill.SkillType.Name |filter:currentLang">{{name.Text}}</span></td>
-                                <td><span ng-repeat="name in skill.SkillLevel.Name |filter:currentLang">{{name.Text}}</span></td>
-                                <td><button ng-click="updateSkill(skill)"> {{"Buttons.Update" | translate}}</button></td>
-                                <td><button ng-click="deleteSkill(skill)"> {{"Buttons.Delete" | translate}}</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <form name="skillForm" class="form-horizontal" ng-show="showForm">
-                        <fieldset>
-
-
-
-                            <div class="form-group">
-                                <label for="skillType" class="col-md-2 control-label">
-                                    {{"Skill.SkillType"| translate}}
-                                </label>
-                                <div class="col-md-3">
-                                    <select ng-model="skill.SkillType" ng-options="skillType._id as skillType.Name[0].Text for skillType in skillTypes"
-                                            class="form-control">
-                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                    </select>
-                                </div>
-
-                                <label for="skillLevel" class="col-md-2 control-label">
-                                    {{"Skill.SkillLevel"| translate}}
-                                </label>
-                                <div class="col-md-3">
-                                    <select ng-model="skill.SkillLevel" ng-options="skillLevel._id as skillLevel.Name[0].Text for skillLevel in skillLevels"
-                                            class="form-control">
-                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                    </select>
-                                </div>
-
-
-
-                            </div>
-
-
-
-                            <div class="form-group">
-                                <div class="col-md-10 col-md-offset-2">
-                                    <div class="pull-right">
-                                        <button ng-click="update()" ng-show="updateMode" ng-disabled="skillForm.$invalid" class="btn btn-primary">
-                                            {{"Buttons.Save" | translate}}
-                                        </button>
-
-                                        <button ng-click="add()" ng-show="addMode" ng-disabled="skillForm.$invalid||!addEnabled" class="btn btn-primary">
-                                            {{"Buttons.Add" | translate}}
-                                        </button>
-                                        &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </fieldset>
-                    </form>
                 </div>
-            </div>
-        </div>
-    </div>
-    </div>
+                <div class="col-md-9 col-sm-12">
+                    <h5>{{'JobSeeker.Skills' | translate}}</h5> 
+                     <div ng-controller="mvSkillCtrl">
+                       
+                            <div>
+
+                                <div >
+                                    <!--<button ng-click="addSkill()" class="btn btn-primary">
+                                        {{"Buttons.Add" | translate}}
+                                    </button>
+                                    <br />
+                                    <br />-->
+                                    <table class="table table-hover table-striped table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>{{"Skill.SkillType" | translate}}</th>
+                                                <th>{{"Skill.SkillLevel" | translate}}</th>
+
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="skill in jobSeeker.Skills | filter:searchText | orderBy:sortOrder">
+                                                <td><span ng-repeat="name in skill.SkillType.Name |filter:currentLang">{{name.Text}}</span></td>
+                                                <td><span ng-repeat="name in skill.SkillLevel.Name |filter:currentLang">{{name.Text}}</span></td>
+                                                <td><button ng-click="updateSkill(skill)"> {{"Buttons.Update" | translate}}</button></td>
+                                                <td><button ng-click="deleteSkill(skill)"> {{"Buttons.Delete" | translate}}</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <form name="skillForm" class="form-horizontal" >
+                                        <fieldset>
+
+
+
+                                            <div class="form-group">
+                                                <label for="skillType" class="col-md-4 control-label">
+                                                    {{"Skill.SkillType"| translate}}
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <select ng-model="skill.SkillType" ng-options="skillType._id as skillType.Name[0].Text for skillType in skillTypes"
+                                                            class="form-control">
+                                                        <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                                <div class="form-group">
+                                                    <label for="skillLevel" class="col-md-4 control-label">
+                                                        {{"Skill.SkillLevel"| translate}}
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <select ng-model="skill.SkillLevel" ng-options="skillLevel._id as skillLevel.Name[0].Text for skillLevel in skillLevels"
+                                                                class="form-control">
+                                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                                        </select>
+                                                    </div>
+
+
+
+                                                </div>
+
+
+
+                                            <div class="form-group">
+                                                <div class="col-md-9 col-md-offset-2">
+                                                    <div class="pull-right">
+                                                        <button ng-click="update()" ng-show="updateMode" ng-disabled="skillForm.$invalid" class="btn btn-primary">
+                                                            {{"Buttons.Save" | translate}}
+                                                        </button>
+
+                                                        <button ng-click="add()" ng-show="addMode" ng-disabled="skillForm.$invalid||!addEnabled" class="btn btn-primary">
+                                                            {{"Buttons.Add" | translate}}
+                                                        </button>
+                                                        &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

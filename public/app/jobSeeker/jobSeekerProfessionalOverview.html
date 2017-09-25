@@ -1,0 +1,91 @@
+<div class="row bg-gray pb-0">
+    <div class="col-md-12">
+        <div class="container-boxed max">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div ng-include="'/partials/jobseeker/sidebar-menu'"></div>
+
+                </div>
+                <div class="col-md-9 col-sm-12">
+                    <h5>{{'JobSeeker.ProfessionalOverviewDescrption' | translate}}</h5>
+                    <div ng-controller="mvJobSeekerProfessionalOverviewCtrl">
+                        <form name="jobSeekerForm" class="form-horizontal">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="jobTitle" class="col-md-8 control-label">
+                                        {{"JobSeeker.ProfessionalOverviewSummary"| translate}}
+                                    </label>
+                                </div>
+                                    <div class="form-group">
+
+                                        <label for="CareerLevel" class="col-md-8 control-label">{{"JobSeeker.ProfessionalOverviewSummaryDescrption"| translate}}</label>
+                                    </div>
+                                    <div class="form-group">
+
+
+                                        <div class="col-md-8">
+                                            <textarea name="ProfessionalOverviewSummary" type="text" placeholder="{{'JobSeeker.ProfessionalOverviewSummary' | translate}}"
+                                                      rows="8" ng-model="jobSeeker.ProfessionalOverviewSummary" required="required"
+                                                      class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label for="ProfessionalOverviewTotalYearsOfExperiance" class="col-md-4 control-label">
+                                        {{"JobSeeker.ProfessionalOverviewTotalYearsOfExperiance"| translate}}
+                                    </label>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="ProfessionalOverviewTotalYearsOfExperiance" class="col-md-8 control-label">{{"JobSeeker.ProfessionalOverviewTotalYearsOfExperianceDescrption"| translate}}</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ProfessionalOverviewTotalYearsOfExperiance" class="col-md-4 control-label">
+                                            {{"JobSeeker.ProfessionalOverviewTotalYearsOfExperiance"| translate}}
+                                        </label>
+
+                                        <div class="col-md-2">
+                                            <input name="ProfessionalOverviewTotalYearsOfExperiance" type="number" placeholder="{{'JobSeeker.ProfessionalOverviewTotalYearsOfExperiance' | translate}}"
+                                                   ng-model="jobSeeker.ProfessionalOverviewTotalYearsOfExperiance" required="required"
+                                                   class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="CareerLevel" class="col-md-4 control-label">{{"JobSeeker.ProfessionalOverviewCareerLevel"| translate}}</label>
+
+                                        <div class="col-md-4">
+                                            <select name="ProfessionalOverviewCareerLevel" ng-model="jobSeeker.ProfessionalOverviewCareerLevel" required="required"
+                                                    ng-options="careerLevel._id as careerLevel.Name[0].Text for careerLevel in careerLevels"
+                                                    class="form-control">
+                                                <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <div class="col-md-9 col-md-offset-2">
+                                            <div class="pull-right">
+                                                <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                                                    {{"Buttons.Save" | translate}}
+                                                </button>
+
+                                                <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
+                                                    {{"Buttons.Add" | translate}}
+                                                </button>
+                                                &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+</fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

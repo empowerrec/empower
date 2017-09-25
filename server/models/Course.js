@@ -23,7 +23,7 @@ TrainingCenter: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         },
-
+        Summary: { type: String },
         CreatedBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'

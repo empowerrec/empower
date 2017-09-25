@@ -18,6 +18,13 @@ var jobSeekerSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Gender'
     },
+    ContactVia: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ContactVia'
+    }, Religion: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Religion'
+    },
     FirstName: { type: String },
     MiddleName: { type: String },
     LastName: { type: String },
@@ -25,6 +32,9 @@ var jobSeekerSchema = mongoose.Schema({
     MaritalStatus: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'MaritalStatus'
+    }, VisaStatus: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'VisaStatus'
     },
     MilitaryStatus: {
         type: mongoose.Schema.Types.ObjectId,
@@ -34,6 +44,10 @@ var jobSeekerSchema = mongoose.Schema({
     CarLicenceType: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CarLicenceType'
+    },
+    DrivingLicenseIssuedIn: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Country'
     },
     Address: [{
         Country: {
@@ -56,13 +70,21 @@ var jobSeekerSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'JobSeeker'
         }
-        }],
-    FacebookAcount: String ,
-    TwitterAcount: String ,
-    LinkedinAccount: String ,
-    Email : String ,
-    MobileNo : String ,
-    
+    }],
+    Interests: [{        
+        Interest: String
+    }],
+    MembershipsAndAwards: [{
+        Membership: String,
+        HonorAndAward: String,
+    }],
+    FacebookAcount: String,
+    TwitterAcount: String,
+    LinkedinAccount: String,
+    Email: String,
+    MobileNo: String,
+    HomePhoneNo: String,
+
     EducationalInformation: [{
         JobSeeker: {
             type: mongoose.Schema.Types.ObjectId,
@@ -88,9 +110,20 @@ var jobSeekerSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Grade'
         },
+        Country: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Country'
+        },
+        City: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'City'
+        },
         GraduationYear: Number,
+        StartYear: Number,
+        Description: { type: String },
+        Skills: { type: String },
         Current: Boolean
-        }],
+    }],
     Courses: [{
         Title: { type: String },
         TrainingCenter: {
@@ -114,7 +147,7 @@ var jobSeekerSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         }
-    }], 
+    }],
     Experiances: [{
         Company: String,
         JobSeeker: {
@@ -137,12 +170,40 @@ var jobSeekerSchema = mongoose.Schema({
         Position: {
             type: String
         },
+        CompanyWebsite: {
+            type: String
+        },
+        JobRole: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'JobRole'
+        },
+        ReportTo: {
+            type: String
+        },
         Salary: Number,
+        TransportAllowance: Number,
+        HousingAllowance: Number,
+        OtherAllowance: Number,
         Achievements: String,
         FunctionalTasks: String,
         PeriodFrom: { type: Date },
         PeriodTo: { type: Date },
         Current: Boolean
+    }],
+    ProfessionalCertifications: [{
+        CertificationName: String,
+        InstitutionName: String,
+        DateIssued: { type: Date },
+        OverallGradeGPA: Number,
+        Summary: String,
+        CountryOfExamination: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Country'
+        },
+        JobSeeker: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'JobSeeker'
+        }
     }],
     Skills: [{
         JobSeeker: {
@@ -158,7 +219,7 @@ var jobSeekerSchema = mongoose.Schema({
             ref: 'SkillLevel'
         }
     }],
-    
+
     LanguageSkills: [{
         JobSeeker: {
             type: mongoose.Schema.Types.ObjectId,
@@ -174,11 +235,19 @@ var jobSeekerSchema = mongoose.Schema({
         }
     }],
     ExpectedSalary: Number,
-    PeriodOfEnrollment : Number,
-    MoreInformation : String,
+    PeriodOfEnrollment: Number,
+    MoreInformation: String,
     ResumeLink: { type: String },
     ExperienceLevel: {
         type: Number
+    },
+    Nationality: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Nationality'
+    },
+    SecondNationality: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Nationality'
     },
     MostRecentEmployer: {
         type: mongoose.Schema.Types.ObjectId,
@@ -197,11 +266,12 @@ var jobSeekerSchema = mongoose.Schema({
     GraduationGrade: { type: String, enum: graduationGrades },
     LanguageSpoken: [{ type: String }],
     SalaryPreference: { type: Number },
-    PreferredWork: { type: String, enum: preferredWorks },    
+    PreferredWork: { type: String, enum: preferredWorks },
     PreferredCountryOfWork: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Country'
     },
+    PreferredJobTitle: [{ type: String }],
     PreferredCityOfWork: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'City'
@@ -211,11 +281,30 @@ var jobSeekerSchema = mongoose.Schema({
         ref: 'Category'
     }],
 
-    PreferredIndustry: [{
+    FirstPreferredIndustry: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Industry'
-    }],
-    
+    },
+    SecondPreferredIndustry: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Industry'
+    },
+    ThirdPreferredIndustry: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Industry'
+    },
+    FirstPreferredCity: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'City'
+    },
+    SecondPreferredCity: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'City'
+    },
+    ThirdPreferredCity: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'City'
+    },
     PreferredCareerLevel: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CareerLevel'
@@ -235,11 +324,33 @@ var jobSeekerSchema = mongoose.Schema({
     PreferredJobRole: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'JobRole'
-    }],   
-    Reference1: { type: String },
-    Reference1Contact: { type: String },
-    Reference2: { type: String },
-    Reference2Contact: { type: String },
+    }],
+    ReferenceFullName: { type: String },
+    ReferencePosition: { type: String },
+    ReferenceCompany: { type: String },
+    ReferenceEmailAddress: { type: String },
+    ReferencePhoneNumber: { type: String },
+    ReferenceRelationship: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ReferenceRelationship'
+    },
+    
+    Photo: {
+        type: String
+    },
+    CVFile: {
+        type: String
+    },
+    ProfessionalOverviewSummary: {
+        type: String
+    },
+    ProfessionalOverviewTotalYearsOfExperiance: {
+        type: Number
+    },
+    ProfessionalOverviewCareerLevel: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CareerLevel'
+    },
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -247,15 +358,15 @@ var jobSeekerSchema = mongoose.Schema({
     CreatedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }, Deleted : Boolean  ,   
+    }, Deleted: Boolean,
     DeletedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
 },
     {
-    timestamps: { createdAt: 'CreatedAt', updatedAt: "UpdatedAt" }
-});
+        timestamps: { createdAt: 'CreatedAt', updatedAt: "UpdatedAt" }
+    });
 
 
 var JobSeeker = mongoose.model('JobSeeker', jobSeekerSchema);
@@ -263,14 +374,14 @@ var JobSeeker = mongoose.model('JobSeeker', jobSeekerSchema);
 function createDefaultJobSeekers() {
     JobSeeker.find({}).exec(function (err, col) {
         if (col.length === 0) {
-            
+
             JobSeeker.create({
-                Deleted : false,
+                Deleted: false,
                 Gender: 'Male'
             });
-            
+
             JobSeeker.create({
-                Deleted : false,
+                Deleted: false,
                 Gender: 'Female'
             });
         }

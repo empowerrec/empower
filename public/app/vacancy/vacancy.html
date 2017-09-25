@@ -1,560 +1,471 @@
-<div class="jform-header">
-    <div class="container-boxed max">
-        <div class="jform-steps">
-            <ul class="jsteps jsteps-4">
-                <li  ng-class="getStep1Class()">
-                    <span class="jstep-num">
-                        <a href="javascript:void(0);">1</a>
-                    </span>
-                    <div class="jstep-line">
-                        <span class="jstep-dot"></span>
-                    </div>
-                    <div class="jstep-label">Login or create an account</div>
-                </li>
-                <li ng-class="getStep2Class()">
-                    <span class="jstep-num">
-                        <a href="javascript:void(0);">2</a>
-                    </span>
-                    <div class="jstep-line">
-                        <span class="jstep-dot"></span>
-                    </div>
-                    <div class="jstep-label">Choose a package</div>
-                </li>
-                <li ng-class="getStep3Class()">
-                    <span class="jstep-num">
-                        <a href="javascript:void(0);">3</a>
-                    </span>
-                    <div class="jstep-line">
-                        <span class="jstep-dot"></span>
-                    </div>
-                    <div class="jstep-label">Describe your company and vacancy</div>
-                </li>
-                <li ng-class="getStep4Class()">
-                    <span class="jstep-num">
-                        <a href="javascript:void(0);">4</a>
-                    </span>
-                    <div class="jstep-line">
-                        <span class="jstep-dot"></span>
-                    </div>
-                    <div class="jstep-label">Preview and submit your job</div>
-                </li>
-            </ul>
-        </div>
 
-        <div class="container-wrap" ng-hide="identity.currentUser.isEmployer() || identity.currentUser.isSubUser() || identity.currentUser.isAdmin()">
-            <div class="main-content container-fullwidth">
-                <div class="row">
-                    <div class="noo-main col-md-12">
-                        <div class="jform">
-                            <div class="jform-header">
-                                <div class="container-boxed max">
+<div class="row bg-gray pb-0" ng-show="!completed()">
+    <div class="col-md-12">
+        <div class="container-boxed max">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div ng-include="'/partials/employer/sidebar-menu'"></div>
 
-                                </div>
-                            </div>
-                            <div class="jform-body">
-                                <div class="jform-body">
-                                    <div class="container-boxed max">
-                                        <div id="step_content_login" class="jstep-content">
-                                            <div class="jpanel jpanel-login">
-                                                <div class="jpanel-title">
-                                                    <h3>Login or create an account</h3>
-                                                </div>
-                                                <div class="jpanel-body">
-                                                    <div ng-include="'/partials/account/front-login'"></div>
-                                                </div>
-                                            </div>
-                                        </div>
+                </div>
+
+                <div class="col-md-9 col-sm-12">
+                    <h5>{{'Vacancy.Vacancy' | translate}}</h5>
+                    <div>
+                        <form name="vacancyForm" class="form-horizontal">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="jobTitle" class="col-md-4 control-label">
+                                        {{
+"Vacancy.JobTitle"| translate
+                                        }}
+                                    </label>
+
+                                    <div class="col-md-9">
+                                        <input name="jobTitle" type="text" placeholder="{{'Vacancy.JobTitle' | translate}}"
+                                               ng-model="vacancy.JobTitle" required="required"
+                                               class="form-control" />
                                     </div>
                                 </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-wrap" ng-show="identity.currentUser.isEmployer() || identity.currentUser.isSubUser() && !completed() || identity.currentUser.isAdmin() && !completed()">
-            <div class="main-content container-fullwidth">
-                <div class="row">
-                    <div class="noo-main col-md-12">
-                        <div class="jform">
-                            <div class="jform-header">
-                                <div class="container-boxed max">
-
-                                </div>
-                            </div>
-                            <div class="jform-body">
-                                <div class="container-boxed max">
-                                    <div class="form-horizontal" enctype="multipart/form-data">
-                                        <div id="step_content_form" class="jstep-content">
-                                            <div class="jpanel jpanel-job-form">
-                                                <div class="jpanel-title">
-                                                    <h3>Job</h3>
-                                                </div>
-                                                <div class="jpanel-body">
-
-                                                    <div class="job-form">
-                                                        <div class="job-form-detail">
-                                                            <div class="well">
-                                                               
-                                                                <form name="vacancyForm" class="form-horizontal">
-                                                                    <fieldset>
-                                                                        <div class="form-group">
-                                                                            <label for="jobTitle" class="col-md-2 control-label">
-                                                                                {{
-"Vacancy.JobTitle"
-                                                                                | translate
-                                                                                }}
-                                                                            </label>
-
-                                                                            <div class="col-md-10">
-                                                                                <input name="jobTitle" type="text" placeholder="{{'Vacancy.JobTitle' | translate}}"
-                                                                                       ng-model="vacancy.JobTitle" required="required"
-                                                                                       class="form-control" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="jobDescription" class="col-md-2 control-label">
-                                                                                {{
+                                <div class="form-group">
+                                    <label for="jobDescription" class="col-md-4 control-label">
+                                        {{
 "Vacancy.JobDescrption"
                                                                                 | translate
-                                                                                }}
-                                                                            </label>
+                                        }}
+                                    </label>
+                                </div>
 
-                                                                            <div class="col-sm-10">
-                                                                                <textarea name="jobDescription" placeholder="{{'Vacancy.JobDescrption' | translate}}" rows=" 8"
-                                                                                          ng-model="vacancy.JobDescription"
-                                                                                          class="form-control" />
-                                                                            </div>
-                                                                        </div>
+                                <div class="form-group">
+                                    <div class="col-sm-9">
+                                        <textarea name="jobDescription" placeholder="{{'Vacancy.JobDescrption' | translate}}" rows="8"
+                                                  ng-model="vacancy.JobDescription"
+                                                  class="form-control" />
+                                    </div>
+                                </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="JobRequirements" class="col-md-2 control-label">
-                                                                                {{
+                                <div class="form-group">
+                                    <label for="JobRequirements" class="col-md-4 control-label">
+                                        {{
 "Vacancy.JobRequirements"
                                                                                 | translate
-                                                                                }}
-                                                                            </label>
+                                        }}
+                                    </label>
 
-                                                                            <div class="col-sm-10">
-                                                                                <textarea name="JobRequirements" placeholder="{{'Vacancy.JobRequirements' | translate}}" rows=" 8"
-                                                                                          ng-model="vacancy.JobRequirements"
-                                                                                          class="form-control" />
-                                                                            </div>
-                                                                        </div>
+                                    <div class="col-sm-9">
+                                        <textarea name="JobRequirements" placeholder="{{'Vacancy.JobRequirements' | translate}}" rows=" 8"
+                                                  ng-model="vacancy.JobRequirements"
+                                                  class="form-control" />
+                                    </div>
+                                </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="Benfits" class="col-md-2 control-label">
-                                                                                {{
+                                <div class="form-group">
+                                    <label for="Benfits" class="col-md-4 control-label">
+                                        {{
 "Vacancy.Benfits"
                                                                                 | translate
-                                                                                }}
-                                                                            </label>
+                                        }}
+                                    </label>
 
-                                                                            <div class="col-sm-10">
-                                                                                <textarea name="Benfits" placeholder="{{'Vacancy.Benfits' | translate}}" rows=" 8"
-                                                                                          ng-model="vacancy.Benfits"
-                                                                                          class="form-control" />
-                                                                            </div>
-                                                                        </div>
+                                    <div class="col-sm-9">
+                                        <textarea name="Benfits" placeholder="{{'Vacancy.Benfits' | translate}}" rows=" 8"
+                                                  ng-model="vacancy.Benfits"
+                                                  class="form-control" />
+                                    </div>
+                                </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="salaryRangeFrom" class="col-md-2 control-label">
-                                                                                {{
+                                <div class="form-group">
+                                    <label for="salaryRangeFrom" class="col-md-4 control-label">
+                                        {{
 "Vacancy.SalaryRangeFrom"
                                                                                 | translate
-                                                                                }}
-                                                                            </label>
+                                        }}
+                                    </label>
 
-                                                                            <div class="col-md-2">
-                                                                                <input name="salaryRangeFrom" id="salaryRangeFrom" type="number" placeholder="{{'Vacancy.SalaryRangeFrom'| translate}}"
-                                                                                       ng-model="vacancy.SalaryRangeFrom" required="required"
-                                                                                       class="form-control" />
-                                                                            </div>
+                                    <div class="col-md-4">
+                                        <input name="salaryRangeFrom" id="salaryRangeFrom" type="number" placeholder="{{'Vacancy.SalaryRangeFrom'| translate}}"
+                                               ng-model="vacancy.SalaryRangeFrom" required="required"
+                                               class="form-control" />
+                                    </div>
+                                </div>
 
-                                                                            <label for="salaryRangeTo" class="col-md-1 control-label">
-                                                                                {{
+                                <div class="form-group">
+                                    <label for="salaryRangeTo" class="col-md-4 control-label">
+                                        {{
 "Vacancy.SalaryRangeTo"
                                                                                 | translate
-                                                                                }}
-                                                                            </label>
+                                        }}
+                                    </label>
 
-                                                                            <div class="col-md-2">
-                                                                                <input name="salaryRangeTo" id="salaryRangeTo" type="number" placeholder="{{'Vacancy.SalaryRangeTo'| translate}}"
-                                                                                       ng-model="vacancy.SalaryRangeTo" required="required"
-                                                                                       class="form-control" />
-                                                                            </div>
+                                    <div class="col-md-4">
+                                        <input name="salaryRangeTo" id="salaryRangeTo" type="number" placeholder="{{'Vacancy.SalaryRangeTo'| translate}}"
+                                               ng-model="vacancy.SalaryRangeTo" required="required"
+                                               class="form-control" />
+                                    </div>
+                                </div>
 
-                                                                            <label for="salaryCurancy" class="col-md-2 control-label">
-                                                                                {{"Vacancy.SalaryCurancy"| translate}}
-                                                                            </label>
+                                <div class="form-group">
+                                    <label for="salaryCurancy" class="col-md-4 control-label">
+                                        {{"Vacancy.SalaryCurancy"| translate}}
+                                    </label>
 
-                                                                            <div class="col-md-3">
-                                                                                <select ng-model="vacancy.SalaryCurancy" required="required"
-                                                                                        ng-options="curancy._id as curancy.Name[0].Text for curancy in curancies"
-                                                                                        class="form-control">
-                                                                                    <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                                                                </select>
-                                                                            </div>
+                                    <div class="col-md-4">
+                                        <select ng-model="vacancy.SalaryCurancy" required="required"
+                                                ng-options="curancy._id as curancy.Name[0].Text for curancy in curancies"
+                                                class="form-control">
+                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                        </select>
+                                    </div>
 
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="availableFrom" class="col-md-2 control-label">
-                                                                                {{
+                                </div>
+                                <div class="form-group">
+                                    <label for="availableFrom" class="col-md-4 control-label">
+                                        {{
 "Vacancy.AvailableFrom"
                                                                                 | translate
-                                                                                }}
-                                                                            </label>
+                                        }}
+                                    </label>
 
 
-                                                                            <div class="col-md-3">
-                                                                                <input name="availableFrom" type="date" id="availableFrom" placeholder="{{'vacancy.AvailableFrom'| translate}}"
-                                                                                       ng-model="vacancy.AvailableFrom" required="required"
-                                                                                       class="form-control" />
-                                                                            </div>
+                                    <div class="col-md-4">
+                                        <input name="availableFrom" type="date" id="availableFrom" placeholder="{{'vacancy.AvailableFrom'| translate}}"
+                                               ng-model="vacancy.AvailableFrom" required="required"
+                                               class="form-control" />
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="availableTo" class="col-md-4 control-label">{{"Vacancy.AvailableTo"| translate}}</label>
 
 
-                                                                            <label for="availableTo" class="col-md-2 control-label">{{"Vacancy.AvailableTo"| translate}}</label>
-
-
-                                                                            <div class="col-md-3">
-                                                                                <input name="availableTo" id="availableTo" type="date" placeholder="{{'Vacancy.AvailableTo'| translate}}"
-                                                                                       ng-model="vacancy.AvailableTo" required="required"
-                                                                                       class="form-control" />
-                                                                            </div>
-
-                                                                           
-
-                                                                        </div>
-
-
-
-                                                                        <div class="form-group">
-                                                                            <label for="JobRole" class="col-md-2 control-label">{{"Vacancy.JobRole"| translate}}</label>
-
-                                                                            <div class="col-md-3">
-                                                                                <select name="JobRole" ng-model="selectedJobRole"
-                                                                                        ng-options="jobRole.Name[0].Text for jobRole in jobRoles track by jobRole._id"
-                                                                                        class="form-control">
-                                                                                    <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                                                                </select>
-                                                                            </div>
-                                                                                <div class="col-md-3">
-                                                                                    <button ng-click="addJobRole()">
-                                                                                        Add
-                                                                                    </button>
-                                                                                    <table>
-                                                                                        <tr ng-repeat="jobRole in vacancy.JobRole">
-                                                                                            <td><span ng-repeat="name in jobRole.Name |filter:currentLang">{{name.Text}}</span></td>
-                                                                                            <td>
-
-                                                                                                <button ng-click="deleteJobRole(jobRole)">
-                                                                                                    X
-                                                                                                </button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </table>
-                                                                                </div>
-
-                                                                            <label for="JobType" class="col-md-2 control-label">{{"Vacancy.JobType"| translate}}</label>
-
-                                                                            <div class="col-md-3">
-                                                                                <select name="JobType" ng-model="vacancy.JobType" required="required"
-                                                                                        ng-options="jobType._id as jobType.Name[0].Text for jobType in jobTypes"
-                                                                                        class="form-control">
-                                                                                    <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                                                                </select>
-                                                                            </div>
-
-
-                                                                          
-
-                                                                            
-
-                                                                        </div>
-
-                                                                        <div class="form-group">
-                                                                            <label for="country" class="col-md-2 control-label">{{"Vacancy.Country"| translate}}</label>
-
-
-                                                                            <div class="col-md-2">
-                                                                                <select ng-model="vacancy.Country" required="required" ng-options="country._id as country.Name[0].Text for country in countries"
-                                                                                        class="form-control">
-                                                                                    <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                                                                </select>
-                                                                            </div>
-
-                                                                            <label for="City" class="col-md-1 control-label">{{"Vacancy.City"| translate}}</label>
-                                                                            <div class="col-md-3">
-                                                                                <input id="cityName" name="City" />
-                                                                                <input type="hidden" id="hfCityId" ng-model="vacanvy.City" />
-                                                                                <input type="hidden" id="currentLang" value="ar" />
-                                                                                <label id="selectedCity" />
-                                                                                <div ng-repeat="name in vacancy.City.Name | filter:{Lang:currentLang}">{{name.Text}}</div>
-                                                                            </div>
-
-                                                                            <label for="Area" class="col-md-1 control-label">{{"Vacancy.Area"| translate}}</label>
-                                                                            <div class="col-md-3">
-                                                                                <input id="areaName" name="Area" />
-                                                                                <input type="hidden" id="hfAreaId" ng-model="vacanvy.Area" />
-                                                                                <input type="hidden" id="currentLang" value="ar" />
-                                                                                <label id="selectedArea" />
-                                                                                <div ng-repeat="name in vacancy.Area.Name | filter:{Lang:currentLang}">{{name.Text}}</div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="form-group">
-                                                                            <label for="Industry" class="col-md-2 control-label">{{"Vacancy.Industry"| translate}}</label>
-
-                                                                            <div class="col-md-3">
-                                                                                <select name="Industry" ng-model="selectedIndustry"
-                                                                                        ng-options="industry.Name[0].Text for industry in industries track by industry._id"
-                                                                                        class="form-control">
-                                                                                    <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                                                                </select>
-                                                                            </div>
-                                                                                <div class="col-md-2">
-                                                                                    <button ng-click="addIndustry()">
-                                                                                        Add
-                                                                                    </button>
-                                                                                    <table>
-                                                                                        <tr ng-repeat="industry in vacancy.Industry">
-                                                                                            <td><span ng-repeat="name in industry.Name |filter:currentLang">{{name.Text}}</span></td>
-                                                                                            <td>
-
-                                                                                                <button ng-click="deleteIndustry(industry)">
-                                                                                                    X
-                                                                                                </button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </table>
-                                                                                
-                                                                            </div>
-                                                                            <label for="requiredExperiance" class="col-md-2 control-label">
-                                                                                {{"Vacancy.RequiredExperiance"| translate}}
-                                                                            </label>
-
-                                                                            <div class="col-md-3">
-                                                                                <input name="requiredExperiance" type="number" placeholder="{{'Vacancy.RequiredExperiance' | translate}}"
-                                                                                       ng-model="vacancy.RequiredExperience" required="required"
-                                                                                       class="form-control" />
-                                                                            </div>
-                                                                            </div>
-                                                                        <div class="form-group">
-
-                                                                            <label for="CareerLevel" class="col-md-2 control-label">{{"Vacancy.CareerLevel"| translate}}</label>
-
-                                                                            <div class="col-md-3">
-                                                                                <select name="CareerLevel" ng-model="vacancy.CareerLevel" required="required"
-                                                                                        ng-options="careerLevel._id as careerLevel.Name[0].Text for careerLevel in careerLevels"
-                                                                                        class="form-control">
-                                                                                    <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                                                                </select>
-                                                                            </div>
-
-                                                                            <label for="EducationalLevel" class="col-md-2 control-label">{{"Vacancy.EducationalLevel"| translate}}</label>
-
-                                                                            <div class="col-md-3">
-                                                                                <select name="EducationalLevel" ng-model="vacancy.EducationalLevel" required="required"
-                                                                                        ng-options="educationalLevel._id as educationalLevel.Name[0].Text for educationalLevel in educationalLevels"
-                                                                                        class="form-control">
-                                                                                    <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                                                                                </select>
-                                                                            </div>
-
-                                                                           
-
-                                                                        </div>
+                                    <div class="col-md-4">
+                                        <input name="availableTo" id="availableTo" type="date" placeholder="{{'Vacancy.AvailableTo'| translate}}"
+                                               ng-model="vacancy.AvailableTo" required="required"
+                                               class="form-control" />
+                                    </div>
 
 
 
-                                                                        <div class="form-group">
+                                </div>
 
 
-                                                                            <label for="HotJobFlag" class="col-md-2 control-label">{{"Vacancy.HotJobFlag" | translate}}</label>
-                                                                            <div class="col-sm-1">
-                                                                                <input name="HotJobFlag" type="checkbox" placeholder="{{'Vacancy.HotJobFlag' | translate}}"
-                                                                                       ng-model="vacancy.HotJobFlag" class="form-control-md-first" />
-                                                                            </div>
 
-                                                                            <label for="HideSalary" class="col-md-2 control-label">{{"Vacancy.HideSalary" | translate}}</label>
-                                                                            <div class="col-sm-1">
-                                                                                <input name="HideSalary" type="checkbox" placeholder="{{'Vacancy.HideSalary' | translate}}"
-                                                                                       ng-model="vacancy.HideSalary" class="form-control-md-first" />
-                                                                            </div>
-                                                                            </div>
-                                                                        <div class="form-group">
-                                                                            <label for="ReciveApplicationsByEmail" class="col-md-5 control-label">{{"Vacancy.ReciveApplicationsByEmail" | translate}}</label>
-                                                                            <div class="col-sm-1">
-                                                                                <input name="ReciveApplicationsByEmail" type="checkbox" placeholder="{{'Vacancy.ReciveApplicationsByEmail' | translate}}"
-                                                                                       ng-model="vacancy.ReciveApplicationsByEmail" class="form-control-md-first" />
-                                                                            </div>
+                                <div class="form-group">
+                                    <label for="JobRole" class="col-md-4 control-label">{{"Vacancy.JobRole"| translate}}</label>
 
+                                    <div class="col-md-3">
+                                        <select name="JobRole" ng-model="selectedJobRole"
+                                                ng-options="jobRole.Name[0].Text for jobRole in jobRoles track by jobRole._id"
+                                                class="form-control">
+                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button ng-click="addJobRole()">
+                                            Add
+                                        </button>
+                                        <table>
+                                            <tr ng-repeat="jobRole in vacancy.JobRole">
+                                                <td><span ng-repeat="name in jobRole.Name |filter:currentLang">{{name.Text}}</span></td>
+                                                <td>
 
-                                                                            <label for="HideCompany" class="col-md-2 control-label">{{"Vacancy.HideCompany" | translate}}</label>
-                                                                            <div class="col-sm-1">
-                                                                                <input name="HideCompany" type="checkbox" placeholder="{{'Vacancy.HideCompany' | translate}}"
-                                                                                       ng-model="vacancy.HideCompany" class="form-control-md-first" />
-                                                                            </div>
+                                                    <button ng-click="deleteJobRole(jobRole)">
+                                                        X
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
 
-                                                                        </div>
+                                <div class="form-group">
+                                    <label for="JobType" class="col-md-4 control-label">{{"Vacancy.JobType"| translate}}</label>
 
-                                                                        <div class="form-group">
-                                                                            <label for="SendRecommendedCandidatesDailyOrWeekly" class="col-md-7 control-label">{{"Vacancy.SendRecommendedCandidatesDailyOrWeekly" | translate}}</label>
-                                                                            <div class="col-sm-1">
-                                                                                <input name="SendRecommendedCandidatesDailyOrWeekly" type="checkbox" placeholder="{{'Vacancy.SendRecommendedCandidatesDailyOrWeekly' | translate}}"
-                                                                                       ng-model="vacancy.SendRecommendedCandidatesDailyOrWeekly" class="form-control-md-first" />
-                                                                            </div>
-
-
-                                                                           
-
-                                                                        </div>
-
-                                                                       
-                                                                        <div ng-include="'/partials/question/jobQuestion'"></div>
-                                                                        <div ng-include="'/partials/languageSkill/joblanguageSkill'"></div>
-                                                                        <div class="form-group">
-                                                                            <div class="col-md-10 col-md-offset-2">
-                                                                                <div class="pull-right">
-                                                                                    <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
-                                                                                        {{"Buttons.Save" | translate}}
-                                                                                    </button>
-
-                                                                                    <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
-                                                                                        {{"Buttons.Add" | translate}}
-                                                                                    </button>
-                                                                                    &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                    <div class="col-md-4">
+                                        <select name="JobType" ng-model="vacancy.JobType" required="required"
+                                                ng-options="jobType._id as jobType.Name[0].Text for jobType in jobTypes"
+                                                class="form-control">
+                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                        </select>
+                                    </div>
 
 
 
 
-                                                                    </fieldset>
-                                                                </form>
-                                                            </div>
-                                                         
 
-                                                           
-                                                        </div>
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="country" class="col-md-4 control-label">{{"Vacancy.Country"| translate}}</label>
+
+
+                                    <div class="col-md-4">
+                                        <select ng-model="vacancy.Country" required="required" ng-options="country._id as country.Name[0].Text for country in countries"
+                                                class="form-control">
+                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="City" class="col-md-4 control-label">{{"Vacancy.City"| translate}}</label>
+                                    <div class="col-md-4">
+                                        <input id="cityName" name="City" />
+                                        <input type="hidden" id="hfCityId" ng-model="vacanvy.City" />
+                                        <input type="hidden" id="currentLang" value="ar" />
+                                        <label id="selectedCity" />
+                                        <div ng-repeat="name in vacancy.City.Name | filter:{Lang:currentLang}">{{name.Text}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Area" class="col-md-4 control-label">{{"Vacancy.Area"| translate}}</label>
+                                    <div class="col-md-4">
+                                        <input id="areaName" name="Area" />
+                                        <input type="hidden" id="hfAreaId" ng-model="vacanvy.Area" />
+                                        <input type="hidden" id="currentLang" value="ar" />
+                                        <label id="selectedArea" />
+                                        <div ng-repeat="name in vacancy.Area.Name | filter:{Lang:currentLang}">{{name.Text}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Industry" class="col-md-4 control-label">{{"Vacancy.Industry"| translate}}</label>
+
+                                    <div class="col-md-4">
+                                        <select name="Industry" ng-model="selectedIndustry"
+                                                ng-options="industry.Name[0].Text for industry in industries track by industry._id"
+                                                class="form-control">
+                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button ng-click="addIndustry()">
+                                            Add
+                                        </button>
+                                        <table>
+                                            <tr ng-repeat="industry in vacancy.Industry">
+                                                <td><span ng-repeat="name in industry.Name |filter:currentLang">{{name.Text}}</span></td>
+                                                <td>
+
+                                                    <button ng-click="deleteIndustry(industry)">
+                                                        X
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </table>
 
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+
+                                <div class="form-group">
+                                    <label for="requiredExperiance" class="col-md-4 control-label">
+                                        {{"Vacancy.RequiredExperiance"| translate}}
+                                    </label>
+
+                                    <div class="col-md-2">
+                                        <input name="requiredExperiance" type="number" placeholder="{{'Vacancy.RequiredExperiance' | translate}}"
+                                               ng-model="vacancy.RequiredExperience" required="required"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <label for="CareerLevel" class="col-md-4 control-label">{{"Vacancy.CareerLevel"| translate}}</label>
+
+                                    <div class="col-md-4">
+                                        <select name="CareerLevel" ng-model="vacancy.CareerLevel" required="required"
+                                                ng-options="careerLevel._id as careerLevel.Name[0].Text for careerLevel in careerLevels"
+                                                class="form-control">
+                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="EducationalLevel" class="col-md-4 control-label">{{"Vacancy.EducationalLevel"| translate}}</label>
+
+                                    <div class="col-md-4">
+                                        <select name="EducationalLevel" ng-model="vacancy.EducationalLevel" required="required"
+                                                ng-options="educationalLevel._id as educationalLevel.Name[0].Text for educationalLevel in educationalLevels"
+                                                class="form-control">
+                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                        </select>
+                                    </div>
+
+
+
+                                </div>
+
+
+
+                                <div class="form-group">
+
+
+                                    <label for="HotJobFlag" class="col-md-7 control-label">{{"Vacancy.HotJobFlag" | translate}}</label>
+                                    <div class="col-sm-1">
+                                        <input name="HotJobFlag" type="checkbox" placeholder="{{'Vacancy.HotJobFlag' | translate}}"
+                                               ng-model="vacancy.HotJobFlag" class="form-control-md-first" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="HideSalary" class="col-md-7 control-label">{{"Vacancy.HideSalary" | translate}}</label>
+                                    <div class="col-sm-1">
+                                        <input name="HideSalary" type="checkbox" placeholder="{{'Vacancy.HideSalary' | translate}}"
+                                               ng-model="vacancy.HideSalary" class="form-control-md-first" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ReciveApplicationsByEmail" class="col-md-7 control-label">{{"Vacancy.ReciveApplicationsByEmail" | translate}}</label>
+                                    <div class="col-sm-1">
+                                        <input name="ReciveApplicationsByEmail" type="checkbox" placeholder="{{'Vacancy.ReciveApplicationsByEmail' | translate}}"
+                                               ng-model="vacancy.ReciveApplicationsByEmail" class="form-control-md-first" />
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="HideCompany" class="col-md-7 control-label">{{"Vacancy.HideCompany" | translate}}</label>
+                                    <div class="col-sm-1">
+                                        <input name="HideCompany" type="checkbox" placeholder="{{'Vacancy.HideCompany' | translate}}"
+                                               ng-model="vacancy.HideCompany" class="form-control-md-first" />
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="SendRecommendedCandidatesDailyOrWeekly" class="col-md-7 control-label">{{"Vacancy.SendRecommendedCandidatesDailyOrWeekly" | translate}}</label>
+                                    <div class="col-sm-1">
+                                        <input name="SendRecommendedCandidatesDailyOrWeekly" type="checkbox" placeholder="{{'Vacancy.SendRecommendedCandidatesDailyOrWeekly' | translate}}"
+                                               ng-model="vacancy.SendRecommendedCandidatesDailyOrWeekly" class="form-control-md-first" />
+                                    </div>
+
+
+
+
+                                </div>
+
+
+                                <div ng-include="'/partials/question/jobQuestion'"></div>
+                                <div ng-include="'/partials/languageSkill/joblanguageSkill'"></div>
+                                <div class="form-group">
+                                    <div class="col-md-10 col-md-offset-2">
+                                        <div class="pull-right">
+                                            <button ng-click="update()" ng-show="updateMode" class="btn btn-primary">
+                                                {{"Buttons.Save" | translate}}
+                                            </button>
+
+                                            <button ng-click="add()" ng-show="addMode" class="btn btn-primary">
+                                                {{"Buttons.Add" | translate}}
+                                            </button>
+                                            &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </fieldset>
+                        </form>
                     </div>
+
+
+
                 </div>
+
             </div>
         </div>
+    </div>
+</div>
+
+       
 
 
-        <div class="container-wrap" ng-show="completed()">
-            <div class="main-content container-fullwidth">
+
+    <div class="row bg-gray pb-0" ng-show="completed()">
+        <div class="col-md-12">
+            <div class="container-boxed max">
                 <div class="row">
-                    <div class="noo-main col-md-12">
-                        <div class="jform">
-                            <div class="jform-header">
-                                <div class="container-boxed max">
+                    <div class="col-md-3 col-sm-12">
+                        <div ng-include="'/partials/employer/sidebar-menu'"></div>
 
+                    </div>
+
+                    <div class="col-md-9 col-sm-12">
+                        <h5>{{'Vacancy.Vacancy' | translate}}</h5>
+                        <div>
+                            <div class="well">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h3>{{"Vacancy.JobDescrption" | translate}} : {{vacancy.JobDescription}}</h3>
+                                        <h3>{{"Vacancy.SalaryRangeFrom" | translate}} : {{vacancy.SalaryRangeFrom}}</h3>
+                                        <h3>{{"Vacancy.SalaryRangeTo" | translate}} : {{vacancy.SalaryRangeTo }}</h3>
+                                        <h3>{{"Vacancy.SalaryCurancy" | translate}} : <span ng-repeat="name in vacancy.SalaryCurancy.Name |filter:currentLang">{{name.Text}}</span></h3>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="jform-body">
-                                <div class="container-boxed max">
-                                    <div class="form-horizontal" enctype="multipart/form-data">
-                                        <div id="step_content_form" class="jstep-content">
-                                            <div class="jpanel jpanel-job-form">
-                                                <div class="jpanel-title">
-                                                    <h3>Job Details</h3>
-                                                </div>
-                                                <div class="jpanel-body">
 
-                                                    <div class="job-form">
-                                                        <div class="job-form-detail">
-                                                            <div class="well">
-                                                                <div class="row">
-                                                                    <div class="col-md-8">
-                                                                        <h3>{{"Vacancy.JobDescrption" | translate}} : {{vacancy.JobDescription}}</h3>
-                                                                        <h3>{{"Vacancy.SalaryRangeFrom" | translate}} : {{vacancy.SalaryRangeFrom}}</h3>
-                                                                        <h3>{{"Vacancy.SalaryRangeTo" | translate}} : {{vacancy.SalaryRangeTo }}</h3>
-                                                                        <h3>{{"Vacancy.SalaryCurancy" | translate}} : <span ng-repeat="name in vacancy.SalaryCurancy.Name |filter:currentLang">{{name.Text}}</span></h3>
-                                                                    </div>
-                                                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h3>{{"Vacancy.AvailableFrom" | translate}} : {{vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</h3>
+                                        <h3>{{"Vacancy.AvailableTo" | translate}} : {{vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</h3>
+                                        <h3>{{"Vacancy.EducationalLevel" | translate}} : <span ng-repeat="name in vacancy.EducationalLevel.Name |filter:currentLang">{{name.Text}}</span></h3>
+                                        <h3>{{"Vacancy.JobType" | translate}} : <span ng-repeat="name in vacancy.JobType.Name |filter:currentLang">{{name.Text}}</span></h3>
+                                    </div>
+                                </div>
 
-                                                                <div class="row">
-                                                                    <div class="col-md-8">
-                                                                        <h3>{{"Vacancy.AvailableFrom" | translate}} : {{vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</h3>
-                                                                        <h3>{{"Vacancy.AvailableTo" | translate}} : {{vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</h3>
-                                                                        <h3>{{"Vacancy.EducationalLevel" | translate}} : <span ng-repeat="name in vacancy.EducationalLevel.Name |filter:currentLang">{{name.Text}}</span></h3>
-                                                                        <h3>{{"Vacancy.JobType" | translate}} : <span ng-repeat="name in vacancy.JobType.Name |filter:currentLang">{{name.Text}}</span></h3>
-                                                                    </div>
-                                                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h3>{{"Vacancy.Industry" | translate}} : <span ng-repeat="name in vacancy.Industry.Name |filter:currentLang">{{name.Text}}</span></h3>
+                                        <h3>{{"Vacancy.RequiredExperiance" | translate}} : {{vacancy.RequiredExperience}}</h3>
+                                        <h3>{{"Vacancy.Country" | translate}} : <span ng-repeat="name in vacancy.Country.Name |filter:currentLang">{{name.Text}}</span></h3>
+                                        <h3>{{"Vacancy.City" | translate}} : <span ng-repeat="name in vacancy.City.Name |filter:currentLang">{{name.Text}}</span></h3>
+                                        <h3>{{"Vacancy.Area" | translate}} : <span ng-repeat="name in vacancy.Area.Name |filter:currentLang">{{name.Text}}</span></h3>
+                                    </div>
+                                </div>
 
-                                                                <div class="row">
-                                                                    <div class="col-md-8">
-                                                                        <h3>{{"Vacancy.Industry" | translate}} : <span ng-repeat="name in vacancy.Industry.Name |filter:currentLang">{{name.Text}}</span></h3>
-                                                                        <h3>{{"Vacancy.RequiredExperiance" | translate}} : {{vacancy.RequiredExperience}}</h3>
-                                                                        <h3>{{"Vacancy.Country" | translate}} : <span ng-repeat="name in vacancy.Country.Name |filter:currentLang">{{name.Text}}</span></h3>
-                                                                        <h3>{{"Vacancy.City" | translate}} : <span ng-repeat="name in vacancy.City.Name |filter:currentLang">{{name.Text}}</span></h3>
-                                                                        <h3>{{"Vacancy.Area" | translate}} : <span ng-repeat="name in vacancy.Area.Name |filter:currentLang">{{name.Text}}</span></h3>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-md-8">
-                                                                        <h3>{{"Vacancy.CareerLevel" | translate}} : <span ng-repeat="name in vacancy.CareerLevel.Name |filter:currentLang">{{name.Text}}</span></h3>
-                                                                        <h3>{{"Vacancy.HotJobFlag" | translate}} : <input type="checkbox" ng-model="vacancy.HotJobFlag" disabled="disabled"></h3>
-                                                                        <h3>{{"Vacancy.HideSalary" | translate}} : <input type="checkbox" ng-model="vacancy.HideSalary" disabled="disabled"></h3>
-                                                                        <h3>{{"Vacancy.HideCompany" | translate}} : <input type="checkbox" ng-model="vacancy.HideCompany" disabled="disabled"></h3>
-                                                                        <h3>{{"Vacancy.ReciveApplicationsByEmail" | translate}} : <input type="checkbox" ng-model="vacancy.ReciveApplicationsByEmail" disabled="disabled"></h3>
-                                                                        <h3>{{"Vacancy.SendRecommendedCandidatesDailyOrWeekly" | translate}} : <input type="checkbox" ng-model="vacancy.SendRecommendedCandidatesDailyOrWeekly" disabled="disabled"></h3>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <div class="col-md-10 col-md-offset-2">
-                                                            <div class="pull-right">
-
-                                                                <button ng-click="finish()" class="btn btn-primary">
-                                                                    {{"Buttons.Finish" | translate}}
-                                                                </button>
-
-                                                                <button ng-click="puplish()" class="btn btn-primary">
-                                                                    {{"Buttons.Publish" | translate}}
-                                                                </button>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h3>{{"Vacancy.CareerLevel" | translate}} : <span ng-repeat="name in vacancy.CareerLevel.Name |filter:currentLang">{{name.Text}}</span></h3>
+                                        <h3>{{"Vacancy.HotJobFlag" | translate}} : <input type="checkbox" ng-model="vacancy.HotJobFlag" disabled="disabled"></h3>
+                                        <h3>{{"Vacancy.HideSalary" | translate}} : <input type="checkbox" ng-model="vacancy.HideSalary" disabled="disabled"></h3>
+                                        <h3>{{"Vacancy.HideCompany" | translate}} : <input type="checkbox" ng-model="vacancy.HideCompany" disabled="disabled"></h3>
+                                        <h3>{{"Vacancy.ReciveApplicationsByEmail" | translate}} : <input type="checkbox" ng-model="vacancy.ReciveApplicationsByEmail" disabled="disabled"></h3>
+                                        <h3>{{"Vacancy.SendRecommendedCandidatesDailyOrWeekly" | translate}} : <input type="checkbox" ng-model="vacancy.SendRecommendedCandidatesDailyOrWeekly" disabled="disabled"></h3>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-2">
+                            <div class="pull-right">
+
+                                <button ng-click="finish()" class="btn btn-primary">
+                                    {{"Buttons.Finish" | translate}}
+                                </button>
+
+                                <button ng-click="puplish()" class="btn btn-primary">
+                                    {{"Buttons.Publish" | translate}}
+                                </button>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-          
         </div>
-
 
     </div>
-                </div>
+
+
+
+
 
 
 
