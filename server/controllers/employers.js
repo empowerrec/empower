@@ -40,11 +40,9 @@ exports.getEmployerById = function (req, res) {
 
 exports.getEmployerByUser = function (req, res) {
     Employer.findOne({$or:[{ '_id': req.user.Employer }, { User: req.user }]}).populate('ModifiedBy').exec(function(err, col) {
-<<<<<<< HEAD
-        if (col && col.Photo)
-=======
->>>>>>> origin/master
-        col.Photo = 'images/uploads/' + col.Photo;
+        if (col && col.Photo) {
+            col.Photo = 'images/uploads/' + col.Photo;
+        }
         res.send(col);
     });
 
