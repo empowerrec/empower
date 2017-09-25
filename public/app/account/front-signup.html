@@ -55,10 +55,12 @@
                 <div class="form-group row">
                     <label for="HearAboutUs" class="row control-label" style="display:inline;text-align:center">{{"HearAboutUs" | translate}}</label>
                     <div class="row">
-                        <select name="HearAboutUs" ng-model="HearAboutUs" required
-                                ng-options="hearAboutUs._id as hearAboutUs.Name[0].Text for hearAboutUs in hearAboutUss" class="form-control">
-                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
-                        </select>
+                        <div class="col-md-4">
+                            <select name="HearAboutUs" ng-model="HearAboutUs" required
+                                    ng-options="hearAboutUs._id as hearAboutUs.Name[0].Text for hearAboutUs in hearAboutUss" class="form-control">
+                                <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 

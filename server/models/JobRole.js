@@ -34,14 +34,33 @@ function createDefaultJobRoles() {
 
             JobRole.create({
                 Deleted : false, 
-                Name: [{"Text":"Administraion" , "Lang":"en"},{"Text":"اداري" , "Lang":"ar"}]
+                Name: [{ "Text":"Accounting" , "Lang":"en"},{"Text":"اداري" , "Lang":"ar"}]
 
           });
 
 
             JobRole.create({
                 Deleted : false, 
-                Name: [{"Text":"Banking" , "Lang":"en"},{"Text":"ايداع" , "Lang":"ar"}]
+                Name: [{ "Text":" Finance" , "Lang":"en"},{"Text":"ايداع" , "Lang":"ar"}]
+
+            });
+
+            JobRole.create({
+                Deleted: false,
+                Name: [{ "Text": " Admin", "Lang": "en" }, { "Text": "ايداع", "Lang": "ar" }]
+
+            });
+
+
+            JobRole.create({
+                Deleted: false,
+                Name: [{ "Text": " HR", "Lang": "en" }, { "Text": "ايداع", "Lang": "ar" }]
+
+            });
+
+            JobRole.create({
+                Deleted: false,
+                Name: [{ "Text": " IT", "Lang": "en" }, { "Text": "ايداع", "Lang": "ar" }]
 
             });
     }

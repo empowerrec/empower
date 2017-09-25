@@ -34,7 +34,7 @@ function createDefaultMilitaryStatuss() {
             MilitaryStatus.create({
                 Deleted : false,
                 Name: [
-                    { "Text": "Performed" , "Lang": "en" }
+                    { "Text": "Not Applicable" , "Lang": "en" }
                     , { "Text": "أدى الخدمة" , "Lang": "ar" }
                 ]
             });
@@ -42,14 +42,14 @@ function createDefaultMilitaryStatuss() {
             MilitaryStatus.create({
                 Deleted : false,
                 Name: [
-                    { "Text": "Postponded" , "Lang": "en" }
+                    { "Text": "Exempted" , "Lang": "en" }
                     , { "Text": "تأجيل" , "Lang": "ar" }
                 ]
             });
             
             MilitaryStatus.create({
                 Name: [
-                    { "Text": "Exemption" , "Lang": "en" }
+                    { "Text": "Completed" , "Lang": "en" }
                     , { "Text": "اعفاء" , "Lang": "ar" }
                 ]
             });

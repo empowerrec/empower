@@ -32,12 +32,22 @@ function createDefaultCompanyTypes() {
             
             CompanyType.create({
                 Deleted : false, 
-                Name: [{ "Text": "MultiNational" , "Lang": "en" }, { "Text": "„ ⁄œœ… «·Ã‰”Ì« " , "Lang": "ar" }]                        
+                Name: [{ "Text": "Retail" , "Lang": "en" }, { "Text": "„ ⁄œœ… «·Ã‰”Ì« " , "Lang": "ar" }]                        
             });
             
             CompanyType.create({
                 Deleted : false, 
-                Name: [{ "Text": "Regional" , "Lang": "en" }, { "Text": "«ﬁ·Ì„Ì…" , "Lang": "ar" }]                       
+                Name: [{ "Text": "Constructions" , "Lang": "en" }, { "Text": "«ﬁ·Ì„Ì…" , "Lang": "ar" }]                       
+            });
+
+            CompanyType.create({
+                Deleted: false,
+                Name: [{ "Text": "Healthcare, Hospitals, medical Services", "Lang": "en" }, { "Text": "„ ⁄œœ… «·Ã‰”Ì« ", "Lang": "ar" }]
+            });
+
+            CompanyType.create({
+                Deleted: false,
+                Name: [{ "Text": "Others", "Lang": "en" }, { "Text": "«ﬁ·Ì„Ì…", "Lang": "ar" }]
             });
         }
     });

@@ -44,6 +44,18 @@ function createDefaultMaritalStatuss() {
                 Name: [{"Text":"Married" , "Lang":"en"},{"Text":"متزوج" , "Lang":"ar"}]
 
             });
+
+            MaritalStatus.create({
+                Deleted: false,
+                Name: [{ "Text": " Divorced", "Lang": "en" }, { "Text": "متزوج", "Lang": "ar" }]
+
+            });
+
+            MaritalStatus.create({
+                Deleted: false,
+                Name: [{ "Text": "Widow(er)", "Lang": "en" }, { "Text": "متزوج", "Lang": "ar" }]
+
+            });
     }
   });
 }
