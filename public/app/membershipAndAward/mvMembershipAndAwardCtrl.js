@@ -34,9 +34,9 @@ angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $
 
     $scope.deleteMembershipAndAward = function (experiane) {
 
-        var array = $rootScope.jobSeeker.MembershipAndAwards;
+        var array = $rootScope.jobSeeker.MembershipsAndAwards;
 
-        $rootScope.jobSeeker.MembershipAndAwards.forEach(function (element) {
+        $rootScope.jobSeeker.MembershipsAndAwards.forEach(function (element) {
             if (element._id == experiane._id) {
                 var index = array.indexOf(element);
                 array.splice(index, 1);
@@ -63,10 +63,10 @@ angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $
             HonorAndAward: $scope.membershipAndAward.HonorAndAward,
             JobSeeker: $scope.membershipAndAward.JobSeeker
         };
-        if ($rootScope.jobSeeker.MembershipAndAwards == undefined)
-            $rootScope.jobSeeker.MembershipAndAwards = [];
+        if ($rootScope.jobSeeker.MembershipsAndAwards == undefined)
+            $rootScope.jobSeeker.MembershipsAndAwards = [];
 
-        $rootScope.jobSeeker.MembershipAndAwards.push(membershipAndAward);
+        $rootScope.jobSeeker.MembershipsAndAwards.push(membershipAndAward);
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
@@ -88,9 +88,9 @@ angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $
             _id: $scope.membershipAndAward._id
         };
 
-        var array = $rootScope.jobSeeker.MembershipAndAwards;
+        var array = $rootScope.jobSeeker.MembershipsAndAwards;
 
-        $rootScope.jobSeeker.MembershipAndAwards.forEach(function (element) {
+        $rootScope.jobSeeker.MembershipsAndAwards.forEach(function (element) {
             if (element._id == membershipAndAward._id) {
                 var index = array.indexOf(element);
                 array[index] = membershipAndAward;

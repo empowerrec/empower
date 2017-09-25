@@ -24,7 +24,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="membershipAndAward in jobSeeker.MembershipAndAwards" | filter:searchText | orderBy:sortOrder">
+                                    <tr ng-repeat="membershipAndAward in jobSeeker.MembershipsAndAwards" | filter:searchText | orderBy:sortOrder">
                                         <td><a href="#/membershipAndAwards/{{membershipAndAward._id}}">{{ membershipAndAward.Membership}}</a></td>
                                         <td>{{ membershipAndAward.HonorAndAward}}</td>
                                         <td><button ng-click="updateMembershipAndAward(membershipAndAward)"> {{"Buttons.Update" | translate}}</button></td>

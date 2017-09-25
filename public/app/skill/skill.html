@@ -48,7 +48,7 @@
                                                 {{"Skill.SkillType"| translate}}
                                             </label>
                                             <div class="col-md-4">
-                                                <select ng-model="skill.SkillType" ng-options="skillType._id as skillType.Name[0].Text for skillType in skillTypes"
+                                                <select ng-model="skill.SkillType._id" ng-options="skillType._id as skillType.Name[0].Text for skillType in skillTypes"
                                                         class="form-control">
                                                     <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                                                 </select>
@@ -59,7 +59,7 @@
                                                 {{"Skill.SkillLevel"| translate}}
                                             </label>
                                             <div class="col-md-4">
-                                                <select ng-model="skill.SkillLevel" ng-options="skillLevel._id as skillLevel.Name[0].Text for skillLevel in skillLevels"
+                                                <select ng-model="skill.SkillLevel._id" ng-options="skillLevel._id as skillLevel.Name[0].Text for skillLevel in skillLevels"
                                                         class="form-control">
                                                     <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                                                 </select>

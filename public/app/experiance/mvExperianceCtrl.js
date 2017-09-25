@@ -55,50 +55,52 @@ angular.module('app').controller('mvExperianceCtrl', function ($scope, $rootScop
     };
 
     $scope.add = function () {
-        createCity(function () {
+        if ($scope.experianceForm.$valid) {
+            createCity(function () {
 
-            var experiance = {
-                Company: $scope.experiance.Company,
-                JobSeeker: $scope.experiance.JobSeeker,
-                CompanySize: $scope.experiance.CompanySize,
-                CompanyType: $scope.experiance.CompanyType,
-                Country: $scope.experiance.Country,
-                City: $scope.experiance.City,
-                Position: $scope.experiance.Position,
-                CompanyWebsite: $scope.experiance.CompanyWebsite,
-                Salary: $scope.experiance.Salary,
-                JobRole: $scope.experiance.JobRole,
-                ReportTo: $scope.experiance.ReportTo,
-                Achievements: $scope.experiance.Achievements,
-                FunctionalTasks: $scope.experiance.FunctionalTasks,
-                PeriodFrom: $scope.experiance.PeriodFrom,
-                PeriodTo: $scope.experiance.PeriodTo,
-                Current: $scope.experiance.Current
-            };
-            if ($rootScope.jobSeeker.Experiances == undefined)
-                $rootScope.jobSeeker.Experiances = [];
+                var experiance = {
+                    Company: $scope.experiance.Company,
+                    JobSeeker: $scope.experiance.JobSeeker,
+                    CompanySize: $scope.experiance.CompanySize,
+                    CompanyType: $scope.experiance.CompanyType,
+                    Country: $scope.experiance.Country,
+                    City: $scope.experiance.City,
+                    Position: $scope.experiance.Position,
+                    CompanyWebsite: $scope.experiance.CompanyWebsite,
+                    Salary: $scope.experiance.Salary,
+                    JobRole: $scope.experiance.JobRole,
+                    ReportTo: $scope.experiance.ReportTo,
+                    Achievements: $scope.experiance.Achievements,
+                    FunctionalTasks: $scope.experiance.FunctionalTasks,
+                    PeriodFrom: $scope.experiance.PeriodFrom,
+                    PeriodTo: $scope.experiance.PeriodTo,
+                    Current: $scope.experiance.Current
+                };
+                if ($rootScope.jobSeeker.Experiances == undefined)
+                    $rootScope.jobSeeker.Experiances = [];
 
-            $rootScope.jobSeeker.Experiances.push(experiance);
+                $rootScope.jobSeeker.Experiances.push(experiance);
 
-            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-                mvNotifier.notify('JobSeeker has been updated!');
-                $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
-                    $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
-                }));
-                $scope.showForm = false;
-            }, function (reason) {
-                mvNotifier.error(reason);
+                mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                    mvNotifier.notify('JobSeeker has been updated!');
+                    $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                        $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+                    }));
+                    $scope.showForm = false;
+                }, function (reason) {
+                    mvNotifier.error(reason);
+                });
+
+
+
             });
-
-
-
-        });
-
+        };
 
     };
 
 
     $scope.update = function () {
+        if ($scope.experianceForm.$valid) {
         createCity(function () {
 
             var experiance = {
@@ -146,7 +148,7 @@ angular.module('app').controller('mvExperianceCtrl', function ($scope, $rootScop
 
 
         });
-
+        };
 
     };
 

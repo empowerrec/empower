@@ -24,10 +24,10 @@ angular.module('app').controller('mvEducationalInformationCtrl'
             $scope.updateMode = true;
             $scope.addMode = false;
             $scope.showForm = true;
-            educationalInformation.EducationalLevel = educationalInformation.EducationalLevel._id;
-            educationalInformation.Grade = educationalInformation.Grade._id;
-            if (educationalInformation.Country != undefined)
-                educationalInformation.Country = educationalInformation.Country._id;
+            //educationalInformation.EducationalLevel = educationalInformation.EducationalLevel._id;
+            //educationalInformation.Grade = educationalInformation.Grade._id;
+            //if (educationalInformation.Country != undefined)
+            //    educationalInformation.Country = educationalInformation.Country._id;
             $scope.educationalInformation = educationalInformation;
         }
 

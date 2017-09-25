@@ -1675,9 +1675,9 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
         $scope.updateMode = true;
         $scope.addMode = false;
         $scope.showForm = true;
-        course.TrainingCenter = course.TrainingCenter._id;
-        course.Specialization = course.Specialization._id;
-        course.Grade = course.Grade._id;
+        //course.TrainingCenter = course.TrainingCenter._id;
+        //course.Specialization = course.Specialization._id;
+        //course.Grade = course.Grade._id;
 
         $scope.course = course;
     }
@@ -1714,7 +1714,7 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
     };
 
     $scope.add = function () {
-
+        if ($scope.courseForm.$valid) {
         var course = {
             Title: $scope.course.Title,
             JobSeeker: $scope.course.JobSeeker,
@@ -1740,12 +1740,12 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
         }, function (reason) {
             mvNotifier.error(reason);
         });
-
+        };
     };
 
 
     $scope.update = function () {
-
+        if ($scope.courseForm.$valid) {
         var course = {
             Title: $scope.course.Title,
             JobSeeker: $scope.course.JobSeeker,
@@ -1776,7 +1776,7 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
         }, function (reason) {
             mvNotifier.error(reason);
         });
-
+        };
     };
 });
 angular.module('app').factory('mvCourse', function ($resource) {
@@ -1803,10 +1803,14 @@ angular.module('app').factory('mvSkill', function ($resource) {
     return SkillResource;
 });
 angular.module('app').controller('mvSkillCtrl', function ($scope, $rootScope, mvNotifier, mvSkillRepo, mvSkill, $routeParams
-    , $translate, mvIdentity, $location, mvCountryRepo, mvCountry, $q, mvJobSeekerRepo) {
+    , $translate, mvIdentity, $location, mvCountryRepo, mvCountry, $q, mvJobSeekerRepo, mvJobSeeker) {
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
     $("#currentLang").val($rootScope.currentLang);
+
+    $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+        $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+    }));
 
     $scope.skill = new mvSkill();
 
@@ -1848,6 +1852,10 @@ angular.module('app').controller('mvSkillCtrl', function ($scope, $rootScope, mv
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             //$location.path('/updateJobSeeker/Skills/' + mvIdentity.currentJobSeeker._id);
 
         }, function (reason) {
@@ -1869,6 +1877,10 @@ angular.module('app').controller('mvSkillCtrl', function ($scope, $rootScope, mv
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             $scope.showForm = false;
             //$location.path('/updateJobSeeker/Skills/' + mvIdentity.currentJobSeeker._id);
 
@@ -1899,6 +1911,10 @@ angular.module('app').controller('mvSkillCtrl', function ($scope, $rootScope, mv
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             $scope.showForm = false;
             //$location.path('/updateJobSeeker/Skills/' + mvIdentity.currentJobSeeker._id);
 
@@ -2027,10 +2043,13 @@ angular.module('app').factory('mvLanguageSkill', function ($resource) {
 });
 angular.module('app').controller('mvLanguageSkillCtrl', function ($scope, mvNotifier, mvLanguageSkillRepo,
     mvLanguageSkill, $routeParams, $translate,
-    mvIdentity, $location, $rootScope, mvJobSeekerRepo) {
+    mvIdentity, $location, $rootScope, mvJobSeekerRepo, mvJobSeeker) {
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
     $("#currentLang").val($rootScope.currentLang);
+    $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+        $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+    }));
 
     $scope.LanguageSkill = new mvLanguageSkill();
 
@@ -2072,6 +2091,10 @@ angular.module('app').controller('mvLanguageSkillCtrl', function ($scope, mvNoti
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             //$location.path('/updateJobSeeker/LanguageSkills/' + mvIdentity.currentJobSeeker._id);
 
         }, function (reason) {
@@ -2093,6 +2116,10 @@ angular.module('app').controller('mvLanguageSkillCtrl', function ($scope, mvNoti
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             $scope.showForm = false;
             //$location.path('/updateJobSeeker/LanguageSkills/' + mvIdentity.currentJobSeeker._id);
 
@@ -2123,6 +2150,10 @@ angular.module('app').controller('mvLanguageSkillCtrl', function ($scope, mvNoti
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
             $scope.showForm = false;
             //$location.path('/updateJobSeeker/LanguageSkills/' + mvIdentity.currentJobSeeker._id);
 
@@ -6719,9 +6750,7 @@ angular.module('app').controller('mvJobSeekerPhotoCtrl'
 angular.module('app').controller('mvJobSeekerCVCtrl'
     , function ($scope, mvNotifier, mvJobSeekerRepo, mvJobSeeker, mvGender, $routeParams, $rootScope, $q, Upload) {
     
-    var id = $routeParams.id;
-    $scope.addEnabled = false;
-    
+      
     var id = $routeParams.id;
     $scope.addEnabled = false;
 
@@ -7378,50 +7407,52 @@ angular.module('app').controller('mvExperianceCtrl', function ($scope, $rootScop
     };
 
     $scope.add = function () {
-        createCity(function () {
+        if ($scope.experianceForm.$valid) {
+            createCity(function () {
 
-            var experiance = {
-                Company: $scope.experiance.Company,
-                JobSeeker: $scope.experiance.JobSeeker,
-                CompanySize: $scope.experiance.CompanySize,
-                CompanyType: $scope.experiance.CompanyType,
-                Country: $scope.experiance.Country,
-                City: $scope.experiance.City,
-                Position: $scope.experiance.Position,
-                CompanyWebsite: $scope.experiance.CompanyWebsite,
-                Salary: $scope.experiance.Salary,
-                JobRole: $scope.experiance.JobRole,
-                ReportTo: $scope.experiance.ReportTo,
-                Achievements: $scope.experiance.Achievements,
-                FunctionalTasks: $scope.experiance.FunctionalTasks,
-                PeriodFrom: $scope.experiance.PeriodFrom,
-                PeriodTo: $scope.experiance.PeriodTo,
-                Current: $scope.experiance.Current
-            };
-            if ($rootScope.jobSeeker.Experiances == undefined)
-                $rootScope.jobSeeker.Experiances = [];
+                var experiance = {
+                    Company: $scope.experiance.Company,
+                    JobSeeker: $scope.experiance.JobSeeker,
+                    CompanySize: $scope.experiance.CompanySize,
+                    CompanyType: $scope.experiance.CompanyType,
+                    Country: $scope.experiance.Country,
+                    City: $scope.experiance.City,
+                    Position: $scope.experiance.Position,
+                    CompanyWebsite: $scope.experiance.CompanyWebsite,
+                    Salary: $scope.experiance.Salary,
+                    JobRole: $scope.experiance.JobRole,
+                    ReportTo: $scope.experiance.ReportTo,
+                    Achievements: $scope.experiance.Achievements,
+                    FunctionalTasks: $scope.experiance.FunctionalTasks,
+                    PeriodFrom: $scope.experiance.PeriodFrom,
+                    PeriodTo: $scope.experiance.PeriodTo,
+                    Current: $scope.experiance.Current
+                };
+                if ($rootScope.jobSeeker.Experiances == undefined)
+                    $rootScope.jobSeeker.Experiances = [];
 
-            $rootScope.jobSeeker.Experiances.push(experiance);
+                $rootScope.jobSeeker.Experiances.push(experiance);
 
-            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-                mvNotifier.notify('JobSeeker has been updated!');
-                $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
-                    $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
-                }));
-                $scope.showForm = false;
-            }, function (reason) {
-                mvNotifier.error(reason);
+                mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                    mvNotifier.notify('JobSeeker has been updated!');
+                    $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                        $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+                    }));
+                    $scope.showForm = false;
+                }, function (reason) {
+                    mvNotifier.error(reason);
+                });
+
+
+
             });
-
-
-
-        });
-
+        };
 
     };
 
 
     $scope.update = function () {
+        if ($scope.experianceForm.$valid) {
         createCity(function () {
 
             var experiance = {
@@ -7469,7 +7500,7 @@ angular.module('app').controller('mvExperianceCtrl', function ($scope, $rootScop
 
 
         });
-
+        };
 
     };
 
@@ -7689,12 +7720,15 @@ angular.module('app').factory('mvInterestRepo', function ($http, $q, mvInterest,
     };
 });
 angular.module('app').controller('mvInterestCtrl', function ($scope, $rootScope, mvNotifier, mvInterestRepo, mvInterest, $routeParams
-    , $translate, mvIdentity, $location, mvJobSeekerRepo) {
+    , $translate, mvIdentity, $location,
+    mvJobSeekerRepo, mvJobSeeker) {
 
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
     $("#currentLang").val($rootScope.currentLang);
-
+    $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+        $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+    }));
     $scope.interest = new mvInterest();
 
     if (mvIdentity.currentJobSeeker)
@@ -7741,7 +7775,7 @@ angular.module('app').controller('mvInterestCtrl', function ($scope, $rootScope,
     };
 
     $scope.add = function () {
-
+        if ($scope.interestForm.$valid) {
             var interest = {
                 Interest: $scope.interest.Interest,
                 JobSeeker: $scope.interest.JobSeeker
@@ -7753,16 +7787,19 @@ angular.module('app').controller('mvInterestCtrl', function ($scope, $rootScope,
 
             mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
                 mvNotifier.notify('JobSeeker has been updated!');
+                $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                    $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+                }));
                 $scope.showForm = false;
             }, function (reason) {
                 mvNotifier.error(reason);
             });
-
+        };
     };
 
 
     $scope.update = function () {
-
+        if ($scope.interestForm.$valid) {
             var interest = {
                 Interest: $scope.interest.Interest,
                 JobSeeker: $scope.interest.JobSeeker,
@@ -7781,11 +7818,14 @@ angular.module('app').controller('mvInterestCtrl', function ($scope, $rootScope,
 
             mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
                 mvNotifier.notify('JobSeeker has been updated!');
+                $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                    $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+                }));
                 $scope.showForm = false;
             }, function (reason) {
                 mvNotifier.error(reason);
             });
-
+        };
     };
     
 });
@@ -7947,9 +7987,9 @@ angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $
 
     $scope.deleteMembershipAndAward = function (experiane) {
 
-        var array = $rootScope.jobSeeker.MembershipAndAwards;
+        var array = $rootScope.jobSeeker.MembershipsAndAwards;
 
-        $rootScope.jobSeeker.MembershipAndAwards.forEach(function (element) {
+        $rootScope.jobSeeker.MembershipsAndAwards.forEach(function (element) {
             if (element._id == experiane._id) {
                 var index = array.indexOf(element);
                 array.splice(index, 1);
@@ -7959,6 +7999,10 @@ angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
+            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+            }));
+
         }, function (reason) {
             mvNotifier.error(reason);
         });
@@ -7972,10 +8016,10 @@ angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $
             HonorAndAward: $scope.membershipAndAward.HonorAndAward,
             JobSeeker: $scope.membershipAndAward.JobSeeker
         };
-        if ($rootScope.jobSeeker.MembershipAndAwards == undefined)
-            $rootScope.jobSeeker.MembershipAndAwards = [];
+        if ($rootScope.jobSeeker.MembershipsAndAwards == undefined)
+            $rootScope.jobSeeker.MembershipsAndAwards = [];
 
-        $rootScope.jobSeeker.MembershipAndAwards.push(membershipAndAward);
+        $rootScope.jobSeeker.MembershipsAndAwards.push(membershipAndAward);
 
         mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
             mvNotifier.notify('JobSeeker has been updated!');
@@ -7997,9 +8041,9 @@ angular.module('app').controller('mvMembershipAndAwardCtrl', function ($scope, $
             _id: $scope.membershipAndAward._id
         };
 
-        var array = $rootScope.jobSeeker.MembershipAndAwards;
+        var array = $rootScope.jobSeeker.MembershipsAndAwards;
 
-        $rootScope.jobSeeker.MembershipAndAwards.forEach(function (element) {
+        $rootScope.jobSeeker.MembershipsAndAwards.forEach(function (element) {
             if (element._id == membershipAndAward._id) {
                 var index = array.indexOf(element);
                 array[index] = membershipAndAward;
@@ -8202,66 +8246,67 @@ angular.module('app').controller('mvProfessionalCertificationCtrl', function ($s
     };
 
     $scope.add = function () {
+        if ($scope.professionalCertificationForm.$valid) {
+            var professionalCertification = {
+                CertificationName: $scope.professionalCertification.CertificationName,
+                JobSeeker: $scope.professionalCertification.JobSeeker,
+                InstitutionName: $scope.professionalCertification.InstitutionName,
+                DateIssued: $scope.professionalCertification.DateIssued,
+                CountryOfExamination: $scope.professionalCertification.CountryOfExamination,
+                OverallGradeGPA: $scope.professionalCertification.OverallGradeGPA,
+                Summary: $scope.professionalCertification.Summary
+            };
+            if ($rootScope.jobSeeker.ProfessionalCertifications == undefined)
+                $rootScope.jobSeeker.ProfessionalCertifications = [];
 
-        var professionalCertification = {
-            CertificationName: $scope.professionalCertification.CertificationName,
-            JobSeeker: $scope.professionalCertification.JobSeeker,
-            InstitutionName: $scope.professionalCertification.InstitutionName,
-            DateIssued: $scope.professionalCertification.DateIssued,
-            CountryOfExamination: $scope.professionalCertification.CountryOfExamination,
-            OverallGradeGPA: $scope.professionalCertification.OverallGradeGPA,
-            Summary: $scope.professionalCertification.Summary
+            $rootScope.jobSeeker.ProfessionalCertifications.push(professionalCertification);
+
+            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('JobSeeker has been updated!');
+                $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                    $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+                }));
+                $scope.showForm = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
         };
-        if ($rootScope.jobSeeker.ProfessionalCertifications == undefined)
-            $rootScope.jobSeeker.ProfessionalCertifications = [];
-
-        $rootScope.jobSeeker.ProfessionalCertifications.push(professionalCertification);
-
-        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-            mvNotifier.notify('JobSeeker has been updated!');
-            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
-                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
-            }));
-            $scope.showForm = false;
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
-
     };
 
 
     $scope.update = function () {
+        if ($scope.professionalCertificationForm.$valid) {
+            var professionalCertification = {
+                CertificationName: $scope.professionalCertification.CertificationName,
+                JobSeeker: $scope.professionalCertification.JobSeeker,
+                InstitutionName: $scope.professionalCertification.InstitutionName,
+                DateIssued: $scope.professionalCertification.DateIssued,
+                CountryOfExamination: $scope.professionalCertification.CountryOfExamination,
+                OverallGradeGPA: $scope.professionalCertification.OverallGradeGPA,
+                Summary: $scope.professionalCertification.Summary,
+                _id: $scope.professionalCertification._id
+            };
 
-        var professionalCertification = {
-            CertificationName: $scope.professionalCertification.CertificationName,
-            JobSeeker: $scope.professionalCertification.JobSeeker,
-            InstitutionName: $scope.professionalCertification.InstitutionName,
-            DateIssued: $scope.professionalCertification.DateIssued,
-            CountryOfExamination: $scope.professionalCertification.CountryOfExamination,
-            OverallGradeGPA: $scope.professionalCertification.OverallGradeGPA,
-            Summary: $scope.professionalCertification.Summary,
-            _id: $scope.professionalCertification._id
+            var array = $rootScope.jobSeeker.ProfessionalCertifications;
+
+            $rootScope.jobSeeker.ProfessionalCertifications.forEach(function (element) {
+                if (element._id == professionalCertification._id) {
+                    var index = array.indexOf(element);
+                    array[index] = professionalCertification;
+                }
+
+            });
+
+            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('JobSeeker has been updated!');
+                $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                    $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+                }));
+                $scope.showForm = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
         };
-
-        var array = $rootScope.jobSeeker.ProfessionalCertifications;
-
-        $rootScope.jobSeeker.ProfessionalCertifications.forEach(function (element) {
-            if (element._id == professionalCertification._id) {
-                var index = array.indexOf(element);
-                array[index] = professionalCertification;
-            }
-
-        });
-
-        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-            mvNotifier.notify('JobSeeker has been updated!');
-            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
-                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
-            }));
-            $scope.showForm = false;
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
     };
 });
 angular.module('app').controller('mvProfessionalCertificationListCtrl', function ($scope, mvProfessionalCertification, $translate, mvIdentity, mvProfessionalCertificationRepo,
@@ -8350,10 +8395,10 @@ angular.module('app').controller('mvEducationalInformationCtrl'
             $scope.updateMode = true;
             $scope.addMode = false;
             $scope.showForm = true;
-            educationalInformation.EducationalLevel = educationalInformation.EducationalLevel._id;
-            educationalInformation.Grade = educationalInformation.Grade._id;
-            if (educationalInformation.Country != undefined)
-                educationalInformation.Country = educationalInformation.Country._id;
+            //educationalInformation.EducationalLevel = educationalInformation.EducationalLevel._id;
+            //educationalInformation.Grade = educationalInformation.Grade._id;
+            //if (educationalInformation.Country != undefined)
+            //    educationalInformation.Country = educationalInformation.Country._id;
             $scope.educationalInformation = educationalInformation;
         }
 

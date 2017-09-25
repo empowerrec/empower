@@ -1,6 +1,6 @@
 angular.module('app').controller('mvLanguageSkillCtrl', function ($scope, mvNotifier, mvLanguageSkillRepo,
     mvLanguageSkill, $routeParams, $translate,
-    mvIdentity, $location, $rootScope, mvJobSeekerRepo) {
+    mvIdentity, $location, $rootScope, mvJobSeekerRepo, mvJobSeeker) {
     $scope.addEnabled = false;
     $scope.currentLang = $translate.use();
     $("#currentLang").val($rootScope.currentLang);

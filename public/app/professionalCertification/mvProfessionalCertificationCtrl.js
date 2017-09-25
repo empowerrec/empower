@@ -58,65 +58,66 @@ angular.module('app').controller('mvProfessionalCertificationCtrl', function ($s
     };
 
     $scope.add = function () {
+        if ($scope.professionalCertificationForm.$valid) {
+            var professionalCertification = {
+                CertificationName: $scope.professionalCertification.CertificationName,
+                JobSeeker: $scope.professionalCertification.JobSeeker,
+                InstitutionName: $scope.professionalCertification.InstitutionName,
+                DateIssued: $scope.professionalCertification.DateIssued,
+                CountryOfExamination: $scope.professionalCertification.CountryOfExamination,
+                OverallGradeGPA: $scope.professionalCertification.OverallGradeGPA,
+                Summary: $scope.professionalCertification.Summary
+            };
+            if ($rootScope.jobSeeker.ProfessionalCertifications == undefined)
+                $rootScope.jobSeeker.ProfessionalCertifications = [];
 
-        var professionalCertification = {
-            CertificationName: $scope.professionalCertification.CertificationName,
-            JobSeeker: $scope.professionalCertification.JobSeeker,
-            InstitutionName: $scope.professionalCertification.InstitutionName,
-            DateIssued: $scope.professionalCertification.DateIssued,
-            CountryOfExamination: $scope.professionalCertification.CountryOfExamination,
-            OverallGradeGPA: $scope.professionalCertification.OverallGradeGPA,
-            Summary: $scope.professionalCertification.Summary
+            $rootScope.jobSeeker.ProfessionalCertifications.push(professionalCertification);
+
+            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('JobSeeker has been updated!');
+                $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                    $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+                }));
+                $scope.showForm = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
         };
-        if ($rootScope.jobSeeker.ProfessionalCertifications == undefined)
-            $rootScope.jobSeeker.ProfessionalCertifications = [];
-
-        $rootScope.jobSeeker.ProfessionalCertifications.push(professionalCertification);
-
-        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-            mvNotifier.notify('JobSeeker has been updated!');
-            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
-                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
-            }));
-            $scope.showForm = false;
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
-
     };
 
 
     $scope.update = function () {
+        if ($scope.professionalCertificationForm.$valid) {
+            var professionalCertification = {
+                CertificationName: $scope.professionalCertification.CertificationName,
+                JobSeeker: $scope.professionalCertification.JobSeeker,
+                InstitutionName: $scope.professionalCertification.InstitutionName,
+                DateIssued: $scope.professionalCertification.DateIssued,
+                CountryOfExamination: $scope.professionalCertification.CountryOfExamination,
+                OverallGradeGPA: $scope.professionalCertification.OverallGradeGPA,
+                Summary: $scope.professionalCertification.Summary,
+                _id: $scope.professionalCertification._id
+            };
 
-        var professionalCertification = {
-            CertificationName: $scope.professionalCertification.CertificationName,
-            JobSeeker: $scope.professionalCertification.JobSeeker,
-            InstitutionName: $scope.professionalCertification.InstitutionName,
-            DateIssued: $scope.professionalCertification.DateIssued,
-            CountryOfExamination: $scope.professionalCertification.CountryOfExamination,
-            OverallGradeGPA: $scope.professionalCertification.OverallGradeGPA,
-            Summary: $scope.professionalCertification.Summary,
-            _id: $scope.professionalCertification._id
+            var array = $rootScope.jobSeeker.ProfessionalCertifications;
+
+            $rootScope.jobSeeker.ProfessionalCertifications.forEach(function (element) {
+                if (element._id == professionalCertification._id) {
+                    var index = array.indexOf(element);
+                    array[index] = professionalCertification;
+                }
+
+            });
+
+            mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
+                mvNotifier.notify('JobSeeker has been updated!');
+                $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
+                    $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
+                }));
+                $scope.showForm = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
         };
-
-        var array = $rootScope.jobSeeker.ProfessionalCertifications;
-
-        $rootScope.jobSeeker.ProfessionalCertifications.forEach(function (element) {
-            if (element._id == professionalCertification._id) {
-                var index = array.indexOf(element);
-                array[index] = professionalCertification;
-            }
-
-        });
-
-        mvJobSeekerRepo.updateCurrentJobSeeker($rootScope.jobSeeker).then(function () {
-            mvNotifier.notify('JobSeeker has been updated!');
-            $rootScope.jobSeeker = mvJobSeeker.get({ _id: 'profile' }, (function () {
-                $rootScope.jobSeeker.BirthDate = new Date($rootScope.jobSeeker.BirthDate);
-            }));
-            $scope.showForm = false;
-        }, function (reason) {
-            mvNotifier.error(reason);
-        });
     };
 });

@@ -53,7 +53,7 @@
                                         <label for="language" class="col-md-4 control-label">{{"LanguageSkill.Language"| translate}}</label>
 
                                         <div class="col-md-4">
-                                            <select ng-model="LanguageSkill.Language" ng-options="language._id as language.Name for language in languages"
+                                            <select ng-model="LanguageSkill.Language._id" ng-options="language._id as language.Name for language in languages"
                                                     class="form-control">
                                                 <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                                             </select>
@@ -64,7 +64,7 @@
                                             {{"LanguageSkill.LanguageLevel" | translate}}
                                         </label>
                                         <div class="col-md-4">
-                                            <select ng-model="LanguageSkill.LanguageSkillLevel" ng-options="languageLevel._id as languageLevel.Name[0].Text for languageLevel in languageLevels"
+                                            <select ng-model="LanguageSkill.LanguageSkillLevel._id" ng-options="languageLevel._id as languageLevel.Name[0].Text for languageLevel in languageLevels"
                                                     class="form-control">
                                                 <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                                             </select>

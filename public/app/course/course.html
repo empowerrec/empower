@@ -58,7 +58,7 @@
                                     <div class="form-group">
                                         <label for="trainingCenter" class="col-md-4 control-label">{{"Course.TrainingCenter"| translate}}</label>
                                         <div class="col-md-4">
-                                            <select ng-model="course.TrainingCenter" 
+                                            <select ng-model="course.TrainingCenter._id" 
                                                     ng-options="trainingCenter._id as trainingCenter.Name[0].Text for trainingCenter in trainingCenters"
                                                     class="form-control">
                                                 <option selected value="">{{"Menu.SelectValue" | translate}}</option>
@@ -69,7 +69,7 @@
                                     <div class="form-group">
                                         <label for="Specialization" class="col-md-4 control-label"> {{"Course.Specialization" | translate }} </label>
                                         <div class="col-md-4">
-                                            <select ng-model="course.Specialization" 
+                                            <select ng-model="course.Specialization._id" 
                                                     ng-options="specialization._id as specialization.Name[0].Text for specialization in specializations"
                                                     class="form-control">
                                                 <option selected value="">{{"Menu.SelectValue" | translate}}</option>
@@ -80,7 +80,7 @@
                                     <div class="form-group">
                                         <label for="Grade" class="col-md-4 control-label"> {{"Course.Grade" | translate }} </label>
                                         <div class="col-md-4">
-                                            <select ng-model="course.Grade" 
+                                            <select ng-model="course.Grade._id" 
                                                     ng-options="grade._id as grade.Name[0].Text for grade in grades"
                                                     class="form-control">
                                                 <option selected value="">{{"Menu.SelectValue" | translate}}</option>
@@ -112,11 +112,11 @@
                                     <div class="form-group">
                                         <div class="col-md-9 col-md-offset-2">
                                             <div class="pull-right">
-                                                <button ng-click="update()" ng-show="updateMode" ng-disabled="courseForm.$invalid" class="btn btn-primary">
+                                                <button ng-click="update()" ng-show="updateMode"  class="btn btn-primary">
                                                     {{"Buttons.Save" | translate}}
                                                 </button>
 
-                                                <button ng-click="add()" ng-show="addMode" ng-disabled="courseForm.$invalid||!addEnabled" class="btn btn-primary">
+                                                <button ng-click="add()" ng-show="addMode"  class="btn btn-primary">
                                                     {{"Buttons.Add" | translate}}
                                                 </button>
                                                 &nbsp;<a href="#/" class="btn btn-default">{{"Buttons.Cancel" | translate}}</a>

@@ -53,7 +53,7 @@
                                     <div class="form-group">
                                         <label for="EducationalLevel" class="col-md-4 control-label">{{"EducationalInformation.EducationalLevel"| translate}}</label>
                                         <div class="col-md-4">
-                                            <select name="EducationalLevel" ng-model="educationalInformation.EducationalLevel" required="required"
+                                            <select name="EducationalLevel" ng-model="educationalInformation.EducationalLevel._id" required="required"
                                                     ng-options="educationalLevel._id as educationalLevel.Name[0].Text for educationalLevel in educationalLevels" class="form-control">
                                                 <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                                             </select>
@@ -94,7 +94,7 @@
                                     <div class="form-group">
                                         <label for="Grade" class="col-md-4 control-label">{{"EducationalInformation.Grade"| translate}}</label>
                                         <div class="col-md-4">
-                                            <select name="Grade" ng-model="educationalInformation.Grade" required="required"
+                                            <select name="Grade" ng-model="educationalInformation.Grade._id" required="required"
                                                     ng-options="grade._id as grade.Name[0].Text for grade in grades" class="form-control">
                                                 <option selected value="">{{"Menu.SelectValue" | translate}}</option>
                                             </select>

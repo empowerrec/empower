@@ -20,9 +20,9 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
         $scope.updateMode = true;
         $scope.addMode = false;
         $scope.showForm = true;
-        course.TrainingCenter = course.TrainingCenter._id;
-        course.Specialization = course.Specialization._id;
-        course.Grade = course.Grade._id;
+        //course.TrainingCenter = course.TrainingCenter._id;
+        //course.Specialization = course.Specialization._id;
+        //course.Grade = course.Grade._id;
 
         $scope.course = course;
     }
@@ -59,7 +59,7 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
     };
 
     $scope.add = function () {
-
+        if ($scope.courseForm.$valid) {
         var course = {
             Title: $scope.course.Title,
             JobSeeker: $scope.course.JobSeeker,
@@ -85,12 +85,12 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
         }, function (reason) {
             mvNotifier.error(reason);
         });
-
+        };
     };
 
 
     $scope.update = function () {
-
+        if ($scope.courseForm.$valid) {
         var course = {
             Title: $scope.course.Title,
             JobSeeker: $scope.course.JobSeeker,
@@ -121,6 +121,6 @@ angular.module('app').controller('mvCourseCtrl', function ($scope, mvNotifier,
         }, function (reason) {
             mvNotifier.error(reason);
         });
-
+        };
     };
 });
