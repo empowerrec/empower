@@ -530,7 +530,9 @@ angular.module('app').run(function ($rootScope, $location, $translate, mvLookup,
 angular.module('app').factory('mvLookup'
     , function (mvIndustry, mvJobType, mvGender,mvHearAboutUs, mvMaritalStatus, mvMilitaryStatus, mvCarLicenceType,
         mvCountry, mvCity, mvLanguage,  mvArea, mvCurancy, mvCompanyType, mvUnivirsty, mvFaculty, 
-        mvSpecialization, mvGrade, mvReligion, mvVisaStatus, mvContactVia, mvCompanySize, mvTrainingCenter, mvEducationalLevel, mvNationality, mvJobRole, mvCareerLevel, $rootScope, mvSkillType, mvSkillLevel, mvLanguageLevel, mvReferenceRelationship) {
+        mvSpecialization, mvGrade, mvReligion, mvVisaStatus, mvContactVia, mvCompanySize,
+        mvTrainingCenter, mvEducationalLevel, mvNationality, mvJobRole, mvCareerLevel, $rootScope,
+        mvSkillType, mvSkillLevel, mvLanguageLevel, mvReferenceRelationship, mvTravelPreference) {
     
     return {
         getAllLookUps: function () {
@@ -564,6 +566,8 @@ angular.module('app').factory('mvLookup'
             $rootScope.jobRoles = mvJobRole.query({ currentLang: $rootScope.currentLang });
             $rootScope.nationalities = mvNationality.query({ currentLang: $rootScope.currentLang });
             $rootScope.referenceRelationships = mvReferenceRelationship.query({ currentLang: $rootScope.currentLang });
+            $rootScope.travelPreference = mvTravelPreference.query({ currentLang: $rootScope.currentLang });
+
 
         }
     };
@@ -5140,6 +5144,246 @@ angular.module('app').controller('mvIndustryListCtrl', function ($scope, mvIndus
 
 });
 
+angular.module('app').factory('mvTravelPreference', function ($resource) {
+    var TravelPreferenceResource = $resource('/api/TravelPreferences/:_id', {_id: '@id'},
+        {update: {method: 'PUT', isArray: false}
+    });
+    return TravelPreferenceResource;
+});
+angular.module('app').factory('mvCachedTravelPreference', function (mvCourse) {
+    var TravelPreferenceList;
+    return {
+        query: function () {
+            if (!TravelPreferenceList) {
+                TravelPreferenceList = mvTravelPreference.query();
+            }
+            return TravelPreferenceList;
+        }
+    };
+});
+angular.module('app').controller('mvTravelPreferenceDetailCtrl', function ($scope, mvTravelPreference, $routeParams) {
+    $scope.TravelPreference = mvTravelPreference.get({_id: $routeParams.id});
+});
+angular.module('app').controller('mvTravelPreferenceCtrl', function ($scope, mvNotifier, mvTravelPreferenceRepo, mvTravelPreference, $routeParams, $translate) {
+    var id = $routeParams.id;
+    $scope.descriptionText = "";
+    $scope.addEnabled = false;
+    $scope.currentLang = $translate.use();
+    if (id) {
+        $scope.TravelPreference = mvTravelPreference.get({ _id: id }, (function () {
+            if ($scope.TravelPreference.Name) {
+                for (var i = 0; i < $scope.TravelPreference.Name.length; i++) {
+                    
+                    if ($scope.TravelPreference.Name[i].Lang == $scope.currentLang) {
+                        $scope.descriptionText = $scope.TravelPreference.Name[i].Text;
+                        $scope.lang = $scope.TravelPreference.Name[i].Lang;
+                    }
+                }
+            }
+            $scope.updateMode = true;
+            $scope.addMode = false;
+        }));
+    } else {
+        $scope.TravelPreference = new mvTravelPreference();
+        $scope.updateMode = false;
+        $scope.addMode = true;
+        $scope.addEnabled = true;
+        $scope.TravelPreference.Deleted = false;
+    }
+    
+    $scope.getName = function (list , lang) {
+        var selectedLang;
+        if (lang)
+            selectedLang = lang;
+        else
+            selectedLang = $scope.currentLang;
+        
+        if (list) {
+            for (var i = 0; i < list.length; i++) {
+                
+                if (list[i].Lang == selectedLang) {
+                    return list[i].Text;
+                }
+            }
+        }
+    };
+    
+    
+    $scope.languages = [{ value: 'en', text: 'English' },
+        { value: 'ar', text: 'عربى' }
+        ];
+    
+    $scope.lang = $scope.languages[0].value;
+    
+    
+    $scope.update = function () {
+        //if ($scope.TravelPreferenceForm.$valid) {
+            
+            $scope.loop();
+            mvTravelPreferenceRepo.updateCurrentTravelPreference($scope.TravelPreference).then(function () {
+                mvNotifier.notify('TravelPreference has been updated!');
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        //}
+
+    };
+    
+    $scope.add = function () {
+        //if ($scope.TravelPreferenceForm.$valid && $scope.addEnabled) {
+            
+            $scope.loop();
+            
+            mvTravelPreferenceRepo.createTravelPreference($scope.TravelPreference).then(function () {
+                mvNotifier.notify('New TravelPreference Added!');
+                console.log("jj");
+                $scope.addEnabled = false;
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        //}
+    };
+    
+    $scope.loop = function () {
+        
+        var listItems = $("#Names li");
+        listItems.each(function (idx, li) {
+            $scope.lang = $(li).attr('id');
+            var input = $(li).find("#NameText2");
+            $scope.descriptionText = input.val();
+            $scope.saveName();
+
+        });
+    };
+    
+    $scope.saveName = function () {
+        
+        var old = false;
+        if ($scope.TravelPreference.Name) {
+            for (var i = 0; i < $scope.TravelPreference.Name.length; i++) {
+                var obj = $scope.TravelPreference.Name[i];
+                
+                if ($scope.TravelPreference.Name[i].Lang == $scope.lang) {
+                    $scope.TravelPreference.Name[i].Text = $scope.descriptionText;
+                    old = true;
+                }
+
+            }
+        }
+        
+        if (!old) {
+            if (!$scope.TravelPreference.Name) {
+                $scope.TravelPreference.Name = [];
+            }
+            var description = { "Lang": $scope.lang, "Text": $scope.descriptionText };
+            $scope.TravelPreference.Name.push(description);
+        }
+        $scope.descriptionText = "";
+        $scope.lang = "";
+
+    };
+     /*
+    $scope.updateName = function (TravelPreference) {
+      $scope.lang = TravelPreference.Lang;
+      $scope.descriptionText = TravelPreference.Text;
+    };
+
+    $scope.deleteName = function (TravelPreference) {
+
+        for(var i = 0; i < $scope.TravelPreference.Name.length; i++) {
+            var obj = $scope.TravelPreference.Name[i];
+            console.log("Old" + obj.Lang);
+            console.log("New " + TravelPreference.Lang);
+            if(TravelPreference.Lang == obj.Lang) {
+                $scope.TravelPreference.Name.splice(i, 1);
+                i--;
+            }
+        }
+        /*
+        var descriptions = $scope.TravelPreference.Name;
+        console.log(descriptions);
+        descriptions.delete(TravelPreference);
+        $scope.TravelPreference.Name = descriptions;
+
+
+
+    };*/
+
+
+});
+angular.module('app').controller('mvTravelPreferenceListCtrl', function ($scope, mvTravelPreference,$translate, mvTravelPreferenceRepo, queryBulider, mvNotifier,$rootScope, mvIdentity) {
+    $scope.currentUser = mvIdentity.currentUser;
+
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 10
+    };
+    
+    $scope.getData = function () {
+        mvTravelPreference.query({
+            query: queryBulider.qb("!Deleted"),
+            currentPage: $scope.paging.currentPage,
+            pageSize: $scope.paging.pageSize
+        }, (function (res) {
+            $scope.TravelPreferences = res[0].collection;
+            $scope.allDataCount = res[0].allDataCount;
+        }));
+    };
+    
+    $scope.deleteTravelPreference = function (TravelPreference) {
+        var ed = mvTravelPreference.get({ _id: TravelPreference._id }, (function () {
+            ed.Deleted = true;
+            ed.DeletedBy = mvIdentity.currentUser;
+            mvTravelPreferenceRepo.updateCurrentTravelPreference(ed).then(function () {
+                mvNotifier.notify('TravelPreference has been deleted!');
+                $scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+    
+    $scope.getData();
+
+});
+
+angular.module('app').factory('mvTravelPreferenceRepo', function ($http, $q, mvTravelPreference,mvIdentity) {
+    return {
+
+        createTravelPreference: function (newTravelPreferenceData) {
+
+            var newTravelPreference = new mvTravelPreference(newTravelPreferenceData);
+            newTravelPreference.CreatedBy = mvIdentity.currentUser;
+            var dfd = $q.defer();
+            console.log("Saving TravelPreference");
+            newTravelPreference.$save().then(function () {
+                console.log("TravelPreference Saved");
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        },
+        updateCurrentTravelPreference: function (newTravelPreferenceData) {
+            newTravelPreferenceData.ModifiedBy = mvIdentity.currentUser;
+
+            var dfd = $q.defer();
+
+            var clone = angular.copy(newTravelPreferenceData);
+            angular.extend(clone,newTravelPreferenceData);
+            clone.$update({currentUser:mvIdentity.currentUser}).then(function () {
+
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+
+            return dfd.promise;
+        }
+    };
+});
 angular.module('app').factory('mvJobType', function ($resource) {
     var jobTypeResource = $resource('/api/jobTypes/:_id', {_id: '@id'},
         {update: {method: 'PUT', isArray: false}

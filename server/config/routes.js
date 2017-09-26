@@ -4,6 +4,7 @@ var employers = require('../controllers/employers');
 var vacancies = require('../controllers/vacancies');
 var industries = require('../controllers/industries');
 var jobTypes = require('../controllers/jobTypes');
+var travelPreferences = require('../controllers/travelPreferences');
 var jobRoles = require('../controllers/jobRoles');
 var referenceRelationship = require('../controllers/referenceRelationships');
 
@@ -88,7 +89,14 @@ module.exports = function (app) {
 	app.get('/api/jobTypes', jobTypes.getJobTypes);
 	app.post('/api/jobTypes', jobTypes.createJobType);
 	app.put('/api/jobTypes', jobTypes.updateJobType);
-	app.get('/api/jobTypes/:id', jobTypes.getJobTypeById);
+    app.get('/api/jobTypes/:id', jobTypes.getJobTypeById);
+
+
+    app.get('/api/travelPreferences', travelPreferences.getTravelPreferences);
+    app.post('/api/travelPreferences', travelPreferences.createTravelPreference);
+    app.put('/api/travelPreferences', travelPreferences.updateTravelPreference);
+    app.get('/api/travelPreferences/:id', travelPreferences.getTravelPreferenceById);
+
 	
 	app.get('/api/jobRoles', jobRoles.getJobRoles);
 	app.post('/api/jobRoles', jobRoles.createJobRole);

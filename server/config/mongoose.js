@@ -56,6 +56,7 @@ var questionModel = require('../models/Question');
 var subUserInvitationModel = require('../models/SubUserInvitation');
 var subUserInvitationDetailModel = require('../models/SubUserInvitationDetail');
 var subUserFeatureModel = require('../models/SubUserFeature');
+var travelPreferenceModel = require('../models/TravelPreference');
 module.exports = function (config) {
 	mongoose.connect(config.db);
 	
@@ -126,5 +127,6 @@ module.exports = function (config) {
     questionModel.createDefaultQuestions();
     nationalityModel.createDefaultNationalities();
     referenceRelationshipModel.createDefaultReferenceRelationships();
+    travelPreferenceModel.createDefaultTravelPreferences();
 
 };

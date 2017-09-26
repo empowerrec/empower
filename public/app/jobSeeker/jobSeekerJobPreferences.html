@@ -126,7 +126,19 @@
                                         </div>
                                     </div>
                               
+                                <div class="form-group">
 
+                                    <label for="TravelPreference" class="col-md-4 control-label">{{"JobSeeker.TravelPreference"| translate}}</label>
+
+                                    <div class="col-md-4">
+                                        <select name="CareerLevel" ng-model="jobSeeker.TravelPreference" required="required"
+                                                ng-options="travelPreference._id as travelPreference.Name[0].Text for travelPreference in travelPreference"
+                                                class="form-control">
+                                            <option selected value="">{{"Menu.SelectValue" | translate}}</option>
+                                        </select>
+                                    </div>
+
+                                </div>
                                     
                                     <div class="form-group">
                                         <label for="JobType" class="col-md-4 control-label">{{"JobSeeker.EmploymentType"| translate}}</label>
