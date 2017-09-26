@@ -1371,7 +1371,8 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootSco
                 Password: $scope.password,
                 FirstName: name ,
                 LastName: $scope.lastname,
-                UserType: $scope.usertype
+                UserType: $scope.usertype,
+                EmailPreference : $scope.EmailPreference
              
             };
             
@@ -1406,6 +1407,7 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootSco
                 $scope.firstname = '';
                 $scope.lastname = '';
                 $scope.usertype = '';
+                $scope.EmailPreference = false;
                 if ($('#userregisterModal').length) {
                     $('#userregisterModal').modal('hide');
                 }
@@ -11905,7 +11907,7 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "Experiances": "Experiances",
                 "ExperiancesDescrption": "Profile Experience",
                 "ProfessionalCertifications": "Professional Certifications",
-                "ProfessionalCertificationsDescrption": "Profile Certification",
+                "ProfessionalCertificationsDescrption": "Professional Certifications <br/> Here you can list your professional certifications and licenses, from your commercial pilot’s license to your Six Sigma certification.",
                 "MembershipsAndAwards": "Memberships And Awards",
                 "Interests": "Interests",
                 'FirstName': 'First Name',
@@ -11923,7 +11925,7 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'Course': ' Professional Course',
                 'CourseDescrption': ' Profile Course',
                 'Skills': 'Skills',
-                'SkillsDecrption': 'Profile Skills',
+                'SkillsDecrption': 'Profile Skills <br/>This is your place to highlight special skills like proficiency in Photoshop or project management.',
                 'LanguageSkills': 'Language Skills',
                 'LanguageSkillsDecrption': 'Language Skills',
                 'ProfessionalOverviewDescrption': 'Profile Professional Overview',
@@ -11961,7 +11963,8 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "CV": "Upload CV",
                 "CVLink": "CV File",
                 "PhotoDescrption": "Profile Photo",
-                "CVDescrption": "You may upload and attach your own CV along with your Empower CV. However, to be able to apply to jobs, you must complete your Empower CV."
+                "CVDescrption": "You may upload and attach your own CV along with your Empower CV. However, to be able to apply to jobs, you must complete your Empower CV.",
+                "EmailPreference": "Email Preference",
 
 
             },

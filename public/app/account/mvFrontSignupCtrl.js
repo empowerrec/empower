@@ -19,7 +19,8 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootSco
                 Password: $scope.password,
                 FirstName: name ,
                 LastName: $scope.lastname,
-                UserType: $scope.usertype
+                UserType: $scope.usertype,
+                EmailPreference : $scope.EmailPreference
              
             };
             
@@ -54,6 +55,7 @@ angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootSco
                 $scope.firstname = '';
                 $scope.lastname = '';
                 $scope.usertype = '';
+                $scope.EmailPreference = false;
                 if ($('#userregisterModal').length) {
                     $('#userregisterModal').modal('hide');
                 }

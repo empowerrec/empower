@@ -12,7 +12,8 @@ var userSchema = mongoose.Schema({
         type: String,
         required: '{PATH} is required',
         unique: true
-    }, //This Is Email
+    } //This Is Email
+    ,EmailPreference: Boolean,
     Salt: {
         type: String,
         required: '{PATH} is required'

@@ -162,7 +162,8 @@
                 "CV": "Upload CV",
                 "CVLink": "CV File",
                 "PhotoDescrption": "Profile Photo",
-                "CVDescrption": "You may upload and attach your own CV along with your Empower CV. However, to be able to apply to jobs, you must complete your Empower CV."
+                "CVDescrption": "You may upload and attach your own CV along with your Empower CV. However, to be able to apply to jobs, you must complete your Empower CV.",
+                "EmailPreference": "Email Preference",
 
 
             },

@@ -351,6 +351,7 @@ var jobSeekerSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CareerLevel'
     },
+    
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

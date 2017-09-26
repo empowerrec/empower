@@ -52,6 +52,15 @@
                     <input name="employername" type="text" placeholder="{{'Employer.EmployerName' | translate}}" ng-model="employername"
                            ng-required="usertype == 'E'" class="form-control" />
                 </div>
+
+                <div class="form-group row">
+                    <label class="checkbox account-EmailPreference text-center">
+                        <input class="account_reg_term" type="checkbox" ng-model="EmailPreference" required title="EmailPreference">
+                        <i></i>
+                        {{'JobSeeker.EmailPreference' | translate}}
+                    </label>
+                </div>
+
                 <div class="form-group row">
                     <label for="HearAboutUs" class="row control-label" style="display:inline;text-align:center">{{"HearAboutUs" | translate}}</label>
                     <div class="row">
