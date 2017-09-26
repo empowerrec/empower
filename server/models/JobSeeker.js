@@ -325,10 +325,10 @@ var jobSeekerSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'JobRole'
     }],
-    TravelPreference: [{
+    TravelPreference: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'TravelPreference'
-    }],
+    },
     ReferenceFullName: { type: String },
     ReferencePosition: { type: String },
     ReferenceCompany: { type: String },
