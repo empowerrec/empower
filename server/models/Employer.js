@@ -45,6 +45,7 @@ var employerSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Country'
     },
+    CompanyProfile: { type: String },
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

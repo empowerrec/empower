@@ -12106,11 +12106,12 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "ContactTitle": "Contact Title",
                 "ContactMobileNumber": "Contact Mobile Number",
                 "ContactPersonInformation": "Contact Person Information",
-                "CompanyPhone": "CompanyPhone",
+                "CompanyPhone": "Company Phone",
                 "CompanyWebsite": "Company Website",
                 "CompanySize": "Company Size",
                 "Country": "Country",
-                "Photo": "Photo"
+                "Photo": "Photo",
+                "CompanyProfile":"Company Profile"
 
             },
             "JobSeeker": {
@@ -12221,7 +12222,8 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 "SalaryRangeFrom": "Salary From",
                 "SalaryRangeTo": "To",
                 "SalaryCurancy": "Curancy",
-                "RequiredExperiance": "Required Experience",
+                "RequiredExperianceFrom": "Required Experience From",
+                "RequiredExperianceTo": "Required Experience To",
                 "JobType": "Job Type",
                 "Industry": "Industry",
                 "Country": "Country",
@@ -12236,7 +12238,8 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'HideSalary': 'Hide Salary',
                 'ReciveApplicationsByEmail': 'Recive Applications By Email',
                 'HideCompany': 'Hide Company',
-                'SendRecommendedCandidatesDailyOrWeekly': 'Send Recommended Candidates Daily Or Weekly'
+                'SendRecommendedCandidatesDaily': 'Send Recommended Candidates Daily',
+                'SendRecommendedCandidatesWeekly': 'Send Recommended Candidates Weekly'
 
             },
             'City': {

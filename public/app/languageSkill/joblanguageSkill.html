@@ -5,31 +5,39 @@
 
                 <div class="form-group">
 
-                    <label for="language" class="col-md-2 control-label">{{"LanguageSkill.Language"| translate}}</label>
+                    <label for="language" class="col-md-3 control-label">{{"LanguageSkill.Language"| translate}}</label>
 
 
-                    <div class="col-md-3">
+                    <div class="col-md-9 custom-controls-stacked">
                       
-                        <label ng-repeat="n in languages">
-                            <input type="radio" name="lang" ng-model="languageSkill.Language" ng-value="n" /> {{n.Name}}
-                        </label>
+                        <label ng-repeat="n in languages" class="custom-control custom-radio">
+                            <input type="radio" name="lang" 
+                             ng-model="languageSkill.Language" 
+                             ng-value="n" class="custom-control-input"/> 
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">{{n.Name}}</span>
+                      </label>
                     </div>
-
-                    <label for="LanguageSkillLevel" class="col-md-2 control-label">
-                        {{"LanguageSkill.LanguageLevel" | translate}}
-                    </label>
-
-                    <div class="col-md-3">
-                       
-
-                        <label ng-repeat="n in languageLevels">
-                            <input type="radio" name="skill" ng-model="languageSkill.LanguageSkillLevel" ng-value="n" /> {{n.Name[0].Text}}
-                        </label>
                     </div>
+                    <div class="form-group">
+                        <label for="LanguageSkillLevel" class="col-md-3 control-label">
+                            {{"LanguageSkill.LanguageLevel" | translate}}
+                        </label>
 
-                  
+                        <div class="col-md-9">
+                                <label ng-repeat="n in languageLevels" class="custom-control custom-radio">
+                                    <input type="radio" name="skill" 
+                                     ng-model="languageSkill.LanguageSkillLevel" ng-value="n" 
+                                           class="custom-control-input"/> 
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">{{n.Name[0].Text}}</span>
 
-                </div>
+                          </label>
+                        </div>
+
+
+
+                    </div>
         <div class="form-group">
             <div class="col-md-10 col-md-offset-2">
                 <div class="pull-right">
@@ -43,10 +51,17 @@
             </div>
         </div>
                 <div class="form-group">
-                    <table>
+                    <h5>Selected : </h5>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Language</th>
+                            <th>Level</th>
+                            <th></th>
+                        </tr>
                         <tr ng-repeat="langSkill in vacancy.LanguageSkills">
                             
                             <td>{{langSkill.Language.Name}}</td>
+                        
                             <td>{{langSkill.LanguageLevel.Name[0].Text}}</td>
                             <td>
                                 <button ng-click="delete(langSkill)" ng-disabled="languageSkillForm.$invalid" >

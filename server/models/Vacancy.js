@@ -16,7 +16,8 @@ var VacancySchema = mongoose.Schema({
     HideSalary: { type: Boolean },
     HideCompany: { type: Boolean },
     ReciveApplicationsByEmail: { type: Boolean },
-    SendRecommendedCandidatesDailyOrWeekly: { type: Boolean },
+    SendRecommendedCandidatesDaily: { type: Boolean },
+    SendRecommendedCandidatesWeekly: { type: Boolean },
     Puplished: { type: Boolean },
     Gender: { type: Boolean },
     
@@ -84,7 +85,8 @@ var VacancySchema = mongoose.Schema({
     JobDescription: { type: String },
     JobTitle: { type: String },
     JobRequirements: { type: String },
-    RequiredExperience  : { type: Number },
+    RequiredExperienceFrom: { type: Number },
+    RequiredExperienceTo: { type: Number },
     Position: { type: String }, 
     Benfits: { type: String },
    

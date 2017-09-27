@@ -260,16 +260,29 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="requiredExperiance" class="col-md-4 control-label">
-                                        {{"Vacancy.RequiredExperiance"| translate}}
+                                    <label for="requiredExperianceFrom" class="col-md-4 control-label">
+                                        {{"Vacancy.RequiredExperianceFrom"| translate}}
                                     </label>
 
                                     <div class="col-md-2">
-                                        <input name="requiredExperiance" type="number" placeholder="{{'Vacancy.RequiredExperiance' | translate}}"
+                                        <input name="requiredExperianceFrom" type="number" placeholder="{{'Vacancy.RequiredExperianceFrom' | translate}}"
                                                ng-model="vacancy.RequiredExperience" required="required"
                                                class="form-control" />
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="requiredExperianceTo" class="col-md-4 control-label">
+                                        {{"Vacancy.RequiredExperianceTo"| translate}}
+                                    </label>
+
+                                    <div class="col-md-2">
+                                        <input name="requiredExperianceTo" type="number" placeholder="{{'Vacancy.RequiredExperianceTo' | translate}}"
+                                               ng-model="vacancy.RequiredExperienceTo" required="required"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
 
                                     <label for="CareerLevel" class="col-md-4 control-label">{{"Vacancy.CareerLevel"| translate}}</label>
@@ -336,10 +349,23 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="SendRecommendedCandidatesDailyOrWeekly" class="col-md-7 control-label">{{"Vacancy.SendRecommendedCandidatesDailyOrWeekly" | translate}}</label>
+                                    <label for="SendRecommendedCandidatesDaily" class="col-md-7 control-label">{{"Vacancy.SendRecommendedCandidatesDaily" | translate}}</label>
                                     <div class="col-sm-1">
-                                        <input name="SendRecommendedCandidatesDailyOrWeekly" type="checkbox" placeholder="{{'Vacancy.SendRecommendedCandidatesDailyOrWeekly' | translate}}"
+                                        <input name="SendRecommendedCandidatesDaily" type="checkbox" placeholder="{{'Vacancy.SendRecommendedCandidatesDaily' | translate}}"
                                                ng-model="vacancy.SendRecommendedCandidatesDailyOrWeekly" class="form-control-md-first" />
+                                    </div>
+
+
+
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="SendRecommendedCandidatesWeekly" class="col-md-7 control-label">{{"Vacancy.SendRecommendedCandidatesWeekly" | translate}}</label>
+                                    <div class="col-sm-1">
+                                        <input name="SendRecommendedCandidatesWeekly" type="checkbox" placeholder="{{'Vacancy.SendRecommendedCandidatesWeekly' | translate}}"
+                                               ng-model="vacancy.SendRecommendedCandidatesWeekly" class="form-control-md-first" />
                                     </div>
 
 

@@ -18,26 +18,30 @@
                                         <label for="Text" class="col-md-4 control-label">
                                             {{"Employer.EmployerName" | translate }}
                                         </label>
-                                        <div class="col-md-8">
-
+                                        </div>
+                                    <div class="form-group">
+                                      
                                             <ul ng-repeat="lang in languages" id="employerNames">
 
                                                 <li id="{{lang.value}}">
+                                                    <div class="form-group">
+                                                        <label for="Text" class="col-md-4 control-label">
+                                                            {{ lang.text}}
+                                                        </label>
 
-                                                    {{ lang.text}}
-                                                    <input id="EmployerNameText2" type="text"
-                                                           placeholder="{{'Employer.EmployerName' | translate}}"
-                                                           value="{{getName(employer.EmployerName , lang.value)}}"
-                                                           class="form-control" />
+                                                        <div class="col-md-4">
+                                                            <input id="EmployerNameText2" type="text"
+                                                                   placeholder="{{'Employer.EmployerName' | translate}}"
+                                                                   value="{{getName(employer.EmployerName , lang.value)}}"
+                                                                   class="form-control" />
+                                                        </div>
+                                                    </div>
 
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-
-
-
+                               
                                 <div class="form-group">
                                     <label for="photo" class="col-md-4 control-label">
                                         {{"Employer.Photo" | translate }}
@@ -74,7 +78,7 @@
                                                class="form-control" />
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!--<div class="form-group">
                                     <label for="averageNumberOfJobOpeningsPerMonth" class="col-md-4 control-label">
                                         {{
                                                                 "Employer.AverageNumberOfJobOpeningsPerMonth"
@@ -87,7 +91,7 @@
                                                ng-model="employer.AverageNumberOfJobOpeningsPerMonth"
                                                class="form-control" />
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <div class="form-group">
                                     <label for="companyPhone" class="col-md-4 control-label">
@@ -139,6 +143,21 @@
                     </div>-->
                                 </div>
 
+
+                                <div class="form-group">
+                                    <label for="companyProfile" class="col-md-4 control-label">
+                                        {{
+                                                                "Employer.CompanyProfile"
+                                                                | translate
+                                        }}
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-9">
+                                        <textarea name="companyWebsite" type="text" placeholder="{{'Employer.CompanyProfile' | translate}}"
+                                                  ng-model="employer.CompanyProfile" required="required" class="form-control" rows="8" />
+                                    </div>
+                                </div>
 
                                 <h5>
                                     {{"Employer.ContactPersonInformation"| translate}}

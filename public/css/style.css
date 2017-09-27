@@ -593,6 +593,7 @@ ul,ol {
 	margin-top:0;
 	margin-bottom:.82142857142857em;
 	padding-left:2.1428571428571em;
+    list-style-type: none;
 }
 
 ul ul,ol ul,ul ol,ol ol {
