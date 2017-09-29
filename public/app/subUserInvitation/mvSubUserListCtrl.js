@@ -1,9 +1,10 @@
-angular.module('app').controller('mvSubUserListCtrl', function ($scope, queryBulider, mvNotifier, mvUser) {
+angular.module('app').controller('mvSubUserListCtrl', function ($scope, queryBulider, mvIdentity, mvSubUser, mvNotifier) {
     //$scope.users = mvUser.query();
-    console.log(mvUser.query());
+    //console.log(mvUser.query());
     //console.log(mvUserPackage.query());
     //console.log($scope.users);
-
+    var curUser = mvIdentity.currentUser._id;
+    //var curUser = '5975060ec66dc80400dd19e9';
     $scope.paging = {
         currentPage: 1,
         maxPagesToShow: 5,
@@ -11,8 +12,8 @@ angular.module('app').controller('mvSubUserListCtrl', function ($scope, queryBul
     };
 
     $scope.getData = function () {
-        mvUser.query({
-            query: queryBulider.qb("UserType=='S'&&!Deleted"),
+        mvSubUser.query({
+            query: queryBulider.qb("!Deleted&&" + "Employer=='" + curUser + "'"),
             currentPage: $scope.paging.currentPage,
             pageSize: $scope.paging.pageSize
         }, (function (res) {

@@ -1,4 +1,5 @@
 angular.module('app').controller('mvSubUserInvitationListCtrl', function ($scope, mvSubUserInvitation,$translate, mvIdentity, mvSubUserInvitationRepo, mvNotifier, queryBulider) {
+    var curUser = mvIdentity.currentUser._id;
     $scope.currentUser = mvIdentity.currentUser;
     
     $scope.paging = {
@@ -9,7 +10,7 @@ angular.module('app').controller('mvSubUserInvitationListCtrl', function ($scope
     
     $scope.getData = function () {
         mvSubUserInvitation.query({
-            query: queryBulider.qb("!Deleted"),
+            query: queryBulider.qb("!Deleted&&" + "Employer=='" + curUser +"'"),
             currentPage: $scope.paging.currentPage,
             pageSize: $scope.paging.pageSize
         }, (function (res) {

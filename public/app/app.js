@@ -369,7 +369,7 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/applicants', {
             templateUrl: '/partials/applicant/applicant-list.html',
             controller: 'mvApplicantListCtrl'
-        }).when('/vacancyApplicants/:vacancyId', {
+        }).when('/vacancyApplicants/:vacancyId/:status', {
             templateUrl: '/partials/applicant/applicant-list.html',
             controller: 'mvApplicantListCtrl'
         }).when('/applicants/arrangeInterview/:id', {

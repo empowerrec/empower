@@ -351,6 +351,7 @@
                 "Reject": "Decline",
                 "Rollback": "Rollback",
                 "ShortList": "ShortList",
+                "OK": "OK",
                 "Approve": "Approve"
             },
             "Menu": {
@@ -379,6 +380,7 @@
                 "InviteSubUser": "Invite Sub User",
                 "SignUpSubUser": "SignUpSubUser",
                 "subUserFeatures": "SubUserFeatures",
+                "subUsers": "SubUsers",
                 "Experiances": "Experiances",
                 "ProfessionalCertifications": "Professional Certifications",
                 "MembershipsAndAwards": "Memberships & Awards",
@@ -768,6 +770,7 @@
                 "Reject": "رفض",
                 "Rollback": "رجوع",
                 "ShortList": "قائمة مختصره",
+                "OK": "تمام",
                 "Approve": "مقبول"
             },
             "Menu": {
@@ -796,6 +799,7 @@
                 "InviteSubUser": "دعوة المستخدمين",
                 "SignUpSubUser": "SignUpSubUser",
                 "subUserFeatures": "SubUserFeatures",
+                "subUsers": "SubUsers",
                 "Experiances": "الخبرات",
                 "ProfessionalCertifications": "الشهادات المهنية",
                 "MembershipsAndAwards": "العضويات والجوائز",

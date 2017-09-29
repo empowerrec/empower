@@ -66,7 +66,8 @@ module.exports = function (app) {
 	
 	app.get('/api/users', authentication.requiresRole(['A', 'J']), users.getUsers);
 	app.post('/api/users', users.createUser);
-	app.put('/api/users', users.updateUser);
+	app.put('/api/users', users.updateUser); 
+    app.get('/api/subUsers', users.getUsers);
 
 	app.get('/api/employers', authentication.requiresRole(['A', 'J']), employers.getEmployers);
 	app.post('/api/employers', employers.createEmployer);

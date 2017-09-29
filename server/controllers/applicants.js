@@ -12,19 +12,19 @@ exports.getApplicants = function (req, res) {
             res.send(col);
         });
     } else {
-        Applicant.find({ 'Name.Lang': { "$eq": "en" } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
-            res.send(col);
-        });
-        //Applicant.find(JSON.parse(req.query.query))
-        //    .populate({ path: 'Vacancy', populate: { path: 'Employer', model: 'Employer', select: 'EmployerName' } })
-        //    .populate({ path: 'JobSeeker', match: { "BirthDate": "1979-09-10T22:00:00.000Z"} })
-        //    .populate('ModifiedBy').populate('CreatedBy')
-        //    .limit(pageSize).skip(pageSize * (currentPage - 1))
-        //    .exec(function (err, col) {
-        //        Applicant.count(JSON.parse(req.query.query)).exec(function (errr, count) {
-        //            res.send([{ collection: col, allDataCount: count }]);
-        //        });
-        //    });
+        //Applicant.find({ 'Name.Lang': { "$eq": "en" } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
+        //    res.send(col);
+        //});
+        Applicant.find(JSON.parse(req.query.query))
+            .populate({ path: 'Vacancy', populate: { path: 'Employer', model: 'Employer', select: 'EmployerName' } })
+            .populate({ path: 'JobSeeker'})
+            .populate('ModifiedBy').populate('CreatedBy')
+            .limit(pageSize).skip(pageSize * (currentPage - 1))
+            .exec(function (err, col) {
+                Applicant.count(JSON.parse(req.query.query)).exec(function (errr, count) {
+                    res.send([{ collection: col, allDataCount: count }]);
+                });
+            });
     }
 
 };

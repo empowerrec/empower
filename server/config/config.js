@@ -4,6 +4,7 @@ var rootPath = path.normalize(__dirname + '/../../');
 module.exports = {
     development: {
         db: 'mongodb://localhost/empower',
+        //db: 'mongodb://ali:123@ds041486.mlab.com:41486/empower',
         rootPath: rootPath,
         port: process.env.PORT || 3030,
         sessionSecret: 'developmentSessionSecret',

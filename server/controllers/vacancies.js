@@ -17,16 +17,19 @@ exports.getVacancies = function (req, res) {
             .populate('ModifiedBy').populate('CreatedBy')
             .populate('Industry').populate('Country')
             .limit(pageSize)
+            .sort({ createdAt: 'desc' })
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
             Vacancy.count({ $and: [{ Industry: req.query.Industry }, { Deleted: false }] }).exec(function (errr, count) {
                 res.send([{ collection: col, allDataCount: count }]);
             });
         });
-    } else if (req.query.jobSeeker) {
+    }
+    else if (req.query.jobSeeker) {
         Vacancy.find(JSON.parse(req.query.query)).populate('ModifiedBy')
             .populate('CreatedBy').populate('Industry').populate('Country')
             .limit(pageSize)
+            .sort({ createdAt: 'desc' })
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
             Vacancy.count(JSON.parse(req.query.query)).exec(function (errr, count) {
@@ -38,6 +41,7 @@ exports.getVacancies = function (req, res) {
         console.log(xx);
         Vacancy.find(JSON.parse(req.query.query)).populate('Industry')
             .populate('ModifiedBy').populate('CreatedBy').populate('Country')
+            .sort({ createdAt: 'desc' })
             .limit(pageSize)
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
@@ -48,6 +52,7 @@ exports.getVacancies = function (req, res) {
     } else if (req.user){
         Vacancy.find({ CreatedBy: req.user, Deleted: false }).populate('ModifiedBy')
             .populate('CreatedBy').populate('Industry').populate('Country').limit(pageSize)
+            .sort({ createdAt: 'desc' })
             .skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
             Vacancy.count({ CreatedBy: req.user, Deleted : false }).exec(function (errr, count) {
@@ -58,6 +63,7 @@ exports.getVacancies = function (req, res) {
         Vacancy.find({ Deleted: false }).populate('ModifiedBy')
             .populate('CreatedBy').populate('Industry').populate('Country').limit(pageSize)
             .skip(pageSize * (currentPage - 1))
+            .sort({ createdAt: 'desc' })
             .exec(function (err, col) {
                 Vacancy.count({ Deleted: false }).exec(function (errr, count) {
                     res.send([{ collection: col, allDataCount: count }]);
