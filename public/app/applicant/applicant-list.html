@@ -38,11 +38,11 @@
                
                
                 <!--<td><a class="btn btn-danger" ng-click="deleteApplicant(applicant)"> {{"Buttons.Delete" | translate}}</a></td>-->
-                <td ng-show="{{applicant.Status == 'N' || applicant.Status == 'R'}}"><a class="btn btn-success" ng-click="shortListApplicant(applicant)" >   {{"Buttons.ShortList" | translate}}</a></td>
-                <td ng-show="{{applicant.Status == 'S' || applicant.Status == 'O'}}"><a class="btn btn-success" ng-click="approveApplicant(applicant)" > {{"Buttons.Approve" | translate}}</a></td>
-                <td ng-show="{{applicant.Status == 'N' || applicant.Status == 'O'}}"><a class="btn btn-danger" ng-click="rejectApplicant(applicant)" >   {{"Buttons.Reject" | translate}}</a></td>
-                <td ng-show="{{applicant.Status == 'N'}}"><a class="btn btn-success" ng-click="oKApplicant(applicant)">   {{"Buttons.OK" | translate}}</a></td>
-                <td ng-show="{{applicant.Status == 'S'}}"><a href="#/applicants/arrangeInterview/{{applicant._id}}" class="btn btn-danger" >   {{"Buttons.ArrangeInterview" | translate}}</a></td>
+                <td ><a class="btn btn-success" ng-click="shortListApplicant(applicant)" >   {{"Buttons.ShortList" | translate}}</a></td>
+                <td ><a class="btn btn-success" ng-click="approveApplicant(applicant)" > {{"Buttons.Approve" | translate}}</a></td>
+                <td ><a class="btn btn-danger" ng-click="rejectApplicant(applicant)" >   {{"Buttons.Reject" | translate}}</a></td>
+                <td ><a class="btn btn-success" ng-click="oKApplicant(applicant)">   {{"Buttons.OK" | translate}}</a></td>
+                <td ><a href="#/applicants/arrangeInterview/{{applicant._id}}" class="btn btn-danger" >   {{"Buttons.ArrangeInterview" | translate}}</a></td>
 
 
             </tr>
