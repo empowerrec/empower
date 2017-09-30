@@ -1,5 +1,6 @@
 angular.module('app').controller('mvSubUserInvitationListCtrl', function ($scope, mvSubUserInvitation,$translate, mvIdentity, mvSubUserInvitationRepo, mvNotifier, queryBulider) {
-    var curUser = mvIdentity.currentUser._id;
+    //var curUser = mvIdentity.currentUser._id;
+    var curUser = mvIdentity.currentEmployer._id;
     $scope.currentUser = mvIdentity.currentUser;
     
     $scope.paging = {

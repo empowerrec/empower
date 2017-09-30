@@ -1312,6 +1312,14 @@ angular.module('app').factory('mvUser', function ($resource) {
     return UserResource;
 });
 
+angular.module('app').factory('mvSubUser', function ($resource, mvIdentity) {
+    var SubUserResource = $resource('/api/subUsers/:_id', { _id: '@id' },
+        {
+            update: { method: 'PUT', isArray: false }
+        });
+    return SubUserResource;
+});
+
 angular.module('app').controller('mvSignupCtrl', function ($scope, $location, mvUser, mvNotifier, mvAuth) {
 
     $scope.signup = function () {
@@ -15464,7 +15472,8 @@ angular.module('app').controller('mvSubUserInvitationDetailCtrl', function ($sco
     $scope.subUserInvitation = mvSubUserInvitation.get({_id: $routeParams.id});
 });
 angular.module('app').controller('mvSubUserInvitationListCtrl', function ($scope, mvSubUserInvitation,$translate, mvIdentity, mvSubUserInvitationRepo, mvNotifier, queryBulider) {
-    var curUser = mvIdentity.currentUser._id;
+    //var curUser = mvIdentity.currentUser._id;
+    var curUser = mvIdentity.currentEmployer._id;
     $scope.currentUser = mvIdentity.currentUser;
     
     $scope.paging = {
@@ -15764,7 +15773,7 @@ angular.module('app').controller('mvSubUserListCtrl', function ($scope, queryBul
     //console.log(mvUser.query());
     //console.log(mvUserPackage.query());
     //console.log($scope.users);
-    var curUser = mvIdentity.currentUser._id;
+    var curUser = mvIdentity.currentEmployer._id;
     //var curUser = '5975060ec66dc80400dd19e9';
     $scope.paging = {
         currentPage: 1,

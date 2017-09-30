@@ -9,7 +9,9 @@ exports.getSubUserInvitations = function (req, res) {
         pageSize = parseInt(req.query.pageSize) > 0 ? parseInt(req.query.pageSize) : 10;
     if (req.query.currentLang) {
 
-        SubUserInvitation.find({ 'Name.Lang': { "$eq": req.query.currentLang } }, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function(err, col) {
+        SubUserInvitation.find({
+            'Name.Lang': { "$eq": req.query.currentLang },
+            'Employer': { "$eq": req.query.Employer }}, { 'Name.$': 1 }).populate('ModifiedBy').populate('CreatedBy').exec(function (err, col) {
             res.send(col);
         });
     } else {
