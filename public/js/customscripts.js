@@ -13538,7 +13538,7 @@ angular.module('app').controller('mvApplicantCtrl', function ($scope,  mvNotifie
 angular.module('app').controller('mvApplicantDetailCtrl', function ($scope, mvApplicant, $routeParams) {
     $scope.applicant = mvApplicant.get({_id: $routeParams.id});
 });
-angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvApplicant,$translate, mvIdentity, mvApplicantRepo, mvNotifier, queryBulider, $routeParams) {
+angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvApplicant, $translate, mvIdentity, mvApplicantRepo, mvNotifier, queryBulider, $routeParams) {
     $scope.currentUser = mvIdentity.currentUser;
     var id = $routeParams.vacancyId;
     var status = $routeParams.status;
@@ -13548,10 +13548,17 @@ angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvAppl
         maxPagesToShow: 5,
         pageSize: 10
     };
-    
+
     $scope.getData = function () {
+        var qu = '';
+        if (status == "ALL") {
+            qu = queryBulider.qb("Vacancy=='" + id + "'&&!Deleted");
+        }
+        else {
+            qu = queryBulider.qb("Vacancy=='" + id + "'&&Status=='" + status + "'&&!Deleted");
+        }
         mvApplicant.query({
-            query: queryBulider.qb("Vacancy=='" + id + "'&&Status=='" + status + "'&&!Deleted"),
+            query: qu,
             currentPage: $scope.paging.currentPage,
             pageSize: $scope.paging.pageSize
         }, (function (res) {
@@ -13559,7 +13566,7 @@ angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvAppl
             $scope.allDataCount = res[0].allDataCount;
         }));
     };
-    
+
     $scope.deleteApplicant = function (applicant) {
         var ed = mvApplicant.get({ _id: applicant._id }, (function () {
             ed.Deleted = true;
@@ -13640,7 +13647,7 @@ angular.module('app').controller('mvApplicantListCtrl', function ($scope, mvAppl
             });
         }));
     };
-    
+
     $scope.getData();
 
 });
