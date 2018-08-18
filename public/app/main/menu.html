@@ -2,7 +2,7 @@
         <div class="navbar navbar-default fixed-top shrinkable">
             <div class="container-boxed max">
                 <div class="navbar-header">
-                    <h1 class="sr-only">JobMonster</h1>
+                    <h1 class="sr-only">Wassta</h1>
                     <a class="navbar-toggle collapsed" data-toggle="collapse" data-target=".noo-navbar-collapse">
                         <span class="sr-only">Navigation</span>
                         <i class="fa fa-bars"></i>
@@ -41,24 +41,29 @@
                     <ul class="navbar-nav sf-menu sf-js-enabled sf-arrows">
                         <li class="current-menu-item align-left">
                             <a href="/#/">{{"Menu.Home" | translate}}</a>
-                           
+
                         </li>
                         <li class="align-left">
                             <a href="/#/vacanciesSearchResult">{{"Menu.Jobs" | translate}}</a>
-                           
+
                         </li>
-                       
-                        
-                        
-                        <li class="menu-item-post-btn">
+
+
+
+                        <li class="menu-item-post-btn" ng-show="identity.currentUser.isEmployer()">
                             <a href="#/addvacancy">{{"Menu.PostJob" | translate}}</a>
                         </li>
+
+                        <li ng-show="identity.currentUser.isEmployer()" class="menu-item-post-btn">
+                            <a href="#/employerdashboard/profile">{{"Menu.Dashboard" | translate}}</a>
+                        </li>
+
                         <li class="nav-item-member-profile login-link align-center" ng-hide="identity.isAuthenticated()">
                             <a href="#/" class="member-links member-login-link" data-rel="loginModal">
                                 <i class="fa fa-sign-in"></i>&nbsp;{{"Menu.Login" | translate}}
                             </a>
 
-                            
+
                         </li>
 
                         <li class="nav-item-member-profile register-link" ng-hide="identity.isAuthenticated()">
@@ -125,20 +130,20 @@
                                     <a href="#/univirstiesNotConfirmed">{{"Menu.UnivirstiesNotConfirmed" | translate}}</a>
                                 </li>
 
-                               
+
 
 
                             </ul>
                         </li>
 
                         <li ng-show="identity.isAuthenticated()" class="align-left">
-                            <a href="#/profile" class="sf-with-ul" >
-                                 {{ identity.currentUser.FirstName + ' ' + identity.currentUser.LastName}}
+                            <a href="#/profile" class="sf-with-ul">
+                                {{ identity.currentUser.FirstName + ' ' + identity.currentUser.LastName}}
                             </a>
 
                             <ul class="sub-menu">
-                                
-                                                             
+
+
                                 <li ng-show="identity.currentUser.isAdmin()">
                                     <a href="#/admin/users">{{"Menu.Users" | translate}}</a>
                                 </li>
@@ -152,15 +157,15 @@
                                     <a href="#/jobSeekers">{{"Menu.JobSeekers" | translate}}</a>
                                 </li>
                                 <!--<li ng-show="identity.currentUser.isAdmin()">
-                                    <a href="#/subUser-list">{{"Menu.subUsers" | translate}}</a>
-                                </li>-->
+                <a href="#/subUser-list">{{"Menu.subUsers" | translate}}</a>
+            </li>-->
 
                                 <li ng-show="identity.currentUser.isAdmin()">
                                     <a href="#/experiances">{{"Menu.Experiances" | translate}}</a>
                                 </li>
                                 <li ng-show="identity.currentUser.isAdmin()">
                                     <a href="#/professionalCertifications">{{"Menu.ProfessionalCertifications" | translate}}</a>
-                                </li>                                
+                                </li>
                                 <li ng-show="identity.currentUser.isAdmin()">
                                     <a href="#/applicants">{{"Menu.Applicants" | translate}}</a>
                                 </li>
@@ -173,6 +178,9 @@
                                 </li>
                                 <li ng-show="identity.currentUser.isEmployer()">
                                     <a href="#/updateemployer/profile">{{"Menu.CompanyProfile" | translate}}</a>
+                                </li>
+                                <li ng-show="identity.currentUser.isEmployer()">
+                                    <a href="#/employerdashboard/profile">{{"Menu.Dashboard" | translate}}</a>
                                 </li>
                                 <li ng-show="identity.currentUser.isEmployer()">
                                     <a href="#/subUserInvitations">{{"Menu.InviteSubUser" | translate}}</a>
@@ -193,13 +201,13 @@
                         </li>
 
 
-                        
+
 
                         <li ng-show="identity.isAuthenticated()" class="nav-item-member-profile register-link"><a href="" ng-click="signout()">{{"Menu.Signout" | translate}}</a></li>
 
                         <li><a href="" ng-show="currentLang == 'ar' " ng-click="changeLanguage('en')">{{"Languages.English" | translate}}</a></li>
                         <li> <a href="" ng-show="currentLang == 'en' " ng-click="changeLanguage('ar')">{{"Languages.Arabic" | translate}}</a></li>
-</ul>
+                    </ul>
                 </nav>
             </div>
         </div>

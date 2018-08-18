@@ -1,4 +1,6 @@
-angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, mvVacancyRepo, $rootScope, mvVacancy, $routeParams, $translate, mvCity, mvCityRepo, mvArea, mvAreaRepo, mvIdentity, $location) {
+angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier,
+    mvVacancyRepo, $rootScope, mvVacancy, $routeParams, $translate, mvCity,
+    mvCityRepo, mvArea, mvAreaRepo, mvIdentity, $location, mvUserFeature) {
     var id = $routeParams.id;
     $scope.identity = mvIdentity;
     $scope.addEnabled = false;
@@ -320,7 +322,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
         $scope.vacancy.Puplished = true;
         mvVacancyRepo.updateCurrentVacancy($scope.vacancy).then(function () {
             mvNotifier.notify('Vacancy has been Puplished!');
-            
+            mvUserFeature.updateByCode({ code: 100 });
             $location.path('/vacancies');
         }, function (reason) {
             mvNotifier.error(reason);

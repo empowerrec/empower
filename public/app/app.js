@@ -57,10 +57,17 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/courses', {
             templateUrl: '/partials/course/course-list.html',
             controller: 'mvCourseListCtrl'
+        }).when('/employerdashboard/:id', {
+            templateUrl: '/partials/employer/employer-dashboard.html',
+            controller: 'mvEmployerDashboardCtrl'
+        }).when('/employerdashboard/postedJobs/:id', {
+            templateUrl: '/partials/employer/employer-postedJobs-dashboard.html',
+            controller: 'mvEmployerPostedJobsDashboardCtrl'
         }).when('/employers/:id', {
             templateUrl: '/partials/employer/employer-detail.html',
             controller: 'mvEmployerDetailCtrl'
-        }).when('/updateemployer/:id', {
+        })
+        .when('/updateemployer/:id', {
             templateUrl: '/partials/employer/employer.html',
             controller: 'mvEmployerCtrl'
         }).when('/addemployer', {

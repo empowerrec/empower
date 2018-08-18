@@ -1,4 +1,5 @@
-angular.module('app').controller('mvUserFeatureListCtrl', function ($scope,$routeParams, mvUserFeature, $translate, mvIdentity, mvUserFeatureRepo, mvNotifier, queryBulider) {
+angular.module('app').controller('mvUserFeatureListCtrl', function ($scope, $routeParams,
+    mvUserFeature, $translate, mvIdentity, mvUserFeatureRepo, mvNotifier, queryBulider) {
     $scope.currentUser = mvIdentity.currentUser;
     $scope.uId = $routeParams.uId;
 

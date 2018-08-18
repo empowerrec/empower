@@ -1,4 +1,6 @@
-angular.module('app').controller('mvProfileCtrl', function ($scope, mvIdentity, mvNotifier, mvAuth) {
+angular.module('app').controller('mvProfileCtrl',
+    function ($scope, mvIdentity, mvNotifier, mvAuth,
+        mvUserFeature, queryBulider, mvUserPackage) {
 
     $scope.email = mvIdentity.currentUser.UserName;
     $scope.firstname = mvIdentity.currentUser.FirstName;
@@ -21,4 +23,28 @@ angular.module('app').controller('mvProfileCtrl', function ($scope, mvIdentity, 
             mvNotifier.error(reason);
         });
     };
+   
+    $scope.getUserFeautures = function () {
+        mvUserFeature.query({
+            query: queryBulider.qb("User=='" + mvIdentity.currentUser._id + "'&&!Deleted"),
+            currentPage: 1,
+            pageSize: 99
+        }, (function (res) {
+            $scope.userFeatures = res[0].collection;
+            $scope.allDataCount = res[0].allDataCount;
+        }));
+        };
+
+        $scope.getUserPackage = function () {
+            mvUserPackage.query({
+                query: queryBulider.qb("User=='" + mvIdentity.currentUser._id + "'&&!Deleted"),
+                currentPage: 1,
+                pageSize: 99
+            }, (function (res) {
+                $scope.userPackages = res[0].collection;
+                $scope.allDataCount = res[0].allDataCount;
+            }));
+        };
+        $scope.getUserFeautures();
+        $scope.getUserPackage();
 });

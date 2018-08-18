@@ -1,0 +1,154 @@
+
+<div class="container-wrap">
+    <div class="main-content container-boxed max">
+        <div class="row">
+            <a href="/#/vacanciesSearchResult" class="btn btn-primary">{{"Menu.Dashboard" | translate}}</a>
+            <a href="/#/postedJobs" class="btn btn-primary">{{"Menu.PostedJobs" | translate}}</a>
+            <a href="/#/vacanciesSearchResult" class="btn btn-primary">{{"Menu.FindCandidates" | translate}}</a>
+            <a href="/#/vacanciesSearchResult" class="btn btn-primary">{{"Menu.Interviews" | translate}}</a>
+            <a href="/#/vacanciesSearchResult" class="btn btn-primary">{{"Menu.SubUsers" | translate}}</a>
+            <a href="/#/vacanciesSearchResult" class="btn btn-primary">{{"Menu.YourAccount" | translate}}</a>
+
+        </div>
+
+        <div class="col-md-12">
+            <h7>{{"EmployerDashboard.LatestInterviews" | translate}}</h7>
+            <table class="table table-hover table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>{{"JobSeeker.JobSeeker" | translate}}</th>
+                        <th>{{"Vacancy.Vacancy" | translate}}</th>
+                        <th>{{"Applicant.ArrangeInterviewDate" | translate}}</th>
+
+                        <th>{{"Applicant.ArrangeInterviewTime" | translate}}</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="applicant in applicants | filter:searchText | orderBy:sortOrder">
+                        <td><a href="#/jobSeekers/{{applicant.JobSeeker._id}}"> {{applicant.JobSeeker.FirstName}} {{applicant.JobSeeker.LastName}}</a></td>
+
+                        <td>{{ applicant.Vacancy.JobTitle}}</td>
+                        <td>{{ applicant.ArrangeInterviewDate | date: 'yyyy-MM-dd' }}</td>
+                        <td>{{ applicant.ArrangeInterviewTime | date: 'HH:mm:ss' }}</td>
+
+
+                        <td><a href="#/applicants/arrangeInterview/{{applicant._id}}" class="btn btn-danger">   {{"Buttons.ArrangeInterview" | translate}}</a></td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+            <uib-pagination total-items="allDataCount"
+                            items-per-page="paging.pageSize"
+                            ng-model="paging.currentPage"
+                            max-size="paging.maxPagesToShow"
+                            ng-change="getData()"
+                            class="pagination-lg"
+                            boundary-links="true"
+                            previous-text="{{'Buttons.Previous' | translate}}"
+                            next-text="{{'Buttons.Next' | translate}}"
+                            first-text="{{'Buttons.First' | translate}}"
+                            last-text="{{'Buttons.Last' | translate}}">
+            </uib-pagination>
+        </div>
+    </div>
+    <div class="main-content container-boxed max offset">
+        <div class="row">
+
+            <div class="col-md-6">
+                <h3>Search For White Callers</h3>
+
+                <form class="form-inline">
+
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" id="search-keyword-white" name="s-white" placeholder='{{"Main.Search3" | translate}}' value="">
+                    </div>
+
+                    <div class="form-group form-action">
+                        <button type="button" ng-click="search()" class="btn btn-primary btn-search-submit">{{"Buttons.Search" | translate}}</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <h3>Search For Blue Callers</h3>
+                <form class="form-inline">
+
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" id="search-keyword-blue" name="s-blue" placeholder='{{"Main.Search3" | translate}}' value="">
+                    </div>
+
+                    <div class="form-group form-action">
+                        <button type="button" ng-click="search()" class="btn btn-primary btn-search-submit">{{"Buttons.Search" | translate}}</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="main-content container-boxed max">
+        <div class="col-md-12">
+            <h7>{{"EmployerDashboard.PostedJobs" | translate}}</h7>
+
+            <table class="table table-hover table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>{{"Vacancy.Vacancy" | translate}}</th>
+                        <th>{{"Vacancy.AvailableFrom" | translate}}</th>
+                        <th>{{"Vacancy.AvailableTo" | translate}}</th>
+                        <th>{{"Vacancy.Views" | translate}}</th>
+                        <th>{{"Vacancy.Applied" | translate}}</th>
+                        <th>{{"Vacancy.ShortListed" | translate}}</th>
+                        <th>{{"Vacancy.Ok" | translate}}</th>
+                        <th>{{"Vacancy.Interviews" | translate}}</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="vacancy in vacancies | filter:searchText | orderBy:sortOrder">
+
+                        <td>{{ vacancy.JobTitle}}</td>
+                        <td>{{ vacancy.AvailableFrom | date: 'yyyy-MM-dd' }}</td>
+                        <td>{{ vacancy.AvailableTo | date: 'yyyy-MM-dd' }}</td>
+                        <td>{{vacancy.Views}}</td>
+                        <td>{{vacancy.Applied}}</td>
+                        <td>{{vacancy.ShortListed}}</td>
+                        <td>{{vacancy.OK}}</td>
+                        <td>{{vacancy.Interviews}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <uib-pagination total-items="allVacanciesDataCount"
+                            items-per-page="postedJobspaging.pageSize"
+                            ng-model="postedJobspaging.currentPage"
+                            max-size="postedJobspaging.maxPagesToShow"
+                            ng-change="getPostedJobsData()"
+                            class="pagination-lg"
+                            boundary-links="true"
+                            previous-text="{{'Buttons.Previous' | translate}}"
+                            next-text="{{'Buttons.Next' | translate}}"
+                            first-text="{{'Buttons.First' | translate}}"
+                            last-text="{{'Buttons.Last' | translate}}">
+            </uib-pagination>
+        </div>
+
+        <div class="col-md-4" style="width:280px;height:100px;border:1px solid #000;background-color: aqua;">Number of Interviews : {{vacanciesApplicantsCount.Interviews}}</div>
+        <div class="col-md-4" style="width:280px;height:100px;border:1px solid #000;background-color: aqua;">{{vacanciesApplicantsCount.PostedJobs}} Job Posted</div>
+        <div class="col-md-4" style="width:280px;height:100px;border:1px solid #000;background-color: aqua;">{{vacanciesApplicantsCount.Views}} Candidates see your Post</div>
+        <div class="col-md-4" style="width:280px;height:100px;border:1px solid #000;background-color: aqua;">{{vacanciesApplicantsCount.Applied}} Candidates applied </div>
+    </div>
+
+</div>

@@ -32,7 +32,7 @@
                         <article class="noo_job hentry" ng-repeat="vacancy in vacancies | filter:searchText | orderBy:sortOrder">
                             <div class="loop-item-wrap">
                                 <div class="item-featured">
-                                    <a href="#">
+                                    <a href="#/vacancies/{{vacancy._id}}">
                                         <img width="50" height="50" src="images/company/company_50x50.jpg" alt="Villa Senang" />
                                     </a>
                                 </div>
@@ -50,19 +50,19 @@
                                             Salary Starts From <a href="#"> {{ vacancy.SalaryRangeFrom}} To </a>
                                         </span>
                                         <span class="job-type contract">
-                                            <a href="#">
+                                            <a href="#/vacancies/{{vacancy._id}}">
                                                 <i class="fa fa-bookmark"></i> {{ vacancy.SalaryRangeFrom}}
                                             </a>
                                         </span>
                                         <span class="job-company">
-                                            <a href="#"> , Available From <i class="fa fa-calendar"></i> {{ vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</a>
+                                            <a href="#/vacancies/{{vacancy._id}}"> , Available From <i class="fa fa-calendar"></i> {{ vacancy.AvailableFrom | date : 'dd/MM/yyyy'}}</a>
                                         </span>
 
                                         <span class="job-company">
-                                            <a href="#"> To <i class="fa fa-calendar"></i> {{ vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</a>
+                                            <a href="#/vacancies/{{vacancy._id}}"> To <i class="fa fa-calendar"></i> {{ vacancy.AvailableTo | date : 'dd/MM/yyyy'}}</a>
                                         </span>
                                         <span class="job-company">
-                                            <a href="#"> modified by  {{ vacancy.ModifiedBy.FirstName}} {{ vacancy.ModifiedBy.LastName}}</a>
+                                            <a href="#/vacancies/{{vacancy._id}}"> modified by  {{ vacancy.ModifiedBy.FirstName}} {{ vacancy.ModifiedBy.LastName}}</a>
                                         </span>
 
                                         <span>
@@ -73,7 +73,7 @@
                                         </span>
 
                                         <span class="job-company">
-                                            <a href="#"> created by  {{ vacancy.CreatedBy.FirstName}} {{ vacancy.CreatedBy.LastName}}</a>
+                                            <a href="#/vacancies/{{vacancy._id}}"> created by  {{ vacancy.CreatedBy.FirstName}} {{ vacancy.CreatedBy.LastName}}</a>
                                         </span>
 
                                         <span>

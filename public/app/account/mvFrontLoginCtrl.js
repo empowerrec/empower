@@ -1,5 +1,6 @@
 angular.module('app').controller('mvFrontLoginCtrl',
-    function ($scope, $http, $location, mvIdentity, mvNotifier, mvAuth, mvLookup, $translate, $rootScope, mvStyle) {
+    function ($scope, $http, $location, mvIdentity, mvNotifier,
+        mvAuth, mvLookup, $translate, $rootScope, mvStyle) {
     $scope.identity = mvIdentity;
     
     $scope.signin = function (username, password, rememberme) {
@@ -13,6 +14,8 @@ angular.module('app').controller('mvFrontLoginCtrl',
                     if ($('#userloginModal').length) {
                         $('#userloginModal').modal('hide');
                     }
+                    if ($scope.identity.currentUser.UserType == "E")
+                        $location.path('/employerdashboard/profile');
                     
                 } else {
                     mvNotifier.error('Username/Password combination incorrect');

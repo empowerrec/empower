@@ -77,5 +77,93 @@
 
             </div>
         </div>
+
+        <div class="row">
+
+                        <div class="container-boxed max">
+                            <div class="form-horizontal" enctype="multipart/form-data">
+                                <div id="step_content_form" class="jstep-content">
+                                    <div class="jpanel jpanel-job-form">
+                                        <div class="jpanel-title">
+                                            <h3>Package Details</h3>
+                                        </div>
+                                        <div class="jpanel-body">
+                                            <div class="well">
+
+                                                <article class="noo_job hentry" ng-repeat="UserPackage in userPackages | filter:searchText | orderBy:sortOrder">
+                                                    <div class="loop-item-wrap">
+                                                        
+                                                        <div class="loop-item-content">
+                                                            
+                                                               
+                                                                    <h2 ng-repeat="ind in UserPackage.Name | filter:{Lang:currentLang}">
+                                                                        {{ind.Text}}
+                                                                    </h2>
+                                                                
+                                                            <p>
+                                                                
+                                                                    <span  ng-repeat="name in UserPackage.Package.Name | filter:{Lang:currentLang}">{{name.Text}} </span>
+                                                                    <span> {{"UserPackage.NoOfMonths" | translate}} : {{ UserPackage.NoOfMonths}}  </span>
+                                                                    <span> {{"UserPackage.Discount" | translate}} : {{ UserPackage.Discount}}  </span>
+                                                                    <span> {{"UserPackage.StartDate" | translate}} : {{ UserPackage.StartDate | date}}  </span>
+                                                                    <span> {{"UserPackage.ExpiryDate" | translate}} : {{ UserPackage.ExpiryDate | date}}  </span>
+                                                                    <span> {{"UserPackage.TotalAmount" | translate}} : {{ UserPackage.TotalAmount}}  </span>
+                                                                    <span> {{"UserPackage.PackageAmount" | translate}} : {{ UserPackage.PackageAmount}}  </span>
+
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+                                                </article>
+
+                                                <article class="noo_job hentry" ng-repeat="UserFeature in userFeatures | filter:searchText | orderBy:sortOrder">
+                                                    <div class="loop-item-wrap">
+                                                       
+                                                        <div class="loop-item-content">
+                                                           
+                                                                    <h2 ng-repeat="ind in UserFeature.Name | filter:{Lang:currentLang}">
+                                                                        {{ind.Text}}
+                                                                    </h2>
+                                                              
+                                                            <p>
+                                                                
+                                                                <span>
+                                                                    {{"UserFeature.Feature" | translate}} : <span  ng-repeat="name in UserFeature.Feature.Name | filter:{Lang:currentLang}">{{name.Text}} </span>
+                                                                </span>
+                                                                <span>
+                                                                     {{"UserFeature.Points" | translate}} : {{ UserFeature.Points}}  
+                                                                </span>
+                                                                <span>
+                                                                    {{"UserFeature.DistrbuitedForSubUsers" | translate}} : {{ UserFeature.DistrbuitedForSubUsers}}  
+                                                                </span>
+                                                                <span>
+                                                                     {{"UserFeature.UsedFromPoints" | translate}} : {{ UserFeature.UsedFromPoints}}  
+                                                                </span>
+                                                                <span>
+                                                                    {{"UserFeature.ExpiryDate" | translate}} : {{ UserFeature.ExpiryDate | date}}  
+                                                                </span>
+
+                                                            </p>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                </article>
+
+
+                                            </div>
+
+                                        </div>
+
+                                        
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+            </div>
+
+      
+
+        </div>
     </div>
-</div>

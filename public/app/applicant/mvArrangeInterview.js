@@ -70,7 +70,7 @@
         if ($scope.applicant) {
             $scope.applicant.ArrangeInterviewDate = new Date($scope.applicant.ArrangeInterviewDate);
             $scope.applicant.ArrangeInterviewTime = new Date($scope.applicant.ArrangeInterviewTime);
-
+            $scope.applicant.Status = 'I' ;
             mvApplicantRepo.updateCurrentApplicant($scope.applicant).then(function () {
                 mvNotifier.notify('Applicant has been updated!');
             }, function (reason) {

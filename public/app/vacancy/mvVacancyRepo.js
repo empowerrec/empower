@@ -1,4 +1,5 @@
-angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy,mvIdentity) {
+angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy,
+    mvIdentity, mvUserFeature) {
     return {
 
         createVacancy: function (newVacancyData) {
@@ -10,6 +11,7 @@ angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy,mv
             newVacancy.$save().then(function (newVancancy) {
                 console.log("Vacancy Saved");
                 dfd.resolve(newVancancy);
+               
             }, function (response) {
                 dfd.reject(response.data.reason);
             });

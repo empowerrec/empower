@@ -331,7 +331,7 @@
             },
             "Buttons": {
                 "ArrangeInterview": "Arrange Interview",
-                "Update": "Update",
+                "Update": "Save",
                 "Save": "Save",
                 "Cancel": "Cancel",
                 "Delete": "Delete",
@@ -402,9 +402,20 @@
                 'Register': 'Register ',
                 'Packages': 'Packages',
                 'Features': 'Features',
-                'Candidates': 'Candidates'
+                'Candidates': 'Candidates',
+                'Dashboard': 'Dashboard',
+                'PostedJobs': 'Posted Jobs',
+                'FindCandidates': 'Find Candidates',
+                'Interviews': 'Interviews',
+                'SubUsers': 'Users',
+                'YourAccount': 'YourAccount'
 
             },
+            "EmployerDashboard": {
+                "LatestInterviews": "Latest Interviews"
+            
+
+        },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
             },
