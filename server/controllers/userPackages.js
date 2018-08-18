@@ -39,7 +39,7 @@ exports.createUserPackage = function (req, res, next) {
 
             async.each(col, function (entry, next) {
                 var uf = new UserFeature();
-                uf.Points = entry.Points;
+                uf.Points = entry.Points * UserPackageData.NoOfMonths;
                 uf.Feature = entry.Feature;
                 uf.FeatureType = entry.Feature.Type;
                 uf.Package = UserPackageData.Package;
@@ -49,19 +49,24 @@ exports.createUserPackage = function (req, res, next) {
                 uf.UsedFromPoints = 0;
                 uf.Deleted = false;
                 uf.CreatedBy = UserPackageData.CreatedBy;
-
-                UserFeature.create(uf, function (err, UserFeature) {
-                    if (err) {
-                        if (err.toString().indexOf('E11000') > -1) {
-                            err = new Error('Duplicate UserFeature');
-                        }
-                        res.status(400);
-
-                        return res.send({ reason: err.toString() });
+                uf.Code = entry.Feature.Code;
+                UserFeature.findOneAndUpdate({ Feature: entry.Feature }, { $set: { Points: entry.Points * UserPackageData.NoOfMonths, ExpiryDate: UserPackageData.ExpiryDate } }, { new: true }, function (err, doc) {
+                            if (err) {
+                                //next(); 
+                                console.log("Something wrong when updating data!");
+                                }
+                    if (!doc) {
+                        UserFeature.create(uf, function (err, UserFeature) {
+                            
+                            //next();
+                        });
                     }
-                    next();
-                });
-            }, function (err) {
+                            next();
+                            console.log(doc);
+                        });
+                    }
+                   
+            , function (err) {
                 UserPackage.find({ 'Deleted': { "$eq": false } }).exec(function (err, col) {
                     async.each(col, function (entry, next) {
                         entry.Deleted = true;

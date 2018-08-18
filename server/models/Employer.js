@@ -36,7 +36,12 @@ var employerSchema = mongoose.Schema({
     ContactTitle: { type: String },
     ContactMobileNumber: { type: String },
     CompanyPhone: { type: String },
+    CompanyFax: { type: String },
     CompanyWebsite: { type: String },
+    FacebookPage: { type: String },
+    LinkedinProfile: { type: String },
+    InterviewContactPerson: { type: String },
+    InterviewContactMobileNumber: { type: String },
     CompanySize: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CompanySize'
@@ -44,6 +49,10 @@ var employerSchema = mongoose.Schema({
     Country: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Country'
+    },
+    City: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'City'
     },
     CompanyProfile: { type: String },
     ModifiedBy: {

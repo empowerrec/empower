@@ -17,7 +17,7 @@ exports.getApplicants = function (req, res) {
         //});
         Applicant.find(JSON.parse(req.query.query))
             .populate({ path: 'Vacancy', populate: { path: 'Employer', model: 'Employer', select: 'EmployerName' } })
-            .populate({ path: 'JobSeeker'})
+            .populate({ path: 'JobSeeker' })
             .populate('ModifiedBy').populate('CreatedBy')
             .limit(pageSize).skip(pageSize * (currentPage - 1))
             .exec(function (err, col) {
@@ -56,47 +56,7 @@ exports.getApplicantsSearchResult = function (req, res) {
             res.send(col);
         }
 
-        //Industry.populate(col, { path: 'groupByObject', select: 'Name' }, function (err, populatedCol) {
-        //    var x = JSON.parse(JSON.stringify(populatedCol));
-        //    res.send(x);
-        //});
 
-        //else if (groupBy == 'Country') {
-        //    Country.populate(col, { path: 'groupByObject', select: 'Name' }, function (err, populatedCol) {
-        //        var x = JSON.parse(JSON.stringify(populatedCol));
-        //        res.send(x);
-        //    });
-        //} else if (groupBy == 'City') {
-        //    City.populate(col, { path: 'groupByObject', select: 'Name' }, function (err, populatedCol) {
-        //        var x = JSON.parse(JSON.stringify(populatedCol));
-        //        res.send(x);
-        //    });
-        //} else if (groupBy == 'Area') {
-        //    Area.populate(col, { path: 'groupByObject', select: 'Name' }, function (err, populatedCol) {
-        //        var x = JSON.parse(JSON.stringify(populatedCol));
-        //        res.send(x);
-        //    });
-        //} else if (groupBy == 'JobRole') {
-        //    JobRole.populate(col, { path: 'groupByObject', select: 'Name' }, function (err, populatedCol) {
-        //        var x = JSON.parse(JSON.stringify(populatedCol));
-        //        res.send(x);
-        //    });
-        //} else if (groupBy == 'JobType') {
-        //    JobType.populate(col, { path: 'groupByObject', select: 'Name' }, function (err, populatedCol) {
-        //        var x = JSON.parse(JSON.stringify(populatedCol));
-        //        res.send(x);
-        //    });
-        //} else if (groupBy == 'EducationalLevel') {
-        //    EducationalLevel.populate(col, { path: 'groupByObject', select: 'Name' }, function (err, populatedCol) {
-        //        var x = JSON.parse(JSON.stringify(populatedCol));
-        //        res.send(x);
-        //    });
-        //} else if (groupBy == 'CareerLevel') {
-        //    CareerLevel.populate(col, { path: 'groupByObject', select: 'Name' }, function (err, populatedCol) {
-        //        var x = JSON.parse(JSON.stringify(populatedCol));
-        //        res.send(x);
-        //    });
-        //}
 
     });
 };
@@ -111,9 +71,10 @@ exports.getVacancyForApplicant = function (req, res) {
 
 };
 exports.getApplicantById = function (req, res) {
-    Applicant.findOne({ _id: req.params.id }).populate('ModifiedBy').exec(function (err, col) {
-        res.send(col);
-    });
+    Applicant.findOne({ _id: req.params.id }).populate('JobSeeker').populate('Vacancy')
+        .populate('ModifiedBy').exec(function (err, col) {
+            res.send(col);
+        });
 };
 exports.getApplicantByName = function (req, res) {
 
@@ -181,5 +142,60 @@ exports.updateApplicant = function (req, res, next) {
             return res.send({ reason: err.toString() });
         }
         res.send(applicant);
+    });
+};
+
+exports.getApplicantsCount = function (req, res) {
+
+    Applicant.aggregate([
+        {
+            "$match": {
+                "Vacancy": { "$eq": require('mongoose').Types.ObjectId(req.query.Vacancy) }
+            }
+        },{
+            "$group": {
+                "_id": "$Vacancy",
+                "vacancyCount": { "$sum": 1 },
+                "I": {
+                    "$sum": {
+                        "$cond": [{ "$eq": ["$Status", "I"] }, 1, 0]
+                    }
+                },
+                "N": {
+                    "$sum": {
+                        "$cond": [{ "$eq": ["$Status", "N"] }, 1, 0]
+                    }
+                },
+                "A": {
+                    "$sum": {
+                        "$cond": [{ "$eq": ["$Status", "A"] }, 1, 0]
+                    }
+                },
+                "O": {
+                    "$sum": {
+                        "$cond": [{ "$eq": ["$Status", "O"] }, 1, 0]
+                    }
+                },
+                "S": {
+                    "$sum": {
+                        "$cond": [{ "$eq": ["$Status", "S"] }, 1, 0]
+                    }
+                }
+            }
+        },
+        {
+            "$project": {
+                "_id": 0,
+                "vacancy": "$_id",
+                "vacancyCount": 1,
+                "I": 1,
+                "N": 1,
+                "A": 1,
+                "O": 1,
+                "S": 1
+            }
+        }
+    ]).exec(function (err, col) {
+        return res.send(col);
     });
 };

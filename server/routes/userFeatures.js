@@ -7,5 +7,6 @@ router.get('/', userFeatures.getUserFeatures);
 router.post('/', userFeatures.createUserFeature);
 router.put('/', userFeatures.updateUserFeature);
 router.get('/:id', userFeatures.getUserFeatureById);
+router.put('/:code', userFeatures.updateUserFeatureByCode);
 
 module.exports = router;

@@ -201,13 +201,14 @@ module.exports = function (app) {
 	app.put('/api/companyTypes', companyTypes.updateCompanyType);
 	app.get('/api/companyTypes/:id', companyTypes.getCompanyTypeById);
 		
-	app.get('/api/applicants', authentication.requiresRole(['A', 'E']), applicants.getApplicants);
+	app.get('/api/applicants', authentication.requiresRole(['A', 'E' , 'J']), applicants.getApplicants);
 	app.post('/api/applicants', applicants.createApplicant);
 	app.put('/api/applicants', applicants.updateApplicant);
 	app.get('/api/applicants/:id', applicants.getApplicantById);
 	app.get('/api/applicants/getVacancyForApplicant/:jobSeeker/:vacancy', applicants.getVacancyForApplicant);
     app.put('/api/applicants/arrangeInterview', applicants.arrangeInterview);
     app.get('/api/applicantsSearchResult', applicants.getApplicantsSearchResult);
+    app.get('/api/getApplicantsCount', applicants.getApplicantsCount);
     
 	app.get('/api/packages', authentication.requiresRole(['A', 'E']), packages.getPackages);
 	app.post('/api/packages', packages.createPackage);

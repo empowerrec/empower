@@ -84,3 +84,21 @@ exports.updateUserFeature = function (req, res, next) {
         res.send(UserFeature);
     });
 };
+
+exports.updateUserFeatureByCode = function (req, res, next) {
+    var code = req.params.code;
+    var user = req.user._id;
+    
+    UserFeature.findOneAndUpdate({ Code: code, User: user },
+        { $inc: { 'UsedFromPoints': 1 } } , { new: true }, function (err, doc) {
+        if (err) {
+            //next(); 
+            console.log("Something wrong when updating data!");
+        }
+            next();
+        console.log(doc);
+    });
+}
+
+
+

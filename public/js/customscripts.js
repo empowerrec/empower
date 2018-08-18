@@ -57,10 +57,17 @@ angular.module('app').config(function ($routeProvider) {
         }).when('/courses', {
             templateUrl: '/partials/course/course-list.html',
             controller: 'mvCourseListCtrl'
+        }).when('/employerdashboard/:id', {
+            templateUrl: '/partials/employer/employer-dashboard.html',
+            controller: 'mvEmployerDashboardCtrl'
+        }).when('/employerdashboard/postedJobs/:id', {
+            templateUrl: '/partials/employer/employer-postedJobs-dashboard.html',
+            controller: 'mvEmployerPostedJobsDashboardCtrl'
         }).when('/employers/:id', {
             templateUrl: '/partials/employer/employer-detail.html',
             controller: 'mvEmployerDetailCtrl'
-        }).when('/updateemployer/:id', {
+        })
+        .when('/updateemployer/:id', {
             templateUrl: '/partials/employer/employer.html',
             controller: 'mvEmployerCtrl'
         }).when('/addemployer', {
@@ -983,25 +990,10 @@ angular.module('app').factory('mvSkillTypeRepo', function ($http, $q, mvSkillTyp
         }
     };
 });
-angular.module('app').controller('mvHotVacanciesCtrl', function ($scope, mvVacancy, queryBulider, mvVacancyRepo, mvNotifier,$translate, mvIdentity) {
+angular.module('app').controller('mvHotVacanciesCtrl', function ($scope, mvVacancy,
+    queryBulider, mvVacancyRepo, mvNotifier, $translate, mvIdentity) {
     $scope.currentUser = mvIdentity.currentUser;
-   //$scope.vacancies = mvVacancy.query();
-    ////$scope.currentLang = $translate.use();
-    //$scope.sortOptions = [{value: 'VacancyName', text: 'Sort by VacancyName'},
-    //    {value: 'NumberOfEmployees', text: 'Sort by NumberOfEmployees'}];
-    //$scope.sortOrder = $scope.sortOptions[0].value;
-    //$scope.getName = function(list){
-    //    for(var i = 0; i < list.length; i++) {
-
-    //        if(list[i].Lang == $scope.currentLang) {
-    //            return list[i].Text;
-    //        }
-    //    }
-    //};
-
-    //$scope.getLang = function(){
-    //    return $translate.use();
-    //};
+  
     $scope.paging = {
         currentPage: 1,
         maxPagesToShow: 5,
@@ -1027,23 +1019,7 @@ angular.module('app').controller('mvHotVacanciesCtrl', function ($scope, mvVacan
 
 angular.module('app').controller('mvNewVacanciesCtrl', function ($scope, mvVacancy, queryBulider, mvVacancyRepo, mvNotifier,$translate, mvIdentity) {
     $scope.currentUser = mvIdentity.currentUser;
-   //$scope.vacancies = mvVacancy.query();
-    ////$scope.currentLang = $translate.use();
-    //$scope.sortOptions = [{value: 'VacancyName', text: 'Sort by VacancyName'},
-    //    {value: 'NumberOfEmployees', text: 'Sort by NumberOfEmployees'}];
-    //$scope.sortOrder = $scope.sortOptions[0].value;
-    //$scope.getName = function(list){
-    //    for(var i = 0; i < list.length; i++) {
-
-    //        if(list[i].Lang == $scope.currentLang) {
-    //            return list[i].Text;
-    //        }
-    //    }
-    //};
-
-    //$scope.getLang = function(){
-    //    return $translate.use();
-    //};
+   
     $scope.paging = {
         currentPage: 1,
         maxPagesToShow: 5,
@@ -1338,7 +1314,9 @@ angular.module('app').controller('mvSignupCtrl', function ($scope, $location, mv
         });
     };
 });
-angular.module('app').controller('mvProfileCtrl', function ($scope, mvIdentity, mvNotifier, mvAuth) {
+angular.module('app').controller('mvProfileCtrl',
+    function ($scope, mvIdentity, mvNotifier, mvAuth,
+        mvUserFeature, queryBulider, mvUserPackage) {
 
     $scope.email = mvIdentity.currentUser.UserName;
     $scope.firstname = mvIdentity.currentUser.FirstName;
@@ -1361,6 +1339,30 @@ angular.module('app').controller('mvProfileCtrl', function ($scope, mvIdentity, 
             mvNotifier.error(reason);
         });
     };
+   
+    $scope.getUserFeautures = function () {
+        mvUserFeature.query({
+            query: queryBulider.qb("User=='" + mvIdentity.currentUser._id + "'&&!Deleted"),
+            currentPage: 1,
+            pageSize: 99
+        }, (function (res) {
+            $scope.userFeatures = res[0].collection;
+            $scope.allDataCount = res[0].allDataCount;
+        }));
+        };
+
+        $scope.getUserPackage = function () {
+            mvUserPackage.query({
+                query: queryBulider.qb("User=='" + mvIdentity.currentUser._id + "'&&!Deleted"),
+                currentPage: 1,
+                pageSize: 99
+            }, (function (res) {
+                $scope.userPackages = res[0].collection;
+                $scope.allDataCount = res[0].allDataCount;
+            }));
+        };
+        $scope.getUserFeautures();
+        $scope.getUserPackage();
 });
 angular.module('app').controller('mvFrontSignupCtrl', function ($scope, $rootScope, $location, $q, mvUser, mvJobSeekerRepo, mvNotifier, mvAuth, mvIdentity, mvEmployer, mvEmployerRepo) {
     
@@ -1460,7 +1462,8 @@ angular.module('app').controller('mvForgetPasswordCtrl', function ($scope, $http
     };
 });
 angular.module('app').controller('mvFrontLoginCtrl',
-    function ($scope, $http, $location, mvIdentity, mvNotifier, mvAuth, mvLookup, $translate, $rootScope, mvStyle) {
+    function ($scope, $http, $location, mvIdentity, mvNotifier,
+        mvAuth, mvLookup, $translate, $rootScope, mvStyle) {
     $scope.identity = mvIdentity;
     
     $scope.signin = function (username, password, rememberme) {
@@ -1474,6 +1477,8 @@ angular.module('app').controller('mvFrontLoginCtrl',
                     if ($('#userloginModal').length) {
                         $('#userloginModal').modal('hide');
                     }
+                    if ($scope.identity.currentUser.UserType == "E")
+                        $location.path('/employerdashboard/profile');
                     
                 } else {
                     mvNotifier.error('Username/Password combination incorrect');
@@ -3142,6 +3147,135 @@ angular.module('app').controller('mvEmployerListCtrl', function ($scope, mvEmplo
     $scope.getData();
 });
 
+angular.module('app').controller('mvEmployerDashboardCtrl', function ($scope,
+    mvEmployer, $translate, mvEmployerRepo, mvNotifier,
+    queryBulider, mvIdentity, $routeParams, mvApplicant, mvVacancy) {
+    $scope.currentUser = mvIdentity.currentUser;
+
+    $scope.paging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 10
+    };
+
+    $scope.postedJobspaging = {
+        currentPage: 1,
+        maxPagesToShow: 5,
+        pageSize: 10
+    };
+
+    $scope.vacanciesApplicantsCount = {
+        Views: 0,
+        Applied: 0,
+        ShortListed: 0,
+        Ok: 0,
+        Declined: 0,
+        PostedJob:0
+    };
+
+    $scope.getData = function () {
+        $scope.employer = mvEmployer.get({ _id: $routeParams.id }, function () {
+            $scope.getInterviews();
+        });
+    };
+
+    $scope.getPostedJobsData = function () {
+        mvVacancy.query({
+            query: queryBulider.qb("!Deleted"),
+            currentPage: $scope.postedJobspaging.currentPage,
+            pageSize: $scope.postedJobspaging.pageSize
+        }, (function (res) {
+            $scope.vacancies = res[0].collection;
+                $scope.allVacanciesDataCount = res[0].allDataCount;
+                $scope.vacanciesApplicantsCount.Views = 0;
+                $scope.vacanciesApplicantsCount.Applied = 0;
+                $scope.vacanciesApplicantsCount.ShortListed = 0;
+                $scope.vacanciesApplicantsCount.Ok = 0;
+                $scope.vacanciesApplicantsCount.Interviews = 0;
+                $scope.vacanciesApplicantsCount.PostedJobs = 0;
+
+            $scope.vacancies.forEach(function (row) {
+                $scope.vacanciesApplicantsCount.PostedJobs += 1;
+                mvApplicant.getApplicantsCount({ Vacancy: row._id }, (function (res) {
+                    row.Views = 0;
+                    row.Applied = 0;
+                    row.ShortListed = 0;
+                    row.Interviews = 0;
+                    row.Ok = 0;
+                    if (res[0]) {
+                        if (res[0].N) {
+                            row.Views = res[0].N;
+                            $scope.vacanciesApplicantsCount.Views += row.Views;
+                        }
+                        if (res[0].A) {
+                            row.Applied = res[0].A;
+                            row.Views += row.Applied;
+                            $scope.vacanciesApplicantsCount.Applied += row.Applied;
+                            $scope.vacanciesApplicantsCount.Views += row.Applied;
+                        }
+                        if (res[0].S) {
+                            row.ShortListed = res[0].S;
+                            row.Views += row.ShortListed;
+                            row.Applied += row.ShortListed;
+                            $scope.vacanciesApplicantsCount.ShortListed += row.ShortListed;
+                            $scope.vacanciesApplicantsCount.Applied += row.ShortListed;
+                            $scope.vacanciesApplicantsCount.Views += row.ShortListed;
+                        }
+                        if (res[0].O) {
+                            row.Ok = res[0].O;
+                            row.Views += row.Ok;
+                            row.Applied += row.Ok;
+                            $scope.vacanciesApplicantsCount.Ok += row.Ok;
+                            $scope.vacanciesApplicantsCount.Applied += row.Ok;
+                            $scope.vacanciesApplicantsCount.Views += row.Ok;
+                        }
+                        if (res[0].I) {
+                            row.Interviews = res[0].I;
+                            row.Views += row.Interviews;
+                            row.Applied += row.Interviews;
+                            $scope.vacanciesApplicantsCount.Interviews += row.Interviews;
+                            $scope.vacanciesApplicantsCount.Applied += row.Interviews;
+                            $scope.vacanciesApplicantsCount.Views += row.Interviews;
+                        }
+                    }
+                }));                
+
+            });
+        }));
+    };
+
+    $scope.getInterviews = function () {
+        var qu = "";
+
+        qu = queryBulider.qb("Employer=='" + $scope.employer._id +
+             "'&&ArrangeInterviewDate!=null");
+
+        mvApplicant.query({
+            query: qu,
+            currentPage: $scope.paging.currentPage,
+            pageSize: $scope.paging.pageSize
+        }, (function (res) {
+            $scope.applicants = res[0].collection;
+            $scope.allDataCount = res[0].allDataCount;
+        }));
+    }
+
+
+
+    $scope.getApplicantsCount = function (vacancy, status) {
+        mvApplicant.getApplicantsCount({ Vacancy: vacancy, Status: status }, (function (res) {
+            if (res[0]) {
+                $scope.vacanciesApplicantsCount.Views = res[0].count;
+            }
+        }));
+    }
+
+    $scope.getData();
+
+    $scope.getPostedJobsData();
+
+});
+
 angular.module('app').factory('mvVacancy', function ($resource, mvIdentity) {
     var vacancyResource = $resource('/api/vacancies/:_id', { _id: '@id' }, {
         
@@ -3177,35 +3311,55 @@ angular.module('app').controller('mvVacancyDetailCtrl', function ($scope, mvVaca
     $scope.isApplied = false;
     $scope.isJobSeeker = false;
     $scope.appliedMessage = "";
+    console.log(mvIdentity.currentJobSeeker);
     if (mvIdentity.currentJobSeeker)
         $scope.isJobSeeker = true;
     if ($scope.isJobSeeker) {
-        $scope.oldApplicant = mvApplicant.getVacancyForApplicant({ jobSeeker: mvIdentity.currentJobSeeker._id, vacancy: $routeParams.id },
+        $scope.applicant = mvApplicant.getVacancyForApplicant({ jobSeeker: mvIdentity.currentJobSeeker._id, vacancy: $routeParams.id },
             function(data, getResponseHeaders) {
                 if (data.Vacancy) {
-                    $scope.isApplied = true;
-                    $scope.appliedMessage = "You Already Applied For this Job";
+                    if (data.Status != 'N') {
+                        $scope.isApplied = true;
+                        $scope.appliedMessage = "You Already Applied For this Job";
+
+                    }
+                }
+                else {
+                    $scope.view();
                 }
 
 
             });
     }           
     $scope.apply = function () {
+        var ed = mvApplicant.get({ _id: $scope.applicant.JobSeeker._id }, (function () {
+            ed.Status = 'A';
+            ed.ModifiedBy = mvIdentity.currentUser;
+            mvApplicantRepo.updateCurrentApplicant(ed).then(function () {
+                mvNotifier.notify('Applicant has been Applied!');
+                //$scope.getData();
+            }, function (reason) {
+                mvNotifier.error(reason);
+            });
+        }));
+    };
+
+    $scope.view = function () {
         $scope.applicant = new mvApplicant();
         $scope.applicant.JobSeeker = mvIdentity.currentJobSeeker;
         $scope.applicant.Vacancy = $scope.vacancy._id;
+        $scope.applicant.Employer = $scope.vacancy.Employer;
         $scope.applicant.Status = "N";
         mvApplicantRepo.createApplicant($scope.applicant).then(function () {
-            $scope.isApplied = true;
-            $scope.appliedMessage = "You Already Applied For this Job";
-            mvNotifier.notify('You Applied For This Job Sucssefully!');
+            mvNotifier.notify('Vacancy Viewed Sucssefully!');
             $scope.addEnabled = false;
         }, function (reason) {
             mvNotifier.error(reason);
         });
     };
 });
-angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy,mvIdentity) {
+angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy,
+    mvIdentity, mvUserFeature) {
     return {
 
         createVacancy: function (newVacancyData) {
@@ -3217,6 +3371,7 @@ angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy,mv
             newVacancy.$save().then(function (newVancancy) {
                 console.log("Vacancy Saved");
                 dfd.resolve(newVancancy);
+               
             }, function (response) {
                 dfd.reject(response.data.reason);
             });
@@ -3306,7 +3461,9 @@ angular.module('app').factory('mvVacancyRepo', function ($http, $q, mvVacancy,mv
         }
     };
 });
-angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, mvVacancyRepo, $rootScope, mvVacancy, $routeParams, $translate, mvCity, mvCityRepo, mvArea, mvAreaRepo, mvIdentity, $location) {
+angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier,
+    mvVacancyRepo, $rootScope, mvVacancy, $routeParams, $translate, mvCity,
+    mvCityRepo, mvArea, mvAreaRepo, mvIdentity, $location, mvUserFeature) {
     var id = $routeParams.id;
     $scope.identity = mvIdentity;
     $scope.addEnabled = false;
@@ -3628,7 +3785,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
         $scope.vacancy.Puplished = true;
         mvVacancyRepo.updateCurrentVacancy($scope.vacancy).then(function () {
             mvNotifier.notify('Vacancy has been Puplished!');
-            
+            mvUserFeature.updateByCode({ code: 100 });
             $location.path('/vacancies');
         }, function (reason) {
             mvNotifier.error(reason);
@@ -3704,23 +3861,7 @@ angular.module('app').controller('mvVacancyCtrl', function ($scope, mvNotifier, 
 });
 angular.module('app').controller('mvVacancyListCtrl', function ($scope, mvVacancy, queryBulider, mvVacancyRepo, mvNotifier,$translate, mvIdentity) {
     $scope.currentUser = mvIdentity.currentUser;
-    //$scope.vacancies = mvVacancy.query();
-    ////$scope.currentLang = $translate.use();
-    //$scope.sortOptions = [{value: 'VacancyName', text: 'Sort by VacancyName'},
-    //    {value: 'NumberOfEmployees', text: 'Sort by NumberOfEmployees'}];
-    //$scope.sortOrder = $scope.sortOptions[0].value;
-    //$scope.getName = function(list){
-    //    for(var i = 0; i < list.length; i++) {
-
-    //        if(list[i].Lang == $scope.currentLang) {
-    //            return list[i].Text;
-    //        }
-    //    }
-    //};
-
-    //$scope.getLang = function(){
-    //    return $translate.use();
-    //};
+   
     $scope.paging = {
         currentPage: 1,
         maxPagesToShow: 5,
@@ -6307,16 +6448,33 @@ angular.module('app').factory('mvCachedJobSeeker', function (mvJobSeeker) {
         }
     };
 });
-angular.module('app').controller('mvJobSeekerDetailCtrl', function ($scope, mvJobSeeker,
-    $routeParams, $translate) {
+angular.module('app').controller('mvJobSeekerDetailCtrl',
+    function ($scope, mvJobSeeker,
+        $routeParams, $translate, mvIdentity, mvUserFeature) {
+        $scope.isEmployer = false;
+        if (mvIdentity.currentEmployer)
+            $scope.isEmployer = true;
     $scope.currentLang = $translate.use();
-    $scope.jobSeeker = mvJobSeeker.get({ _id: $routeParams.id });
-
+        $scope.jobSeeker = mvJobSeeker.get({ _id: $routeParams.id });
+        mvUserFeature.updateByCode({ code: 200 });
     $scope.showContactInformation = false;
 
-    $scope.showContactInformationFunction = function () {
-        $scope.showContactInformation = true;
-    };
+        $scope.showContactInformationFunction = function () {
+            mvUserFeature.updateByCode({ code: 300 });
+            $scope.showContactInformation = true;
+
+        };
+
+        $scope.getUserFeautures = function () {
+            mvUserFeature.query({
+                query: queryBulider.qb("User=='" + $routeParams.uId + "'&&!Deleted"),
+                currentPage: $scope.paging.currentPage,
+                pageSize: $scope.paging.pageSize
+            }, (function (res) {
+                $scope.userFeatures = res[0].collection;
+                $scope.allDataCount = res[0].allDataCount;
+            }));
+        };
 });
 angular.module('app').factory('mvJobSeekerRepo', function ($http, $q, mvJobSeeker, mvIdentity, $rootScope) {
     return {
@@ -12384,7 +12542,7 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
             },
             "Buttons": {
                 "ArrangeInterview": "Arrange Interview",
-                "Update": "Update",
+                "Update": "Save",
                 "Save": "Save",
                 "Cancel": "Cancel",
                 "Delete": "Delete",
@@ -12455,9 +12613,20 @@ angular.module('app').controller('mvUserListCtrl', function ($scope, queryBulide
                 'Register': 'Register ',
                 'Packages': 'Packages',
                 'Features': 'Features',
-                'Candidates': 'Candidates'
+                'Candidates': 'Candidates',
+                'Dashboard': 'Dashboard',
+                'PostedJobs': 'Posted Jobs',
+                'FindCandidates': 'Find Candidates',
+                'Interviews': 'Interviews',
+                'SubUsers': 'Users',
+                'YourAccount': 'YourAccount'
 
             },
+            "EmployerDashboard": {
+                "LatestInterviews": "Latest Interviews"
+            
+
+        },
             "Footer": {
                 "Copy": " \u00A9 2016 Empower Corp International Ltd."
             },
@@ -13380,7 +13549,11 @@ angular.module('app').factory('mvApplicant', function ($resource,mvIdentity) {
     var ApplicantResource = $resource('/api/applicants/:_id', {_id: '@id'},
         {update: {method: 'PUT', isArray: false},
         getVacancyForApplicant: {
-            url: 'api/applicants/getVacancyForApplicant/:jobSeeker/:vacancy', method: 'GET', params: { jobSeeker: '@jobSeeker' , vacancy : "@vacancy" }
+            url: 'api/applicants/getVacancyForApplicant/:jobSeeker/:vacancy',
+            method: 'GET', params: { jobSeeker: '@jobSeeker', vacancy: "@vacancy" }
+            },
+        getApplicantsCount: {
+            url: 'api/getApplicantsCount', method: 'GET', isArray: true
         }
     });
     return ApplicantResource;
@@ -13661,6 +13834,8 @@ angular.module('app').factory('mvApplicantRepo', function ($http, $q, mvApplican
             newApplicant.CreatedBy = mvIdentity.currentUser;
             newApplicant.Deleted = false;
             newApplicant.JobSeeker = mvIdentity.currentJobSeeker._id;
+            newApplicant.Employer = newApplicantData.Employer;
+            newApplicant.EmployerId = newApplicantData.Employer;
             var dfd = $q.defer();
             console.log("Saving Applicant");
             newApplicant.$save().then(function () {
@@ -13773,7 +13948,7 @@ angular.module('app').controller('mvArrangeInterviewCtrl', function ($scope, mvN
         if ($scope.applicant) {
             $scope.applicant.ArrangeInterviewDate = new Date($scope.applicant.ArrangeInterviewDate);
             $scope.applicant.ArrangeInterviewTime = new Date($scope.applicant.ArrangeInterviewTime);
-
+            $scope.applicant.Status = 'I' ;
             mvApplicantRepo.updateCurrentApplicant($scope.applicant).then(function () {
                 mvNotifier.notify('Applicant has been updated!');
             }, function (reason) {
@@ -14847,7 +15022,11 @@ angular.module('app').factory('mvCachedUserPackage', function (mvCourse) {
 });
 angular.module('app').factory('mvUserFeature', function ($resource,mvIdentity) {
     var UserFeatureResource = $resource('/api/userFeatures/:_id', {_id: '@id'},
-        {update: {method: 'PUT', isArray: false}
+        {
+            update: { method: 'PUT', isArray: false },
+            updateByCode: {
+                url: 'api/userFeatures/:code', method: 'PUT', params: { code: '@code' }
+            }
     });
     return UserFeatureResource;
 });
@@ -14956,7 +15135,8 @@ angular.module('app').controller('mvUserFeatureCtrl', function ($scope, mvFeatur
 angular.module('app').controller('mvUserFeatureDetailCtrl', function ($scope, mvUserFeature, $routeParams) {
     $scope.UserFeature = mvUserFeature.get({_id: $routeParams.pfid});
 });
-angular.module('app').controller('mvUserFeatureListCtrl', function ($scope,$routeParams, mvUserFeature, $translate, mvIdentity, mvUserFeatureRepo, mvNotifier, queryBulider) {
+angular.module('app').controller('mvUserFeatureListCtrl', function ($scope, $routeParams,
+    mvUserFeature, $translate, mvIdentity, mvUserFeatureRepo, mvNotifier, queryBulider) {
     $scope.currentUser = mvIdentity.currentUser;
     $scope.uId = $routeParams.uId;
 

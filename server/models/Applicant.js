@@ -11,6 +11,10 @@ var applicantSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Vacancy'
     },
+    Employer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Employer'
+    },
     Confirmed: Boolean,
     ArrangeInterviewDate: { type: Date },
     ArrangeInterviewTime: { type: Date },

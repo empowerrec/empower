@@ -24,6 +24,9 @@ var UserFeatureSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
+    Code: {
+        type: Number
+    },
     ModifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
